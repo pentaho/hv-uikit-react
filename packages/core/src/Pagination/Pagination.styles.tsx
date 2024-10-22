@@ -13,17 +13,18 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
     alignItems: "stretch",
     flexWrap: "wrap",
     marginTop: theme.space.sm,
-    ...theme.typography.caption2,
+    ...theme.typography.caption1,
   },
   /** Styles applied to the page size selector container. */
   pageSizeOptions: {
     display: "flex",
+    alignItems: "center",
     position: "absolute",
     gap: theme.space.xs,
     height: 24,
     top: "50%",
     transform: "translateY(-50%)",
-    left: "0",
+    left: 0,
   },
   pageSizeHeader: {
     height: 24,
@@ -67,22 +68,18 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
   icon: {},
   /** Styles applied to the central page information container. */
   pageInfo: {
-    display: "inline-block",
+    display: "inline-flex",
+    gap: 4,
     whiteSpace: "nowrap",
-    height: "32px",
-    lineHeight: "32px",
+    alignItems: "center",
   },
   /** Styles applied to the page selector input container. */
   pageJump: {
-    marginRight: 4,
     width: 24,
     minWidth: 24,
     maxWidth: theme.spacing(8),
     backgroundColor: "transparent",
     height: "24px",
-    "&:focus, &:focus-within, &:hover": {
-      backgroundColor: theme.colors.bgHover,
-    },
     "&, & $pageSizeInput": {
       fontSize: "inherit",
       lineHeight: "inherit",
@@ -90,18 +87,7 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
   },
   /** Styles passed down to the page selector Input component as `input`. */
   pageSizeInput: {
-    paddingLeft: 4,
-    paddingRight: 4,
-    margin: 0,
     textAlign: "center",
-    borderRadius: theme.radii.base,
     MozAppearance: "textfield",
-    "&:focus": {
-      padding: 0,
-      backgroundColor: theme.colors.bgHover,
-    },
-    "&:hover": {
-      cursor: "pointer",
-    },
   },
 });
