@@ -12,7 +12,6 @@ import { useLabels } from "../hooks/useLabels";
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { HvBaseProps } from "../types/generic";
-import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./Pagination.styles";
 import HvSelect, { Option } from "./Select";
 
@@ -24,7 +23,7 @@ const defaultPageSizeOptions = [5, 10, 20, 25, 50, 100];
 
 const DEFAULT_LABELS = {
   /** The show label. */
-  pageSizePrev: "Show",
+  pageSizePrev: "",
   /** Indicate the units of the page size selection. */
   pageSizeEntryName: "rows",
   /** Used for the aria-label of the selection of number of unit.s */
@@ -89,15 +88,14 @@ export const HvPagination = forwardRef<
   const {
     classes: classesProp,
     className,
-    id,
     pages = 1,
     page = 0,
     showPageSizeOptions = true,
     pageSizeOptions = defaultPageSizeOptions,
     pageSize = defaultPageSizeOptions[1],
     showPageJump = true,
-    canPrevious = false,
-    canNext = false,
+    canPrevious,
+    canNext,
     onPageChange,
     onPageSizeChange,
     labels: labelsProp,
@@ -110,7 +108,7 @@ export const HvPagination = forwardRef<
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
 
   const muiTheme = useTheme();
-  const isXsDown = useMediaQuery(muiTheme.breakpoints.down("xs"));
+  const isXsDown = useMediaQuery(muiTheme.breakpoints.only("xs"));
 
   const [pageInput, setPageInput] = useState(page);
 
@@ -158,18 +156,18 @@ export const HvPagination = forwardRef<
   );
 
   return (
-    <div ref={ref} id={id} className={cx(classes.root, className)} {...others}>
-      <div className={classes.pageSizeOptions} {...showPageProps}>
-        {showPageSizeOptions && (
+    <div ref={ref} className={cx(classes.root, className)} {...others}>
+      {showPageSizeOptions && (
+        <div className={classes.pageSizeOptions} {...showPageProps}>
           <>
-            {!isXsDown && (
-              <span className={classes?.pageSizeTextContainer}>
-                {labels?.pageSizePrev}
+            {!isXsDown && labels.pageSizePrev && (
+              <span className={classes.pageSizeTextContainer}>
+                {labels.pageSizePrev}
               </span>
             )}
             <HvSelect
               disabled={pageSize === 0}
-              aria-label={labels?.pageSizeSelectorDescription}
+              aria-label={labels.pageSizeSelectorDescription}
               onChange={(evt, val) => onPageSizeChange?.(val)}
               value={pageSize}
               classes={{
@@ -183,14 +181,14 @@ export const HvPagination = forwardRef<
                 </Option>
               ))}
             </HvSelect>
-            {!isXsDown && (
+            {!isXsDown && labels.pageSizeEntryName && (
               <span className={classes.pageSizeTextContainer}>
-                {labels?.pageSizeEntryName}
+                {labels.pageSizeEntryName}
               </span>
             )}
           </>
-        )}
-      </div>
+        </div>
+      )}
       <div className={classes.pageNavigator} {...navigationProps}>
         <HvIconButton
           className={classes.iconContainer}
@@ -210,7 +208,7 @@ export const HvPagination = forwardRef<
         </HvIconButton>
         <div className={classes.pageInfo}>
           {showPageJump ? renderPageJump() : <span>{`${page + 1}`}</span>}
-          <HvTypography component="span">{`${labels?.pagesSeparator} `}</HvTypography>
+          <span>{`${labels?.pagesSeparator} `}</span>
           <span>{pages}</span>
         </div>
         <HvIconButton
