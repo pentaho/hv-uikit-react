@@ -8,9 +8,7 @@ export const { staticClasses, useClasses } = createClasses("HvTableCell", {
     alignContent: "inherit",
     textAlign: "left",
     borderColor: theme.colors.border,
-    padding: `calc(${theme.space.xs} - 2px ) ${theme.space.xs} calc(${
-      theme.space.xs
-    } - 3px ) ${theme.spacing(4)}`,
+    padding: theme.spacing(0, "sm"),
     borderBottomWidth: 1,
   },
   /** Styles applied to the cell when it's in the table head. */

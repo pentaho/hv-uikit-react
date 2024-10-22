@@ -80,7 +80,7 @@ const columns = [
     {
       Header: "Title",
       accessor: "name",
-      style: { maxWidth: 100 },
+      style: { maxWidth: 220 },
       id: "title-header",
     },
     "expand",

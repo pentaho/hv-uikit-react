@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../../Button";
+import { HvButtonBase, HvButtonBaseProps } from "../../ButtonBase";
 import { HvIcon } from "../../icons";
 import { HvTypography, HvTypographyProps } from "../../Typography";
 import { capitalize } from "../../utils/helpers";
@@ -63,7 +63,7 @@ export interface HvTableHeaderProps
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvTableHeaderClasses;
   /** Extra props to be passed onto the sort button in the header. */
-  sortButtonProps?: HvButtonProps;
+  sortButtonProps?: HvButtonBaseProps;
 }
 
 const defaultComponent = "th";
@@ -153,28 +153,15 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
         {...others}
       >
         <div
+          data-align={align !== "inherit" ? align : undefined}
           className={cx(
             classes.headerContent,
             align !== "inherit" && classes[`alignFlex${capitalize(align)}`],
           )}
         >
-          {isHeadCell && sortable && (
-            <HvButton
-              className={classes.sortButton}
-              icon
-              aria-label="Sort"
-              {...sortButtonProps}
-            >
-              <HvIcon
-                name={getSortIconName(sorted && sortDirection)}
-                className={classes.sortIcon}
-              />
-            </HvButton>
-          )}
           <HvTypography
             component="div"
-            className={cx({
-              [classes.headerText]: !paragraph,
+            className={cx(classes.headerText, {
               [classes.headerParagraph]: paragraph,
               [classes.sortableHeaderText]: sortable,
             })}
@@ -183,6 +170,19 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
           >
             {children}
           </HvTypography>
+          {isHeadCell && sortable && (
+            <HvButtonBase
+              className={classes.sortButton}
+              aria-label="Sort"
+              {...sortButtonProps}
+            >
+              <HvIcon
+                compact
+                name={getSortIconName(sorted && sortDirection)}
+                className={classes.sortIcon}
+              />
+            </HvButtonBase>
+          )}
         </div>
         {resizable && <div {...resizerProps} className={classes.resizer} />}
       </Component>
