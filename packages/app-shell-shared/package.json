@@ -15,7 +15,7 @@
   },
   "bugs": "https://github.com/pentaho/hv-uikit-react/issues",
   "scripts": {
-    "build": "npm run clean && vite build",
+    "build": "tsdown",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "clean": "npx rimraf dist package",

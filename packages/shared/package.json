@@ -25,7 +25,7 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "build": "npm run clean && vite build",
+    "build": "tsdown",
     "clean": "npx rimraf dist package",
     "prepublishOnly": "npm run build && npx clean-publish"
   },

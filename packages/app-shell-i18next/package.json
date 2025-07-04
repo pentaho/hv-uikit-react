@@ -15,7 +15,7 @@
   },
   "bugs": "https://github.com/pentaho/hv-uikit-react/issues",
   "scripts": {
-    "build": "npm run clean && vite build",
+    "build": "tsdown",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "clean": "npx rimraf dist package",
@@ -43,10 +43,7 @@
     "module": "dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
+      ".": "./dist/index.js",
       "./package.json": "./package.json"
     }
   },

@@ -22,7 +22,7 @@ npm install @hitachivantara/uikit-react-icons
 ```sh
 icons/
 ├── assets  # optimized `.svg` assets
-├── dist    # built artifacts (by `vite build`)
+├── dist    # built artifacts
 ├── lib     # library code to be moved to `./src`
 ├── scripts # .svg to React component generator scripts
 └── src     # generated `.tsx` React icon components

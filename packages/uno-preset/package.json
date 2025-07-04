@@ -6,7 +6,6 @@
   "author": "Hitachi Vantara UI Kit Team",
   "description": "UI Kit UnoCSS preset with the NEXT theme.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "main": "src/index.ts",
   "sideEffects": false,
   "keywords": [
     "hitachi-vantara",
@@ -26,7 +25,7 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "build": "npm run clean && vite build",
+    "build": "tsdown",
     "clean": "npx rimraf dist package",
     "prepublishOnly": "npm run build && npx clean-publish"
   },
@@ -44,6 +43,10 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
   "publishConfig": {
     "access": "public",
     "directory": "package",
@@ -51,10 +54,8 @@
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      ".": "./dist/index.js",
+      "./package.json": "./package.json"
     }
   },
   "clean-publish": {
