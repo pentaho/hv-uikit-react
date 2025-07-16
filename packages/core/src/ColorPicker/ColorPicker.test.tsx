@@ -59,7 +59,7 @@ describe("ColorPicker", () => {
         expanded
         showSavedColors
         showCustomColors
-        deleteSavedColorButtonArialLabel="DELETE"
+        deleteSavedColorButtonAriaLabel="DELETE"
       />,
     );
 
