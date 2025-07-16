@@ -30,8 +30,8 @@
     "prepublishOnly": "npm run build && npx clean-publish"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@emotion/serialize": "^1.1.2",

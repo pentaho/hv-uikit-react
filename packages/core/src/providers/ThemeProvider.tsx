@@ -93,6 +93,7 @@ export const HvThemeProvider = ({
   const muiTheme = useMemo(() => {
     const colors = activeTheme.colors.modes[selectedMode];
     return createTheme({
+      colorSchemes: { light: true, dark: true },
       spacing: activeTheme.space.base,
       typography: {
         fontFamily: activeTheme.fontFamily.body,

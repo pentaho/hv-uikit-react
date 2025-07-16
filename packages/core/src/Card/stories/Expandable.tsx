@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { css } from "@emotion/css";
 import {
   HvCard,
@@ -6,7 +6,6 @@ import {
   HvCardHeader,
   HvIconButton,
   HvTypography,
-  useUniqueId,
 } from "@hitachivantara/uikit-react-core";
 import { Cloud, DropDownXS, User } from "@hitachivantara/uikit-react-icons";
 
@@ -26,8 +25,7 @@ const classes = {
 
 export const Expandable = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const cardContentId = useUniqueId();
+  const cardContentId = useId();
 
   return (
     <HvCard className={classes.card} bgcolor="bgContainer">

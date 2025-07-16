@@ -32,7 +32,7 @@
     "@hitachivantara/app-shell-shared": "^1.7.11",
     "@hitachivantara/uikit-react-core": "^5.109.0",
     "@hitachivantara/uikit-react-icons": "^5.16.9",
-    "@mui/material": "^5.16.14",
+    "@mui/material": "^7.0.2",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.3",
     "react-error-boundary": "^6.0.0",
