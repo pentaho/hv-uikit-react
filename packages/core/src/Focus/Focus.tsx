@@ -2,10 +2,9 @@ import { cloneElement, useRef, useState } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvBaseProps } from "../types/generic";
-import { isBrowser } from "../utils/browser";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./Focus.styles";
-import { getFocusableChildren, setFocusTo } from "./utils";
+import { getFocusableChildren, isBrowser, setFocusTo } from "./utils";
 
 export { staticClasses as focusClasses };
 export type HvFocusClasses = ExtractNames<typeof useClasses>;
