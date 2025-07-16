@@ -37,14 +37,14 @@ export const Test: StoryObj = {
         </div>
 
         <div className="flex">
-          <CheckboxCheck iconSize="XS" />
-          <SpriteCheckbox iconSize="XS" />
-          <CheckboxCheck iconSize="S" />
-          <SpriteCheckbox iconSize="S" />
-          <CheckboxCheck iconSize="M" />
-          <SpriteCheckbox iconSize="M" />
-          <CheckboxCheck iconSize="L" />
-          <SpriteCheckbox iconSize="L" />
+          <CheckboxCheck size="XS" />
+          <SpriteCheckbox size="XS" />
+          <CheckboxCheck size="S" />
+          <SpriteCheckbox size="S" />
+          <CheckboxCheck size="M" />
+          <SpriteCheckbox size="M" />
+          <CheckboxCheck size="L" />
+          <SpriteCheckbox size="L" />
           <CheckboxCheck />
           <SpriteCheckbox />
           <CheckboxCheck size="md" />
@@ -54,11 +54,6 @@ export const Test: StoryObj = {
         </div>
 
         <div className="flex">
-          <CheckboxCheck
-            width={100}
-            height={100}
-            style={{ width: 140, height: 140 }}
-          />
           <CheckboxCheck size={100} style={{ width: 140, height: 140 }} />
           <CheckboxCheck size={100} />
         </div>
