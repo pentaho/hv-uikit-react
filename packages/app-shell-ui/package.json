@@ -51,13 +51,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "module": "dist/esm/index.js",
+    "module": "dist/index.js",
     "types": "./dist/types/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "import": "./dist/esm/index.js",
-        "default": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
       },
       "./package.json": "./package.json"
     }

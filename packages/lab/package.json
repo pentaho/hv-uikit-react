@@ -68,14 +68,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
       }
     }
   },
@@ -83,8 +82,7 @@
     "withoutPublish": true,
     "tempDir": "package",
     "fields": [
-      "main",
-      "type"
+      "main"
     ],
     "files": [
       "tsconfig.json"
