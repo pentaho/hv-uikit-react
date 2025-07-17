@@ -13,12 +13,6 @@ export const allModes = {
   "DS5 wicked": {
     theme: "ds5 wicked",
   },
-  "DS3 dawn": {
-    theme: "ds3 dawn",
-  },
-  "DS3 wicked": {
-    theme: "ds3 wicked",
-  },
 };
 
 /**

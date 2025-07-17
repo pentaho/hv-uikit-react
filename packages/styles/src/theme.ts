@@ -66,7 +66,6 @@ const typographyProps: DeepString<HvThemeTypographyProps> = {
 
 const typographySpec: DeepString<HvThemeTypography> = {
   typography: {
-    // DS5
     display: { ...typographyProps },
     title1: { ...typographyProps },
     title2: { ...typographyProps },
@@ -77,20 +76,6 @@ const typographySpec: DeepString<HvThemeTypography> = {
     captionLabel: { ...typographyProps },
     caption1: { ...typographyProps },
     caption2: { ...typographyProps },
-    // LEGACY UNMAPPABLE (DS3)
-    "5xlTitle": { ...typographyProps },
-    "4xlTitle": { ...typographyProps },
-    xxlTitle: { ...typographyProps },
-    lTitle: { ...typographyProps },
-    sTitle: { ...typographyProps },
-    xxsTitle: { ...typographyProps },
-    sectionTitle: { ...typographyProps },
-    placeholderText: { ...typographyProps },
-    link: { ...typographyProps },
-    disabledText: { ...typographyProps },
-    selectedNavText: { ...typographyProps },
-    vizTextDisabled: { ...typographyProps },
-    xsInlineLink: { ...typographyProps },
   },
 };
 

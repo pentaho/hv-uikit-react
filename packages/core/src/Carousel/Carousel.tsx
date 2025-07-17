@@ -10,7 +10,6 @@ import useCarousel from "embla-carousel-react";
 import {
   clamp,
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -111,15 +110,13 @@ export const HvCarousel = forwardRef<
     onFullscreen,
     ...others
   } = useDefaultProps("HvCarousel", props);
-  const { activeTheme } = useTheme();
-  const { classes, css, cx } = useClasses(classesProp);
+  const { classes, cx } = useClasses(classesProp);
   const labels = useLabels(DEFAULT_LABELS, labelsProps);
   const thumbnailsRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const isDs3 = activeTheme?.base === "ds3";
-  const actionsPosition = isDs3 ? "header" : "controls";
-  const controlsPosition = controlsPositionProp ?? (isDs3 ? "bottom" : "top");
+  const actionsPosition = "controls";
+  const controlsPosition = controlsPositionProp ?? "top";
   const thumbnailsPosition = thumbnailsPositionProp ?? "bottom";
 
   const [containerRef, controller] = useCarousel({
@@ -196,14 +193,7 @@ export const HvCarousel = forwardRef<
   const showDots = showDotsProp ?? numSlides <= 5;
 
   const actions = (
-    <div
-      className={cx(
-        classes.actions,
-        actionsPosition === "header"
-          ? css({ position: "relative", top: -40, height: 0 })
-          : css({ position: "absolute" }),
-      )}
-    >
+    <div className={classes.actions}>
       {actionsProp}
       {showFullscreen && (
         <HvIconButton
@@ -261,8 +251,6 @@ export const HvCarousel = forwardRef<
           {title}
         </HvTypography>
       )}
-
-      {actionsPosition === "header" && actions}
       {thumbnailsPosition === "top" && thumbnails}
       {controlsPosition === "top" && controls}
       <div

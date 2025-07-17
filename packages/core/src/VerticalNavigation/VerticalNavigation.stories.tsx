@@ -87,14 +87,7 @@ export const SliderMode: StoryObj<HvVerticalNavigationProps> = {
 export const Test: StoryObj<HvVerticalNavigationProps> = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },

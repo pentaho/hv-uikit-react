@@ -84,14 +84,7 @@ export default {
 export const TestInputs: StoryObj = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },
@@ -144,14 +137,7 @@ export const TestInputs: StoryObj = {
 export const TestPopups: StoryObj = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },
@@ -184,14 +170,7 @@ export const TestPopups: StoryObj = {
 export const TestButtons: StoryObj = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },
@@ -227,14 +206,7 @@ export const TestButtons: StoryObj = {
 export const TestSurfaces: StoryObj = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },
@@ -262,14 +234,7 @@ export const TestSurfaces: StoryObj = {
 export const TestOthers: StoryObj = {
   parameters: {
     ...setupChromatic(
-      [
-        "DS3 dawn",
-        "DS3 wicked",
-        "DS5 dawn",
-        "DS5 wicked",
-        "Pentaho dawn",
-        "Pentaho wicked",
-      ],
+      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
       5000,
     ),
   },

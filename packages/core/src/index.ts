@@ -10,7 +10,6 @@ export type {
   HvAtmosphereColor,
   HvBaseColor,
   HvSemanticColor,
-  HvSupportColor,
   HvCategoricalColor,
   HvColor,
   HvColorAny,

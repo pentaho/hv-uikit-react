@@ -120,8 +120,7 @@ export type HvThemeBreakpoint = Exclude<keyof typeof space, "base">;
 
 export type SpacingValue = number | HvThemeBreakpoint | (string & {});
 
-// Base themes: DS3 and DS5
-export type HvBaseTheme = "ds3" | "ds5" | "pentahoPlus";
+export type HvBaseTheme = "ds5" | "pentahoPlus";
 
 // Theme color modes
 export type HvThemeColorMode = "dawn" | "wicked";

@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { HvTypography, HvTypographyProps } from "./Typography";
-import { typographyVariants } from "./utils";
 
 interface CustomLinkProps extends HvTypographyProps<"a"> {
   to: string;
@@ -35,44 +34,38 @@ describe("Typography", () => {
     expect(button).toBeInTheDocument();
   });
 
-  describe("variants", () => {
-    typographyVariants.forEach((variant) => {
-      it(`renders ${variant} variant`, () => {
-        render(<HvTypography variant={variant}>TEXT</HvTypography>);
+  it(`renders custom variant`, () => {
+    render(<HvTypography variant="title3">TEXT</HvTypography>);
 
-        const text = screen.getByText("TEXT");
+    const text = screen.getByText("TEXT");
 
-        expect(text).toBeInTheDocument();
-        expect(text).toHaveClass(`HvTypography-${variant}`);
-      });
-    });
+    expect(text).toBeInTheDocument();
+    expect(text).toHaveAttribute("data-variant", "title3");
   });
 
-  describe("polymorphic typography", () => {
-    it("link", () => {
-      render(
-        <HvTypography component="a" href="/path/to">
-          TEXT
-        </HvTypography>,
-      );
+  it("renders polymorphic link", () => {
+    render(
+      <HvTypography component="a" href="/path/to">
+        TEXT
+      </HvTypography>,
+    );
 
-      const link = screen.getByRole("link", { name: "TEXT" });
+    const link = screen.getByRole("link", { name: "TEXT" });
 
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute("href", "/path/to");
-    });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/path/to");
+  });
 
-    it("custom link", () => {
-      render(
-        <HvTypography component={CustomLink} to="/path/to">
-          TEXT
-        </HvTypography>,
-      );
+  it("renders polymorphic custom link", () => {
+    render(
+      <HvTypography component={CustomLink} to="/path/to">
+        TEXT
+      </HvTypography>,
+    );
 
-      const link = screen.getByRole("link", { name: "TEXT" });
+    const link = screen.getByRole("link", { name: "TEXT" });
 
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute("href", "/path/to");
-    });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/path/to");
   });
 });
