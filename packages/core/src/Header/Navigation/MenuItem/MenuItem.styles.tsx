@@ -42,31 +42,27 @@ const item: CSSInterpolation = {
   },
 };
 
-// TODO - rename to HvHeaderMenuItem (the actual component's name) in v6
-export const { staticClasses, useClasses } = createClasses(
-  "HvHeader-MenuItem",
-  {
-    root: {
-      display: "inline",
-      height: "100%",
-      borderBottom: "4px solid transparent",
+export const { staticClasses, useClasses } = createClasses("HvHeaderMenuItem", {
+  root: {
+    display: "inline",
+    height: "100%",
+    borderBottom: "4px solid transparent",
 
-      ":hover, :focus-within": {
-        backgroundColor: theme.colors.bgHover,
-      },
-    },
-    menu: {},
-    menubar: {},
-    selected: {
-      color: theme.colors.text,
-      borderColor: "currentcolor",
-    },
-    item,
-    link: {
-      textDecoration: "none",
-    },
-    button: {
-      color: "inherit",
+    ":hover, :focus-within": {
+      backgroundColor: theme.colors.bgHover,
     },
   },
-);
+  menu: {},
+  menubar: {},
+  selected: {
+    color: theme.colors.text,
+    borderColor: "currentcolor",
+  },
+  item,
+  link: {
+    textDecoration: "none",
+  },
+  button: {
+    color: "inherit",
+  },
+});
