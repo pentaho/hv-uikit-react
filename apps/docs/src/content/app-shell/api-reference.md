@@ -107,7 +107,7 @@ When dispatching this event, the detail object should include:
 - `variant`: The `variant` of the notification, following the [`HvBanner`](/components/banner) API.
 - `message`: The notification text to be displayed.
 - `actions`: Actions to display.
-- `actionsCallback`: The callback function ran when an action is triggered, receiving action as parameter.
+- `onAction`: The callback function ran when an action is triggered, receiving action as parameter.
 
 For event dispatching, utilize the `globalThis` variable and below is an example on how to trigger a "success" snackbar notification with the message "This is a snackbar":
 
@@ -117,7 +117,7 @@ const actions = {
     { id: "action1", label: "Action 1" },
     { id: "action2", label: "Action 2" },
   ],
-  actionsCallback: (evt, id, action) => {
+  onAction: (evt, action) => {
     // do something
   },
 };

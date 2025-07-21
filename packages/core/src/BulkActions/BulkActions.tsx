@@ -40,12 +40,6 @@ export interface HvBulkActionsProps extends HvBaseProps {
   actions?: HvActionsGenericProps["actions"];
   /** Whether actions should be all disabled */
   actionsDisabled?: boolean;
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionsCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** The number of maximum visible actions before they're collapsed into a `DropDownMenu`. */
@@ -77,7 +71,6 @@ export const HvBulkActions = forwardRef<
     selectAllConjunctionLabel = "/",
     showSelectAllPages = false,
     semantic = true,
-    actionsCallback, // TODO - remove in v6
     onAction,
     onSelectAll,
     onSelectAllPages,
@@ -148,7 +141,6 @@ export const HvBulkActions = forwardRef<
         }
         actions={actions}
         disabled={actionsDisabled ?? numSelected === 0}
-        actionsCallback={actionsCallback}
         onAction={onAction}
         maxVisibleActions={maxVisibleActions}
       />

@@ -29,7 +29,7 @@ const Notifications = () => {
             { label: "Action 1", id: "action1" },
             { label: "Action 2", id: "action2" },
           ],
-          actionsCallback: (evt, id, action) => {
+          onAction: (evt, action) => {
             // eslint-disable-next-line no-restricted-globals
             history.pushState(
               "",

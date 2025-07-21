@@ -34,12 +34,6 @@ export interface HvBannerContentProps
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   /** Actions to display on the right side. */
   actions?: HvActionsGenericProps["actions"];
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionsCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** The position property of the header. */
@@ -64,7 +58,6 @@ export const HvBannerContent = forwardRef<
     variant = "default",
     onClose,
     actions,
-    actionsCallback, // TODO - remove in v6
     onAction,
     actionsPosition = "auto",
     content,
@@ -105,10 +98,7 @@ export const HvBannerContent = forwardRef<
       actionsPosition={actionsPosition}
       actionProps={actionProps}
       onClose={(evt) => onClose?.(evt as React.MouseEvent<any>)}
-      onAction={(evt, action) => {
-        onAction?.(evt, action);
-        actionsCallback?.(evt, id!, action);
-      }}
+      onAction={onAction}
       {...others}
     >
       {children ?? content}

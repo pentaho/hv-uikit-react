@@ -35,7 +35,6 @@ export const Main: StoryObj<HvSnackbarProps> = {
     anchorOrigin: { control: { disable: true } },
     customIcon: { control: { disable: true } },
     action: { control: { disable: true } },
-    actionCallback: { control: { disable: true } },
     onAction: { control: { disable: true } },
     snackbarContentProps: { control: { disable: true } },
   },
