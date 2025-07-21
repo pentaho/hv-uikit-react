@@ -9,7 +9,6 @@ import {
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { getElementById } from "../utils/document";
-import { setId } from "../utils/setId";
 import { DialogContext } from "./context";
 import { staticClasses, useClasses } from "./Dialog.styles";
 
@@ -62,7 +61,6 @@ export const HvDialog = (props: HvDialogProps) => {
     variant,
     classes: classesProp,
     className,
-    id,
     children,
     open = false,
     onClose,
@@ -98,7 +96,6 @@ export const HvDialog = (props: HvDialogProps) => {
           [classes.fullscreen]: fullScreen,
         }),
       }}
-      id={id}
       ref={measuredRef}
       open={open}
       fullScreen={fullScreen}
@@ -121,7 +118,6 @@ export const HvDialog = (props: HvDialogProps) => {
       {onClose && (
         <HvIconButton<"button">
           title={buttonTitle}
-          id={setId(id, "close")}
           className={classes.closeButton}
           onClick={(event) => onClose?.(event, undefined)}
         >

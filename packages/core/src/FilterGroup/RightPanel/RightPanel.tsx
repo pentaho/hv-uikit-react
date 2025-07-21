@@ -6,7 +6,6 @@ import { HvInput } from "../../Input";
 import { HvList, HvListProps } from "../../List";
 import { HvPanel } from "../../Panel";
 import { CounterLabel } from "../../utils/CounterLabel";
-import { setId } from "../../utils/setId";
 import { HvFilterGroupContext } from "../FilterGroupContext";
 import { staticClasses, useClasses } from "./RightPanel.styles";
 
@@ -28,7 +27,6 @@ export interface HvFilterGroupRightPanelProps {
 }
 
 export const HvFilterGroupRightPanel = ({
-  id,
   className,
   labels,
   emptyElement,
@@ -138,7 +136,6 @@ export const HvFilterGroupRightPanel = ({
     return (
       <div className={classes.selectAllContainer}>
         <HvCheckBox
-          id={setId(id, "select-all")}
           label={
             <CounterLabel
               selected={activeFilterValues?.length}
@@ -146,7 +143,7 @@ export const HvFilterGroupRightPanel = ({
               conjunctionLabel={labels?.multiSelectionConjunction}
             />
           }
-          onChange={() => handleSelectAll()}
+          onChange={handleSelectAll}
           className={classes.selectAll}
           indeterminate={anySelected && !allSelected}
           checked={allSelected}
@@ -159,18 +156,16 @@ export const HvFilterGroupRightPanel = ({
     allSelected,
     anySelected,
     handleSelectAll,
-    id,
-    labels,
+    labels?.multiSelectionConjunction,
     classes?.selectAllContainer,
     classes?.selectAll,
   ]);
 
   return (
-    <HvPanel id={setId(id, "rightPanel")} className={className}>
+    <HvPanel className={className}>
       {listValues.length > 0 ? (
         <>
           <HvInput
-            id={setId(id, "search")}
             classes={{
               root: classes.search,
             }}
@@ -182,7 +177,6 @@ export const HvFilterGroupRightPanel = ({
           <SelectAll />
           <HvList
             key={activeGroup}
-            id={setId(id, "list")}
             values={listValues}
             className={classes.list}
             multiSelect

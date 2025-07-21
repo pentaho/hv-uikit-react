@@ -108,8 +108,4 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
       cursor: "pointer",
     },
   },
-  /** Styles passed down to the page selector Input root. @deprecated use `classes.pageJump` instead. */
-  pageSizeInputRoot: {},
-  /** Styles passed down to the page selector Input component as `container`. @deprecated use `classes.pageJump` instead. */
-  pageSizeInputContainer: {},
 });

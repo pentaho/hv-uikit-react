@@ -10,7 +10,6 @@ import { useScrollTo } from "../hooks/useScrollTo";
 import { HvBaseProps } from "../types/generic";
 import { HvScrollToOption, HvScrollToTooltipPositions } from "../types/scroll";
 import { isKey } from "../utils/keyboardUtils";
-import { setId } from "../utils/setId";
 import { HvHorizontalScrollListItem } from "./HorizontalScrollListItem";
 import { staticClasses, useClasses } from "./ScrollToHorizontal.styles";
 
@@ -139,7 +138,6 @@ export const HvScrollToHorizontal = (props: HvScrollToHorizontalProps) => {
 
   const tabs = elements.map((option, index) => (
     <HvHorizontalScrollListItem
-      id={setId(id, `item-${index}`)}
       onClick={(event) => {
         event.preventDefault();
 

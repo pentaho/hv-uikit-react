@@ -4,7 +4,6 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { HvPanel } from "../../Panel";
 import { HvTypography } from "../../Typography";
 import { isKey } from "../../utils/keyboardUtils";
-import { setId } from "../../utils/setId";
 import type { HvCalendarProps } from "../Calendar";
 import { HvCalendarHeader } from "../CalendarHeader/CalendarHeader";
 import { HvComposedNavigation, HvMonthSelector } from "../CalendarNavigation";
@@ -135,7 +134,6 @@ export const HvSingleCalendar = ({
   return (
     <HvPanel id={id} className={cx(classes.root, className)} {...others}>
       <HvCalendarHeader
-        id={setId(id, "header")}
         locale={locale}
         value={value}
         onChange={handleInputChange}

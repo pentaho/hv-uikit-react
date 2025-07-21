@@ -49,7 +49,6 @@ export interface HvSectionProps
 export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
   function HvSection(props, ref) {
     const {
-      id,
       classes: classesProp,
       className,
       title,
@@ -69,7 +68,6 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
     const expandButtonRef = useRef<HTMLButtonElement>(null);
 
     const { isOpen, toggleOpen, buttonProps, regionProps } = useExpandable({
-      id,
       expanded,
       defaultExpanded,
     });
@@ -79,7 +77,6 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
     return (
       <div
         ref={ref}
-        id={id}
         className={cx(classes.root, className, {
           [classes.raisedHeader]: raisedHeader && isOpen,
         })}

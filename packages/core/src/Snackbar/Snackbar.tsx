@@ -12,7 +12,6 @@ import {
 
 import { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
 import { capitalize } from "../utils/helpers";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Snackbar.styles";
 import {
   HvSnackbarContent,
@@ -151,7 +150,6 @@ export const HvSnackbar = forwardRef<
       {...others}
     >
       <HvSnackbarContent
-        id={setId(id, "content")}
         title={title}
         label={label}
         variant={variant}

@@ -4,14 +4,10 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import {
-  HvFormElementContext,
-  HvFormElementDescriptorsContext,
-} from "../../FormElement";
+import { HvFormElementDescriptorsContext } from "../../FormElement";
 import { HvInput, HvInputProps } from "../../Input";
 import { HvTypography } from "../../Typography";
 import { isKey } from "../../utils/keyboardUtils";
-import { setId } from "../../utils/setId";
 import type { HvSingleCalendarProps } from "../SingleCalendar";
 import {
   DEFAULT_LOCALE,
@@ -31,7 +27,7 @@ export type HvCalendarHeaderClasses = ExtractNames<typeof useClasses>;
 
 export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
   const {
-    id: idProp,
+    id,
     value: valueProp,
     locale = DEFAULT_LOCALE,
     classes: classesProp,
@@ -44,7 +40,6 @@ export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
 
   const { classes, cx } = useClasses(classesProp);
 
-  const context = useContext(HvFormElementContext);
   const { label } = useContext(HvFormElementDescriptorsContext);
 
   const localValue = isRange(valueProp)
@@ -57,8 +52,6 @@ export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
   const [editedValue, setEditedValue] = useState<string | null>(null);
   const [displayValue, setDisplayValue] = useState("");
   const [weekdayDisplay, setWeekdayDisplay] = useState("");
-
-  const id = idProp ?? setId(context.id, "calendarHeader");
 
   const inputValue = editedValue ?? displayValue;
   const localeFormat = getLocaleDateFormat(locale);
@@ -155,7 +148,6 @@ export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
       )}
       <HvInput
         type="text"
-        id={setId(id, "header-input")}
         placeholder={localeFormat}
         value={inputValue}
         aria-labelledby={label?.[0]?.id}

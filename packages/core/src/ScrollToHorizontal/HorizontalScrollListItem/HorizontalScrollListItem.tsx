@@ -8,7 +8,6 @@ import {
   HvOverflowTooltipProps,
 } from "../../OverflowTooltip";
 import { HvBaseProps } from "../../types/generic";
-import { setId } from "../../utils/setId";
 import { staticClasses, useClasses } from "./HorizontalScrollListItem.styles";
 
 export { staticClasses as horizontalScrollListItemClasses };
@@ -53,14 +52,12 @@ export const HvHorizontalScrollListItem = (
     ...others
   } = useDefaultProps("HvHorizontalScrollListItem", props);
   const { classes, cx } = useClasses(classesProp);
-  const buttonId = setId(id, "button");
 
   const Component = href != null ? "a" : "div";
 
   return (
     <li id={id} className={cx(classes.root, className)} aria-current={selected}>
       <Component
-        id={buttonId}
         role={href == null ? "button" : undefined}
         tabIndex={0}
         className={classes.button}

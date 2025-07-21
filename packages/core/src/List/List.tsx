@@ -24,7 +24,6 @@ import { HvOverflowTooltip } from "../OverflowTooltip";
 import { HvRadio } from "../Radio";
 import { HvBaseProps } from "../types/generic";
 import { CounterLabel } from "../utils/CounterLabel";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./List.styles";
 import { HvListValue } from "./types";
 import { useSelectableList } from "./useSelectableList";
@@ -194,7 +193,6 @@ export const HvList = (props: HvListProps) => {
 
     return (
       <HvCheckBox
-        id={setId(id, "select-all")}
         label={
           <CounterLabel
             selected={selection.length}
@@ -220,14 +218,13 @@ export const HvList = (props: HvListProps) => {
     );
   };
 
-  const renderSelectItem = (item: HvListValue, itemId?: string) => {
+  const renderSelectItem = (item: HvListValue) => {
     if (!useSelector) return renderItemText(item);
 
     const Component = multiSelect ? HvCheckBox : HvRadio;
 
     return (
       <Component
-        id={setId(itemId, "selector")}
         label={<HvOverflowTooltip data={item.label} />}
         checked={item.selected || false}
         disabled={item.disabled}
@@ -242,7 +239,6 @@ export const HvList = (props: HvListProps) => {
   };
 
   const renderListItem = (item: HvListValue, i: number, otherProps = {}) => {
-    const itemId = setId(id, "item", i);
     const selected = item.selected || false;
 
     const startAdornment =
@@ -251,7 +247,6 @@ export const HvList = (props: HvListProps) => {
     return (
       <HvListItem
         key={i}
-        id={itemId}
         role={itemRole}
         disabled={item.disabled || undefined}
         className={classes.item}
@@ -271,7 +266,7 @@ export const HvList = (props: HvListProps) => {
         separator={item.separator}
         {...otherProps}
       >
-        {renderSelectItem(item, itemId)}
+        {renderSelectItem(item)}
       </HvListItem>
     );
   };

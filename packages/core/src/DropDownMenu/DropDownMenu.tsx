@@ -17,7 +17,6 @@ import { HvList, HvListProps, HvListValue } from "../List";
 import { HvBaseProps } from "../types/generic";
 import { getPrevNextFocus } from "../utils/focusableElementFinder";
 import { isKey } from "../utils/keyboardUtils";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./DropDownMenu.styles";
 
 export { staticClasses as dropDownMenuClasses };
@@ -142,8 +141,6 @@ export const HvDropDownMenu = forwardRef<
   const [open, setOpen] = useControlled(expanded, Boolean(defaultExpanded));
   const id = useUniqueId(idProp);
 
-  const listId = setId(id, "list");
-
   const handleClose = (
     event:
       | React.KeyboardEvent<HTMLUListElement>
@@ -158,7 +155,7 @@ export const HvDropDownMenu = forwardRef<
   // If the ESCAPE key is pressed inside the list, the close handler must be called.
   const handleKeyDown: HvListProps["onKeyDown"] = (event) => {
     if (isKey(event, "Tab")) {
-      const focusNodes = getPrevNextFocus(setId(id, "icon-button"));
+      const focusNodes = getPrevNextFocus();
       const node = event.shiftKey ? focusNodes.prevFocus : focusNodes.nextFocus;
       if (node) setTimeout(() => node.focus(), 0);
       handleClose(event);
@@ -202,7 +199,6 @@ export const HvDropDownMenu = forwardRef<
       {...others}
     >
       <HvList
-        id={listId}
         values={dataList}
         selectable={false}
         condensed={condensed}

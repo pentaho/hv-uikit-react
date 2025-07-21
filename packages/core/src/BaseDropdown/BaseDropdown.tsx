@@ -4,6 +4,7 @@ import {
   Fragment,
   isValidElement,
   useCallback,
+  useId,
   useMemo,
   useState,
 } from "react";
@@ -23,7 +24,6 @@ import { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { getFirstAndLastFocus } from "../utils/focusableElementFinder";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./BaseDropdown.styles";
 import { BaseDropdownPanel } from "./BaseDropdownPanel";
 import { BaseDropdownContext, useBaseDropdownContext } from "./context";
@@ -183,7 +183,7 @@ const BaseDropdown = forwardRef<
   const ariaExpanded = ariaExpandedProp ?? (ariaRole ? !!isOpen : undefined);
 
   const id = useUniqueId(idProp);
-  const containerId = setId(id, "children-container");
+  const containerId = useId();
 
   const headerControlArias = {
     "aria-required": required ?? undefined,
@@ -237,7 +237,6 @@ const BaseDropdown = forwardRef<
 
   const defaultHeaderElement = (
     <div
-      id={setId(id, "header")}
       data-popper-placement={popperPlacement}
       className={cx(classes.header, {
         [classes.headerOpen]: isOpen,

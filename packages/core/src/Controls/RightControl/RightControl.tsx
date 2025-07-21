@@ -4,7 +4,6 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { HvDropdown, HvDropdownProps } from "../../Dropdown";
 import { HvListValue } from "../../List";
 import { HvBaseProps } from "../../types/generic";
-import { setId } from "../../utils/setId";
 import { HvControlsContext } from "../context/ControlsContext";
 import { staticClasses, useClasses } from "./RightControl.styles";
 
@@ -63,7 +62,6 @@ export const HvRightControl = ({
     <div id={id} className={cx(classes.root, className)} {...others}>
       {!hideSortBy && (
         <HvDropdown
-          id={setId(id, "sort-by-dropdown")}
           values={dropDownValues}
           className={classes.sortDropdown}
           onChange={handleChangeSort}

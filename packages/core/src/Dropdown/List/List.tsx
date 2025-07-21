@@ -13,7 +13,6 @@ import { HvCheckBox } from "../../CheckBox";
 import { HvInput } from "../../Input";
 import { HvList, HvListProps, HvListValue } from "../../List";
 import { CounterLabel } from "../../utils/CounterLabel";
-import { setId } from "../../utils/setId";
 import type { HvDropdownLabels } from "../Dropdown";
 import { getSelected } from "../utils";
 import { staticClasses, useClasses } from "./List.styles";
@@ -211,7 +210,6 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
   const renderSearch = () => (
     <div className={classes.searchContainer}>
       <HvInput
-        id={setId(id, "search")}
         type="search"
         value={searchStr}
         placeholder={labels?.searchPlaceholder}
@@ -237,7 +235,6 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
   const renderSelectAll = () => {
     return (
       <HvCheckBox
-        id={setId(id, "select-all")}
         label={
           <CounterLabel
             selected={getSelected(list).length}
@@ -271,24 +268,17 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
    * Render action buttons.
    */
   const renderActions = () => {
-    const applyLabel = labels?.applyLabel;
-    const cancelLabel = labels?.cancelLabel;
     return (
-      <HvActionBar id={setId(id, "actions")}>
+      <HvActionBar>
         <HvButton
-          id={setId(id, "actions-apply")}
           disabled={!hasChanges}
           onClick={() => onChange(cleanHidden(list), true, true, true)}
           variant="primaryGhost"
         >
-          {applyLabel}
+          {labels?.applyLabel}
         </HvButton>
-        <HvButton
-          id={setId(id, "actions-cancel")}
-          onClick={onCancel}
-          variant="primaryGhost"
-        >
-          {cancelLabel}
+        <HvButton onClick={onCancel} variant="primaryGhost">
+          {labels?.cancelLabel}
         </HvButton>
       </HvActionBar>
     );
@@ -308,7 +298,6 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
         {showList && multiSelect && renderSelectAll()}
         {showList && (
           <HvList
-            id={setId(id, "list")}
             style={mergeStyles(undefined, {
               height: heightProp,
               "--maxW": maxWidth,

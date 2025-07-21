@@ -5,7 +5,6 @@ import {
 
 import { HvFormElement, HvFormElementProps } from "../FormElement";
 import { useLabels } from "../hooks/useLabels";
-import { setId } from "../utils/setId";
 import { HvDropZone, HvDropZoneLabels, HvDropZoneProps } from "./DropZone";
 import { HvFileData, HvFileRemovedEvent, HvFilesAddedEvent } from "./File";
 import { HvFileList } from "./FileList";
@@ -102,7 +101,6 @@ export const HvFileUploader = (props: HvFileUploaderProps) => {
   return (
     <HvFormElement id={id} className={cx(classes.root, className)} {...others}>
       <HvDropZone
-        id={setId(id, "dropzone")}
         label={label}
         labels={labels}
         multiple={multiple}
@@ -113,7 +111,6 @@ export const HvFileUploader = (props: HvFileUploaderProps) => {
         hideLabels={hideLabels}
       />
       <HvFileList
-        id={setId(id, "filelist")}
         list={fileList}
         onFileRemoved={onFileRemoved}
         removeFileButtonLabel={labels?.removeFileButtonLabel}

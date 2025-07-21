@@ -49,7 +49,6 @@ export const HvAccordion = forwardRef<
   HvAccordionProps
 >(function HvAccordion(props, ref) {
   const {
-    id,
     className,
     classes: classesProp,
     disabled = false,
@@ -67,7 +66,6 @@ export const HvAccordion = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   const { isOpen, toggleOpen, buttonProps, regionProps } = useExpandable({
-    id,
     expanded,
     disabled,
     defaultExpanded,
@@ -123,7 +121,7 @@ export const HvAccordion = forwardRef<
   ]);
 
   return (
-    <div ref={ref} id={id} className={cx(classes.root, className)} {...others}>
+    <div ref={ref} className={cx(classes.root, className)} {...others}>
       {accordionHeader}
       <div
         className={cx(classes.container, { [classes.hidden]: !isOpen })}

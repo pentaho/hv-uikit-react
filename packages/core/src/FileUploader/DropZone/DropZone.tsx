@@ -180,8 +180,6 @@ export const HvDropZone = (props: HvDropZoneProps) => {
           label={label ?? labels.dropzone}
           description={description}
           inputId={setId(id, "input-file")}
-          labelId={setId(id, "input-file-label")}
-          descriptionId={setId(id, "description")}
           classes={{
             root: classes.dropZoneLabelsGroup,
             label: classes.dropZoneLabel,
@@ -189,7 +187,6 @@ export const HvDropZone = (props: HvDropZoneProps) => {
         />
       )}
       <div
-        id={setId(id, "input-file-container")}
         className={cx(classes.dropZoneContainer, {
           [classes.dragAction]: dragState,
           [classes.dropZoneContainerDisabled]: disabled,

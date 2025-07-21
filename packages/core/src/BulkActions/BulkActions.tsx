@@ -1,16 +1,14 @@
 import { forwardRef } from "react";
 import {
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionsGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvButton, HvButtonProps, HvButtonVariant } from "../Button";
+import { HvButton, HvButtonProps } from "../Button";
 import { HvCheckBox, HvCheckBoxProps } from "../CheckBox";
 import { HvBaseProps } from "../types/generic";
 import { CounterLabel } from "../utils/CounterLabel";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./BulkActions.styles";
 
 export { staticClasses as bulkActionsClasses };
@@ -76,10 +74,7 @@ export const HvBulkActions = forwardRef<
     onSelectAllPages,
     ...others
   } = useDefaultProps("HvBulkActions", props);
-
   const { classes, cx } = useClasses(classesProp);
-
-  const { activeTheme } = useTheme();
 
   const anySelected = numSelected > 0;
   const isSemantic = semantic && anySelected;
@@ -97,7 +92,6 @@ export const HvBulkActions = forwardRef<
     >
       <div className={classes.selectAllContainer}>
         <HvCheckBox
-          id={setId(id, "select")}
           className={classes.selectAll}
           checked={numSelected > 0}
           semantic={isSemantic}
@@ -116,14 +110,8 @@ export const HvBulkActions = forwardRef<
           <>
             <div className={classes.divider} />
             <HvButton
-              id={setId(id, "pages")}
               className={classes.selectAllPages}
-              variant={
-                isSemantic
-                  ? (activeTheme?.bulkActions
-                      .actionButtonVariant as HvButtonVariant)
-                  : "secondaryGhost"
-              }
+              variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
               onClick={onSelectAllPages}
             >
               {selectAllPagesLabel ?? `Select all ${numTotal} items`}
@@ -132,13 +120,8 @@ export const HvBulkActions = forwardRef<
         )}
       </div>
       <HvActionsGeneric
-        id={setId(id, "actions")}
         classes={{ root: classes.actions }}
-        variant={
-          isSemantic
-            ? (activeTheme?.bulkActions.actionButtonVariant as HvButtonVariant)
-            : "secondaryGhost"
-        }
+        variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
         actions={actions}
         disabled={actionsDisabled ?? numSelected === 0}
         onAction={onAction}

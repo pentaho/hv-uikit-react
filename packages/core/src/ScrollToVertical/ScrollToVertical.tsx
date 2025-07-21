@@ -11,7 +11,6 @@ import {
   HvScrollToVerticalPositions,
 } from "../types/scroll";
 import { isKey } from "../utils/keyboardUtils";
-import { setId } from "../utils/setId";
 import {
   calculateOffset,
   staticClasses,
@@ -139,7 +138,6 @@ export const HvScrollToVertical = (props: HvScrollToVerticalProps) => {
 
   const tabs = elements.map((option, index) => (
     <HvVerticalScrollListItem
-      id={setId(id, `item-${index}`)}
       onClick={(event) => {
         event.preventDefault();
 

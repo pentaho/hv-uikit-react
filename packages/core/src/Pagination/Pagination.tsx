@@ -13,7 +13,6 @@ import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Pagination.styles";
 import HvSelect, { Option } from "./Select";
 
@@ -145,18 +144,13 @@ export const HvPagination = forwardRef<
 
   const renderPageJump = () => (
     <HvBaseInput
-      id={setId(id, "currentPage")}
       inputProps={{
         "aria-label": labels?.paginationInputLabel,
         // We really want the native number input
         type: "number",
       }}
       classes={{
-        root: cx(
-          classes.pageJump,
-          classes.pageSizeInputRoot,
-          classes.pageSizeInputContainer,
-        ),
+        root: classes.pageJump,
         input: classes.pageSizeInput,
       }}
       value={String(pageInput + 1)}
@@ -182,7 +176,6 @@ export const HvPagination = forwardRef<
               </span>
             )}
             <HvSelect
-              id={setId(id, "pageSize")}
               disabled={pageSize === 0}
               aria-label={labels?.pageSizeSelectorDescription}
               onChange={(evt, val) => onPageSizeChange?.(val)}
@@ -208,7 +201,6 @@ export const HvPagination = forwardRef<
       </div>
       <div className={classes.pageNavigator} {...navigationProps}>
         <HvIconButton
-          id={setId(id, "firstPage-button")}
           className={classes.iconContainer}
           disabled={!canPrevious}
           onClick={() => changePage(0)}
@@ -217,7 +209,6 @@ export const HvPagination = forwardRef<
           <HvIcon name="Start" className={classes.icon} size="xs" />
         </HvIconButton>
         <HvIconButton
-          id={setId(id, "previousPage-button")}
           className={classes.iconContainer}
           disabled={!canPrevious}
           onClick={() => changePage(page - 1)}
@@ -231,7 +222,6 @@ export const HvPagination = forwardRef<
           <span className={classes.totalPagesTextContainer}>{pages}</span>
         </div>
         <HvIconButton
-          id={setId(id, "nextPage-button")}
           className={classes.iconContainer}
           disabled={!canNext}
           onClick={() => changePage(page + 1)}
@@ -240,7 +230,6 @@ export const HvPagination = forwardRef<
           <HvIcon name="Forwards" className={classes.icon} size="xs" />
         </HvIconButton>
         <HvIconButton
-          id={setId(id, "lastPage-button")}
           className={classes.iconContainer}
           disabled={!canNext}
           onClick={() => changePage(pages - 1)}

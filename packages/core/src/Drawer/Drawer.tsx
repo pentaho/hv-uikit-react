@@ -7,7 +7,6 @@ import {
 
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Drawer.styles";
 
 export { staticClasses as drawerClasses };
@@ -79,7 +78,6 @@ export const HvDrawer = forwardRef<
   const {
     className,
     classes: classesProp,
-    id,
     children,
     open,
     onClose,
@@ -108,7 +106,6 @@ export const HvDrawer = forwardRef<
     <MuiDrawer
       ref={ref}
       className={cx(classes.root, className)}
-      id={id}
       anchor={anchor}
       open={open}
       classes={{
@@ -129,7 +126,6 @@ export const HvDrawer = forwardRef<
     >
       {onClose && (
         <HvIconButton
-          id={setId(id, "close")}
           className={classes.closeButton}
           onClick={onClose}
           title={buttonTitle}
