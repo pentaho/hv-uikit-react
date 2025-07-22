@@ -126,7 +126,6 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
           hidden={!isOpen}
           className={cx(classes.content, {
             [classes.hidden]: expandable && !isOpen,
-            [classes.spaceTop]: !hasHeader,
             [classes.hasHeader]: hasHeader,
           })}
           {...(expandable && regionProps)}

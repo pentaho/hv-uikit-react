@@ -240,8 +240,6 @@ const BaseDropdown = forwardRef<
       data-popper-placement={popperPlacement}
       className={cx(classes.header, {
         [classes.headerOpen]: isOpen,
-        [classes.headerOpenUp]: isOpen && popperPlacement?.includes("top"),
-        [classes.headerOpenDown]: isOpen && popperPlacement?.includes("bottom"),
         [classes.headerReadOnly]: readOnly,
         [classes.headerDisabled]: disabled,
       })}

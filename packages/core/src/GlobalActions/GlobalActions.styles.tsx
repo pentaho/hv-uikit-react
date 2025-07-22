@@ -55,17 +55,10 @@ export const { staticClasses, useClasses } = createClasses("HvGlobalActions", {
     borderColor: theme.colors.border,
     paddingLeft: theme.space.sm,
   },
-
-  /** @deprecated use classes.global $wrapper */
-  globalSectionArea: {},
-  /** @deprecated use classes.section $wrapper */
-  globalWrapperComplement: {},
   backButton: {},
   name: {
     flexGrow: 1,
   },
-  /** @deprecated use classes.name */
-  sectionName: {},
   actions: {
     display: "flex",
     alignItems: "center",

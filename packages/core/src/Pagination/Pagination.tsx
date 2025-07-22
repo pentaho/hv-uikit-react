@@ -182,7 +182,7 @@ export const HvPagination = forwardRef<
               value={pageSize}
               classes={{
                 header: classes.pageSizeHeader,
-                root: cx(classes.pageSizeOptionsSelect, classes.pageSizeRoot),
+                root: classes.pageSizeRoot,
               }}
             >
               {pageSizeOptions.map((option) => (
@@ -219,7 +219,7 @@ export const HvPagination = forwardRef<
         <div className={classes.pageInfo}>
           {showPageJump ? renderPageJump() : <span>{`${page + 1}`}</span>}
           <HvTypography component="span">{`${labels?.pagesSeparator} `}</HvTypography>
-          <span className={classes.totalPagesTextContainer}>{pages}</span>
+          <span>{pages}</span>
         </div>
         <HvIconButton
           className={classes.iconContainer}

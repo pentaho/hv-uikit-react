@@ -56,7 +56,7 @@ export const HvWizardTitle = ({
 }: HvWizardTitleProps) => {
   const { context, setSummary, tab, setTab } = useContext(HvWizardContext);
 
-  const { classes, cx } = useClasses(classesProp);
+  const { classes } = useClasses(classesProp);
 
   const [steps, setSteps] = useState<HvStepProps[]>([]);
 
@@ -87,15 +87,7 @@ export const HvWizardTitle = ({
   }, [context, tab, setTab]);
 
   return (
-    <HvDialogTitle
-      className={cx(
-        classes.root,
-        classes.headerContainer,
-        classes.messageContainer,
-        classes.titleContainer,
-      )}
-      showIcon={false}
-    >
+    <HvDialogTitle className={classes.root} showIcon={false}>
       {title && (
         <HvTypography variant="title3" component="div">
           {title}
@@ -120,11 +112,7 @@ export const HvWizardTitle = ({
       {hasSummary && (
         <HvButton
           variant="secondarySubtle"
-          className={cx(
-            classes.summaryButton,
-            classes.buttonWidth,
-            classes.rootSummaryButton,
-          )}
+          className={classes.summaryButton}
           onClick={toggleSummary}
           startIcon={<Report />}
         >

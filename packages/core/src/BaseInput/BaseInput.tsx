@@ -129,18 +129,14 @@ export const HvBaseInput = forwardRef<
       readOnly={!!formElementProps.readOnly}
       disabled={formElementProps.disabled}
       onChange={(event) => onChange?.(event, event.target.value)}
-      className={cx(classes.root, classes.inputRoot, className, {
-        [classes.inputRootMultiline]: multiline,
+      className={cx(classes.root, className, {
         [classes.multiline]: multiline,
-        [classes.inputRootInvalid]: invalid,
         [classes.invalid]: invalid,
-        [classes.inputRootReadOnly]: formElementProps.readOnly,
         [classes.readOnly]: formElementProps.readOnly,
-        [classes.inputRootDisabled]: formElementProps.disabled,
         [classes.disabled]: formElementProps.disabled,
       })}
       classes={{
-        focused: cx(classes.focused, classes.inputRootFocused),
+        focused: classes.focused,
         input: cx(classes.input, {
           [classes.inputResizable]: !formElementProps.disabled && resizable,
           [classes.inputDisabled]: formElementProps.disabled,

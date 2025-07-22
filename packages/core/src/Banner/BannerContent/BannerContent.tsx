@@ -76,22 +76,13 @@ export const HvBannerContent = forwardRef<
       showIcon={showIcon}
       customIcon={customIcon}
       classes={{
-        root: cx(
-          classes.root,
-          classes.outContainer,
-          classes.baseVariant,
-          classes[variant],
-          className,
-        ),
+        root: cx(classes.root, classes[variant], className),
         message: classes.message,
         action: classes.action,
         messageIcon: classes.iconContainer,
         messageContent: classes.messageContainer,
         actionCustom: classes.messageActions,
-        actionContent: cx(
-          classes.actionContainer,
-          classes.actionsInnerContainer,
-        ),
+        actionContent: classes.actionContainer,
         actionClose: classes.closeAction,
       }}
       actions={actions}

@@ -9,14 +9,6 @@ export const { staticClasses, useClasses } = createClasses("HvAdornment", {
     height: 30,
     flexShrink: 0,
   },
-  /** @deprecated use `classes.root` */
-  icon: {},
-  /** @deprecated use `classes.root` */
-  adornment: {},
-  /** @deprecated use `classes.root` */
-  adornmentIcon: {},
   hideIcon: { display: "none" },
-  /** @deprecated use `classes.root` */
-  adornmentButton: {},
   disabled: {},
 });

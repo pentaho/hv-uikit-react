@@ -7,17 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvWizardTitle", {
     justifyContent: "space-between",
     paddingRight: theme.space.sm,
   },
-  /** @deprecated use `classes.root` */
-  headerContainer: {},
-  /** @deprecated use `classes.root` */
-  messageContainer: {},
-  /** @deprecated use `classes.root` */
-  titleContainer: {},
   summaryButton: {},
-  /** @deprecated use `classes.summaryButton` */
-  buttonWidth: {},
-  /** @deprecated use `classes.summaryButton` */
-  rootSummaryButton: {},
   stepContainer: {
     margin: "auto",
   },

@@ -19,8 +19,6 @@ export const { staticClasses, useClasses } = createClasses("HvAvatar", {
     textIndent: 10000,
   },
   fallback: {},
-  /** @deprecated use `classes.container` instead */
-  status: {},
   container: {
     display: "flex",
     alignItems: "center",

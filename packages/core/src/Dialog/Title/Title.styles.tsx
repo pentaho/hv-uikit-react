@@ -11,10 +11,6 @@ export const { staticClasses, useClasses } = createClasses("HvDialogTitle", {
     gap: theme.space.xs,
   },
   fullscreen: {},
-  /** @deprecated use `classes.root` instead  */
-  messageContainer: {},
   // TODO: consider deprecating
   textWithIcon: {},
-  /** @deprecated use `classes.root` instead */
-  titleText: {},
 });

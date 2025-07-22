@@ -303,10 +303,7 @@ export const HvSelect = fixedForwardRef(function HvSelect<
               ? "auto"
               : (buttonRef.current?.clientWidth || 0) + 2,
           }}
-          className={cx(classes.panel, {
-            [classes.panelOpenedUp]: placement.includes("top"),
-            [classes.panelOpenedDown]: placement.includes("bottom"),
-          })}
+          className={classes.panel}
           {...getListboxProps()}
         >
           <SelectProvider value={contextValue}>{children}</SelectProvider>

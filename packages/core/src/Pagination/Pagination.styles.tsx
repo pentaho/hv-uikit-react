@@ -52,10 +52,6 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
     height: "24px",
     padding: "8px 0",
   },
-  /** @deprecated unused */
-  totalPagesTextContainer: {},
-  /** Styles applied to the page size selector dropdown element. @deprecated use `classes.pageSizeRoot` instead. */
-  pageSizeOptionsSelect: {},
   /** Styles applied to the page navigation container. */
   pageNavigator: {
     display: "flex",

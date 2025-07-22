@@ -132,8 +132,7 @@ export const HvActionsGeneric = forwardRef<
           variant={variant}
           classes={{
             root: classes.dropDownMenu,
-            icon: classes.dropDownMenuButton,
-            iconSelected: classes.dropDownMenuButtonSelected,
+            open: classes.dropDownMenuButtonSelected,
           }}
           icon={<HvIcon name="DotsVertical" color={iconColor} />}
           placement="left"

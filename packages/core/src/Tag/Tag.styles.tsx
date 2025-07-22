@@ -86,22 +86,4 @@ export const { staticClasses, useClasses } = createClasses("HvTag", {
   icon: {
     fontSize: 12,
   },
-
-  /** @deprecated use `root` instead */
-  chipRoot: {},
-  /** @deprecated unused */
-  // TODO: redundant - use deleteIcon. remove in v6
-  /** @deprecated */
-  button: {},
-  /** @deprecated */
-  tagButton: {},
-  // TODO: redundant - use $clickable or :not($disabled). remove in v6
-  /** @deprecated */
-  focusVisible: {},
-  /** @deprecated */
-  disabledDeleteIcon: {},
-  /** @deprecated */
-  categoricalFocus: {},
-  /** @deprecated */
-  categoricalDisabled: {},
 });

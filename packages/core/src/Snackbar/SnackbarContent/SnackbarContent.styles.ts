@@ -26,6 +26,4 @@ export const { useClasses, staticClasses } = createClasses(name, {
     maxHeight: "72px",
   },
   iconVariant: {},
-  /** @deprecated use `classes.message` instead */
-  messageSpan: {},
 });

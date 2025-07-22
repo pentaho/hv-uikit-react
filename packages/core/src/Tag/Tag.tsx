@@ -140,9 +140,7 @@ export const HvTag = forwardRef<
   const deleteIcon =
     deleteIconProp && isValidElement(deleteIconProp) ? (
       cloneElement<any>(deleteIconProp, {
-        className: cx(classes.deleteIcon, {
-          [classes.disabledDeleteIcon]: disabled,
-        }),
+        className: classes.deleteIcon,
         onClick: handleDeleteClick,
       })
     ) : (
@@ -151,7 +149,7 @@ export const HvTag = forwardRef<
           compact
           name="Close"
           onClick={handleDeleteClick as any}
-          className={cx(classes.deleteIcon, classes.button, classes.tagButton)}
+          className={classes.deleteIcon}
           {...(deleteButtonProps as any)}
         />
       </div>
@@ -166,15 +164,13 @@ export const HvTag = forwardRef<
       style={mergeStyles(style, {
         "--tagColor": tagColor,
       })}
-      className={cx(classes.root, classes.chipRoot, classes[size], className, {
+      className={cx(classes.root, classes[size], className, {
         [classes.hasIcon]: iconProp || (selectable && showSelectIcon),
         [classes.clickable]: isClickable && !disabled,
         [classes.selected]: isSelected,
         [classes.disabled]: disabled,
         [classes.outlined]: variant === "outlined",
         [classes.categorical]: type === "categorical",
-        [classes.categoricalFocus]: type === "categorical" && !disabled,
-        [classes.categoricalDisabled]: type === "categorical" && disabled,
       })}
       onKeyUp={(event: React.KeyboardEvent<HTMLButtonElement>) => {
         // Ignore events from children.

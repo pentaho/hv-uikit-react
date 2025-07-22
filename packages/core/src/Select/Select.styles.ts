@@ -33,9 +33,5 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
     overflowY: "auto",
     borderRadius: "inherit",
   },
-  /** @deprecated leverage `[data-popper-placement]` instead */
-  panelOpenedUp: {},
-  /** @deprecated leverage `[data-popper-placement]` instead */
-  panelOpenedDown: {},
   error: {},
 });

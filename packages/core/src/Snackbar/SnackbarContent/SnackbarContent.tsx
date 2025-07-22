@@ -68,7 +68,7 @@ export const HvSnackbarContent = forwardRef<
       variant={variant}
       classes={{
         root: cx(classes.root, classes[variant], className),
-        message: cx(classes.message, classes.messageSpan),
+        message: classes.message,
         messageIcon: classes.iconVariant,
         messageContent: classes.messageText,
         action: classes.action,

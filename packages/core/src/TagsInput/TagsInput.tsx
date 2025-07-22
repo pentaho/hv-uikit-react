@@ -532,7 +532,7 @@ export const HvTagsInput = forwardRef<HTMLElement, HvTagsInputProps>(
                 label={label}
                 disabled={disabled}
                 tabIndex={-1}
-                className={cx(classes.chipRoot, classes.listItemRoot)}
+                className={classes.tag}
                 {...(!(readOnly || disabled || type === "categorical") && {
                   onDelete: (event) => onDeleteTagHandler(event, i),
                 })}
@@ -548,11 +548,7 @@ export const HvTagsInput = forwardRef<HTMLElement, HvTagsInputProps>(
               autoComplete="off"
               onKeyDown={onInputKeyDownHandler}
               placeholder={value.length === 0 ? placeholder : ""}
-              className={cx(
-                classes.tagInputContainerRoot,
-                classes.tagInputRoot,
-                classes.input,
-              )}
+              className={classes.input}
               ref={inputRef}
               aria-label={ariaLabel}
               aria-labelledby={ariaLabelledBy}

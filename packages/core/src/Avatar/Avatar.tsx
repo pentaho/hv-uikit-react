@@ -155,7 +155,7 @@ export const HvAvatar = forwardRef<
   return (
     <div
       ref={ref}
-      className={cx(classes.container, classes.status, classes[variant])}
+      className={cx(classes.container, classes[variant])}
       style={statusInlineStyle}
       {...others}
     >

@@ -11,9 +11,6 @@ export const { useClasses, staticClasses } = createClasses("HvDotPagination", {
     width: "auto",
     gap: theme.space.xs,
   },
-  /** @deprecated use `classes.radio` instead */
-  radioRoot: {},
-
   radio: {
     height: 16,
     width: 16,

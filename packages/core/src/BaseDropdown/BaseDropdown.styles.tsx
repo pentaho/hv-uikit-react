@@ -36,10 +36,6 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
       borderColor: theme.colors.text,
     },
   },
-  /** @deprecated use `[data-popper-placement*='top']` selector instead */
-  headerOpenUp: {},
-  /** @deprecated use `[data-popper-placement*='bottom']` selector instead */
-  headerOpenDown: {},
   headerDisabled: {
     cursor: "not-allowed",
     pointerEvents: "none",
@@ -86,10 +82,6 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     padding: 0,
     border: `1px solid ${theme.colors.text}`,
   },
-  /** @deprecated leverage `[data-popper-placement]` instead */
-  panelOpenedUp: {},
-  /** @deprecated leverage `[data-popper-placement]` instead */
-  panelOpenedDown: {},
   inputExtensionOpen: {
     height: "0px",
     backgroundColor: theme.colors.bgContainer,

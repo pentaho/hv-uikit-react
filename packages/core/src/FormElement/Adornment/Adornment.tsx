@@ -71,9 +71,6 @@ export const HvAdornment = forwardRef<
       aria-hidden={tabIndex == null || tabIndex < 0 ? true : undefined}
       className={cx(
         classes.root,
-        classes.adornment,
-        classes.icon,
-        onClick ? classes.adornmentButton : classes.adornmentIcon,
         {
           [classes.hideIcon]: !displayIcon,
           [classes.disabled]: disabled,

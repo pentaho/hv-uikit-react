@@ -21,9 +21,6 @@ type SemanticKeys<Prefix extends string> =
 
 type VizKeys = `cat${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}`;
 
-/** @deprecated use `HvColorTokens` instead */
-export type ColorTokens = HvColorTokens;
-
 export interface HvColorTokens
   extends Record<SemanticKeys<SemanticTypes>, string>,
     Record<VizKeys, string> {
