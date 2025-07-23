@@ -1,4 +1,5 @@
-import { forwardRef, useCallback, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
+import { useEventCallback } from "@mui/material/utils";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -37,8 +38,6 @@ export interface HvAccordionProps
   labelVariant?: HvTypographyVariants;
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvAccordionClasses;
-  /** Whether to disable the internal usage of `preventDefault` and `stopPropagation` when the `onChange` event is triggered. */
-  disableEventHandling?: boolean; // TODO - remove in v6 as this should be the default behavior: `preventDefault` and `stopPropagation` shouldn't be triggered internally
 }
 
 /**
@@ -60,7 +59,6 @@ export const HvAccordion = forwardRef<
     defaultExpanded = false,
     containerProps,
     labelVariant = "label",
-    disableEventHandling,
     ...others
   } = useDefaultProps("HvAccordion", props);
   const { classes, cx } = useClasses(classesProp);
@@ -71,20 +69,11 @@ export const HvAccordion = forwardRef<
     defaultExpanded,
   });
 
-  const handleClick = useCallback(
-    (event: React.SyntheticEvent) => {
-      if (!disabled) {
-        onChange?.(event, isOpen);
-        toggleOpen();
-      }
-
-      if (!disableEventHandling) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    },
-    [disableEventHandling, disabled, isOpen, onChange, toggleOpen],
-  );
+  const handleClick = useEventCallback((event: React.SyntheticEvent) => {
+    if (disabled) return;
+    onChange?.(event, isOpen);
+    toggleOpen();
+  });
 
   const accordionHeader = useMemo(() => {
     const accordionButton = (
@@ -110,7 +99,8 @@ export const HvAccordion = forwardRef<
     );
   }, [
     cx,
-    classes,
+    classes.label,
+    classes.disabled,
     handleClick,
     label,
     buttonProps,

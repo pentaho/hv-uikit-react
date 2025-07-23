@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useCallback, useId } from "react";
 
 import type { HvAccordionProps } from "../Accordion";
 import { useControlled } from "./useControlled";
@@ -16,9 +16,14 @@ export function useExpandable({
   const buttonId = useId();
   const regionId = useId();
 
+  const toggleOpen = useCallback(
+    (newOpen?: boolean) => setIsOpen((o) => newOpen ?? !o),
+    [setIsOpen],
+  );
+
   return {
     isOpen,
-    toggleOpen: (newOpen?: boolean) => setIsOpen((o) => newOpen ?? !o),
+    toggleOpen,
     buttonProps: {
       id: buttonId,
       "aria-disabled": disabled,
