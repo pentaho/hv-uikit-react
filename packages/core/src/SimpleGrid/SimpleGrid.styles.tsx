@@ -1,7 +1,7 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { HvBreakpoints, theme } from "@hitachivantara/uikit-styles";
 
-import type { Breakpoint } from "./SimpleGrid";
+import type { HvGridBreakpoint } from "./SimpleGrid";
 
 export const { staticClasses, useClasses } = createClasses("HvSimpleGrid", {
   root: {
@@ -15,7 +15,7 @@ function getSize(size?: number) {
   return size || Number(theme.breakpoints.values.md);
 }
 
-function getSortedBreakpoints(breakpoints: Breakpoint[]) {
+function getSortedBreakpoints(breakpoints: HvGridBreakpoint[]) {
   if (breakpoints.length === 0) {
     return breakpoints;
   }
@@ -29,7 +29,7 @@ function getSortedBreakpoints(breakpoints: Breakpoint[]) {
 }
 
 export const getContainerStyle = (
-  breakpoints?: Breakpoint[],
+  breakpoints?: HvGridBreakpoint[],
   spacing: HvBreakpoints = "sm",
   cols = 1,
 ) => {

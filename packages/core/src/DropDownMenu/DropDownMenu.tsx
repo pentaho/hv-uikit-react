@@ -69,11 +69,6 @@ export interface HvDropDownMenuProps
   expanded?: boolean;
   /** When uncontrolled, defines the initial expanded state. */
   defaultExpanded?: boolean;
-  /**
-   * The variant to be used in the header.
-   * @deprecated Use `variant` instead
-   */
-  category?: HvButtonVariant;
   /** The variant to be used in the header. */
   variant?: HvButtonVariant;
   /** Button size. */
@@ -127,8 +122,7 @@ export const HvDropDownMenu = forwardRef<
     disabled = false,
     expanded,
     defaultExpanded = false,
-    category = "secondaryGhost", // TODO - remove and update variant default in v6
-    variant,
+    variant = "secondaryGhost",
     size = "md",
     labels: labelsProp,
     ...others
@@ -179,7 +173,7 @@ export const HvDropDownMenu = forwardRef<
       headerComponent={HeaderComponent}
       // @ts-expect-error infer HeaderComponent typings
       size={size}
-      variant={variant ?? category}
+      variant={variant}
       open={open}
       aria-label={labels.dropdownMenu}
       icon={icon}

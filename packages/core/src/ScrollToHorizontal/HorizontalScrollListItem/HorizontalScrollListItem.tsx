@@ -30,8 +30,6 @@ export interface HvHorizontalScrollListItemProps
    * If this is not set, the element will be rendered as a div with a button role.
    */
   href?: string;
-  /** @deprecated remove in v6 */
-  iconClasses?: string;
 }
 
 /**
@@ -48,7 +46,6 @@ export const HvHorizontalScrollListItem = (
     label,
     tooltipPlacement,
     href,
-    iconClasses,
     ...others
   } = useDefaultProps("HvHorizontalScrollListItem", props);
   const { classes, cx } = useClasses(classesProp);
@@ -71,7 +68,7 @@ export const HvHorizontalScrollListItem = (
         />
         <div
           aria-hidden
-          className={cx(classes.bullet, iconClasses, {
+          className={cx(classes.bullet, {
             [classes.bulletSelected]: selected,
           })}
         >

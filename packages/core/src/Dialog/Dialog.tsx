@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
 import {
   useDefaultProps,
@@ -31,12 +31,6 @@ export interface HvDialogProps
   fullWidth?: MuiDialogProps["fullWidth"];
   /** If true, the dialog stretches vertically, limited by the margins. @default false */
   fullHeight?: boolean;
-  /**
-   * Element id that should be focus when the Dialog opens.
-   * Auto-focusing elements can cause usability issues, so this should be avoided.
-   * @deprecated Use `autoFocus` on the element instead, if auto-focusing is required.
-   */
-  firstFocusable?: string;
   /** Title for the button close. */
   buttonTitle?: string;
   /** Set the dialog to fullscreen mode. */
@@ -56,7 +50,11 @@ export interface HvDialogProps
 /**
  * A Dialog is a graphical control element in the form of a small panel that communicates information and prompts for a response.
  */
-export const HvDialog = (props: HvDialogProps) => {
+export const HvDialog = forwardRef<
+  // no-indent
+  HTMLDivElement,
+  HvDialogProps
+>((props, ref) => {
   const {
     variant,
     classes: classesProp,
@@ -64,7 +62,6 @@ export const HvDialog = (props: HvDialogProps) => {
     children,
     open = false,
     onClose,
-    firstFocusable,
     buttonTitle = "Close",
     fullHeight,
     fullscreen: fullScreen = false, // TODO: rename to `fullScreen` in v6
@@ -74,13 +71,6 @@ export const HvDialog = (props: HvDialogProps) => {
 
   const { classes, cx } = useClasses(classesProp);
   const { rootId } = useTheme();
-
-  const measuredRef = useCallback(() => {
-    if (!firstFocusable) return;
-
-    const element = document.getElementById(firstFocusable);
-    element?.focus();
-  }, [firstFocusable]);
 
   const contextValue = useMemo(() => ({ fullScreen }), [fullScreen]);
 
@@ -96,7 +86,7 @@ export const HvDialog = (props: HvDialogProps) => {
           [classes.fullscreen]: fullScreen,
         }),
       }}
-      ref={measuredRef}
+      ref={ref}
       open={open}
       fullScreen={fullScreen}
       onClose={(event, reason) => {
@@ -129,4 +119,4 @@ export const HvDialog = (props: HvDialogProps) => {
       </DialogContext.Provider>
     </MuiDialog>
   );
-};
+});

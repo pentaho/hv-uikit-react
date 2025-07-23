@@ -16,8 +16,6 @@ export { staticClasses as bulkActionsClasses };
 export type HvBulkActionsClasses = ExtractNames<typeof useClasses>;
 
 export interface HvBulkActionsProps extends HvBaseProps {
-  /** Custom label for select all checkbox. @deprecated no longer used */
-  selectAllLabel?: React.ReactNode;
   /** Custom label for select all checkbox conjunction */
   selectAllConjunctionLabel?: string;
   /** Custom label for select all pages button */

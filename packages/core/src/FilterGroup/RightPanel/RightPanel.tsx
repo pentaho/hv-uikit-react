@@ -18,8 +18,6 @@ export interface HvFilterGroupRightPanelProps {
   className?: string;
   labels?: {
     searchBoxPlaceholder?: string;
-    /** @deprecated unused */
-    selectAll?: string;
     multiSelectionConjunction?: string;
   };
   emptyElement?: React.ReactNode;
@@ -185,7 +183,6 @@ export const HvFilterGroupRightPanel = ({
             onChange={onChangeHandler}
             selectable
             condensed
-            hasTooltips
           />
         </>
       ) : (

@@ -7,7 +7,7 @@ import type { HvBaseTheme } from "@hitachivantara/uikit-styles";
 
 import { themes } from "../themes";
 import type { HvExtraDeepPartialProps } from "../types/generic";
-import { getContainerElement, getElementById } from "./document";
+import { getContainerElement } from "./document";
 
 /**
  * Create theme props
@@ -176,14 +176,4 @@ export const processThemes = (
   }
   // DS5
   return [themes.ds5];
-};
-
-/** @deprecated */
-export const getVarValue = (cssVar: string, rootElementId?: string) => {
-  const root = getElementById(rootElementId || "hv-root");
-  if (!root) return undefined;
-
-  return getComputedStyle(root)
-    .getPropertyValue(cssVar.replace("var(", "").replace(")", ""))
-    .trim();
 };

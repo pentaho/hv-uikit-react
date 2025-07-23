@@ -3,13 +3,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { useScrollTo } from "../hooks/useScrollTo";
+import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
 import { HvBaseProps } from "../types/generic";
-import {
-  HvScrollToOption,
-  HvScrollToTooltipPositions,
-  HvScrollToVerticalPositions,
-} from "../types/scroll";
 import { isKey } from "../utils/keyboardUtils";
 import {
   calculateOffset,
@@ -26,14 +21,6 @@ export interface HvScrollToVerticalProps
   extends HvBaseProps<HTMLOListElement, "onChange" | "onClick"> {
   /** An Array of Objects with Label and Value. Label is the displayed Element and Value is the local navigation location applied */
   options: HvScrollToOption[];
-  /**
-   * Should the active element be reflected in the URL.
-   *
-   * @default true
-   *
-   * @deprecated Use `navigationMode` instead.
-   * */
-  href?: boolean;
   /**
    * The navigation mode to be used when the user clicks on a tab element.
    * - `push` will add a new entry to the history stack.
@@ -74,9 +61,9 @@ export interface HvScrollToVerticalProps
    */
   offset?: number;
   /** Position of the Vertical scroll to. */
-  position?: HvScrollToVerticalPositions;
+  position?: "absolute" | "fixed" | "relative";
   /** Position of tooltip identifying the current item. */
-  tooltipPosition?: HvScrollToTooltipPositions;
+  tooltipPosition?: "left" | "right" | "top" | "bottom";
   /** A function called each time the selected index changes. */
   onChange?: (
     event:
@@ -107,9 +94,7 @@ export const HvScrollToVertical = (props: HvScrollToVerticalProps) => {
     id,
     defaultSelectedIndex = 0,
     scrollElementId,
-    // @ts-ignore
-    href = true,
-    navigationMode = href ? "push" : "none",
+    navigationMode = "push",
     relativeLinks = false,
     onChange,
     onClick,

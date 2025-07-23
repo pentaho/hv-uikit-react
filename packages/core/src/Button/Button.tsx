@@ -23,9 +23,23 @@ import {
   staticClasses,
   useClasses,
 } from "./Button.styles";
-import { HvButtonVariant } from "./types";
 
 type Variant = "contained" | "subtle" | "ghost";
+
+type ColorVariant =
+  | "primary"
+  | "secondary"
+  | "positive"
+  | "negative"
+  | "warning";
+
+// "contained" has no suffix
+type TypeSuffix = "" | "Subtle" | "Ghost";
+
+export type HvButtonVariant =
+  | Variant
+  | `${ColorVariant}${TypeSuffix}`
+  | "semantic";
 
 export { staticClasses as buttonClasses };
 
@@ -53,8 +67,6 @@ export type HvButtonProps<C extends React.ElementType = "button"> =
       size?: HvSize;
       /** Button border radius. */
       radius?: HvRadius;
-      /** Defines the default colors of the button are forced into the icon. @deprecated unused */
-      overrideIconColors?: boolean;
       /** A Jss Object used to override or extend the styles applied. */
       classes?: HvButtonClasses;
       /** Whether the button is selected or not. */

@@ -1,26 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
 
-import { HvDropZone, HvDropZoneProps } from "./DropZone";
-
-const props: HvDropZoneProps = {
-  onFilesAdded: vi.fn(),
-  labels: {
-    dropzone: "Label",
-    sizeWarning: "Max. file size:",
-    drag: "Drag and drop or",
-    selectFiles: "Select files",
-    dropFiles: "Drop files here",
-    fileSizeError: "The file exceeds the maximum upload size",
-    fileTypeError: "File type not allowed for upload",
-  },
-  accept: ".jpg",
-  maxFileSize: 1,
-};
+import { HvDropZone } from "./DropZone";
 
 describe("DropZone", () => {
   it("should render drop zone input and labels", () => {
-    render(<HvDropZone {...props} />);
+    render(
+      <HvDropZone
+        label="Label"
+        accept=".jpg"
+        maxFileSize={1}
+        labels={{
+          sizeWarning: "Max. file size:",
+          drag: "Drag and drop or",
+          selectFiles: "Select files",
+          dropFiles: "Drop files here",
+          fileSizeError: "The file exceeds the maximum upload size",
+          fileTypeError: "File type not allowed for upload",
+        }}
+      />,
+    );
 
     expect(screen.getByText("Label", { selector: "label" })).toBeVisible();
     expect(

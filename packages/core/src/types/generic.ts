@@ -1,10 +1,4 @@
 import { forwardRef } from "react";
-import type {
-  HvExtraDeepProps,
-  HvExtraProps,
-} from "@hitachivantara/uikit-react-shared";
-
-export type { HvExtraProps, HvExtraDeepProps };
 
 type AsProp<C extends React.ElementType> = {
   /** Custom element type to override the root component */

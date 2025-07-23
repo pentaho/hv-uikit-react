@@ -43,9 +43,6 @@ const DEFAULT_LABELS = {
   invalidDateLabel: "Invalid date",
 };
 
-/** @deprecated use `HvFormStatus` instead */
-export type HvDatePickerStatus = HvFormStatus;
-
 export interface HvDatePickerProps
   extends Omit<HvFormElementProps, "onChange">,
     Pick<

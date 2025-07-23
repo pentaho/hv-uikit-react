@@ -180,8 +180,6 @@ export interface HvInputProps<
 const DEFAULT_LABELS = {
   /** The label of the clear button. */
   clearButtonLabel: "Clear the text",
-  /** The label of the reveal password button. @deprecated unused */
-  revealPasswordButtonLabel: "Reveal password",
   /** The tooltip of the reveal password button when the password is hidden. */
   revealPasswordButtonClickToShowTooltip: "Click to show password.",
   /** The tooltip of the reveal password button when the password is revealed. */
@@ -782,7 +780,7 @@ export const HvInput = fixedForwardRef(function HvInput<
             root: classes.suggestionsContainer,
             list: classes.suggestionList,
           }}
-          expanded={hasSuggestions}
+          open={hasSuggestions}
           anchorEl={inputRef.current?.parentElement}
           onClose={suggestionClearHandler}
           onKeyDown={onSuggestionKeyDown}

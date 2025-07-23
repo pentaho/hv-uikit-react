@@ -126,10 +126,6 @@ export interface HvCheckBoxGroupProps
    */
   showSelectAll?: boolean;
   /**
-   * The label of the select all checkbox. Defaults to "All". @deprecated no longer used
-   */
-  selectAllLabel?: string;
-  /**
    * Custom label for select all checkbox conjunction
    */
   selectAllConjunctionLabel?: string;

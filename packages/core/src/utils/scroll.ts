@@ -1,4 +1,4 @@
-import { HvScrollToOption } from "../types/scroll";
+import type { HvScrollToOption } from "../hooks/useScrollTo";
 
 type ExtendedWindow = Window & typeof globalThis & HTMLElement;
 

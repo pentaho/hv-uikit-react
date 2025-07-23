@@ -62,15 +62,6 @@ export interface QueryGroup {
 
 export type Query = QueryGroup;
 
-// TODO - remove this type in v6
-/** @deprecated */
-export interface HvQueryBuilderChangedQuery
-  extends Omit<HvQueryBuilderQuery, "id" | "rules"> {
-  rules: Array<
-    Omit<HvQueryBuilderQueryRule, "id"> | HvQueryBuilderChangedQuery
-  >;
-}
-
 export interface HvQueryBuilderQueryCombinator {
   operand: string;
   label: string;
@@ -92,9 +83,6 @@ interface DialogLabels {
 
 /** @private label structure action icon buttons */
 interface ActionIconLabels extends DialogLabels {
-  // TODO: remove in v6 - duplicated labels - `tooltip` *is* the aria-label
-  /** @deprecated use `tooltip` label instead */
-  ariaLabel: string;
   tooltip?: string;
 }
 

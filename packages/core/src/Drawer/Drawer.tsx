@@ -52,11 +52,6 @@ export interface HvDrawerProps extends Omit<MuiDrawerProps, "classes"> {
    */
   buttonTitle?: string;
   /**
-   * Show backdrop when drawer is open.
-   * @deprecated Use `hideBackdrop` instead.
-   */
-  showBackdrop?: boolean;
-  /**
    * Prevent closing the dialog when clicking on the backdrop.
    */
   disableBackdropClick?: boolean;
@@ -83,7 +78,6 @@ export const HvDrawer = forwardRef<
     onClose,
     anchor = "right",
     buttonTitle = "Close",
-    showBackdrop = true,
     hideBackdrop,
     disableBackdropClick = false,
     ...others
@@ -100,8 +94,6 @@ export const HvDrawer = forwardRef<
     onClose?.(event, reason);
   };
 
-  const shouldHideBackdrop = hideBackdrop ?? !showBackdrop;
-
   return (
     <MuiDrawer
       ref={ref}
@@ -111,8 +103,8 @@ export const HvDrawer = forwardRef<
       classes={{
         paper: classes.paper,
       }}
-      hideBackdrop={shouldHideBackdrop}
-      {...(!shouldHideBackdrop && {
+      hideBackdrop={hideBackdrop}
+      {...(!hideBackdrop && {
         slotProps: {
           backdrop: {
             classes: {

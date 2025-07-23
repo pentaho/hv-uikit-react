@@ -46,8 +46,6 @@ export interface HvFileUploaderProps extends HvFormElementProps {
   maxFileSize?: number;
   /** File types accepted for uploading. @see [HTML input file accept](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) */
   accept?: HvDropZoneProps["accept"];
-  /** Files extensions accepted for upload. @deprecated use `accept` instead */
-  acceptedFiles?: string[];
   /**
    * Callback fired when files are added.
    */
@@ -89,7 +87,6 @@ export const HvFileUploader = (props: HvFileUploaderProps) => {
     maxFileSize = Infinity,
     inputProps = {},
     accept,
-    acceptedFiles = [],
     // TODO: consider adding/replacing with onFilesChange
     onFilesAdded,
     onFileRemoved,
@@ -104,7 +101,7 @@ export const HvFileUploader = (props: HvFileUploaderProps) => {
         label={label}
         labels={labels}
         multiple={multiple}
-        accept={accept ?? acceptedFiles.join(",")}
+        accept={accept}
         maxFileSize={maxFileSize}
         onFilesAdded={onFilesAdded}
         inputProps={inputProps}

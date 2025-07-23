@@ -75,8 +75,6 @@ export interface HvListProps
   singleSelectionToggle?: boolean;
   /** If `true` the list will be rendered without vertical spacing. */
   condensed?: boolean;
-  /** If `true` the dropdown will show tooltips when user mouseenter text in list. @deprecated this is always enabled */
-  hasTooltips?: boolean;
   /** Experimental. Height of the dropdown, in case you want to control it from a prop. Styles can also be used through dropdownListContainer class. Required in case virtualized is used */
   height?: number;
   /** Experimental. Uses dropdown in a virtualized form, where not all options are rendered initially. Good for use cases with a lot of options. */
@@ -86,8 +84,6 @@ export interface HvListProps
 }
 
 const DEFAULT_LABELS = {
-  /** The label used for the All checkbox action. @deprecated no longer used */
-  selectAll: "Select All",
   /** The label used in the middle of the multi-selection count. */
   selectionConjunction: "/",
 };
@@ -104,8 +100,6 @@ export const HvList = (props: HvListProps) => {
     classes: classesProp,
     className,
     multiSelect = false,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    hasTooltips = false,
     showSelectAll = false,
     labels = DEFAULT_LABELS,
     useSelector = false,

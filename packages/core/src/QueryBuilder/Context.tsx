@@ -186,7 +186,6 @@ export const defaultCombinators = [
 export const defaultLabels: HvQueryBuilderLabels = {
   query: {
     delete: {
-      ariaLabel: "Reset query",
       tooltip: "Reset query",
       dialogTitle: "Remove all conditions?",
       dialogMessage:
@@ -272,7 +271,6 @@ export const defaultLabels: HvQueryBuilderLabels = {
       },
     },
     delete: {
-      ariaLabel: "Remove condition",
       tooltip: "Remove condition",
       dialogTitle: "Remove condition?",
       dialogMessage:
@@ -284,7 +282,6 @@ export const defaultLabels: HvQueryBuilderLabels = {
   },
   group: {
     delete: {
-      ariaLabel: "Remove group",
       tooltip: "Remove group",
       dialogTitle: "Remove group?",
       dialogMessage:
@@ -294,8 +291,7 @@ export const defaultLabels: HvQueryBuilderLabels = {
       dialogCloseTooltip: "Close",
     },
     reset: {
-      ariaLabel: "Change operator",
-      tooltip: "Change operator query",
+      tooltip: "Change operator",
       dialogTitle: "Change conditional operator?",
       dialogMessage:
         "Do you want to change conditional operator? You won't be able to undo this operation. Conditions and/or groups will be removed.",

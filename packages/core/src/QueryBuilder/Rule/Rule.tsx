@@ -108,7 +108,7 @@ export const Rule = (props: RuleProps) => {
       <HvGrid item className={classes.actionsContainer}>
         <HvIconButton
           placement="bottom"
-          title={labels.rule.delete.tooltip || labels.rule.delete.ariaLabel}
+          title={labels.rule.delete.tooltip}
           onClick={() =>
             disableConfirmation
               ? dispatchAction({ type: "remove-node", id })

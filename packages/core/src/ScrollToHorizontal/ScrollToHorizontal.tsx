@@ -6,9 +6,8 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { useScrollTo } from "../hooks/useScrollTo";
+import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
 import { HvBaseProps } from "../types/generic";
-import { HvScrollToOption, HvScrollToTooltipPositions } from "../types/scroll";
 import { isKey } from "../utils/keyboardUtils";
 import { HvHorizontalScrollListItem } from "./HorizontalScrollListItem";
 import { staticClasses, useClasses } from "./ScrollToHorizontal.styles";
@@ -17,20 +16,10 @@ export { staticClasses as scrollToHorizontalClasses };
 
 export type HvScrollToHorizontalClasses = ExtractNames<typeof useClasses>;
 
-export type HvScrollToHorizontalPositions = "sticky" | "fixed" | "relative";
-
 export interface HvScrollToHorizontalProps
   extends HvBaseProps<HTMLOListElement, "onChange" | "onClick"> {
   /** An Array of Objects with Label and Value. Label is the displayed Element and Value is the local navigation location applied */
   options: HvScrollToOption[];
-  /**
-   * Should the active element be reflected in the URL.
-   *
-   * @default true
-   *
-   * @deprecated Use `navigationMode` instead.
-   * */
-  href?: boolean;
   /**
    * The navigation mode to be used when the user clicks on a tab element.
    * - `push` will add a new entry to the history stack.
@@ -71,9 +60,9 @@ export interface HvScrollToHorizontalProps
    */
   offset?: number;
   /** Position of the Horizontal scroll to. */
-  position?: HvScrollToHorizontalPositions;
+  position?: "sticky" | "fixed" | "relative";
   /** Position of tooltip identifying the current item. */
-  tooltipPosition?: HvScrollToTooltipPositions;
+  tooltipPosition?: "left" | "right" | "top" | "bottom";
   /** A function called each time the selected index changes. */
   onChange?: (
     event:
@@ -104,9 +93,7 @@ export const HvScrollToHorizontal = (props: HvScrollToHorizontalProps) => {
     id,
     defaultSelectedIndex = 0,
     scrollElementId,
-    // @ts-ignore
-    href = true,
-    navigationMode = href ? "push" : "none",
+    navigationMode = "push",
     relativeLinks = false,
     onChange,
     onClick,
@@ -156,11 +143,10 @@ export const HvScrollToHorizontal = (props: HvScrollToHorizontalProps) => {
       selected={selectedIndex === index}
       key={option.key || option.label}
       label={option.label}
-      iconClasses={cx({
-        [classes.selected]: selectedIndex === index,
-        [classes.notSelected]: selectedIndex !== index,
-        [classes.notSelectedRoot]: selectedIndex !== index,
-      })}
+      classes={{
+        bullet: classes.item,
+        selected: classes.itemSelected,
+      }}
     />
   ));
 

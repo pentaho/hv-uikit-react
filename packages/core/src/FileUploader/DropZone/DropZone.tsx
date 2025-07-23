@@ -22,8 +22,6 @@ export type HvDropZoneClasses = ExtractNames<typeof useClasses>;
 const DEFAULT_LABELS = {
   /** Extensions of the accepted file types */
   acceptedFiles: "",
-  /** Dropzone area label. @deprecated use `label` prop instead */
-  dropzone: "Label",
   /** Size file warning label. */
   sizeWarning: "Max. file size:",
   /** Size file warning label. */
@@ -104,7 +102,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
   const {
     id: idProp,
     classes: classesProp,
-    label,
+    label = "Label",
     labels: labelsProp,
     accept,
     maxFileSize,
@@ -177,7 +175,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
       {!hideLabels && (
         <HvLabelContainer
           id={id}
-          label={label ?? labels.dropzone}
+          label={label}
           description={description}
           inputId={setId(id, "input-file")}
           classes={{
