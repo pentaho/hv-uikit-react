@@ -174,11 +174,6 @@ const light = {
   shad1: "rgba(65, 65, 65, 0.12)",
   shadow: "0 2px 12px rgba(65,65,65,0.12)",
 
-  /** @deprecated use `bgPage` */
-  backgroundColor: dsColors.atmo2[0],
-  /** @deprecated use `bgHover` */
-  containerBackgroundHover: dsColors.primary_20[0],
-
   ...categorical,
 } satisfies HvColorTokens & Record<string, string>;
 // #endregion
@@ -247,8 +242,6 @@ const dark = {
   shad1: "rgba(0,0,0,.16)",
   shadow: "0 3px 5px rgba(0,0,0,.16)",
 
-  backgroundColor: dsColors.atmo2[1],
-  containerBackgroundHover: dsColors.primary_20[1],
   ...categorical,
 } satisfies HvColorTokens & Record<string, string>;
 // #endregion

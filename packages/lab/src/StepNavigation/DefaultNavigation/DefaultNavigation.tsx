@@ -3,7 +3,6 @@ import {
   HvBaseProps,
   HvTheme,
   HvTypographyVariants,
-  useTheme,
 } from "@hitachivantara/uikit-react-core";
 
 import { HvStep, HvStepProps } from "./Step";
@@ -63,8 +62,6 @@ export const HvDefaultNavigation = ({
   children,
   ...other
 }: HvDefaultNavigationProps) => {
-  const { activeTheme } = useTheme();
-
   // step values
   const { container: maxSize, avatar: minSize } = stepSizes[stepSize];
   const StepComponent = HvStep;
@@ -99,7 +96,7 @@ export const HvDefaultNavigation = ({
             minWidth,
             maxWidth,
             getColor,
-            height: activeTheme?.stepNavigation.defaultSeparatorHeight || 0,
+            height: 1,
           },
           stepValues: {
             minSize,

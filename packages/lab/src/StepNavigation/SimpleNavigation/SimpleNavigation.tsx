@@ -3,7 +3,6 @@ import {
   HvBaseProps,
   HvTheme,
   HvTypographyVariants,
-  useTheme,
 } from "@hitachivantara/uikit-react-core";
 
 import { HvDot, HvDotProps } from "./Dot";
@@ -61,8 +60,6 @@ export const HvSimpleNavigation = ({
   children,
   ...others
 }: HvSimpleNavigationProps) => {
-  const { activeTheme } = useTheme();
-
   // step values
   const dotSize = dotSizes[stepSize];
   const StepComponent = HvDot;
@@ -95,7 +92,7 @@ export const HvSimpleNavigation = ({
             minWidth,
             maxWidth,
             getColor,
-            height: activeTheme?.stepNavigation.simpleSeparatorHeight || 0,
+            height: 1,
           },
           stepValues: {
             minSize: dotSize,

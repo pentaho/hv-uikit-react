@@ -104,15 +104,7 @@ export const HvStepNavigation = ({
     separatorWidth: any,
     backgroundColor: any,
   ) => {
-    const widthValue =
-      separatorWidth -
-      2 *
-        Number(
-          (activeTheme?.stepNavigation.separatorMargin || "0px").replace(
-            "px",
-            "",
-          ),
-        );
+    const widthValue = separatorWidth - 2 * 4;
 
     return (
       <li
@@ -123,7 +115,7 @@ export const HvStepNavigation = ({
             height: separatorHeight,
             width: widthValue,
             backgroundColor,
-            margin: `0 ${theme.stepNavigation.separatorMargin}`,
+            margin: `0 4px`,
           }),
           classes.separator,
         )}

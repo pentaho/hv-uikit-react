@@ -10,7 +10,6 @@ export * from "./tokens/breakpoints";
 export * from "./tokens/colors";
 export * from "./tokens/radii";
 export * from "./tokens/space";
-export * from "./tokens/sizes";
 export * from "./tokens/typography";
 export * from "./tokens/zIndices";
 export * from "./CssBaseline";

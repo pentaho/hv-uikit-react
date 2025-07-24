@@ -56,17 +56,3 @@ export const extendTheme: ThemeExtender<Theme> = (baseTheme) => ({
   fontSize: { DEFAULT: hvTheme.fontSizes.base, ...hvTheme.fontSizes },
   fontWeight: { DEFAULT: hvTheme.fontWeights.normal, ...hvTheme.fontWeights },
 });
-
-/** UI Kit theme mode variants. @deprecated unused */
-export const themeModes = {
-  light: {
-    colors: {
-      ...hvTheme.colors.modes.dawn,
-    },
-  },
-  dark: {
-    colors: {
-      ...hvTheme.colors.modes.wicked,
-    },
-  },
-};

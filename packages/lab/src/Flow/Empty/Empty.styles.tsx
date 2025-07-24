@@ -6,7 +6,7 @@ export const { staticClasses, useClasses } = createClasses("HvFlowEmpty", {
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.backgroundColor,
+    backgroundColor: theme.colors.bgPage,
     position: "absolute",
     zIndex: theme.zIndices.popover,
   },

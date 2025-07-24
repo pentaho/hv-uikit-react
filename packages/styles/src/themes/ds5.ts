@@ -82,32 +82,6 @@ const ds5 = makeTheme((theme) => ({
   form: {
     errorColor: theme.colors.negative_120,
   },
-  bulkActions: {
-    actionButtonVariant: "primaryGhost",
-  },
-  table: {
-    rowStripedBackgroundColorEven: theme.colors.atmo1, // TODO - remove in v6
-    rowStripedBackgroundColorOdd: "transparent", // TODO - remove in v6
-    rowExpandBackgroundColor: theme.colors.atmo2, // TODO - remove in v6
-    rowSortedColor: theme.colors.primary, // TODO - remove in v6
-    rowSortedColorAlpha: "0.1", // TODO - remove in v6
-  },
-  stepNavigation: {
-    separatorMargin: "4px",
-    defaultSeparatorHeight: 1,
-    simpleSeparatorHeight: 1,
-  },
-  filterGroup: {
-    applyButtonVariant: "primary",
-    cancelButtonVariant: "secondarySubtle",
-  },
-  scrollTo: {
-    dotSelectedSize: 6,
-    backgroundColorOpacity: 0.9, // TODO - remove in v6
-  },
-  colorPicker: {
-    hueDirection: "horizontal",
-  },
   snackbar: {
     actionButtonVariant: "semantic",
   },

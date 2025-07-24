@@ -9,7 +9,6 @@ import {
 import { Hue, Saturation } from "react-color/lib/components/common";
 import {
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -41,8 +40,7 @@ const Component = (props: PickerProps) => {
     title,
     classes: classesProp,
   } = useDefaultProps("HvColorPickerPicker", props);
-  const { activeTheme } = useTheme();
-  const { classes, cx } = useClasses(classesProp);
+  const { classes } = useClasses(classesProp);
 
   const SaturationPointer = useCallback(
     () => <div className={classes?.saturationPointer} />,
@@ -50,15 +48,8 @@ const Component = (props: PickerProps) => {
   );
 
   const HueSlider = useCallback(
-    () => (
-      <div
-        className={cx(
-          classes?.hueSlider,
-          activeTheme?.colorPicker.hueDirection,
-        )}
-      />
-    ),
-    [activeTheme?.colorPicker.hueDirection, classes?.hueSlider, cx],
+    () => <div className={classes?.hueSlider} />,
+    [classes?.hueSlider],
   );
 
   return (
@@ -79,7 +70,7 @@ const Component = (props: PickerProps) => {
         </div>
         <div className={classes.hue}>
           <Hue
-            direction={activeTheme?.colorPicker.hueDirection}
+            direction="horizontal"
             hsl={hsl}
             onChange={onChange}
             pointer={HueSlider}

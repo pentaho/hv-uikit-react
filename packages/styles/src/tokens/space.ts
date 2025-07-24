@@ -1,4 +1,6 @@
-type HvSpace = "xxs" | "xs" | "sm" | "md" | "lg" | "xl";
+export type HvSpace = "xxs" | "xs" | "sm" | "md" | "lg" | "xl";
+
+export type HvSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 /** @experimental extendable theme spacing units */
 export interface HvThemeSpace extends Record<HvSpace, string> {

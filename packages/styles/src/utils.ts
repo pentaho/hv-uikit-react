@@ -131,31 +131,6 @@ export const parseTheme = (
   };
 };
 
-/** @deprecated unused */
-export const getThemesList = (themes: Record<string, any>) => {
-  const list: Record<string, any> = {};
-
-  Object.keys(themes).forEach((themeName) => {
-    const theme = themes[themeName];
-    const colorModes = Object.keys(theme.colors.modes);
-
-    list[themeName] = {
-      colorModes: {},
-    };
-
-    colorModes.forEach((colorMode) => {
-      list[themeName].colorModes[colorMode] = toCSSVars({
-        ...theme,
-        colors: {
-          ...theme.colors.modes[colorMode],
-        },
-      });
-    });
-  });
-
-  return list;
-};
-
 export const getThemesVars = (themes: HvThemeStructure[]) => {
   const cssVars: Record<string, any> = {};
 

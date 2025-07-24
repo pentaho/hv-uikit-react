@@ -3,7 +3,6 @@ import type { StandardProperties } from "csstype";
 import type { HvThemeBreakpoints } from "./tokens/breakpoints";
 import type { HvThemeColors } from "./tokens/colors";
 import type { HvThemeRadii } from "./tokens/radii";
-import { sizes } from "./tokens/sizes";
 import { HvThemeSpace, space } from "./tokens/space";
 import {
   fontFamily,
@@ -25,8 +24,6 @@ export interface HvThemeTokens {
   colors: { type: HvThemeColorModeType } & HvThemeColors;
   radii: HvThemeRadii;
   space: HvThemeSpace;
-  /** @deprecated use `theme.space` or the direct value instead */
-  sizes: typeof sizes;
   // #region typography
   fontFamily: typeof fontFamily;
   fontSizes: typeof fontSizes;
@@ -52,33 +49,6 @@ export interface HvThemeComponents {
   };
   form: {
     errorColor: string;
-  };
-  bulkActions: {
-    actionButtonVariant: string;
-  };
-  /** @deprecated unused */
-  table: {
-    rowStripedBackgroundColorEven: string;
-    rowStripedBackgroundColorOdd: string;
-    rowExpandBackgroundColor: string;
-    rowSortedColor: string;
-    rowSortedColorAlpha: string;
-  };
-  stepNavigation: {
-    separatorMargin: string;
-    defaultSeparatorHeight: number;
-    simpleSeparatorHeight: number;
-  };
-  filterGroup: {
-    applyButtonVariant: string;
-    cancelButtonVariant: string;
-  };
-  scrollTo: {
-    dotSelectedSize: number;
-    backgroundColorOpacity: number;
-  };
-  colorPicker: {
-    hueDirection: "vertical" | "horizontal";
   };
   snackbar: {
     actionButtonVariant: string;

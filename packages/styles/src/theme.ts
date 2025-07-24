@@ -24,32 +24,6 @@ const componentsSpec: DeepString<HvThemeComponents> = {
   form: {
     errorColor: "string",
   },
-  bulkActions: {
-    actionButtonVariant: "string",
-  },
-  table: {
-    rowStripedBackgroundColorEven: "string",
-    rowStripedBackgroundColorOdd: "string",
-    rowExpandBackgroundColor: "string",
-    rowSortedColor: "string",
-    rowSortedColorAlpha: "string",
-  },
-  stepNavigation: {
-    separatorMargin: "string",
-    defaultSeparatorHeight: "string",
-    simpleSeparatorHeight: "string",
-  },
-  filterGroup: {
-    applyButtonVariant: "string",
-    cancelButtonVariant: "string",
-  },
-  scrollTo: {
-    dotSelectedSize: "string",
-    backgroundColorOpacity: "string",
-  },
-  colorPicker: {
-    hueDirection: "string",
-  },
   snackbar: {
     actionButtonVariant: "string",
   },

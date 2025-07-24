@@ -52,12 +52,7 @@ export const { useClasses } = createClasses("HvColorPickerPicker", {
     marginLeft: "0px",
     border: "2px solid #fff",
     borderRadius: theme.radii.full,
-    "&.vertical": {
-      transform: "translate(0px, -2px)",
-    },
-    "&.horizontal": {
-      transform: "translate(-6px, -2px)",
-    },
+    transform: "translate(-6px, -2px)",
   },
   title: {
     fontWeight: theme.fontWeights.semibold,
