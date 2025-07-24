@@ -87,15 +87,12 @@ const columns = [
     "collapse",
     () => true,
   ),
-  hvDateColumn<NewRendererEntry>(
-    {
-      Header: "Time",
-      accessor: "createdDate",
-      style: { minWidth: 50 },
-      id: "time-header",
-    },
-    "YYYY/MM/DD HH:mm",
-  ),
+  hvDateColumn<NewRendererEntry>({
+    Header: "Time",
+    accessor: "createdDate",
+    style: { minWidth: 50 },
+    id: "time-header",
+  }),
   hvNumberColumn<NewRendererEntry>({
     Header: "Quantity",
     accessor: "eventQuantity",

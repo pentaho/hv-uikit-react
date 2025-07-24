@@ -71,14 +71,9 @@ export function hvNumberColumn<
 export function hvDateColumn<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
->(
-  col: HvTableColumnConfig<D, H>,
-  dateFormat?: string,
-): HvTableColumnConfig<D, H> {
+>(col: HvTableColumnConfig<D, H>): HvTableColumnConfig<D, H> {
   return {
-    Cell: ({ value }: HvCellProps<D, H>) => (
-      <HvDateColumnCell date={value} dateFormat={dateFormat} />
-    ),
+    Cell: ({ value }: HvCellProps<D, H>) => <HvDateColumnCell date={value} />,
     sortType: "alphanumeric",
     sortDescFirst: true,
     ...col,
