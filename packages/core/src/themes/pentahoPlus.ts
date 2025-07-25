@@ -105,13 +105,13 @@ export const pentahoPlus = mergeTheme(pentahoPlusBase, {
     } satisfies CSSClasses<HvLoadingProps>,
     HvBadge: {
       classes: {
-        badgePosition: {
+        badge: {
           color: ld(theme.colors.textLight, theme.colors.textDark),
-          "&[data-color='textSubtle']:not(.HvBadge-badgePosition:empty)": {
+          "&[data-color='textSubtle']:not(:empty)": {
             color: theme.colors.textSubtle,
             backgroundColor: theme.colors.bgPageSecondary,
           },
-          "&[data-color='primary']:not(.HvBadge-badgePosition:empty)": {
+          "&[data-color='primary']:not(:empty)": {
             color: theme.colors.primary,
             backgroundColor: theme.colors.primaryDimmed,
           },

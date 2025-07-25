@@ -30,7 +30,11 @@ describe("Badge", () => {
   });
 
   it("should render correctly with text", () => {
-    render(<HvBadge label={100} showCount text="hello" textVariant="title3" />);
+    render(
+      <HvBadge label={100} showCount>
+        hello
+      </HvBadge>,
+    );
     expect(screen.queryByText("99+")).toBeInTheDocument();
     expect(screen.getByText("hello")).toBeInTheDocument();
   });
@@ -49,24 +53,5 @@ describe("Badge", () => {
   it("should render correctly with custom one-character label", () => {
     render(<HvBadge label="!" />);
     expect(screen.getByText("!")).toBeInTheDocument();
-  });
-
-  it("should render custom label but not count when both are specified", () => {
-    render(<HvBadge label="New!" count={23} showCount />);
-    expect(screen.getByText("New!")).toBeInTheDocument();
-    expect(screen.queryByText("23")).toBeNull();
-  });
-
-  // TODO: remove in v6
-  describe("deprecated APIs", () => {
-    it("should render a small dot when count>0 without showCount", () => {
-      render(<HvBadge count={12} />);
-      expect(screen.queryByText("12")).toBeNull();
-    });
-
-    it("should render correctly with maxCount", () => {
-      render(<HvBadge count={100} showCount />);
-      expect(screen.getByText("99+")).toBeInTheDocument();
-    });
   });
 });
