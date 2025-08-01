@@ -1,5 +1,8 @@
 import type { ServicesConfig as HvAppShellServicesConfig } from "@hitachivantara/app-shell-services";
-import type { HvContainerProps } from "@hitachivantara/uikit-react-core";
+import type {
+  HvBaseTheme,
+  HvContainerProps,
+} from "@hitachivantara/uikit-react-core";
 
 export type { HvAppShellServicesConfig };
 
@@ -65,8 +68,7 @@ export type HvAppShellConfig = {
 };
 
 export type HvAppShellThemingConfig = {
-  themes?: string[];
-  theme?: string;
+  theme?: HvBaseTheme | (string & {});
   colorMode?: string;
 };
 

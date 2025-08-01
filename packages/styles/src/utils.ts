@@ -95,66 +95,28 @@ export const mergeTheme = (...objects: any[]): HvThemeStructure => {
   }, {});
 };
 
-// TODO: Temporary support for "pentaho" theme alias. To be removed in v6.
-export const resolveTheme = (themes: string[], theme: string) => {
-  const resolved = theme === "pentaho" ? "pentahoPlus" : theme;
-  return themes.includes(resolved) ? resolved : themes[0];
-};
-
-export const parseTheme = (
-  themes: HvThemeStructure[],
-  theme = "",
-  colorMode = "",
-): {
-  theme: HvThemeStructure;
-  selectedTheme: string;
-  selectedMode: string;
-  colorModes: string[];
-  colorScheme: string;
-} => {
-  const names = themes.map((t) => t.name);
-  const selectedTheme = resolveTheme(names, theme);
-  const themeStructure =
-    themes.find((t) => t.name === selectedTheme) || themes[0];
-  const colorModes = Object.keys(themeStructure.colors.modes);
-  const selectedMode = colorModes.includes(colorMode)
-    ? colorMode
-    : colorModes[0];
-  const colorScheme = themeStructure.colors.modes[selectedMode].type;
-
-  return {
-    theme: themeStructure,
-    selectedTheme,
-    selectedMode,
-    colorModes,
-    colorScheme,
-  };
-};
-
-export const getThemesVars = (themes: HvThemeStructure[]) => {
+export const getThemeVars = (theme: HvThemeStructure) => {
   const cssVars: Record<string, any> = {};
 
-  themes.forEach((theme) => {
-    const colorModes = Object.keys(theme.colors.modes);
+  const colorModes = Object.keys(theme.colors.modes);
 
-    colorModes.forEach((colorMode) => {
-      const styleName = `[data-theme="${theme.name}"][data-color-mode="${colorMode}"]`;
-      const themeName = `[data-theme="${theme.name}"]`;
+  colorModes.forEach((colorMode) => {
+    const styleName = `[data-theme="${theme.name}"][data-color-mode="${colorMode}"]`;
+    const themeName = `[data-theme="${theme.name}"]`;
 
-      // extract properties that shouldn't be mapped to CSS variables
-      // @ts-expect-error align HvTheme <-> HvThemeStructure?
-      const { base, components, name, colors, palette, icons, vars, ...rest } =
-        theme;
+    // exclude properties that shouldn't be mapped to CSS variables
+    // @ts-expect-error align HvTheme <-> HvThemeStructure?
+    const { base, components, name, colors, palette, icons, vars, ...rest } =
+      theme;
 
-      cssVars[styleName] = toCSSVars({
-        colors: {
-          ...colors.modes[colorMode],
-        },
-      });
+    cssVars[styleName] = toCSSVars({
+      colors: {
+        ...colors.modes[colorMode],
+      },
+    });
 
-      cssVars[themeName] = toCSSVars({
-        ...rest,
-      });
+    cssVars[themeName] = toCSSVars({
+      ...rest,
     });
   });
 

@@ -10,12 +10,12 @@ import type { HvTheme } from "@hitachivantara/uikit-react-shared";
 import {
   CssBaseline,
   CssScopedBaseline,
-  getThemesVars,
+  getThemeVars,
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";
 
+import { ds5 } from "../themes";
 import { getElementById } from "../utils/document";
-import { processThemes } from "../utils/theme";
 import {
   defaultCacheKey,
   defaultEmotionCache,
@@ -61,18 +61,11 @@ export interface HvProviderProps {
    */
   emotionCache?: EmotionCache;
   /**
-   * List of themes to be used by UI Kit.
-   * You can provide your own themes created with the `createTheme` utility and/or the default themes provided by UI Kit.
-   *
-   * If no value is provided, the `ds5` theme will be used.
-   */
-  themes?: (HvTheme | HvThemeStructure)[];
-  /**
    * The active theme. It must be one of the themes passed to `themes`.
    *
    * If no value is provided, the first theme from the `themes` list is used. If no `themes` list is provided, the `ds5` theme will be used.
    */
-  theme?: string;
+  theme?: HvTheme | HvThemeStructure;
   /**
    * The active color mode. It must be one of the color modes of the active theme.
    *
@@ -90,16 +83,12 @@ export const HvProvider = ({
   rootElementId,
   cssBaseline = "global",
   cssTheme = "global",
-  themes,
-  theme,
+  theme = ds5,
   colorMode,
   emotionCache: emotionCacheProp,
   classNameKey = defaultCacheKey,
 }: HvProviderProps) => {
   const scopedRootId = useId();
-
-  // Themes
-  const themesList = processThemes(themes);
 
   // Emotion cache
   // Moves UI Kit styles to the top of the <head> so they're loaded first
@@ -123,14 +112,13 @@ export const HvProvider = ({
               },
             }
           }
-          ${getThemesVars(themesList)}
+          ${getThemeVars(theme)}
         `}
       />
       <HvThemeProvider
-        themes={themesList}
-        theme={theme || themesList[0].name}
+        theme={theme}
         emotionCache={emotionCache}
-        colorMode={colorMode || Object.keys(themesList[0].colors.modes)[0]}
+        colorMode={colorMode || "dawn"}
         themeRootId={
           cssTheme === "scoped" ? rootElementId || scopedRootId : undefined
         }

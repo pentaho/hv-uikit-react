@@ -139,7 +139,7 @@ export const HvStatusIcon = forwardRef<
     weight = "regular",
   } = useDefaultProps("HvStatusIcon", props);
   const { classes, cx } = useClasses(classesProp);
-  const { selectedTheme } = useTheme();
+  const { activeTheme } = useTheme();
 
   return (
     <div
@@ -149,7 +149,7 @@ export const HvStatusIcon = forwardRef<
       data-size={size}
       className={cx(classes.root, className)}
     >
-      {selectedTheme === "pentahoPlus" && !customIcon ? (
+      {activeTheme?.name === "pentahoPlus" && !customIcon ? (
         <HvIconContainer size={size}>
           <SvgBase viewBox="0 0 256 256" className={classes.icon}>
             {pentahoIconsMap[variant as keyof typeof pentahoIconsMap]?.[weight]}

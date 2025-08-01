@@ -30,10 +30,8 @@ const prepareConfigForDevMode = (
     );
   }
   // Theming
-  if (theming?.themes && replacedConfig.theming) {
-    replacedConfig.theming.themes = theming.themes?.map((theme) => {
-      return replaceSelf(theme, self);
-    });
+  if (theming?.theme && replacedConfig.theming) {
+    replacedConfig.theming.theme = replaceSelf(theming.theme, self);
   }
   // Providers
   if (providers) {

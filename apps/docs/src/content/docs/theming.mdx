@@ -16,7 +16,7 @@ The **theme** object serves as the **UI Kit** foundation, defining all styling s
 Use the `HvProvider` to configure the active theme and color mode:
 
 ```tsx
-<HvProvider themes={[pentahoPlus]} theme="pentahoPlus" colorMode="dawn">
+<HvProvider theme={pentahoPlus} colorMode="dawn">
   <App />
 </HvProvider>
 ```
@@ -53,7 +53,7 @@ const myTheme = createTheme({
   },
 });
 
-<HvProvider themes={[myTheme]} colorMode="sand">
+<HvProvider theme={myTheme} colorMode="sand">
   <App />
 </HvProvider>;
 ```
@@ -64,11 +64,9 @@ Use the `useTheme()` hook to dynamically access or update theme information:
 
 ```tsx
 const {
-  selectedTheme, // Active theme name
   selectedMode, // Active color mode
-  themes, // Available themes
   colorModes, // Modes for the current theme
-  changeTheme, // Function to switch theme or color mode
+  changeMode, // Function to switch color mode
   activeTheme, // The active theme object
   colors, // Active color palette
 } = useTheme();
@@ -80,15 +78,15 @@ Toggle themes or color modes at runtime — ideal for user preferences (e.g. lig
 
 ```tsx
 const MyComponent = () => {
-  const { selectedTheme, selectedMode, changeTheme } = useTheme();
+  const { selectedMode, changeMode } = useTheme();
 
   return (
     <HvButton
       icon
       variant="secondaryGhost"
-      onClick={() =>
-        changeTheme(selectedTheme, selectedMode === "dawn" ? "wicked" : "dawn")
-      }
+      onClick={() => {
+        changeMode(selectedMode === "dawn" ? "wicked" : "dawn");
+      }}
     >
       <ThemeSwitcher />
     </HvButton>
@@ -152,7 +150,7 @@ const newTheme = createTheme({
 
 const DefaultProps = () => {
   return (
-    <HvProvider cssTheme="scoped" themes={[newTheme]}>
+    <HvProvider cssTheme="scoped" theme={newTheme}>
       <HvButton variant="primarySubtle">Hey!</HvButton>
       <HvAvatar />
     </HvProvider>

@@ -16,10 +16,10 @@ const globalStyles: GlobalProps["styles"] = {
 };
 
 export const Container = ({ children }: { children: ReactNode }) => {
-  const { selectedTheme, selectedMode, changeTheme } = useTheme();
+  const { selectedMode, changeTheme } = useTheme();
 
   const handleChangeTheme = () => {
-    changeTheme(selectedTheme, selectedMode === "wicked" ? "dawn" : "wicked");
+    changeTheme(undefined, selectedMode === "wicked" ? "dawn" : "wicked");
   };
 
   return (

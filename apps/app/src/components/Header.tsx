@@ -28,7 +28,7 @@ const UIKitLogo = () => (
 export const Header = () => {
   const navigate = useNavigate();
   const theme = useMuiTheme();
-  const { selectedMode, colorModes, changeTheme } = useTheme();
+  const { selectedMode, colorModes, changeMode } = useTheme();
   const { activePath, navigation } = useNavigationContext();
 
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
@@ -62,7 +62,7 @@ export const Header = () => {
           title="Change color mode"
           onClick={() => {
             const nextIdx = colorModes.findIndex((m) => m === selectedMode) + 1;
-            changeTheme(undefined, colorModes[nextIdx % colorModes.length]);
+            changeMode(colorModes[nextIdx % colorModes.length]);
           }}
         >
           <ThemeSwitcher />

@@ -1,11 +1,4 @@
-import {
-  ComponentType,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { I18nContext } from "react-i18next";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
@@ -18,17 +11,17 @@ import {
 import {
   themes as baseThemes,
   HvProvider,
-  HvProviderProps,
 } from "@hitachivantara/uikit-react-core";
+import { HvThemeStructure } from "@hitachivantara/uikit-styles";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { addResourceBundles } from "../../i18n";
 
-export type AppShellProviderProps = {
-  children: ReactNode;
+export interface AppShellProviderProps {
+  children: React.ReactNode;
   config?: Partial<HvAppShellConfig>;
   configUrl?: string;
-};
+}
 
 const AppShellProvider = ({
   children,
@@ -44,21 +37,16 @@ const AppShellProvider = ({
   const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!localConfig && configUrl) {
-      fetch(new URL(configUrl))
-        .then((result) => {
-          return result.json();
-        })
-        .then((data) => setLoadedConfig(data))
-        .catch((e) => {
-          console.error(
-            `It was not possible to obtain the context from: ${configUrl}`,
-            e,
-          );
-          setLoadedConfig(undefined);
-          setHasError(true);
-        });
-    }
+    if (localConfig || !configUrl) return;
+
+    fetch(new URL(configUrl))
+      .then((result) => result.json())
+      .then((data) => setLoadedConfig(data))
+      .catch((e) => {
+        console.error(`Failed to obtain the context from: ${configUrl}`, e);
+        setLoadedConfig(undefined);
+        setHasError(true);
+      });
   }, [localConfig, configUrl]);
 
   const theConfig: HvAppShellContextValue | undefined = useMemo(
@@ -67,7 +55,7 @@ const AppShellProvider = ({
   );
 
   if (hasError) {
-    throw Error("It was not possible to obtain the configuration");
+    throw Error("Failed to obtain the configuration");
   }
 
   if (theConfig?.translations) {
@@ -78,61 +66,55 @@ const AppShellProvider = ({
     );
   }
 
-  const [themes, setThemes] = useState<HvProviderProps["themes"]>(undefined);
+  const [theme, setTheme] = useState<HvThemeStructure>();
   const [providers, setProviders] = useState<
-    | Array<{
-        component: ComponentType<{ children: ReactNode }>;
-        config?: Record<string, unknown>;
-      }>
-    | undefined
-  >(undefined);
+    Array<{
+      component: React.ComponentType<{ children: React.ReactNode }>;
+      config?: Record<string, unknown>;
+    }>
+  >();
 
   useEffect(() => {
-    if (theConfig?.theming?.themes) {
-      Promise.all(
-        theConfig.theming.themes?.map((bundle) => {
-          return (
-            baseThemes[bundle as keyof typeof baseThemes] ??
-            import(/* @vite-ignore */ bundle)
-              .then((module) => module.default)
-              .catch((e) => {
-                console.error(`Import of theme bundle ${bundle} failed! ${e}`);
-              })
-          );
-        }),
-      )
-        .then((loadedThemes) => {
-          setThemes(loadedThemes.filter((theme) => !!theme));
-        })
-        .catch((e) => {
-          console.error(`Import of themes failed! ${e}`);
-        });
+    const theme = theConfig?.theming?.theme;
+    if (!theme) return;
+
+    if (baseThemes[theme as keyof typeof baseThemes]) {
+      setTheme(baseThemes[theme as keyof typeof baseThemes]);
+      return;
     }
-  }, [theConfig?.theming?.themes]);
+
+    import(/* @vite-ignore */ theme)
+      .then((module) => {
+        setTheme(module.default);
+      })
+      .catch((e) => {
+        console.error(`Import of theme bundle ${theme} failed! ${e}`);
+      });
+  }, [theConfig?.theming?.theme]);
 
   useEffect(() => {
-    if (theConfig?.providers) {
-      Promise.all(
-        theConfig.providers.map((provider) => {
-          return import(/* @vite-ignore */ provider.bundle)
-            .then((module) => ({
-              component: module.default,
-              config: provider.config,
-            }))
-            .catch((e) => {
-              console.error(
-                `Import of provider '${provider.bundle}' failed! ${e}`,
-              );
-            });
-        }),
+    if (!theConfig?.providers) return;
+
+    Promise.all(
+      theConfig.providers.map((provider) => {
+        return import(/* @vite-ignore */ provider.bundle)
+          .then((module) => ({
+            component: module.default,
+            config: provider.config,
+          }))
+          .catch((e) => {
+            console.error(
+              `Import of provider '${provider.bundle}' failed! ${e}`,
+            );
+          });
+      }),
+    )
+      .then((loadedProviders) =>
+        setProviders(loadedProviders.filter((provider) => !!provider)),
       )
-        .then((loadedProviders) =>
-          setProviders(loadedProviders.filter((provider) => !!provider)),
-        )
-        .catch((e) => {
-          console.error(`Import of providers failed!`, e);
-        });
-    }
+      .catch((e) => {
+        console.error(`Import of providers failed!`, e);
+      });
   }, [theConfig?.providers]);
 
   const runtimeContext = useMemo(
@@ -151,7 +133,7 @@ const AppShellProvider = ({
 
   if (
     !theConfig ||
-    (theConfig.theming?.themes && !themes) ||
+    (theConfig.theming?.theme && !theme) ||
     (theConfig.providers != null && providers === undefined)
   ) {
     return null;
@@ -161,8 +143,7 @@ const AppShellProvider = ({
     <HvAppShellContext.Provider value={theConfig}>
       <HvAppShellRuntimeContext.Provider value={runtimeContext}>
         <HvProvider
-          themes={themes}
-          theme={theConfig.theming?.theme}
+          theme={theme}
           colorMode={storedColorModeValue ?? theConfig.theming?.colorMode}
         >
           <HvAppShellCombinedProvidersContext.Provider value={providersContext}>

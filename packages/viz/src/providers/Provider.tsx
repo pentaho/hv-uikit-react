@@ -1,4 +1,4 @@
-import { createContext, useMemo } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { useTheme, type HvTheme } from "@hitachivantara/uikit-react-utils";
 
 import { registerTheme } from "../utils/registerTheme";
@@ -44,15 +44,19 @@ export interface HvVizProviderProps {
  * ```
  */
 export const HvVizProvider = ({ children }: HvVizProviderProps) => {
-  const { activeTheme, selectedMode, selectedTheme } = useTheme();
+  const { activeTheme, selectedMode } = useTheme();
 
   const value = useMemo(() => {
-    const themeName = `${selectedTheme}-${selectedMode}`;
+    const themeName = `${activeTheme?.name}-${selectedMode}`;
     registerTheme(themeName, selectedMode, activeTheme);
     return { theme: themeName, activeTheme };
-  }, [selectedTheme, selectedMode, activeTheme]);
+  }, [selectedMode, activeTheme]);
 
   return (
     <HvVizContext.Provider value={value}>{children}</HvVizContext.Provider>
   );
+};
+
+export const useVizTheme = () => {
+  return useContext(HvVizContext);
 };

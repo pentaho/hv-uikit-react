@@ -8,15 +8,14 @@ import {
 import { LOCAL_STORAGE_KEYS } from "./useLocalStorage";
 import useThemeEventListenerHook from "./useThemeEventListener";
 
-const mockedChangeTheme = vi.fn();
+const mockedChangeMode = vi.fn();
 vi.mock("@hitachivantara/uikit-react-core", async () => {
   const mod = await vi.importActual("@hitachivantara/uikit-react-core");
   return {
-    ...(mod as object),
+    ...mod,
     useTheme: () => {
       return {
-        selectedTheme: "dummyTheme",
-        changeTheme: mockedChangeTheme,
+        changeMode: mockedChangeMode,
         selectedMode: "dummyColor1",
         colorModes: [
           "dummyColor1",
@@ -46,7 +45,7 @@ describe("useThemeEventListener Hook", () => {
       }),
     );
 
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor3");
+    expect(mockedChangeMode).toHaveBeenCalledWith("dummyColor3");
     expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
       "dummyColor3",
     );
@@ -63,7 +62,7 @@ describe("useThemeEventListener Hook", () => {
       }),
     );
 
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor2");
+    expect(mockedChangeMode).toHaveBeenCalledWith("dummyColor2");
     expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
       "dummyColor2",
     );
@@ -80,7 +79,7 @@ describe("useThemeEventListener Hook", () => {
       }),
     );
 
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor2");
+    expect(mockedChangeMode).toHaveBeenCalledWith("dummyColor2");
     expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
       "dummyColor2",
     );

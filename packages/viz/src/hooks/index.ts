@@ -1,4 +1,3 @@
-export * from "./useVizTheme";
 export * from "./useDataZoom";
 export * from "./useXAxis";
 export * from "./useYAxis";

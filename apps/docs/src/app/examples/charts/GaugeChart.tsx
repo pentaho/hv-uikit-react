@@ -7,8 +7,7 @@ import { HvBaseChart } from "@hitachivantara/uikit-react-viz";
 echarts.use([GaugeChart]);
 
 export default function Demo() {
-  const { activeTheme, selectedMode } = useTheme();
-  const colors = activeTheme!.colors.modes[selectedMode];
+  const { colors } = useTheme();
 
   const optionGauge = useMemo(
     () => ({
@@ -24,7 +23,7 @@ export default function Demo() {
             show: true,
             width: 20,
             itemStyle: {
-              color: colors.negative,
+              color: colors?.negative,
             },
           },
           axisLine: {
@@ -48,11 +47,11 @@ export default function Demo() {
             rich: {
               v: {
                 fontSize: 48,
-                color: colors.text,
+                color: colors?.text,
               },
               l: {
                 fontSize: 16,
-                color: colors.text,
+                color: colors?.text,
               },
             },
           },

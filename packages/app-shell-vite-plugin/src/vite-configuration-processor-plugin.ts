@@ -145,15 +145,10 @@ export default function processConfiguration(
 
       // theming structure does not rely on having the 'bundle' prop
       const { theming } = appShellConfig;
-      if (theming != null) {
-        theming.themes = theming.themes?.map((theme) => {
-          if (startsWithSelf(theme)) {
-            const bundleName = replaceSelf(theme);
-            return `${selfAppName}/${bundleName}`;
-          }
-
-          return theme;
-        });
+      if (theming?.theme) {
+        theming.theme = startsWithSelf(theming.theme)
+          ? `${selfAppName}/${replaceSelf(theming.theme)}`
+          : theming.theme;
       }
 
       finalAppShellConfig = { ...appShellConfig };

@@ -55,8 +55,7 @@ export const withThemeDecorator = (): Decorator => {
         <HvProvider
           emotionCache={emotionCache}
           cssTheme="scoped"
-          themes={Object.values(themes)}
-          theme={theme}
+          theme={themes[theme as keyof typeof themes]}
           colorMode={mode}
         >
           <div
