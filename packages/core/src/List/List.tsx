@@ -14,7 +14,6 @@ import {
 
 import { HvCheckBox } from "../CheckBox";
 import { HvIcon } from "../icons";
-import { HvLink } from "../Link";
 import {
   HvListContainer,
   HvListContainerProps,
@@ -23,6 +22,7 @@ import {
 import { HvOverflowTooltip } from "../OverflowTooltip";
 import { HvRadio } from "../Radio";
 import { HvBaseProps } from "../types/generic";
+import { HvTypography } from "../Typography";
 import { CounterLabel } from "../utils/CounterLabel";
 import { staticClasses, useClasses } from "./List.styles";
 import { HvListValue } from "./types";
@@ -204,9 +204,14 @@ export const HvList = (props: HvListProps) => {
 
   const renderItemText = (item: HvListValue) => {
     return !multiSelect && item.path ? (
-      <HvLink route={item.path} classes={{ a: classes.link }}>
+      <HvTypography
+        link
+        component="a"
+        href={item.path}
+        className={classes.link}
+      >
         <HvOverflowTooltip data={item.label} />
-      </HvLink>
+      </HvTypography>
     ) : (
       <HvOverflowTooltip data={item.label} />
     );

@@ -29,9 +29,7 @@ export * from "./themes";
 
 // Components that need to be loaded first because of mutual dependencies (preserve order)
 export * from "./Typography";
-export * from "./Box";
 export * from "./ButtonBase";
-export * from "./Focus";
 export * from "./ListContainer";
 export * from "./FormElement/CharCounter";
 export * from "./FormElement/Adornment";
@@ -83,8 +81,6 @@ export * from "./Grid";
 export * from "./Header";
 export * from "./InlineEditor";
 export * from "./Input";
-export * from "./Kpi";
-export * from "./Link";
 export * from "./List";
 export * from "./Loading";
 export * from "./LoadingContainer";

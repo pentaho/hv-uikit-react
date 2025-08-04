@@ -42,7 +42,6 @@ import { Test as HeaderTestStory } from "../Header/Header.stories";
 import { Variants as IconButtonVariantsStory } from "../IconButton/IconButton.stories";
 import { Test as InlineEditorTestStory } from "../InlineEditor/InlineEditor.stories";
 import { Test as InputTestStory } from "../Input/Input.stories";
-import { Main as KpiMainStory } from "../Kpi/Kpi.stories";
 import { WithIcons as ListContainerWithIconsStory } from "../ListContainer/ListContainer.stories";
 import { Variants as LoadingVariantsStory } from "../Loading/Loading.stories";
 import { Test as MultiButtonTestStory } from "../MultiButton/MultiButton.stories";
@@ -296,10 +295,7 @@ export const TestStructure: StoryObj = {
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
           {renderStory(SimpleGridMainStory, context)}
-          <div>
-            {renderStory(ContainerMainStory, context)}
-            <div>{renderStory(KpiMainStory, context)}</div>
-          </div>
+          <div>{renderStory(ContainerMainStory, context)}</div>
         </div>
       </div>
     </div>
