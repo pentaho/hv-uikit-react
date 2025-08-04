@@ -19,7 +19,7 @@ export const DocsProvider = ({
     <div id={id} className={className} data-pagefind-ignore>
       <HvProvider
         theme={theme}
-        colorMode={resolvedTheme === "dark" ? "wicked" : "dawn"}
+        colorMode={resolvedTheme === "dark" ? "dark" : "light"}
         cssTheme="scoped"
         rootElementId={id}
       >

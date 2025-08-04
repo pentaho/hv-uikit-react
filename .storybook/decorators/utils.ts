@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
-import { HvThemeStructure } from "@hitachivantara/uikit-styles";
+import {
+  HvThemeColorMode,
+  HvThemeStructure,
+} from "@hitachivantara/uikit-styles";
 
 const STORAGE_KEY = "sb-uikit-stories-theme";
 const DEFAULT_THEME = "pentahoPlus";
@@ -26,7 +29,7 @@ export const getInitialTheme = (themes: Theme[]) => {
   const initialTheme = localTheme ? localTheme.split(" ")[0] : DEFAULT_THEME;
   const initialMode = localTheme
     ? localTheme.split(" ")[1]
-    : `${prefersDark ? "wicked" : "dawn"}`;
+    : `${prefersDark ? "dark" : "light"}`;
 
   return (
     themes.find((theme) => theme.label === `${initialTheme} ${initialMode}`) ||
@@ -41,7 +44,7 @@ export const useDarkClass = <T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null);
 
   useEffect(() => {
-    if (mode === "wicked") {
+    if (mode === "dark") {
       ref.current?.classList.add("dark");
     } else {
       ref.current?.classList.remove("dark");
@@ -53,19 +56,14 @@ export const useDarkClass = <T extends HTMLElement = HTMLDivElement>(
 
 /** Returns an array with the available themes */
 export const getThemesList = (themes: Record<string, HvThemeStructure>) => {
-  const themesList: Theme[] = [];
-
-  Object.keys(themes).forEach((themeName) => {
-    const theme = themes[themeName];
-    const colorModes = Object.keys(theme.colors.modes);
+  return Object.keys(themes).reduce<Theme[]>((acc, themeName) => {
+    const colorModes: HvThemeColorMode[] = ["light", "dark"];
     colorModes.forEach((colorMode) => {
-      const isDark = colorMode.includes("dark") || colorMode.includes("wicked");
-      themesList.push({
+      acc.push({
         label: `${themeName} ${colorMode}`,
-        mode: isDark ? "dark" : "light",
+        mode: colorMode,
       });
     });
-  });
-
-  return themesList;
+    return acc;
+  }, []);
 };

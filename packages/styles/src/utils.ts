@@ -1,6 +1,7 @@
 import type {
   DeepString,
   HvThemeBreakpoint,
+  HvThemeColorMode,
   HvThemeStructure,
   HvThemeVars,
   SpacingValue,
@@ -98,7 +99,7 @@ export const mergeTheme = (...objects: any[]): HvThemeStructure => {
 export const getThemeVars = (theme: HvThemeStructure) => {
   const cssVars: Record<string, any> = {};
 
-  const colorModes = Object.keys(theme.colors.modes);
+  const colorModes: HvThemeColorMode[] = ["light", "dark"];
 
   colorModes.forEach((colorMode) => {
     const styleName = `[data-theme="${theme.name}"][data-color-mode="${colorMode}"]`;
@@ -111,7 +112,7 @@ export const getThemeVars = (theme: HvThemeStructure) => {
 
     cssVars[styleName] = toCSSVars({
       colors: {
-        ...colors.modes[colorMode],
+        ...colors[colorMode],
       },
     });
 

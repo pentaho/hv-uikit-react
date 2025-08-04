@@ -12,7 +12,10 @@ import {
   themes as baseThemes,
   HvProvider,
 } from "@hitachivantara/uikit-react-core";
-import { HvThemeStructure } from "@hitachivantara/uikit-styles";
+import {
+  HvThemeColorMode,
+  HvThemeStructure,
+} from "@hitachivantara/uikit-styles";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { addResourceBundles } from "../../i18n";
@@ -144,7 +147,10 @@ const AppShellProvider = ({
       <HvAppShellRuntimeContext.Provider value={runtimeContext}>
         <HvProvider
           theme={theme}
-          colorMode={storedColorModeValue ?? theConfig.theming?.colorMode}
+          colorMode={
+            (storedColorModeValue as HvThemeColorMode) ??
+            theConfig.theming?.colorMode
+          }
         >
           <HvAppShellCombinedProvidersContext.Provider value={providersContext}>
             {children}

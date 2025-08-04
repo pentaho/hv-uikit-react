@@ -11,6 +11,7 @@ import {
   CssBaseline,
   CssScopedBaseline,
   getThemeVars,
+  HvThemeColorMode,
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";
 
@@ -72,7 +73,7 @@ export interface HvProviderProps {
    * If no value is provided, the first color mode defined in the active theme is used.
    * For the default themes, the `dawn` color mode is the one used.
    */
-  colorMode?: string;
+  colorMode?: HvThemeColorMode;
 }
 
 /**
@@ -84,7 +85,7 @@ export const HvProvider = ({
   cssBaseline = "global",
   cssTheme = "global",
   theme = ds5,
-  colorMode,
+  colorMode = theme.defaultColorMode || "light",
   emotionCache: emotionCacheProp,
   classNameKey = defaultCacheKey,
 }: HvProviderProps) => {
@@ -118,7 +119,7 @@ export const HvProvider = ({
       <HvThemeProvider
         theme={theme}
         emotionCache={emotionCache}
-        colorMode={colorMode || "dawn"}
+        colorMode={colorMode || "light"}
         themeRootId={
           cssTheme === "scoped" ? rootElementId || scopedRootId : undefined
         }

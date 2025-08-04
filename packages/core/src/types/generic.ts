@@ -40,12 +40,6 @@ export type DeepPartial<T> = T extends {}
     }>
   : T;
 
-/** This type extends DeepPartial to allow any extra properties */
-export type HvExtraDeepPartialProps<T> = Partial<{
-  [P in keyof T]: DeepPartial<T[P]> & Record<string, any>;
-}> &
-  Record<string, any>;
-
 export type Arrayable<T> = T | T[];
 
 /** React.forwardRef with fixed type declarations */

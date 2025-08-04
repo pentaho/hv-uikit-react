@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { EmotionCache } from "@emotion/cache";
 import {
-  createTheme,
+  createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material/styles";
 import {
@@ -12,8 +12,12 @@ import {
   type HvTheme,
   type HvThemeContextValue,
 } from "@hitachivantara/uikit-react-shared";
-import { HvThemeStructure } from "@hitachivantara/uikit-styles";
+import {
+  HvThemeColorMode,
+  HvThemeStructure,
+} from "@hitachivantara/uikit-styles";
 
+import { getContainerElement } from "../utils/document";
 import { setElementAttrs } from "../utils/theme";
 
 export { HvThemeContext };
@@ -25,7 +29,7 @@ interface HvThemeProviderProps {
   children: React.ReactNode;
   theme: HvTheme | HvThemeStructure;
   emotionCache: EmotionCache;
-  colorMode: string;
+  colorMode: HvThemeColorMode;
   themeRootId?: string;
 }
 
@@ -38,55 +42,37 @@ export const HvThemeProvider = ({
 }: HvThemeProviderProps) => {
   const [colorMode, setColorMode] = useState(colorModeProp);
 
-  const {
-    theme: activeTheme,
-    selectedMode,
-    colorModes,
-    colorScheme,
-  } = useMemo(() => {
-    const colorModes = Object.keys(theme.colors.modes);
-    const selectedMode = colorModes.includes(colorMode)
-      ? colorMode
-      : colorModes[0];
-    const colorScheme = theme.colors.modes[selectedMode].type;
-
-    return {
-      theme,
-      selectedMode,
-      colorModes,
-      colorScheme,
-    };
-  }, [theme, colorMode]);
-
   // review in v6 so that theme/colorMode isn't both controlled & uncontrolled
   useEffect(() => {
     setColorMode(colorModeProp);
   }, [colorModeProp]);
 
   useEffect(() => {
-    setElementAttrs(activeTheme.name, selectedMode, colorScheme, rootId);
-  }, [colorScheme, rootId, selectedMode, activeTheme.name]);
+    const element = getContainerElement(rootId);
+    if (!element) return;
+    setElementAttrs(element, theme.name, colorMode);
+  }, [colorMode, rootId, theme.name]);
 
   const value = useMemo<HvThemeContextValue>(
     () => ({
-      colorModes,
-      activeTheme: activeTheme as HvTheme,
-      selectedMode,
-      changeMode(newMode = selectedMode) {
+      colorModes: ["light", "dark"],
+      activeTheme: theme as HvTheme,
+      selectedMode: colorMode,
+      changeMode(newMode = colorMode) {
         setColorMode(newMode);
       },
       rootId,
     }),
-    [colorModes, activeTheme, selectedMode, rootId],
+    [theme, colorMode, rootId],
   );
 
   const muiTheme = useMemo(() => {
-    const colors = activeTheme.colors.modes[selectedMode];
-    return createTheme({
+    const colors = theme.colors[colorMode] || theme.colors.light;
+    return createMuiTheme({
       colorSchemes: { light: true, dark: true },
-      spacing: activeTheme.space.base,
+      spacing: theme.space.base,
       typography: {
-        fontFamily: activeTheme.fontFamily.body,
+        fontFamily: theme.fontFamily.body,
       },
       palette: {
         primary: { main: colors.primary },
@@ -120,9 +106,9 @@ export const HvThemeProvider = ({
           },
         },
       },
-      breakpoints: activeTheme.breakpoints,
+      breakpoints: theme.breakpoints,
     });
-  }, [activeTheme, selectedMode]);
+  }, [theme, colorMode]);
 
   const emotionCacheValue = useMemo(
     () => ({ cache: emotionCache }),

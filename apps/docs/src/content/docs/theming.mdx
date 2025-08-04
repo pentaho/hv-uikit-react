@@ -16,28 +16,26 @@ The **theme** object serves as the **UI Kit** foundation, defining all styling s
 Use the `HvProvider` to configure the active theme and color mode:
 
 ```tsx
-<HvProvider theme={pentahoPlus} colorMode="dawn">
+<HvProvider theme={pentahoPlus} colorMode="light">
   <App />
 </HvProvider>
 ```
 
 - If `themes` is not provided, the default is `ds5`.
 - If only one theme is provided, `theme` can be omitted.
-- If `colorMode` is omitted, `dawn` is used by default.
+- If `colorMode` is omitted, `light` is used by default.
 
 ## Creating a New Theme
 
-Use `createTheme()` to define a custom theme based on existing ones. This allows you to:
+Use `mergeTheme()` to define a custom theme based on existing ones. This allows you to:
 
 - Create custom color modes
 - Override design tokens like colors, spacing, or fonts
 - Extend the theme with new properties
 
 ```tsx
-const myTheme = createTheme({
+const myTheme = mergeTheme(pentaho, {
   name: "myTheme",
-  base: "pentahoPlus",
-  inheritColorModes: false,
   colors: {
     modes: {
       sand: {
@@ -85,7 +83,7 @@ const MyComponent = () => {
       icon
       variant="secondaryGhost"
       onClick={() => {
-        changeMode(selectedMode === "dawn" ? "wicked" : "dawn");
+        changeMode(selectedMode === "light" ? "dark" : "light");
       }}
     >
       <ThemeSwitcher />
@@ -129,9 +127,8 @@ const CssVariables = () => {
 You can globally define default props and custom styles for any component using the `components` key inside your theme. This reduces boilerplate and improves consistency.
 
 ```tsx
-const newTheme = createTheme({
+const newTheme = mergeTheme(ds5, {
   name: "myTheme",
-  base: "ds5",
   components: {
     HvAvatar: {
       variant: "square",

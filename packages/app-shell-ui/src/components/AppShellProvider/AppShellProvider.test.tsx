@@ -101,7 +101,7 @@ describe("AppShellProvider component", () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
           theme: "ds5",
-          colorMode: "wicked",
+          colorMode: "dark",
         },
       });
 
@@ -109,7 +109,7 @@ describe("AppShellProvider component", () => {
 
       await waitFor(() => {
         expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
-        expect(bodyElement.getAttribute("data-color-mode")).toBe("wicked");
+        expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });
     });

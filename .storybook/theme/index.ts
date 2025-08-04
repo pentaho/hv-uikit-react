@@ -1,10 +1,7 @@
 import { create, ThemeVarsPartial } from "storybook/theming";
 import { pentahoPlus } from "@hitachivantara/uikit-styles";
 
-const colors = {
-  light: pentahoPlus.colors.modes.dawn,
-  dark: pentahoPlus.colors.modes.wicked,
-};
+const { colors } = pentahoPlus;
 
 const getThemeVars = (base: "light" | "dark"): ThemeVarsPartial => ({
   base,
@@ -38,6 +35,6 @@ const getThemeVars = (base: "light" | "dark"): ThemeVarsPartial => ({
 });
 
 export const themes = {
-  wicked: create(getThemeVars("dark")),
-  dawn: create(getThemeVars("light")),
+  dark: create(getThemeVars("dark")),
+  light: create(getThemeVars("light")),
 };

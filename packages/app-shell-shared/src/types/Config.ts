@@ -2,6 +2,7 @@ import type { ServicesConfig as HvAppShellServicesConfig } from "@hitachivantara
 import type {
   HvBaseTheme,
   HvContainerProps,
+  HvThemeColorMode,
 } from "@hitachivantara/uikit-react-core";
 
 export type { HvAppShellServicesConfig };
@@ -69,7 +70,7 @@ export type HvAppShellConfig = {
 
 export type HvAppShellThemingConfig = {
   theme?: HvBaseTheme | (string & {});
-  colorMode?: string;
+  colorMode?: HvThemeColorMode;
 };
 
 export type HvAppShellAppSwitcherConfig = {
