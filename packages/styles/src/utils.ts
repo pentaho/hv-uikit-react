@@ -18,21 +18,6 @@ export const spacingUtil = (value: SpacingValue, vars: HvThemeVars): string => {
   }
 };
 
-// TODO: remove in favour or `spacingUtil` in v6
-export const spacingUtilOld = (
-  value: SpacingValue,
-  vars: HvThemeVars,
-): string => {
-  switch (typeof value) {
-    case "number":
-      return `${value}px`;
-    case "string":
-      return vars.space[value as HvThemeBreakpoint] || value;
-    default:
-      return "0px";
-  }
-};
-
 const toCSSVars = (obj: object, prefix = "--uikit") => {
   const vars: Record<string, string> = {};
 

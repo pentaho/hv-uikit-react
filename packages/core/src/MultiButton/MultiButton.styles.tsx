@@ -137,12 +137,4 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
   // TODO - review the need for these classes in v6 (use :first-child and :last-child instead)
   firstButton: {},
   lastButton: {},
-
-  // TODO - review the need for these classes in v6
-  primary: {},
-  primarySubtle: {},
-  primaryGhost: {},
-  secondary: {},
-  secondarySubtle: {},
-  secondaryGhost: {},
 });

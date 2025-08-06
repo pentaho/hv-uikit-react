@@ -6,11 +6,6 @@ export type {
   // BREAKPOINTS
   HvBreakpoints,
   // COLORS
-  HvAccentColor,
-  HvAtmosphereColor,
-  HvBaseColor,
-  HvSemanticColor,
-  HvCategoricalColor,
   HvColor,
   HvColorAny,
   HvRadius,

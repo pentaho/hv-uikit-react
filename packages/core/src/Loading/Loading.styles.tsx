@@ -48,12 +48,4 @@ export const { staticClasses, useClasses } = createClasses("HvLoading", {
   overlay: {},
   blur: {},
   hidden: { display: "none" },
-  /** @deprecated use data-size=small instead */
-  small: {},
-  /** @deprecated use data-size=regular instead */
-  regular: {},
-  /** @deprecated leverage data-size=small instead */
-  smallColor: {},
-  /** @deprecated leverage data-size=regular instead */
-  regularColor: {},
 });

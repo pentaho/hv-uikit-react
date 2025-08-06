@@ -258,24 +258,6 @@ type AllColors = typeof colors.common & typeof colors.light;
 /** @experimental extendable theme colors */
 export interface HvThemeColors extends HvColorTokens, AllColors {}
 
-// TODO: remove in favour of `HvColor`/`HvColorAny`
-export type HvAccentColor =
-  | "brand"
-  | `${"primary" | "secondary"}${"" | "_80" | "_60"}`;
-export type HvAtmosphereColor = `atmo${1 | 2 | 3 | 4}`;
-export type HvBaseColor = "base_light" | "base_dark";
-export type HvSemanticColor =
-  | `${"positive" | "neutral" | "warning" | "negative"}${"" | "_20"}`
-  | `${"positive" | "warning" | "negative"}_120`
-  | `${"positive" | "negative"}_80`
-  | "warning_140"
-  | "catastrophic"
-  | "sema6"
-  | `sema${10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19}`;
-export type HvCategoricalColor =
-  | `cat${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}${"" | "_20" | "_40" | "_60" | "_80" | "_120" | "_140" | "_160" | "_180"}`
-  | `cat${13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28}`;
-
 /** A type with all the accepted colors from the color palette */
 export type HvColor = keyof HvThemeColors;
 

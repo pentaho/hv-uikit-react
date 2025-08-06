@@ -9,10 +9,6 @@ export const { staticClasses, useClasses } = createClasses("HvCardHeader", {
     alignItems: "center",
     display: "flex",
   },
-  titleShort: {
-    ...theme.typography.label,
-    fontFamily: theme.fontFamily.body,
-  },
   title: {
     ...theme.typography.label,
     fontFamily: theme.fontFamily.body,

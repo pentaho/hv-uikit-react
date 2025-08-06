@@ -142,10 +142,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
       newFile.id = uniqueId("uploaded-file-data-");
 
       const isSizeAllowed = file.size <= maxFileSize;
-      const isFileAccepted =
-        !accept ||
-        accept.includes(file.type?.split("/")[1]) || // TODO: remove in v6
-        validateAccept(file, accept);
+      const isFileAccepted = !accept || validateAccept(file, accept);
 
       if (!isFileAccepted) {
         newFile.errorMessage = labels?.fileTypeError;

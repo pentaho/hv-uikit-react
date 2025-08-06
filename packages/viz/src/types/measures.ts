@@ -69,11 +69,9 @@ export interface ScatterPlotMeasure
   extends BaseMeasure,
     Pick<AxisMeasure, "yAxis"> {}
 
-// TODO - remove unnecessary plural (HvLineChartMeasure) in v6
-export type HvLineChartMeasures = string | LineFullMeasure;
+export type HvLineChartMeasure = string | LineFullMeasure;
 
-// TODO - remove unnecessary plural (HvBarChartMeasure) in v6
-export type HvBarChartMeasures = string | BarFullMeasure;
+export type HvBarChartMeasure = string | BarFullMeasure;
 
 export type HvDonutChartMeasure = string | DonutFullMeasure;
 

@@ -10,7 +10,5 @@ export const { staticClasses, useClasses } = createClasses("HvDialogTitle", {
     alignItems: "center",
     gap: theme.space.xs,
   },
-  fullscreen: {},
-  // TODO: consider deprecating
-  textWithIcon: {},
+  fullScreen: {},
 });

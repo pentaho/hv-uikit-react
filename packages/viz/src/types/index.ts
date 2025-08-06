@@ -11,8 +11,8 @@ export type {
   HvChartAxisNameLocation,
 } from "./axis";
 export type {
-  HvBarChartMeasures,
-  HvLineChartMeasures,
+  HvBarChartMeasure,
+  HvLineChartMeasure,
   HvDonutChartMeasure,
   HvChartSampling,
   HvChartAggregation,

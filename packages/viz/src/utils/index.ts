@@ -2,14 +2,14 @@ import { from, internal, table } from "arquero";
 import type ColumnTable from "arquero/dist/types/table/column-table";
 
 import type {
-  HvBarChartMeasures,
+  HvBarChartMeasure,
   HvChartAxisType,
   HvChartData,
   HvChartFilter,
   HvChartFilterOperation,
   HvConfusionMatrixMeasure,
   HvDonutChartMeasure,
-  HvLineChartMeasures,
+  HvLineChartMeasure,
 } from "../types";
 import { HvChartCommonProps } from "../types/common";
 import { HvChartLegendIcon } from "../types/legend";
@@ -44,8 +44,8 @@ export const getLegendIcon = (icon: HvChartLegendIcon) => {
 };
 
 export type SingleMeasure =
-  | HvLineChartMeasures
-  | HvBarChartMeasures
+  | HvLineChartMeasure
+  | HvBarChartMeasure
   | HvScatterPlotMeasure
   | HvDonutChartMeasure
   | HvConfusionMatrixMeasure;

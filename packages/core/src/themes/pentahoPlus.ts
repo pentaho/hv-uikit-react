@@ -293,7 +293,7 @@ export const pentahoPlus = mergeTheme(pentahoPlusBase, {
       classes: {
         root: {
           borderRadius: theme.radii.round,
-          "&& .HvButton-secondarySubtle": {
+          "& .HvButton-subtle[data-color=text]": {
             borderColor: theme.colors.textDimmed,
             backgroundColor: inputColors.bg,
           },

@@ -44,9 +44,8 @@ export type Arrayable<T> = T | T[];
 
 /** React.forwardRef with fixed type declarations */
 export function fixedForwardRef<T, P = {}>(
-  // TODO: change `React.ReactElement | null` to `React.ReactNode` in v6 (requires ts@5+)
-  render: (props: P, ref: React.Ref<T>) => React.ReactElement<any> | null,
-): (props: P & React.RefAttributes<T>) => React.ReactElement<any> | null {
+  render: (props: P, ref: React.Ref<T>) => React.ReactNode,
+): (props: P & React.RefAttributes<T>) => React.ReactNode {
   // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/70361#issuecomment-2327456092
   return forwardRef(render as any) as any;
 }

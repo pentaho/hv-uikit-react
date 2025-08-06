@@ -17,7 +17,7 @@ export { staticClasses as dialogClasses };
 export type HvDialogClasses = ExtractNames<typeof useClasses>;
 
 export interface HvDialogProps
-  extends Omit<MuiDialogProps, "fullScreen" | "classes" | "open"> {
+  extends Omit<MuiDialogProps, "classes" | "open"> {
   /** Current state of the Dialog. */
   open?: boolean;
   /** Callback fired when the component requests to be closed. */
@@ -33,8 +33,6 @@ export interface HvDialogProps
   fullHeight?: boolean;
   /** Title for the button close. */
   buttonTitle?: string;
-  /** Set the dialog to fullscreen mode. */
-  fullscreen?: boolean;
   /** Prevent closing the dialog when clicking on the backdrop. */
   disableBackdropClick?: boolean;
   /** A Jss Object used to override or extend the styles applied to the component. */
@@ -64,7 +62,7 @@ export const HvDialog = forwardRef<
     onClose,
     buttonTitle = "Close",
     fullHeight,
-    fullscreen: fullScreen = false, // TODO: rename to `fullScreen` in v6
+    fullScreen = false,
     disableBackdropClick = false,
     ...others
   } = useDefaultProps("HvDialog", props);
@@ -83,7 +81,7 @@ export const HvDialog = forwardRef<
         paper: cx(classes.paper, classes[variant!], {
           [classes.fullHeight]: fullHeight,
           [classes.statusBar]: !!variant,
-          [classes.fullscreen]: fullScreen,
+          [classes.fullScreen]: fullScreen,
         }),
       }}
       ref={ref}

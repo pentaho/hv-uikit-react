@@ -9,12 +9,7 @@ import {
   HvThemeVars,
   SpacingValue,
 } from "./types";
-import {
-  hasMultipleArgs,
-  mapCSSVars,
-  spacingUtil,
-  spacingUtilOld,
-} from "./utils";
+import { hasMultipleArgs, mapCSSVars, spacingUtil } from "./utils";
 
 const componentsSpec: DeepString<HvThemeComponents> = {
   header: {
@@ -84,9 +79,9 @@ export function getColor(color?: HvColorAny, fallbackColor?: HvColorAny) {
  * theme.spacing(2) // 16px (2*8px)
  * theme.spacing("md", "inherit", "42px") // 24px inherit 42px
  */
-const spacing = (...args: [SpacingValue[]] | SpacingValue[]) => {
+const spacing = (...args: [SpacingValue[]] | SpacingValue[]): string => {
   if (hasMultipleArgs(args)) {
-    return args.map((arg) => spacingUtil(arg, themeVars)).join(" ");
+    return args.map((arg) => spacing(arg)).join(" ");
   }
 
   const [value] = args;
@@ -95,11 +90,6 @@ const spacing = (...args: [SpacingValue[]] | SpacingValue[]) => {
     case "number":
     case "string":
       return spacingUtil(value, themeVars);
-    // TODO: remove in v6
-    case "object":
-      return value && value.length > 0
-        ? value.map((val) => spacingUtilOld(val, themeVars)).join(" ")
-        : "0px";
     default:
       return "0px";
   }

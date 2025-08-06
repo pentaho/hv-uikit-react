@@ -317,7 +317,6 @@ export const defaultLabels: HvQueryBuilderLabels = {
 export interface HvQueryBuilderContextValue {
   dispatchAction: React.Dispatch<QueryAction>;
   askAction: React.Dispatch<React.SetStateAction<AskAction | undefined>>;
-  selectLocation?: React.Dispatch<unknown>; // TODO - remove in v6 (not used)
   attributes?: Record<string, HvQueryBuilderAttribute>;
   operators: Record<string, HvQueryBuilderQueryOperator[]>;
   combinators: HvQueryBuilderQueryCombinator[];
@@ -334,7 +333,6 @@ export interface HvQueryBuilderContextValue {
 export const HvQueryBuilderContext = createContext<HvQueryBuilderContextValue>({
   dispatchAction: () => ({}),
   askAction: () => ({}),
-  selectLocation: () => ({}), // TODO - remove in v6 (not used)
   attributes: {},
   operators: defaultOperators,
   combinators: defaultCombinators,
