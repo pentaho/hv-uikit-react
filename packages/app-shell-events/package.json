@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-events",
-  "version": "1.1.3",
+  "version": "2.0.0-next.0",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -21,7 +21,7 @@
     "prepublishOnly": "npm run build && npx clean-publish"
   },
   "peerDependencies": {
-    "@hitachivantara/uikit-react-core": "^5.72.0",
+    "@hitachivantara/uikit-react-core": "^6.0.0-next.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
