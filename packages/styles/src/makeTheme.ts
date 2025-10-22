@@ -40,6 +40,13 @@ export const makeTheme = (
 
   // @ts-expect-error type this correctly
   newTheme.vars = makeVarsProxy(newTheme);
+  // add `modes` for backwards compatibility with existing v5 apps
+  // TODO: remove when this is no longer deemed necessary
+  // @ts-expect-error backwards compatibility hack
+  newTheme.colors.modes = {
+    dawn: newTheme.colors.light,
+    wicked: newTheme.colors.dark,
+  };
 
   return newTheme;
 };
