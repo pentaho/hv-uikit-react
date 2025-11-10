@@ -1,7 +1,5 @@
 import { HvLoading } from "@hitachivantara/uikit-react-core";
 
-import classes from "./styles";
-
 export interface LoadingProps {
   label?: string;
 }
@@ -12,6 +10,6 @@ export const Loading: React.FC<LoadingProps> = ({ label }) => (
     role="progressbar"
     label={label}
     aria-valuetext={label}
-    className={classes.root}
+    className="size-full z-overlay"
   />
 );

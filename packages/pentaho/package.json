@@ -1,8 +1,8 @@
 {
   "name": "@hitachivantara/uikit-react-pentaho",
-  "version": "0.10.20",
+  "version": "6.0.0-next.0",
   "type": "module",
-  "private": true,
+  "private": false,
   "author": "Hitachi Vantara UI Kit Team",
   "description": "UI Kit Pentaho React components.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",

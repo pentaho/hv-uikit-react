@@ -1,7 +1,7 @@
 {
-  "name": "@hitachivantara/hv-uikit-cli",
-  "version": "1.24.3",
-  "private": true,
+  "name": "@hitachivantara/uikit-cli",
+  "version": "6.0.0-next.0",
+  "private": false,
   "type": "module",
   "author": "Hitachi Vantara UI Kit Team",
   "description": "The Hitachi Vantara CLI for UI Kit apps.",
@@ -9,11 +9,11 @@
   "license": "Apache-2.0",
   "main": "src/index.js",
   "bin": {
-    "hv-uikit-cli": "src/index.js"
+    "uikit-cli": "src/index.js"
   },
   "keywords": [
     "hitachivantara",
-    "hv-uikit-cli",
+    "uikit-cli",
     "cli"
   ],
   "repository": {
