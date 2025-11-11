@@ -23,6 +23,7 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-themes"),
+    getAbsolutePath("@storybook/addon-vitest"),
   ],
   features: {},
   staticDirs: [

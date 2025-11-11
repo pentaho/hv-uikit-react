@@ -53,6 +53,7 @@ const tabs: HvCanvasBottomPanelProps["tabs"] = [
 ];
 
 export const PlaywrightTest: StoryObj = {
+  tags: ["skipTestRunner"],
   render: () => {
     const [minimize, setMinimize] = useState(false);
     const [open, setOpen] = useState(true);
@@ -88,6 +89,7 @@ export const PlaywrightTest: StoryObj = {
 };
 
 export const Test: StoryObj = {
+  tags: ["skipTestRunner"],
   render: () => (
     <>
       <HvCanvasBottomPanel
