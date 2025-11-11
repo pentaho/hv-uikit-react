@@ -1,16 +1,16 @@
-import { lazy } from "react";
+import { lazy, useEffect, useMemo, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import {
   createBrowserRouter,
+  matchRoutes,
   Outlet,
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
 import {
-  useHvAppShellCombinedProviders,
-  useHvAppShellConfig,
-  type HvAppShellMainPanelConfig,
-  type HvAppShellViewsConfig,
+  useHvAppShellModel,
+  type HvAppShellMainPanelModel,
+  type HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 import { HvContainer } from "@hitachivantara/uikit-react-core";
 
@@ -23,18 +23,18 @@ import AppShellViewProvider from "../AppShellViewProvider";
 const NotFound = lazy(() => import("../../pages/NotFound"));
 
 function renderNestedRoutes(
-  views: HvAppShellViewsConfig[] | undefined,
+  views: HvAppShellViewsModel[] | undefined,
 ): RouteObject[] | undefined {
   if (!views) {
     return undefined;
   }
   return views.map<RouteObject>((view) => {
-    const { bundle } = view;
+    const { bundle, route } = view;
     const appId = getAppIdFromBundle(bundle);
 
     const RouteComponent = lazy(() => import(/* @vite-ignore */ bundle));
 
-    const path = view.route.replace(/^\//, "");
+    const path = route.replace(/^\//, "");
 
     return {
       path,
@@ -42,11 +42,11 @@ function renderNestedRoutes(
       Component: () => (
         <AppShellViewProvider id={appId}>
           <ErrorBoundary
-            key={view.route}
+            key={view.key}
             fallback={<GenericError fullPage={false} />}
           >
             <RouteComponent {...view.config}>
-              {view.views != null ? <Outlet /> : null}
+              {view.views ? <Outlet /> : null}
             </RouteComponent>
           </ErrorBoundary>
         </AppShellViewProvider>
@@ -57,9 +57,9 @@ function renderNestedRoutes(
 }
 
 function renderRoutes(
-  mainPanel: HvAppShellMainPanelConfig | undefined,
+  mainPanel: HvAppShellMainPanelModel | undefined,
 ): RouteObject[] {
-  if (mainPanel == null || mainPanel.views == null) {
+  if (mainPanel?.views == null) {
     return [];
   }
 
@@ -72,6 +72,8 @@ function renderRoutes(
       config,
       views: nestedViews,
       maxWidth: viewMaxWidth,
+      key,
+      conditions,
       ...viewContainerProps
     } = view;
 
@@ -79,22 +81,24 @@ function renderRoutes(
 
     const RouteComponent = lazy(() => import(/* @vite-ignore */ bundle));
 
+    const containerProps = {
+      maxWidth: viewMaxWidth ?? maxWidth,
+      ...mainContainerProps,
+      ...viewContainerProps,
+    };
+
     return {
       path: route,
       // "Component" used instead of "element" due to lazy loading
       Component: () => (
-        <HvContainer
-          maxWidth={viewMaxWidth ?? maxWidth}
-          {...mainContainerProps}
-          {...viewContainerProps}
-        >
+        <HvContainer {...containerProps}>
           <AppShellViewProvider id={appId}>
             <ErrorBoundary
-              key={route}
+              key={view.key}
               fallback={<GenericError fullPage={false} />}
             >
               <RouteComponent {...config}>
-                {nestedViews != null ? <Outlet /> : null}
+                {nestedViews ? <Outlet /> : null}
               </RouteComponent>
             </ErrorBoundary>
           </AppShellViewProvider>
@@ -106,7 +110,7 @@ function renderRoutes(
 }
 
 function renderErrorRoutes(
-  mainPanel: HvAppShellMainPanelConfig | undefined,
+  mainPanel: HvAppShellMainPanelModel | undefined,
 ): RouteObject[] {
   const { views, maxWidth = "xl", ...mainContainerProps } = mainPanel ?? {};
 
@@ -123,21 +127,50 @@ function renderErrorRoutes(
 }
 
 const AppShellRoutes = () => {
-  const { baseUrl, mainPanel, services } = useHvAppShellConfig();
-  const { providers } = useHvAppShellCombinedProviders();
+  const { baseUrl, mainPanel } = useHvAppShellModel();
+
+  const prevRoutesRef = useRef<RouteObject[]>([]);
+  const [routerKey, setRouterKey] = useState<string>("router-initial");
+
+  const childRoutes = useMemo(
+    () => [...renderRoutes(mainPanel), ...renderErrorRoutes(mainPanel)],
+    [mainPanel],
+  );
+
+  useEffect(() => {
+    // Skip on initial mount (no previous routes)
+    if (prevRoutesRef.current.length === 0) {
+      prevRoutesRef.current = childRoutes;
+      return;
+    }
+
+    const currentPath = globalThis.location.pathname;
+
+    // Check if current route changed from/to 404
+    const prevMatch = matchRoutes(prevRoutesRef.current, currentPath);
+    const newMatch = matchRoutes(childRoutes, currentPath);
+
+    const prevWas404 = !prevMatch || prevMatch.at(-1)?.route.path === "*";
+    const newIs404 = !newMatch || newMatch.at(-1)?.route.path === "*";
+
+    // If transitioning between 404 and valid route, we need to remount
+    if ((prevWas404 && !newIs404) || (!prevWas404 && newIs404)) {
+      setRouterKey(`router-${newIs404 ? "404" : "valid"}`);
+    }
+
+    prevRoutesRef.current = childRoutes;
+  }, [baseUrl, childRoutes]);
 
   return (
     <RouterProvider
+      key={routerKey}
       fallbackElement={<LoadingPage />}
       router={createBrowserRouter(
         [
           {
-            element: <RootRoute providers={providers} services={services} />, // All routes live inside `RootRoute`
+            element: <RootRoute />,
             errorElement: <GenericError fullPage />,
-            children: [
-              ...renderRoutes(mainPanel),
-              ...renderErrorRoutes(mainPanel),
-            ],
+            children: childRoutes,
           },
         ],
         { basename: baseUrl ?? "/" },

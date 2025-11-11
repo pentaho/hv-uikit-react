@@ -4,7 +4,7 @@ import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellRuntimeContext,
-  useHvAppShellConfig,
+  useHvAppShellModel,
   useHvMenuItems,
 } from "@hitachivantara/app-shell-shared";
 
@@ -17,7 +17,7 @@ const useNavigationMenuItems = (): MenuItemsContext => {
   // use the i18n instance from the app shell runtime context to ensure we're using
   // the app shell instance of i18n and not the one from the embedded app
   const { pathname } = useLocation();
-  const { navigationMode } = useHvAppShellConfig();
+  const { navigationMode } = useHvAppShellModel();
   const { navigate } = useHvNavigation();
   const { i18n } = useContext(HvAppShellRuntimeContext) ?? {};
   const tConfig = useMemo(
