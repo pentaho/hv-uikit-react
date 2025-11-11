@@ -22,7 +22,9 @@ export const Main: StoryObj<HvCanvasSidePanelProps> = {
 
   render: (args) => (
     <div className="w-full h-lg bg-bgPage relative">
-      <HvCanvasSidePanel {...args}>Some content</HvCanvasSidePanel>
+      <HvCanvasSidePanel {...args}>
+        <div tabIndex={0}>Some content</div>
+      </HvCanvasSidePanel>
       <p>Main content</p>
     </div>
   ),
