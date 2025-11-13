@@ -14,7 +14,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 const containerDecorator: Decorator = (Story) => (
-  <div className="decorator w-340px min-h-440px">{Story()}</div>
+  <div className="decorator w-240px min-h-440px">{Story()}</div>
 );
 
 const meta: Meta<typeof HvDatePicker> = {
