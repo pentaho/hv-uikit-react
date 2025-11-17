@@ -7,7 +7,11 @@ import {
 
 import { HvActionsGenericProps } from "../../ActionsGeneric";
 import { HvButtonProps } from "../../Button";
-import { HvCallout, HvCalloutVariant } from "../../utils/Callout";
+import {
+  HvCallout,
+  HvCalloutProps,
+  HvCalloutVariant,
+} from "../../utils/Callout";
 import { staticClasses, useClasses } from "./BannerContent.styles";
 
 export { staticClasses as bannerContentClasses };
@@ -46,6 +50,8 @@ export interface HvBannerContentProps
   actionsPosition?: HvBannerActionPosition;
   /** The props to pass down to the Action Container. */
   actionProps?: Partial<HvButtonProps>;
+  /** The size of the banner. */
+  size?: HvCalloutProps["size"];
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBannerContentClasses;
 }
@@ -70,6 +76,7 @@ export const HvBannerContent = forwardRef<
     content,
     children,
     actionProps,
+    size = "regular",
     ...others
   } = useDefaultProps("HvBannerContent", props);
   const { classes, cx } = useClasses(classesProp);
@@ -109,6 +116,7 @@ export const HvBannerContent = forwardRef<
         onAction?.(evt, action);
         actionsCallback?.(evt, id!, action);
       }}
+      size={size}
       {...others}
     >
       {children ?? content}
