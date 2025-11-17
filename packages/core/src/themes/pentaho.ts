@@ -8,6 +8,7 @@ import {
 } from "@hitachivantara/uikit-styles";
 
 import type { HvBadgeProps } from "../Badge";
+import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvBaseDropdownProps } from "../BaseDropdown";
@@ -1101,5 +1102,13 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSingleCalendarProps>,
+    HvBannerContent: {
+      classes: {
+        root: {
+          overflow: "hidden",
+          minHeight: "unset",
+        },
+      },
+    } satisfies CSSClasses<HvBannerContentProps>,
   },
 });
