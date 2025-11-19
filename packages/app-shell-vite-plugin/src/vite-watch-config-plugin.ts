@@ -2,43 +2,17 @@ import path from "node:path";
 import type { PluginOption } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
-import { replaceSelf } from "./config-utils.js";
 import { require } from "./nodeModule.js";
-import { replaceReferencesToSelf } from "./vite-configuration-processor-plugin.js";
 
 const prepareConfigForDevMode = (
   config: HvAppShellConfig,
   selfAppName: string,
 ) => {
-  const { mainPanel, header, theming, providers } = config;
-  const replacedConfig: HvAppShellConfig = {
-    ...config,
-  };
-  const self = `${selfAppName}/`;
-  // Main panel - Views
-  if (mainPanel?.views && replacedConfig.mainPanel) {
-    replacedConfig.mainPanel.views = replaceReferencesToSelf(
-      mainPanel.views,
-      selfAppName,
-    );
-  }
-  // Header - Actions
-  if (header?.actions && replacedConfig.header) {
-    replacedConfig.header.actions = replaceReferencesToSelf(
-      header.actions,
-      selfAppName,
-    );
-  }
-  // Theming
-  if (theming?.theme && replacedConfig.theming) {
-    replacedConfig.theming.theme = replaceSelf(theming.theme, self);
-  }
-  // Providers
-  if (providers) {
-    replacedConfig.providers = replaceReferencesToSelf(providers, selfAppName);
-  }
+  let configString = JSON.stringify(config);
 
-  return replacedConfig;
+  configString = configString.replaceAll(`"@self/`, `"${selfAppName}/`);
+
+  return JSON.parse(configString) as HvAppShellConfig;
 };
 
 export default function serveAppShellConfig(
