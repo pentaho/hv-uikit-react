@@ -104,6 +104,7 @@ export default {
         },
       ],
     },
+    { label: "Debug", target: "/debug" },
     {
       label: "Not found",
       target: "/not-found",
@@ -117,11 +118,6 @@ export default {
       target: "/navigation",
     },
     { label: "Simple App Home", target: "/simple-app/home" },
-    { label: "Candy App Context", target: "/candy-route/displayContext" },
-    {
-      label: "Candy-Default App Context",
-      target: "/candy-route/displayDefaultAppContext",
-    },
   ],
   translations: {
     en: {
@@ -178,7 +174,6 @@ export default {
         },
       },
       { bundle: "@hv/sample-app/headerActions/HelloSimpleApp.js" },
-      { bundle: "@self/modules/HelloDefaultApp.js" },
       { bundle: "@self/modules/ChangeContextValue.js" },
       { bundle: "@hv/sample-app/headerActions/ChangeDefaultAppContext.js" },
     ],
@@ -186,6 +181,7 @@ export default {
   mainPanel: {
     views: [
       // @self app
+      { bundle: "@self/pages/Debug.js", route: "/debug" },
       {
         bundle: "@self/pages/AssetInventory.js",
         route: "/asset-inventory",
@@ -252,11 +248,6 @@ export default {
         bundle: "@hv/sample-app/pages/Home.js",
         route: "/scoped-home",
       },
-      // Candy App
-      {
-        bundle: "@hv/sample-app/pages/Main.js",
-        route: "/candy-route/*",
-      },
       // Services Demo Page
       {
         bundle: "@self/pages/ServicesDemo.js",
@@ -264,10 +255,7 @@ export default {
       },
     ],
   },
-  providers: [
-    { bundle: "@self/providers/DefaultAppProvider.js" },
-    { bundle: "@hv/sample-app/providers/CandyAppProvider.js" },
-  ],
+  providers: [{ bundle: "@self/providers/DefaultAppProvider.js" }],
   services: {
     // Instance Service (bundle) - Basic hooks service consumed by ServicesDemo page and CreateNewContentDropDownMenu header action
     "default-app/services:UseCreateNewContentAction": [
