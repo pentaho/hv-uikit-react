@@ -54,15 +54,6 @@ export default function generateBaseTag(
             },
             injectTo: "head-prepend",
           },
-          {
-            tag: "link",
-            injectTo: "head-prepend",
-            attrs: {
-              rel: "preload",
-              as: "image",
-              href: "./icons/icons.svg",
-            },
-          },
         ],
       }),
     },
