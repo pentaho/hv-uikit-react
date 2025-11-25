@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.108.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.108.0...@hitachivantara/uikit-react-core@5.108.1) (2025-11-25)
+
+### Bug Fixes
+
+- **Header:** improve styles for actions alignment ([#5001](https://github.com/pentaho/hv-uikit-react/issues/5001)) ([703ac59](https://github.com/pentaho/hv-uikit-react/commit/703ac59ab1f67d3d3673b9978328c89c424323f5))
+- **StatusIcon:** reduce classes specificity ([#4996](https://github.com/pentaho/hv-uikit-react/issues/4996)) ([e339f33](https://github.com/pentaho/hv-uikit-react/commit/e339f33a03a8bd46fdff57465fddd24b1d4113d8))
+- **Tooltip:** reduce classes specificity ([#4995](https://github.com/pentaho/hv-uikit-react/issues/4995)) ([df6a84c](https://github.com/pentaho/hv-uikit-react/commit/df6a84c744c10bad7e502c35c8e48e56c3ce3ddb))
+
 # [5.108.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.107.0...@hitachivantara/uikit-react-core@5.108.0) (2025-11-21)
 
 ### Bug Fixes

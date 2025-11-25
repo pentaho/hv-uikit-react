@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-pentaho",
-  "version": "0.10.18",
+  "version": "0.10.19",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.11.0",
-    "@hitachivantara/uikit-react-core": "^5.108.0",
+    "@hitachivantara/uikit-react-core": "^5.108.1",
     "@hitachivantara/uikit-react-icons": "^5.16.8",
     "@hitachivantara/uikit-react-utils": "^0.2.48",
     "@mui/base": "5.0.0-beta.68",
