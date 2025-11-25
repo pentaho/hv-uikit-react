@@ -19,8 +19,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# env
-.env*
+# local files
+*.local
 
 # Build
 build
@@ -36,28 +36,18 @@ packages/icons/src/*
 *.tgz
 .nx
 
-# tests
+# tests & cache
 coverage
 /a11y-report
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
-# lint
 .eslintcache
-
-# typescript
 *.tsbuildinfo
 
 # clean-publish
 package
-
-# security
-detect.sh
-output
-reports
-dependency-check-bin
 
 # examples
 examples/*/package-lock.json

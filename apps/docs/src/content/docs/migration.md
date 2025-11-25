@@ -123,10 +123,10 @@ The `HvActionsGeneric` utility component prop changes are reflected in several c
 - `actionsCallback` → `onAction` (also affects `HvBanner`, `HvBannerContent`, `HvBulkActions`, `HvSnackbar`, `HvSnackbarContent`)
 - `category` → `variant` (also affects `HvDropDownMenu`)
 
-````diff
+```diff
 <HvActionsGeneric
--  actionsCallback={handleAction}
-+  onAction={handleAction}
+-  actionsCallback={(evt, id, action) => {}}
++  onAction={(evt, action) => {}}
 
 -  category="primary"
 +  variant="primary"
@@ -145,7 +145,7 @@ The `HvActionsGeneric` utility component prop changes are reflected in several c
 
 -<HvDropDownMenu category="primary" />
 +<HvDropDownMenu variant="primary" />
-````
+```
 
 #### Icons
 
@@ -168,6 +168,33 @@ import { User } from "@hitachivantara/uikit-react-icons";
 -  semantic="positive"
 +  color="positive"
 />
+```
+
+#### Typography
+
+The deprecated `HvTypography` `variant`s that were part of the NEXT `ds3` theme were removed.
+For a guide on migrating variants, refer to the [v5 migration guide](https://github.com/pentaho/hv-uikit-react/blob/v5.x/apps/docs/src/content/docs/migration.md#breaking-changes-in-the-theme-object).
+
+Furthermore, all variants were removed from the `classes[variant]` object. You can instead use the `[data-variant]` attribute selector.
+
+```txt
+# removed classes
+display title1 title2 title3 title4 body label captionLabel caption1 caption2
+# removed classes & variants
+5xlTitle 4xlTitle 3xlTitle xxlTitle xlTitle lTitle mTitle sTitle xsTitle xxsTitle sectionTitle highlightText normalText placeholderText link disabledText selectedNavText vizText vizTextDisabled xsInlineLink
+```
+
+```diff
+<HvTypography
+-  variant="normalText"
+  classes={{
+-    normalText: "custom-root-class",
++    root: "custom-root-class",
+  }}
+
+-  paragraph
++  component="p"
+>
 ```
 
 #### Other Removed Props
@@ -193,55 +220,53 @@ import { User } from "@hitachivantara/uikit-react-icons";
 | HvSuggestions  | `expanded`                           | `open`                      |
 | HvTag          | `deleteButtonAriaLabel`              | —                           |
 | HvTooltip      | `useSingle`                          | —                           |
-| HvTypography   | `paragraph`                          | `component="p"`             |
 
 #### Removed CSS Classes
 
 The following CSS classes have been removed. Use the suggested replacements or modern CSS selectors:
 
-| Component         | Removed Classes                                                                          | Replacement                            |
-| ----------------- | ---------------------------------------------------------------------------------------- | -------------------------------------- |
-| HvAdornment       | `classes.icon`, `classes.adornment*`                                                     | `classes.root`                         |
-| HvAvatar          | `classes.status`                                                                         | `classes.container`                    |
-| HvBannerContent   | `classes.baseVariant`, `classes.outContainer`                                            | `classes.root`                         |
-| HvBannerContent   | `classes.actionsInnerContainer`                                                          | `classes.actionContainer`              |
-| HvBaseDropdown    | `classes.headerOpen*`, `classes.panelOpened*`                                            | `[data-popper-placement]`              |
-| HvBaseInput       | `classes.inputRoot*`, `classes.inputBorderContainer`                                     | `classes.root` or `::after`            |
-| HvDialogTitle     | `classes.messageContainer`, `classes.titleText`                                          | `classes.root`                         |
-| HvDotPagination   | `classes.radioRoot`                                                                      | `classes.radio`                        |
-| HvDropDownMenu    | `classes.container`, `classes.icon`                                                      | `classes.root`                         |
-| HvGlobalActions   | `classes.globalSectionArea`                                                              | `classes.global` wrapper               |
-| HvGlobalActions   | `classes.globalWrapperComplement`                                                        | `classes.section` wrapper              |
-| HvGlobalActions   | `classes.sectionName`                                                                    | `classes.name`                         |
-| HvHeader          | `classes.backgroundColor`                                                                | `classes.root`                         |
-| HvInlineEditor    | `classes.inputBorderContainer`                                                           | `classes.root::after`                  |
-| HvInput           | `classes.inputExtension`                                                                 | `classes.suggestionsContainer::before` |
-| HvListItem        | `classes.withStartAdornment`                                                             | `:has($startAdornment)`                |
-| HvListItem        | `classes.withEndAdornment`                                                               | `:has($endAdornment)`                  |
-| HvLoading         | `classes.small*`, `classes.regular*`                                                     | `[data-size=small/regular]`            |
-| HvPagination      | `classes.totalPagesTextContainer`                                                        | —                                      |
-| HvPagination      | `classes.pageSizeOptionsSelect`                                                          | `classes.pageSizeRoot`                 |
-| HvPagination      | `classes.pageSizeInput*`                                                                 | `classes.pageJump`                     |
-| HvSection         | `classes.spaceTop`                                                                       | `classes.hasHeader`                    |
-| HvSelect          | `classes.panelOpened*`                                                                   | `[data-popper-placement]`              |
-| HvSnackbarContent | `classes.messageSpan`                                                                    | `classes.message`                      |
-| HvTableSection    | `classes.spaceTop`                                                                       | `classes.hasHeader`                    |
-| HvTag             | `classes.chipRoot`                                                                       | `classes.root`                         |
-| HvTag             | `classes.button`, `classes.tagButton`                                                    | `classes.deleteIcon`                   |
-| HvTag             | `classes.disabledDeleteIcon`                                                             | `classes.deleteIcon:disabled`          |
-| HvTag             | `classes.categorical*`, `classes.focusVisible`                                           | —                                      |
-| HvTagsInput       | `classes.listItemGutters`                                                                | —                                      |
-| HvTagsInput       | `classes.listItemRoot`                                                                   | `classes.chipRoot`                     |
-| HvTagsInput       | `classes.tagInputContainer*`, `classes.tagInputRoot`                                     | `classes.input`                        |
-| HvTagsInput       | `classes.tagSelected`, `classes.tagInputRootFocused`                                     | `:focus` or `:focus-visible`           |
-| HvTagsInput       | `classes.tagInputBorderContainer`                                                        | `::after`                              |
-| HvTagsInput       | `classes.tagInputRootEmpty`                                                              | —                                      |
-| HvTooltip         | `classes.title`, `classes.value*`, `classes.color`                                       | —                                      |
-| HvTooltip         | `classes.tooltipMulti`,                                                                  | `classes.tooltip`                      |
-| HvTooltip         | `classes.separator*`                                                                     | —                                      |
-| HvTypography      | `classes.display`, `classes.title*`, `classes.body`, `classes.label`, `classes.caption*` | `[data-variant]`                       |
+| Component         | Removed Classes                                      | Replacement                            |
+| ----------------- | ---------------------------------------------------- | -------------------------------------- |
+| HvAdornment       | `classes.icon`, `classes.adornment*`                 | `classes.root`                         |
+| HvAvatar          | `classes.status`                                     | `classes.container`                    |
+| HvBannerContent   | `classes.baseVariant`, `classes.outContainer`        | `classes.root`                         |
+| HvBannerContent   | `classes.actionsInnerContainer`                      | `classes.actionContainer`              |
+| HvBaseDropdown    | `classes.headerOpen*`, `classes.panelOpened*`        | `[data-popper-placement]`              |
+| HvBaseInput       | `classes.inputRoot*`, `classes.inputBorderContainer` | `classes.root` or `::after`            |
+| HvDialogTitle     | `classes.messageContainer`, `classes.titleText`      | `classes.root`                         |
+| HvDotPagination   | `classes.radioRoot`                                  | `classes.radio`                        |
+| HvDropDownMenu    | `classes.container`, `classes.icon`                  | `classes.root`                         |
+| HvGlobalActions   | `classes.globalSectionArea`                          | `classes.global` wrapper               |
+| HvGlobalActions   | `classes.globalWrapperComplement`                    | `classes.section` wrapper              |
+| HvGlobalActions   | `classes.sectionName`                                | `classes.name`                         |
+| HvHeader          | `classes.backgroundColor`                            | `classes.root`                         |
+| HvInlineEditor    | `classes.inputBorderContainer`                       | `classes.root::after`                  |
+| HvInput           | `classes.inputExtension`                             | `classes.suggestionsContainer::before` |
+| HvListItem        | `classes.withStartAdornment`                         | `:has($startAdornment)`                |
+| HvListItem        | `classes.withEndAdornment`                           | `:has($endAdornment)`                  |
+| HvLoading         | `classes.small*`, `classes.regular*`                 | `[data-size=small/regular]`            |
+| HvPagination      | `classes.totalPagesTextContainer`                    | —                                      |
+| HvPagination      | `classes.pageSizeOptionsSelect`                      | `classes.pageSizeRoot`                 |
+| HvPagination      | `classes.pageSizeInput*`                             | `classes.pageJump`                     |
+| HvSection         | `classes.spaceTop`                                   | `classes.hasHeader`                    |
+| HvSelect          | `classes.panelOpened*`                               | `[data-popper-placement]`              |
+| HvSnackbarContent | `classes.messageSpan`                                | `classes.message`                      |
+| HvTableSection    | `classes.spaceTop`                                   | `classes.hasHeader`                    |
+| HvTag             | `classes.chipRoot`                                   | `classes.root`                         |
+| HvTag             | `classes.button`, `classes.tagButton`                | `classes.deleteIcon`                   |
+| HvTag             | `classes.disabledDeleteIcon`                         | `classes.deleteIcon:disabled`          |
+| HvTag             | `classes.categorical*`, `classes.focusVisible`       | —                                      |
+| HvTagsInput       | `classes.listItemGutters`                            | —                                      |
+| HvTagsInput       | `classes.listItemRoot`                               | `classes.chipRoot`                     |
+| HvTagsInput       | `classes.tagInputContainer*`, `classes.tagInputRoot` | `classes.input`                        |
+| HvTagsInput       | `classes.tagSelected`, `classes.tagInputRootFocused` | `:focus` or `:focus-visible`           |
+| HvTagsInput       | `classes.tagInputBorderContainer`                    | `::after`                              |
+| HvTagsInput       | `classes.tagInputRootEmpty`                          | —                                      |
+| HvTooltip         | `classes.title`, `classes.value*`, `classes.color`   | —                                      |
+| HvTooltip         | `classes.tooltipMulti`,                              | `classes.tooltip`                      |
+| HvTooltip         | `classes.separator*`                                 | —                                      |
 
-#### Deprecated TypeScript Types
+#### Removed TypeScript Types
 
 The following TypeScript types have been updated or removed:
 
