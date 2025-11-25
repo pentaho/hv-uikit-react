@@ -1,6 +1,6 @@
 {
   "include": ["src", "rollup.config.js"],
-  "exclude": ["node_modules", "dist", "tests"],
+  "exclude": ["node_modules", "dist", "**/tests/**"],
 
   "compilerOptions": {
     "target": "ES2022",

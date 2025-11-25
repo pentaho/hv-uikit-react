@@ -4,12 +4,12 @@ import {
   HvButton,
   HvCard,
   HvCardContent,
-  HvContainer,
   HvGrid,
   HvLoading,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
+import { MainContainer } from "../../components/MainContainer";
 import { ServiceDefinitions } from "../../services/serviceDefinition";
 import {
   MessageService,
@@ -224,7 +224,7 @@ const ComponentServiceDemo: FC = () => {
 
 const ServicesDemo: FC = () => {
   return (
-    <HvContainer maxWidth="lg">
+    <MainContainer>
       <HvTypography variant="title1" style={{ marginBottom: "32px" }}>
         Services Demo
       </HvTypography>
@@ -251,7 +251,7 @@ const ServicesDemo: FC = () => {
           <ComponentServiceDemo />
         </HvGrid>
       </HvGrid>
-    </HvContainer>
+    </MainContainer>
   );
 };
 
