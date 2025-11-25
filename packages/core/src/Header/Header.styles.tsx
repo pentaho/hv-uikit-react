@@ -25,5 +25,6 @@ export const { staticClasses, useClasses } = createClasses("HvHeader", {
     },
   },
   fixed: { position: "fixed", top: 0, left: "auto", right: 0 },
+  /** @deprecated use `classes.root` instead */
   backgroundColor: {},
 });
