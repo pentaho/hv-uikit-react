@@ -1,0 +1,223 @@
+# Migration from v5.x to v6.x
+
+UI Kit v6 is a **major cleanup release** that removes deprecated features and improves developer experience. This version eliminates legacy code deprecated throughout v5.x while adding new features and enhancements.
+
+## Table of Contents
+
+- [What's New in v6](#whats-new-in-v6)
+- [Installation & Dependencies](#installation--dependencies)
+- [Breaking Changes](#breaking-changes)
+- [New Features](#new-features)
+- [Migration Tools](#migration-tools)
+- [Getting Help](#getting-help)
+
+## What's New in v6 <a id="whats-new-in-v6" />
+
+- **Dependencies** - MUI v7 and React 18+ required (upgraded from MUI v5 and React 17)
+- **Theme system** - DS3 theme removed, multi-theme support removed, light/dark modes only, `pentahoPlus` renamed to `pentaho`
+- **Components** - Removed deprecated components and enhanced existing ones with updated specifications
+- **API cleanup** - 10+ deprecated props removed, 20+ CSS classes removed, color/theme tokens updated
+- **TypeScript** - Improved type definitions, removed deprecated types, better developer experience
+
+## Installation & Dependencies <a id="installation--dependencies" />
+
+### Peer Dependencies
+
+**Updated requirements:**
+
+- `@mui/material: ^7.0.2` (upgraded from v5.x)
+- `react: >=18.0.0` (upgraded from v17.x)
+- `react-dom: >=18.0.0`
+
+**Unchanged:**
+
+- `@emotion/react: ^11.11.1`
+- `@emotion/styled: ^11.11.0`
+
+## Breaking Changes <a id="breaking-changes" />
+
+### 1. Theme System Changes
+
+#### HvProvider API Changes
+
+**Multi-theme support removed:**
+
+- `themes` prop → use single `theme` prop
+- `selectedTheme` → use `activeTheme.name` in `useTheme` hook
+
+**Color mode simplified:**
+
+- Only `light` and `dark` modes (removed "dawn", "wicked")
+- Default color mode is now `light`
+
+```diff
+<HvProvider
+-  themes={[ds5, pentaho]}
+-  selectedTheme="ds5"
+-  colorMode="dawn"
++  theme={ds5}
++  colorMode="light"
+>
+```
+
+#### DS3 Theme Removal
+
+**Required:** Replace `ds3` with `ds5` or `pentaho`
+
+```diff
+- import { ds3 } from "@hitachivantara/uikit-react-core";
++ import { ds5 } from "@hitachivantara/uikit-react-core";
+
+- <HvProvider theme={ds3}>
++ <HvProvider theme={ds5}>
+```
+
+#### Typography Variants
+
+**DS3 variant mappings:**
+
+- `xxlTitle` → `display`
+- `xlTitle` → `title1`
+- `lTitle` → `title2`
+- `mTitle` → `title3`
+- `sTitle` → `title4`
+- `xsTitle` → `label`
+
+#### Theme Token Removals
+
+**Color tokens:**
+
+- `base_light` → `textLight`
+- `base_dark` → `textDark`
+- `bgContainerSecondary` → `bgPage`
+- `sema.red` → `negative`
+- `sema.green` → `positive`
+- `sema.yellow` → `warning`
+- `supp.*` → use semantic colors or custom values
+
+**Other tokens:**
+
+- `sizes` token → use `spacing` tokens
+- `radii.circle` → use `radii.full`
+- `colors.backgroundColor` → use `colors.bgPage`
+- `colors.containerBackgroundHover` → use appropriate hover colors
+
+### 2. Component Changes
+
+#### Removed Components
+
+- `HvBox` → use `HvStack` or native `div` with styling
+- `HvKpi` → use custom implementation or dashboard components
+- `HvLink` → use `HvTypography` with link styling or native `<a>`
+
+```diff
+- import { HvBox, HvKpi, HvLink } from "@hitachivantara/uikit-react-core";
++ import { HvStack, HvTypography } from "@hitachivantara/uikit-react-core";
+
+- <HvBox>Content</HvBox>
++ <HvStack>Content</HvStack>
+
+- <HvLink href="/path">Link text</HvLink>
++ <HvTypography component="a" href="/path">Link text</HvTypography>
+```
+
+#### Deprecated Props Removed
+
+**Component prop changes:**
+
+- `BulkActions.selectAllLabel` → `labels.selectAll`
+- `CheckBoxGroup.selectAllLabel` → `labels.selectAll`
+- `Button.overrideIconColors` → removed (not needed)
+- `Dialog.firstFocusable` → use standard focus management
+- `Drawer.showBackdrop` → always shown for modal drawers
+- `DropDownMenu.category` → `variant`
+- `Dropdown.hasTooltips` → automatically detected
+- `FileUploader.dropzone` → configure via other props
+- `Suggestions.expanded` → `open`
+- `Icons.inverted` → use `color` prop
+- `Icons.semantic` → use `color` prop
+
+#### Deprecated CSS Classes Removed
+
+**Affected components:**
+
+- `ActionsGeneric`, `Avatar`, `BannerContent`, `BaseDropdown`, `BaseInput`
+- `BulkActions`, `Dialog.Title`, `DotPagination`, `DropDownMenu`
+- `FormElement.Adornment`, `GlobalActions`, `InlineEditor`, `Input`
+- `ListContainer.ListItem`, `MultiButton`, `Section`, `Select`
+- `SnackbarContent`, `TableSection`, `Tag`, `TagsInput`, `Tooltip`
+
+**Migration:** Use current class names from component documentation or `data-*` attributes
+
+### 3. TypeScript Changes
+
+#### Removed Types
+
+**Deprecated types removed:**
+
+- `HvAvatarSize` → use string literals
+- `HvDatePickerStatus` → use standard status types
+- `HvDropdownLabelsProps` → use component-specific types
+- `HvButtonVariant` → updated with new variants
+
+#### Additional Changes
+
+**Component-specific updates:**
+
+- `Avatar.size` → use string literals instead of `HvAvatarSize` enum
+- `DatePicker.status` → use standard status types instead of `HvDatePickerStatus`
+- `DropDownMenu.iconSelected` class → use `open` class for styling
+- `QueryBuilder` → various internal prop updates
+- `ScrollTo` components → deprecated scroll-related types removed
+
+## Migration Checklist <a id="migration-checklist" />
+
+After completing migration, verify:
+
+- ✅ **Visual regression** - component appearances unchanged
+- ✅ **Functionality** - all interactive elements work correctly
+- ✅ **Accessibility** - accessibility audits pass
+- ✅ **TypeScript** - no type errors in codebase
+- ✅ **Console** - no errors or warnings in browser console
+
+## Getting Help <a id="getting-help" />
+
+### Resources
+
+- **[Component Documentation](https://lumada-design.github.io/uikit-docs/)** - current APIs and examples
+- **[GitHub Issues](https://github.com/lumada-design/hv-uikit-react/issues)** - known issues and bug reports
+- **[Create New Issue](https://github.com/lumada-design/hv-uikit-react/issues/new)** - for additional support
+
+### Quick Reference
+
+#### Component Props
+
+| Component       | Removed Prop           | Alternative                    |
+| --------------- | ---------------------- | ------------------------------ |
+| `BulkActions`   | `selectAllLabel`       | `labels.selectAll`             |
+| `CheckBoxGroup` | `selectAllLabel`       | `labels.selectAll`             |
+| `Button`        | `overrideIconColors`   | removed (not needed)           |
+| `Dialog`        | `firstFocusable`       | use standard focus management  |
+| `Drawer`        | `showBackdrop`         | always shown for modal drawers |
+| `DropDownMenu`  | `category`             | `variant`                      |
+| `Dropdown`      | `hasTooltips`          | automatically detected         |
+| `FileUploader`  | `dropzone`             | configure via other props      |
+| `Suggestions`   | `expanded`             | `open`                         |
+| Icons           | `inverted`, `semantic` | `color`                        |
+
+#### Color Tokens
+
+| Old Token    | New Token   |
+| ------------ | ----------- |
+| `base_light` | `textLight` |
+| `base_dark`  | `textDark`  |
+| `sema.red`   | `negative`  |
+| `sema.green` | `positive`  |
+
+#### Removed Components
+
+| Old Component | Alternative                                    |
+| ------------- | ---------------------------------------------- |
+| `HvBox`       | `HvStack` or native `div` with styling         |
+| `HvKpi`       | Custom implementation or dashboard components  |
+| `HvLink`      | `HvTypography` with link styling or native `a` |
