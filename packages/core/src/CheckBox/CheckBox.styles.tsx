@@ -18,13 +18,6 @@ export const { staticClasses, useClasses } = createClasses("HvCheckBox", {
     ":where(:has($label)) $checkbox": {
       borderRadius: "inherit",
     },
-    "&$left": {
-      flexDirection: "row-reverse",
-      justifyContent: "flex-end",
-    },
-    "&$right": {
-      flexDirection: "row",
-    },
   },
   invalidContainer: {},
   disabled: {
@@ -42,17 +35,23 @@ export const { staticClasses, useClasses } = createClasses("HvCheckBox", {
     ...theme.typography.body,
     cursor: "pointer",
     lineHeight: "32px",
+    flex: 1,
   },
   checked: {},
   indeterminate: {},
   semantic: {},
   left: {
-    "& .HvCheckBox-label": {
+    "& $label": {
       paddingLeft: theme.space.xs,
+      textAlign: "right",
+    },
+    "& $container": {
+      flexDirection: "row-reverse",
+      // justifyContent: "flex-end",
     },
   },
   right: {
-    "& .HvCheckBox-label": {
+    "& $label": {
       paddingRight: theme.space.xs,
     },
   },

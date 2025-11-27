@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "storybook/test";
 import {
   HvBaseCheckBox,
   HvCheckBox,
@@ -40,6 +41,13 @@ export const Main: StoryObj<HvCheckBoxProps> = {
 };
 
 export const Test: StoryObj<HvCheckBoxProps> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByTestId("anchor"));
+    const checkbox = canvas.getByRole("checkbox", { name: /left/i });
+    expect(checkbox).toBeChecked();
+  },
   render: () => (
     <>
       <HvCheckBox disabled label="Checkbox 1" />
@@ -68,8 +76,22 @@ export const Test: StoryObj<HvCheckBoxProps> = {
         indeterminate
         label="Checkbox 3"
       />
-      <HvCheckBox label="Left" labelPosition="left" />
-      <HvCheckBox label="Right" labelPosition="right" defaultChecked />
+      <HvCheckBox
+        className="w-120px"
+        label={
+          <div className="flex justify-between">
+            <span className="size-10px" data-testid="anchor" />
+            Left
+          </div>
+        }
+        labelPosition="left"
+      />
+      <HvCheckBox
+        className="w-120px"
+        label="Right"
+        labelPosition="right"
+        defaultChecked
+      />
       <div>
         <HvCheckBox aria-label="Checkbox" />
         <HvCheckBox defaultChecked aria-label="Checkbox" />
