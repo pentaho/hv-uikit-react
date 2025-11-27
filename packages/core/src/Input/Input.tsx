@@ -794,13 +794,18 @@ export const HvInput = fixedForwardRef(function HvInput<
         <HvWarningText
           id={setId(elementId, "error")}
           disableBorder
+          disableGutter
           className={classes.error}
         >
           {validationMessage}
         </HvWarningText>
       )}
       {canShowInfo && (
-        <HvInfoMessage disableGutter variant="caption1">
+        <HvInfoMessage
+          disableGutter
+          variant="caption1"
+          style={{ display: "block" }}
+        >
           {infoMessage}
         </HvInfoMessage>
       )}

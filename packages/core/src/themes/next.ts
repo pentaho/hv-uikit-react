@@ -7,7 +7,7 @@ import {
 import type { HvAvatarProps } from "../Avatar";
 import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseDropdownProps } from "../BaseDropdown";
-import { HvRadioIconProps } from "../BaseRadio/RadioIcon";
+import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvButtonProps } from "../Button";
 import type { HvCalendarProps } from "../Calendar";
@@ -19,6 +19,7 @@ import type {
   HvDialogTitleProps,
 } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
+import type { HvWarningTextProps } from "../FormElement";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps } from "../Snackbar";
@@ -287,6 +288,16 @@ export const next = mergeTheme(nextBase, {
         },
       },
     } satisfies CSSClasses<HvDialogActionsProps>,
+    HvWarningText: {
+      classes: {
+        defaultIcon: {
+          margin: 6,
+        },
+        show: {
+          gap: 0,
+        },
+      },
+    } satisfies CSSClasses<HvWarningTextProps>,
     HvRadioIcon: {
       classes: {
         checked: {

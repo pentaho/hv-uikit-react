@@ -6,13 +6,17 @@ export const { staticClasses, useClasses } = createClasses("HvWarningText", {
     display: "none",
     color: theme.form.errorColor,
   },
-  defaultIcon: { margin: 6 },
+  defaultIcon: {},
   warningText: {
     ...theme.typography.caption1,
     color: "inherit",
     paddingRight: theme.space.xs,
   },
-  show: { display: "flex" },
+  show: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xxs,
+  },
   topGutter: { paddingTop: "3px" },
   hideText: {
     // display none or visibility hidden prevents

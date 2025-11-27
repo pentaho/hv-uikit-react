@@ -59,7 +59,7 @@ export const HvWarningText = (props: HvWarningTextProps) => {
   const id = idProp ?? setId(context.id, "error");
   const showWarning = visible && !disabled;
   const adornment = adornmentProp || (
-    <HvIcon name="Fail" size="xs" className={classes.defaultIcon} />
+    <HvIcon compact name="Fail" size="xs" className={classes.defaultIcon} />
   );
 
   return (
