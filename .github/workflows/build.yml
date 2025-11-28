@@ -49,5 +49,6 @@ jobs:
         if: ${{ inputs.build-all || inputs.publish-packages }}
 
       - name: Publish Packages
-        if: ${{ inputs.publish-packages }}
+        # only publish on Linux to avoid duplicate publishes
+        if: ${{ inputs.publish-packages && matrix.os == 'ubuntu-latest' }}
         run: npx -y pkg-pr-new publish './packages/*' --no-template
