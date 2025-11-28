@@ -83,8 +83,13 @@ export const Test: StoryObj<HvRadioProps> = {
       <HvRadio defaultChecked disabled aria-label="radio" />
       <HvRadio color="warning" aria-label="radio" />
       <HvRadio defaultChecked color="warning" aria-label="radio" />
-      <HvRadio label="Left" labelPosition="left" />
-      <HvRadio label="Right" labelPosition="right" defaultChecked />
+      <HvRadio className="w-120px" label="Left" labelPosition="left" />
+      <HvRadio
+        className="w-120px"
+        label="Right"
+        labelPosition="right"
+        defaultChecked
+      />
     </>
   ),
 };
