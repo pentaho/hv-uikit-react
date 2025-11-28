@@ -219,13 +219,14 @@ export const HvCheckBox = forwardRef<HTMLButtonElement, HvCheckBoxProps>(
         readOnly={readOnly}
         className={cx(
           classes.root,
+          classes[labelPosition],
           { [classes.focusVisible]: !!(focusVisible && label) },
           className,
         )}
       >
         {hasLabel ? (
           <div
-            className={cx(classes.container, classes[labelPosition], {
+            className={cx(classes.container, {
               [classes.invalidContainer]: isStateInvalid,
               [classes.disabled]: disabled,
             })}
