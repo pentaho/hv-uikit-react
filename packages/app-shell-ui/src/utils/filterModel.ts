@@ -6,7 +6,7 @@ import {
   HvAppShellProvidersModel,
   HvAppShellServiceProviderModel,
   HvAppShellServicesModel,
-  HvAppShellViewModel,
+  HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 
 import type { ConditionResultsList } from "../hooks/useConditionsEvaluator";
@@ -29,10 +29,10 @@ const shouldInclude = (
 };
 
 const filterViews = (
-  views: HvAppShellViewModel[],
+  views: HvAppShellViewsModel[],
   conditionResults: ConditionResultsList,
-): [HvAppShellViewModel[], boolean] => {
-  const filteredViews: HvAppShellViewModel[] = [];
+): [HvAppShellViewsModel[], boolean] => {
+  const filteredViews: HvAppShellViewsModel[] = [];
   let hasChanged = false;
 
   for (const view of views) {

@@ -3,7 +3,7 @@ import { Path, useNavigate } from "react-router-dom";
 import {
   HvAppShellViewContext,
   HvAppShellViewsConfig,
-  useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 
 import { NavigationOptions, To, ViewDestination } from "../types/navigation";
@@ -51,7 +51,7 @@ function isSameBundle(
 }
 
 export const useHvNavigation = () => {
-  const config = useHvAppShellConfig();
+  const { mainPanel } = useHvAppShellModel();
   const flattenViews = useMemo(() => {
     const flatten = (views: HvAppShellViewsConfig[], base = "") => {
       return views.reduce<HvAppShellViewsConfig[]>((acc, view) => {
@@ -64,8 +64,8 @@ export const useHvNavigation = () => {
         return acc;
       }, []);
     };
-    return flatten(config.mainPanel?.views ?? []);
-  }, [config.mainPanel?.views]);
+    return flatten(mainPanel?.views ?? []);
+  }, [mainPanel?.views]);
 
   const viewContext = useContext(HvAppShellViewContext);
   const navigateReactRouter = useNavigate();

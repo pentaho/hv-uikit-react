@@ -1,4 +1,3 @@
-import * as ReactRouterDom from "react-router-dom";
 import { renderHook } from "@testing-library/react";
 import { vi } from "vitest";
 import {
@@ -24,7 +23,14 @@ interface WrapperProps {
   children: React.ReactNode;
 }
 
-const locationSpy = vi.spyOn(ReactRouterDom, "useLocation");
+const mockedUseLocation = vi.fn();
+vi.mock("react-router-dom", async () => {
+  const mod = await vi.importActual("react-router-dom");
+  return {
+    ...(mod as object),
+    useLocation: vi.fn(() => mockedUseLocation()),
+  };
+});
 
 describe("useLocation Hook", () => {
   const wrapper = ({ children }: WrapperProps) => (
@@ -98,9 +104,7 @@ describe("useLocation Hook", () => {
     } satisfies HvAppShellConfig);
   });
 
-  afterEach(() => {
-    locationSpy.mockClear();
-  });
+  afterEach(() => mockedUseLocation.mockReset());
 
   it("should return regular useHvLocation() properties", () => {
     const location = {
@@ -111,7 +115,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,
@@ -134,7 +138,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,
@@ -158,7 +162,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,
@@ -176,7 +180,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,
@@ -195,7 +199,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,
@@ -216,7 +220,7 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    locationSpy.mockReturnValue(location);
+    vi.mocked(mockedUseLocation).mockReturnValue(location);
 
     const { result } = renderHook(() => useHvLocation(), {
       wrapper,

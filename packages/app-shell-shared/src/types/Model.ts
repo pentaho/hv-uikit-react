@@ -12,84 +12,79 @@ import {
   HvAppShellMainPanelConfig,
   HvAppShellMenuConfig,
   HvAppShellProvidersConfig,
-  HvAppShellTopViewConfig,
   HvAppShellViewsConfig,
+  ViewHvContainerProps,
 } from "./Config";
 
 export type PreloadedBundles = Map<string, unknown>;
 
 // Condition model with globalIndex being a unique number for each condition in the config and used in results lookup
-export type HvAppShellConditionModel = HvAppShellConditionConfig & {
+export interface HvAppShellConditionModel extends HvAppShellConditionConfig {
   globalIndex: number;
-};
+}
 
-export type HvAppShellConditionalModel = {
+export interface HvAppShellConditionalModel {
   key: string;
   conditions?: HvAppShellConditionModel[];
-};
+}
 
-export type HvAppShellMenuModel = Omit<
-  HvAppShellMenuConfig,
-  "conditions" | "submenus"
-> & {
+export interface HvAppShellMenuModel
+  extends HvAppShellConditionalModel,
+    Omit<HvAppShellMenuConfig, "conditions" | "submenus"> {
   submenus?: HvAppShellMenuModel[];
-} & HvAppShellConditionalModel;
+}
 
-export type HvAppShellViewModel = Omit<
-  HvAppShellViewsConfig,
-  "conditions" | "views"
-> & {
-  views: HvAppShellViewModel[];
-} & HvAppShellConditionalModel;
+export interface HvAppShellViewsModel
+  extends HvAppShellConditionalModel,
+    Omit<HvAppShellViewsConfig, "conditions" | "views"> {
+  views: HvAppShellViewsModel[];
+}
 
-export type HvAppShellTopViewModel = HvAppShellViewModel &
-  Omit<HvAppShellTopViewConfig, keyof HvAppShellViewsConfig>;
+export interface HvAppShellTopViewModel
+  extends HvAppShellViewsModel,
+    Omit<ViewHvContainerProps, "key"> {}
 
-export type HvAppShellHeaderActionModel = Omit<
-  HvAppShellHeaderAction,
-  "conditions"
-> &
-  HvAppShellConditionalModel;
+export interface HvAppShellHeaderActionModel
+  extends HvAppShellConditionalModel,
+    Omit<HvAppShellHeaderAction, "conditions"> {}
 
 export type HvAppShellConditionsProvidersModel =
   HvAppShellConditionsProvidersConfig & {
     key: string;
   };
 
-export type HvAppShellProvidersModel = Omit<
-  HvAppShellProvidersConfig,
-  "conditions"
-> &
-  HvAppShellConditionalModel;
+export interface HvAppShellProvidersModel
+  extends HvAppShellConditionalModel,
+    Omit<HvAppShellProvidersConfig, "conditions"> {}
 
-export type HvAppShellServiceProviderModel = ServiceProviderConfig &
-  HvAppShellConditionalModel;
+export type HvAppShellServiceProviderModel = HvAppShellConditionalModel &
+  ServiceProviderConfig;
 
 export type HvAppShellServicesModel = Record<
   ServiceId,
   HvAppShellServiceProviderModel[]
 >;
 
-export type HvAppShellMainPanelModel = Omit<
-  HvAppShellMainPanelConfig,
-  "views"
-> & {
+export interface HvAppShellMainPanelModel
+  extends Omit<HvAppShellMainPanelConfig, "views"> {
   views?: HvAppShellTopViewModel[];
-};
+}
 
-export type HvAppShellHeaderModel = Omit<HvAppShellHeader, "actions"> & {
+export interface HvAppShellHeaderModel
+  extends Omit<HvAppShellHeader, "actions"> {
   actions: HvAppShellHeaderActionModel[];
-};
+}
 
-export type HvAppShellModel = Omit<
-  HvAppShellConfig,
-  | "menu"
-  | "mainPanel"
-  | "header"
-  | "conditionsProviders"
-  | "providers"
-  | "services"
-> & {
+export interface HvAppShellModel
+  extends Omit<
+    HvAppShellConfig,
+    | "menu"
+    | "mainPanel"
+    | "header"
+    | "conditionsProviders"
+    | "providers"
+    | "services"
+  > {
   menu?: HvAppShellMenuModel[];
   mainPanel?: HvAppShellMainPanelModel;
   header?: HvAppShellHeaderModel;
@@ -100,4 +95,4 @@ export type HvAppShellModel = Omit<
   allConditions: HvAppShellConditionModel[];
   /** All preloaded bundles (conditions and providers) */
   preloadedBundles: PreloadedBundles;
-};
+}

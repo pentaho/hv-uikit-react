@@ -10,8 +10,8 @@ import {
   HvAppShellProvidersModel,
   HvAppShellServiceProviderModel,
   HvAppShellServicesModel,
-  HvAppShellViewModel,
   HvAppShellViewsConfig,
+  HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 
 // Generate a unique key for internal tracking
@@ -21,11 +21,11 @@ const generateKey = (): string => {
 
 // Create a map of route -> conditions from views for menu inheritance
 const createRouteConditionsMap = (
-  views: HvAppShellViewModel[],
+  views: HvAppShellViewsModel[],
 ): Map<string, HvAppShellConditionModel[]> => {
   const map = new Map<string, HvAppShellConditionModel[]>();
 
-  const processView = (view: HvAppShellViewModel) => {
+  const processView = (view: HvAppShellViewsModel) => {
     if (view.route && view.conditions) {
       const normalizedRoute = view.route.replace(/^\//, "");
       map.set(normalizedRoute, view.conditions);
@@ -122,15 +122,16 @@ export default function processConfig(
 
   const processViews = (
     viewsConfig?: HvAppShellViewsConfig[],
-  ): HvAppShellViewModel[] => {
+  ): HvAppShellViewsModel[] => {
     if (!viewsConfig) {
       return [];
     }
 
     return viewsConfig.map((viewConfig) => {
-      const viewModel = registerElement<typeof viewConfig, HvAppShellViewModel>(
-        viewConfig,
-      );
+      const viewModel = registerElement<
+        typeof viewConfig,
+        HvAppShellViewsModel
+      >(viewConfig);
       if (viewConfig.views) {
         return {
           ...viewModel,
@@ -165,7 +166,7 @@ export default function processConfig(
   const config = { ...appShellConfig };
 
   // Process views first
-  let viewsModel: HvAppShellViewModel[] | undefined;
+  let viewsModel: HvAppShellViewsModel[] | undefined;
   if (appShellConfig.mainPanel?.views) {
     viewsModel = processViews(appShellConfig.mainPanel.views);
     config.mainPanel = {

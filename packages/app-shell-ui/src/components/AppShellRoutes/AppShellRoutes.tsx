@@ -10,7 +10,7 @@ import {
 import {
   useHvAppShellModel,
   type HvAppShellMainPanelModel,
-  type HvAppShellViewModel,
+  type HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 import { HvContainer } from "@hitachivantara/uikit-react-core";
 
@@ -23,7 +23,7 @@ import AppShellViewProvider from "../AppShellViewProvider";
 const NotFound = lazy(() => import("../../pages/NotFound"));
 
 function renderNestedRoutes(
-  views: HvAppShellViewModel[] | undefined,
+  views: HvAppShellViewsModel[] | undefined,
 ): RouteObject[] | undefined {
   if (!views) {
     return undefined;

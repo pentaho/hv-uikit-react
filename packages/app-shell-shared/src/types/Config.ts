@@ -4,7 +4,8 @@ import type {
 } from "@hitachivantara/app-shell-services";
 import type { HvContainerProps } from "@hitachivantara/uikit-react-core";
 
-interface ViewHvContainerProps extends Omit<HvContainerProps, "children"> {}
+export interface ViewHvContainerProps
+  extends Omit<HvContainerProps, "children"> {}
 
 export interface HvAppShellConditionConfig {
   bundle: string;
