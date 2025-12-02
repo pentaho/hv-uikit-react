@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { useService, useServices } from "@hitachivantara/app-shell-services";
 import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
 import {
@@ -140,6 +140,12 @@ const InstanceBundleServiceDemo: FC = () => {
     ReturnType<UseCreateNewContentAction>[]
   >([]);
 
+  const hooksWithParams = useMemo(
+    () =>
+      (actionHooks ?? []).map((hook: UseCreateNewContentAction) => ({ hook })),
+    [actionHooks],
+  );
+
   if (isPending) {
     return <HvLoading>Loading create actions...</HvLoading>;
   }
@@ -148,11 +154,6 @@ const InstanceBundleServiceDemo: FC = () => {
     const errorMessage = `Failed to load bundle type services: ${ServiceDefinitions.UseCreateNewContentAction.id}`;
     return <HvTypography>{errorMessage}</HvTypography>;
   }
-
-  const hooksWithParams = (actionHooks ?? []).map(
-    (hook: UseCreateNewContentAction) => ({ hook }),
-  );
-
   return (
     <>
       <DynamicHooksEvaluator<

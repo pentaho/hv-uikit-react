@@ -63,6 +63,12 @@ const CreateNewContentDropDownMenu: FC = () => {
     [actionResults],
   );
 
+  const hooksWithParams = useMemo(
+    () =>
+      (actionHooks ?? []).map((hook: UseCreateNewContentAction) => ({ hook })),
+    [actionHooks],
+  );
+
   // While pending or on error, do not render anything.
   if (isPending || error) {
     if (error) {
@@ -70,10 +76,6 @@ const CreateNewContentDropDownMenu: FC = () => {
     }
     return null;
   }
-
-  const hooksWithParams = (actionHooks ?? []).map(
-    (hook: UseCreateNewContentAction) => ({ hook }),
-  );
 
   return (
     <>

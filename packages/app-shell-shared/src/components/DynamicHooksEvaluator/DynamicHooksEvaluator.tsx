@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { createElement, useCallback, useEffect, useRef } from "react";
 
 interface HookWithParams<
   THook extends (...args: any[]) => TResult,
@@ -15,6 +15,11 @@ interface DynamicHooksEvaluatorProps<
   hooks: HookWithParams<THook, TResult>[];
   onEvaluate: (results: TResult[]) => void;
 }
+
+// Generate a unique key for internal tracking
+const generateKey = (): string => {
+  return `hooks-${Date.now()}-${Math.round(1000 * Math.random())}`;
+};
 
 const DynamicHooksEvaluatorInner = <
   THook extends (...args: any[]) => TResult,
@@ -47,18 +52,32 @@ export const DynamicHooksEvaluator = <
   hooks,
   onEvaluate,
 }: DynamicHooksEvaluatorProps<THook, TResult>) => {
-  const componentKey = useMemo(() => {
-    const hookIdentifiers = hooks
-      .map((h) => `${h.hook.name}-${h.params?.length ?? 0}`)
-      .join("|");
-    return `hooks-${hookIdentifiers}`;
-  }, [hooks]);
+  const skipRenderRef = useRef(false);
+  const keyRef = useRef(generateKey());
+  const hooksRef = useRef(hooks);
 
-  return (
-    <DynamicHooksEvaluatorInner
-      key={componentKey}
-      hooks={hooks}
-      onEvaluate={onEvaluate}
-    />
+  if (hooksRef.current !== hooks) {
+    skipRenderRef.current = false;
+    hooksRef.current = hooks;
+  }
+
+  if (skipRenderRef.current) {
+    skipRenderRef.current = false;
+  } else {
+    keyRef.current = generateKey();
+  }
+
+  const onEvaluateWrapper = useCallback(
+    (results: TResult[]) => {
+      skipRenderRef.current = true;
+      onEvaluate(results);
+    },
+    [onEvaluate],
   );
+
+  return createElement(DynamicHooksEvaluatorInner<THook, TResult>, {
+    key: keyRef.current,
+    hooks,
+    onEvaluate: onEvaluateWrapper,
+  });
 };
