@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { useMemo } from "react";
+import { PropsWithChildren, useMemo } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router-dom";
 import {
@@ -7,18 +6,19 @@ import {
   HvAppShellContext,
   HvAppShellRuntimeContext,
   useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import { addResourceBundles, createI18Next } from "./i18n";
 
-interface TestProviderProps {
-  children: React.ReactNode;
+interface TestProviderProps extends PropsWithChildren {
   bundles?: Record<string, object>;
 }
 
 const TestProvider = ({ children, bundles = {} }: TestProviderProps) => {
-  const outerConfig = useHvAppShellConfig();
+  const config = useHvAppShellConfig();
+  const model = useHvAppShellModel();
   const { i18n } = createI18Next();
   if (bundles) {
     addResourceBundles(i18n, bundles, CONFIG_TRANSLATIONS_NAMESPACE);
@@ -27,7 +27,7 @@ const TestProvider = ({ children, bundles = {} }: TestProviderProps) => {
     return (
       <HvProvider>
         <HvAppShellRuntimeContext.Provider value={{ i18n }}>
-          <HvAppShellContext.Provider value={outerConfig}>
+          <HvAppShellContext.Provider value={{ config, model }}>
             <ErrorBoundary fallback={<div>Generic Error</div>}>
               <BrowserRouter basename="/">{children}</BrowserRouter>
             </ErrorBoundary>
@@ -35,7 +35,7 @@ const TestProvider = ({ children, bundles = {} }: TestProviderProps) => {
         </HvAppShellRuntimeContext.Provider>
       </HvProvider>
     );
-  }, [children, i18n, outerConfig]);
+  }, [children, i18n, config, model]);
 };
 
 export default TestProvider;

@@ -1,6 +1,6 @@
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import useNavigationContext from "../../providers/hooks/useNavigationContext";
+import { useNavigationContext } from "../../providers/NavigationProvider";
 import { Footer } from "./Footer";
 import {
   StyledErrorPage,

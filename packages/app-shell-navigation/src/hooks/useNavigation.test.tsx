@@ -18,11 +18,13 @@ import TestProvider from "../tests/TestProvider";
 import { useHvNavigation } from "./useNavigation";
 
 const appShellConfigSpy = vi.fn();
+const appShellModelSpy = vi.fn();
 vi.mock("@hitachivantara/app-shell-shared", async () => {
   const mod = await vi.importActual("@hitachivantara/app-shell-shared");
   return {
     ...(mod as object),
     useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
+    useHvAppShellModel: vi.fn(() => appShellModelSpy()),
   };
 });
 
@@ -80,7 +82,7 @@ describe("useBundleNavigation Hook", () => {
      */
     describe("app internal navigation", () => {
       beforeAll(() => {
-        appShellConfigSpy.mockReturnValue({
+        appShellModelSpy.mockReturnValue({
           apps: {
             dummyId: "/",
             otherDummyId: "/",
@@ -175,7 +177,7 @@ describe("useBundleNavigation Hook", () => {
      */
     describe("scoped bundle navigation", () => {
       beforeAll(() => {
-        appShellConfigSpy.mockReturnValue({
+        appShellModelSpy.mockReturnValue({
           apps: { "@hv/dummyId": "/", dummyId: "/" },
           mainPanel: {
             views: [
@@ -264,7 +266,7 @@ describe("useBundleNavigation Hook", () => {
      */
     describe("non scoped bundle navigation", () => {
       beforeAll(() => {
-        appShellConfigSpy.mockReturnValue({
+        appShellModelSpy.mockReturnValue({
           apps: { dummyId: "/", "@hv/dummyId": "/" },
           mainPanel: {
             views: [
@@ -354,7 +356,7 @@ describe("useBundleNavigation Hook", () => {
      */
     describe("view search modes", () => {
       beforeAll(() => {
-        appShellConfigSpy.mockReturnValue({
+        appShellModelSpy.mockReturnValue({
           apps: {
             mainApp: "/",
           },
@@ -702,7 +704,7 @@ describe("useBundleNavigation Hook", () => {
    */
   describe("test `navigate` method", () => {
     beforeAll(() => {
-      appShellConfigSpy.mockReturnValue({
+      appShellModelSpy.mockReturnValue({
         apps: { dummyId: "/", "@hv/dummyId2": "/", dummyId3: "/" },
         mainPanel: {
           views: [

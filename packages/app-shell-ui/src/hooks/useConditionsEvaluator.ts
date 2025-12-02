@@ -58,7 +58,7 @@ export const useConditionsEvaluator = (
 
   const hookResults: UseConditionResult[] = [];
 
-  for (const { bundle } of allConditions) {
+  for (const { bundle, config } of allConditions) {
     const module = preloadedBundles.get(bundle) as UseCondition | undefined;
 
     // bundle failed to be imported and thus not present, treat as error
@@ -71,7 +71,7 @@ export const useConditionsEvaluator = (
       continue;
     }
     try {
-      const result = module();
+      const result = module(config);
 
       hookResults.push(result);
     } catch (error) {

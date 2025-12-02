@@ -168,7 +168,8 @@ describe("AppShellProvider component", () => {
 
       await waitFor(() => {
         expect(consoleMock).toHaveBeenCalledWith(
-          expect.stringContaining("Import of provider 'dummyProvider' failed!"),
+          "Failed to load bundle dummyProvider:",
+          expect.any(Error),
         );
       });
 

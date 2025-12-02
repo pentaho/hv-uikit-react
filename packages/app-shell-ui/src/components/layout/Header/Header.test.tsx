@@ -2,7 +2,7 @@ import { RenderResult, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
-import * as NavigationContext from "../../../providers/hooks/useNavigationContext";
+import * as NavigationProvider from "../../../providers/NavigationProvider";
 import useNavigationContextDefaultMock from "../../../tests/defaultMocks";
 import renderTestProvider from "../../../tests/testUtils";
 import Header from "./Header";
@@ -11,7 +11,10 @@ vi.mock("react-helmet-async", () => ({
   Helmet: vi.fn(),
 }));
 
-const navigationContextSpy = vi.spyOn(NavigationContext, "default");
+const navigationContextSpy = vi.spyOn(
+  NavigationProvider,
+  "useNavigationContext",
+);
 
 const navigateSpy = vi.fn();
 vi.mock("@hitachivantara/app-shell-navigation", async () => {

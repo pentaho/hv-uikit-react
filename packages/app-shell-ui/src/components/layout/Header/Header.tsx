@@ -15,8 +15,8 @@ import {
   useTheme,
 } from "@hitachivantara/uikit-react-core";
 
-import useNavigationContext from "../../../providers/hooks/useNavigationContext";
 import { useLayoutContext } from "../../../providers/LayoutProvider";
+import { useNavigationContext } from "../../../providers/NavigationProvider";
 import IconUiKit from "../../IconUiKit";
 import BrandLogo from "../BrandLogo";
 import HeaderActions from "./HeaderActions";

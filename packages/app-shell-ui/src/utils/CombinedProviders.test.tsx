@@ -82,4 +82,40 @@ describe("CombinedProviders", () => {
       ).toBe("test-value");
     });
   });
+
+  it("should render children without any providers when providers array is empty", () => {
+    useHvAppShellCombinedProvidersSpy.mockReturnValue({
+      providers: [],
+    });
+
+    const { getByLabelText, queryByLabelText } = render(
+      <CombinedProviders>
+        <div aria-label="dummy-child" />
+      </CombinedProviders>,
+    );
+
+    expect(getByLabelText("dummy-child")).toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent1")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent2")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent3")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderWithConfig")).not.toBeInTheDocument();
+  });
+
+  it("should render children without any providers when providers is undefined", () => {
+    useHvAppShellCombinedProvidersSpy.mockReturnValue({
+      providers: undefined,
+    });
+
+    const { getByLabelText, queryByLabelText } = render(
+      <CombinedProviders>
+        <div aria-label="dummy-child-2" />
+      </CombinedProviders>,
+    );
+
+    expect(getByLabelText("dummy-child-2")).toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent1")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent2")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderComponent3")).not.toBeInTheDocument();
+    expect(queryByLabelText("dummyProviderWithConfig")).not.toBeInTheDocument();
+  });
 });

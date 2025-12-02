@@ -1,7 +1,7 @@
 import { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
 import { useHvSnackbar } from "@hitachivantara/uikit-react-core";
 
-import useBannerContext from "../providers/hooks/useBannerContext";
+import { useBannerContext } from "../providers/BannerProvider";
 
 const useNotificationsEventListener = () => {
   const { enqueueSnackbar } = useHvSnackbar();

@@ -8,18 +8,20 @@ const CombinedProviders = ({
 }: CombinedProvidersProps) => {
   const { providers } = useHvAppShellCombinedProviders();
 
-  const combined = useMemo(
-    () =>
-      providers?.reduceRight(
-        (Acc, { component: Curr, config, key }) => (
-          <Curr key={key} {...config}>
-            {Acc}
-          </Curr>
-        ),
-        mainChildren,
+  const combined = useMemo(() => {
+    if (!providers || providers.length === 0) {
+      return mainChildren;
+    }
+
+    return providers.reduceRight(
+      (Acc, { component: Curr, config, key }) => (
+        <Curr key={key} {...config}>
+          {Acc}
+        </Curr>
       ),
-    [providers, mainChildren],
-  );
+      mainChildren,
+    );
+  }, [providers, mainChildren]);
 
   return <>{combined}</>;
 };

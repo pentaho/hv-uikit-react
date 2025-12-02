@@ -55,7 +55,7 @@ export const useModelFromConfig = (
 
   const promiseFactory = useCallback(async () => {
     if (!initialModel) {
-      return undefined;
+      return;
     }
 
     if (bundles.length === 0) {

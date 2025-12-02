@@ -6,7 +6,7 @@ import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import useNavigationContext from "../../providers/hooks/useNavigationContext";
+import { useNavigationContext } from "../../providers/NavigationProvider";
 
 const StyledFooterWrapper = styled("div")({
   textAlign: "center",

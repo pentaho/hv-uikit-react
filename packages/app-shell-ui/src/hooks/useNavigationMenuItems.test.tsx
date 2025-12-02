@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { vi } from "vitest";
 
 import TestProvider from "../tests/TestProvider";
@@ -63,8 +63,8 @@ describe("useNavigationMenuItem Hook", () => {
       });
     });
 
-    it("should call 'navigateTo' method with the first menu item id and path", () => {
-      renderHook(useNavigationMenuItems, { wrapper });
+    it("should call 'navigateTo' method with the first menu item id and path", async () => {
+      await act(async () => renderHook(useNavigationMenuItems, { wrapper }));
 
       expect(navigateMock).toHaveBeenCalledWith("./dummyTarget1");
     });

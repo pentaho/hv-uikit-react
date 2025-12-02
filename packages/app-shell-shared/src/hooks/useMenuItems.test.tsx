@@ -5,11 +5,13 @@ import { vi } from "vitest";
 import TestProvider from "../tests/TestProvider";
 import { useHvMenuItems } from "./useMenuItems";
 
+const appShellModelSpy = vi.fn();
 const appShellConfigSpy = vi.fn();
 vi.mock("../AppShellContext", async () => {
   const mod = await vi.importActual("../AppShellContext");
   return {
     ...(mod as object),
+    useHvAppShellModel: vi.fn(() => appShellModelSpy()),
     useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
   };
 });
@@ -37,7 +39,7 @@ const wrapper = ({ children }: { children: ReactNode }) => (
 describe("useHvMenuItems Hook", () => {
   describe("Empty config", () => {
     it("should return empty items array and no menu `id` to be selected", () => {
-      appShellConfigSpy.mockReturnValue({});
+      appShellModelSpy.mockReturnValue({});
       const { result } = renderHook(useHvMenuItems, { wrapper });
       expect(result.current).toBeDefined();
       expect(result.current.items.length).toBe(0);
@@ -47,7 +49,7 @@ describe("useHvMenuItems Hook", () => {
 
   describe("Non empty configuration", () => {
     beforeAll(() => {
-      appShellConfigSpy.mockReturnValue({
+      appShellModelSpy.mockReturnValue({
         menu: [
           {
             label: "dummyMenu1",
@@ -92,7 +94,7 @@ describe("useHvMenuItems Hook", () => {
     });
 
     it("should prune the non-necessary item when using ONLY_TOP", () => {
-      appShellConfigSpy.mockImplementation(() => ({
+      appShellModelSpy.mockImplementation(() => ({
         menu: [
           {
             label: "TopMenu1",
@@ -155,7 +157,7 @@ describe("useHvMenuItems Hook", () => {
     });
 
     it("should return valid items array and one menu `ìd` to be selected (pathname from child element)", async () => {
-      appShellConfigSpy.mockImplementation(() => ({
+      appShellModelSpy.mockImplementation(() => ({
         menu: [
           {
             label: "Menu 1",
@@ -212,7 +214,7 @@ describe("useHvMenuItems Hook", () => {
 
   describe("With selectedItemId in state", () => {
     beforeAll(() => {
-      appShellConfigSpy.mockImplementation(() => ({
+      appShellModelSpy.mockImplementation(() => ({
         menu: [
           {
             label: "Menu 1",

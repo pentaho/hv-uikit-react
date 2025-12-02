@@ -1,29 +1,60 @@
 import {
-  PropsWithChildren,
+  createContext,
+  ReactNode,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
 } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import useNavigationMenuItems from "../hooks/useNavigationMenuItems";
+import { NavigationMenuItem } from "../types";
 import {
   findItemById,
   removeHrefFromMenuItemsWithChildren,
 } from "../utils/navigationUtil";
-import {
-  NavigationContext,
-  type VerticalNavigationMode,
-} from "./hooks/useNavigationContext";
 
-interface NavigationProviderProps extends PropsWithChildren {}
+export type NavigationProviderProps = {
+  children: ReactNode;
+};
 
-const NavigationProvider = ({ children }: NavigationProviderProps) => {
-  const { navigationMode } = useHvAppShellModel();
+export type VerticalNavigationMode = "EXPANDED" | "COLLAPSED" | "CLOSED";
+
+export interface NavigationContextValue {
+  selectedMenuItemId: string | undefined;
+  rootMenuItemId: string | undefined;
+  /** Items visible in the header */
+  items: NavigationMenuItem[];
+  /** Items visible in the vertical navigation */
+  verticalNavigationItems: NavigationMenuItem[];
+  hasVerticalNavigation: boolean;
+  showHeaderSubMenu: boolean;
+  isCompactMode: boolean;
+  verticalNavigationMode: VerticalNavigationMode;
+  switchVerticalNavigationMode: () => void;
+}
+
+export const NavigationContext = createContext<NavigationContextValue>({
+  selectedMenuItemId: undefined,
+  rootMenuItemId: undefined,
+  items: [],
+  verticalNavigationItems: [],
+  hasVerticalNavigation: false,
+  showHeaderSubMenu: false,
+  isCompactMode: false,
+  verticalNavigationMode: "EXPANDED",
+  switchVerticalNavigationMode: () => {
+    // Empty function
+  },
+});
+
+export const NavigationProvider = ({ children }: NavigationProviderProps) => {
+  const { navigationMode } = useHvAppShellConfig();
   const { items, selectedMenuItemId, rootMenuItemId } =
     useNavigationMenuItems();
   const muiTheme = useTheme();
@@ -128,4 +159,12 @@ const NavigationProvider = ({ children }: NavigationProviderProps) => {
   );
 };
 
-export default NavigationProvider;
+export const useNavigationContext = () => {
+  const context = useContext(NavigationContext);
+
+  if (!context) {
+    console.error("NavigationContext was used outside of its Provider");
+  }
+
+  return context;
+};

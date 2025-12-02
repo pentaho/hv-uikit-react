@@ -4,72 +4,70 @@ import type {
 } from "@hitachivantara/app-shell-services";
 import type { HvContainerProps } from "@hitachivantara/uikit-react-core";
 
-type ViewHvContainerProps = Omit<HvContainerProps, "children">;
+interface ViewHvContainerProps extends Omit<HvContainerProps, "children"> {}
 
-export type HvAppShellConditionConfig = {
+export interface HvAppShellConditionConfig {
   bundle: string;
   config?: Record<string, unknown>;
-};
+}
 
-export type HvAppShellConditionalConfig = {
+export interface HvAppShellConditionalConfig {
   conditions?: HvAppShellConditionConfig[];
-};
+}
 
 // Extend ServiceConfig to add conditions at the App Shell level
 export type HvAppShellServiceProviderConfig = ServiceProviderConfig &
   HvAppShellConditionalConfig;
 
 // App Shell's version of ServicesConfig with condition support
-export type HvAppShellServicesConfig = Record<
-  ServiceId,
-  HvAppShellServiceProviderConfig[]
->;
+export interface HvAppShellServicesConfig
+  extends Record<ServiceId, HvAppShellServiceProviderConfig[]> {}
 
-export type HvAppShellLogo = {
+export interface HvAppShellLogo {
   name?: "LUMADA" | "HITACHI" | "PENTAHO+" | "PENTAHO";
   description?: string;
-};
+}
 
-export type HvAppShellIcon = {
+export interface HvAppShellIcon {
   iconType: "uikit";
   name: string;
-};
+}
 
-export type HvAppShellMenuConfig = {
+export interface HvAppShellMenuConfig extends HvAppShellConditionalConfig {
   label: string;
   icon?: HvAppShellIcon;
   target?: string;
   submenus?: HvAppShellMenuConfig[];
-} & HvAppShellConditionalConfig;
+}
 
 type RouteString = `/${string}`;
 
-export type HvAppShellViewsConfig = {
+export interface HvAppShellViewsConfig extends HvAppShellConditionalConfig {
   bundle: string;
   route: RouteString;
   config?: Record<string, unknown>;
   views?: HvAppShellViewsConfig[];
-} & HvAppShellConditionalConfig;
+}
 
 export interface HvAppShellTopViewConfig
   extends HvAppShellViewsConfig,
     ViewHvContainerProps {}
 
-export type HvAppShellHelp = {
+export interface HvAppShellHelp {
   url: string;
   description?: string;
-};
+}
 
 export interface HvAppShellMainPanelConfig extends ViewHvContainerProps {
   views?: HvAppShellTopViewConfig[];
 }
 
-export type HvAppShellProvidersConfig = {
+export interface HvAppShellProvidersConfig extends HvAppShellConditionalConfig {
   bundle: string;
   config?: Record<string, unknown>;
-} & HvAppShellConditionalConfig;
+}
 
-export type HvAppShellConfig = {
+export interface HvAppShellConfig {
   baseUrl?: string;
   name?: string;
   logo?: HvAppShellLogo | null;
@@ -82,36 +80,36 @@ export type HvAppShellConfig = {
   header?: HvAppShellHeader;
   providers?: HvAppShellProvidersConfig[];
   services?: HvAppShellServicesConfig;
-};
+}
 
-export type HvAppShellThemingConfig = {
+export interface HvAppShellThemingConfig {
   themes?: string[];
   theme?: string;
   colorMode?: string;
-};
+}
 
-export type HvAppShellAppSwitcherConfig = {
+export interface HvAppShellAppSwitcherConfig {
   title?: string;
   showLogo?: boolean;
   apps: HvAppShellAppSwitcherItemConfig[];
-};
+}
 
-export type HvAppShellAppSwitcherItemConfig = {
+export interface HvAppShellAppSwitcherItemConfig {
   label: string;
   description?: string;
   url: string;
   target: "NEW" | "SELF";
   icon?: HvAppShellIcon;
-};
+}
 
-export type HvAppShellHeader = {
+export interface HvAppShellHeader {
   actions: HvAppShellHeaderAction[];
-};
+}
 
-export type HvAppShellHeaderAction = {
+export interface HvAppShellHeaderAction extends HvAppShellConditionalConfig {
   bundle: string;
   config?:
     | HvAppShellHelp
     | HvAppShellAppSwitcherConfig
     | Record<string, unknown>;
-} & HvAppShellConditionalConfig;
+}

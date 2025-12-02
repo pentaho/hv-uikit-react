@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 
-export interface HookWithParams<
+interface HookWithParams<
   THook extends (...args: any[]) => TResult,
   TResult = ReturnType<THook>,
 > {
@@ -8,7 +8,7 @@ export interface HookWithParams<
   params?: Parameters<THook>;
 }
 
-export interface DynamicHooksEvaluatorProps<
+interface DynamicHooksEvaluatorProps<
   THook extends (...args: any[]) => TResult,
   TResult,
 > {
@@ -62,5 +62,3 @@ export const DynamicHooksEvaluator = <
     />
   );
 };
-
-export default DynamicHooksEvaluator;

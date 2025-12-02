@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import { theme, useTheme } from "@hitachivantara/uikit-react-core";
 
-import useNavigationContext from "../../../providers/hooks/useNavigationContext";
 import { useLayoutContext } from "../../../providers/LayoutProvider";
+import { useNavigationContext } from "../../../providers/NavigationProvider";
 import VerticalNavigation from "../VerticalNavigation";
 import { StyledContainer, StyledMain } from "./styles";
 

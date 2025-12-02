@@ -17,4 +17,4 @@ export { CONFIG_TRANSLATIONS_NAMESPACE } from "./i18n";
 
 export { useHvMenuItems } from "./hooks/useMenuItems";
 
-export { DynamicHooksEvaluator } from "./components/DynamicHooksEvaluator";
+export * from "./components/DynamicHooksEvaluator";

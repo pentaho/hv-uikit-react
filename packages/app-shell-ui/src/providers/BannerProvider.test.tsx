@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 
-import useBannerContext from "../providers/hooks/useBannerContext";
 import renderTestProvider from "../tests/testUtils";
+import { useBannerContext } from "./BannerProvider";
 
 const TestComponent = () => {
   const { show } = useBannerContext();

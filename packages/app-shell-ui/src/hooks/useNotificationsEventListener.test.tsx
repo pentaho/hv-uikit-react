@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react";
 import { vi } from "vitest";
 import { HvAppShellEventNotificationTrigger } from "@hitachivantara/app-shell-events";
 
-import * as BannerContext from "../providers/hooks/useBannerContext";
+import * as BannerProvider from "../providers/BannerProvider";
 import useNotificationsEventListenerHook from "./useNotificationsEventListener";
 
 const mockedEnqueueSnackbar = vi.fn();
@@ -158,7 +158,7 @@ describe("useNotificationsEventListener Hook", () => {
     const mockedShow = vi.fn();
 
     beforeEach(() => {
-      vi.spyOn(BannerContext, "default").mockImplementation(() => ({
+      vi.spyOn(BannerProvider, "useBannerContext").mockImplementation(() => ({
         bannerMaxHeight: 0,
         show: mockedShow,
         dismiss: vi.fn(),
@@ -246,7 +246,7 @@ describe("useNotificationsEventListener Hook", () => {
     const mockedShow = vi.fn();
 
     beforeEach(() => {
-      vi.spyOn(BannerContext, "default").mockImplementation(() => ({
+      vi.spyOn(BannerProvider, "useBannerContext").mockImplementation(() => ({
         bannerMaxHeight: 0,
         show: mockedShow,
         dismiss: vi.fn(),

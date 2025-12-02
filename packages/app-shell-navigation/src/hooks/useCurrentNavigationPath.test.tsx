@@ -5,11 +5,13 @@ import TestProvider from "../tests/TestProvider";
 import { useHvCurrentNavigationPath } from "./useCurrentNavigationPath";
 
 const appShellConfigSpy = vi.fn();
+const appShellModelSpy = vi.fn();
 vi.mock("@hitachivantara/app-shell-shared", async () => {
   const mod = await vi.importActual("@hitachivantara/app-shell-shared");
   return {
     ...(mod as object),
     useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
+    useHvAppShellModel: vi.fn(() => appShellModelSpy()),
   };
 });
 
@@ -29,7 +31,7 @@ describe("useMenuState Hook", () => {
     );
 
     beforeAll(() => {
-      appShellConfigSpy.mockReturnValue({});
+      appShellModelSpy.mockReturnValue({});
       locationMock.mockReturnValue({
         pathname: "",
         search: "",
@@ -47,7 +49,7 @@ describe("useMenuState Hook", () => {
 
 describe("non empty configuration", () => {
   beforeEach(() => {
-    appShellConfigSpy.mockImplementation(() => ({
+    appShellModelSpy.mockImplementation(() => ({
       menu: [
         {
           label: "dummyMenu0",
