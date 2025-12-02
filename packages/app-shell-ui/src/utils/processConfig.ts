@@ -197,13 +197,11 @@ export default function processConfig(
     };
   }
 
-  if (appShellConfig.conditionsProviders) {
-    config.conditionsProviders = appShellConfig.conditionsProviders.map(
-      (provider) => ({
-        ...provider,
-        key: generateKey(),
-      }),
-    );
+  if (appShellConfig.systemProviders) {
+    config.systemProviders = appShellConfig.systemProviders.map((provider) => ({
+      ...provider,
+      key: generateKey(),
+    }));
   }
 
   if (appShellConfig.providers) {

@@ -68,7 +68,7 @@ export interface HvAppShellProvidersBaseConfig {
   config?: Record<string, unknown>;
 }
 
-export interface HvAppShellConditionsProvidersConfig
+export interface HvAppShellSystemProvidersConfig
   extends HvAppShellProvidersBaseConfig {}
 
 export interface HvAppShellProvidersConfig
@@ -86,7 +86,7 @@ export interface HvAppShellConfig {
   mainPanel?: HvAppShellMainPanelConfig;
   theming?: HvAppShellThemingConfig;
   header?: HvAppShellHeader;
-  conditionsProviders?: HvAppShellConditionsProvidersConfig[];
+  systemProviders?: HvAppShellSystemProvidersConfig[];
   providers?: HvAppShellProvidersConfig[];
   services?: HvAppShellServicesConfig;
 }

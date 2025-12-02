@@ -195,14 +195,14 @@ const AppShellProvider = ({
   const { model, isPending: areBundlesLoading } =
     useModelFromConfig(initialConfig);
 
-  const conditionProviders = useMemo(() => {
-    if (!model?.conditionsProviders) {
+  const systemProviders = useMemo(() => {
+    if (!model?.systemProviders) {
       return undefined;
     }
 
     const providersComponents: HvAppShellProvidersComponent[] = [];
 
-    for (const provider of model.conditionsProviders) {
+    for (const provider of model.systemProviders) {
       const component = model.preloadedBundles.get(
         provider.bundle,
       ) as React.ComponentType<React.PropsWithChildren>;
@@ -215,7 +215,7 @@ const AppShellProvider = ({
     }
 
     return providersComponents;
-  }, [model?.conditionsProviders, model?.preloadedBundles]);
+  }, [model?.systemProviders, model?.preloadedBundles]);
 
   if (hasError) {
     throw new Error("It was not possible to obtain the configuration");
@@ -227,7 +227,7 @@ const AppShellProvider = ({
   }
 
   return (
-    <CombinedProviders providers={conditionProviders}>
+    <CombinedProviders providers={systemProviders}>
       <AppShellProviderInner config={rawConfig} model={model}>
         {children}
       </AppShellProviderInner>
