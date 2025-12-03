@@ -1,7 +1,7 @@
 import { makeColors, makeTheme } from "../makeTheme";
 
-const ds5 = makeTheme((theme) => ({
-  name: "ds5",
+const next = makeTheme((theme) => ({
+  name: "next",
   colors: makeColors({}),
   typography: {
     display: {
@@ -87,4 +87,4 @@ const ds5 = makeTheme((theme) => ({
   },
 }));
 
-export default ds5;
+export default next;

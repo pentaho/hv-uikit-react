@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { HvProvider, pentahoPlus } from "@hitachivantara/uikit-react-core";
+import { HvProvider, pentaho } from "@hitachivantara/uikit-react-core";
 
 import { routes } from "./routes";
 
@@ -9,7 +9,7 @@ const router = createBrowserRouter(routes, {
 
 const App = () => {
   return (
-    <HvProvider theme={pentahoPlus}>
+    <HvProvider theme={pentaho}>
       <RouterProvider router={router} />
     </HvProvider>
   );

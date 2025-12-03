@@ -1,6 +1,6 @@
 import type { ThemeExtender } from "@unocss/core";
 import type { Theme } from "@unocss/preset-wind3";
-import { ds5 as hvTheme, theme } from "@hitachivantara/uikit-styles";
+import { next as hvTheme, theme } from "@hitachivantara/uikit-styles";
 
 // #region theme conversion utils
 const { light: defaultColors } = hvTheme.colors;

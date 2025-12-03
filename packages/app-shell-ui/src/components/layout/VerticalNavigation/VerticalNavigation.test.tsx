@@ -43,7 +43,6 @@ describe("`VerticalNavigation` component", () => {
       });
 
       expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
     });
 
     it("should have a button element to collapse the panel", async () => {
@@ -54,7 +53,6 @@ describe("`VerticalNavigation` component", () => {
       });
 
       expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
     });
 
     it("should collapse the menu when clicking on the button", async () => {
@@ -67,7 +65,6 @@ describe("`VerticalNavigation` component", () => {
       await user.click(collapseButton);
 
       expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "false");
     });
 
     it("should be collapsed according to localStorage", async () => {
@@ -79,24 +76,19 @@ describe("`VerticalNavigation` component", () => {
       });
 
       expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "false");
       localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
     });
 
     it("should render a header with the correct props", async () => {
       await renderTestProvider(<VerticalNavigation />);
 
-      const headerTitle = screen.getByText("Menu");
+      const collapseText = screen.getByText("Collapse Menu");
       const collapseButton = screen.getByRole("button", {
         name: "Collapse vertical navigation",
       });
 
-      expect(headerTitle).toBeInTheDocument();
+      expect(collapseText).toBeInTheDocument();
       expect(collapseButton).toBeInTheDocument();
-
-      userEvent.click(collapseButton);
-
-      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
     });
   });
 

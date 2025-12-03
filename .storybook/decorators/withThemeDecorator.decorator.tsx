@@ -37,7 +37,7 @@ export const withThemeDecorator = (): Decorator => {
     const selected = themeOverride || selectedTheme || defaultTheme;
     const [theme, mode] = selected.split(" ");
 
-    const base = (themes as any)[theme] ?? themes.ds5;
+    const base = (themes as any)[theme] ?? themes.next;
     const storyStyles = getStoryStyles(base.colors[mode].bgPage);
 
     const containerRef = useDarkClass(mode);

@@ -1,19 +1,19 @@
-import ds5 from "./themes/ds5";
-import pentahoPlus from "./themes/pentahoPlus";
+import next from "./themes/next";
+import pentaho from "./themes/pentaho";
 
-export * from "./palette";
-export * from "./types";
-export * from "./theme";
+export * from "./CssBaseline";
 export * from "./makeTheme";
-export * from "./utils";
+export * from "./palette";
+export * from "./theme";
 export * from "./tokens/breakpoints";
 export * from "./tokens/colors";
 export * from "./tokens/radii";
 export * from "./tokens/space";
 export * from "./tokens/typography";
 export * from "./tokens/zIndices";
-export * from "./CssBaseline";
+export * from "./types";
+export * from "./utils";
 
 // Export each theme individually and a bundle of themes
-export { ds5, pentahoPlus };
-export const themes = { ds5, pentahoPlus };
+export { next, pentaho };
+export const themes = { next, pentaho };
