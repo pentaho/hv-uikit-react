@@ -95,6 +95,12 @@ export const mergeTheme = (...objects: any[]): HvThemeStructure => {
   }, {});
 };
 
+// TODO: Temporary support for "pentaho" theme alias. To be removed in v6.
+export const resolveTheme = (themes: string[], theme: string) => {
+  const resolved = theme === "pentaho" ? "pentahoPlus" : theme;
+  return themes.includes(resolved) ? resolved : themes[0];
+};
+
 export const parseTheme = (
   themes: HvThemeStructure[],
   theme = "",
@@ -107,7 +113,7 @@ export const parseTheme = (
   colorScheme: string;
 } => {
   const names = themes.map((t) => t.name);
-  const selectedTheme = names.includes(theme) ? theme : names[0];
+  const selectedTheme = resolveTheme(names, theme);
   const themeStructure =
     themes.find((t) => t.name === selectedTheme) || themes[0];
   const colorModes = Object.keys(themeStructure.colors.modes);
