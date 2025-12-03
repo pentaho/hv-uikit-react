@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.54.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@5.53.0...@hitachivantara/uikit-styles@5.54.0) (2025-12-03)
+
+### Features
+
+- **theme:** temporary support for pentaho theme alias ([#5006](https://github.com/pentaho/hv-uikit-react/issues/5006)) ([61e5878](https://github.com/pentaho/hv-uikit-react/commit/61e587858f2db6fab3e30847d212e15c2dc626e9))
+
 # [5.53.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@5.52.0...@hitachivantara/uikit-styles@5.53.0) (2025-11-14)
 
 ### Features

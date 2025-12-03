@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.20](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-pentaho@0.10.19...@hitachivantara/uikit-react-pentaho@0.10.20) (2025-12-03)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-pentaho
+
 ## [0.10.19](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-pentaho@0.10.18...@hitachivantara/uikit-react-pentaho@0.10.19) (2025-11-25)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-pentaho

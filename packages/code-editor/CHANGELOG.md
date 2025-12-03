@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-code-editor@5.11.3...@hitachivantara/uikit-react-code-editor@5.11.4) (2025-12-03)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-code-editor
+
 ## [5.11.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-code-editor@5.11.2...@hitachivantara/uikit-react-code-editor@5.11.3) (2025-11-14)
 
 ### Reverts

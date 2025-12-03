@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.16.9](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-icons@5.16.8...@hitachivantara/uikit-react-icons@5.16.9) (2025-12-03)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-icons
+
 ## [5.16.8](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-icons@5.16.7...@hitachivantara/uikit-react-icons@5.16.8) (2025-11-14)
 
 ### Reverts

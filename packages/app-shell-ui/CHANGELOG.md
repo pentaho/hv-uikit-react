@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@1.13.10...@hitachivantara/app-shell-ui@1.14.0) (2025-12-03)
+
+### Features
+
+- **theme:** temporary support for pentaho theme alias ([#5006](https://github.com/pentaho/hv-uikit-react/issues/5006)) ([61e5878](https://github.com/pentaho/hv-uikit-react/commit/61e587858f2db6fab3e30847d212e15c2dc626e9))
+
 ## [1.13.10](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@1.13.9...@hitachivantara/app-shell-ui@1.13.10) (2025-11-25)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-ui

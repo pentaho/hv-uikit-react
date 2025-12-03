@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.109.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.108.1...@hitachivantara/uikit-react-core@5.109.0) (2025-12-03)
+
+### Bug Fixes
+
+- **Selectors:** label clicking outside text ([#5003](https://github.com/pentaho/hv-uikit-react/issues/5003)) ([e0530d3](https://github.com/pentaho/hv-uikit-react/commit/e0530d3679580bcf5122adcea6b047d3f1abd372))
+
+### Features
+
+- **theme:** temporary support for pentaho theme alias ([#5006](https://github.com/pentaho/hv-uikit-react/issues/5006)) ([61e5878](https://github.com/pentaho/hv-uikit-react/commit/61e587858f2db6fab3e30847d212e15c2dc626e9))
+
 ## [5.108.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.108.0...@hitachivantara/uikit-react-core@5.108.1) (2025-11-25)
 
 ### Bug Fixes
