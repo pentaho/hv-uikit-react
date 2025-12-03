@@ -144,8 +144,11 @@ describe("AppShellProvider component", () => {
 
         const bodyElement = baseElement.ownerDocument.body;
 
+        // TODO: Temporary support for "pentaho" theme alias. To be removed in v6.
+        const expectedTheme = theme === "pentaho" ? "pentahoPlus" : theme;
+
         await waitFor(() => {
-          expect(bodyElement.getAttribute("data-theme")).toBe(theme);
+          expect(bodyElement.getAttribute("data-theme")).toBe(expectedTheme);
           expect(bodyElement.getAttribute("data-color-mode")).toBe("dawn");
           expect(bodyElement).toHaveStyle("color-scheme: light;");
         });
