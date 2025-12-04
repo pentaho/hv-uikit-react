@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
 import { mergeTheme } from "@hitachivantara/uikit-styles";
 
-import { ds5 } from "../themes/ds5";
+import { next } from "../themes/next";
 import { HvProvider } from "./Provider";
 
-const customTheme = mergeTheme(ds5, {
+const customTheme = mergeTheme(next, {
   name: "custom-theme",
 });
 
@@ -18,7 +18,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=ds5]");
+    const theme = container.querySelector("[data-theme=pentahoPlus]");
     const mode = container.querySelector("[data-color-mode=light]");
 
     expect(theme).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=ds5]");
+    const theme = container.querySelector("[data-theme=pentahoPlus]");
     const mode = container.querySelector("[data-color-mode=dark]");
 
     expect(theme).toBeInTheDocument();

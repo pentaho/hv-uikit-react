@@ -15,7 +15,7 @@ import {
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";
 
-import { ds5 } from "../themes";
+import { pentaho } from "../themes";
 import { getElementById } from "../utils/document";
 import {
   defaultCacheKey,
@@ -64,7 +64,7 @@ export interface HvProviderProps {
   /**
    * The active theme. It must be one of the themes passed to `themes`.
    *
-   * If no value is provided, the first theme from the `themes` list is used. If no `themes` list is provided, the `ds5` theme will be used.
+   * If no value is provided, the first theme from the `themes` list is used. If no `themes` list is provided, the `next` theme will be used.
    */
   theme?: HvTheme | HvThemeStructure;
   /**
@@ -84,7 +84,7 @@ export const HvProvider = ({
   rootElementId,
   cssBaseline = "global",
   cssTheme = "global",
-  theme = ds5,
+  theme = pentaho,
   colorMode = theme.defaultColorMode || "light",
   emotionCache: emotionCacheProp,
   classNameKey = defaultCacheKey,

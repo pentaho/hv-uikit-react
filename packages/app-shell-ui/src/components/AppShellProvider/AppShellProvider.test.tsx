@@ -93,14 +93,14 @@ describe("AppShellProvider component", () => {
           expect.stringContaining("Import of theme bundle dummyTheme failed!"),
         );
 
-        expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
+        expect(bodyElement.getAttribute("data-theme")).toBe("pentahoPlus");
       });
     });
 
     it("should apply chosen theme and color mode", async () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
-          theme: "ds5",
+          theme: "next",
           colorMode: "dark",
         },
       });
@@ -108,7 +108,7 @@ describe("AppShellProvider component", () => {
       const bodyElement = baseElement.ownerDocument.body;
 
       await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
+        expect(bodyElement.getAttribute("data-theme")).toBe("next");
         expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });

@@ -17,7 +17,7 @@ export default {
     name: "PENTAHO",
   },
   theming: {
-    theme: "pentahoPlus",
+    theme: "pentaho",
     colorMode: "light",
   },
   menu: [

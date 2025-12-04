@@ -1,6 +1,6 @@
 import {
-  ds5 as ds5Base,
   mergeTheme,
+  next as nextBase,
   theme,
 } from "@hitachivantara/uikit-styles";
 
@@ -28,7 +28,7 @@ import type { HvTagProps } from "../Tag";
 import type { HvCalloutProps } from "../utils/Callout";
 import type { CSSClasses } from "./utils";
 
-export const ds5 = mergeTheme(ds5Base, {
+export const next = mergeTheme(nextBase, {
   components: {
     HvAvatar: {
       classes: {
