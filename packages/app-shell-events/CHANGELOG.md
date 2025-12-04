@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-events@1.1.3...@hitachivantara/app-shell-events@2.0.0-next.2) (2025-12-04)
+
+**Note:** Version bump only for package @hitachivantara/app-shell-events
+
 ## [1.1.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-events@1.1.2...@hitachivantara/app-shell-events@1.1.3) (2025-11-14)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-events

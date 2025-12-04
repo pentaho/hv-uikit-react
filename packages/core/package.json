@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-core",
-  "version": "6.0.0-next.2",
+  "version": "6.0.0-next.3",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -41,9 +41,9 @@
   "dependencies": {
     "@emotion/cache": "^11.11.0",
     "@emotion/serialize": "^1.1.2",
-    "@hitachivantara/uikit-react-shared": "^6.0.0-next.2",
-    "@hitachivantara/uikit-react-utils": "^6.0.0-next.2",
-    "@hitachivantara/uikit-styles": "^6.0.0-next.2",
+    "@hitachivantara/uikit-react-shared": "^6.0.0-next.3",
+    "@hitachivantara/uikit-react-utils": "^6.0.0-next.3",
+    "@hitachivantara/uikit-styles": "^6.0.0-next.3",
     "@internationalized/date": "^3.2.0",
     "@mui/base": "5.0.0-beta.68",
     "@popperjs/core": "^2.11.8",

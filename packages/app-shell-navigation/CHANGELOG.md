@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@1.4.21...@hitachivantara/app-shell-navigation@2.0.0-next.2) (2025-12-04)
+
+### Features
+
+- **AppShell:** add client condition configuration [PPUC-34] ([#4988](https://github.com/pentaho/hv-uikit-react/issues/4988)) ([1a4c56e](https://github.com/pentaho/hv-uikit-react/commit/1a4c56e955d87c7afc83117b0975ed7d193fb33c))
+
 ## [1.4.21](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@1.4.20...@hitachivantara/app-shell-navigation@1.4.21) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-navigation

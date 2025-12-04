@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-pentaho@0.10.20...@hitachivantara/uikit-react-pentaho@6.0.0-next.1) (2025-12-04)
+
+### Bug Fixes
+
+- consistent component classes naming ([#4826](https://github.com/pentaho/hv-uikit-react/issues/4826)) ([8db78dd](https://github.com/pentaho/hv-uikit-react/commit/8db78dd05ecf207ab04c5ff31b9b76bcd6edfa87))
+- migrate cli baselines & bump pentaho/uno packages ([#4967](https://github.com/pentaho/hv-uikit-react/issues/4967)) ([c96f3de](https://github.com/pentaho/hv-uikit-react/commit/c96f3defe72b71649703e2f4eb7bc1b86620ba23))
+
 ## [0.10.20](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-pentaho@0.10.19...@hitachivantara/uikit-react-pentaho@0.10.20) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-pentaho

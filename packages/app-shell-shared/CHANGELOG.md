@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@1.7.11...@hitachivantara/app-shell-shared@2.0.0-next.2) (2025-12-04)
+
+### Features
+
+- **AppShell:** add client condition configuration [PPUC-34] ([#4988](https://github.com/pentaho/hv-uikit-react/issues/4988)) ([1a4c56e](https://github.com/pentaho/hv-uikit-react/commit/1a4c56e955d87c7afc83117b0975ed7d193fb33c))
+- **theme:** support only light/dark color modes ([#4857](https://github.com/pentaho/hv-uikit-react/issues/4857)) ([83973d2](https://github.com/pentaho/hv-uikit-react/commit/83973d2bc54e5eb71a7923035b789016d36b9456))
+
 ## [1.7.11](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@1.7.10...@hitachivantara/app-shell-shared@1.7.11) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-shared

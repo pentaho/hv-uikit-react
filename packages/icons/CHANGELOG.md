@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-icons@5.16.9...@hitachivantara/uikit-react-icons@6.0.0-next.3) (2025-12-04)
+
+### Features
+
+- **icons:** remove deprecated `inverted` & `semantic` props ([#4820](https://github.com/pentaho/hv-uikit-react/issues/4820)) ([bcb9843](https://github.com/pentaho/hv-uikit-react/commit/bcb98432df33a567a6fa32e1430438db117d2a0c))
+
 ## [5.16.9](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-icons@5.16.8...@hitachivantara/uikit-react-icons@5.16.9) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-icons

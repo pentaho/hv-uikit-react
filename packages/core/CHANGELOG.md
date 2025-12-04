@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.109.0...@hitachivantara/uikit-react-core@6.0.0-next.3) (2025-12-04)
+
+### Bug Fixes
+
+- **Accordion:** default disableEventHandling ([#4835](https://github.com/pentaho/hv-uikit-react/issues/4835)) ([bf764f2](https://github.com/pentaho/hv-uikit-react/commit/bf764f2f62dc6dff53f5fda1d3d51c55393336e1))
+- **Badge:** remove deprecated APIs ([#4842](https://github.com/pentaho/hv-uikit-react/issues/4842)) ([83457bd](https://github.com/pentaho/hv-uikit-react/commit/83457bdd7f6f65da4c0f52fb07ed016ec098ac08))
+- consistent component classes naming ([#4826](https://github.com/pentaho/hv-uikit-react/issues/4826)) ([8db78dd](https://github.com/pentaho/hv-uikit-react/commit/8db78dd05ecf207ab04c5ff31b9b76bcd6edfa87))
+- typos in props names ([#4823](https://github.com/pentaho/hv-uikit-react/issues/4823)) ([226a7ff](https://github.com/pentaho/hv-uikit-react/commit/226a7ff7c8da991a98d7c7a87511d5e41b2050bb))
+
+### Features
+
+- **icons:** remove deprecated `inverted` & `semantic` props ([#4820](https://github.com/pentaho/hv-uikit-react/issues/4820)) ([bcb9843](https://github.com/pentaho/hv-uikit-react/commit/bcb98432df33a567a6fa32e1430438db117d2a0c))
+- **theme:** rename themes to align with supported next and pentaho design systems ([#5007](https://github.com/pentaho/hv-uikit-react/issues/5007)) ([620652d](https://github.com/pentaho/hv-uikit-react/commit/620652dfdbe251b54b33fe900f8d014876e6ea57))
+- **theme:** support only light/dark color modes ([#4857](https://github.com/pentaho/hv-uikit-react/issues/4857)) ([83973d2](https://github.com/pentaho/hv-uikit-react/commit/83973d2bc54e5eb71a7923035b789016d36b9456))
+
 # [5.109.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.108.1...@hitachivantara/uikit-react-core@5.109.0) (2025-12-03)
 
 ### Bug Fixes

@@ -3,6 +3,158 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 6.0.0-next.1 (2025-12-04)
+
+### Bug Fixes
+
+- migrate cli baselines & bump pentaho/uno packages ([#4967](https://github.com/pentaho/hv-uikit-react/issues/4967)) ([c96f3de](https://github.com/pentaho/hv-uikit-react/commit/c96f3defe72b71649703e2f4eb7bc1b86620ba23))
+
+### Features
+
+- **theme:** rename themes to align with supported next and pentaho design systems ([#5007](https://github.com/pentaho/hv-uikit-react/issues/5007)) ([620652d](https://github.com/pentaho/hv-uikit-react/commit/620652dfdbe251b54b33fe900f8d014876e6ea57))
+
+# 5.107.0 (2025-11-14)
+
+### Bug Fixes
+
+- **cli:** bump config version & fix scripts ([#4963](https://github.com/pentaho/hv-uikit-react/issues/4963)) ([9a4aa86](https://github.com/pentaho/hv-uikit-react/commit/9a4aa86bee2c4ed13bef784221a66a98cac6ab56))
+
+### Reverts
+
+- Revert "chore(release): publish" (#4969) ([c3e10b0](https://github.com/pentaho/hv-uikit-react/commit/c3e10b015cdd1b36183c8a733d604a238f0d298c)), closes [#4969](https://github.com/pentaho/hv-uikit-react/issues/4969)
+- "chore(release): publish" ([#4972](https://github.com/pentaho/hv-uikit-react/issues/4972)) ([fd92a30](https://github.com/pentaho/hv-uikit-react/commit/fd92a30f57c51d41ee3dce9c4920a15f16abb59a))
+- "chore(release): publish" ([#4980](https://github.com/pentaho/hv-uikit-react/issues/4980)) ([85a3567](https://github.com/pentaho/hv-uikit-react/commit/85a35679d698bc6e05e1cd7b26739badccdc3fe1))
+
+## 5.106.2 (2025-10-22)
+
+### Bug Fixes
+
+- **cli:** update tsconfig's `moduleResolution` to match create-vite guide ([#4955](https://github.com/pentaho/hv-uikit-react/issues/4955)) ([0c0380f](https://github.com/pentaho/hv-uikit-react/commit/0c0380f10748c6f85086e2875ca68019df543a31))
+
+# 5.102.0 (2025-09-01)
+
+## 5.100.1 (2025-08-15)
+
+# 5.100.0 (2025-08-08)
+
+### Features
+
+- **cli:** use uikit-config package (oxlint, tsconfig, prettier) ([#4834](https://github.com/pentaho/hv-uikit-react/issues/4834)) ([48ce736](https://github.com/pentaho/hv-uikit-react/commit/48ce7367eceddca6c3c7dedf0374ef18ec56129b))
+
+## 5.99.1 (2025-07-25)
+
+# 5.97.0 (2025-07-04)
+
+### Features
+
+- **config:** add oxlint configuration ([#4785](https://github.com/pentaho/hv-uikit-react/issues/4785)) ([fa8f919](https://github.com/pentaho/hv-uikit-react/commit/fa8f9194ccdfd04732ca6986a5ea13bff7592933))
+
+## 5.96.1 (2025-06-13)
+
+### Bug Fixes
+
+- **cli:** add fallback `Project`/`Home` routes ([#4780](https://github.com/pentaho/hv-uikit-react/issues/4780)) ([42bd444](https://github.com/pentaho/hv-uikit-react/commit/42bd444c2fe945be088925e8cc4390d59eefa139))
+
+# 5.96.0 (2025-06-06)
+
+### Bug Fixes
+
+- **cli:** routing & navigationData setup ([#4773](https://github.com/pentaho/hv-uikit-react/issues/4773)) ([d8d228e](https://github.com/pentaho/hv-uikit-react/commit/d8d228edfea01a34d7a3c07add7e03fe77cdf378))
+
+# 5.93.0 (2025-04-18)
+
+### Features
+
+- **AppShell:** migrate packages ([#4631](https://github.com/pentaho/hv-uikit-react/issues/4631)) ([5601708](https://github.com/pentaho/hv-uikit-react/commit/560170844dcc962308a6945f40a9e7c13e131a39))
+
+# 5.88.0 (2025-02-21)
+
+### Reverts
+
+- Revert "chore(release): publish" ([0261483](https://github.com/pentaho/hv-uikit-react/commit/0261483ff517270d18a47caf4c0982910f594fda))
+
+## 5.85.1 (2025-01-20)
+
+# 5.85.0 (2025-01-16)
+
+### Features
+
+- **cli:** improve baselines ([bbaadc1](https://github.com/pentaho/hv-uikit-react/commit/bbaadc1f34c087334c8b24a0852d5f5afb67f660))
+- **Panel:** simplify border customisation ([95724e5](https://github.com/pentaho/hv-uikit-react/commit/95724e580582b04c6d60b6e0c1c09bcc1769eb35))
+
+## 5.84.4 (2025-01-09)
+
+## 5.82.4 (2024-12-05)
+
+### Bug Fixes
+
+- **TableSection:** border-radius ([#4462](https://github.com/pentaho/hv-uikit-react/issues/4462)) ([c9adeda](https://github.com/pentaho/hv-uikit-react/commit/c9adeda6d9182913c3701c3eb8e1b2afd4fe92b7))
+
+## 5.82.2 (2024-11-28)
+
+### Bug Fixes
+
+- relative package imports ([#4453](https://github.com/pentaho/hv-uikit-react/issues/4453)) ([d4a16aa](https://github.com/pentaho/hv-uikit-react/commit/d4a16aaabd216714cd3346517368e6ad5d6131d7))
+
+### Features
+
+- add CanvasContext ([#4439](https://github.com/pentaho/hv-uikit-react/issues/4439)) ([5f85304](https://github.com/pentaho/hv-uikit-react/commit/5f853048d54595588fc2030b58e01db365d9212e))
+
+# 5.82.0 (2024-11-19)
+
+### Features
+
+- **icons:** add rotate property ([#4433](https://github.com/pentaho/hv-uikit-react/issues/4433)) ([b5c69b2](https://github.com/pentaho/hv-uikit-react/commit/b5c69b295a5281631e56e9982602704108b386d5))
+
+# 5.74.0 (2024-10-03)
+
+### Reverts
+
+- Revert "chore(release): publish" (#4369) ([6f16a6d](https://github.com/pentaho/hv-uikit-react/commit/6f16a6dbde951a4dd1b32a08e9a26c71295600f1)), closes [#4369](https://github.com/pentaho/hv-uikit-react/issues/4369)
+
+# 5.72.0 (2024-09-09)
+
+### Features
+
+- **icons:** add rotate animation ([e92eaaa](https://github.com/pentaho/hv-uikit-react/commit/e92eaaa09b8252cdca170b1a166759398e03769d))
+
+# 5.71.0 (2024-09-05)
+
+# 5.70.0 (2024-08-26)
+
+### Features
+
+- **header:** pentaho theme updates and duplicated shadow removed ([#4298](https://github.com/pentaho/hv-uikit-react/issues/4298)) ([e6135e3](https://github.com/pentaho/hv-uikit-react/commit/e6135e31b789fbf1d47389c2a625e3ff06b36e48))
+
+# 5.68.0 (2024-08-15)
+
+### Bug Fixes
+
+- styles across components ([#4263](https://github.com/pentaho/hv-uikit-react/issues/4263)) ([59f16c4](https://github.com/pentaho/hv-uikit-react/commit/59f16c4e540d83a919937e53e0c4286144f51a61))
+
+# 5.67.0 (2024-08-08)
+
+### Bug Fixes
+
+- **BottomPanel:** tab title overflow ([#4248](https://github.com/pentaho/hv-uikit-react/issues/4248)) ([23468a9](https://github.com/pentaho/hv-uikit-react/commit/23468a935996384edcf867797bfb96d01f7f7356))
+- canvas panel and floating panel renamed to side and bottom panel ([#4231](https://github.com/pentaho/hv-uikit-react/issues/4231)) ([e5f4f84](https://github.com/pentaho/hv-uikit-react/commit/e5f4f841a12a547f2cac8cb596db0ef2253299ea))
+- **cli:** update templates ([300e933](https://github.com/pentaho/hv-uikit-react/commit/300e9338be532dab567694f20bc497e8c1b6d3ee))
+- drag and drop with keyboard for tree view panel in canvas template ([ca6b388](https://github.com/pentaho/hv-uikit-react/commit/ca6b388ecbedf6bd132f5eb6fd9ef13854dfcc96))
+
+### Features
+
+- **cli:** move package from hv-uikit-cli repo ([c4e3bf1](https://github.com/pentaho/hv-uikit-react/commit/c4e3bf1f2de1c77d0161be582c40482dd213585b))
+
+### Performance Improvements
+
+- remove core dependency in viz & code-editor ([27ede92](https://github.com/pentaho/hv-uikit-react/commit/27ede92f7e198924655247cb576867c027286c3d))
+
+### Reverts
+
+- Revert "chore(release): publish" ([c4fae1b](https://github.com/pentaho/hv-uikit-react/commit/c4fae1bf354a0f3c7f3db4f1b16d520380f0f85f))
+- Revert "chore(release): publish" ([ecea29c](https://github.com/pentaho/hv-uikit-react/commit/ecea29c4ea42586e3c4f828492c7afecf375419e))
+- "chore(release): publish" ([a580a01](https://github.com/pentaho/hv-uikit-react/commit/a580a0110faa7a2bc047bfa39d53ff2ddffba4bc))
+
 ## [1.24.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/hv-uikit-cli@1.24.3...@hitachivantara/hv-uikit-cli@1.24.4) (2025-11-14)
 
 ### Bug Fixes
