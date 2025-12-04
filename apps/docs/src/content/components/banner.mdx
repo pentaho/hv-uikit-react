@@ -10,8 +10,10 @@ import { Header } from "../../components/Header";
   Component={HvBanner}
   componentName="HvBanner"
   controls={{
-    label: { defaultValue: "This is a success message." },
+    title: { defaultValue: "This is the banner title" },
+    label: { defaultValue: "This is the banner message." },
     variant: { defaultValue: "success" },
+    size: { defaultValue: "regular" },
     showIcon: { defaultValue: true },
     open: { defaultValue: true },
   }}
@@ -22,20 +24,89 @@ import { Header } from "../../components/Header";
 
 ### Actions
 
-You can add a set of actions to the banner by specifying the `actions` prop. The `onAction` prop is a callback function that is called when an action is clicked.
+You can add a set of actions to the banner by specifying the `actions` prop.
+The `onAction` prop is a callback function that is called when an action is clicked.
+
+If you want to show a close button, you'll need to pass a function to the `onClose` prop.
 
 ```tsx live
 <HvBanner
   open
   offset={0}
-  label="This is a banner."
+  label="This could be a one-line message text string with two actions on a tablet or on a desktop. This could be a two-lines message text string with two actions on a tablet or on a desktop. However, this is actually a three-lines message text string with two actions on a tablet or on a desktop."
   showIcon
   className="relative"
   actions={[
     { id: "action_1", label: "Action 1", disabled: false },
     { id: "action_2", label: "Action 2", disabled: false },
   ]}
+  variant="info"
   onAction={(event, action) => console.log("Clicked", action)}
+  onClose={() => alert("Banner closed")}
+/>
+```
+
+By default, the actions will be placed inline with the banner content. You can change this behavior by using the `actionsPosition` prop.
+
+```tsx live
+<HvBanner
+  open
+  offset={0}
+  label="This could be a one-line message text string with two actions on a tablet or on a desktop. This could be a two-lines message text string with two actions on a tablet or on a desktop. However, this is actually a three-lines message text string with two actions on a tablet or on a desktop."
+  showIcon
+  className="relative"
+  actions={[
+    { id: "action_1", label: "Action 1", disabled: false },
+    { id: "action_2", label: "Action 2", disabled: false },
+  ]}
+  variant="info"
+  onAction={(event, action) => console.log("Clicked", action)}
+  onClose={() => alert("Banner closed")}
+  actionsPosition="bottom-right"
+/>
+```
+
+You can also pass custom action components, instead of the `actions` prop. In this case the `onAction` prop will not be called when an action is clicked,
+so you'll need to handle the click events yourself.
+
+```tsx live
+<HvBanner
+  open
+  size="large"
+  offset={0}
+  label="This could be a one-line message text string with two actions on a tablet or on a desktop. This could be a two-lines message text string with two actions on a tablet or on a desktop. However, this is actually a three-lines message text string with two actions on a tablet or on a desktop."
+  showIcon
+  className="relative"
+  actions={
+    <div className="flex gap-xxs self-end">
+      <HvButton variant="secondaryGhost" color="inherit">
+        Read More
+      </HvButton>
+      <HvButton
+        variant="secondarySubtle"
+        color="inherit"
+        startIcon={
+          <HvIconContainer>
+            <div className="i-ph-check" />
+          </HvIconContainer>
+        }
+      >
+        Accept
+      </HvButton>
+    </div>
+  }
+  variant="info"
+  onAction={(event, action) => console.log("Clicked", action)}
+  onClose={() => alert("Banner closed")}
+  bannerContentProps={{
+    classes: {
+      root: "gap-0",
+      message: "flex-col items-start",
+      iconContainer: "absolute",
+      messageContainer: "text-wrap ml-56px",
+      action: "pl-0",
+    },
+  }}
 />
 ```
 
@@ -113,12 +184,13 @@ const buttonVariantMap = {
 
 ### Showing a banner inline with content
 
-The `HvBanner` component is typically used as a global banner with a fixed position and transition.
-For inline usage within content, use the `HvBannerContent` component instead.
+The `HvBanner` component is typically used as a global banner with a fixed position and transition. But you can
+also use it inline with other content by using the `HvBannerContent` component directly. You may also want to use the banner
+contained on the top of a section. While the component itself doesn't support it out of the box, you can achieve this effect
+by customizing the styles a bit. The example below shows illustrates both use cases.
 
 ```tsx live
-<div className="flex flex-col gap-sm">
-  <HvSelect label="Target status" />
+<div className="w-full h-fit border-1 border-borderSubtle bg-bgContainer">
   <HvBannerContent
     variant="error"
     showIcon
@@ -127,13 +199,20 @@ For inline usage within content, use the `HvBannerContent` component instead.
         Fix
       </HvButton>
     }
+    className="outline-none rounded-0 border-b [border-bottom-color:var(--icolor,currentColor)]"
   >
-    You need to select a target status before you can proceed.
+    Opps, something went wrong!
   </HvBannerContent>
-  <HvInput
-    placeholder="Please select the assignees..."
-    label="Assign to"
-    className="mb-sm"
-  />
+  <div className="p-sm flex flex-col gap-sm">
+    <HvSelect label="Target status" />
+    <HvBannerContent variant="warning" showIcon>
+      You need to select a target status before you can proceed.
+    </HvBannerContent>
+    <HvInput
+      placeholder="Please select the assignees..."
+      label="Assign to"
+      className="mb-sm"
+    />
+  </div>
 </div>
 ```

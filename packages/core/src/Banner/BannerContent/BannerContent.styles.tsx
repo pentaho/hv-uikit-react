@@ -7,7 +7,6 @@ export const { useClasses, staticClasses } = createClasses("HvBannerContent", {
     width: "100%",
     position: "relative",
     gap: theme.space.xs,
-    minHeight: 48,
   },
   success: {},
   warning: {},
@@ -17,22 +16,17 @@ export const { useClasses, staticClasses } = createClasses("HvBannerContent", {
   accent: {},
   message: {
     gap: theme.space.xs,
-    padding: theme.spacing("xs", 0),
-    paddingLeft: theme.space.sm,
     ...theme.typography.body,
     color: theme.colors.textDark,
   },
   action: {
-    padding: theme.space.xs,
     flex: "0 0 auto",
     placeSelf: "stretch",
   },
   messageContainer: {
     maxWidth: 700,
   },
-  iconContainer: {
-    marginLeft: theme.spacing(-1),
-  },
+  iconContainer: {},
   messageActions: {
     flex: "0 0 auto",
   },

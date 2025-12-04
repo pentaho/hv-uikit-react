@@ -65,6 +65,8 @@ export interface HvBannerProps
   offset?: number;
   /** Props to pass down to the banner Wrapper. An object `actionProps` can be included to be passed as others to actions. */
   bannerContentProps?: HvBannerContentProps;
+  /** The size of the banner. */
+  size?: HvBannerContentProps["size"];
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBannerClasses;
   /** @ignore */
@@ -99,6 +101,7 @@ export const HvBanner = forwardRef<
     label,
     offset = 60,
     bannerContentProps,
+    size = "regular",
     ...others
   } = useDefaultProps("HvBanner", props);
   const { classes, cx } = useClasses(classesProp);
@@ -149,6 +152,7 @@ export const HvBanner = forwardRef<
         onAction={onAction}
         actionsPosition={actionsPosition}
         onClose={onClose}
+        size={size}
         {...bannerContentProps}
       >
         {label}

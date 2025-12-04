@@ -8,6 +8,7 @@ import {
 } from "@hitachivantara/uikit-styles";
 
 import type { HvBadgeProps } from "../Badge";
+import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvBaseDropdownProps } from "../BaseDropdown";
@@ -144,6 +145,9 @@ export const pentahoPlus = mergeTheme(pentahoPlusBase, {
         },
         actionClose: {
           color: theme.colors.text,
+        },
+        content: {
+          ...theme.typography.caption1,
         },
       },
     } satisfies CSSClasses<HvCalloutProps>,
@@ -939,5 +943,13 @@ export const pentahoPlus = mergeTheme(pentahoPlusBase, {
         },
       },
     } satisfies CSSClasses<HvTooltipProps>,
+    HvBannerContent: {
+      classes: {
+        root: {
+          overflow: "hidden",
+          minHeight: "unset",
+        },
+      },
+    } satisfies CSSClasses<HvBannerContentProps>,
   },
 });
