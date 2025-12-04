@@ -1,5 +1,8 @@
 import { useMemo, useState } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import {
+  useDefaultProps,
+  type ExtractNames,
+} from "@hitachivantara/uikit-react-utils";
 
 import { HvPanel } from "../../Panel";
 import { HvTypography } from "../../Typography";
@@ -19,25 +22,26 @@ export { staticClasses as singleCalendarClasses };
 
 export type HvSingleCalendarClasses = ExtractNames<typeof useClasses>;
 
-export const HvSingleCalendar = ({
-  classes: classesProp,
-  className,
-  id,
-  locale = DEFAULT_LOCALE,
-  value,
-  visibleMonth,
-  visibleYear,
-  minimumDate,
-  maximumDate,
-  onChange,
-  onInputChange,
-  onVisibleDateChange,
-  showEndDate,
-  showDayOfWeek,
-  invalidDateLabel,
-  children,
-  ...others
-}: HvSingleCalendarProps) => {
+export const HvSingleCalendar = (props: HvSingleCalendarProps) => {
+  const {
+    classes: classesProp,
+    className,
+    id,
+    locale = DEFAULT_LOCALE,
+    value,
+    visibleMonth,
+    visibleYear,
+    minimumDate,
+    maximumDate,
+    onChange,
+    onInputChange,
+    onVisibleDateChange,
+    showEndDate,
+    showDayOfWeek,
+    invalidDateLabel,
+    children,
+    ...others
+  } = useDefaultProps("HvSingleCalendar", props);
   // TODO: refactor this out
   // const { HvCalendarHeader } = useContext(HvFormElementDescriptorsContext);
 
@@ -154,11 +158,17 @@ export const HvSingleCalendar = ({
             visibleMonth={visibleMonth || today.getMonth() + 1}
           />
           <div
-            className={classes.calendarGrid}
+            className={cx(classes.calendarGrid, classes.weekdays)}
             // @ts-ignore TODO: review
             aria-controls={HvCalendarHeader?.[0]?.id}
           >
             {listWeekdayNames.map(renderWeekLabel)}
+          </div>
+          <div
+            className={classes.calendarGrid}
+            // @ts-ignore TODO: review
+            aria-controls={HvCalendarHeader?.[0]?.id}
+          >
             {calModel.dates.map(renderCalendarDate)}
           </div>
         </>

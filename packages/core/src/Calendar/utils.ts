@@ -97,7 +97,11 @@ export const isSameDay = (date1: any, date2: any) => {
  * @returns The formatted date in ISO format.
  */
 export const getDateISO = (date: string | number | Date) => {
-  return new Date(date).toISOString().slice(0, 10);
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 };
 
 /**

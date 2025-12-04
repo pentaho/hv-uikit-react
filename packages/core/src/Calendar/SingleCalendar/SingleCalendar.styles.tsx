@@ -28,7 +28,7 @@ export const { staticClasses, useClasses } = createClasses("HvSingleCalendar", {
     "& $cellsInRange:hover": {
       backgroundColor: theme.colors.bgPageSecondary,
       "& $calendarDate": {
-        borderRight: `1px solid ${theme.colors.text}`,
+        borderRight: `2px solid ${theme.colors.text}`,
       },
     },
     "& $cellsInRange:hover ~ $cellsInRange": {
@@ -61,4 +61,5 @@ export const { staticClasses, useClasses } = createClasses("HvSingleCalendar", {
   },
   cellsOutsideRange: {},
   cellContainer: {},
+  weekdays: {},
 });
