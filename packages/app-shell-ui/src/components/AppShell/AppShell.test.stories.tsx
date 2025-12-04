@@ -80,10 +80,8 @@ export const Main: StoryObj<HvAppShellConfig> = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const aboutLink = canvas.queryByRole("link", { name: /about/i });
-    if (aboutLink) {
-      await userEvent.click(aboutLink);
-    }
+    const aboutLink = await canvas.findByRole("link", { name: /about/i });
+    await userEvent.click(aboutLink);
   },
   render: (args) => <HvAppShell config={args} />,
 };
