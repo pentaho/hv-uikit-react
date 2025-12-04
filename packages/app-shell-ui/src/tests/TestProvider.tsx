@@ -1,3 +1,4 @@
+import { PropsWithChildren, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -13,14 +14,13 @@ import GenericError from "../pages/GenericError";
 import { BannerProvider } from "../providers/BannerProvider";
 import { NavigationProvider } from "../providers/NavigationProvider";
 
-interface TestProviderProps {
-  children: React.ReactNode;
+interface TestProviderProps extends PropsWithChildren {
   bundles?: Record<string, object>;
   config?: Partial<HvAppShellConfig>;
   configUrl?: string;
 }
 
-const DummyRoot = ({ children }: { children: React.ReactNode }) => (
+const DummyRoot = ({ children }: { children: ReactNode }) => (
   <ErrorBoundary fallback={<GenericError fullPage />}>
     <NavigationProvider>
       <BannerProvider>{children}</BannerProvider>

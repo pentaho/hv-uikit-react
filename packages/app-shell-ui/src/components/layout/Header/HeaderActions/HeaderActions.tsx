@@ -1,4 +1,4 @@
-import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { HvHeaderActions } from "@hitachivantara/uikit-react-core";
 
 import DynamicAction from "./DynamicAction";
@@ -7,12 +7,11 @@ import InternalAction, {
 } from "./InternalActions/InternalAction/InternalAction";
 
 const HeaderActions = () => {
-  const { header } = useHvAppShellConfig();
+  const { header } = useHvAppShellModel();
 
   return (
     <HvHeaderActions>
-      {header?.actions.map((action, index) => {
-        const headerActionKey = `${action.bundle}${index}`;
+      {header?.actions.map((action) => {
         const Component = internalActions.some(
           (a) => a.bundle === action.bundle,
         )
@@ -21,7 +20,7 @@ const HeaderActions = () => {
 
         return (
           <Component
-            key={headerActionKey}
+            key={action.key}
             bundle={action.bundle}
             {...action.config}
           />

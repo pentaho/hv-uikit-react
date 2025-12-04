@@ -6,7 +6,7 @@ import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellAppSwitcherConfig,
   HvAppShellAppSwitcherItemConfig,
-  useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 import {
   HvAppSwitcher,
@@ -31,7 +31,7 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
   const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const appSwitcherPanelId = useId();
-  const appShellConfig = useHvAppShellConfig();
+  const { logo } = useHvAppShellModel();
 
   /**
    * Creates the apps list to be sent to the HvAppSwitcherPanel.
@@ -98,7 +98,7 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
           <IconUiKit name="AppSwitcher" />
           {showLogo && (
             <StyledIconWrapper style={{ paddingRight: theme.space.xs }}>
-              <BrandLogo logo={appShellConfig.logo} />
+              <BrandLogo logo={logo} />
             </StyledIconWrapper>
           )}
         </HvIconButton>

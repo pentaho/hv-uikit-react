@@ -1,113 +1,32 @@
+import type { Location } from "react-router-dom";
 import { renderHook } from "@testing-library/react";
-import { vi } from "vitest";
-import {
-  HvAppShellConfig,
-  HvAppShellViewContext,
-} from "@hitachivantara/app-shell-shared";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import TestProvider from "../tests/TestProvider";
 import { useHvLocation } from "./useLocation";
 
-const appShellConfigSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-shared", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-shared");
-  return {
-    ...(mod as object),
-    useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
-  };
-});
+const mockUseLocation = vi.fn();
+const mockUseHvAppShellModel = vi.fn();
 
-interface WrapperProps {
-  children: React.ReactNode;
-}
-
-const mockedUseLocation = vi.fn();
 vi.mock("react-router-dom", async () => {
   const mod = await vi.importActual("react-router-dom");
   return {
     ...(mod as object),
-    useLocation: vi.fn(() => mockedUseLocation()),
+    useLocation: () => mockUseLocation(),
   };
 });
 
-describe("useLocation Hook", () => {
-  const wrapper = ({ children }: WrapperProps) => (
-    <TestProvider>
-      <HvAppShellViewContext.Provider value={{ id: "dummyId" }}>
-        {children}
-      </HvAppShellViewContext.Provider>
-    </TestProvider>
-  );
+vi.mock("@hitachivantara/app-shell-shared", () => ({
+  useHvAppShellModel: () => mockUseHvAppShellModel(),
+}));
 
-  beforeAll(() => {
-    appShellConfigSpy.mockReturnValue({
-      apps: {
-        dummyId: "/",
-        otherDummyId: "/",
-      },
-      mainPanel: {
-        views: [
-          {
-            bundle: "dummyId/pages/Dummy1.js",
-            route: "/dummyRoute1",
-          },
-          {
-            bundle: "dummyId/pages/Dummy2.js",
-            route: "/dummyRoute2",
-          },
-          {
-            bundle: "dummyId/pages/Dummy3.js",
-            route: "/dummyRoute3",
-            views: [
-              {
-                bundle: "dummyId/pages/Dummy3-1.js",
-                route: "/dummyRoute3-1",
-              },
-            ],
-          },
-          {
-            bundle: "dummyId/pages/Dummy4.js",
-            route: "/dummyRoute4/:id",
-            views: [
-              {
-                bundle: "dummyId/pages/Dummy4-1.js",
-                route: "/hello",
-              },
-              {
-                bundle: "dummyId/pages/Dummy4-2.js",
-                route: "/goodbye",
-                views: [
-                  {
-                    bundle: "dummyId/pages/Dummy4-2-1.js",
-                    route: "/:type",
-                  },
-                  {
-                    bundle: "dummyId/pages/Dummy4-2-2.js",
-                    route: "/again",
-                  },
-                ],
-              },
-              {
-                bundle: "dummyId/pages/Dummy4-index.js",
-                route: "/",
-              },
-            ],
-          },
-          {
-            bundle: "otherDummyId/pages/Dummy1.js",
-            route: "/doesnt/return/on/get/bundle/route",
-          },
-        ],
-      },
-    } satisfies HvAppShellConfig);
+describe("useHvLocation", () => {
+  beforeEach(() => {
+    mockUseLocation.mockReset();
+    mockUseHvAppShellModel.mockReset();
   });
 
-  afterEach(() => {
-    mockedUseLocation.mockReset();
-  });
-
-  it("should return regular useHvLocation() properties", () => {
-    const location = {
+  it("should return location properties from react-router-dom useLocation", () => {
+    const location: Location = {
       pathname: "/dummyRoute1",
       search: "?asd=123",
       hash: "#test",
@@ -115,13 +34,11 @@ describe("useLocation Hook", () => {
       key: "default",
     };
 
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({ mainPanel: { views: [] } });
 
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
-    });
+    const { result } = renderHook(() => useHvLocation());
 
-    expect(result.current).toBeDefined();
     expect(result.current.pathname).toBe(location.pathname);
     expect(result.current.search).toBe(location.search);
     expect(result.current.hash).toBe(location.hash);
@@ -129,105 +46,263 @@ describe("useLocation Hook", () => {
     expect(result.current.key).toBe(location.key);
   });
 
-  it("should return regular useHvLocation() properties but no views when there aren't matches", () => {
-    const location = {
-      pathname: "/fakeRoute",
-      search: "?asd=123",
-      hash: "#test",
-      state: { test: "test" },
-      key: "default",
-    };
-
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
-
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
-    });
-
-    expect(result.current).toBeDefined();
-    expect(result.current.views.length).toBe(0);
-    expect(result.current.pathname).toBe(location.pathname);
-    expect(result.current.search).toBe(location.search);
-    expect(result.current.hash).toBe(location.hash);
-    expect(result.current.state).toBe(location.state);
-    expect(result.current.key).toBe(location.key);
-  });
-
-  it("should match view", () => {
-    const location = {
-      pathname: "/dummyRoute1",
+  it("should return empty views array when no views are configured", () => {
+    const location: Location = {
+      pathname: "/any-route",
       search: "",
       hash: "",
       state: null,
       key: "default",
     };
 
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({});
 
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
+    const { result } = renderHook(() => useHvLocation());
+
+    expect(result.current.views).toEqual([]);
+  });
+
+  it("should return empty views array when location doesn't match any configured routes", () => {
+    const location: Location = {
+      pathname: "/non-existent-route",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    };
+
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [
+          { bundle: "pages/Page1.js", route: "/page1" },
+          { bundle: "pages/Page2.js", route: "/page2" },
+        ],
+      },
     });
+
+    const { result } = renderHook(() => useHvLocation());
+
+    expect(result.current.views).toEqual([]);
+  });
+
+  it("should match a single view", () => {
+    const location: Location = {
+      pathname: "/page1",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    };
+
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [
+          { bundle: "pages/Page1.js", route: "/page1" },
+          { bundle: "pages/Page2.js", route: "/page2" },
+        ],
+      },
+    });
+
+    const { result } = renderHook(() => useHvLocation());
+
     expect(result.current.views).toHaveLength(1);
-    expect(result.current.views[0].bundle).toBe("dummyId/pages/Dummy1.js");
+    expect(result.current.views[0].bundle).toBe("pages/Page1.js");
   });
 
   it("should match nested views", () => {
-    const location = {
-      pathname: "/dummyRoute4/world/hello",
-      search: "?asd=123",
-      hash: "#test",
+    const location: Location = {
+      pathname: "/products/123/details",
+      search: "",
+      hash: "",
       state: null,
       key: "default",
     };
 
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
-
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [
+          {
+            bundle: "pages/Products.js",
+            route: "/products/:id",
+            views: [
+              { bundle: "pages/ProductDetails.js", route: "/details" },
+              { bundle: "pages/ProductReviews.js", route: "/reviews" },
+            ],
+          },
+        ],
+      },
     });
+
+    const { result } = renderHook(() => useHvLocation());
+
     expect(result.current.views).toHaveLength(2);
-    expect(result.current.views[0].bundle).toBe("dummyId/pages/Dummy4.js");
-    expect(result.current.views[1].bundle).toBe("dummyId/pages/Dummy4-1.js");
+    expect(result.current.views[0].bundle).toBe("pages/Products.js");
+    expect(result.current.views[1].bundle).toBe("pages/ProductDetails.js");
   });
 
   it("should match index views", () => {
-    const location = {
-      pathname: "/dummyRoute4/world",
-      search: "?asd=123",
-      hash: "#test",
+    const location: Location = {
+      pathname: "/products/123",
+      search: "",
+      hash: "",
       state: null,
       key: "default",
     };
 
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
-
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [
+          {
+            bundle: "pages/Products.js",
+            route: "/products/:id",
+            views: [
+              { bundle: "pages/ProductIndex.js", route: "/" },
+              { bundle: "pages/ProductDetails.js", route: "/details" },
+            ],
+          },
+        ],
+      },
     });
+
+    const { result } = renderHook(() => useHvLocation());
+
     expect(result.current.views).toHaveLength(2);
-    expect(result.current.views[0].bundle).toBe("dummyId/pages/Dummy4.js");
-    expect(result.current.views[1].bundle).toBe(
-      "dummyId/pages/Dummy4-index.js",
-    );
+    expect(result.current.views[0].bundle).toBe("pages/Products.js");
+    expect(result.current.views[1].bundle).toBe("pages/ProductIndex.js");
   });
 
-  it("should match nested views inside nested views", () => {
-    const location = {
-      pathname: "/dummyRoute4/night/goodbye/day",
-      search: "?asd=123",
-      hash: "#test",
+  it("should match deeply nested views", () => {
+    const location: Location = {
+      pathname: "/products/123/reviews/456",
+      search: "",
+      hash: "",
       state: null,
       key: "default",
     };
 
-    vi.mocked(mockedUseLocation).mockReturnValue(location);
-
-    const { result } = renderHook(() => useHvLocation(), {
-      wrapper,
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [
+          {
+            bundle: "pages/Products.js",
+            route: "/products/:productId",
+            views: [
+              {
+                bundle: "pages/Reviews.js",
+                route: "/reviews/:reviewId",
+                views: [{ bundle: "pages/ReviewDetails.js", route: "/" }],
+              },
+            ],
+          },
+        ],
+      },
     });
+
+    const { result } = renderHook(() => useHvLocation());
+
     expect(result.current.views).toHaveLength(3);
-    expect(result.current.views[0].bundle).toBe("dummyId/pages/Dummy4.js");
-    expect(result.current.views[1].bundle).toBe("dummyId/pages/Dummy4-2.js");
-    expect(result.current.views[2].bundle).toBe("dummyId/pages/Dummy4-2-1.js");
+    expect(result.current.views[0].bundle).toBe("pages/Products.js");
+    expect(result.current.views[1].bundle).toBe("pages/Reviews.js");
+    expect(result.current.views[2].bundle).toBe("pages/ReviewDetails.js");
+  });
+
+  it("should memoize result when dependencies don't change", () => {
+    const location: Location = {
+      pathname: "/page1",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    };
+
+    const config = {
+      mainPanel: {
+        views: [{ bundle: "pages/Page1.js", route: "/page1" }],
+      },
+    };
+
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue(config);
+
+    const { result, rerender } = renderHook(() => useHvLocation());
+
+    const firstResult = result.current;
+
+    rerender();
+
+    expect(result.current).toBe(firstResult);
+  });
+
+  it("should recalculate when location changes", () => {
+    const config = {
+      mainPanel: {
+        views: [
+          { bundle: "pages/Page1.js", route: "/page1" },
+          { bundle: "pages/Page2.js", route: "/page2" },
+        ],
+      },
+    };
+
+    mockUseLocation.mockReturnValue({
+      pathname: "/page1",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    });
+    mockUseHvAppShellModel.mockReturnValue(config);
+
+    const { result, rerender } = renderHook(() => useHvLocation());
+
+    expect(result.current.views[0].bundle).toBe("pages/Page1.js");
+
+    mockUseLocation.mockReturnValue({
+      pathname: "/page2",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    });
+
+    rerender();
+
+    expect(result.current.views[0].bundle).toBe("pages/Page2.js");
+  });
+
+  it("should recalculate when config views change", () => {
+    const location: Location = {
+      pathname: "/page1",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    };
+
+    mockUseLocation.mockReturnValue(location);
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [{ bundle: "pages/OldPage1.js", route: "/page1" }],
+      },
+    });
+
+    const { result, rerender } = renderHook(() => useHvLocation());
+
+    expect(result.current.views[0].bundle).toBe("pages/OldPage1.js");
+
+    mockUseHvAppShellModel.mockReturnValue({
+      mainPanel: {
+        views: [{ bundle: "pages/NewPage1.js", route: "/page1" }],
+      },
+    });
+
+    rerender();
+
+    expect(result.current.views[0].bundle).toBe("pages/NewPage1.js");
   });
 });

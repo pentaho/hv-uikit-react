@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { cx } from "@emotion/css";

@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 import {
   HvButton,
@@ -25,7 +25,7 @@ import StyledIconWrapper from "./styles";
 const Header = () => {
   const { t } = useTranslation(undefined, { keyPrefix: "header.navigation" });
   const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
-  const appShellConfig = useHvAppShellConfig();
+  const { navigationMode, name, logo } = useHvAppShellModel();
   const { verticalNavigationWidth } = useLayoutContext();
   const { activeTheme } = useTheme();
   const { navigate } = useHvNavigation();
@@ -40,11 +40,9 @@ const Header = () => {
     verticalNavigationItems,
   } = useNavigationContext();
 
-  const isOnlyTopMode = appShellConfig.navigationMode === "ONLY_TOP";
+  const isOnlyTopMode = navigationMode === "ONLY_TOP";
   const showNavigation =
-    !isCompactMode &&
-    appShellConfig.navigationMode !== "ONLY_LEFT" &&
-    items.length > 0;
+    !isCompactMode && navigationMode !== "ONLY_LEFT" && items.length > 0;
   const isVerticalNavigationClosed = verticalNavigationMode === "CLOSED";
   const showVerticalNavigationButton =
     isCompactMode && verticalNavigationItems.length > 0;
@@ -62,7 +60,7 @@ const Header = () => {
 
   const isPentahoTheme = activeTheme?.name === "pentahoPlus";
   const shouldShrinkHeader = isPentahoTheme && verticalNavigationWidth > 0;
-  const name = appShellConfig.name ? tConfig(appShellConfig.name) : "";
+  const appName = name ? tConfig(name) : "";
 
   return (
     <HvHeader
@@ -74,7 +72,7 @@ const Header = () => {
       })}
     >
       <Helmet>
-        <title>{name}</title>
+        <title>{appName}</title>
       </Helmet>
 
       {showVerticalNavigationButton && (
@@ -96,11 +94,11 @@ const Header = () => {
         {...(!isPentahoTheme && {
           logo: (
             <StyledIconWrapper>
-              <BrandLogo logo={appShellConfig.logo} />
+              <BrandLogo logo={logo} />
             </StyledIconWrapper>
           ),
         })}
-        name={name}
+        name={appName}
       />
       {showNavigation && (
         <HvHeaderNavigation

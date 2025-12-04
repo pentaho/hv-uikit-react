@@ -2,7 +2,7 @@ import { act, render, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 
 import * as i18next from "../../i18n";
@@ -18,7 +18,7 @@ describe("AppShellProvider component", () => {
   });
   describe("rendering", () => {
     const DummyComponent = () => {
-      const test = useHvAppShellConfig();
+      const test = useHvAppShellModel();
       return <p>{test?.name}</p>;
     };
     const mockedConfigResponse = {
@@ -127,7 +127,8 @@ describe("AppShellProvider component", () => {
 
       await waitFor(() => {
         expect(consoleMock).toHaveBeenCalledWith(
-          expect.stringContaining("Import of provider 'dummyProvider' failed!"),
+          "Failed to load bundle dummyProvider:",
+          expect.any(Error),
         );
       });
 

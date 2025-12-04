@@ -1,8 +1,5 @@
-import { createContext, useContext, useMemo, useState } from "react";
-import {
-  HvAppShellContext,
-  HvAppShellContextValue,
-} from "@hitachivantara/app-shell-shared";
+import { createContext, PropsWithChildren, useMemo, useState } from "react";
+import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 type DefaultAppContextValue = {
   text: string;
@@ -16,15 +13,13 @@ export const DefaultAppContext = createContext<DefaultAppContextValue>({
   },
 });
 
-type DefaultAppProviderProps = {
-  children: React.ReactNode;
-};
+interface DefaultAppProviderProps extends PropsWithChildren {}
 
 let clickNumber = 0;
 
 const DefaultAppProvider = ({ children }: DefaultAppProviderProps) => {
   const [text, setText] = useState<string>("Initial default-app context value");
-  const { menu } = useContext(HvAppShellContext) as HvAppShellContextValue;
+  const { menu } = useHvAppShellConfig();
 
   const value = useMemo(
     () => ({
