@@ -40,11 +40,14 @@ export const HvThemeProvider = ({
   colorMode: colorModeProp,
   themeRootId: rootId,
 }: HvThemeProviderProps) => {
-  const [colorMode, setColorMode] = useState(colorModeProp);
+  const [colorModeValue, setColorModeValue] = useState(colorModeProp);
+
+  /** safe `colorMode`, ensuring no invalid values are used */
+  const colorMode = colorModeValue === "dark" ? "dark" : "light";
 
   // review in v6 so that theme/colorMode isn't both controlled & uncontrolled
   useEffect(() => {
-    setColorMode(colorModeProp);
+    setColorModeValue(colorModeProp);
   }, [colorModeProp]);
 
   useEffect(() => {
@@ -59,7 +62,7 @@ export const HvThemeProvider = ({
       activeTheme: theme as HvTheme,
       selectedMode: colorMode,
       changeMode(newMode = colorMode) {
-        setColorMode(newMode);
+        setColorModeValue(newMode);
       },
       rootId,
     }),
