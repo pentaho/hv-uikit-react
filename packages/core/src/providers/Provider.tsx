@@ -119,7 +119,7 @@ export const HvProvider = ({
       <HvThemeProvider
         theme={theme}
         emotionCache={emotionCache}
-        colorMode={colorMode || "light"}
+        colorMode={colorMode}
         themeRootId={
           cssTheme === "scoped" ? rootElementId || scopedRootId : undefined
         }

@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { mergeTheme } from "@hitachivantara/uikit-styles";
 
 import { next } from "../themes/next";
@@ -41,7 +41,20 @@ describe("Provider", () => {
     expect(mode).toBeInTheDocument();
   });
 
-  it("should have the correct theme and color mode selected if the themes and theme properties are provided", () => {
+  it("falls back to a valid color mode if an invalid value is provided", () => {
+    const { container } = render(
+      <HvProvider cssTheme="scoped" colorMode={"invalid-mode" as any}>
+        <p>Theme provider test</p>
+      </HvProvider>,
+    );
+
+    const mode = container.querySelector("[data-color-mode=light]");
+
+    expect(screen.getByRole("paragraph")).toBeInTheDocument();
+    expect(mode).toBeInTheDocument();
+  });
+
+  it("has the correct theme and color mode selected when theme properties are provided", () => {
     const { container } = render(
       <div id="hv-root">
         <HvProvider
