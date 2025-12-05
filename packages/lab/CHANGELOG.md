@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-lab@6.0.0-next.3...@hitachivantara/uikit-react-lab@6.0.0-next.4) (2025-12-05)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-lab
+
 # [6.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-lab@5.46.18...@hitachivantara/uikit-react-lab@6.0.0-next.3) (2025-12-04)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-lab

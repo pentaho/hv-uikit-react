@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.3...@hitachivantara/uikit-styles@6.0.0-next.4) (2025-12-05)
+
+### Bug Fixes
+
+- **theme:** add v5 theme component tokens ([#5011](https://github.com/pentaho/hv-uikit-react/issues/5011)) ([0db7d28](https://github.com/pentaho/hv-uikit-react/commit/0db7d2845f0c5921be060eef54a2c8fb89ad34ab)), closes [#4841](https://github.com/pentaho/hv-uikit-react/issues/4841)
+
 # [6.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@5.54.0...@hitachivantara/uikit-styles@6.0.0-next.3) (2025-12-04)
 
 ### Bug Fixes
