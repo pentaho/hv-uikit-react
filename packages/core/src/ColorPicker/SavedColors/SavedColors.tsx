@@ -10,7 +10,7 @@ import { useClasses } from "./SavedColors.styles";
 
 interface SavedColorsProps {
   colors: string[];
-  onClickColor: (color: { hex: string; source: string }) => void;
+  onClickColor: (hex: string) => void;
   onAddColor: () => void;
   onRemoveColor: (color: string, index: number) => void;
   deleteButtonAriaLabel?: string;
@@ -41,10 +41,7 @@ export const SavedColors = (props: SavedColorsProps) => {
       </HvIconButton>
       {[...new Set(colors)].map((color, index) => (
         <div key={color} className={classes.swatchRoot}>
-          <Swatch
-            color={color}
-            onClick={() => onClickColor({ hex: color, source: "hex" })}
-          />
+          <Swatch color={color} onClick={() => onClickColor(color)} />
           <HvIconButton
             className={classes.removeButton}
             variant="secondarySubtle"

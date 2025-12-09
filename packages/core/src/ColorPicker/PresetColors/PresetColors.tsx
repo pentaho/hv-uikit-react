@@ -10,7 +10,7 @@ import { useClasses } from "./PresetColors.styles";
 
 interface PresetColorsProps {
   colors: HvColorAny[];
-  onClick: (color: { hex: string; source: string }) => void;
+  onClick: (hex: string) => void;
   title?: string;
   className?: string;
   classes?: ExtractNames<typeof useClasses>;
@@ -39,7 +39,7 @@ export const PresetColors = (props: PresetColorsProps) => {
             key={`recommended-color-${color}-${index}`}
             color={color}
             style={{ backgroundColor: getColor(color) }}
-            onClick={() => onClick({ hex: color, source: "hex" })}
+            onClick={() => onClick(color)}
           />
         ))}
       </div>

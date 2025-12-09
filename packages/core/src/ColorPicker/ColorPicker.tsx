@@ -169,20 +169,20 @@ export const HvColorPicker = forwardRef<HTMLDivElement, HvColorPickerProps>(
       setIsOpen(open);
     };
 
-    const handleSelect = (val: { hex: string; source: string }) => {
-      onChange?.(val.hex);
-      onChangeComplete?.(val.hex);
-      setColor(val.hex);
+    const handleSelect = (hex: string) => {
+      onChange?.(hex);
+      onChangeComplete?.(hex);
+      setColor(hex);
     };
 
-    const handleOnChange = (val: { hex: string; source: string }) => {
-      onChange?.(val.hex);
-      setColor(val.hex);
+    const handleOnChange = (hex: string) => {
+      onChange?.(hex);
+      setColor(hex);
     };
 
-    const handleOnChangeComplete = (val: { hex: string; source: string }) => {
-      onChangeComplete?.(val.hex);
-      setColor(val.hex);
+    const handleOnChangeComplete = (hex: string) => {
+      onChangeComplete?.(hex);
+      setColor(hex);
     };
 
     const handleAddColor = () => {
@@ -249,7 +249,7 @@ export const HvColorPicker = forwardRef<HTMLDivElement, HvColorPickerProps>(
                 )}
               />
             ) : dropdownIcon === "colorPicker" ? (
-              <HvIcon name="ColorPicker" className={classes.colorPickerIcon} />
+              <HvIcon name="ColorPicker" />
             ) : undefined
           }
           placeholder={
@@ -282,49 +282,39 @@ export const HvColorPicker = forwardRef<HTMLDivElement, HvColorPickerProps>(
               .trim() || undefined
           }
         >
-          <HvPanel className={classes.panel}>
-            <div className={classes.colorPicker}>
-              {recommendedColorsPosition === "top" && (
-                <PresetColors
-                  className={classes.recommendedColorsRoot}
-                  colors={recommendedColors}
-                  onClick={handleSelect}
-                  title={showLabels ? labels.recommendedColorsLabel : undefined}
-                />
-              )}
-              {showCustomColors && (
-                <Picker
-                  classes={{
-                    fields: cx({
-                      [classes.pickerFields]:
-                        recommendedColorsPosition === "bottom" ||
-                        showSavedColors,
-                    }),
-                  }}
-                  title={showLabels ? labels.customColorsLabel : undefined}
-                  color={color}
-                  onChange={handleOnChange}
-                  onChangeComplete={handleOnChangeComplete}
-                />
-              )}
-              {showSavedColors && (
-                <SavedColors
-                  colors={savedColors}
-                  onAddColor={handleAddColor}
-                  onClickColor={handleSelect}
-                  onRemoveColor={handleRemoveColor}
-                  deleteButtonAriaLabel={deleteSavedColorButtonAriaLabel}
-                  addButtonAriaLabel={addSavedColorButtonAriaLabel}
-                />
-              )}
-              {recommendedColorsPosition === "bottom" && (
-                <PresetColors
-                  colors={recommendedColors}
-                  onClick={handleSelect}
-                  title={showLabels ? labels.recommendedColorsLabel : undefined}
-                />
-              )}
-            </div>
+          <HvPanel className={cx(classes.panel, classes.colorPicker)}>
+            {recommendedColorsPosition === "top" && (
+              <PresetColors
+                colors={recommendedColors}
+                onClick={handleSelect}
+                title={showLabels ? labels.recommendedColorsLabel : undefined}
+              />
+            )}
+            {showCustomColors && (
+              <Picker
+                title={showLabels ? labels.customColorsLabel : undefined}
+                hex={color}
+                onChange={handleOnChange}
+                onChangeComplete={handleOnChangeComplete}
+              />
+            )}
+            {showSavedColors && (
+              <SavedColors
+                colors={savedColors}
+                onAddColor={handleAddColor}
+                onClickColor={handleSelect}
+                onRemoveColor={handleRemoveColor}
+                deleteButtonAriaLabel={deleteSavedColorButtonAriaLabel}
+                addButtonAriaLabel={addSavedColorButtonAriaLabel}
+              />
+            )}
+            {recommendedColorsPosition === "bottom" && (
+              <PresetColors
+                colors={recommendedColors}
+                onClick={handleSelect}
+                title={showLabels ? labels.recommendedColorsLabel : undefined}
+              />
+            )}
           </HvPanel>
         </HvBaseDropdown>
       </HvFormElement>

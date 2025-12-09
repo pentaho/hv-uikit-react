@@ -1,12 +1,7 @@
-import { useCallback } from "react";
-import {
-  CustomPicker,
-  type CustomPickerInjectedProps,
-  type HSLColor,
-  type HSVColor,
-  type RGBColor,
-} from "react-color";
-import { Hue, Saturation } from "react-color/lib/components/common";
+import { useMemo } from "react";
+import { hexToHsva, hsvaToHex } from "@uiw/color-convert";
+import Hue from "@uiw/react-color-hue";
+import Saturation from "@uiw/react-color-saturation";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -16,75 +11,57 @@ import { HvTypography } from "../../Typography";
 import { Fields } from "./Fields";
 import { useClasses } from "./Picker.styles";
 
-interface PickerProps
-  extends CustomPickerInjectedProps<
-    | HSLColor
-    | HSVColor
-    | RGBColor
-    | {
-        source?: string;
-        hex?: string;
-      }
-  > {
+interface PickerProps {
+  hex?: string;
+  onChange?: (hex: string) => void;
+  onChangeComplete?: (hex: string) => void;
   classes?: ExtractNames<typeof useClasses>;
   title?: string;
 }
 
-const Component = (props: PickerProps) => {
+export const Picker = (props: PickerProps) => {
   const {
+    hex: hexProp,
     onChange,
-    rgb,
-    hsl,
-    hsv,
-    hex,
+    onChangeComplete,
     title,
     classes: classesProp,
   } = useDefaultProps("HvColorPickerPicker", props);
   const { classes } = useClasses(classesProp);
 
-  const SaturationPointer = useCallback(
-    () => <div className={classes?.saturationPointer} />,
-    [classes?.saturationPointer],
-  );
+  const hex = hexProp || "#000000";
 
-  const HueSlider = useCallback(
-    () => <div className={classes?.hueSlider} />,
-    [classes?.hueSlider],
-  );
+  const hsva = useMemo(() => hexToHsva(hex || "#000000"), [hex]);
 
   return (
-    <>
+    <div className={classes.root}>
       {title && (
         <HvTypography className={classes.title} variant="caption1">
           {title}
         </HvTypography>
       )}
       <div className={classes.pickers}>
-        <div className={classes.saturation}>
-          <Saturation
-            hsl={hsl}
-            hsv={hsv}
-            onChange={onChange}
-            pointer={SaturationPointer}
-          />
-        </div>
-        <div className={classes.hue}>
-          <Hue
-            direction="horizontal"
-            hsl={hsl}
-            onChange={onChange}
-            pointer={HueSlider}
-          />
-        </div>
+        <Saturation
+          className={classes.saturation}
+          hsva={hsva}
+          onChange={(newColor) => {
+            const newHex = hsvaToHex(newColor);
+            onChange?.(newHex);
+            onChangeComplete?.(newHex);
+          }}
+        />
+        <Hue
+          className={classes.hue}
+          direction="horizontal"
+          hue={hsva.h}
+          onChange={({ h }) => {
+            const newHex = hsvaToHex({ ...hsva, h });
+            onChange?.(newHex);
+            onChangeComplete?.(newHex);
+          }}
+        />
+        <Fields hex={hex} onChange={onChange} />
       </div>
-      <Fields
-        className={classes.fields}
-        rgb={rgb}
-        hex={hex}
-        onChange={onChange}
-      />
-    </>
+    </div>
   );
 };
-
-export const Picker = CustomPicker(Component);
