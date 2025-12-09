@@ -2,8 +2,9 @@ import { forwardRef, useContext, useRef } from "react";
 import {
   ClickAwayListener,
   ClickAwayListenerProps,
-} from "@mui/base/ClickAwayListener";
-import { Popper, PopperProps } from "@mui/base/Popper";
+  Popper,
+  PopperProps,
+} from "@mui/base";
 import { useForkRef } from "@mui/material/utils";
 import {
   useDefaultProps,

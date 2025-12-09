@@ -15,6 +15,7 @@
         "patterns": [
           "@hitachivantara/*/*",
           "@mui/material",
+          "@mui/base/*",
           "@phosphor-icons/react"
         ],
         "paths": [

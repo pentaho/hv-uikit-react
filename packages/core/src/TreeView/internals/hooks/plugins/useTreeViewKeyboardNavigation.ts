@@ -1,5 +1,5 @@
 import * as React from "react";
-import { EventHandlers } from "@mui/base/utils";
+import type { EventHandlers } from "@mui/base";
 import { useTheme } from "@mui/material/styles";
 import { useEventCallback } from "@mui/material/utils";
 
