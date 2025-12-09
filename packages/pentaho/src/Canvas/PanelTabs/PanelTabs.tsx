@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
-import { Tabs, TabsProps } from "@mui/base/Tabs";
-import { TabsList } from "@mui/base/TabsList";
+import { Tabs, TabsList, type TabsProps } from "@mui/base";
 import {
   ExtractNames,
   useDefaultProps,
