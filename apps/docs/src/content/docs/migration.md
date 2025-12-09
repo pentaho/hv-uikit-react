@@ -114,6 +114,7 @@ The following props have been removed. Update your code with the suggested repla
 | Dialog               | `firstFocusable`              | use `autoFocus` on the element   |
 | Drawer               | `showBackdrop`                | use `hideBackdrop`               |
 | FileUploader         | `acceptedFiles`               | use `accept`                     |
+| FileUploader         | `labels.dropzone`             | use `label`                      |
 | Icons                | `viewbox`                     | use `size`                       |
 | Icons                | `height`, `width`             | use `size`                       |
 | Icons                | `inverted`, `semantic`        | use `color`                      |
