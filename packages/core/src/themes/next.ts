@@ -151,20 +151,8 @@ export const next = mergeTheme(nextBase, {
     HvColorPicker: {
       classes: {
         colorPicker: {
-          " .HvColorPickerPresetColors-swatchWrap > span > div": {
+          ".HvColorPickerSwatch-root": {
             borderRadius: theme.radii.round,
-          },
-          " .HvColorPickerSavedColors-swatchWrap > span > div": {
-            borderRadius: theme.radii.round,
-          },
-          " .HvColorPickerPicker-saturation > div": {
-            borderRadius: theme.radii.round,
-            " .saturation-white": {
-              borderRadius: theme.radii.round,
-              " .saturation-black": {
-                borderRadius: theme.radii.round,
-              },
-            },
           },
         },
       },

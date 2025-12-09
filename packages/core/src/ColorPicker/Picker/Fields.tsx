@@ -1,28 +1,57 @@
 import { useEffect, useRef, useState } from "react";
-import { HSLColor, HSVColor, RGBColor } from "react-color";
-// @ts-ignore
-import * as color from "react-color/lib/helpers/color";
+import type { RGBColor } from "react-color";
 import {
+  createClasses,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
+import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvInput } from "../../Input";
-import { useClasses } from "./Fields.styles";
+
+const { useClasses } = createClasses("HvColorPickerFields", {
+  fields: {
+    width: "100%",
+    display: "flex",
+    paddingTop: "18px",
+    marginRight: "0px",
+  },
+  single: {
+    maxWidth: "50px",
+    paddingLeft: theme.space.xxs,
+    "& input": {
+      marginLeft: 5,
+      marginRight: 5,
+    },
+    "& label": {
+      paddingLeft: 5,
+    },
+  },
+  double: {
+    maxWidth: "82px",
+    paddingRight: theme.space.xxs,
+    "& input": {
+      textTransform: "uppercase",
+      marginLeft: 5,
+      marginRight: 5,
+    },
+    "& label": {
+      paddingLeft: 5,
+    },
+  },
+});
+
+function isValidHex(hex: string) {
+  const hexRegex = /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
+  return hexRegex.test(hex);
+}
 
 interface FieldsProps {
   className?: string;
   rgb?: RGBColor;
   hex?: string;
   onChange: (
-    data:
-      | HSLColor
-      | HSVColor
-      | RGBColor
-      | {
-          source?: string;
-          hex?: string;
-        },
+    data: RGBColor | { source?: string; hex?: string },
     event: React.ChangeEvent<HTMLInputElement>,
   ) => void;
   classes?: ExtractNames<typeof useClasses>;
@@ -76,7 +105,7 @@ export const Fields = (props: FieldsProps) => {
     },
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    if (data.hex && color.isValidHex(data.hex)) {
+    if (data.hex && isValidHex(data.hex)) {
       onChange(
         {
           hex: data.hex,

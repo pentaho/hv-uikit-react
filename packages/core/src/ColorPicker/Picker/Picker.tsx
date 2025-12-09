@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import {
   CustomPicker,
-  CustomPickerInjectedProps,
-  HSLColor,
-  HSVColor,
-  RGBColor,
+  type CustomPickerInjectedProps,
+  type HSLColor,
+  type HSVColor,
+  type RGBColor,
 } from "react-color";
 import { Hue, Saturation } from "react-color/lib/components/common";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvTypography } from "../../Typography";
-import { Fields } from "../Fields";
+import { Fields } from "./Fields";
 import { useClasses } from "./Picker.styles";
 
 interface PickerProps

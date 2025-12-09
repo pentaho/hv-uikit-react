@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { ColorState } from "react-color";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -18,9 +17,9 @@ import { HvPanel } from "../Panel";
 import { HvTypography } from "../Typography";
 import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./ColorPicker.styles";
-import { Picker } from "./Picker";
-import { PresetColors } from "./PresetColors";
-import { SavedColors } from "./SavedColors";
+import { Picker } from "./Picker/Picker";
+import { PresetColors } from "./PresetColors/PresetColors";
+import { SavedColors } from "./SavedColors/SavedColors";
 
 export { staticClasses as colorPickerClasses };
 
@@ -170,24 +169,18 @@ export const HvColorPicker = forwardRef<HTMLDivElement, HvColorPickerProps>(
       setIsOpen(open);
     };
 
-    const handleSelect = (
-      val: ColorState | { hex: string; source: string },
-    ) => {
+    const handleSelect = (val: { hex: string; source: string }) => {
       onChange?.(val.hex);
       onChangeComplete?.(val.hex);
       setColor(val.hex);
     };
 
-    const handleOnChange = (
-      val: ColorState | { hex: string; source: string },
-    ) => {
+    const handleOnChange = (val: { hex: string; source: string }) => {
       onChange?.(val.hex);
       setColor(val.hex);
     };
 
-    const handleOnChangeComplete = (
-      val: ColorState | { hex: string; source: string },
-    ) => {
+    const handleOnChangeComplete = (val: { hex: string; source: string }) => {
       onChangeComplete?.(val.hex);
       setColor(val.hex);
     };

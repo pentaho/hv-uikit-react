@@ -1,5 +1,3 @@
-// @ts-expect-error: @types/react-color seems to be broken
-import { Swatch } from "react-color/lib/components/common";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -7,6 +5,7 @@ import {
 
 import { HvIconButton } from "../../IconButton";
 import { HvIcon } from "../../icons";
+import { Swatch } from "../Swatch";
 import { useClasses } from "./SavedColors.styles";
 
 interface SavedColorsProps {
@@ -31,47 +30,29 @@ export const SavedColors = (props: SavedColorsProps) => {
   } = useDefaultProps("HvColorPickerSavedColors", props);
   const { classes } = useClasses(classesProp);
 
-  const handleClick = (hex: string) => {
-    onClickColor({
-      hex,
-      source: "hex",
-    });
-  };
-
   return (
     <div className={classes.root}>
       <HvIconButton
-        className={classes.addButton}
         variant="secondarySubtle"
         onClick={onAddColor}
         title={addButtonAriaLabel}
       >
         <HvIcon name="Add" compact />
       </HvIconButton>
-      {colors.map((color, index) => (
-        <div
-          key={`saved-color-${color}-${index}`}
-          className={classes.swatchRoot}
-        >
-          <div className={classes.swatchWrap}>
-            <Swatch
-              color={color}
-              onClick={handleClick}
-              focusStyle={{
-                boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${color}`,
-              }}
-            />
-          </div>
-          <div className={classes.removeButtonRoot}>
-            <HvIconButton
-              className={classes.removeButton}
-              variant="secondarySubtle"
-              onClick={() => onRemoveColor(color, index)}
-              title={deleteButtonAriaLabel}
-            >
-              <HvIcon name="Close" compact size="xs" />
-            </HvIconButton>
-          </div>
+      {[...new Set(colors)].map((color, index) => (
+        <div key={color} className={classes.swatchRoot}>
+          <Swatch
+            color={color}
+            onClick={() => onClickColor({ hex: color, source: "hex" })}
+          />
+          <HvIconButton
+            className={classes.removeButton}
+            variant="secondarySubtle"
+            onClick={() => onRemoveColor(color, index)}
+            title={deleteButtonAriaLabel}
+          >
+            <HvIcon name="Close" compact size="xs" />
+          </HvIconButton>
         </div>
       ))}
     </div>
