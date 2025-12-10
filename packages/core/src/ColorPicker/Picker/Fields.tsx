@@ -1,30 +1,48 @@
-import { useEffect, useRef, useState } from "react";
-import { HSLColor, HSVColor, RGBColor } from "react-color";
-// @ts-ignore
-import * as color from "react-color/lib/helpers/color";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { hexToRgba, rgbToHex, validHex } from "@uiw/color-convert";
 import {
+  createClasses,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
+import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvInput } from "../../Input";
-import { useClasses } from "./Fields.styles";
+
+const { useClasses } = createClasses("HvColorPickerFields", {
+  root: {
+    width: "100%",
+    display: "flex",
+    gap: theme.space.xxs,
+  },
+  single: {
+    maxWidth: "50px",
+    "& input": {
+      marginLeft: 5,
+      marginRight: 5,
+    },
+    "& label": {
+      paddingLeft: 5,
+    },
+  },
+  double: {
+    maxWidth: "82px",
+    paddingRight: theme.space.xxs,
+    "& input": {
+      textTransform: "uppercase",
+      marginLeft: 5,
+      marginRight: 5,
+    },
+    "& label": {
+      paddingLeft: 5,
+    },
+  },
+});
 
 interface FieldsProps {
   className?: string;
-  rgb?: RGBColor;
-  hex?: string;
-  onChange: (
-    data:
-      | HSLColor
-      | HSVColor
-      | RGBColor
-      | {
-          source?: string;
-          hex?: string;
-        },
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => void;
+  hex: string;
+  onChange?: (hex: string) => void;
   classes?: ExtractNames<typeof useClasses>;
 }
 
@@ -32,11 +50,12 @@ export const Fields = (props: FieldsProps) => {
   const {
     className,
     onChange,
-    rgb,
     hex,
     classes: classesProp,
   } = useDefaultProps("HvColorPickerFields", props);
   const { classes, cx } = useClasses(classesProp);
+  const rgb = useMemo(() => hexToRgba(hex), [hex]);
+
   const [internalHex, setInternalHex] = useState(hex);
   const [internalRed, setInternalRed] = useState(rgb?.r);
   const [internalGreen, setInternalGreen] = useState(rgb?.g);
@@ -67,72 +86,36 @@ export const Fields = (props: FieldsProps) => {
     }
   }, [rgb]);
 
-  const handleChange = (
-    data: {
-      hex?: string;
-      r?: number;
-      g?: number;
-      b?: number;
-    },
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (data.hex && color.isValidHex(data.hex)) {
-      onChange(
-        {
-          hex: data.hex,
-          source: "hex",
-        },
-        event,
-      );
-    } else if (
-      data.r !== undefined ||
-      data.g !== undefined ||
-      data.b !== undefined
-    ) {
-      onChange(
-        {
-          r: data.r ?? rgb?.r,
-          g: data.g ?? rgb?.g,
-          b: data.b ?? rgb?.b,
-          source: "rgb",
-        },
-        event,
-      );
-    }
+  const handleChange = (hex: string) => {
+    if (!validHex(hex)) return;
+    onChange?.(hex);
   };
 
-  const onChangeHex = (event: React.ChangeEvent<any>, value: string) => {
-    setInternalHex(value);
-    handleChange({ hex: value }, event);
-  };
-
-  const onChangeRbg = (
-    event: React.ChangeEvent<any>,
-    value: string,
-    colorPart: "r" | "g" | "b",
-  ) => {
-    if (colorPart === "r") setInternalRed(Number(value));
-    if (colorPart === "g") setInternalGreen(Number(value));
-    if (colorPart === "b") setInternalBlue(Number(value));
+  const onChangeRbg = ({ r, g, b }: { r?: string; g?: string; b?: string }) => {
+    if (r) setInternalRed(Number(r));
+    if (g) setInternalGreen(Number(g));
+    if (b) setInternalBlue(Number(b));
 
     handleChange(
-      {
-        r: colorPart === "r" ? Number(value) : rgb?.r,
-        g: colorPart === "g" ? Number(value) : rgb?.g,
-        b: colorPart === "b" ? Number(value) : rgb?.b,
-      },
-      event,
+      rgbToHex({
+        r: r ? Number(r) : rgb?.r,
+        g: g ? Number(g) : rgb?.g,
+        b: b ? Number(b) : rgb?.b,
+      }),
     );
   };
 
   return (
-    <div className={cx(classes.fields, className)}>
+    <div className={cx(classes.root, className)}>
       <HvInput
         ref={hexInputRef}
         className={classes.double}
         label="HEX"
         value={internalHex?.replace("#", "")}
-        onChange={onChangeHex}
+        onChange={(event, value) => {
+          setInternalHex(value);
+          handleChange(value);
+        }}
         onBlur={() => setInternalHex(hex)}
         disableClear
       />
@@ -141,7 +124,7 @@ export const Fields = (props: FieldsProps) => {
         className={classes.single}
         label="R"
         value={internalRed}
-        onChange={(event, value) => onChangeRbg(event, value, "r")}
+        onChange={(event, value) => onChangeRbg({ r: value })}
         onBlur={() => setInternalRed(rgb?.r)}
         inputProps={{ type: "number", min: 0, max: 255 }}
         disableClear
@@ -151,7 +134,7 @@ export const Fields = (props: FieldsProps) => {
         className={classes.single}
         label="G"
         value={internalGreen}
-        onChange={(event, value) => onChangeRbg(event, value, "g")}
+        onChange={(event, value) => onChangeRbg({ g: value })}
         onBlur={() => setInternalGreen(rgb?.g)}
         inputProps={{ type: "number", min: 0, max: 255 }}
         disableClear
@@ -161,7 +144,7 @@ export const Fields = (props: FieldsProps) => {
         className={classes.single}
         label="B"
         value={internalBlue}
-        onChange={(event, value) => onChangeRbg(event, value, "b")}
+        onChange={(event, value) => onChangeRbg({ b: value })}
         onBlur={() => setInternalBlue(rgb?.b)}
         inputProps={{ type: "number", min: 0, max: 255 }}
         disableClear
