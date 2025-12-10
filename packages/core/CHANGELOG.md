@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.4...@hitachivantara/uikit-react-core@6.0.0-next.5) (2025-12-10)
+
+### Bug Fixes
+
+- **ColorPicker:** replace react-color library ([#5013](https://github.com/pentaho/hv-uikit-react/issues/5013)) ([0c93090](https://github.com/pentaho/hv-uikit-react/commit/0c9309098f816e23f093037bef30309f12168654))
+
 # [6.0.0-next.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.3...@hitachivantara/uikit-react-core@6.0.0-next.4) (2025-12-05)
 
 ### Bug Fixes
