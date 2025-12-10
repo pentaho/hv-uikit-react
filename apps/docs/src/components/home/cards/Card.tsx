@@ -17,7 +17,10 @@ type CardProps = {
 
 export const Card = ({ children, title, subtitle, media, icon }: CardProps) => {
   return (
-    <HvCard className="dark:!outline-border" bgcolor="bgContainer">
+    <HvCard
+      className="dark:!outline-border outline-border"
+      bgcolor="bgContainer"
+    >
       <HvCardHeader
         title={<HvTypography variant="title3">{title}</HvTypography>}
         subheader={<HvTypography variant="caption1">{subtitle}</HvTypography>}
@@ -25,7 +28,7 @@ export const Card = ({ children, title, subtitle, media, icon }: CardProps) => {
         className="mx-xs mt-xs"
       />
       {media && <HvCardMedia className="my-xs">{media}</HvCardMedia>}
-      <HvCardContent className="!px-md">{children}</HvCardContent>
+      <HvCardContent>{children}</HvCardContent>
     </HvCard>
   );
 };
