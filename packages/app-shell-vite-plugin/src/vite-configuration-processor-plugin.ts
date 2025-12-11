@@ -130,14 +130,22 @@ export default function processConfiguration(
     },
 
     transformIndexHtml: {
+      order: "post",
       handler: (html) => {
-        if (!inlineConfig) {
-          return undefined;
-        }
+        // Removes bare <script type="module" src="..."></script> tags with a "src" pointing to a
+        // bare module specifiers from index.html.
+        // Tried other approaches that should work to no effect, such as:
+        // - config.build.modulePreload = { polyfill: false }
+        // - config.build.polyfillModulePreload = false
+        const processedHtml = html.replaceAll(
+          /<script type="module"[^>]+src="((?!^\/|\.)([^"']+))"[^>]*><\/script>/g,
+          "",
+        );
+
+        if (!inlineConfig) return processedHtml;
 
         return {
-          html,
-
+          html: processedHtml,
           tags: [
             {
               tag: "script",
