@@ -5,6 +5,7 @@ import type { PluginOption, UserConfig } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import { getAppModules, getBasePath } from "./config-utils.js";
+import SHARED_DEPENDENCIES from "./shared-dependencies.js";
 
 /**
  * Process configuration, executing several tasks:
@@ -130,26 +131,42 @@ export default function processConfiguration(
     },
 
     transformIndexHtml: {
+      order: "post",
       handler: (html) => {
-        if (!inlineConfig) {
-          return undefined;
+        // remove script tags that reference external modules as these are resolved via importmap, not directly loaded
+        const externalModuleIds = SHARED_DEPENDENCIES.map(
+          (dep) => dep.moduleId,
+        );
+
+        let processedHtml = html;
+
+        externalModuleIds.forEach((moduleId) => {
+          // remove <script> tags that reference external modules
+          const scriptRegex = new RegExp(
+            String.raw`<script[^>]*\ssrc=["']${moduleId}["'][^>]*(?:>\s*</script>|\/>\s*)`,
+            "gi",
+          );
+          processedHtml = processedHtml.replaceAll(scriptRegex, "");
+        });
+
+        if (inlineConfig) {
+          return {
+            html: processedHtml,
+            tags: [
+              {
+                tag: "script",
+                injectTo: "head-prepend",
+                children: `globalThis.__appshell_config__ = ${
+                  generateEmptyShell
+                    ? "%%APPSHELL_CONFIG%%"
+                    : JSON.stringify(finalAppShellConfig ?? appShellConfig)
+                };`,
+              },
+            ],
+          };
         }
 
-        return {
-          html,
-
-          tags: [
-            {
-              tag: "script",
-              injectTo: "head-prepend",
-              children: `globalThis.__appshell_config__ = ${
-                generateEmptyShell
-                  ? "%%APPSHELL_CONFIG%%"
-                  : JSON.stringify(finalAppShellConfig ?? appShellConfig)
-              };`,
-            },
-          ],
-        };
+        return processedHtml;
       },
     },
   };
