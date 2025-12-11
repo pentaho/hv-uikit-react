@@ -5,6 +5,7 @@ import type { PluginOption, UserConfig } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import { getAppModules, getBasePath } from "./config-utils.js";
+import sharedDependencies from "./shared-dependencies.js";
 
 /**
  * Process configuration, executing several tasks:
@@ -132,15 +133,7 @@ export default function processConfiguration(
     transformIndexHtml: {
       order: "post",
       handler: (html) => {
-        // Removes bare <script type="module" src="..."></script> tags with a "src" pointing to a
-        // bare module specifiers from index.html.
-        // Tried other approaches that should work to no effect, such as:
-        // - config.build.modulePreload = { polyfill: false }
-        // - config.build.polyfillModulePreload = false
-        const processedHtml = html.replaceAll(
-          /<script type="module"[^>]+src="((?!^\/|\.)([^"']+))"[^>]*><\/script>/g,
-          "",
-        );
+        const processedHtml = stripSharedDependencies(html);
 
         if (!inlineConfig) return processedHtml;
 
@@ -161,4 +154,25 @@ export default function processConfiguration(
       },
     },
   };
+}
+
+/** strips the `<script>` tags with bare `sharedDependencies` modules from the `html` string */
+function stripSharedDependencies(html: string) {
+  const sharedDeps = sharedDependencies
+    .map((dep) => dep.moduleId)
+    // escape the dependencies
+    .map((dep) => dep.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+
+  const sharedDepsRegex = new RegExp(
+    `<script type="module"[^>]+src="(${sharedDeps})"[^>]*><\\/script>`,
+    "g",
+  );
+
+  return (
+    html
+      .replaceAll(sharedDepsRegex, "")
+      // remove any empty lines that may have been left
+      .replaceAll(/\n\s*\n/g, "\n")
+  );
 }
