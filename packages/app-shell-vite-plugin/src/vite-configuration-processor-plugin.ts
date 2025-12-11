@@ -142,24 +142,22 @@ export default function processConfiguration(
           "",
         );
 
-        if (inlineConfig) {
-          return {
-            html: processedHtml,
-            tags: [
-              {
-                tag: "script",
-                injectTo: "head-prepend",
-                children: `globalThis.__appshell_config__ = ${
-                  generateEmptyShell
-                    ? "%%APPSHELL_CONFIG%%"
-                    : JSON.stringify(finalAppShellConfig ?? appShellConfig)
-                };`,
-              },
-            ],
-          };
-        }
+        if (!inlineConfig) return processedHtml;
 
-        return processedHtml;
+        return {
+          html: processedHtml,
+          tags: [
+            {
+              tag: "script",
+              injectTo: "head-prepend",
+              children: `globalThis.__appshell_config__ = ${
+                generateEmptyShell
+                  ? "%%APPSHELL_CONFIG%%"
+                  : JSON.stringify(finalAppShellConfig ?? appShellConfig)
+              };`,
+            },
+          ],
+        };
       },
     },
   };
