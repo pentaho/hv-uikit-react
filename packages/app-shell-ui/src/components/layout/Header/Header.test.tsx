@@ -1,4 +1,4 @@
-import { RenderResult, within } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
@@ -20,11 +20,9 @@ const navigateSpy = vi.fn();
 vi.mock("@hitachivantara/app-shell-navigation", async () => {
   const mod = await vi.importActual("@hitachivantara/app-shell-navigation");
   return {
-    ...(mod as object),
-    useHvNavigation: vi.fn(() => {
-      return {
-        navigate: navigateSpy,
-      };
+    ...mod,
+    useHvNavigation: () => ({
+      navigate: navigateSpy,
     }),
   };
 });
@@ -32,23 +30,18 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
 describe("`Header` component", () => {
   describe("with empty menu configuration", () => {
     it("should not have an nav element", async () => {
-      const { getByRole, queryByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
-      expect(getByRole("banner")).toBeInTheDocument();
-      expect(queryByRole("navigation")).not.toBeInTheDocument();
+      expect(await screen.findByRole("banner")).toBeInTheDocument();
+      expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
     });
   });
 
   describe("with valid menu configuration", () => {
     const user = userEvent.setup();
-    let renderResult: RenderResult<
-      typeof import("@testing-library/dom/types/queries"),
-      HTMLElement,
-      HTMLElement
-    >;
 
     beforeEach(async () => {
-      renderResult = await renderTestProvider(<Header />, {
+      await renderTestProvider(<Header />, {
         menu: [
           {
             label: "errors",
@@ -72,7 +65,7 @@ describe("`Header` component", () => {
     });
 
     it("should have a navigation element with the correct menu items", () => {
-      const headerElement = renderResult.getByRole("banner");
+      const headerElement = screen.getByRole("banner");
 
       expect(headerElement).toBeInTheDocument();
 
@@ -97,7 +90,7 @@ describe("`Header` component", () => {
         id: "1",
       };
 
-      const headerNavigationElement = renderResult.getByRole("navigation");
+      const headerNavigationElement = screen.getByRole("navigation");
       const secondMenuItem = within(headerNavigationElement).getAllByRole(
         "link",
       )[1];
@@ -144,13 +137,8 @@ describe("`Header` component", () => {
   });
 
   describe("`Header` component with navigationMode set to `ONLY_LEFT`", () => {
-    let renderResult: RenderResult<
-      typeof import("@testing-library/dom/types/queries"),
-      HTMLElement,
-      HTMLElement
-    >;
-    beforeEach(async () => {
-      renderResult = await renderTestProvider(<Header />, {
+    it("should not have a navigation element", async () => {
+      await renderTestProvider(<Header />, {
         menu: [
           {
             label: "dummyMenu1",
@@ -172,10 +160,8 @@ describe("`Header` component", () => {
         ],
         navigationMode: "ONLY_LEFT",
       });
-    });
 
-    it("should not have a navigation element", () => {
-      const headerElement = renderResult.getByRole("banner");
+      const headerElement = screen.getByRole("banner");
       expect(headerElement).toBeInTheDocument();
 
       const headerNavigationElement =

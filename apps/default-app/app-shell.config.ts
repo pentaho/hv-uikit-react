@@ -23,12 +23,33 @@ export default {
 
   menu: [
     {
-      label: "asset",
-      icon: {
-        iconType: "uikit",
-        name: "Desktop",
-      },
+      label: "Default App",
       submenus: [
+        {
+          label: "asset",
+          icon: {
+            iconType: "uikit",
+            name: "Desktop",
+          },
+          submenus: [
+            {
+              label: "asset",
+              target: "/asset-inventory",
+              icon: {
+                iconType: "uikit",
+                name: "Cards",
+              },
+            },
+            {
+              label: "list",
+              target: "/list-view",
+              icon: {
+                iconType: "uikit",
+                name: "List",
+              },
+            },
+          ],
+        },
         {
           label: "asset",
           target: "/asset-inventory",
@@ -45,55 +66,39 @@ export default {
             name: "List",
           },
         },
+        {
+          label: "notifications",
+          target: "/notifications",
+          icon: {
+            iconType: "uikit",
+            name: "Alert",
+          },
+        },
+        {
+          label: "Multi-level Breadcrumb",
+          target: "/breadcrumb",
+        },
+        {
+          label: "Theming",
+          target: "/theming",
+          icon: {
+            iconType: "uikit",
+            name: "ColorPicker",
+          },
+        },
+        {
+          label: "Nested Views",
+          target: "/nested",
+        },
+        {
+          label: "Services Demo",
+          target: "/services-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Settings",
+          },
+        },
       ],
-    },
-    {
-      label: "asset",
-      target: "/asset-inventory",
-      icon: {
-        iconType: "uikit",
-        name: "Cards",
-      },
-    },
-    {
-      label: "list",
-      target: "/list-view",
-      icon: {
-        iconType: "uikit",
-        name: "List",
-      },
-    },
-    {
-      label: "notifications",
-      target: "/notifications",
-      icon: {
-        iconType: "uikit",
-        name: "Alert",
-      },
-    },
-    {
-      label: "Multi-level Breadcrumb",
-      target: "/breadcrumb",
-    },
-    {
-      label: "Theming",
-      target: "/theming",
-      icon: {
-        iconType: "uikit",
-        name: "ColorPicker",
-      },
-    },
-    {
-      label: "Nested Views",
-      target: "/nested",
-    },
-    {
-      label: "Services Demo",
-      target: "/services-demo",
-      icon: {
-        iconType: "uikit",
-        name: "Settings",
-      },
     },
     {
       label: "Providers Demo",
