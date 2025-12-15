@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-navigation",
-  "version": "2.0.0-next.4",
+  "version": "2.0.0-next.5",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -23,7 +23,7 @@
     "prepublishOnly": "npm run build && npx clean-publish"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-shared": "^2.0.0-next.4",
+    "@hitachivantara/app-shell-shared": "^2.0.0-next.5",
     "path-to-regexp": "^8.1.0"
   },
   "peerDependencies": {
