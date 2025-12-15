@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { useTheme } from "@hitachivantara/uikit-react-utils";
 import { mergeTheme } from "@hitachivantara/uikit-styles";
 
 import { next } from "../themes/next";
@@ -7,6 +9,33 @@ import { HvProvider } from "./Provider";
 const customTheme = mergeTheme(next, {
   name: "custom-theme",
 });
+
+function ChangeModeButton() {
+  const { changeMode, selectedMode } = useTheme();
+
+  return (
+    <button
+      type="button"
+      onClick={() => changeMode(selectedMode === "light" ? "dark" : "light")}
+    >
+      {selectedMode}
+    </button>
+  );
+}
+
+function ChangeThemeButton() {
+  const {
+    // @ts-expect-error deprecated utility
+    changeTheme,
+    selectedMode,
+  } = useTheme();
+
+  return (
+    <button type="button" onClick={() => changeTheme(customTheme)}>
+      {selectedMode}
+    </button>
+  );
+}
 
 describe("Provider", () => {
   it("has the color mode selected if no properties are provided", () => {
@@ -72,5 +101,29 @@ describe("Provider", () => {
 
     expect(theme).toBeInTheDocument();
     expect(mode).toBeInTheDocument();
+  });
+
+  it("changes colorMode on changeMode button click", async () => {
+    render(
+      <HvProvider colorMode="light">
+        <ChangeModeButton />
+      </HvProvider>,
+    );
+
+    expect(screen.getByRole("button")).toHaveTextContent("light");
+    await userEvent.click(screen.getByRole("button"));
+    expect(screen.getByRole("button")).toHaveTextContent("dark");
+  });
+
+  it("changes colorMode on deprecated changeTheme button click", async () => {
+    render(
+      <HvProvider theme={next} colorMode="light">
+        <ChangeThemeButton />
+      </HvProvider>,
+    );
+
+    expect(screen.getByRole("button")).toHaveTextContent("light");
+    await userEvent.click(screen.getByRole("button"));
+    expect(screen.getByRole("button")).toHaveTextContent("light");
   });
 });

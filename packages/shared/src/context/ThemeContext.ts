@@ -17,4 +17,10 @@ export const HvThemeContext = createContext<HvThemeContextValue>({
   selectedMode: "light",
   changeMode: () => {},
   rootId: undefined,
+
+  // TODO: remove once backwards-compatibility is not needed anymore
+  // @ts-expect-error removed from API interfaces to avoid usage
+  themes: [],
+  selectedTheme: "",
+  changeTheme() {},
 });
