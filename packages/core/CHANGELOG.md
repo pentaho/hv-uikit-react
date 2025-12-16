@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.7](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.6...@hitachivantara/uikit-react-core@6.0.0-next.7) (2025-12-16)
+
+### Bug Fixes
+
+- **shared:** keep ThemeContext backwards-compatible ([#5019](https://github.com/pentaho/hv-uikit-react/issues/5019)) ([4078409](https://github.com/pentaho/hv-uikit-react/commit/407840961ec76718a90a3d421c46a09488d58765))
+
 # [6.0.0-next.6](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.5...@hitachivantara/uikit-react-core@6.0.0-next.6) (2025-12-15)
 
 ### Bug Fixes
