@@ -60,6 +60,7 @@ export default function serveAppShellConfig(
       server.middlewares.use(
         `${server.config.base}app-shell.config.json`,
         (req, res) => {
+          res.setHeader("Content-Type", "application/json");
           res.end(
             JSON.stringify(
               prepareConfigForDevMode(appShellConfig, selfAppName),
