@@ -153,10 +153,8 @@ const AppShellProvider = ({
   config: localConfig,
   configUrl,
 }: AppShellProviderProps) => {
-  const [loadedConfig, setLoadedConfig] = useState<
-    HvAppShellConfig | undefined
-  >(undefined);
-  const [hasError, setHasError] = useState<boolean>(false);
+  const [loadedConfig, setLoadedConfig] = useState<HvAppShellConfig>();
+  const [hasError, setHasError] = useState(false);
 
   // Load config from URL
   useEffect(() => {
@@ -176,20 +174,7 @@ const AppShellProvider = ({
     () => localConfig ?? loadedConfig,
     [localConfig, loadedConfig],
   );
-
-  // Store the config once it's loaded
-  const [initialConfig, setInitialConfig] = useState<
-    HvAppShellConfig | undefined
-  >(undefined);
-
-  useEffect(() => {
-    if (rawConfig && !initialConfig) {
-      setInitialConfig(rawConfig);
-    }
-  }, [rawConfig, initialConfig]);
-
-  const { model, isPending: areBundlesLoading } =
-    useModelFromConfig(initialConfig);
+  const { model, isPending: areBundlesLoading } = useModelFromConfig(rawConfig);
 
   const systemProviders = useMemo(() => {
     if (!model?.systemProviders) {
