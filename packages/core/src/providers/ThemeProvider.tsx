@@ -67,8 +67,8 @@ export const HvThemeProvider = ({
       rootId,
 
       // TODO: remove once backwards-compatibility is not needed anymore
-      themes: () => [theme],
-      selectedTheme: () => theme.name,
+      themes: [theme],
+      selectedTheme: theme.name,
       changeTheme(theme: string, mode: string) {
         setColorModeValue(mode as any);
       },
