@@ -15,6 +15,12 @@ export const useTheme = () => {
 
   return useMemo<ThemeContextValue>(() => {
     const { activeTheme, selectedMode } = context;
-    return { ...context, colors: activeTheme?.colors.modes?.[selectedMode] };
+    return {
+      ...context,
+      colors:
+        activeTheme?.colors.modes?.[selectedMode] ||
+        // workaround for v5 + v6 theme compatibility
+        activeTheme?.colors?.[selectedMode],
+    };
   }, [context]);
 };
