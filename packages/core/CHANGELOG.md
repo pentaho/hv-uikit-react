@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.9](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.8...@hitachivantara/uikit-react-core@6.0.0-next.9) (2025-12-19)
+
+### Bug Fixes
+
+- **ThemeProvider:** support both v5 & v6 color modes ([#5028](https://github.com/pentaho/hv-uikit-react/issues/5028)) ([b9b3faf](https://github.com/pentaho/hv-uikit-react/commit/b9b3fafe4c73a7ea0c1a4988ffb75fdfef65f50d))
+
 # [6.0.0-next.8](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.0.0-next.7...@hitachivantara/uikit-react-core@6.0.0-next.8) (2025-12-19)
 
 ### Bug Fixes
