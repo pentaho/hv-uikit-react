@@ -83,6 +83,9 @@ export const HvCodeEditor = ({
 
   const { colors, selectedMode, activeTheme, colorModes } = useTheme();
 
+  // TODO: remove this mapping when backward compatibility is no longer needed
+  const mappedMode = selectedMode === "dark" ? "wicked" : "dawn";
+
   // Configure Monaco with optional offline support
   useEffect(() => {
     configureMonaco()
@@ -228,7 +231,7 @@ export const HvCodeEditor = ({
       {monacoInstance ? (
         <Editor
           options={mergedOptions}
-          theme={`hv-${themeName}-${selectedMode}`}
+          theme={`hv-${themeName}-${mappedMode}`}
           language={languageProp}
           defaultLanguage={defaultLanguage}
           beforeMount={handleBeforeMount}
