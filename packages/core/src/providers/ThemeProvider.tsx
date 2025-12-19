@@ -73,6 +73,8 @@ export const HvThemeProvider = ({
           ...theme.colors,
           modes: {
             ...theme.colors,
+            light: { ...theme.colors.light, type: "light" },
+            dark: { ...theme.colors.dark, type: "dark" },
           },
         },
       },
