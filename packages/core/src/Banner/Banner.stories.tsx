@@ -74,6 +74,12 @@ export const Variants: StoryObj<HvBannerProps> = {
           showIcon
         />
         <HvBannerContent
+          title="This is the banner title"
+          content="This is an error banner."
+          variant="success"
+          showIcon
+        />
+        <HvBannerContent
           content="This is a banner with a custom icon."
           customIcon={<Deploy />}
         />
@@ -99,6 +105,18 @@ export const Variants: StoryObj<HvBannerProps> = {
           onClose={() => {}}
           actions={actionArray("banner2")}
           actionsPosition="bottom-right"
+        />
+        <HvBannerContent
+          content="This is a large banner."
+          variant="success"
+          size="large"
+          showIcon
+        />
+        <HvBannerContent
+          content="This is a micro banner."
+          variant="success"
+          size="micro"
+          showIcon
         />
       </>
     );
