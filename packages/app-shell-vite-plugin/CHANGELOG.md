@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.7](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.0.0-next.6...@hitachivantara/app-shell-vite-plugin@2.0.0-next.7) (2025-12-19)
+
+### Bug Fixes
+
+- **AppShel:** async config loading ([#5021](https://github.com/pentaho/hv-uikit-react/issues/5021)) ([c4bf006](https://github.com/pentaho/hv-uikit-react/commit/c4bf006391f7cdb535da4c3c01dbe7f4900778f3))
+
 # [2.0.0-next.6](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.0.0-next.5...@hitachivantara/app-shell-vite-plugin@2.0.0-next.6) (2025-12-16)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-vite-plugin
