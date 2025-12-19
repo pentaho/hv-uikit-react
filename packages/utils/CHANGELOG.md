@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.50](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@0.2.49...@hitachivantara/uikit-react-utils@0.2.50) (2025-12-19)
+
+### Bug Fixes
+
+- **theme:** useTheme v5 + v6 compatibility ([#5026](https://github.com/pentaho/hv-uikit-react/issues/5026)) ([c355b6c](https://github.com/pentaho/hv-uikit-react/commit/c355b6caecb3ded2055696626bdd445e512cc167))
+
 ## [0.2.49](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@0.2.48...@hitachivantara/uikit-react-utils@0.2.49) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-utils
