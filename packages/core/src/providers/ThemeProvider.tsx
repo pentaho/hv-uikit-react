@@ -59,7 +59,7 @@ export const HvThemeProvider = ({
   const value = useMemo<HvThemeContextValue>(
     () => ({
       colorModes: ["light", "dark"],
-      activeTheme: theme as HvTheme,
+      // activeTheme: theme as HvTheme,
       selectedMode: colorMode,
       changeMode(newMode = colorMode) {
         setColorModeValue(newMode);
@@ -67,6 +67,15 @@ export const HvThemeProvider = ({
       rootId,
 
       // TODO: remove once backwards-compatibility is not needed anymore
+      activeTheme: {
+        ...(theme as HvTheme),
+        colors: {
+          ...theme.colors,
+          modes: {
+            ...theme.colors,
+          },
+        },
+      },
       themes: [theme],
       selectedTheme: theme.name,
       changeTheme(theme: string, mode: string) {
