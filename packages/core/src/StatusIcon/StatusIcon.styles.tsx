@@ -38,10 +38,12 @@ export const { staticClasses, useClasses } = createClasses("HvStatusIcon", {
         },
       ]),
     ),
-    ":where([data-variant=default][data-type=full])": {
+    ":where([data-variant=default])": {
       color: theme.colors.text,
-      backgroundColor: theme.colors.bgPage,
-      outline: `1px solid ${theme.colors.borderSubtle}`,
+      ":where([data-type=full])": {
+        backgroundColor: theme.colors.bgPage,
+        outline: `1px solid ${theme.colors.borderSubtle}`,
+      },
     },
   },
   icon: {
