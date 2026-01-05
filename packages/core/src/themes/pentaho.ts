@@ -40,7 +40,7 @@ import type { HvNumberInputProps } from "../NumberInput";
 import type { HvPaginationProps } from "../Pagination";
 import type { HvSectionProps } from "../Section";
 import type { HvSelectProps } from "../Select";
-import type { HvSnackbarProps } from "../Snackbar";
+import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvSwitchProps } from "../Switch";
 import type { HvTabsProps } from "../Tabs";
@@ -1110,5 +1110,12 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvBannerContentProps>,
+    HvSnackbarContent: {
+      classes: {
+        root: {
+          minHeight: "unset",
+        },
+      },
+    } satisfies CSSClasses<HvSnackbarContentProps>,
   },
 });
