@@ -63,3 +63,19 @@ const CustomIcon = () => (
   </svg>
 );
 ```
+
+## `HvStatusIcon`
+
+If you're developing Pentaho applications, you'll most likely need to use the [`HvStatusIcon`](/components/status-icon) component,
+which provides a standardized way to render icons, whether they represent some status or are used as general-purpose icons.
+
+```tsx live
+export default function Demo() {
+  return (
+    <div className="flex gap-sm flex-wrap">
+      <HvStatusIcon variant="success" />
+      <HvStatusIcon variant="info" type="simple" />
+    </div>
+  );
+}
+```
