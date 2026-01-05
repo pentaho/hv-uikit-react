@@ -23,7 +23,7 @@ const { useClasses } = createClasses("HvCallout", {
     boxShadow: "none",
     flexWrap: "nowrap",
     borderRadius: theme.radii.round,
-    alignItems: "flex-start",
+    alignItems: "center",
 
     "&[data-size='large']": {
       padding: theme.space.sm,

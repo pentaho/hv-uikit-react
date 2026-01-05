@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  HvIconContainer,
   HvOverflowTooltip,
   HvSnackbar,
   HvSnackbarContent,
@@ -85,31 +84,19 @@ export const Variants: StoryObj<HvSnackbarProps> = {
           {...props}
           variant="success"
           label="This is a snackbar with a custom icon."
-          customIcon={
-            <HvIconContainer>
-              <Deploy />
-            </HvIconContainer>
-          }
+          customIcon={<Deploy />}
         />
         <HvSnackbar
           {...props}
           variant="success"
           title="Title"
           label="This is a snackbar with a title."
-          customIcon={
-            <HvIconContainer>
-              <Deploy />
-            </HvIconContainer>
-          }
+          customIcon={<Deploy />}
         />
         <HvSnackbar
           {...props}
           label="This is a snackbar with a custom action."
-          customIcon={
-            <HvIconContainer>
-              <Info />
-            </HvIconContainer>
-          }
+          customIcon={<Info />}
           action={{ id: "post", label: "Action", disabled: false }}
           onAction={(evt, action) => console.log(action)}
         />
