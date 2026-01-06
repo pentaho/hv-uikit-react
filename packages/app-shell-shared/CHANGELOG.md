@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.13](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@1.7.12...@hitachivantara/app-shell-shared@1.7.13) (2026-01-06)
+
+**Note:** Version bump only for package @hitachivantara/app-shell-shared
+
 ## [1.7.12](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@1.7.11...@hitachivantara/app-shell-shared@1.7.12) (2025-12-19)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-shared

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.110.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.109.1...@hitachivantara/uikit-react-core@5.110.0) (2026-01-06)
+
+### Bug Fixes
+
+- **StatusIcon:** fix incorrect color on the simple default variant ([#5030](https://github.com/pentaho/hv-uikit-react/issues/5030)) ([2e34455](https://github.com/pentaho/hv-uikit-react/commit/2e34455f2dc4c724d4b84b1119b58150477470db))
+
+### Features
+
+- **DatePicker:** update to PD 0.9 specs ([#4981](https://github.com/pentaho/hv-uikit-react/issues/4981)) ([5f55e85](https://github.com/pentaho/hv-uikit-react/commit/5f55e858810521887f593293f5a5fade820a09d5))
+
 ## [5.109.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.109.0...@hitachivantara/uikit-react-core@5.109.1) (2025-12-19)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-core
