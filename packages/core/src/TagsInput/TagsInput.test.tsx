@@ -47,27 +47,17 @@ describe("TagsInput examples", () => {
 });
 
 describe("TagsInput Component", () => {
-  const mockClasses = {
-    tagInputContainerRoot: "tagInputContainerRoot",
-  };
-
   beforeEach(async () => {
     vi.useRealTimers();
   });
 
   it("should render the label correctly", () => {
-    render(<HvTagsInput label="Custom label" classes={mockClasses} />);
+    render(<HvTagsInput label="Custom label" />);
     expect(screen.getByText("Custom label")).toBeInTheDocument();
   });
 
   it("should render the text area with tags when controlled and input value is an array of strings", () => {
-    render(
-      <HvTagsInput
-        label="Custom label"
-        classes={mockClasses}
-        value={["tag1", "tag2"]}
-      />,
-    );
+    render(<HvTagsInput label="Custom label" value={["tag1", "tag2"]} />);
 
     expect(screen.getByText("tag1")).toBeInTheDocument();
     expect(screen.getByText("tag2")).toBeInTheDocument();
@@ -80,7 +70,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         value={[{ label: "tag1" }, { label: "tag2" }]}
       />,
     );
@@ -111,7 +100,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         value={[{ label: "tag1" }, { label: "tag2" }]}
         onChange={onChangeSpy}
         onDelete={onDeleteSpy}
@@ -146,7 +134,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         value={[{ label: "tag1" }, { label: "tag2" }]}
         onChange={onChangeSpy}
         onAdd={onAddSpy}
@@ -184,7 +171,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         value={[{ label: "tag1" }, { label: "tag2" }]}
         onChange={onChangeSpy}
         onBlur={onBlurSpy}
@@ -215,7 +201,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         disabled
         value={[
           { label: "tag1", disabled: true },
@@ -230,12 +215,7 @@ describe("TagsInput Component", () => {
 
   it("should not display close buttons on readOnly tags", () => {
     render(
-      <HvTagsInput
-        label="Custom label"
-        classes={mockClasses}
-        readOnly
-        value={[{ label: "tag1" }]}
-      />,
+      <HvTagsInput label="Custom label" readOnly value={[{ label: "tag1" }]} />,
     );
 
     const input = screen.queryByRole("textbox");
@@ -254,7 +234,6 @@ describe("TagsInput Component", () => {
     render(
       <HvTagsInput
         label="Custom label"
-        classes={mockClasses}
         value={[{ label: "tag1" }, { label: "tag2" }]}
         suggestionListCallback={suggestionHandler}
       />,

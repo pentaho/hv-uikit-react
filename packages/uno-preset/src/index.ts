@@ -3,9 +3,9 @@ import { presetRemToPx } from "@unocss/preset-rem-to-px";
 import { presetWind3, PresetWind3Options, Theme } from "@unocss/preset-wind3";
 
 import { rules } from "./rules";
-import { extendTheme, themeModes } from "./theme";
+import { extendTheme } from "./theme";
 
-export { rules, extendTheme, themeModes };
+export { rules, extendTheme };
 
 export interface HvUnoOptions extends PresetWind3Options {
   /** Base fontSize size. 1rem = ${baseFontSize}px. @default 16 */

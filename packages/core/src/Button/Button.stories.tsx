@@ -320,7 +320,7 @@ export const Test: StoryObj = {
         </HvButton>
       ))}
 
-      {(["none", "base", "round", "circle", "full"] as const).map((radius) => (
+      {(["none", "base", "round", "full"] as const).map((radius) => (
         <HvButton radius={radius} key={radius} variant="warning">
           {radius}
         </HvButton>

@@ -26,9 +26,6 @@ export type HvAvatarClasses = ExtractNames<typeof useClasses>;
 
 export type HvAvatarVariant = "circular" | "square";
 
-/** @deprecated use `HvSize` instead */
-export type HvAvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
-
 export interface HvAvatarProps extends HvBaseProps {
   /** The component used for the root node. Either a string to use a DOM element or a component. */
   component?: React.ElementType;
@@ -155,7 +152,7 @@ export const HvAvatar = forwardRef<
   return (
     <div
       ref={ref}
-      className={cx(classes.container, classes.status, classes[variant])}
+      className={cx(classes.container, classes[variant])}
       style={statusInlineStyle}
       {...others}
     >

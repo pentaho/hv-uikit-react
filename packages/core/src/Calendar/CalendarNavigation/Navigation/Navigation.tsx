@@ -3,7 +3,6 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { HvButton } from "../../../Button";
 import { HvIcon } from "../../../icons";
 import { HvBaseProps } from "../../../types/generic";
-import { setId } from "../../../utils/setId";
 import { staticClasses, useClasses } from "./Navigation.styles";
 
 export { staticClasses as navigationClasses };
@@ -28,7 +27,6 @@ export const Navigation = ({
         icon
         disabled={!isPreviousEnabled}
         aria-label="Previous"
-        id={setId(id, "left")}
         className={cx(classes.icon, {
           [classes.disabled]: !isPreviousEnabled,
         })}
@@ -53,7 +51,6 @@ export const Navigation = ({
         icon
         disabled={!isNextEnabled}
         aria-label="Next"
-        id={setId(id, "right")}
         className={cx(classes.icon, {
           [classes.disabled]: !isNextEnabled,
         })}

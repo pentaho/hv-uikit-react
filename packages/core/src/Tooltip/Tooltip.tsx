@@ -46,11 +46,6 @@ export interface HvTooltipProps extends Omit<MuiTooltipProps, "classes"> {
   /** @inheritdoc */
   TransitionProps?: MuiTooltipProps["TransitionProps"];
   /**
-   * Defines if should use a single or multiline tooltip.
-   * @deprecated tooltips already support multiline and can be styled accordingly.
-   */
-  useSingle?: boolean;
-  /**
    * Node to apply the tooltip.
    */
   children: React.ReactElement<any>;
@@ -77,7 +72,6 @@ export const HvTooltip = forwardRef<
     open,
     enterDelay = 300,
     placement = "top",
-    useSingle = true,
     children,
     title,
     TransitionComponent = Fade,
@@ -87,7 +81,7 @@ export const HvTooltip = forwardRef<
   } = useDefaultProps("HvTooltip", props);
 
   const { rootId } = useTheme();
-  const { classes, cx } = useClasses(classesProp);
+  const { classes } = useClasses(classesProp);
   const [container, setContainer] = useState(() =>
     getElementById(containerId ?? rootId),
   );
@@ -107,7 +101,7 @@ export const HvTooltip = forwardRef<
       TransitionProps={TransitionProps}
       className={className}
       classes={{
-        tooltip: cx(classes.tooltip, !useSingle && classes.tooltipMulti),
+        tooltip: classes.tooltip,
         popper: classes.popper,
       }}
       title={title}

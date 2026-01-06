@@ -1,4 +1,5 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
+import { theme } from "@hitachivantara/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvColorPicker", {
   root: {},
@@ -20,19 +21,14 @@ export const { staticClasses, useClasses } = createClasses("HvColorPicker", {
     width: "100%",
     minWidth: "266px",
     display: "flex",
+    flexDirection: "column",
+    gap: theme.space.md,
     justifyContent: "center",
     padding: "16px",
     backgroundColor: "transparent",
   },
-  colorPicker: {
-    width: "232px",
-  },
+  colorPicker: {},
   colorPickerIcon: {},
-  recommendedColorsRoot: {
-    ":not(:only-child)": {
-      paddingBottom: "24px",
-    },
-  },
   dropdownRootIconOnly: {
     "&,& .HvBaseDropdown-arrowContainer": {
       width: 32,
@@ -45,5 +41,4 @@ export const { staticClasses, useClasses } = createClasses("HvColorPicker", {
   headerColorIconOnly: {
     margin: 8,
   },
-  pickerFields: { paddingBottom: 20 },
 });

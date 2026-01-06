@@ -2,6 +2,8 @@ export type * from "./types/service";
 export type * from "./types/async";
 export type * from "./types/config";
 
+export * from "./hooks/useAsync";
+
 export {
   useService,
   useServices,

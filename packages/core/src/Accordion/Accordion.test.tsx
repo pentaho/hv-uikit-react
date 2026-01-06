@@ -183,7 +183,7 @@ describe("Accordion", () => {
     expect(analyticsContent).not.toBeVisible();
   });
 
-  it("disables the internal usage of `preventDefault` and `stopPropagation` when disableEventHandling is true", async () => {
+  it("doesn't use `preventDefault` and `stopPropagation`", async () => {
     const user = userEvent.setup();
     const toggleSpy = vi.fn();
     render(
@@ -191,20 +191,11 @@ describe("Accordion", () => {
         <HvAccordion label="Analytics">
           <HvTypography>Views</HvTypography>
         </HvAccordion>
-        <HvAccordion label="System" disableEventHandling>
-          <HvTypography>item 2</HvTypography>
-        </HvAccordion>
         <HvDropdown defaultExpanded onToggle={toggleSpy} />
       </>,
     );
 
-    const analyticsItem = screen.getByRole("button", { name: /Analytics/i });
-    const systemItem = screen.getByRole("button", { name: /System/i });
-
-    await user.click(analyticsItem);
-    expect(toggleSpy).not.toHaveBeenCalled();
-
-    await user.click(systemItem);
+    await user.click(screen.getByRole("button", { name: /Analytics/i }));
     expect(toggleSpy).toHaveBeenCalledOnce();
   });
 });

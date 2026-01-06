@@ -26,7 +26,7 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
   actions: {
     display: "inline-flex",
     marginLeft: "auto",
-    [`& .${actionsGenericClasses.dropDownMenuButton}:disabled`]: {
+    [`& .${actionsGenericClasses.dropDownMenu}:disabled`]: {
       "&,:hover": {
         backgroundColor: "transparent",
         borderColor: "transparent",

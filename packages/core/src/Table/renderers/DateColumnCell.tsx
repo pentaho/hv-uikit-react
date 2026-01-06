@@ -1,26 +1,21 @@
 import { useMemo } from "react";
-import dayjs from "dayjs";
 
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 
 export interface HvDateColumnCellProp {
-  /** The date's text representation format. */
-  dateFormat?: string;
   /** Date to render. */
   date?: string;
 }
 
-export const HvDateColumnCell = ({
-  date,
-  dateFormat,
-}: HvDateColumnCellProp) => {
+const formatter = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "short",
+  timeStyle: "medium",
+});
+
+export const HvDateColumnCell = ({ date }: HvDateColumnCellProp) => {
   const formattedDate = useMemo(() => {
-    if (date)
-      return dayjs(date).format(
-        dateFormat !== "ISO8601" ? dateFormat : undefined,
-      );
-    return "—";
-  }, [date, dateFormat]);
+    return date ? formatter.format(new Date(date)) : "—";
+  }, [date]);
 
   return <HvOverflowTooltip data={formattedDate} />;
 };

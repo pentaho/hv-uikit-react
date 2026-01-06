@@ -51,7 +51,7 @@ export const SemanticVariants: StoryObj<HvDialogProps> = {
           "The `HvDialog` component can receive a `variant` prop to set the status of the dialog. `HvDialogTitle` also accepts a `variant` prop that changes the icon. Alternatively, the `customIcon` prop allows for any custom icon",
       },
     },
-    ...setupChromatic(["DS3 dawn", "DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   decorators: [
     (Story) => (

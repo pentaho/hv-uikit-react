@@ -33,12 +33,6 @@ export interface HvFlowNodeProps<T = any> extends HvFlowBaseNodeProps<T> {
   description?: string;
   /** Node actions. */
   actions?: HvActionsGenericProps["actions"];
-  /**
-   * Node action callback.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionCallback?: HvActionsGenericProps["actionsCallback"]; // TODO - remove in v6
   /** Node action callback. */
   onAction?: HvActionsGenericProps["onAction"];
   /** Whether the actions should be all icon buttons when visible. @default true */
@@ -68,7 +62,6 @@ export const HvFlowNode = ({
   type,
   headerItems,
   actions,
-  actionCallback, // TODO - remove in v6
   onAction,
   maxVisibleActions = 1,
   expanded = false,
@@ -170,7 +163,6 @@ export const HvFlowNode = ({
               className={classes.actions}
               classes={{ button: classes.actionsButton }}
               actions={actions}
-              actionsCallback={actionCallback}
               onAction={onAction}
               maxVisibleActions={maxVisibleActions}
               iconOnly={actionsIconOnly}

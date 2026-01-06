@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-uno-preset",
-  "version": "0.2.74",
+  "version": "1.0.0-next.3",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -35,7 +35,7 @@
     "@unocss/preset-wind3": "^66.4.2"
   },
   "dependencies": {
-    "@hitachivantara/uikit-styles": "^5.54.0",
+    "@hitachivantara/uikit-styles": "^6.0.0-next.5",
     "@unocss/preset-rem-to-px": "^66.4.2"
   },
   "devDependencies": {
@@ -48,14 +48,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.mjs",
-    "types": "dist/types/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.mjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -63,8 +62,7 @@
     "withoutPublish": true,
     "tempDir": "package",
     "fields": [
-      "main",
-      "type"
+      "main"
     ],
     "files": [
       "tsconfig.json"

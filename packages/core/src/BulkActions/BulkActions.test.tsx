@@ -60,12 +60,11 @@ describe("BulkActions", () => {
     expect(callbackSpy).toHaveBeenCalledOnce();
   });
 
-  // TODO - only test onAction in v6
-  it("should render the actions correctly and call onAction and actionsCallback when clicked", async () => {
+  it("should render the actions correctly and call onAction when clicked", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();
 
-    render(<Sample onAction={callbackSpy} actionsCallback={callbackSpy} />);
+    render(<Sample onAction={callbackSpy} />);
 
     const buttons = screen.getAllByRole("button");
     const button1 = buttons[0];
@@ -89,7 +88,7 @@ describe("BulkActions", () => {
     // Click action
     await user.click(button1);
 
-    expect(callbackSpy).toHaveBeenCalledTimes(2);
+    expect(callbackSpy).toHaveBeenCalledTimes(1);
 
     // Open actions
     await user.click(button3);

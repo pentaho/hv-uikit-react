@@ -29,7 +29,6 @@ export const Main: StoryObj<HvBannerProps> = {
     customIcon: { control: { disable: true } },
     bannerContentProps: { control: { disable: true } },
     actions: { control: { disable: true } },
-    actionsCallback: { control: { disable: true } },
   },
   render: (args) => {
     return <HvBanner style={{ position: "relative", top: 0 }} {...args} />;

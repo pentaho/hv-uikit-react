@@ -10,7 +10,6 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionsGenericProps } from "../ActionsGeneric";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Banner.styles";
 import {
   HvBannerActionPosition,
@@ -45,12 +44,6 @@ export interface HvBannerProps
   showIcon?: boolean;
   /** Actions to display on the right side. */
   actions?: HvActionsGenericProps["actions"];
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionsCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** The position property of the header. */
@@ -79,7 +72,6 @@ export const HvBanner = forwardRef<
   HvBannerProps
 >(function HvBanner(props, ref) {
   const {
-    id,
     classes: classesProp,
     className,
     title,
@@ -93,7 +85,6 @@ export const HvBanner = forwardRef<
     showIcon,
     customIcon,
     actions,
-    actionsCallback, // TODO - remove in v6
     onAction,
     actionsPosition,
     label,
@@ -124,7 +115,6 @@ export const HvBanner = forwardRef<
   return (
     <Snackbar
       ref={ref}
-      id={id}
       open={open}
       className={className}
       classes={{
@@ -139,13 +129,11 @@ export const HvBanner = forwardRef<
       {...others}
     >
       <HvBannerContent
-        id={setId(id, "content")}
         title={title}
         variant={variant}
         customIcon={customIcon}
         showIcon={showIcon}
         actions={actions}
-        actionsCallback={actionsCallback}
         onAction={onAction}
         actionsPosition={actionsPosition}
         onClose={onClose}

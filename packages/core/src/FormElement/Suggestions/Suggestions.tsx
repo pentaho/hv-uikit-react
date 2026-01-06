@@ -1,9 +1,10 @@
-import { forwardRef, useContext, useEffect, useRef, useState } from "react";
+import { forwardRef, useContext, useRef } from "react";
 import {
   ClickAwayListener,
   ClickAwayListenerProps,
-} from "@mui/base/ClickAwayListener";
-import { Popper, PopperProps } from "@mui/base/Popper";
+  Popper,
+  PopperProps,
+} from "@mui/base";
 import { useForkRef } from "@mui/material/utils";
 import {
   useDefaultProps,
@@ -33,11 +34,6 @@ export interface HvSuggestion {
 export interface HvSuggestionsProps extends HvBaseProps {
   /** Whether suggestions is visible */
   open?: boolean;
-  /**
-   * Whether suggestions is visible.
-   * @deprecated use `open` instead.
-   * */
-  expanded?: boolean;
   /** The HTML element Suggestions attaches to. */
   anchorEl?: HTMLElement | null;
   /** Array of { id, label, ...others } values to display in the suggestion list */
@@ -67,9 +63,8 @@ export const HvSuggestions = forwardRef<
     id: idProp,
     className,
     classes: classesProp,
-    expanded = false,
     enablePortal,
-    open: openProp,
+    open: openProp = false,
     anchorEl,
     suggestionValues,
     onClose,
@@ -88,12 +83,6 @@ export const HvSuggestions = forwardRef<
   const ref = useRef<HTMLDivElement>(null);
   const forkedRef = useForkRef(ref, extRef);
 
-  // TODO: remove controlled+uncontrolled `expanded` prop in v6
-  const [isOpen, setIsOpen] = useState(expanded);
-  useEffect(() => {
-    setIsOpen(expanded);
-  }, [expanded]);
-
   return (
     <div
       id={id}
@@ -101,12 +90,7 @@ export const HvSuggestions = forwardRef<
       className={cx(classes.root, className)}
       {...others}
     >
-      <ClickAwayListener
-        onClickAway={(event) => {
-          setIsOpen(false);
-          onClose?.(event);
-        }}
-      >
+      <ClickAwayListener onClickAway={onClose!}>
         <Popper
           style={{
             // @ts-ignore
@@ -114,7 +98,7 @@ export const HvSuggestions = forwardRef<
               ? `${anchorEl?.clientWidth}px`
               : "100%",
           }}
-          open={openProp ?? isOpen}
+          open={openProp}
           disablePortal={!enablePortal}
           container={enablePortal ? getContainerElement(rootId) : undefined}
           anchorEl={anchorEl}

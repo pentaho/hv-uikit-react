@@ -1,5 +1,5 @@
 import * as React from "react";
-import { EventHandlers } from "@mui/base/utils";
+import type { EventHandlers } from "@mui/base";
 import { ownerDocument, useEventCallback } from "@mui/material/utils";
 
 import type { TreeViewPlugin, TreeViewPluginSignature } from "../../types";

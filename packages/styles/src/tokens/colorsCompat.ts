@@ -162,28 +162,4 @@ export const oldVizColors = {
   cat26: "#FF5252",
   cat27: "#EC3D57",
   cat28: "#D8265D",
-
-  // support colors
-  supp1: "#0F8B8D",
-  supp2: "#734B6D",
-  supp3: "#4E7599",
-  supp4: "#C19C31",
-  supp5: "#546B6B",
-};
-
-export const ds3Colors = {
-  ...oldVizColors,
-
-  // semantic
-  sema6: ["#AA00FF", "#928FFF"],
-  sema10: ["#CE703D", "#F4CAB0"],
-  sema11: ["#D36041", "#F1B7A0"],
-  sema12: ["#CF4E38", "#EEA291"],
-  sema13: ["#CB3B30", "#E98B82"],
-  sema14: ["#BA2626", "#E57373"],
-  sema15: ["#6589CB", "#80DEEA"],
-  sema16: ["#4D8AC0", "#4DD0E1"],
-  sema17: ["#3388B1", "#26C6DA"],
-  sema18: ["#1A85A1", "#00ACC1"],
-  sema19: ["#00838F", "#00A0B7"],
 };

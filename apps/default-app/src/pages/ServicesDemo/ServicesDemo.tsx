@@ -1,5 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { useService, useServices } from "@hitachivantara/app-shell-services";
+import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
 import {
   HvButton,
   HvCard,
@@ -125,42 +126,6 @@ const FactoryServiceDemo: FC = () => {
   );
 };
 
-const InstanceBundleServiceDemoInner: FC<{
-  actionHooks: UseCreateNewContentAction[];
-}> = ({ actionHooks }) => {
-  const actionResults = actionHooks.map((actionHook) => actionHook());
-
-  return (
-    <HvCard>
-      <HvCardContent>
-        <HvTypography variant="title3" style={{ marginBottom: "16px" }}>
-          Instance (bundle) Service Demo (React Hooks)
-        </HvTypography>
-        <HvTypography style={{ marginBottom: "16px" }}>
-          This demonstrates instance services through lazy loading of bundles
-          that provide React hooks.
-          <br />
-          Example also available in a header dropdown.
-        </HvTypography>
-
-        <HvGrid container spacing={2}>
-          {actionResults.map((action, index) => {
-            if (!action) return null;
-
-            return (
-              <HvGrid item key={action.id || `action-${index}`}>
-                <HvButton onClick={action.onAction}>
-                  {action.label || `Action ${index + 1}`}
-                </HvButton>
-              </HvGrid>
-            );
-          })}
-        </HvGrid>
-      </HvCardContent>
-    </HvCard>
-  );
-};
-
 const InstanceBundleServiceDemo: FC = () => {
   const {
     services: actionHooks,
@@ -171,6 +136,16 @@ const InstanceBundleServiceDemo: FC = () => {
     { errorHandling: "reject-on-any-failure" },
   );
 
+  const [actionResults, setActionResults] = useState<
+    ReturnType<UseCreateNewContentAction>[]
+  >([]);
+
+  const hooksWithParams = useMemo(
+    () =>
+      (actionHooks ?? []).map((hook: UseCreateNewContentAction) => ({ hook })),
+    [actionHooks],
+  );
+
   if (isPending) {
     return <HvLoading>Loading create actions...</HvLoading>;
   }
@@ -179,8 +154,44 @@ const InstanceBundleServiceDemo: FC = () => {
     const errorMessage = `Failed to load bundle type services: ${ServiceDefinitions.UseCreateNewContentAction.id}`;
     return <HvTypography>{errorMessage}</HvTypography>;
   }
+  return (
+    <>
+      <DynamicHooksEvaluator<
+        UseCreateNewContentAction,
+        ReturnType<UseCreateNewContentAction>
+      >
+        hooks={hooksWithParams}
+        onEvaluate={setActionResults}
+      />
+      <HvCard>
+        <HvCardContent>
+          <HvTypography variant="title3" style={{ marginBottom: "16px" }}>
+            Instance (bundle) Service Demo (React Hooks)
+          </HvTypography>
+          <HvTypography style={{ marginBottom: "16px" }}>
+            This demonstrates instance services through lazy loading of bundles
+            that provide React hooks.
+            <br />
+            Example also available in a header dropdown.
+          </HvTypography>
 
-  return <InstanceBundleServiceDemoInner actionHooks={actionHooks} />;
+          <HvGrid container spacing={2}>
+            {actionResults.map((action, index) => {
+              if (!action) return null;
+
+              return (
+                <HvGrid item key={action.id || `action-${index}`}>
+                  <HvButton onClick={action.onAction}>
+                    {action.label || `Action ${index + 1}`}
+                  </HvButton>
+                </HvGrid>
+              );
+            })}
+          </HvGrid>
+        </HvCardContent>
+      </HvCard>
+    </>
+  );
 };
 
 // The Notification component contract defines 'message' as mandatory prop. However, that is the contract of the service

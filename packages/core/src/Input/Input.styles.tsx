@@ -29,8 +29,6 @@ export const { staticClasses, useClasses } = createClasses("HvInput", {
       width: "100%",
     },
   },
-  /** @deprecated unused. use `classes.suggestionsContainer ::before` instead */
-  inputExtension: {},
   input: {},
   inputRoot: {
     ":is(:hover,:focus-within) $iconClear": {
@@ -44,7 +42,5 @@ export const { staticClasses, useClasses } = createClasses("HvInput", {
   },
   inputRootDisabled: {},
   inputRootMultiline: { padding: 0 },
-  /** @deprecated unused. use `::after` instead */
-  inputBorderContainer: {},
   error: {},
 });

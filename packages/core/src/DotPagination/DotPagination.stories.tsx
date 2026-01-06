@@ -89,8 +89,7 @@ export const CustomizedDotPagination: StoryObj<HvDotPaginationProps> = {
         <br />
         <HvDotPagination
           classes={{
-            radioRoot: "ml-0",
-            radio: "size-32px hover:bg-bgPageSecondary hover:rounded-0",
+            radio: "ml-0 size-32px hover:bg-bgPageSecondary hover:rounded-0",
           }}
           unselectedIcon={<RadioButtonUnselected size="XS" />}
           selectedIcon={<CurrentStep size="XS" />}

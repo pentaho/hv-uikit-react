@@ -26,7 +26,6 @@ export const Main: StoryObj<HvFileUploaderProps> = {
   args: { disabled: false },
   argTypes: {
     fileList: { control: { disable: true } },
-    acceptedFiles: { control: { disable: true } },
     inputProps: { control: { disable: true } },
   },
   render: (args) => {
@@ -445,8 +444,8 @@ export const CustomizedFileTypes: StoryObj<HvFileUploaderProps> = {
           removeFile(removedFile);
         }}
         accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        label="Upload your spreadsheets"
         labels={{
-          dropzone: "Upload your spreadsheets",
           acceptedFiles: "(excel files)",
         }}
       />

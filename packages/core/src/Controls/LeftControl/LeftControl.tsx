@@ -3,7 +3,6 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvInput, HvInputProps } from "../../Input";
 import { HvBaseProps } from "../../types/generic";
-import { setId } from "../../utils/setId";
 import { HvControlsContext } from "../context/ControlsContext";
 import { staticClasses, useClasses } from "./LeftControl.styles";
 
@@ -51,7 +50,6 @@ export const HvLeftControl = ({
     <div id={id} className={cx(classes.root, className)} {...others}>
       {!hideSearch && (
         <HvInput
-          id={setId(id, "search-input")}
           type="search"
           placeholder={placeholder}
           onChange={onChangeFilter}

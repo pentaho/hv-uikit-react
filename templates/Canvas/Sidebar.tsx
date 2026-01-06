@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import {
   DndContextProps,
   DragOverlay,
   useDndMonitor,
   useDroppable,
 } from "@dnd-kit/core";
-import { useUniqueId } from "@hitachivantara/uikit-react-core";
 import {
   HvCanvasSidePanel,
   HvCanvasSidePanelProps,
@@ -14,7 +13,7 @@ import {
 export const CanvasSidebar = (props: HvCanvasSidePanelProps) => {
   const [overlay, setOverlay] = useState<React.ReactNode>();
 
-  const elementId = useUniqueId("canvas-panel");
+  const elementId = useId();
 
   // The sidebar is droppable to distinguish between the canvas and the sidebar
   // Otherwise items dropped inside the sidebar will be added to the canvas

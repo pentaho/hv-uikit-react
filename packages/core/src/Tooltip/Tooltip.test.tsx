@@ -74,7 +74,7 @@ describe("Tooltip", () => {
   describe("MultiLine Tooltip", () => {
     it("renders the multi line Tooltip", () => {
       render(
-        <HvTooltip title={title} open useSingle={false}>
+        <HvTooltip title={title} open>
           {Anchor}
         </HvTooltip>,
       );
@@ -88,22 +88,8 @@ describe("Tooltip", () => {
       expect(screen.getByText("Not yet requested")).toBeInTheDocument();
     });
 
-    it("doesn't render the multi line Tooltip", () => {
-      render(
-        <HvTooltip title={title} useSingle={false}>
-          {Anchor}
-        </HvTooltip>,
-      );
-
-      expect(screen.queryByRole("tooltip")).toBeNull();
-    });
-
     it("renders the multi line Tooltip when hover", async () => {
-      render(
-        <HvTooltip title={title} useSingle={false}>
-          {Anchor}
-        </HvTooltip>,
-      );
+      render(<HvTooltip title={title}>{Anchor}</HvTooltip>);
 
       expect(screen.queryByRole("tooltip")).toBeNull();
       const anchor = screen.getByRole("button", { name: "Hello World" });

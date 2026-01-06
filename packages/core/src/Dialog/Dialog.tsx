@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
 import {
   useDefaultProps,
@@ -9,7 +9,6 @@ import {
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { getElementById } from "../utils/document";
-import { setId } from "../utils/setId";
 import { DialogContext } from "./context";
 import { staticClasses, useClasses } from "./Dialog.styles";
 
@@ -18,7 +17,7 @@ export { staticClasses as dialogClasses };
 export type HvDialogClasses = ExtractNames<typeof useClasses>;
 
 export interface HvDialogProps
-  extends Omit<MuiDialogProps, "fullScreen" | "classes" | "open"> {
+  extends Omit<MuiDialogProps, "classes" | "open"> {
   /** Current state of the Dialog. */
   open?: boolean;
   /** Callback fired when the component requests to be closed. */
@@ -32,16 +31,8 @@ export interface HvDialogProps
   fullWidth?: MuiDialogProps["fullWidth"];
   /** If true, the dialog stretches vertically, limited by the margins. @default false */
   fullHeight?: boolean;
-  /**
-   * Element id that should be focus when the Dialog opens.
-   * Auto-focusing elements can cause usability issues, so this should be avoided.
-   * @deprecated Use `autoFocus` on the element instead, if auto-focusing is required.
-   */
-  firstFocusable?: string;
   /** Title for the button close. */
   buttonTitle?: string;
-  /** Set the dialog to fullscreen mode. */
-  fullscreen?: boolean;
   /** Prevent closing the dialog when clicking on the backdrop. */
   disableBackdropClick?: boolean;
   /** A Jss Object used to override or extend the styles applied to the component. */
@@ -57,32 +48,27 @@ export interface HvDialogProps
 /**
  * A Dialog is a graphical control element in the form of a small panel that communicates information and prompts for a response.
  */
-export const HvDialog = (props: HvDialogProps) => {
+export const HvDialog = forwardRef<
+  // no-indent
+  HTMLDivElement,
+  HvDialogProps
+>((props, ref) => {
   const {
     variant,
     classes: classesProp,
     className,
-    id,
     children,
     open = false,
     onClose,
-    firstFocusable,
     buttonTitle = "Close",
     fullHeight,
-    fullscreen: fullScreen = false, // TODO: rename to `fullScreen` in v6
+    fullScreen = false,
     disableBackdropClick = false,
     ...others
   } = useDefaultProps("HvDialog", props);
 
   const { classes, cx } = useClasses(classesProp);
   const { rootId } = useTheme();
-
-  const measuredRef = useCallback(() => {
-    if (!firstFocusable) return;
-
-    const element = document.getElementById(firstFocusable);
-    element?.focus();
-  }, [firstFocusable]);
 
   const contextValue = useMemo(() => ({ fullScreen }), [fullScreen]);
 
@@ -95,11 +81,10 @@ export const HvDialog = (props: HvDialogProps) => {
         paper: cx(classes.paper, classes[variant!], {
           [classes.fullHeight]: fullHeight,
           [classes.statusBar]: !!variant,
-          [classes.fullscreen]: fullScreen,
+          [classes.fullScreen]: fullScreen,
         }),
       }}
-      id={id}
-      ref={measuredRef}
+      ref={ref}
       open={open}
       fullScreen={fullScreen}
       onClose={(event, reason) => {
@@ -121,7 +106,6 @@ export const HvDialog = (props: HvDialogProps) => {
       {onClose && (
         <HvIconButton<"button">
           title={buttonTitle}
-          id={setId(id, "close")}
           className={classes.closeButton}
           onClick={(event) => onClose?.(event, undefined)}
         >
@@ -133,4 +117,4 @@ export const HvDialog = (props: HvDialogProps) => {
       </DialogContext.Provider>
     </MuiDialog>
   );
-};
+});

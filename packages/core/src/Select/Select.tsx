@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import { Popper } from "@mui/base/Popper";
-import { SelectOption } from "@mui/base/useOption";
 import {
+  Popper,
   SelectProvider,
   useSelect,
+  type SelectOption,
   type SelectValue,
   type UseSelectParameters,
-} from "@mui/base/useSelect";
+} from "@mui/base";
 import { useControlled, useForkRef } from "@mui/material/utils";
 import type { Placement } from "@popperjs/core";
 import { clsx, type ClassValue } from "clsx";
@@ -303,10 +303,7 @@ export const HvSelect = fixedForwardRef(function HvSelect<
               ? "auto"
               : (buttonRef.current?.clientWidth || 0) + 2,
           }}
-          className={cx(classes.panel, {
-            [classes.panelOpenedUp]: placement.includes("top"),
-            [classes.panelOpenedDown]: placement.includes("bottom"),
-          })}
+          className={classes.panel}
           {...getListboxProps()}
         >
           <SelectProvider value={contextValue}>{children}</SelectProvider>

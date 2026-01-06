@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-utils",
-  "version": "0.2.50",
+  "version": "6.0.0-next.6",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -30,13 +30,13 @@
     "prepublishOnly": "npm run build && npx clean-publish"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@emotion/serialize": "^1.1.2",
     "@emotion/utils": "^1.4.0",
-    "@hitachivantara/uikit-react-shared": "^5.5.9",
+    "@hitachivantara/uikit-react-shared": "^6.0.0-next.6",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
@@ -50,14 +50,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -65,8 +64,7 @@
     "withoutPublish": true,
     "tempDir": "package",
     "fields": [
-      "main",
-      "type"
+      "main"
     ],
     "files": [
       "tsconfig.json"

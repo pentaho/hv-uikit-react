@@ -229,7 +229,7 @@ export const Skippable: StoryObj<HvWizardProps> = {
 
 export const ComponentBreakDown: StoryObj<HvWizardProps> = {
   parameters: {
-    ...setupChromatic(["DS3 dawn", "DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   // For visual testing and a11y
   play: async ({ canvasElement }) => {

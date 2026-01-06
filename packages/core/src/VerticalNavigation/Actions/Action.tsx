@@ -5,7 +5,6 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvButton, HvButtonProps } from "../../Button";
-import { setId } from "../../utils/setId";
 import { VerticalNavigationContext } from "../VerticalNavigationContext";
 import { staticClasses, useClasses } from "./Action.styles";
 
@@ -41,7 +40,6 @@ export const HvVerticalNavigationAction = (
 
   return (
     <HvButton
-      id={setId(id, "button")}
       variant="secondaryGhost"
       icon={!isOpen}
       startIcon={isOpen && icon}

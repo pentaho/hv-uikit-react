@@ -129,9 +129,7 @@ export const RuleGroup = ({
           }
           title={
             (level === 0 && labels.query?.delete?.tooltip) ||
-            labels.group.delete.tooltip ||
-            (level === 0 && labels.query?.delete?.ariaLabel) ||
-            labels.group.delete.ariaLabel
+            labels.group.delete.tooltip
           }
           disabled={readOnly}
         >

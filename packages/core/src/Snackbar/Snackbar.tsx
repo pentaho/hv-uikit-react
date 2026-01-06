@@ -12,7 +12,6 @@ import {
 
 import { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
 import { capitalize } from "../utils/helpers";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Snackbar.styles";
 import {
   HvSnackbarContent,
@@ -55,12 +54,6 @@ export interface HvSnackbarProps
   showClose?: boolean;
   /** Action to display. */
   action?: React.ReactNode | HvActionGeneric;
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** Duration of transition in milliseconds. */
@@ -107,7 +100,6 @@ export const HvSnackbar = forwardRef<
     showClose,
     customIcon,
     action,
-    actionCallback, // TODO - remove in v6
     onAction,
     transitionDuration = 300,
     transitionDirection = "left",
@@ -158,7 +150,6 @@ export const HvSnackbar = forwardRef<
       {...others}
     >
       <HvSnackbarContent
-        id={setId(id, "content")}
         title={title}
         label={label}
         variant={variant}
@@ -166,7 +157,6 @@ export const HvSnackbar = forwardRef<
         showIcon={showIcon}
         showClose={showClose}
         action={action}
-        actionCallback={actionCallback}
         onAction={onAction}
         onClose={onClose}
         {...snackbarContentProps}

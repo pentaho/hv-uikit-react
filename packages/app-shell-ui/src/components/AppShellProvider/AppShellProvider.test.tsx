@@ -2,9 +2,8 @@ import { act, render, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  useHvAppShellConfig,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
-import { themes } from "@hitachivantara/uikit-react-core";
 
 import * as i18next from "../../i18n";
 import TestProvider from "../../tests/TestProvider";
@@ -19,7 +18,7 @@ describe("AppShellProvider component", () => {
   });
   describe("rendering", () => {
     const DummyComponent = () => {
-      const test = useHvAppShellConfig();
+      const test = useHvAppShellModel();
       return <p>{test?.name}</p>;
     };
     const mockedConfigResponse = {
@@ -83,7 +82,7 @@ describe("AppShellProvider component", () => {
     it("should log error if import of a theme bundle fails and apply default", async () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
-          themes: ["dummyTheme"],
+          theme: "dummyTheme",
         },
       });
 
@@ -94,66 +93,26 @@ describe("AppShellProvider component", () => {
           expect.stringContaining("Import of theme bundle dummyTheme failed!"),
         );
 
-        expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
-      });
-    });
-
-    it("should apply first valid theme from themes list", async () => {
-      const { baseElement } = await renderTestProvider(<div>dummy</div>, {
-        theming: {
-          themes: ["dummyTheme", "ds5", "pentahoPlus"],
-        },
-      });
-
-      const bodyElement = baseElement.ownerDocument.body;
-
-      await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
-        expect(bodyElement.getAttribute("data-color-mode")).toBe("dawn");
-        expect(bodyElement).toHaveStyle("color-scheme: light;");
+        expect(bodyElement.getAttribute("data-theme")).toBe("pentahoPlus");
       });
     });
 
     it("should apply chosen theme and color mode", async () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
-          themes: ["dummyTheme", "ds5", "pentahoPlus"],
-          theme: "ds5",
-          colorMode: "wicked",
+          theme: "next",
+          colorMode: "dark",
         },
       });
 
       const bodyElement = baseElement.ownerDocument.body;
 
       await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("ds5");
-        expect(bodyElement.getAttribute("data-color-mode")).toBe("wicked");
+        expect(bodyElement.getAttribute("data-theme")).toBe("next");
+        expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });
     });
-
-    Object.keys(themes).map((theme) =>
-      it(`should apply ${theme} UI Kit theme`, async () => {
-        const { baseElement } = await renderTestProvider(<div>dummy</div>, {
-          theming: {
-            themes: [theme],
-            theme,
-            colorMode: "dawn",
-          },
-        });
-
-        const bodyElement = baseElement.ownerDocument.body;
-
-        // TODO: Temporary support for "pentaho" theme alias. To be removed in v6.
-        const expectedTheme = theme === "pentaho" ? "pentahoPlus" : theme;
-
-        await waitFor(() => {
-          expect(bodyElement.getAttribute("data-theme")).toBe(expectedTheme);
-          expect(bodyElement.getAttribute("data-color-mode")).toBe("dawn");
-          expect(bodyElement).toHaveStyle("color-scheme: light;");
-        });
-      }),
-    );
   });
 
   describe("config providers prop", () => {
@@ -168,7 +127,8 @@ describe("AppShellProvider component", () => {
 
       await waitFor(() => {
         expect(consoleMock).toHaveBeenCalledWith(
-          expect.stringContaining("Import of provider 'dummyProvider' failed!"),
+          "Failed to load bundle dummyProvider:",
+          expect.any(Error),
         );
       });
 

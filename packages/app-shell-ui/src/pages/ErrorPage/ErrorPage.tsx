@@ -36,7 +36,7 @@ const ErrorPage = ({
     >
       <StyledTitleWrapper>
         {code && <HvTypography variant="title1">{code}</HvTypography>}
-        <HvTypography variant={isCompactMode ? "xsTitle" : "display"}>
+        <HvTypography variant={isCompactMode ? "title3" : "display"}>
           {title}
         </HvTypography>
       </StyledTitleWrapper>

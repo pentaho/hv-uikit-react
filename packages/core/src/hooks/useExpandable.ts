@@ -1,30 +1,29 @@
+import { useCallback, useId } from "react";
+
 import type { HvAccordionProps } from "../Accordion";
-import { setId } from "../utils/setId";
 import { useControlled } from "./useControlled";
-import { useUniqueId } from "./useUniqueId";
 
 export interface UseExpandableParams
-  extends Pick<
-    HvAccordionProps,
-    "id" | "disabled" | "expanded" | "defaultExpanded"
-  > {}
+  extends Pick<HvAccordionProps, "disabled" | "expanded" | "defaultExpanded"> {}
 
 /** expandable hook that handles a11y & open state for accordions, etc. */
 export function useExpandable({
-  id: idProp,
   disabled,
   expanded,
   defaultExpanded,
 }: UseExpandableParams) {
   const [isOpen, setIsOpen] = useControlled(expanded, Boolean(defaultExpanded));
+  const buttonId = useId();
+  const regionId = useId();
 
-  const id = useUniqueId(idProp);
-  const buttonId = setId(id, "button");
-  const regionId = setId(id, "container");
+  const toggleOpen = useCallback(
+    (newOpen?: boolean) => setIsOpen((o) => newOpen ?? !o),
+    [setIsOpen],
+  );
 
   return {
     isOpen,
-    toggleOpen: (newOpen?: boolean) => setIsOpen((o) => newOpen ?? !o),
+    toggleOpen,
     buttonProps: {
       id: buttonId,
       "aria-disabled": disabled,

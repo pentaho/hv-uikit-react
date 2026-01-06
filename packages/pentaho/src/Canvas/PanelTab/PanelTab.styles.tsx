@@ -1,4 +1,4 @@
-import { tabClasses } from "@mui/base/Tab";
+import { tabClasses } from "@mui/base";
 import {
   createClasses,
   outlineStyles,

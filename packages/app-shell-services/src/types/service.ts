@@ -1,4 +1,4 @@
-import { UseAsyncResult } from "./async";
+import { AsyncResult } from "./async";
 import { ServiceId } from "./config";
 
 /**
@@ -114,7 +114,7 @@ export type UseServiceReferencesOptions = GetServiceReferencesOptions; // NOSONA
 /**
  * Result type for the {@link useService} hook that represents the async state of a single service fetch operation.
  */
-export type UseServiceResult<TService> = UseAsyncResult<
+export type UseServiceResult<TService> = AsyncResult<
   TService,
   Error,
   "service"
@@ -123,7 +123,7 @@ export type UseServiceResult<TService> = UseAsyncResult<
 /**
  * Result type for the {@link useServices} hook that represents the async state of fetching multiple services.
  */
-export type UseServicesResult<TService> = UseAsyncResult<
+export type UseServicesResult<TService> = AsyncResult<
   TService[],
   Error,
   "services",

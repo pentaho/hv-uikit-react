@@ -6,24 +6,14 @@ import { describe, expect, it, vi } from "vitest";
 import { HvFileData } from "./File";
 import { HvFileUploader, HvFileUploaderProps } from "./FileUploader";
 
-const fileList: HvFileData[] = [
-  {
-    id: "1",
-    name: "Screenshot 2019-12-05 at 17.15.43.png",
-    size: 14100000,
-    type: "image/png",
-  },
-  {
-    id: "2",
-    name: "Screenshot 2019-12-05 at 12.03.13.png",
-    size: 875000,
-    type: "image/png",
-  },
+const fileList = [
+  { id: "1", name: "Screenshot1.png", size: 14100000, type: "image/png" },
+  { id: "2", name: "Screenshot2.png", size: 875000, type: "image/png" },
 ] as HvFileData[];
 
 const baseProps: HvFileUploaderProps = {
   fileList,
-  acceptedFiles: ["jpeg"],
+  accept: ".jpeg",
   maxFileSize: 12,
 };
 
@@ -37,7 +27,7 @@ const FullSample = (props?: HvFileUploaderProps) => {
   return (
     <HvFileUploader
       fileList={files}
-      acceptedFiles={[".png", ".jpg"]}
+      accept=".png,.jpg"
       maxFileSize={12}
       onFilesAdded={(newFiles) => {
         setFiles((prev) => [...prev, ...newFiles]);

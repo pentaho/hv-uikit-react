@@ -1,4 +1,5 @@
-export type ServicesConfig = Record<ServiceId, ServiceConfig[]>;
+export interface ServicesConfig
+  extends Record<ServiceId, ServiceProviderConfig[]> {}
 
 export type ServiceId = string; //NOSONAR
 
@@ -8,32 +9,40 @@ export type ServiceId = string; //NOSONAR
  *  - Value: directly provide the instance, factory or component
  *  - Bundle: module to be lazy loaded with optional config object
  */
-export type ServiceConfig =
-  | InstanceServiceConfig
-  | FactoryServiceConfig
-  | ComponentServiceConfig;
+export type ServiceProviderConfig =
+  | InstanceServiceProviderConfig
+  | FactoryServiceProviderConfig
+  | ComponentServiceProviderConfig;
 
-export type ServiceConfigBase = {
+export interface ServiceConfigBase {
   ranking?: number;
-};
+}
 
 /** Directly provided value */
-export type Value = {
+export interface Value {
   value: unknown;
-};
+}
 
 /** Bundle for lazy loading */
-export type Bundle = {
+export interface Bundle {
   bundle: string;
-};
+}
 
-export type BundleConfig = Record<string, unknown>;
+export interface BundleConfig extends Record<string, unknown> {}
+
+export interface InstanceServiceProviderConfig extends ServiceConfigBase {
+  instance: InstanceValueOrBundle;
+}
+
+export interface FactoryServiceProviderConfig extends ServiceConfigBase {
+  factory: FactoryValueOrBundle;
+}
+
+export interface ComponentServiceProviderConfig extends ServiceConfigBase {
+  component: ComponentValueOrBundle;
+}
 
 export type InstanceValueOrBundle = Value | Bundle;
-
-export type InstanceServiceConfig = ServiceConfigBase & {
-  instance: InstanceValueOrBundle;
-};
 
 // Factory function type used when a factory bundle exports a creator
 export type FactoryServiceFunction<
@@ -52,14 +61,6 @@ export type FactoryValueOrBundle<TBundleConfig = BundleConfig> =
   | { value: FactoryServiceFunction }
   | (Bundle & { config?: TBundleConfig });
 
-export type FactoryServiceConfig = ServiceConfigBase & {
-  factory: FactoryValueOrBundle;
-};
-
 export type ComponentValueOrBundle<TBundleConfig = BundleConfig> =
   | Value
   | (Bundle & { config?: TBundleConfig });
-
-export type ComponentServiceConfig = ServiceConfigBase & {
-  component: ComponentValueOrBundle;
-};

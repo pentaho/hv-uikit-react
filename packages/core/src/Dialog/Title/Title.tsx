@@ -56,11 +56,8 @@ export const HvDialogTitle = (props: HvDialogTitleProps) => {
       variant="title4"
       className={cx(
         classes.root,
-        classes.messageContainer,
         {
-          [classes.fullscreen]: fullScreen,
-          [classes.textWithIcon]: icon,
-          [classes.titleText]: typeof children === "string",
+          [classes.fullScreen]: fullScreen,
         },
         className,
       )}

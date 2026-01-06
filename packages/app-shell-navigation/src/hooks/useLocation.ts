@@ -5,17 +5,17 @@ import {
   useLocation as useLocationReactRouter,
 } from "react-router-dom";
 import {
-  HvAppShellViewsConfig,
-  useHvAppShellConfig,
+  HvAppShellViewsModel,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 
 interface IndexedView {
   path: string;
   children?: IndexedView[];
-  view: HvAppShellViewsConfig;
+  view: HvAppShellViewsModel;
 }
 
-function indexViews(views: HvAppShellViewsConfig[]): IndexedView[] {
+function indexViews(views: HvAppShellViewsModel[]): IndexedView[] {
   return views.map((view) => {
     // remove prefix slash from view.route
     const path = view.route.slice(1);
@@ -48,13 +48,13 @@ class LocationWithViews<State = unknown> implements Location<State> {
 
   hash: string;
 
-  #configViews: HvAppShellViewsConfig[];
+  #configViews: HvAppShellViewsModel[];
 
-  private matches: HvAppShellViewsConfig[] | null = null;
+  private matches: HvAppShellViewsModel[] | null = null;
 
   constructor(
     location: Location<State>,
-    views: HvAppShellViewsConfig[] | undefined | null,
+    views: HvAppShellViewsModel[] | undefined | null,
   ) {
     this.state = location.state;
     this.key = location.key;
@@ -78,10 +78,9 @@ class LocationWithViews<State = unknown> implements Location<State> {
 
 export const useHvLocation = () => {
   const location = useLocationReactRouter();
-  const config = useHvAppShellConfig();
-  const toReturn = useMemo(() => {
-    return new LocationWithViews(location, config.mainPanel?.views);
-  }, [location, config.mainPanel?.views]);
+  const { mainPanel } = useHvAppShellModel();
 
-  return toReturn;
+  return useMemo(() => {
+    return new LocationWithViews(location, mainPanel?.views);
+  }, [location, mainPanel?.views]);
 };

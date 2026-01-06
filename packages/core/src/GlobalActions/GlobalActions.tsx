@@ -89,12 +89,7 @@ export const HvGlobalActions = forwardRef<
       )}
       {...others}
     >
-      <div
-        className={cx(classes.wrapper, {
-          [classes.globalWrapperComplement]: variant === "global",
-          [classes.globalSectionArea]: variant === "section",
-        })}
-      >
+      <div className={classes.wrapper}>
         {variant === "global" && backButton && (
           <div className={classes.backButton}>{backButton}</div>
         )}
@@ -104,9 +99,7 @@ export const HvGlobalActions = forwardRef<
           <HvTypography
             variant={variant === "global" ? "title3" : "title4"}
             component={`h${headingLevelToApply}`}
-            className={cx(classes.name, {
-              [classes.sectionName]: variant !== "global",
-            })}
+            className={classes.name}
           >
             {title}
           </HvTypography>

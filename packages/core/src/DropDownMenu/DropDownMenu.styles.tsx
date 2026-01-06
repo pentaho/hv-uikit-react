@@ -8,12 +8,7 @@ export const { staticClasses, useClasses } = createClasses("HvDropDownMenu", {
       height: "inherit",
     },
   },
-  /** @deprecated use `classes.root` instead */
-  container: {},
-  baseContainer: {},
-  /** @deprecated use `classes.root` instead */
-  icon: {},
-  iconSelected: {
+  open: {
     boxShadow: theme.colors.shadow,
   },
   menuListRoot: {

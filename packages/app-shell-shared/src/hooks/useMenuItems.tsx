@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useHvAppShellConfig } from "../AppShellContext";
+import { useHvAppShellModel } from "../AppShellModelContext";
 import { HvAppShellRuntimeContext } from "../AppShellRuntimeContext";
 import { CONFIG_TRANSLATIONS_NAMESPACE } from "../i18n";
 import type { MenuItemsContext } from "../types/menu";
@@ -18,7 +18,7 @@ const MAX_TOP_MENU_DEPTH = 2;
 
 export const useHvMenuItems = (): MenuItemsContext => {
   const { pathname, search, state: locationState } = useLocation();
-  const appShellContext = useHvAppShellConfig();
+  const { navigationMode, menu } = useHvAppShellModel();
 
   // use the i18n instance from the app shell runtime context to ensure we're using
   // the app shell instance of i18n and not the one from the embedded app
@@ -33,12 +33,10 @@ export const useHvMenuItems = (): MenuItemsContext => {
 
   const items = useMemo(() => {
     const menuItemsDepth =
-      appShellContext.navigationMode === "ONLY_TOP"
-        ? MAX_TOP_MENU_DEPTH
-        : undefined;
+      navigationMode === "ONLY_TOP" ? MAX_TOP_MENU_DEPTH : undefined;
 
-    return createMenuItems(tConfig, appShellContext.menu, menuItemsDepth);
-  }, [appShellContext, tConfig]);
+    return createMenuItems(tConfig, menu, menuItemsDepth);
+  }, [navigationMode, menu, tConfig]);
 
   const [selectedMenuItemId, setSelectedMenuItemId] = useState<
     string | undefined

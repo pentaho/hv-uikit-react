@@ -1,4 +1,4 @@
-import React, { ComponentType, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import {
   DocsContainer,
@@ -8,17 +8,18 @@ import { addons } from "storybook/preview-api";
 import { Global } from "storybook/theming";
 import {
   HvProvider,
+  HvThemeColorMode,
   HvTypography,
   HvTypographyProps,
   theme,
 } from "@hitachivantara/uikit-react-core";
 
 import { ADDON_EVENT } from "../addons/mode-selector/constants";
-import { getInitialMode, Mode } from "../addons/mode-selector/utils";
+import { getInitialMode } from "../addons/mode-selector/utils";
 import { themes } from "../theme";
 import { getDocsStyles } from "../theme/styles/docs";
 
-const components: Record<string, ComponentType> = {
+const components: Record<string, React.ComponentType> = {
   a: (props: HvTypographyProps<"a">) => (
     <HvTypography
       link
@@ -54,7 +55,7 @@ export default ({
   const initialMode = getInitialMode();
   const [mode, setMode] = useState(initialMode);
 
-  const switchMode = (mode: Mode) => {
+  const switchMode = (mode: HvThemeColorMode) => {
     setMode(mode);
   };
 
@@ -67,7 +68,7 @@ export default ({
     };
   }, []);
 
-  const docsStyles = useMemo(() => getDocsStyles(), [mode]);
+  const docsStyles = useMemo(() => getDocsStyles(), []);
 
   return (
     <MDXProvider components={components}>

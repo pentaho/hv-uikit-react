@@ -27,8 +27,6 @@ export const { staticClasses, useClasses } = createClasses(name, {
     fontSize: 4,
     color: theme.colors.textDisabled,
   },
-  /** @deprecated: use classes.button instead */
-  text: {},
   button: {
     display: "flex",
     justifyContent: "center",

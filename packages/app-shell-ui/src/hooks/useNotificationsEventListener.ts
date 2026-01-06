@@ -10,13 +10,13 @@ const useNotificationsEventListener = () => {
   const handleCustomEventSnackbar = (
     notification: HvAppShellEventNotification,
   ) => {
-    const { message, variant, actions, actionsCallback } = notification;
+    const { message, variant, actions, onAction } = notification;
 
     let snackbarContentProps;
     if (actions) {
       snackbarContentProps = {
         action: Array.isArray(actions) ? actions[0] : actions,
-        actionCallback: actionsCallback,
+        onAction,
       };
     }
 

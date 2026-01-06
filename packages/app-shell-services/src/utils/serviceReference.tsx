@@ -2,13 +2,13 @@ import { createElement, FC, PropsWithChildren } from "react";
 
 import {
   BundleConfig,
-  ComponentServiceConfig,
-  FactoryServiceConfig,
+  ComponentServiceProviderConfig,
   FactoryServiceFunction,
-  InstanceServiceConfig,
-  ServiceConfig,
+  FactoryServiceProviderConfig,
+  InstanceServiceProviderConfig,
   ServiceConfigBase,
   ServiceId,
+  ServiceProviderConfig,
 } from "../types/config";
 import { ServiceLoader, ServiceReference } from "../types/service";
 
@@ -82,7 +82,7 @@ function selectValueOrBundle(
 
 function createInstanceReference<TService>(
   serviceId: ServiceId,
-  config: InstanceServiceConfig,
+  config: InstanceServiceProviderConfig,
 ): ServiceReference<TService> {
   const selection = selectValueOrBundle(
     config.instance as any,
@@ -108,7 +108,7 @@ function createInstanceReference<TService>(
 
 function createFactoryReference<TService>(
   serviceId: ServiceId,
-  config: FactoryServiceConfig,
+  config: FactoryServiceProviderConfig,
 ): ServiceReference<TService> {
   let loaded = false;
   let serviceInstance: TService | undefined;
@@ -155,7 +155,7 @@ function createFactoryReference<TService>(
 
 function createComponentReference<TService extends FC>(
   serviceId: ServiceId,
-  config: ComponentServiceConfig,
+  config: ComponentServiceProviderConfig,
 ): ServiceReference<TService> {
   let loaded = false;
   let serviceInstance: TService | undefined;
@@ -216,26 +216,26 @@ function createComponentReference<TService extends FC>(
  *
  * @template TService The concrete service type returned by the created reference.
  * @param serviceId Identifier for the service being referenced.
- * @param serviceConfig Configuration that determines how the service is provided.
+ * @param serviceProviderConfig Configuration that determines how the service is provided.
  * @returns A {@link ServiceReference} object exposing metadata and a getService() loader that resolves the service.
  * @throws {Error} If the provided configuration shape is unsupported, or if a factory service does not resolve to a function. Errors from dynamic imports, missing exports, or invalid factory/component shapes are propagated by the underlying provider implementations.
  */
 export function createServiceReference<TService = unknown>(
   serviceId: ServiceId,
-  serviceConfig: ServiceConfig,
+  serviceProviderConfig: ServiceProviderConfig,
 ): ServiceReference<TService> {
-  if ("instance" in serviceConfig) {
-    return createInstanceReference<TService>(serviceId, serviceConfig);
+  if ("instance" in serviceProviderConfig) {
+    return createInstanceReference<TService>(serviceId, serviceProviderConfig);
   }
 
-  if ("factory" in serviceConfig) {
-    return createFactoryReference<TService>(serviceId, serviceConfig);
+  if ("factory" in serviceProviderConfig) {
+    return createFactoryReference<TService>(serviceId, serviceProviderConfig);
   }
 
-  if ("component" in serviceConfig) {
+  if ("component" in serviceProviderConfig) {
     return createComponentReference<TService extends FC ? TService : FC>(
       serviceId,
-      serviceConfig,
+      serviceProviderConfig,
     ) as ServiceReference<TService>;
   }
 

@@ -10,34 +10,32 @@ The **theme** object serves as the **UI Kit** foundation, defining all styling s
 
 **UI Kit** includes three default themes, each available in two color modes: **dawn** (light) and **wicked** (dark):
 
-- **ds3** and **ds5** — aligned with the [Next Design System](https://designsystem.hitachi.com)
-- **pentahoPlus** — aligned with the Pentaho Design System
+- **next** — aligned with the [Next Design System](https://designsystem.hitachi.com)
+- **pentaho** — aligned with the Pentaho Design System
 
 Use the `HvProvider` to configure the active theme and color mode:
 
 ```tsx
-<HvProvider themes={[pentahoPlus]} theme="pentahoPlus" colorMode="dawn">
+<HvProvider theme={pentaho} colorMode="light">
   <App />
 </HvProvider>
 ```
 
-- If `themes` is not provided, the default is `ds5`.
+- If `themes` is not provided, the default is `next`.
 - If only one theme is provided, `theme` can be omitted.
-- If `colorMode` is omitted, `dawn` is used by default.
+- If `colorMode` is omitted, `light` is used by default.
 
 ## Creating a New Theme
 
-Use `createTheme()` to define a custom theme based on existing ones. This allows you to:
+Use `mergeTheme()` to define a custom theme based on existing ones. This allows you to:
 
 - Create custom color modes
 - Override design tokens like colors, spacing, or fonts
 - Extend the theme with new properties
 
 ```tsx
-const myTheme = createTheme({
+const myTheme = mergeTheme(pentaho, {
   name: "myTheme",
-  base: "pentahoPlus",
-  inheritColorModes: false,
   colors: {
     modes: {
       sand: {
@@ -53,7 +51,7 @@ const myTheme = createTheme({
   },
 });
 
-<HvProvider themes={[myTheme]} colorMode="sand">
+<HvProvider theme={myTheme} colorMode="sand">
   <App />
 </HvProvider>;
 ```
@@ -64,11 +62,9 @@ Use the `useTheme()` hook to dynamically access or update theme information:
 
 ```tsx
 const {
-  selectedTheme, // Active theme name
   selectedMode, // Active color mode
-  themes, // Available themes
   colorModes, // Modes for the current theme
-  changeTheme, // Function to switch theme or color mode
+  changeMode, // Function to switch color mode
   activeTheme, // The active theme object
   colors, // Active color palette
 } = useTheme();
@@ -80,15 +76,15 @@ Toggle themes or color modes at runtime — ideal for user preferences (e.g. lig
 
 ```tsx
 const MyComponent = () => {
-  const { selectedTheme, selectedMode, changeTheme } = useTheme();
+  const { selectedMode, changeMode } = useTheme();
 
   return (
     <HvButton
       icon
       variant="secondaryGhost"
-      onClick={() =>
-        changeTheme(selectedTheme, selectedMode === "dawn" ? "wicked" : "dawn")
-      }
+      onClick={() => {
+        changeMode(selectedMode === "light" ? "dark" : "light");
+      }}
     >
       <ThemeSwitcher />
     </HvButton>
@@ -131,9 +127,8 @@ const CssVariables = () => {
 You can globally define default props and custom styles for any component using the `components` key inside your theme. This reduces boilerplate and improves consistency.
 
 ```tsx
-const newTheme = createTheme({
+const newTheme = mergeTheme(next, {
   name: "myTheme",
-  base: "ds5",
   components: {
     HvAvatar: {
       variant: "square",
@@ -152,7 +147,7 @@ const newTheme = createTheme({
 
 const DefaultProps = () => {
   return (
-    <HvProvider cssTheme="scoped" themes={[newTheme]}>
+    <HvProvider cssTheme="scoped" theme={newTheme}>
       <HvButton variant="primarySubtle">Hey!</HvButton>
       <HvAvatar />
     </HvProvider>

@@ -6,6 +6,7 @@ import {
   HvButton,
   HvGlobalActions,
   HvGrid,
+  HvThemeColorMode,
   HvTypography,
   useTheme,
 } from "@hitachivantara/uikit-react-core";
@@ -23,7 +24,7 @@ const splitAndCapitalize = (inputString: string) => {
 const Theming = () => {
   const { selectedMode, colorModes } = useTheme();
 
-  const renderTriggerColorModeSwitchButton = (colorMode: string) => {
+  const renderTriggerColorModeSwitchButton = (colorMode: HvThemeColorMode) => {
     const triggerColorModeSwitchHandler = () => {
       const customEvent = new CustomEvent<HvAppShellEventTheme>(
         HvAppShellEventThemeTrigger,

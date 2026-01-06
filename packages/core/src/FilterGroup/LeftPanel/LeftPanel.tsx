@@ -4,7 +4,6 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { HvListContainer, HvListItem } from "../../ListContainer";
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 import { HvPanel } from "../../Panel";
-import { setId } from "../../utils/setId";
 import { HvFilterGroupCounter } from "../Counter";
 import { HvFilterGroupContext } from "../FilterGroupContext";
 import { staticClasses, useClasses } from "./LeftPanel.styles";
@@ -21,7 +20,6 @@ export interface HvFilterGroupLeftPanelProps {
 }
 
 export const HvFilterGroupLeftPanel = ({
-  id,
   className,
   emptyElement,
   classes: classesProp,
@@ -31,9 +29,9 @@ export const HvFilterGroupLeftPanel = ({
     useContext(HvFilterGroupContext);
 
   return (
-    <HvPanel id={setId(id, "leftPanel")} className={className}>
+    <HvPanel className={className}>
       {filterOptions.length > 0 ? (
-        <HvListContainer id={setId(id, "leftPanel-list")} condensed interactive>
+        <HvListContainer condensed interactive>
           {filterOptions.map((group, index) => (
             <HvListItem
               key={group.id || group.name}

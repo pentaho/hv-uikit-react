@@ -17,10 +17,10 @@ export default {
     name: "PENTAHO",
   },
   theming: {
-    themes: ["ds5", "pentahoPlus"],
-    theme: "pentahoPlus",
-    colorMode: "dawn",
+    theme: "pentaho",
+    colorMode: "light",
   },
+
   menu: [
     {
       label: "Default App",
@@ -87,10 +87,6 @@ export default {
           },
         },
         {
-          label: "Display Context",
-          target: "/displayContext",
-        },
-        {
           label: "Nested Views",
           target: "/nested",
         },
@@ -101,6 +97,117 @@ export default {
             iconType: "uikit",
             name: "Settings",
           },
+        },
+      ],
+    },
+    {
+      label: "Providers Demo",
+      target: "/providers-demo",
+      icon: {
+        iconType: "uikit",
+        name: "Package",
+      },
+    },
+    // ========================================
+    // CONDITIONS EXAMPLES
+    // Menus inherit conditions from matching views!
+    // ========================================
+    {
+      label: "Conditions Demo",
+      icon: {
+        iconType: "uikit",
+        name: "Eye",
+      },
+      submenus: [
+        {
+          label: "Sync True (Always Visible)",
+          target: "/sync-true-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Check",
+          },
+        },
+        {
+          label: "Sync False (Always Hidden)",
+          target: "/sync-false-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Close",
+          },
+        },
+        {
+          label: "Async True (0.5s delay)",
+          target: "/async-true-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Clock",
+          },
+        },
+        {
+          label: "Async False (0.5s delay)",
+          target: "/async-false-demo",
+          icon: {
+            iconType: "uikit",
+            name: "ClockStop",
+          },
+        },
+        {
+          label: "Dynamic (Appears after 10s)",
+          target: "/dynamic-condition-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Refresh",
+          },
+        },
+        {
+          label: "Sync True + Async True",
+          target: "/multiple-conditions-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Hierarchy",
+          },
+        },
+        {
+          label: "Sync True + Sync False",
+          target: "/multiple-fail-demo",
+          icon: {
+            iconType: "uikit",
+            name: "Ban",
+          },
+        },
+        {
+          label: "Inverse Dynamic (view) + Async True",
+          target: "/inverse-dynamic",
+          icon: {
+            iconType: "uikit",
+            name: "Ban",
+          },
+          conditions: [
+            {
+              bundle: "@self/conditions/useAsyncTrue.js",
+            },
+          ],
+        },
+        {
+          label: "Nested Submenus",
+          icon: {
+            iconType: "uikit",
+            name: "Tree",
+          },
+          submenus: [
+            {
+              label: "Sync True",
+              target: "/nested-visible",
+            },
+            {
+              label: "Sync False",
+              target: "/nested-hidden",
+            },
+            {
+              label: "Async True",
+              target: "/nested-async",
+            },
+          ],
         },
       ],
     },
@@ -178,6 +285,7 @@ export default {
       { bundle: "@hv/sample-app/headerActions/ChangeDefaultAppContext.js" },
     ],
   },
+
   mainPanel: {
     views: [
       // @self app
@@ -253,27 +361,185 @@ export default {
         bundle: "@self/pages/ServicesDemo.js",
         route: "/services-demo",
       },
+      // Providers Demo Page
+      {
+        bundle: "@self/pages/ProvidersDemo.js",
+        route: "/providers-demo",
+      },
+
+      // ========================================
+      // CONDITIONS EXAMPLES - VIEWS
+      // ========================================
+
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/sync-true-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysTrue.js",
+          },
+        ],
+      },
+
+      // Example 2: Sync False - Never accessible (404)
+      {
+        bundle: "@self/pages/ShouldNotBeVisible.js",
+        route: "/sync-false-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysFalse.js",
+          },
+        ],
+      },
+
+      // Example 3: Async True - Accessible after delay
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/async-true-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAsyncTrue.js",
+          },
+        ],
+      },
+
+      // Example 4: Async False - Not accessible (404 after delay)
+      {
+        bundle: "@self/pages/ShouldNotBeVisible.js",
+        route: "/async-false-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAsyncFalse.js",
+          },
+        ],
+      },
+
+      // Example 5: Multiple conditions (both true)
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/multiple-conditions-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysTrue.js",
+          },
+          {
+            bundle: "@self/conditions/useAsyncTrue.js",
+          },
+        ],
+      },
+
+      // Example 6: Multiple conditions (one false)
+      {
+        bundle: "@self/pages/ShouldNotBeVisible.js",
+        route: "/multiple-fail-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysTrue.js",
+          },
+          {
+            bundle: "@self/conditions/useAlwaysFalse.js",
+          },
+        ],
+      },
+
+      // Example 7: Inverse dynamic (false after 10s)
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/inverse-dynamic",
+        conditions: [
+          {
+            bundle: "@self/conditions/useFlipToFalse.js",
+          },
+        ],
+      },
+
+      // Nested menu views
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/nested-visible",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysTrue.js",
+          },
+        ],
+      },
+      {
+        bundle: "@self/pages/ShouldNotBeVisible.js",
+        route: "/nested-hidden",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAlwaysFalse.js",
+          },
+        ],
+      },
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/nested-async",
+        conditions: [
+          {
+            bundle: "@self/conditions/useAsyncTrue.js",
+          },
+        ],
+      },
+
+      // Dynamic condition example - appears after 10 seconds
+      {
+        bundle: "@self/pages/ShouldBeVisible.js",
+        route: "/dynamic-condition-demo",
+        conditions: [
+          {
+            bundle: "@self/conditions/useFlipToTrue.js",
+          },
+        ],
+      },
     ],
   },
-  providers: [{ bundle: "@self/providers/DefaultAppProvider.js" }],
+  providers: [
+    {
+      bundle: "@self/providers/DefaultAppProvider.js",
+      // Always visible provider (no conditions)
+    },
+    {
+      bundle: "@self/providers/AsyncProvider.js",
+      conditions: [{ bundle: "@self/conditions/useAsyncTrue.js" }],
+    },
+    {
+      bundle: "@self/providers/HiddenProvider.js",
+      conditions: [{ bundle: "@self/conditions/useAlwaysFalse.js" }],
+    },
+    {
+      bundle: "@self/providers/DynamicProvider.js",
+      conditions: [{ bundle: "@self/conditions/useFlipToTrue.js" }],
+    },
+  ],
   services: {
     // Instance Service (bundle) - Basic hooks service consumed by ServicesDemo page and CreateNewContentDropDownMenu header action
-    "default-app/services:UseCreateNewContentAction": [
+    "@self/services:UseCreateNewContentAction": [
       {
         instance: {
-          bundle: "default-app/services/create/useCreateNewReportAction.js",
+          bundle: "@self/services/create/useCreateNewReportAction.js",
         },
         ranking: 100,
+        conditions: [
+          {
+            bundle: "@self/conditions/useFlipToFalse.js",
+          },
+        ],
       },
       {
         instance: {
-          bundle: "default-app/services/create/useCreateNewDashboardAction.js",
+          bundle: "@self/services/create/useCreateNewDashboardAction.js",
         },
+        conditions: [
+          {
+            bundle: "@self/conditions/useAsyncTrue.js",
+          },
+        ],
       },
     ],
 
     // Instance Service (direct values) - Simple configuration data
-    "default-app/services:SimpleDataService": [
+    "@self/services:SimpleDataService": [
       {
         instance: {
           value: {
@@ -288,10 +554,10 @@ export default {
     ],
 
     // Factory Service (bundle) - Message service
-    "default-app/services:MessageService": [
+    "@self/services:MessageService": [
       {
         factory: {
-          bundle: "default-app/services/factories/createMessageService.js",
+          bundle: "@self/services/factories/createMessageService.js",
           config: {
             prefix: "App Message: ",
           },
@@ -300,10 +566,10 @@ export default {
     ],
 
     // Component Service (bundle) - Basic notification component
-    "default-app/services:BasicNotification": [
+    "@self/services:BasicNotification": [
       {
         component: {
-          bundle: "default-app/services/components/NotificationComponent.js",
+          bundle: "@self/services/components/NotificationComponent.js",
           config: {
             message: "Service is active!",
           },

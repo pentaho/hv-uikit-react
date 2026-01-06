@@ -7,7 +7,6 @@ import {
 
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Drawer.styles";
 
 export { staticClasses as drawerClasses };
@@ -53,11 +52,6 @@ export interface HvDrawerProps extends Omit<MuiDrawerProps, "classes"> {
    */
   buttonTitle?: string;
   /**
-   * Show backdrop when drawer is open.
-   * @deprecated Use `hideBackdrop` instead.
-   */
-  showBackdrop?: boolean;
-  /**
    * Prevent closing the dialog when clicking on the backdrop.
    */
   disableBackdropClick?: boolean;
@@ -79,13 +73,11 @@ export const HvDrawer = forwardRef<
   const {
     className,
     classes: classesProp,
-    id,
     children,
     open,
     onClose,
     anchor = "right",
     buttonTitle = "Close",
-    showBackdrop = true,
     hideBackdrop,
     disableBackdropClick = false,
     ...others
@@ -102,20 +94,17 @@ export const HvDrawer = forwardRef<
     onClose?.(event, reason);
   };
 
-  const shouldHideBackdrop = hideBackdrop ?? !showBackdrop;
-
   return (
     <MuiDrawer
       ref={ref}
       className={cx(classes.root, className)}
-      id={id}
       anchor={anchor}
       open={open}
       classes={{
         paper: classes.paper,
       }}
-      hideBackdrop={shouldHideBackdrop}
-      {...(!shouldHideBackdrop && {
+      hideBackdrop={hideBackdrop}
+      {...(!hideBackdrop && {
         slotProps: {
           backdrop: {
             classes: {
@@ -129,7 +118,6 @@ export const HvDrawer = forwardRef<
     >
       {onClose && (
         <HvIconButton
-          id={setId(id, "close")}
           className={classes.closeButton}
           onClick={onClose}
           title={buttonTitle}

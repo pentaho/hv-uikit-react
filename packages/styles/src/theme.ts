@@ -9,12 +9,7 @@ import {
   HvThemeVars,
   SpacingValue,
 } from "./types";
-import {
-  hasMultipleArgs,
-  mapCSSVars,
-  spacingUtil,
-  spacingUtilOld,
-} from "./utils";
+import { hasMultipleArgs, mapCSSVars, spacingUtil } from "./utils";
 
 const componentsSpec: DeepString<HvThemeComponents> = {
   header: {
@@ -24,15 +19,12 @@ const componentsSpec: DeepString<HvThemeComponents> = {
   form: {
     errorColor: "string",
   },
-  bulkActions: {
+  snackbar: {
     actionButtonVariant: "string",
   },
-  table: {
-    rowStripedBackgroundColorEven: "string",
-    rowStripedBackgroundColorOdd: "string",
-    rowExpandBackgroundColor: "string",
-    rowSortedColor: "string",
-    rowSortedColorAlpha: "string",
+
+  bulkActions: {
+    actionButtonVariant: "string",
   },
   stepNavigation: {
     separatorMargin: "string",
@@ -43,15 +35,8 @@ const componentsSpec: DeepString<HvThemeComponents> = {
     applyButtonVariant: "string",
     cancelButtonVariant: "string",
   },
-  scrollTo: {
-    dotSelectedSize: "string",
-    backgroundColorOpacity: "string",
-  },
   colorPicker: {
     hueDirection: "string",
-  },
-  snackbar: {
-    actionButtonVariant: "string",
   },
 };
 
@@ -66,7 +51,6 @@ const typographyProps: DeepString<HvThemeTypographyProps> = {
 
 const typographySpec: DeepString<HvThemeTypography> = {
   typography: {
-    // DS5
     display: { ...typographyProps },
     title1: { ...typographyProps },
     title2: { ...typographyProps },
@@ -77,20 +61,6 @@ const typographySpec: DeepString<HvThemeTypography> = {
     captionLabel: { ...typographyProps },
     caption1: { ...typographyProps },
     caption2: { ...typographyProps },
-    // LEGACY UNMAPPABLE (DS3)
-    "5xlTitle": { ...typographyProps },
-    "4xlTitle": { ...typographyProps },
-    xxlTitle: { ...typographyProps },
-    lTitle: { ...typographyProps },
-    sTitle: { ...typographyProps },
-    xxsTitle: { ...typographyProps },
-    sectionTitle: { ...typographyProps },
-    placeholderText: { ...typographyProps },
-    link: { ...typographyProps },
-    disabledText: { ...typographyProps },
-    selectedNavText: { ...typographyProps },
-    vizTextDisabled: { ...typographyProps },
-    xsInlineLink: { ...typographyProps },
   },
 };
 
@@ -125,9 +95,9 @@ export function getColor(color?: HvColorAny, fallbackColor?: HvColorAny) {
  * theme.spacing(2) // 16px (2*8px)
  * theme.spacing("md", "inherit", "42px") // 24px inherit 42px
  */
-const spacing = (...args: [SpacingValue[]] | SpacingValue[]) => {
+const spacing = (...args: [SpacingValue[]] | SpacingValue[]): string => {
   if (hasMultipleArgs(args)) {
-    return args.map((arg) => spacingUtil(arg, themeVars)).join(" ");
+    return args.map((arg) => spacing(arg)).join(" ");
   }
 
   const [value] = args;
@@ -136,11 +106,6 @@ const spacing = (...args: [SpacingValue[]] | SpacingValue[]) => {
     case "number":
     case "string":
       return spacingUtil(value, themeVars);
-    // TODO: remove in v6
-    case "object":
-      return value && value.length > 0
-        ? value.map((val) => spacingUtilOld(val, themeVars)).join(" ")
-        : "0px";
     default:
       return "0px";
   }

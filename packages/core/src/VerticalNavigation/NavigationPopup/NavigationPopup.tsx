@@ -1,7 +1,6 @@
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
 import { HvBaseProps } from "../../types/generic";
-import { setId } from "../../utils/setId";
 import {
   HvVerticalNavigationTree,
   HvVerticalNavigationTreeProps,
@@ -61,7 +60,6 @@ export const HvVerticalNavigationPopup = (
     >
       <HvVerticalNavigationTree
         className={classes.popup}
-        id={setId(id, "tree")}
         collapsible
         defaultExpanded
         selected={selected}

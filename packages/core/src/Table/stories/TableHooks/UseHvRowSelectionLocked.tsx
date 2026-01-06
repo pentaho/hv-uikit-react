@@ -60,7 +60,7 @@ export const LockedSelection = () => {
     {
       columns,
       data,
-      aditivePageBulkSelection: false,
+      additivePageBulkSelection: false,
       subtractivePageBulkDeselection: false,
       initialState: {
         selectedRowIds: { 5: true, 7: true },

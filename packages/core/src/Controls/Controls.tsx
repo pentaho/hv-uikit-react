@@ -9,7 +9,6 @@ import { useControlled } from "../hooks/useControlled";
 import { HvMultiButton } from "../MultiButton";
 import type { HvTableInstance } from "../Table/hooks/useHvTable";
 import { HvBaseProps } from "../types/generic";
-import { setId } from "../utils/setId";
 import { HvControlsContextProvider } from "./context/ControlsContext";
 import { staticClasses, useClasses } from "./Controls.styles";
 
@@ -124,7 +123,7 @@ export const HvControls = (props: HvControlsProps) => {
         <div className={cx(classes.section, classes.rightSection)}>
           {rightChildren}
           {views && !hideViewSwitcher && views?.length > 0 && (
-            <HvMultiButton id={setId(id, "view-multi-button")}>
+            <HvMultiButton>
               {views.map(({ id: btnId, icon, ...others }) => (
                 <HvButton
                   id={btnId}

@@ -111,7 +111,7 @@ export const HvDotPagination = (props: HvDotPaginationProps) => {
     >
       {range(pages).map((i) => (
         <HvBaseRadio
-          className={cx(classes.radioRoot, classes.radio)}
+          className={classes.radio}
           key={i}
           value={i}
           checked={page === i}

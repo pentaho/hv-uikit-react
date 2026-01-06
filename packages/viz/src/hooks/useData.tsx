@@ -2,13 +2,13 @@ import { useMemo } from "react";
 import { desc, escape, not } from "arquero";
 
 import {
-  HvBarChartMeasures,
+  HvBarChartMeasure,
   HvChartAggregation,
   HvChartData,
   HvChartOrder,
   HvConfusionMatrixMeasure,
   HvDonutChartMeasure,
-  HvLineChartMeasures,
+  HvLineChartMeasure,
   HvScatterPlotMeasure,
 } from "../types";
 import {
@@ -31,7 +31,7 @@ interface HvDataHookProps {
   data: HvChartData;
   groupBy: HvChartCommonProps["groupBy"];
   measures:
-    | Arrayable<HvLineChartMeasures | HvBarChartMeasures | HvScatterPlotMeasure>
+    | Arrayable<HvLineChartMeasure | HvBarChartMeasure | HvScatterPlotMeasure>
     | HvDonutChartMeasure
     | HvConfusionMatrixMeasure;
   splitBy?: HvAxisChartCommonProps["splitBy"];

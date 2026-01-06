@@ -1,17 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { formatTimeAgo } from "./formatUtils";
+import { formatTimeAgo as fmt } from "./formatUtils";
 import type { HvTimeAgoProps } from "./TimeAgo";
 import { useTimeout } from "./useTimeout";
-
-/**
- * Calls `formatTimeAgo` with timestamp conversion
- */
-const fmt = (timestamp: any, locale: any, showSeconds?: boolean) => {
-  const timestampMs =
-    String(timestamp).length > 11 ? timestamp : timestamp * 1000;
-  return formatTimeAgo(timestampMs, locale, showSeconds);
-};
 
 export default function useTimeAgo(
   timestamp = Date.now(),

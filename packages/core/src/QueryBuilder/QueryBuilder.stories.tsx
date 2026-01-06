@@ -25,7 +25,6 @@ export const Main: StoryObj<HvQueryBuilderProps> = {
     onChange: { control: { disable: true } },
     renderers: { control: { disable: true } },
     operators: { control: { disable: true } },
-    query: { control: { disable: true } },
   },
   parameters: {
     docs: {},

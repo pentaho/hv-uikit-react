@@ -74,7 +74,7 @@ export const Variants: StoryObj<HvTimePickerProps> = {
           "Time Pickers in their various form state variants. `defaultValue` is used to configure the _uncontrolled_ initial value.",
       },
     },
-    ...setupChromatic(["DS3 dawn", "DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   // For a11y
   play: async ({ canvasElement }) => {

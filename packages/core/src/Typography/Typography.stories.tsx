@@ -1,9 +1,19 @@
 import type { StoryObj } from "@storybook/react-vite";
-import {
-  HvTypography,
-  HvTypographyProps,
-  typographyVariants,
-} from "@hitachivantara/uikit-react-core";
+
+import { HvTypography, HvTypographyProps } from "./Typography";
+
+const typographyVariants = [
+  "display",
+  "title1",
+  "title2",
+  "title3",
+  "title4",
+  "body",
+  "label",
+  "captionLabel",
+  "caption1",
+  "caption2",
+] satisfies HvTypographyProps["variant"][];
 
 export default {
   title: "Components/Typography",

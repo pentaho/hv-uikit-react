@@ -59,11 +59,11 @@ describe("ColorPicker", () => {
         expanded
         showSavedColors
         showCustomColors
-        deleteSavedColorButtonArialLabel="DELETE"
+        deleteSavedColorButtonAriaLabel="DELETE"
       />,
     );
 
-    const addButton = screen.getByRole("button");
+    const addButton = screen.getByRole("button", { name: /Add/i });
 
     fireEvent.click(addButton);
     expect(screen.getByTitle("#de2beb")).toBeInTheDocument();

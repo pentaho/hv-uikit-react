@@ -1,6 +1,5 @@
 import { HvDropDownMenu, HvDropDownMenuProps } from "../DropDownMenu";
 import { HvIcon } from "../icons";
-import { setId } from "../utils/setId";
 
 export const removeExtension = (label: string) =>
   label.includes(".") ? label.slice(0, label.lastIndexOf(".")) : label;
@@ -25,7 +24,6 @@ export const pathWithSubMenu = (
     1,
     nbrElemToSubMenu,
     <HvDropDownMenu
-      id={setId(id, "submenu")}
       icon={<HvIcon name="DotsHorizontal" />}
       dataList={subMenuList}
       {...dropDownMenuProps}

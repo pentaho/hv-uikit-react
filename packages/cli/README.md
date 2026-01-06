@@ -11,8 +11,8 @@ Whether is quickly start a new application or scaffolding out templates and comp
 For usage documentation, run the CLI with the `--help` option for any `<command>`. Examples:
 
 ```sh
-npx @hitachivantara/hv-uikit-cli@latest --help
-npx @hitachivantara/hv-uikit-cli@latest <command> --help
+npx @hitachivantara/uikit-cli@latest --help
+npx @hitachivantara/uikit-cli@latest <command> --help
 ```
 
 ## Creating an App
@@ -22,7 +22,7 @@ You can create a new app using the different baselines provided and our official
 To get started, use the following command:
 
 ```sh
-npx @hitachivantara/hv-uikit-cli@latest create
+npx @hitachivantara/uikit-cli@latest create
 ```
 
 It launches an interactive experience that guides you through setting up a new app.
@@ -30,7 +30,7 @@ It launches an interactive experience that guides you through setting up a new a
 You can also directly specify the app name and the template to use. For example:
 
 ```sh
-npx @hitachivantara/hv-uikit-cli@latest create MyAppName --templates Form
+npx @hitachivantara/uikit-cli@latest create MyAppName --templates Form
 ```
 
 ## How to test
@@ -38,7 +38,7 @@ npx @hitachivantara/hv-uikit-cli@latest create MyAppName --templates Form
 You can run the project locally by executing the following command:
 
 ```
-node <path-to-repo>/hv-uikit-cli/src/index.js create
+node <path-to-repo>/uikit-cli/src/index.js create
 ```
 
 ## License

@@ -3,7 +3,6 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { setId } from "../../utils/setId";
 import { HvFile, HvFileData, HvFileRemovedEvent } from "../File";
 import { staticClasses, useClasses } from "./FileList.styles";
 
@@ -36,7 +35,6 @@ export interface HvFileListProps {
 
 export const HvFileList = (props: HvFileListProps) => {
   const {
-    id,
     classes: classesProp,
     list = [],
     removeFileButtonLabel,
@@ -48,7 +46,7 @@ export const HvFileList = (props: HvFileListProps) => {
   if (!hasFiles) return null;
 
   return (
-    <ul id={setId(id, "list")} className={classes.root}>
+    <ul className={classes.root}>
       {list.map((data) => (
         <HvFile
           key={data.id}

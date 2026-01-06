@@ -48,7 +48,7 @@ export const { staticClasses, useClasses } = createClasses("HvCarousel", {
     justifyContent: "flex-end",
     right: 0,
 
-    position: "relative",
+    position: "absolute",
   },
   closeButton: {},
 

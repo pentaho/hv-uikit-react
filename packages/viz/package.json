@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-viz",
-  "version": "5.16.11",
+  "version": "6.0.0-next.6",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -34,16 +34,16 @@
   "peerDependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.16.14",
+    "@mui/material": "^7.0.2",
     "arquero": "^5.2.0",
     "echarts": "^5.4.2",
     "echarts-for-react": "^3.0.2",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^0.2.50",
-    "@hitachivantara/uikit-styles": "^5.54.0"
+    "@hitachivantara/uikit-react-utils": "^6.0.0-next.6",
+    "@hitachivantara/uikit-styles": "^6.0.0-next.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -57,14 +57,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -72,8 +71,7 @@
     "withoutPublish": true,
     "tempDir": "package",
     "fields": [
-      "main",
-      "type"
+      "main"
     ],
     "files": [
       "tsconfig.json"

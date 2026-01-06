@@ -68,10 +68,6 @@ export const { staticClasses, useClasses } = createClasses("HvListItem", {
   endAdornment: {
     float: "right",
   },
-  /** @deprecated use `:has($startAdornment)` instead */
-  withStartAdornment: {},
-  /** @deprecated use `:has($endAdornment)` instead */
-  withEndAdornment: {},
   separator: {
     height: 1,
     backgroundColor: theme.colors.border,

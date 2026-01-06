@@ -21,7 +21,7 @@
     "@hitachivantara/uikit-react-viz": "*",
     "@hitachivantara/uikit-styles": "*",
     "@hv/templates": "*",
-    "@mui/material": "^5.14.20",
+    "@mui/material": "^7.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "arquero": "^5.3.0",
     "clsx": "^2.0.0",

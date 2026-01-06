@@ -2,10 +2,10 @@
 
 ## Automatic setup
 
-We recommend using the `@hitachivantara/hv-uikit-cli` to create a new app, which sets up everything automatically:
+We recommend using the `@hitachivantara/uikit-cli` to create a new app, which sets up everything automatically:
 
 ```sh
-npx @hitachivantara/hv-uikit-cli@latest create my-app
+npx @hitachivantara/uikit-cli@latest create my-app
 ```
 
 Once the installation is complete, you can:

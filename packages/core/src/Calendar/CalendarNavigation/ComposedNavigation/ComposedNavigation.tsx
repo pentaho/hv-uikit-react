@@ -1,6 +1,5 @@
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { setId } from "../../../utils/setId";
 import { ViewMode } from "../../enums";
 import { VisibilitySelectorActions } from "../../types";
 import { getMonthNamesList } from "../../utils";
@@ -30,7 +29,6 @@ export const HvComposedNavigation = ({
     <div className={classes.navigationContainer} {...others}>
       <div className={classes.navigationMonth}>
         <Navigation
-          id={setId(id, "navigation-month")}
           navigationText={monthName}
           onNavigatePrevious={(event) => {
             onChange?.(event, "previous_month");
@@ -46,7 +44,6 @@ export const HvComposedNavigation = ({
       </div>
 
       <Navigation
-        id={setId(id, "navigation-year")}
         navigationText={visibleYear.toString()}
         onNavigatePrevious={(event) => {
           onChange?.(event, "previous_year");

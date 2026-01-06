@@ -1,6 +1,7 @@
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import { PlusCircleIcon } from "@phosphor-icons/react/PlusCircle";
 import { useServices } from "@hitachivantara/app-shell-services";
+import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
 import {
   HvDropDownMenu,
   HvDropDownMenuProps,
@@ -34,12 +35,20 @@ const findAction = (
     .find((action) => action.id === dataListItem.id);
 };
 
-const CreateNewContentDropDownMenuInner: FC<{
-  actionHooks: UseCreateNewContentAction[];
-}> = ({ actionHooks }) => {
-  const actionResults = actionHooks.map((actionHook) => actionHook());
+// The host component for UseCreateNewContentAction services.
+const CreateNewContentDropDownMenu: FC = () => {
+  const {
+    services: actionHooks,
+    isPending,
+    error,
+  } = useServices<UseCreateNewContentAction>(
+    ServiceDefinitions.UseCreateNewContentAction.id,
+  );
 
-  // Filter out undefined actions and create menu items
+  const [actionResults, setActionResults] = useState<
+    (CreateNewContentAction | undefined)[]
+  >([]);
+
   const dataList = useMemo(() => {
     return actionResults.filter(isNonNull).map(createListValue);
   }, [actionResults]);
@@ -54,29 +63,10 @@ const CreateNewContentDropDownMenuInner: FC<{
     [actionResults],
   );
 
-  return dataList.length > 0 ? (
-    <HvDropDownMenu
-      icon={
-        <HvIconContainer size="sm">
-          <PlusCircleIcon />
-        </HvIconContainer>
-      }
-      dataList={dataList}
-      keepOpened={false}
-      onClick={onClick}
-    />
-  ) : null;
-};
-
-// The host component for UseCreateNewContentAction services.
-const CreateNewContentDropDownMenu: FC = () => {
-  // Get the service hooks for the Create New Content actions.
-  const {
-    services: actionHooks,
-    isPending,
-    error,
-  } = useServices<UseCreateNewContentAction>(
-    ServiceDefinitions.UseCreateNewContentAction.id,
+  const hooksWithParams = useMemo(
+    () =>
+      (actionHooks ?? []).map((hook: UseCreateNewContentAction) => ({ hook })),
+    [actionHooks],
   );
 
   // While pending or on error, do not render anything.
@@ -87,7 +77,26 @@ const CreateNewContentDropDownMenu: FC = () => {
     return null;
   }
 
-  return <CreateNewContentDropDownMenuInner actionHooks={actionHooks} />;
+  return (
+    <>
+      <DynamicHooksEvaluator
+        hooks={hooksWithParams}
+        onEvaluate={setActionResults}
+      />
+      {dataList.length > 0 ? (
+        <HvDropDownMenu
+          icon={
+            <HvIconContainer size="sm">
+              <PlusCircleIcon />
+            </HvIconContainer>
+          }
+          dataList={dataList}
+          keepOpened={false}
+          onClick={onClick}
+        />
+      ) : null}
+    </>
+  );
 };
 
 export default CreateNewContentDropDownMenu;

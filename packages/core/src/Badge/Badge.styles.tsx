@@ -4,7 +4,6 @@ import { theme } from "@hitachivantara/uikit-styles";
 export const { staticClasses, useClasses } = createClasses("HvBadge", {
   root: {
     position: "relative",
-    "&>*": { float: "left" },
     ":has($badgeIcon)": {
       width: "fit-content",
       height: "fit-content",
@@ -18,9 +17,9 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
   /** class applied to the badge container when it has content */
   badgeContainer: {},
   /** class applied to the badge */
-  badgePosition: {
-    // TODO: change to relative so that badges don't overflow into the siblings
+  badge: {
     position: "absolute",
+    top: 0,
     left: "100%",
     ...theme.typography.caption2,
     color: theme.colors.textDimmed,
@@ -29,7 +28,6 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
     lineHeight: "16px",
     minWidth: 8,
     padding: "0 5px",
-    float: "left",
     wordBreak: "keep-all",
     textAlign: "center",
 
@@ -39,14 +37,10 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
       padding: 0,
     },
   },
-  /** applied to the badge when it's visible */
-  badge: {},
   /** applied to the badge when it's hidden */
   badgeHidden: {
     display: "none",
   },
-  showCount: {},
-  showLabel: {},
   badgeIcon: { top: "1px", left: "calc(100% - 7px)" },
   badgeOneDigit: { padding: 0, width: "16px" },
 });

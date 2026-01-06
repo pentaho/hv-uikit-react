@@ -13,7 +13,7 @@ export const { staticClasses, useClasses } = createClasses("HvDialog", {
     borderColor: theme.colors.border,
     borderRadius: theme.radii.round,
   },
-  fullscreen: {
+  fullScreen: {
     borderRadius: 0,
   },
 

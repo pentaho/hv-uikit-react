@@ -869,12 +869,6 @@ describe("QueryBuilder", () => {
     expect(textbox).toHaveValue("stuff");
   });
 
-  // TODO - remove in v6 since "query" is deprecated
-  it("renders the default query value (query)", () => {
-    renderUncontrolled({ query: defaultValueWithIds });
-    assertDefaultQuery();
-  });
-
   it("renders the default query value (defaultValue)", () => {
     renderUncontrolled({ defaultValue: defaultValueWithIds });
     assertDefaultQuery();

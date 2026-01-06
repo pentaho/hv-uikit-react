@@ -9,6 +9,5 @@ export const { staticClasses, useClasses } = createClasses("HvActionsGeneric", {
   button: {},
   actionContainer: { display: "flex", alignItems: "center", float: "right" },
   dropDownMenu: {},
-  dropDownMenuButton: {},
   dropDownMenuButtonSelected: {},
 });

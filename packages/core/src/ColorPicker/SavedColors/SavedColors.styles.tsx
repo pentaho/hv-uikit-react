@@ -2,44 +2,28 @@ import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
 export const { useClasses } = createClasses("HvColorPickerSavedColors", {
-  addButton: {
-    margin: theme.space.xxs,
-    width: "32px",
-    height: "32px",
-  },
   root: {
     display: "flex",
     flexWrap: "wrap",
     position: "relative",
+    gap: theme.space.xs,
     alignItems: "center",
-    padding: 0,
-    width: "calc(100% + 8px)",
-    margin: "-4px -4px",
   },
-  swatchRoot: { position: "relative" },
-  swatchWrap: {
-    width: "32px",
-    height: "32px",
-    margin: theme.space.xxs,
-
-    "& > span > div": {
-      borderRadius: theme.radii.base,
-    },
+  swatchRoot: {
+    position: "relative",
+    height: 32,
   },
-  removeButtonRoot: {
+  removeButton: {
     position: "absolute",
     top: 0,
     right: 0,
+    transform: "translate(25%, -25%)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: 16,
     width: 16,
-    background: theme.colors.bgContainer,
-    borderRadius: theme.radii.base,
-  },
-  removeButton: {
-    height: 16,
-    width: 16,
+    // background: theme.colors.bgContainer,
+    // borderRadius: theme.radii.base,
   },
 });

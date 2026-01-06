@@ -1,7 +1,7 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-export const { staticClasses, useClasses } = createClasses("HvDialog-Action", {
+export const { staticClasses, useClasses } = createClasses("HvDialogAction", {
   root: {
     margin: 0,
     padding: theme.space.sm,

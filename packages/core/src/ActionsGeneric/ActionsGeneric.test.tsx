@@ -31,15 +31,13 @@ describe("ActionsGeneric", () => {
     expect(menuItems).toHaveLength(2);
   });
 
-  // TODO - only test actionsCallback in v6
-  it("should call actionsCallback and onAction on action click", async () => {
+  it("should call onAction on action click", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();
     render(
       <HvActionsGeneric
         actions={actions}
         onAction={callbackSpy}
-        actionsCallback={callbackSpy}
         maxVisibleActions={2}
       />,
     );
@@ -47,7 +45,7 @@ describe("ActionsGeneric", () => {
     const previewBtn = screen.getByRole("button", { name: "Preview" });
 
     await user.click(previewBtn);
-    expect(callbackSpy).toHaveBeenCalledTimes(2);
+    expect(callbackSpy).toHaveBeenCalledTimes(1);
 
     const dropdownBtn = screen.getByRole("button", { name: "Dropdown menu" });
     await user.click(dropdownBtn);
@@ -55,17 +53,15 @@ describe("ActionsGeneric", () => {
     const deleteItem = screen.getByText("Delete");
     await user.click(deleteItem);
 
-    expect(callbackSpy).toHaveBeenCalledTimes(4);
+    expect(callbackSpy).toHaveBeenCalledTimes(2);
   });
 
-  // TODO - only test actionsCallback in v6
-  it("should not call actionsCallback and onAction if the action is disabled", async () => {
+  it("should not call onAction if the action is disabled", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();
     render(
       <HvActionsGeneric
         actions={actions}
-        actionsCallback={callbackSpy}
         onAction={callbackSpy}
         maxVisibleActions={2}
       />,

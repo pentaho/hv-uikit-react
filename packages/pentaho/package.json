@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-pentaho",
-  "version": "0.10.22",
+  "version": "6.0.0-next.8",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -33,15 +33,15 @@
   "peerDependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.16.14",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "@mui/material": "^7.0.2",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@emotion/css": "^11.11.0",
-    "@hitachivantara/uikit-react-core": "^5.110.0",
-    "@hitachivantara/uikit-react-icons": "^5.16.9",
-    "@hitachivantara/uikit-react-utils": "^0.2.50",
+    "@hitachivantara/uikit-react-core": "^6.0.0-next.10",
+    "@hitachivantara/uikit-react-icons": "^6.0.0-next.5",
+    "@hitachivantara/uikit-react-utils": "^6.0.0-next.6",
     "@mui/base": "5.0.0-beta.68",
     "react-resize-detector": "^8.1.0"
   },
@@ -59,14 +59,13 @@
   "publishConfig": {
     "access": "public",
     "directory": "package",
-    "main": "dist/cjs/index.cjs",
-    "module": "dist/esm/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/cjs/index.cjs",
-        "import": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -74,8 +73,7 @@
     "withoutPublish": true,
     "tempDir": "package",
     "fields": [
-      "main",
-      "type"
+      "main"
     ],
     "files": [
       "tsconfig.json"

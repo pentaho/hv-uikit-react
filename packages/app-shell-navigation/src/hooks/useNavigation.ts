@@ -2,8 +2,8 @@ import { useCallback, useContext, useMemo, useRef } from "react";
 import { Path, useNavigate } from "react-router-dom";
 import {
   HvAppShellViewContext,
-  HvAppShellViewsConfig,
-  useHvAppShellConfig,
+  HvAppShellViewsModel,
+  useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 
 import { NavigationOptions, To, ViewDestination } from "../types/navigation";
@@ -27,7 +27,7 @@ interface GetViewRouteOptions {
 type NavigateOptions = GetViewRouteOptions & Partial<NavigationOptions>;
 
 function getActiveViewRoute(
-  activeViews: HvAppShellViewsConfig[],
+  activeViews: HvAppShellViewsModel[],
   depth?: number,
 ): string {
   return `/${activeViews
@@ -38,7 +38,7 @@ function getActiveViewRoute(
 }
 
 function isSameBundle(
-  v: HvAppShellViewsConfig,
+  v: HvAppShellViewsModel,
   bundle: string,
   appId: string | undefined,
 ) {
@@ -51,12 +51,13 @@ function isSameBundle(
 }
 
 export const useHvNavigation = () => {
-  const config = useHvAppShellConfig();
+  const { mainPanel } = useHvAppShellModel();
+
   const flattenViews = useMemo(() => {
-    const flatten = (views: HvAppShellViewsConfig[], base = "") => {
-      return views.reduce<HvAppShellViewsConfig[]>((acc, view) => {
+    const flatten = (views: HvAppShellViewsModel[], base = "") => {
+      return views.reduce<HvAppShellViewsModel[]>((acc, view) => {
         // concatenate base with view route
-        const route = `${base}${view.route}` as HvAppShellViewsConfig["route"];
+        const route = `${base}${view.route}` as HvAppShellViewsModel["route"];
         acc.push({ ...view, route });
         if (view.views != null) {
           acc.push(...flatten(view.views, route));
@@ -64,8 +65,8 @@ export const useHvNavigation = () => {
         return acc;
       }, []);
     };
-    return flatten(config.mainPanel?.views ?? []);
-  }, [config.mainPanel?.views]);
+    return flatten(mainPanel?.views ?? []);
+  }, [mainPanel?.views]);
 
   const viewContext = useContext(HvAppShellViewContext);
   const navigateReactRouter = useNavigate();
@@ -119,7 +120,7 @@ export const useHvNavigation = () => {
         bundle = bundleWithReplacedPlaceholders;
       }
 
-      let activeViews: HvAppShellViewsConfig[] = [];
+      let activeViews: HvAppShellViewsModel[] = [];
       if (mode !== "top") {
         activeViews = locationRef.current.views;
       }

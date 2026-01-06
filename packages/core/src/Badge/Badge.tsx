@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 import {
   mergeStyles,
   useDefaultProps,
@@ -7,7 +7,6 @@ import {
 import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvBaseProps } from "../types/generic";
-import { HvTypography, HvTypographyVariants } from "../Typography";
 import { staticClasses, useClasses } from "./Badge.styles";
 
 export { staticClasses as badgeClasses };
@@ -17,18 +16,7 @@ export type HvBadgeClasses = ExtractNames<typeof useClasses>;
 export interface HvBadgeProps extends HvBaseProps {
   /** The badge color. */
   color?: HvColorAny;
-  /**
-   * Count is the number of unread notifications.
-   * Note count and label are mutually exclusive.
-   * count is ignored when label is specified at the same time.
-   * @deprecated use numeric `label` instead
-   */
-  count?: number;
-  /**
-   * True if `count` should be displayed.
-   *
-   * NOTE: `showCount` is ignored when a **non-numeric** `label` is specified.
-   */
+  /** True if a **numeric** `label` should be displayed. */
   showCount?: boolean;
   /** The maximum number of unread notifications to be displayed */
   maxCount?: number;
@@ -40,10 +28,6 @@ export interface HvBadgeProps extends HvBaseProps {
   label?: React.ReactNode;
   /** Icon which the notification will be attached. */
   icon?: React.ReactNode;
-  /** Text which the notification will be attached. @deprecated use `children` instead. */
-  text?: string;
-  /** Text variant. @deprecated use a `HvTypography` on `children` instead. */
-  textVariant?: HvTypographyVariants;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBadgeClasses;
 }
@@ -61,53 +45,42 @@ export const HvBadge = forwardRef<
     className,
     color,
     showCount = false,
-    count: countProp = 0,
     maxCount = 99,
-    label,
+    label: labelProp,
     icon,
-    text,
-    textVariant,
-    children: childrenProp,
+    children,
     style,
     ...others
   } = useDefaultProps("HvBadge", props);
 
   const { classes, cx } = useClasses(classesProp);
 
-  const count = typeof label === "number" ? label : countProp;
-  const countValue = count > maxCount ? `${maxCount}+` : count;
-  const renderedCount = showCount && count > 0 ? countValue : "";
-  // If label is specified and non-empty, render it.
-  // If showCount is specified and count > 0, render the count.
-  // Otherwise, render nothing on the badge.
-  // (Note count=0 should not be rendered to avoid ghosty 0.)
-  const renderedCountOrLabel =
-    label && typeof label !== "number" ? label : renderedCount;
-  const children =
-    childrenProp ||
-    icon ||
-    (text && <HvTypography variant={textVariant}>{text}</HvTypography>);
+  const label = useMemo(() => {
+    if (typeof labelProp !== "number") return labelProp;
+
+    // `0` should not be rendered
+    if (labelProp <= 0) return null;
+    // render number if only if `showCount` is true
+    if (!showCount) return "";
+
+    return labelProp > maxCount ? `${maxCount}+` : labelProp;
+  }, [maxCount, labelProp, showCount]);
 
   return (
     <div ref={ref} className={cx(classes.root, className)} {...others}>
-      {children}
+      {children || icon}
       <div
         data-color={color}
         style={mergeStyles(style, {
           "--bg-color": color && getColor(color),
         })}
-        className={cx(classes.badgePosition, {
-          [classes.badgeContainer]: children,
-          [classes.badgeHidden]: !(count > 0 || renderedCountOrLabel),
-          // TODO: remove unnecessary classes in v6 (hoist+rename `badge` to `badgePosition`)
-          [classes.badge]: !!(count > 0 || renderedCountOrLabel),
-          [classes.showCount]: !!(!label && renderedCountOrLabel),
-          [classes.showLabel]: !!label,
-          [classes.badgeIcon]: !!icon,
-          [classes.badgeOneDigit]: String(renderedCountOrLabel).length === 1,
+        className={cx(classes.badge, {
+          [classes.badgeHidden]: label == null,
+          [classes.badgeIcon]: icon,
+          [classes.badgeOneDigit]: String(label).length === 1,
         })}
       >
-        {renderedCountOrLabel}
+        {label}
       </div>
     </div>
   );

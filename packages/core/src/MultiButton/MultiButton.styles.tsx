@@ -96,7 +96,7 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
   button: {
     position: "relative",
     // prevent the focus ring to be hidden by sibling hover background
-    [`&:focus-visible, &.${dropDownMenuClasses.iconSelected}`]: {
+    [`&:focus-visible, &.${dropDownMenuClasses.open}`]: {
       zIndex: 5,
     },
   },
@@ -137,12 +137,4 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
   // TODO - review the need for these classes in v6 (use :first-child and :last-child instead)
   firstButton: {},
   lastButton: {},
-
-  // TODO - review the need for these classes in v6
-  primary: {},
-  primarySubtle: {},
-  primaryGhost: {},
-  secondary: {},
-  secondarySubtle: {},
-  secondaryGhost: {},
 });
