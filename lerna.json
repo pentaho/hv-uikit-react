@@ -3,7 +3,7 @@
   "version": "independent",
   "packages": ["packages/*"],
   "yes": true,
-  "distTag": "latest",
+  "distTag": "previous",
   "preDistTag": "next",
   "command": {
     "version": {
