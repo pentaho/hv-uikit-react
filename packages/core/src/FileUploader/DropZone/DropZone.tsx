@@ -22,8 +22,6 @@ export type HvDropZoneClasses = ExtractNames<typeof useClasses>;
 const DEFAULT_LABELS = {
   /** Extensions of the accepted file types */
   acceptedFiles: "",
-  /** Dropzone area label. @deprecated use `label` prop instead */
-  dropzone: "Label",
   /** Size file warning label. */
   sizeWarning: "Max. file size:",
   /** Size file warning label. */
@@ -104,7 +102,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
   const {
     id: idProp,
     classes: classesProp,
-    label,
+    label = "Label",
     labels: labelsProp,
     accept,
     maxFileSize,
@@ -144,10 +142,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
       newFile.id = uniqueId("uploaded-file-data-");
 
       const isSizeAllowed = file.size <= maxFileSize;
-      const isFileAccepted =
-        !accept ||
-        accept.includes(file.type?.split("/")[1]) || // TODO: remove in v6
-        validateAccept(file, accept);
+      const isFileAccepted = !accept || validateAccept(file, accept);
 
       if (!isFileAccepted) {
         newFile.errorMessage = labels?.fileTypeError;
@@ -177,11 +172,9 @@ export const HvDropZone = (props: HvDropZoneProps) => {
       {!hideLabels && (
         <HvLabelContainer
           id={id}
-          label={label ?? labels.dropzone}
+          label={label}
           description={description}
           inputId={setId(id, "input-file")}
-          labelId={setId(id, "input-file-label")}
-          descriptionId={setId(id, "description")}
           classes={{
             root: classes.dropZoneLabelsGroup,
             label: classes.dropZoneLabel,
@@ -189,7 +182,6 @@ export const HvDropZone = (props: HvDropZoneProps) => {
         />
       )}
       <div
-        id={setId(id, "input-file-container")}
         className={cx(classes.dropZoneContainer, {
           [classes.dragAction]: dragState,
           [classes.dropZoneContainerDisabled]: disabled,

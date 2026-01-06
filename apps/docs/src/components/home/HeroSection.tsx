@@ -43,9 +43,6 @@ const SlideText = () => {
 
 export const HeroSection = () => (
   <div className="p-md max-md:mt-40px">
-    {/* <div className="text-sm font-mono mb-2 hidden sm:block">
-      <code className="!p-1">npx @hitachivantara/hv-uikit-cli create</code>
-    </div> */}
     <h1
       className={clsx([
         "text-3rem leading-3rem font-bold",

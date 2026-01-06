@@ -1,15 +1,7 @@
 import { HvThemeStructure } from "@hitachivantara/uikit-styles";
 
-/**
- * This type allows to pass undetermined extra props to components
- * @deprecated use Record<string, {type}> */
-export type HvExtraProps = Record<string, any>;
-
-/**
- * This type allows to pass undetermined extra props to components recursively
- * @deprecated internal use only
- */
-export type HvExtraDeepProps<T> = {
+/** This type allows to pass undetermined extra props to components recursively */
+type HvExtraDeepProps<T> = {
   [P in keyof T]: T[P] & Record<string, any>;
 } & Record<string, any>;
 

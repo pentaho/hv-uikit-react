@@ -7,7 +7,6 @@ import {
 import { useControlled } from "../../hooks/useControlled";
 import { HvBaseProps } from "../../types/generic";
 import { uniqueId } from "../../utils/helpers";
-import { setId } from "../../utils/setId";
 import { NavigationPopupContainer } from "../NavigationPopup/NavigationPopupContainer";
 import {
   HvVerticalNavigationSlider,
@@ -80,7 +79,6 @@ export interface HvVerticalNavigationTreeProps
 
 const createListHierarchy = (
   items: NavigationData[],
-  id: string | undefined,
   classes?: HvVerticalNavigationTreeClasses,
   mouseEnterHandler?: (event: any, item: any) => void,
   disableTooltip = false,
@@ -103,7 +101,6 @@ const createListHierarchy = (
 
     return (
       <HvVerticalNavigationTreeViewItem
-        id={setId(id, itemId)}
         className={classes?.listItem}
         href={href}
         target={target}
@@ -120,7 +117,6 @@ const createListHierarchy = (
         {children
           ? createListHierarchy(
               children,
-              id,
               classes,
               mouseEnterHandler,
               disableTooltip,
@@ -304,12 +300,11 @@ export const HvVerticalNavigationTree = (
       data &&
       createListHierarchy(
         data,
-        id,
         classes,
         treeViewItemMouseEnterHandler,
         navigationPopup?.fixedMode,
       ),
-    [classes, data, id, navigationPopup, treeViewItemMouseEnterHandler],
+    [classes, data, navigationPopup, treeViewItemMouseEnterHandler],
   );
 
   useEffect(() => {
@@ -380,7 +375,6 @@ export const HvVerticalNavigationTree = (
         />
       ) : (
         <HvVerticalNavigationTreeView
-          id={setId(id, "tree")}
           className={classes.list}
           selectable
           mode={mode}
@@ -399,7 +393,6 @@ export const HvVerticalNavigationTree = (
             >
               <HvVerticalNavigationTree
                 className={classes.popup}
-                id={setId(id, "navigation-popup-tree")}
                 collapsible
                 defaultExpanded
                 selected={selected}

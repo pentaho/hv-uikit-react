@@ -1,8 +1,7 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-// TODO - rename to HvHeaderBrand (the actual component's name) in v6
-export const { staticClasses, useClasses } = createClasses("HvHeader-Brand", {
+export const { staticClasses, useClasses } = createClasses("HvHeaderBrand", {
   root: { display: "flex", alignItems: "center" },
   separator: {
     width: 1,

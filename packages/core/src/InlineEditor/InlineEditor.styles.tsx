@@ -3,8 +3,6 @@ import { theme } from "@hitachivantara/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvInlineEditor", {
   root: {},
-  /** @deprecated unused. use `classes.root::after` instead */
-  inputBorderContainer: {},
   input: {},
   inputRoot: {
     height: "100%",

@@ -49,7 +49,6 @@ export const HvLoading = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   const size = small ? "small" : "regular";
-  const colorVariant = color && (`${size}Color` as const);
 
   return (
     <div
@@ -71,15 +70,7 @@ export const HvLoading = forwardRef<
     >
       <div className={classes.barContainer}>
         {range(3).map((e) => (
-          <div
-            key={e}
-            className={cx(
-              classes.loadingBar,
-              // TODO: hoist to parent & remove unused `colorVariant` in v6
-              classes[size],
-              classes[colorVariant!],
-            )}
-          />
+          <div key={e} className={classes.loadingBar} />
         ))}
       </div>
       {label && <div className={classes.label}>{label}</div>}

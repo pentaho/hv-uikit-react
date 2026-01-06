@@ -5,7 +5,7 @@ import { AriaComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 
-import { useVizTheme } from "../hooks";
+import { useVizTheme } from "../providers/Provider";
 import { HvChartCommonProps, HvEChartsOption } from "../types/common";
 
 // Register chart components

@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
-import MuiGrid, { GridProps as MuiGridProps } from "@mui/material/Grid";
+import MuiGrid, {
+  GridLegacyProps as MuiGridProps,
+} from "@mui/material/GridLegacy";
 import {
   useDefaultProps,
   type ExtractNames,

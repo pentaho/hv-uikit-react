@@ -8,7 +8,6 @@ import {
   HvOverflowTooltipProps,
 } from "../../OverflowTooltip";
 import { HvBaseProps } from "../../types/generic";
-import { setId } from "../../utils/setId";
 import { staticClasses, useClasses } from "./HorizontalScrollListItem.styles";
 
 export { staticClasses as horizontalScrollListItemClasses };
@@ -31,8 +30,6 @@ export interface HvHorizontalScrollListItemProps
    * If this is not set, the element will be rendered as a div with a button role.
    */
   href?: string;
-  /** @deprecated remove in v6 */
-  iconClasses?: string;
 }
 
 /**
@@ -49,18 +46,15 @@ export const HvHorizontalScrollListItem = (
     label,
     tooltipPlacement,
     href,
-    iconClasses,
     ...others
   } = useDefaultProps("HvHorizontalScrollListItem", props);
   const { classes, cx } = useClasses(classesProp);
-  const buttonId = setId(id, "button");
 
   const Component = href != null ? "a" : "div";
 
   return (
     <li id={id} className={cx(classes.root, className)} aria-current={selected}>
       <Component
-        id={buttonId}
         role={href == null ? "button" : undefined}
         tabIndex={0}
         className={classes.button}
@@ -74,7 +68,7 @@ export const HvHorizontalScrollListItem = (
         />
         <div
           aria-hidden
-          className={cx(classes.bullet, iconClasses, {
+          className={cx(classes.bullet, {
             [classes.bulletSelected]: selected,
           })}
         >

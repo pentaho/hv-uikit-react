@@ -6,12 +6,6 @@ export type {
   // BREAKPOINTS
   HvBreakpoints,
   // COLORS
-  HvAccentColor,
-  HvAtmosphereColor,
-  HvBaseColor,
-  HvSemanticColor,
-  HvSupportColor,
-  HvCategoricalColor,
   HvColor,
   HvColorAny,
   HvRadius,
@@ -30,9 +24,7 @@ export * from "./themes";
 
 // Components that need to be loaded first because of mutual dependencies (preserve order)
 export * from "./Typography";
-export * from "./Box";
 export * from "./ButtonBase";
-export * from "./Focus";
 export * from "./ListContainer";
 export * from "./FormElement/CharCounter";
 export * from "./FormElement/Adornment";
@@ -84,8 +76,6 @@ export * from "./Grid";
 export * from "./Header";
 export * from "./InlineEditor";
 export * from "./Input";
-export * from "./Kpi";
-export * from "./Link";
 export * from "./List";
 export * from "./Loading";
 export * from "./LoadingContainer";
@@ -140,18 +130,10 @@ export * from "./providers/Provider";
 export * from "./providers/ThemeProvider";
 
 export * from "./types/generic";
-export * from "./types/tokens";
 
-export * from "./utils/browser";
-export * from "./utils/focusableElementFinder";
 export * from "./utils/focusUtils";
-export * from "./utils/getComponentName";
-export * from "./utils/hexToRgbA";
-export * from "./utils/iconVariant";
 export * from "./utils/keyboardUtils";
-export * from "./utils/multiSelectionEventHandler";
 export * from "./utils/setId";
-export * from "./utils/sizes";
 export * from "./utils/theme";
 export * from "./utils/useSavedState";
 export { uniqueId } from "./utils/helpers";

@@ -1,9 +1,9 @@
 import type { ThemeExtender } from "@unocss/core";
 import type { Theme } from "@unocss/preset-wind3";
-import { ds5 as hvTheme, theme } from "@hitachivantara/uikit-styles";
+import { next as hvTheme, theme } from "@hitachivantara/uikit-styles";
 
 // #region theme conversion utils
-const { dawn: defaultColors } = hvTheme.colors.modes;
+const { light: defaultColors } = hvTheme.colors;
 const { base, ...hvSpacing } = hvTheme.space;
 
 /** HV breakpoints with added `px` suffix */
@@ -56,17 +56,3 @@ export const extendTheme: ThemeExtender<Theme> = (baseTheme) => ({
   fontSize: { DEFAULT: hvTheme.fontSizes.base, ...hvTheme.fontSizes },
   fontWeight: { DEFAULT: hvTheme.fontWeights.normal, ...hvTheme.fontWeights },
 });
-
-/** UI Kit theme mode variants. @deprecated unused */
-export const themeModes = {
-  light: {
-    colors: {
-      ...hvTheme.colors.modes.dawn,
-    },
-  },
-  dark: {
-    colors: {
-      ...hvTheme.colors.modes.wicked,
-    },
-  },
-};

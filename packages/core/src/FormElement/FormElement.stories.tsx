@@ -10,7 +10,6 @@ import {
   HvInfoMessage,
   HvLabel,
   HvWarningText,
-  setId,
 } from "@hitachivantara/uikit-react-core";
 import { CloseXS, Success } from "@hitachivantara/uikit-react-icons";
 
@@ -30,7 +29,8 @@ export const Main: StoryObj<HvFormElementProps> = {
     const [elementStatus, setElementStatus] = useState<HvFormStatus>("standBy");
     const [showCloseAdornment, setShowCloseAdornment] = useState(false);
 
-    const inputId = "controlled-input";
+    const inputId = useId();
+    const clearButtonId = useId();
     const inputReference = useRef<HTMLElement>(null);
 
     const setElement = (value = "", setStatus = true) => {
@@ -68,7 +68,7 @@ export const Main: StoryObj<HvFormElementProps> = {
     const onBlurHandler: HvFormElementProps["onBlur"] = (event) => {
       if (
         event.relatedTarget === null ||
-        event?.relatedTarget?.id !== setId(inputId, "clear")
+        event?.relatedTarget?.id !== clearButtonId
       ) {
         setElement((event.target as any).value);
         setShowCloseAdornment(false);
@@ -90,10 +90,8 @@ export const Main: StoryObj<HvFormElementProps> = {
         onFocus={onFocusHandler}
         status={elementStatus}
       >
-        <HvLabel id="controlled-input-label" label="First name">
-          <HvInfoMessage id="main-info-message">
-            Do not put numbers.
-          </HvInfoMessage>
+        <HvLabel label="First name">
+          <HvInfoMessage>Do not put numbers.</HvInfoMessage>
           <HvBaseInput
             id={inputId}
             value={elementValue}
@@ -105,7 +103,7 @@ export const Main: StoryObj<HvFormElementProps> = {
             endAdornment={
               <>
                 <HvAdornment
-                  id={setId(inputId, "clear")}
+                  id={clearButtonId}
                   isVisible={showCloseAdornment}
                   onClick={() => {
                     setElement("");

@@ -20,10 +20,10 @@ import { createServiceReference } from "../utils/serviceReference";
 
 function createServiceReferenceMap(services: ServicesConfig = {}) {
   return Object.entries(services).reduce<Map<ServiceId, ServiceReference[]>>(
-    (map, [serviceId, serviceConfigs]) => {
-      const serviceReferences = serviceConfigs
-        .map((serviceConfig) =>
-          createServiceReference(serviceId, serviceConfig),
+    (map, [serviceId, serviceProviderConfigs]) => {
+      const serviceReferences = serviceProviderConfigs
+        .map((serviceProviderConfig) =>
+          createServiceReference(serviceId, serviceProviderConfig),
         )
         .sort((a, b) => b.ranking - a.ranking);
 
@@ -34,9 +34,7 @@ function createServiceReferenceMap(services: ServicesConfig = {}) {
   );
 }
 
-function createServiceManager({
-  services,
-}: ServiceManagerConfig): ServiceManager {
+function createServiceManager(services: ServicesConfig = {}): ServiceManager {
   const serviceReferenceMap = createServiceReferenceMap(services);
 
   function queryServiceReferences<TService>(
@@ -102,7 +100,7 @@ function createServiceManager({
       const successful: TService[] = [];
       const errors: Error[] = [];
 
-      results.forEach((result) => {
+      for (const result of results) {
         if (result.status === "fulfilled") {
           successful.push(result.value);
         } else {
@@ -112,7 +110,7 @@ function createServiceManager({
               : new Error(String(result.reason)),
           );
         }
-      });
+      }
 
       switch (errorHandling) {
         case "reject-on-any-failure":
@@ -151,7 +149,9 @@ interface Props extends PropsWithChildren {
 }
 
 const ServiceManagerProvider: FC<Props> = ({ config, children }) => {
-  const serviceManager = useMemo(() => createServiceManager(config), [config]);
+  const serviceManager = useMemo(() => {
+    return createServiceManager(config.services);
+  }, [config.services]);
 
   return createElement(
     ServicesContext.Provider,

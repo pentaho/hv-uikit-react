@@ -19,43 +19,4 @@ export const { useClasses, staticClasses } = createClasses("HvTypography", {
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
   },
-  // variants
-  display: {},
-  title1: {},
-  title2: {},
-  title3: {},
-  title4: {},
-  body: {},
-  label: {},
-  captionLabel: {},
-  caption1: {},
-  caption2: {},
-  // legacy variants
-  // TODO: remove (legacy or all variants) in v6 in favour of dynamic variants
-  "5xlTitle": {},
-  "4xlTitle": {},
-  // @ts-ignore non-existent variant
-  "3xlTitle": {},
-  xxlTitle: {},
-  xlTitle: {},
-  lTitle: {},
-  mTitle: {},
-  sTitle: {},
-  xsTitle: {},
-  xxsTitle: {},
-  sectionTitle: {
-    textTransform: "uppercase",
-  },
-  highlightText: {},
-  normalText: {},
-  placeholderText: {},
-  link: {
-    cursor: "pointer",
-    textDecoration: "underline",
-  },
-  disabledText: {},
-  selectedNavText: {},
-  vizText: {},
-  vizTextDisabled: {},
-  xsInlineLink: {},
 });

@@ -1,301 +1,400 @@
-import { ReactNode } from "react";
 import { renderHook } from "@testing-library/react";
-import { vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import TestProvider from "../tests/TestProvider";
 import { useHvMenuItems } from "./useMenuItems";
 
-const appShellConfigSpy = vi.fn();
-vi.mock("../AppShellContext", async () => {
-  const mod = await vi.importActual("../AppShellContext");
-  return {
-    ...(mod as object),
-    useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
-  };
-});
+const mockUseLocation = vi.fn();
+const mockUseHvAppShellModel = vi.fn();
+const mockUseContext = vi.fn();
 
-const locationMock = vi.fn();
 vi.mock("react-router-dom", async () => {
   const mod = await vi.importActual("react-router-dom");
   return {
     ...(mod as object),
-    useLocation: () => locationMock(),
+    useLocation: () => mockUseLocation(),
   };
 });
 
-locationMock.mockReturnValue({
-  pathname: "/dummyTarget1",
-  state: {},
-  search: "",
-  hash: "",
+vi.mock("../AppShellModelContext", () => ({
+  useHvAppShellModel: () => mockUseHvAppShellModel(),
+}));
+
+// Mock React's useContext to provide i18n
+vi.mock("react", async () => {
+  const actual = await vi.importActual("react");
+  return {
+    ...(actual as object),
+    useContext: (context: unknown) => mockUseContext(context),
+  };
 });
 
-const wrapper = ({ children }: { children: ReactNode }) => (
-  <TestProvider>{children}</TestProvider>
-);
+describe("useHvMenuItems", () => {
+  beforeEach(() => {
+    // Default mocks
+    mockUseLocation.mockReturnValue({
+      pathname: "/test",
+      search: "",
+      hash: "",
+      state: null,
+      key: "default",
+    });
 
-describe("useHvMenuItems Hook", () => {
-  describe("Empty config", () => {
-    it("should return empty items array and no menu `id` to be selected", () => {
-      appShellConfigSpy.mockReturnValue({});
-      const { result } = renderHook(useHvMenuItems, { wrapper });
-      expect(result.current).toBeDefined();
-      expect(result.current.items.length).toBe(0);
-      expect(result.current.rootMenuItemId).toBeUndefined();
+    mockUseHvAppShellModel.mockReturnValue({
+      menu: [],
+      navigationMode: "TOP_AND_LEFT",
+    });
+
+    // Mock i18n context - return identity function for translations
+    mockUseContext.mockReturnValue({
+      i18n: {
+        language: "en",
+        getFixedT: () => (key: string) => key,
+      },
     });
   });
 
-  describe("Non empty configuration", () => {
-    beforeAll(() => {
-      appShellConfigSpy.mockReturnValue({
-        menu: [
-          {
-            label: "dummyMenu1",
-            target: "/dummyTarget1",
-          },
-          {
-            label: "dummyMenu2",
-            target: "/dummyTarget2",
-          },
-        ],
-      });
-    });
+  afterEach(() => {
+    mockUseLocation.mockReset();
+    mockUseHvAppShellModel.mockReset();
+    mockUseContext.mockReset();
+  });
 
-    it("should return items array and no menu `id` to be selected when non menu pathname", () => {
-      locationMock.mockReturnValue({
-        pathname: "/dummyTargetUnknown",
-        state: {},
-        search: "",
-        hash: "",
-      });
+  describe("empty configuration", () => {
+    it("should return empty items array when no menu is configured", () => {
+      mockUseHvAppShellModel.mockReturnValue({});
 
-      const { result } = renderHook(useHvMenuItems, { wrapper });
-      expect(result.current).toBeDefined();
-      expect(result.current.items.length).toBe(2);
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items).toEqual([]);
       expect(result.current.rootMenuItemId).toBeUndefined();
+      expect(result.current.selectedMenuItemId).toBeUndefined();
     });
 
-    it("should return valid items array and one menu `ìd` to be selected (pathname from parent element)", () => {
-      locationMock.mockReturnValue({
-        pathname: "./dummyTarget2",
-        state: {},
+    it("should return empty items when menu is empty array", () => {
+      mockUseHvAppShellModel.mockReturnValue({ menu: [] });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items).toEqual([]);
+      expect(result.current.rootMenuItemId).toBeUndefined();
+      expect(result.current.selectedMenuItemId).toBeUndefined();
+    });
+  });
+
+  describe("basic menu configuration", () => {
+    beforeEach(() => {
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [
+          { label: "Home", target: "/home" },
+          { label: "About", target: "/about" },
+          { label: "Contact", target: "/contact" },
+        ],
+        navigationMode: "TOP_AND_LEFT",
+      });
+    });
+
+    it("should create menu items from configuration", () => {
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items).toHaveLength(3);
+      expect(result.current.items[0].label).toBe("Home");
+      expect(result.current.items[0].href).toBe("./home");
+      expect(result.current.items[0].id).toBe("0");
+      expect(result.current.items[1].label).toBe("About");
+      expect(result.current.items[1].href).toBe("./about");
+      expect(result.current.items[1].id).toBe("1");
+    });
+
+    it("should select menu item based on pathname", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/about",
         search: "",
         hash: "",
+        state: null,
+        key: "default",
       });
 
-      const { result } = renderHook(useHvMenuItems, { wrapper });
-      expect(result.current).toBeDefined();
-      expect(result.current.items.length).toBe(2);
-      // dependent of the mocked location.pathname
+      const { result } = renderHook(() => useHvMenuItems());
+
       expect(result.current.selectedMenuItemId).toBe("1");
       expect(result.current.rootMenuItemId).toBe("1");
     });
 
-    it("should prune the non-necessary item when using ONLY_TOP", () => {
-      appShellConfigSpy.mockImplementation(() => ({
+    it("should not select any item when pathname doesn't match", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/unknown",
+        search: "",
+        hash: "",
+        state: null,
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBeUndefined();
+      expect(result.current.rootMenuItemId).toBeUndefined();
+    });
+
+    it("should handle pathname with ./ prefix", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "./contact",
+        search: "",
+        hash: "",
+        state: null,
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBe("2");
+      expect(result.current.rootMenuItemId).toBe("2");
+    });
+  });
+
+  describe("nested menu (submenus)", () => {
+    beforeEach(() => {
+      mockUseHvAppShellModel.mockReturnValue({
         menu: [
           {
-            label: "TopMenu1",
-            target: "/top-menu-1",
+            label: "Products",
+            submenus: [
+              { label: "Hardware", target: "/products/hardware" },
+              { label: "Software", target: "/products/software" },
+              { label: "Services", target: "/products/services" },
+            ],
           },
+          { label: "About", target: "/about" },
+        ],
+        navigationMode: "TOP_AND_LEFT",
+      });
+    });
+
+    it("should create nested menu structure", () => {
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items).toHaveLength(2);
+      expect(result.current.items[0].label).toBe("Products");
+      expect(result.current.items[0].data).toHaveLength(3);
+      expect(result.current.items[0].data?.[0].label).toBe("Hardware");
+      expect(result.current.items[0].data?.[0].id).toBe("0-0");
+    });
+
+    it("should select submenu item and set correct root", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/products/software",
+        search: "",
+        hash: "",
+        state: null,
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBe("0-1");
+      expect(result.current.rootMenuItemId).toBe("0");
+    });
+  });
+
+  describe("navigationMode: ONLY_TOP", () => {
+    it("should prune nested items beyond max depth", () => {
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [
+          { label: "Home", target: "/home" },
           {
-            label: "TopMenu2",
+            label: "Products",
             submenus: [
               {
-                label: "SubMenu2-1",
+                label: "Category",
                 submenus: [
                   {
-                    label: "SubMenu2-1-1",
-                    target: "/sub-menu-2-1-1",
+                    label: "SubCategory",
+                    target: "/products/category/sub",
                   },
                 ],
               },
-              {
-                label: "SubMenu2-2",
-                target: "/sub-menu-2-2",
-              },
+              { label: "All", target: "/products/all" },
             ],
           },
         ],
         navigationMode: "ONLY_TOP",
-      }));
-
-      const { result } = renderHook(useHvMenuItems, { wrapper });
-
-      expect(result.current.items).toMatchObject([
-        {
-          href: "./top-menu-1",
-          icon: undefined,
-          id: "0",
-          label: "TopMenu1",
-          parent: undefined,
-        },
-        {
-          data: [
-            {
-              href: "./sub-menu-2-1-1",
-              icon: undefined,
-              id: "1-0",
-              label: "SubMenu2-1",
-            },
-            {
-              href: "./sub-menu-2-2",
-              icon: undefined,
-              id: "1-1",
-              label: "SubMenu2-2",
-            },
-          ],
-          href: "./sub-menu-2-1-1",
-          icon: undefined,
-          id: "1",
-          label: "TopMenu2",
-          parent: undefined,
-        },
-      ]);
-    });
-
-    it("should return valid items array and one menu `ìd` to be selected (pathname from child element)", async () => {
-      appShellConfigSpy.mockImplementation(() => ({
-        menu: [
-          {
-            label: "Menu 1",
-            submenus: [
-              {
-                label: "Menu 1-1",
-                target: "/menu1-1",
-              },
-              {
-                label: "Menu 1-2",
-                target: "/menu1-2",
-              },
-              {
-                label: "Menu 1-3",
-                target: "/menu1-3",
-              },
-            ],
-          },
-          {
-            label: "Menu 2",
-            target: "/menu2",
-          },
-          {
-            label: "Menu 3",
-            submenus: [
-              {
-                label: "Menu 3-1",
-                target: "/menu3-1",
-              },
-              {
-                label: "Menu 3-2",
-                target: "/menu3-2",
-              },
-              {
-                label: "Menu 3-3",
-                target: "/menu3-3",
-              },
-            ],
-          },
-        ],
-        navigationMode: "TOP_AND_LEFT",
-      }));
-
-      locationMock.mockReturnValue({
-        pathname: "/menu3-3",
       });
 
-      const { result } = renderHook(useHvMenuItems, { wrapper });
+      const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.rootMenuItemId).toBe("2");
-      expect(result.current.selectedMenuItemId).toBe("2-2");
+      expect(result.current.items).toHaveLength(2);
+      expect(result.current.items[1].data).toHaveLength(2);
+      // Should flatten the third level
+      expect(result.current.items[1].data?.[0].label).toBe("Category");
+      expect(result.current.items[1].data?.[0].href).toBe(
+        "./products/category/sub",
+      );
+      // Should not have nested data beyond max depth
+      expect(result.current.items[1].data?.[0].data).toBeUndefined();
     });
   });
 
-  describe("With selectedItemId in state", () => {
-    beforeAll(() => {
-      appShellConfigSpy.mockImplementation(() => ({
+  describe("location state with selectedItemId", () => {
+    beforeEach(() => {
+      mockUseHvAppShellModel.mockReturnValue({
         menu: [
           {
-            label: "Menu 1",
+            label: "Dashboard",
             submenus: [
-              {
-                label: "Menu 1-1",
-                target: "/menu1-1",
-              },
-              {
-                label: "Menu 1-2",
-                target: "/menu1-2",
-              },
-              {
-                label: "Menu 1-3",
-                target: "/menu1-3",
-              },
+              { label: "Overview", target: "/dashboard/overview" },
+              { label: "Analytics", target: "/dashboard/analytics" },
+              { label: "Reports", target: "/dashboard/reports" },
             ],
           },
-          {
-            label: "Menu 2",
-            target: "/menu2",
-          },
-          {
-            label: "Menu 3",
-            submenus: [
-              {
-                label: "Menu 3-1",
-                target: "/menu3-1",
-              },
-              {
-                label: "Menu 3-2",
-                target: "/menu3-2",
-              },
-              {
-                label: "Menu 3-3",
-                target: "/menu3-3",
-              },
-            ],
-          },
+          { label: "Settings", target: "/settings" },
         ],
-      }));
+        navigationMode: "TOP_AND_LEFT",
+      });
     });
 
-    it("should return the correct selected item id - based on the state", () => {
-      locationMock.mockReturnValue({
-        pathname: "",
-        state: { selectedItemId: "1" },
+    it("should use selectedItemId from location state", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/some/path",
         search: "",
         hash: "",
+        state: { selectedItemId: "0-1" },
+        key: "default",
       });
-      const { result } = renderHook(useHvMenuItems, { wrapper });
 
-      expect(result.current).toBeDefined();
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBe("0-1");
+      expect(result.current.rootMenuItemId).toBe("0");
+    });
+
+    it("should select first leaf item when selectedItemId has children", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/some/path",
+        search: "",
+        hash: "",
+        state: { selectedItemId: "0" },
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      // Should select first child (0-0) instead of parent (0)
+      expect(result.current.selectedMenuItemId).toBe("0-0");
+      expect(result.current.rootMenuItemId).toBe("0");
+    });
+
+    it("should handle leaf item selection from state", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/some/path",
+        search: "",
+        hash: "",
+        state: { selectedItemId: "1" },
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBe("1");
       expect(result.current.rootMenuItemId).toBe("1");
+    });
+  });
+
+  describe("search parameter matching", () => {
+    beforeEach(() => {
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [
+          { label: "Dashboard", target: "/dashboard" },
+          { label: "Reports", target: "/reports?tab=summary" },
+        ],
+        navigationMode: "TOP_AND_LEFT",
+      });
+    });
+
+    it("should match menu item with search parameters", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/reports",
+        search: "?tab=summary",
+        hash: "",
+        state: null,
+        key: "default",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
       expect(result.current.selectedMenuItemId).toBe("1");
     });
+  });
 
-    it("should return the correct root menu item - based on the state", () => {
-      locationMock.mockReturnValue({
-        pathname: "",
-        state: { selectedItemId: "0-2" },
-        search: "",
-        hash: "",
+  describe("updates on location change", () => {
+    beforeEach(() => {
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [
+          { label: "Home", target: "/home" },
+          { label: "About", target: "/about" },
+        ],
+        navigationMode: "TOP_AND_LEFT",
       });
-      const { result } = renderHook(useHvMenuItems, { wrapper });
-
-      expect(result.current).toBeDefined();
-      expect(result.current.rootMenuItemId).toBe("0");
-      expect(result.current.selectedMenuItemId).toBe("0-2");
     });
 
-    it("should return the selectedMenuItemId when selected a root menu - based on the state", () => {
-      locationMock.mockReturnValue({
-        pathname: "",
-        state: { selectedItemId: "0" },
+    it("should update selectedMenuItemId when pathname changes", () => {
+      mockUseLocation.mockReturnValue({
+        pathname: "/home",
         search: "",
         hash: "",
+        state: null,
+        key: "default",
       });
-      const { result } = renderHook(useHvMenuItems, { wrapper });
 
-      expect(result.current).toBeDefined();
-      expect(result.current.rootMenuItemId).toBe("0");
-      expect(result.current.selectedMenuItemId).toBe("0-0");
+      const { result, rerender } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.selectedMenuItemId).toBe("0");
+
+      mockUseLocation.mockReturnValue({
+        pathname: "/about",
+        search: "",
+        hash: "",
+        state: null,
+        key: "default",
+      });
+
+      rerender();
+
+      expect(result.current.selectedMenuItemId).toBe("1");
+    });
+  });
+
+  describe("i18n translations", () => {
+    it("should use i18n for label translation", () => {
+      const mockTranslate = vi.fn((key: string) => `translated_${key}`);
+
+      mockUseContext.mockReturnValue({
+        i18n: {
+          language: "pt",
+          getFixedT: () => mockTranslate,
+        },
+      });
+
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [{ label: "home", target: "/home" }],
+        navigationMode: "TOP_AND_LEFT",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items[0].label).toBe("translated_home");
+      expect(mockTranslate).toHaveBeenCalledWith("home");
+    });
+
+    it("should fallback to identity function when i18n is not available", () => {
+      mockUseContext.mockReturnValue(undefined);
+
+      mockUseHvAppShellModel.mockReturnValue({
+        menu: [{ label: "home", target: "/home" }],
+        navigationMode: "TOP_AND_LEFT",
+      });
+
+      const { result } = renderHook(() => useHvMenuItems());
+
+      expect(result.current.items[0].label).toBe("home");
     });
   });
 });

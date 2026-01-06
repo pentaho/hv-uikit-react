@@ -14,7 +14,6 @@ import {
 
 import { HvCheckBox } from "../CheckBox";
 import { HvIcon } from "../icons";
-import { HvLink } from "../Link";
 import {
   HvListContainer,
   HvListContainerProps,
@@ -23,8 +22,8 @@ import {
 import { HvOverflowTooltip } from "../OverflowTooltip";
 import { HvRadio } from "../Radio";
 import { HvBaseProps } from "../types/generic";
+import { HvTypography } from "../Typography";
 import { CounterLabel } from "../utils/CounterLabel";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./List.styles";
 import { HvListValue } from "./types";
 import { useSelectableList } from "./useSelectableList";
@@ -76,8 +75,6 @@ export interface HvListProps
   singleSelectionToggle?: boolean;
   /** If `true` the list will be rendered without vertical spacing. */
   condensed?: boolean;
-  /** If `true` the dropdown will show tooltips when user mouseenter text in list. @deprecated this is always enabled */
-  hasTooltips?: boolean;
   /** Experimental. Height of the dropdown, in case you want to control it from a prop. Styles can also be used through dropdownListContainer class. Required in case virtualized is used */
   height?: number;
   /** Experimental. Uses dropdown in a virtualized form, where not all options are rendered initially. Good for use cases with a lot of options. */
@@ -87,8 +84,6 @@ export interface HvListProps
 }
 
 const DEFAULT_LABELS = {
-  /** The label used for the All checkbox action. @deprecated no longer used */
-  selectAll: "Select All",
   /** The label used in the middle of the multi-selection count. */
   selectionConjunction: "/",
 };
@@ -105,8 +100,6 @@ export const HvList = (props: HvListProps) => {
     classes: classesProp,
     className,
     multiSelect = false,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    hasTooltips = false,
     showSelectAll = false,
     labels = DEFAULT_LABELS,
     useSelector = false,
@@ -194,7 +187,6 @@ export const HvList = (props: HvListProps) => {
 
     return (
       <HvCheckBox
-        id={setId(id, "select-all")}
         label={
           <CounterLabel
             selected={selection.length}
@@ -212,22 +204,26 @@ export const HvList = (props: HvListProps) => {
 
   const renderItemText = (item: HvListValue) => {
     return !multiSelect && item.path ? (
-      <HvLink route={item.path} classes={{ a: classes.link }}>
+      <HvTypography
+        link
+        component="a"
+        href={item.path}
+        className={classes.link}
+      >
         <HvOverflowTooltip data={item.label} />
-      </HvLink>
+      </HvTypography>
     ) : (
       <HvOverflowTooltip data={item.label} />
     );
   };
 
-  const renderSelectItem = (item: HvListValue, itemId?: string) => {
+  const renderSelectItem = (item: HvListValue) => {
     if (!useSelector) return renderItemText(item);
 
     const Component = multiSelect ? HvCheckBox : HvRadio;
 
     return (
       <Component
-        id={setId(itemId, "selector")}
         label={<HvOverflowTooltip data={item.label} />}
         checked={item.selected || false}
         disabled={item.disabled}
@@ -242,7 +238,6 @@ export const HvList = (props: HvListProps) => {
   };
 
   const renderListItem = (item: HvListValue, i: number, otherProps = {}) => {
-    const itemId = setId(id, "item", i);
     const selected = item.selected || false;
 
     const startAdornment =
@@ -251,7 +246,6 @@ export const HvList = (props: HvListProps) => {
     return (
       <HvListItem
         key={i}
-        id={itemId}
         role={itemRole}
         disabled={item.disabled || undefined}
         className={classes.item}
@@ -271,7 +265,7 @@ export const HvList = (props: HvListProps) => {
         separator={item.separator}
         {...otherProps}
       >
-        {renderSelectItem(item, itemId)}
+        {renderSelectItem(item)}
       </HvListItem>
     );
   };

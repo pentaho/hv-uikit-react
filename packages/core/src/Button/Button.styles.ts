@@ -103,16 +103,6 @@ export const { staticClasses, useClasses } = createClasses("HvButton", {
       backgroundColor: theme.alpha("textLight", 0.1),
     },
   },
-
-  // TODO - remove in v6
-  primary: {},
-  primarySubtle: {},
-  primaryGhost: {},
-  secondarySubtle: {},
-  secondaryGhost: {},
-
-  // Deprecated (DS3)
-  secondary: {},
 });
 
 // TODO - remove xs and xl in v6 since they are not DS spec

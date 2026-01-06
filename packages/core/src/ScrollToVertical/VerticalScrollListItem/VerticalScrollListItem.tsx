@@ -54,7 +54,7 @@ export const HvVerticalScrollListItem = (
         <Component
           role={href == null ? "button" : undefined}
           tabIndex={0}
-          className={cx(classes.button, classes.text)}
+          className={classes.button}
           href={href}
           {...others}
         >

@@ -82,20 +82,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     backgroundColor: theme.colors.bgPage,
   },
   focused: {},
-  /** @deprecated unused. use `::after` instead */
-  inputBorderContainer: {},
-  /** @deprecated use `classes.invalid` instead */
-  inputRootInvalid: {},
-  /** @deprecated use `classes.readOnly` instead */
-  inputRootReadOnly: {},
-  /** @deprecated use `classes.root` instead */
-  inputRoot: {},
-  /** @deprecated unused */
-  inputRootFocused: {},
-  /** @deprecated use `classes.disabled` instead */
-  inputRootDisabled: {},
-  /** @deprecated use `classes.multiline` instead */
-  inputRootMultiline: {},
   input: {
     height: "100%",
     marginLeft: theme.space.xs,

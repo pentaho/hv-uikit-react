@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.0-next.2...@hitachivantara/uikit-uno-preset@1.0.0-next.3) (2025-12-15)
+
+### Bug Fixes
+
+- **types:** app-shell-shared types path ([#5017](https://github.com/pentaho/hv-uikit-react/issues/5017)) ([a95db38](https://github.com/pentaho/hv-uikit-react/commit/a95db3877f2fc2a55f49cfb3277ecf6c473e0e77))
+
+# [1.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.0-next.1...@hitachivantara/uikit-uno-preset@1.0.0-next.2) (2025-12-05)
+
+**Note:** Version bump only for package @hitachivantara/uikit-uno-preset
+
+# [1.0.0-next.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@0.2.74...@hitachivantara/uikit-uno-preset@1.0.0-next.1) (2025-12-04)
+
+### Bug Fixes
+
+- migrate cli baselines & bump pentaho/uno packages ([#4967](https://github.com/pentaho/hv-uikit-react/issues/4967)) ([c96f3de](https://github.com/pentaho/hv-uikit-react/commit/c96f3defe72b71649703e2f4eb7bc1b86620ba23))
+
+### Features
+
+- **theme:** rename themes to align with supported next and pentaho design systems ([#5007](https://github.com/pentaho/hv-uikit-react/issues/5007)) ([620652d](https://github.com/pentaho/hv-uikit-react/commit/620652dfdbe251b54b33fe900f8d014876e6ea57))
+- **theme:** support only light/dark color modes ([#4857](https://github.com/pentaho/hv-uikit-react/issues/4857)) ([83973d2](https://github.com/pentaho/hv-uikit-react/commit/83973d2bc54e5eb71a7923035b789016d36b9456))
+
 ## [0.2.74](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@0.2.73...@hitachivantara/uikit-uno-preset@0.2.74) (2025-12-03)
 
 **Note:** Version bump only for package @hitachivantara/uikit-uno-preset

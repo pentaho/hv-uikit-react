@@ -1,174 +1,273 @@
 import { renderHook } from "@testing-library/react";
-import { vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import TestProvider from "../tests/TestProvider";
 import { useHvCurrentNavigationPath } from "./useCurrentNavigationPath";
 
-const appShellConfigSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-shared", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-shared");
-  return {
-    ...(mod as object),
-    useHvAppShellConfig: vi.fn(() => appShellConfigSpy()),
-  };
-});
+// Mock only direct dependencies
+const mockUseHvMenuItems = vi.fn();
 
-const locationMock = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const mod = await vi.importActual("react-router-dom");
-  return {
-    ...(mod as object),
-    useLocation: () => locationMock(),
-  };
-});
+vi.mock("@hitachivantara/app-shell-shared", () => ({
+  useHvMenuItems: () => mockUseHvMenuItems(),
+}));
 
-describe("useMenuState Hook", () => {
-  describe("Empty config", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <TestProvider>{children}</TestProvider>
-    );
+describe("useHvCurrentNavigationPath", () => {
+  beforeEach(() => {
+    mockUseHvMenuItems.mockReset();
+  });
 
-    beforeAll(() => {
-      appShellConfigSpy.mockReturnValue({});
-      locationMock.mockReturnValue({
-        pathname: "",
-        search: "",
-        hash: "",
+  describe("empty or no selection", () => {
+    it("should return empty array when no menu item is selected", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [],
+        selectedMenuItemId: undefined,
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([]);
+    });
+
+    it("should return empty array when selectedMenuItemId is null", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [{ label: "Home", href: "/home" }],
+        selectedMenuItemId: null,
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([]);
+    });
+
+    it("should return empty array when selectedMenuItemId is empty string", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [{ label: "Home", href: "/home" }],
+        selectedMenuItemId: "",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([]);
+    });
+  });
+
+  describe("single level navigation", () => {
+    it("should return path for single selected item", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          { label: "Home", href: "/home" },
+          { label: "About", href: "/about" },
+        ],
+        selectedMenuItemId: "0",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([{ label: "Home", path: "/home" }]);
+    });
+
+    it("should return path for different selected item", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          { label: "Home", href: "/home" },
+          { label: "About", href: "/about" },
+        ],
+        selectedMenuItemId: "1",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([{ label: "About", path: "/about" }]);
+    });
+  });
+
+  describe("multi-level navigation", () => {
+    it("should return breadcrumb path for nested items", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          {
+            label: "Products",
+            data: [
+              { label: "Category A", href: "/products/category-a" },
+              { label: "Category B", href: "/products/category-b" },
+            ],
+          },
+        ],
+        selectedMenuItemId: "0-0",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([
+        { label: "Products", path: undefined },
+        { label: "Category A", path: "/products/category-a" },
+      ]);
+    });
+
+    it("should handle deeply nested navigation paths", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          {
+            label: "Products",
+            data: [
+              {
+                label: "Electronics",
+                data: [
+                  { label: "Phones", href: "/products/electronics/phones" },
+                  { label: "Laptops", href: "/products/electronics/laptops" },
+                ],
+              },
+              { label: "Clothing", href: "/products/clothing" },
+            ],
+          },
+        ],
+        selectedMenuItemId: "0-0-1",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([
+        { label: "Products", path: undefined },
+        { label: "Electronics", path: undefined },
+        { label: "Laptops", path: "/products/electronics/laptops" },
+      ]);
+    });
+
+    it("should handle path with parent items without href", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          {
+            label: "Settings",
+            data: [
+              {
+                label: "User",
+                data: [
+                  { label: "Profile", href: "/settings/user/profile" },
+                  { label: "Preferences", href: "/settings/user/preferences" },
+                ],
+              },
+            ],
+          },
+        ],
+        selectedMenuItemId: "0-0-0",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([
+        { label: "Settings", path: undefined },
+        { label: "User", path: undefined },
+        { label: "Profile", path: "/settings/user/profile" },
+      ]);
+    });
+  });
+
+  describe("path property handling", () => {
+    it("should set path to undefined for items with data (submenus)", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          {
+            label: "Parent",
+            data: [{ label: "Child", href: "/parent/child" }],
+          },
+        ],
+        selectedMenuItemId: "0-0",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current[0]).toEqual({ label: "Parent", path: undefined });
+      expect(result.current[1]).toEqual({
+        label: "Child",
+        path: "/parent/child",
       });
     });
 
-    it("should return empty items array and no menu `id` to be selected", () => {
-      const { result } = renderHook(useHvCurrentNavigationPath, { wrapper });
-      const paths = result.current;
-      expect(paths).toEqual([]);
+    it("should set path to href for leaf items", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [{ label: "Contact", href: "/contact" }],
+        selectedMenuItemId: "0",
+      });
+
+      const { result } = renderHook(() => useHvCurrentNavigationPath());
+
+      expect(result.current).toEqual([{ label: "Contact", path: "/contact" }]);
     });
   });
-});
 
-describe("non empty configuration", () => {
-  beforeEach(() => {
-    appShellConfigSpy.mockImplementation(() => ({
-      menu: [
-        {
-          label: "dummyMenu0",
-          target: "/dummyTarget0",
-        },
-        {
-          label: "dummyMenu1",
-          submenus: [
-            {
-              label: "dummyMenu1-0",
-              target: "/dummyTarget1-0",
-            },
-            {
-              label: "dummyMenu1-1",
-              submenus: [
-                {
-                  label: "dummyMenu1-1-0",
-                  submenus: [
-                    {
-                      label: "dummyMenu1-1-0-0",
-                      target: "/dummyTarget1-1-0-0",
-                    },
-                    {
-                      label: "dummyMenu1-1-0-1",
-                      target: "/dummyTarget1-1-0-1",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    }));
-  });
-
-  it("should return the path when selected item is in menu", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <TestProvider>{children}</TestProvider>
-    );
-
-    locationMock.mockReturnValue({
-      pathname: "/dummyTarget1-1-0-0",
-      search: "",
-      hash: "",
-    });
-
-    const { result } = renderHook(useHvCurrentNavigationPath, { wrapper });
-    const paths = result.current;
-    expect(paths).toEqual([
-      {
-        label: "dummyMenu1",
-        path: undefined,
-      },
-      {
-        label: "dummyMenu1-1",
-        path: undefined,
-      },
-      {
-        label: "dummyMenu1-1-0",
-        path: undefined,
-      },
-      {
-        label: "dummyMenu1-1-0-0",
-        path: "./dummyTarget1-1-0-0",
-      },
-    ]);
-  });
-
-  it("should return empty array if location is not in config", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <TestProvider>{children}</TestProvider>
-    );
-
-    locationMock.mockReturnValue({
-      pathname: "",
-      state: { selectedItemId: "2-0" },
-      search: "",
-      hash: "",
-    });
-
-    const { result } = renderHook(useHvCurrentNavigationPath, { wrapper });
-    const paths = result.current;
-    expect(paths).toEqual([]);
-  });
-
-  it("should use translations", () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => {
-      const bundles = {
-        en: {
-          "dummyMenu1-1-0-0": "Last menu item",
-        },
+  describe("memoization", () => {
+    it("should return same reference when inputs don't change", () => {
+      const menuData = {
+        items: [{ label: "Home", href: "/home" }],
+        selectedMenuItemId: "0",
       };
-      return <TestProvider bundles={bundles}>{children}</TestProvider>;
-    };
 
-    locationMock.mockReturnValue({
-      pathname: "/dummyTarget1-1-0-0",
-      search: "",
-      hash: "",
+      mockUseHvMenuItems.mockReturnValue(menuData);
+
+      const { result, rerender } = renderHook(() =>
+        useHvCurrentNavigationPath(),
+      );
+      const firstResult = result.current;
+
+      rerender();
+      const secondResult = result.current;
+
+      expect(firstResult).toBe(secondResult);
     });
 
-    const { result } = renderHook(useHvCurrentNavigationPath, { wrapper });
-    const paths = result.current;
-    expect(paths).toEqual([
-      {
-        label: "dummyMenu1",
-        path: undefined,
-      },
-      {
-        label: "dummyMenu1-1",
-        path: undefined,
-      },
-      {
-        label: "dummyMenu1-1-0",
-        path: undefined,
-      },
-      {
-        label: "Last menu item",
-        path: "./dummyTarget1-1-0-0",
-      },
-    ]);
+    it("should return new reference when selectedMenuItemId changes", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          { label: "Home", href: "/home" },
+          { label: "About", href: "/about" },
+        ],
+        selectedMenuItemId: "0",
+      });
+
+      const { result, rerender } = renderHook(() =>
+        useHvCurrentNavigationPath(),
+      );
+      const firstResult = result.current;
+
+      mockUseHvMenuItems.mockReturnValue({
+        items: [
+          { label: "Home", href: "/home" },
+          { label: "About", href: "/about" },
+        ],
+        selectedMenuItemId: "1",
+      });
+
+      rerender();
+      const secondResult = result.current;
+
+      expect(firstResult).not.toBe(secondResult);
+      expect(firstResult).toEqual([{ label: "Home", path: "/home" }]);
+      expect(secondResult).toEqual([{ label: "About", path: "/about" }]);
+    });
+
+    it("should return new reference when items change", () => {
+      mockUseHvMenuItems.mockReturnValue({
+        items: [{ label: "Home", href: "/home" }],
+        selectedMenuItemId: "0",
+      });
+
+      const { result, rerender } = renderHook(() =>
+        useHvCurrentNavigationPath(),
+      );
+      const firstResult = result.current;
+
+      mockUseHvMenuItems.mockReturnValue({
+        items: [{ label: "Dashboard", href: "/dashboard" }],
+        selectedMenuItemId: "0",
+      });
+
+      rerender();
+      const secondResult = result.current;
+
+      expect(firstResult).not.toBe(secondResult);
+      expect(firstResult).toEqual([{ label: "Home", path: "/home" }]);
+      expect(secondResult).toEqual([
+        { label: "Dashboard", path: "/dashboard" },
+      ]);
+    });
   });
 });

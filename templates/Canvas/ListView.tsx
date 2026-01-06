@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useId, useRef, useState } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { css, cx } from "@emotion/css";
 import {
@@ -11,7 +11,6 @@ import {
   outlineStyles,
   theme,
   useForkRef,
-  useUniqueId,
 } from "@hitachivantara/uikit-react-core";
 import { Drag } from "@hitachivantara/uikit-react-icons";
 
@@ -156,8 +155,7 @@ const DraggableItemCard = ({ icon, title, id, subtitle }: ItemProps) => {
 
 export const ListView = () => {
   const [listItems, setListItems] = useState(items);
-
-  const listId = useUniqueId();
+  const listId = useId();
 
   const handleSearch: HvInputProps["onChange"] = (event, value) => {
     if (value) {

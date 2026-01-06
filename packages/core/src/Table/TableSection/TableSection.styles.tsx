@@ -98,6 +98,4 @@ export const { staticClasses, useClasses } = createClasses("HvTableSection", {
     },
   },
   hasHeader: {},
-  /** @deprecated use `hasHeader` instead */
-  spaceTop: {},
 });

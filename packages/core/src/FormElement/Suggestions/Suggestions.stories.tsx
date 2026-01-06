@@ -23,7 +23,7 @@ export default meta;
 
 export const Main: StoryObj<HvSuggestionsProps> = {
   args: {
-    expanded: true,
+    open: true,
   },
   argTypes: {
     classes: { control: { disable: true } },

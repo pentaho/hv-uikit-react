@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { OptionGroup, OptionGroupProps } from "@mui/base/OptionGroup";
+import { OptionGroup, OptionGroupProps } from "@mui/base";
 import {
   createClasses,
   useDefaultProps,

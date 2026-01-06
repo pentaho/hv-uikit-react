@@ -2,47 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import type { NormalizedOutputOptions } from "rollup";
 import type { PluginOption, UserConfig } from "vite";
-import type {
-  HvAppShellConfig,
-  HvAppShellHeaderAction,
-  HvAppShellProvidersConfig,
-  HvAppShellViewsConfig,
-} from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
-import {
-  getAppModules,
-  getBasePath,
-  replaceSelf,
-  startsWithSelf,
-} from "./config-utils.js";
-
-type BundleDefinition =
-  | HvAppShellProvidersConfig
-  | HvAppShellViewsConfig
-  | HvAppShellHeaderAction;
-
-export function replaceReferencesToSelf<T extends BundleDefinition>(
-  bundles: T[],
-  selfAppName: string,
-): T[] {
-  return bundles.map((bundleDefinition) => {
-    if ("views" in bundleDefinition && bundleDefinition.views != null) {
-      return {
-        ...bundleDefinition,
-        bundle: replaceSelf(bundleDefinition.bundle, `${selfAppName}/`),
-        views: replaceReferencesToSelf(bundleDefinition.views, selfAppName),
-      };
-    }
-
-    if (startsWithSelf(bundleDefinition.bundle)) {
-      return {
-        ...bundleDefinition,
-        bundle: replaceSelf(bundleDefinition.bundle, `${selfAppName}/`),
-      };
-    }
-    return bundleDefinition;
-  });
-}
+import { getAppModules, getBasePath } from "./config-utils.js";
+import sharedDependencies from "./shared-dependencies.js";
 
 /**
  * Process configuration, executing several tasks:
@@ -143,19 +106,6 @@ export default function processConfiguration(
         fs.mkdirSync(targetDir, { recursive: true });
       }
 
-      // theming structure does not rely on having the 'bundle' prop
-      const { theming } = appShellConfig;
-      if (theming != null) {
-        theming.themes = theming.themes?.map((theme) => {
-          if (startsWithSelf(theme)) {
-            const bundleName = replaceSelf(theme);
-            return `${selfAppName}/${bundleName}`;
-          }
-
-          return theme;
-        });
-      }
-
       finalAppShellConfig = { ...appShellConfig };
 
       // if no baseUrl is present on the configuration, then assume the calculated basePath
@@ -164,27 +114,13 @@ export default function processConfiguration(
       }
 
       finalAppShellConfig.apps = undefined;
-      // also replace implicit references to selfApp in other parts of the configuration
-      if (finalAppShellConfig.providers != null) {
-        finalAppShellConfig.providers = replaceReferencesToSelf(
-          finalAppShellConfig.providers,
-          selfAppName,
-        );
-      }
 
-      if (finalAppShellConfig.mainPanel?.views != null) {
-        finalAppShellConfig.mainPanel.views = replaceReferencesToSelf(
-          finalAppShellConfig.mainPanel.views,
-          selfAppName,
-        ) as HvAppShellViewsConfig[];
-      }
+      // Replace all @self references using simple string replacement
+      let configString = JSON.stringify(finalAppShellConfig);
 
-      if (finalAppShellConfig.header?.actions != null) {
-        finalAppShellConfig.header.actions = replaceReferencesToSelf(
-          finalAppShellConfig.header?.actions,
-          selfAppName,
-        );
-      }
+      configString = configString.replaceAll(`"@self/`, `"${selfAppName}/`);
+
+      finalAppShellConfig = JSON.parse(configString);
 
       if (!inlineConfig) {
         fs.writeFileSync(
@@ -195,14 +131,14 @@ export default function processConfiguration(
     },
 
     transformIndexHtml: {
+      order: "post",
       handler: (html) => {
-        if (!inlineConfig) {
-          return undefined;
-        }
+        const processedHtml = stripSharedDependencies(html);
+
+        if (!inlineConfig) return processedHtml;
 
         return {
-          html,
-
+          html: processedHtml,
           tags: [
             {
               tag: "script",
@@ -218,4 +154,25 @@ export default function processConfiguration(
       },
     },
   };
+}
+
+/** strips the `<script>` tags with bare `sharedDependencies` modules from the `html` string */
+function stripSharedDependencies(html: string) {
+  const sharedDeps = sharedDependencies
+    .map((dep) => dep.moduleId)
+    // escape the dependencies
+    .map((dep) => dep.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+
+  const sharedDepsRegex = new RegExp(
+    `<script type="module"[^>]+src="(${sharedDeps})"[^>]*><\\/script>`,
+    "g",
+  );
+
+  return (
+    html
+      .replaceAll(sharedDepsRegex, "")
+      // remove any empty lines that may have been left
+      .replaceAll(/\n\s*\n/g, "\n")
+  );
 }

@@ -5,6 +5,14 @@ export default (): HvAppShellConfig => ({
 
   baseUrl: "/",
 
+  logo: {
+    name: "PENTAHO",
+  },
+  theming: {
+    theme: "pentaho",
+    colorMode: "light",
+  },
+
   {{#if feats}}
   header: {
     actions: [

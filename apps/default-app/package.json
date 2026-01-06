@@ -17,7 +17,7 @@
     "@hitachivantara/app-shell-shared": "*",
     "@hitachivantara/uikit-react-core": "*",
     "@hitachivantara/uikit-react-icons": "*",
-    "@mui/material": "^5.12.3",
+    "@mui/material": "^7.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "@types/react-table": "^7.7.14",
     "clsx": "^2.0.0",

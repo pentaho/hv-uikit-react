@@ -4,11 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import {
-  HvFormElementContext,
-  HvFormElementValueContext,
-} from "../FormElement";
-import { setId } from "../utils/setId";
+import { HvFormElementValueContext } from "../FormElement";
 import { staticClasses, useClasses } from "./Calendar.styles";
 import { HvSingleCalendar } from "./SingleCalendar";
 import { DateRangeProp, VisibilitySelectorActions } from "./types";
@@ -108,7 +104,7 @@ export interface HvCalendarProps
 export const HvCalendar = (props: HvCalendarProps) => {
   const {
     classes: classesProp,
-    id: idProp,
+    id,
     locale = DEFAULT_LOCALE,
     value: valueProp,
     visibleMonth,
@@ -126,12 +122,9 @@ export const HvCalendar = (props: HvCalendarProps) => {
   } = useDefaultProps("HvCalendar", props);
   const { classes } = useClasses(classesProp);
 
-  const context = useContext(HvFormElementContext);
   const elementValue = useContext(HvFormElementValueContext);
   const value = valueProp ?? elementValue;
-  const id = idProp ?? setId(context.id, "single-calendar");
   const rangeMode = isRange(value);
-  const rightCalendarId = setId(id, "single-calendar-right");
   const clampedMonth =
     visibleMonth && visibleMonth % 13 > 0 ? visibleMonth % 13 : 1;
 
@@ -178,7 +171,6 @@ export const HvCalendar = (props: HvCalendarProps) => {
 
       <HvSingleCalendar
         className={classes.singleCalendar}
-        id={rightCalendarId}
         locale={locale}
         value={value}
         visibleMonth={rightVisibleMonth}

@@ -31,12 +31,14 @@ const addPrefixToHref = (href: string): string => {
 /**
  * Creates a navigation data structure ({@link MenuItem}) from the provided menu configuration ({@link HvAppShellMenuConfig}).
  *
- * @param t
- * @param menuItems The set of menu items from configuration.
- * @param maxDepth The maximum depth up until the recursiveness should occur for the creation of the menu items.
- * @param parentMenuItem The parent menu item of the set of menu items.
+ * Note: The menu configuration received here has already been filtered based on conditions.
  *
- * @returns An array of {@link MenuItem}.
+ * @param t Translation function
+ * @param menuItems The set of menu items from configuration (already filtered)
+ * @param maxDepth The maximum depth up until the recursiveness should occur for the creation of the menu items
+ * @param parentMenuItem The parent menu item of the set of menu items
+ *
+ * @returns An array of {@link MenuItem}
  */
 const createMenuItems = (
   t: (key: string) => string,

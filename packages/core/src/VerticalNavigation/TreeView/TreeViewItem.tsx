@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -23,7 +24,6 @@ import {
   useDescendant,
 } from "../../TreeView/internals/DescendantProvider";
 import { HvTypography } from "../../Typography";
-import { setId } from "../../utils/setId";
 import { VerticalNavigationContext } from "../VerticalNavigationContext";
 import {
   TreeViewControlContext,
@@ -172,6 +172,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
     const treeviewMode = mode === "treeview";
 
     let id: string | null = null;
+    const groupId = useId();
 
     if (idProp != null) {
       id = idProp;
@@ -448,7 +449,6 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
       return (
         <HvTooltip placement="right" title={showTooltip && label}>
           <HvTypography
-            id={setId(id, "button")}
             component={isLink ? "a" : "div"}
             {...(isLink ? buttonLinkProps : null)}
             ref={contentRef}
@@ -484,8 +484,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
                         : true
                       : undefined,
                   "aria-expanded": expandable ? expanded : undefined,
-                  "aria-controls":
-                    isOpen && expandable ? setId(id, "group") : undefined,
+                  "aria-controls": isOpen && expandable ? groupId : undefined,
                   "aria-label": payload?.label,
                 })}
           >
@@ -538,7 +537,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
       disableTooltip,
       disabled,
       label,
-      id,
+      groupId,
       cx,
       classes.content,
       classes.link,
@@ -570,14 +569,14 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
       () =>
         children && (
           <ul
-            id={setId(id, "group")}
+            id={groupId}
             className={classes.group}
             role={treeviewMode ? "group" : undefined}
           >
             {children}
           </ul>
         ),
-      [children, classes?.group, id, treeviewMode],
+      [children, classes?.group, groupId, treeviewMode],
     );
 
     return (

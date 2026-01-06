@@ -4,13 +4,8 @@ import { theme } from "@hitachivantara/uikit-styles";
 import { outlineStyles } from "../utils/focusUtils";
 
 export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
-  /** @deprecated unused */
-  listItemGutters: {},
-  /** @deprecated use `chipRoot` */
-  listItemRoot: {},
   root: { display: "inline-block", width: "100%" },
-  // TODO: consider renaming this
-  chipRoot: {
+  tag: {
     maxWidth: "none",
   },
   disabled: {
@@ -76,10 +71,6 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
       borderColor: theme.form.errorColor,
     },
   },
-  /** @deprecated use `classes.input` instead */
-  tagInputContainerRoot: {},
-  /** @deprecated use `classes.input` instead */
-  tagInputRoot: {},
   input: {
     display: "flex",
     flex: "1 0 auto",
@@ -98,14 +89,6 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
       color: theme.colors.textSubtle,
     },
   },
-  /** @deprecated unused.  use `:focus` or `:focus-visible` instead */
-  tagSelected: {},
-  /** @deprecated unused. use `::after` instead */
-  tagInputBorderContainer: {},
-  /** @deprecated unused. use `:focus` or `:focus-visible` instead */
-  tagInputRootFocused: {},
-  /** @deprecated unused */
-  tagInputRootEmpty: {},
   singleLine: {},
   error: { float: "left" },
   inputExtension: {},

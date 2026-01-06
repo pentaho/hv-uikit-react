@@ -18,8 +18,7 @@ export const Main: StoryObj<HvBadgeProps> = {
     label: 1,
     showCount: true,
     maxCount: 99,
-    text: "Messages",
-    textVariant: "label",
+    children: "Messages",
     color: "text",
   },
   argTypes: {
@@ -98,13 +97,14 @@ export const WithText: StoryObj<HvBadgeProps> = {
 export const Test: StoryObj = {
   render: () => (
     <div style={{ display: "flex", gap: 60, flexWrap: "wrap" }}>
-      <HvBadge count={10} icon={<Alert />} />
-      <HvBadge showCount count={8} icon={<Alert />} />
+      <HvBadge label={10} icon={<Alert />} />
+      <HvBadge showCount label={8} icon={<Alert />} />
       <HvBadge showCount label={88} icon={<Alert />} />
       <HvBadge showCount label={888} icon={<Alert />} />
-      <HvBadge count={0} text="Events" textVariant="label" />
-      <HvBadge label={10} text="Events" />
-      <HvBadge showCount label={10} maxCount={5} text="Events" />
+      <HvBadge label={10}>Events</HvBadge>
+      <HvBadge showCount label={10} maxCount={5}>
+        Events
+      </HvBadge>
       <HvBadge showCount label={8}>
         <HvTypography variant="title4">Events</HvTypography>
       </HvBadge>

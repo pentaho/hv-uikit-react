@@ -6,10 +6,7 @@ export const HvAppShellEventNotificationTrigger =
 export type HvAppShellEventNotificationType = "snackbar" | "banner";
 
 export interface HvAppShellEventNotification
-  extends Pick<
-    HvBannerProps,
-    "actions" | "variant" | "message" | "actionsCallback"
-  > {
+  extends Pick<HvBannerProps, "actions" | "variant" | "message" | "onAction"> {
   type: HvAppShellEventNotificationType;
   message?: string;
 }

@@ -206,8 +206,14 @@ export const Test: StoryObj = {
           <HvTab disabled icon={<Calendar />} aria-label="Calendar" />
         </HvTabs>
         <HvTabs value={0}>
-          <HvTab label={<HvBadge showCount count={2} text="Track events" />} />
-          <HvTab label={<HvBadge count={1} text="Vehicle events" />} />
+          <HvTab
+            label={
+              <HvBadge showCount label={2}>
+                Track events
+              </HvBadge>
+            }
+          />
+          <HvTab label={<HvBadge label={1}>Vehicle events</HvBadge>} />
         </HvTabs>
       </div>
     </HvSimpleGrid>

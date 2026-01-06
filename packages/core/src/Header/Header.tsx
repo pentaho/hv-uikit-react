@@ -49,7 +49,6 @@ export const HvHeader = forwardRef<
       style={{ position }}
       className={cx(
         classes.root,
-        classes.backgroundColor,
         { [classes.fixed]: position === "fixed" },
         className,
       )}

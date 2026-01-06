@@ -7,21 +7,11 @@ export const { useClasses } = createClasses("HvColorPickerPresetColors", {
     display: "flex",
     flexWrap: "wrap",
     position: "relative",
-    width: "calc(100% + 8px)",
-    margin: "-4px -4px",
+    gap: theme.space.xs,
     padding: 0,
   },
   title: {
     fontWeight: theme.fontWeights.semibold,
     marginBottom: 8,
-  },
-  swatchWrap: {
-    width: "32px",
-    height: "32px",
-    margin: theme.space.xxs,
-
-    "& > span > div": {
-      borderRadius: theme.radii.base,
-    },
   },
 });

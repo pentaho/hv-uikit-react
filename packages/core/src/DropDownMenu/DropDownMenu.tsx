@@ -17,7 +17,6 @@ import { HvList, HvListProps, HvListValue } from "../List";
 import { HvBaseProps } from "../types/generic";
 import { getPrevNextFocus } from "../utils/focusableElementFinder";
 import { isKey } from "../utils/keyboardUtils";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./DropDownMenu.styles";
 
 export { staticClasses as dropDownMenuClasses };
@@ -70,11 +69,6 @@ export interface HvDropDownMenuProps
   expanded?: boolean;
   /** When uncontrolled, defines the initial expanded state. */
   defaultExpanded?: boolean;
-  /**
-   * The variant to be used in the header.
-   * @deprecated Use `variant` instead
-   */
-  category?: HvButtonVariant;
   /** The variant to be used in the header. */
   variant?: HvButtonVariant;
   /** Button size. */
@@ -128,8 +122,7 @@ export const HvDropDownMenu = forwardRef<
     disabled = false,
     expanded,
     defaultExpanded = false,
-    category = "secondaryGhost", // TODO - remove and update variant default in v6
-    variant,
+    variant = "secondaryGhost",
     size = "md",
     labels: labelsProp,
     ...others
@@ -141,8 +134,6 @@ export const HvDropDownMenu = forwardRef<
 
   const [open, setOpen] = useControlled(expanded, Boolean(defaultExpanded));
   const id = useUniqueId(idProp);
-
-  const listId = setId(id, "list");
 
   const handleClose = (
     event:
@@ -158,7 +149,7 @@ export const HvDropDownMenu = forwardRef<
   // If the ESCAPE key is pressed inside the list, the close handler must be called.
   const handleKeyDown: HvListProps["onKeyDown"] = (event) => {
     if (isKey(event, "Tab")) {
-      const focusNodes = getPrevNextFocus(setId(id, "icon-button"));
+      const focusNodes = getPrevNextFocus();
       const node = event.shiftKey ? focusNodes.prevFocus : focusNodes.nextFocus;
       if (node) setTimeout(() => node.focus(), 0);
       handleClose(event);
@@ -172,18 +163,17 @@ export const HvDropDownMenu = forwardRef<
     <HvBaseDropdown
       ref={ref}
       id={id}
-      className={cx(classes.root, classes.container, classes.icon, className, {
-        [classes.iconSelected]: open, // TODO: rename to open
+      className={cx(classes.root, className, {
+        [classes.open]: open,
       })}
       classes={{
-        container: classes.baseContainer,
         panel: classes.menuListRoot,
       }}
       expanded={open && !disabled}
       headerComponent={HeaderComponent}
       // @ts-expect-error infer HeaderComponent typings
       size={size}
-      variant={variant ?? category}
+      variant={variant}
       open={open}
       aria-label={labels.dropdownMenu}
       icon={icon}
@@ -202,7 +192,6 @@ export const HvDropDownMenu = forwardRef<
       {...others}
     >
       <HvList
-        id={listId}
         values={dataList}
         selectable={false}
         condensed={condensed}

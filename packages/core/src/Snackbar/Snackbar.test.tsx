@@ -44,17 +44,16 @@ describe("Snackbar", () => {
     expect(icon).toBeInTheDocument();
   });
 
-  // TODO - only test onAction is v6
-  it("renders action and triggers onAction and actionCallback when clicked", async () => {
+  it("renders action and triggers onAction when clicked", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();
 
-    setup({ onAction: callbackSpy, actionCallback: callbackSpy });
+    setup({ onAction: callbackSpy });
 
     const action = screen.getByRole("button", { name: "Action" });
     await user.click(action);
 
     expect(action).toBeInTheDocument();
-    expect(callbackSpy).toHaveBeenCalledTimes(2);
+    expect(callbackSpy).toHaveBeenCalledTimes(1);
   });
 });

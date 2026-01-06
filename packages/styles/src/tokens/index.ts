@@ -1,7 +1,6 @@
 import { breakpoints } from "./breakpoints";
 import { colors } from "./colors";
 import { radii } from "./radii";
-import { sizes } from "./sizes";
 import { space } from "./space";
 import { fontFamily, fontSizes, fontWeights, lineHeights } from "./typography";
 import { zIndices } from "./zIndices";
@@ -15,7 +14,6 @@ export const baseTheme = {
   colors,
   radii,
   space,
-  sizes,
   zIndices,
   fontFamily,
   fontSizes,

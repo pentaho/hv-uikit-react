@@ -26,7 +26,7 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvBarChartMeasures } from "../types";
+import { HvBarChartMeasure } from "../types";
 import {
   Arrayable,
   HvAxisChartCommonProps,
@@ -51,7 +51,7 @@ export interface HvBarChartProps
   extends HvAxisChartCommonProps,
     HvChartCommonProps {
   /**  Columns to measure on the chart. */
-  measures: Arrayable<HvBarChartMeasures>;
+  measures: Arrayable<HvBarChartMeasure>;
   /** Whether the bar chart should be horizontal. Defaults to `false`. */
   horizontal?: boolean;
   /** A Jss Object used to override or extend the styles applied to the component. */

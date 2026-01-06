@@ -1,13 +1,12 @@
 import { forwardRef, useContext, useMemo, useRef, useState } from "react";
 import {
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionBar } from "../../ActionBar";
 import { HvBaseDropdown, HvBaseDropdownProps } from "../../BaseDropdown";
-import { HvButton, HvButtonVariant } from "../../Button";
+import { HvButton } from "../../Button";
 import { HvFormStatus } from "../../FormElement";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
@@ -72,7 +71,6 @@ export const HvFilterGroupContent = forwardRef<
   } = useDefaultProps("HvFilterGroupContent", props);
 
   const { classes } = useClasses(classesProp);
-  const { activeTheme } = useTheme();
 
   const [filterGroupOpen, setFilterGroupOpen] = useState<boolean>(false);
 
@@ -200,9 +198,7 @@ export const HvFilterGroupContent = forwardRef<
         <HvButton
           id={setId(id, "apply-button")}
           disabled={applyDisabled}
-          variant={
-            activeTheme?.filterGroup.applyButtonVariant as HvButtonVariant
-          }
+          variant="primary"
           onClick={onApplyHandler}
           className={classes.applyButton}
         >
@@ -210,9 +206,7 @@ export const HvFilterGroupContent = forwardRef<
         </HvButton>
         <HvButton
           id={setId(id, "cancel-button")}
-          variant={
-            activeTheme?.filterGroup.cancelButtonVariant as HvButtonVariant
-          }
+          variant="secondarySubtle"
           onClick={onCancelHandler}
         >
           {labels?.cancelLabel}

@@ -14,7 +14,7 @@ import { Edit } from "@hitachivantara/uikit-react-icons";
 // TODO - Extract component in the future: when we have more specs and/or is used in other components
 
 const { staticClasses, useClasses } = createClasses(
-  "HvCanvasToolbarTabs-editor",
+  "HvCanvasToolbarTabsEditor",
   {
     root: {
       position: "relative",

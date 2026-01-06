@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { HvScrollToOption } from "../types/scroll";
 import {
   findFirstVisibleElement,
   getScrollTop,
@@ -8,6 +7,13 @@ import {
   scrollElement,
   verticalScrollOffset,
 } from "../utils/scroll";
+
+export interface HvScrollToOption {
+  key?: React.Key;
+  label: string;
+  value: string;
+  offset?: number;
+}
 
 interface HvScrollToOptionWithLink extends HvScrollToOption {
   href: string;

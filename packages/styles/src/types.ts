@@ -3,7 +3,6 @@ import type { StandardProperties } from "csstype";
 import type { HvThemeBreakpoints } from "./tokens/breakpoints";
 import type { HvThemeColors } from "./tokens/colors";
 import type { HvThemeRadii } from "./tokens/radii";
-import { sizes } from "./tokens/sizes";
 import { HvThemeSpace, space } from "./tokens/space";
 import {
   fontFamily,
@@ -22,11 +21,9 @@ export interface HvThemeZIndices
 /** UI Kit static theme tokens */
 export interface HvThemeTokens {
   breakpoints: HvThemeBreakpoints;
-  colors: { type: HvThemeColorModeType } & HvThemeColors;
+  colors: { type: HvThemeColorMode } & HvThemeColors;
   radii: HvThemeRadii;
   space: HvThemeSpace;
-  /** @deprecated use `theme.space` or the direct value instead */
-  sizes: typeof sizes;
   // #region typography
   fontFamily: typeof fontFamily;
   fontSizes: typeof fontSizes;
@@ -53,36 +50,32 @@ export interface HvThemeComponents {
   form: {
     errorColor: string;
   };
+  snackbar: {
+    actionButtonVariant: string;
+  };
+
+  // #region COMPAT
+  // TODO: remove these properties once full v5 <-> v6 compatibility is no longer needed
+  /** @deprecated @internal will be removed */
   bulkActions: {
     actionButtonVariant: string;
   };
-  /** @deprecated unused */
-  table: {
-    rowStripedBackgroundColorEven: string;
-    rowStripedBackgroundColorOdd: string;
-    rowExpandBackgroundColor: string;
-    rowSortedColor: string;
-    rowSortedColorAlpha: string;
-  };
+  /** @deprecated @internal will be removed */
   stepNavigation: {
     separatorMargin: string;
     defaultSeparatorHeight: number;
     simpleSeparatorHeight: number;
   };
+  /** @deprecated @internal will be removed */
   filterGroup: {
     applyButtonVariant: string;
     cancelButtonVariant: string;
   };
-  scrollTo: {
-    dotSelectedSize: number;
-    backgroundColorOpacity: number;
-  };
+  /** @deprecated @internal will be removed */
   colorPicker: {
     hueDirection: "vertical" | "horizontal";
   };
-  snackbar: {
-    actionButtonVariant: string;
-  };
+  // #endregion
 }
 
 // Theme typography
@@ -120,40 +113,36 @@ export type HvThemeBreakpoint = Exclude<keyof typeof space, "base">;
 
 export type SpacingValue = number | HvThemeBreakpoint | (string & {});
 
-// Base themes: DS3 and DS5
-export type HvBaseTheme = "ds3" | "ds5" | "pentahoPlus";
+export type HvBaseTheme = "next" | "pentaho";
 
-// Theme color modes
-export type HvThemeColorMode = "dawn" | "wicked";
+/** Theme color mode */
+export type HvThemeColorMode = "light" | "dark";
 
-// Theme color mode type
-export type HvThemeColorModeType = "light" | "dark";
-
-// Theme color mode structure
-export interface HvThemeColorModeStructure
+/** extendable `HvThemeColors` type */
+export interface HvThemeColorsAny
   extends HvThemeColors,
-    Record<string, string> {
-  type: HvThemeColorModeType;
-}
+    Record<string, string> {}
 
 /** Complete theme structure and values */
-export interface HvThemeStructure<Mode extends string = string>
+export interface HvThemeStructure
   extends HvThemeComponents,
     HvThemeComponentsProps,
     HvThemeTypography,
     Omit<HvThemeTokens, "colors"> {
   name: string;
   base: HvBaseTheme;
+  defaultColorMode: HvThemeColorMode;
   colors: {
-    modes: Record<Mode, HvThemeColorModeStructure>;
+    light: HvThemeColorsAny;
+    dark: HvThemeColorsAny;
   };
   /** Utility to access and theme property as CSS variables */
   vars: HvThemeVars;
 }
 
 // Custom theme
-export interface HvCustomTheme<Mode extends string = string>
-  extends DeepPartial<Omit<HvThemeStructure<Mode>, "base">> {}
+export interface HvCustomTheme
+  extends DeepPartial<Omit<HvThemeStructure, "base">> {}
 
 // Deep string: set all props to strings
 export type DeepString<T> = {

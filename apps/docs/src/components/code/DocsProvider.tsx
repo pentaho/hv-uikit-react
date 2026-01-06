@@ -1,11 +1,6 @@
 import { useId } from "react";
 import { useTheme } from "nextra-theme-docs";
-import {
-  ds3,
-  ds5,
-  HvProvider,
-  pentahoPlus,
-} from "@hitachivantara/uikit-react-core";
+import { HvProvider, themes } from "@hitachivantara/uikit-react-core";
 
 import { useDocsTheme } from "../../hooks/useDocsTheme";
 
@@ -17,13 +12,14 @@ export const DocsProvider = ({
   const { resolvedTheme } = useTheme();
   const [docsTheme] = useDocsTheme();
 
+  const theme = themes[docsTheme as keyof typeof themes];
+
   return (
     // ensures docs container styles change according to theme
     <div id={id} className={className} data-pagefind-ignore>
       <HvProvider
-        themes={[pentahoPlus, ds5, ds3]}
-        theme={docsTheme}
-        colorMode={resolvedTheme === "dark" ? "wicked" : "dawn"}
+        theme={theme}
+        colorMode={resolvedTheme === "dark" ? "dark" : "light"}
         cssTheme="scoped"
         rootElementId={id}
       >

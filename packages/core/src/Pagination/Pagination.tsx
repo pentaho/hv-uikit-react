@@ -13,7 +13,6 @@ import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Pagination.styles";
 import HvSelect, { Option } from "./Select";
 
@@ -32,14 +31,6 @@ const DEFAULT_LABELS = {
   pageSizeSelectorDescription: "Select how many to display",
   /** Separator of current page and total pages. */
   pagesSeparator: "/",
-  /** Title of button `firstPage`. @deprecated Use `firstPage` instead. */
-  paginationFirstPageTitle: "First page",
-  /** Title of button `previousPage`. @deprecated Use `previousPage` instead. */
-  paginationPreviousPageTitle: "Previous page",
-  /** Title of button `nextPage`. @deprecated Use `nextPage` instead. */
-  paginationNextPageTitle: "Next page",
-  /** Title of button `lastPage`. @deprecated Use `lastPage` instead. */
-  paginationLastPageTitle: "Last page",
   /** Aria-label passed to the page input. */
   paginationInputLabel: "Current page",
   /** Label of the first page button */
@@ -145,18 +136,13 @@ export const HvPagination = forwardRef<
 
   const renderPageJump = () => (
     <HvBaseInput
-      id={setId(id, "currentPage")}
       inputProps={{
         "aria-label": labels?.paginationInputLabel,
         // We really want the native number input
         type: "number",
       }}
       classes={{
-        root: cx(
-          classes.pageJump,
-          classes.pageSizeInputRoot,
-          classes.pageSizeInputContainer,
-        ),
+        root: classes.pageJump,
         input: classes.pageSizeInput,
       }}
       value={String(pageInput + 1)}
@@ -182,14 +168,13 @@ export const HvPagination = forwardRef<
               </span>
             )}
             <HvSelect
-              id={setId(id, "pageSize")}
               disabled={pageSize === 0}
               aria-label={labels?.pageSizeSelectorDescription}
               onChange={(evt, val) => onPageSizeChange?.(val)}
               value={pageSize}
               classes={{
                 header: classes.pageSizeHeader,
-                root: cx(classes.pageSizeOptionsSelect, classes.pageSizeRoot),
+                root: classes.pageSizeRoot,
               }}
             >
               {pageSizeOptions.map((option) => (
@@ -208,43 +193,39 @@ export const HvPagination = forwardRef<
       </div>
       <div className={classes.pageNavigator} {...navigationProps}>
         <HvIconButton
-          id={setId(id, "firstPage-button")}
           className={classes.iconContainer}
           disabled={!canPrevious}
           onClick={() => changePage(0)}
-          title={labels?.firstPage || labels?.paginationFirstPageTitle}
+          title={labels?.firstPage}
         >
           <HvIcon name="Start" className={classes.icon} size="xs" />
         </HvIconButton>
         <HvIconButton
-          id={setId(id, "previousPage-button")}
           className={classes.iconContainer}
           disabled={!canPrevious}
           onClick={() => changePage(page - 1)}
-          title={labels?.previousPage || labels?.paginationPreviousPageTitle}
+          title={labels?.previousPage}
         >
           <HvIcon name="Backwards" className={classes.icon} size="xs" />
         </HvIconButton>
         <div className={classes.pageInfo}>
           {showPageJump ? renderPageJump() : <span>{`${page + 1}`}</span>}
           <HvTypography component="span">{`${labels?.pagesSeparator} `}</HvTypography>
-          <span className={classes.totalPagesTextContainer}>{pages}</span>
+          <span>{pages}</span>
         </div>
         <HvIconButton
-          id={setId(id, "nextPage-button")}
           className={classes.iconContainer}
           disabled={!canNext}
           onClick={() => changePage(page + 1)}
-          title={labels?.nextPage || labels?.paginationNextPageTitle}
+          title={labels?.nextPage}
         >
           <HvIcon name="Forwards" className={classes.icon} size="xs" />
         </HvIconButton>
         <HvIconButton
-          id={setId(id, "lastPage-button")}
           className={classes.iconContainer}
           disabled={!canNext}
           onClick={() => changePage(pages - 1)}
-          title={labels?.lastPage || labels?.paginationLastPageTitle}
+          title={labels?.lastPage}
         >
           <HvIcon name="End" className={classes.icon} size="xs" />
         </HvIconButton>

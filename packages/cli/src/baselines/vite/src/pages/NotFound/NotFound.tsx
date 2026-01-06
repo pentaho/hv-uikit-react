@@ -1,9 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { HvButton, HvEmptyState } from "@hitachivantara/uikit-react-core";
+import { css } from "@emotion/css";
+import {
+  HvButton,
+  HvEmptyState,
+  theme,
+} from "@hitachivantara/uikit-react-core";
 import { Info } from "@hitachivantara/uikit-react-icons";
 
-import classes from "./styles";
+const classes = {
+  root: css({
+    height: `calc(100vh - ${theme.header.height})`,
+  }),
+  empty: css({
+    alignItems: "center",
+  }),
+};
 
 export const Component = () => {
   const { t } = useTranslation("common");

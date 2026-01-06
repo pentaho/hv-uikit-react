@@ -24,8 +24,7 @@ export const { staticClasses, useClasses } = createClasses(
       top: 0,
       left: 0,
     },
-    notSelectedRoot: {},
-    notSelected: {},
-    selected: {},
+    item: {},
+    itemSelected: {},
   },
 );

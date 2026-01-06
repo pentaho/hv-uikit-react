@@ -1,16 +1,14 @@
 import { forwardRef } from "react";
 import {
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionsGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvButton, HvButtonProps, HvButtonVariant } from "../Button";
+import { HvButton, HvButtonProps } from "../Button";
 import { HvCheckBox, HvCheckBoxProps } from "../CheckBox";
 import { HvBaseProps } from "../types/generic";
 import { CounterLabel } from "../utils/CounterLabel";
-import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./BulkActions.styles";
 
 export { staticClasses as bulkActionsClasses };
@@ -18,8 +16,6 @@ export { staticClasses as bulkActionsClasses };
 export type HvBulkActionsClasses = ExtractNames<typeof useClasses>;
 
 export interface HvBulkActionsProps extends HvBaseProps {
-  /** Custom label for select all checkbox. @deprecated no longer used */
-  selectAllLabel?: React.ReactNode;
   /** Custom label for select all checkbox conjunction */
   selectAllConjunctionLabel?: string;
   /** Custom label for select all pages button */
@@ -40,12 +36,6 @@ export interface HvBulkActionsProps extends HvBaseProps {
   actions?: HvActionsGenericProps["actions"];
   /** Whether actions should be all disabled */
   actionsDisabled?: boolean;
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionsCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** The number of maximum visible actions before they're collapsed into a `DropDownMenu`. */
@@ -77,16 +67,12 @@ export const HvBulkActions = forwardRef<
     selectAllConjunctionLabel = "/",
     showSelectAllPages = false,
     semantic = true,
-    actionsCallback, // TODO - remove in v6
     onAction,
     onSelectAll,
     onSelectAllPages,
     ...others
   } = useDefaultProps("HvBulkActions", props);
-
   const { classes, cx } = useClasses(classesProp);
-
-  const { activeTheme } = useTheme();
 
   const anySelected = numSelected > 0;
   const isSemantic = semantic && anySelected;
@@ -104,7 +90,6 @@ export const HvBulkActions = forwardRef<
     >
       <div className={classes.selectAllContainer}>
         <HvCheckBox
-          id={setId(id, "select")}
           className={classes.selectAll}
           checked={numSelected > 0}
           semantic={isSemantic}
@@ -123,14 +108,8 @@ export const HvBulkActions = forwardRef<
           <>
             <div className={classes.divider} />
             <HvButton
-              id={setId(id, "pages")}
               className={classes.selectAllPages}
-              variant={
-                isSemantic
-                  ? (activeTheme?.bulkActions
-                      .actionButtonVariant as HvButtonVariant)
-                  : "secondaryGhost"
-              }
+              variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
               onClick={onSelectAllPages}
             >
               {selectAllPagesLabel ?? `Select all ${numTotal} items`}
@@ -139,16 +118,10 @@ export const HvBulkActions = forwardRef<
         )}
       </div>
       <HvActionsGeneric
-        id={setId(id, "actions")}
         classes={{ root: classes.actions }}
-        variant={
-          isSemantic
-            ? (activeTheme?.bulkActions.actionButtonVariant as HvButtonVariant)
-            : "secondaryGhost"
-        }
+        variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
         actions={actions}
         disabled={actionsDisabled ?? numSelected === 0}
-        actionsCallback={actionsCallback}
         onAction={onAction}
         maxVisibleActions={maxVisibleActions}
       />

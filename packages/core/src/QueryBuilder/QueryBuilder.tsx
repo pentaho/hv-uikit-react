@@ -45,12 +45,6 @@ export interface HvQueryBuilderProps {
   value?: HvQueryBuilderQuery;
   /** The initial query when the component is uncontrolled. */
   defaultValue?: HvQueryBuilderQuery;
-  /**
-   * The initial query when the component is uncontrolled.
-   *
-   * @deprecated Use `defaultValue` instead.
-   * */
-  query?: HvQueryBuilderQuery; // TODO - remove in v6
   /** Callback fired when the query changes. */
   onChange?: (value: HvQueryBuilderQuery) => void;
   /** Max depth of nested query groups. */
@@ -99,7 +93,6 @@ export const HvQueryBuilder = (props: HvQueryBuilderProps) => {
   const {
     attributes,
     renderers,
-    query: queryProp, // TODO - remove in v6
     value,
     defaultValue,
     onChange,
@@ -138,9 +131,7 @@ export const HvQueryBuilder = (props: HvQueryBuilderProps) => {
   );
 
   const controlled = useRef(value != null);
-  const initialQuery = useRef(
-    value ?? defaultValue ?? queryProp ?? emptyGroup(),
-  );
+  const initialQuery = useRef(value ?? defaultValue ?? emptyGroup());
   const [query, setQuery] = useControlled(value, initialQuery.current);
   const prevQuery = useRef(query);
 

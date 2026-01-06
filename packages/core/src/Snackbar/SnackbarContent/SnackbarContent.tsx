@@ -33,12 +33,6 @@ export interface HvSnackbarContentProps
   customIcon?: React.ReactNode;
   /** Action to display. */
   action?: React.ReactNode | HvActionGeneric;
-  /**
-   * The callback function called when an action is triggered, receiving `action` as parameter.
-   *
-   * @deprecated Use `onAction` instead.
-   * */
-  actionCallback?: HvActionsGenericProps["actionsCallback"];
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
   onAction?: HvActionsGenericProps["onAction"];
   /** @inheritdoc */
@@ -61,7 +55,6 @@ export const HvSnackbarContent = forwardRef<
     showClose,
     customIcon,
     action,
-    actionCallback, // TODO - remove in v6
     onAction,
     onClose,
     ...others
@@ -75,7 +68,7 @@ export const HvSnackbarContent = forwardRef<
       variant={variant}
       classes={{
         root: cx(classes.root, classes[variant], className),
-        message: cx(classes.message, classes.messageSpan),
+        message: classes.message,
         messageIcon: classes.iconVariant,
         messageContent: classes.messageText,
         action: classes.action,
@@ -85,10 +78,7 @@ export const HvSnackbarContent = forwardRef<
       customIcon={customIcon}
       actions={isActionGeneric(action) ? [action] : action}
       onClose={onClose}
-      onAction={(evt, action) => {
-        onAction?.(evt, action);
-        actionCallback?.(evt, id!, action);
-      }}
+      onAction={onAction}
       {...others}
     >
       {label}

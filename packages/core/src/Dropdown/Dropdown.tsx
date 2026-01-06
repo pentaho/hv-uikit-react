@@ -102,10 +102,6 @@ export interface HvDropdownProps<
    */
   labels?: HvDropdownLabels;
   /**
-   * If `true` the dropdown will show tooltips when user mouseenter text in list
-   */
-  hasTooltips?: boolean;
-  /**
    * If `true`, selection can be toggled when single selection.
    */
   singleSelectionToggle?: boolean;
@@ -163,8 +159,6 @@ export interface HvDropdownProps<
 const DEFAULT_LABELS = {
   /** Label for overwrite the default header behavior. */
   select: undefined as string | undefined,
-  /** Label used for the All checkbox action. @deprecated unused */
-  selectAll: "All",
   /** Cancel button label. */
   cancelLabel: "Cancel",
   /** Apply button label. */
@@ -176,8 +170,6 @@ const DEFAULT_LABELS = {
 };
 
 export type HvDropdownLabels = Partial<typeof DEFAULT_LABELS>;
-/** @deprecated use `HvDropdownLabels` instead */
-export type HvDropdownLabelsProps = HvDropdownLabels;
 
 /**
  * A dropdown list is a graphical control element, similar to a list box, that allows the user to choose one value from a list.
@@ -228,7 +220,6 @@ export const HvDropdown = fixedForwardRef(function HvDropdown<
     defaultExpanded,
     notifyChangesOnFirstRender,
     labels: labelsProp,
-    hasTooltips,
     disablePortal,
     singleSelectionToggle = true,
     placement,
@@ -521,7 +512,6 @@ export const HvDropdown = fixedForwardRef(function HvDropdown<
           onCancel={handleCancel}
           labels={labels}
           notifyChangesOnFirstRender={notifyChangesOnFirstRender}
-          hasTooltips={hasTooltips}
           singleSelectionToggle={singleSelectionToggle}
           aria-label={ariaLabel}
           aria-labelledby={label ? setId(elementId, "label") : undefined}

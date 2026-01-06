@@ -1,12 +1,6 @@
 import { forwardRef, memo } from "react";
 import styled from "@emotion/styled";
-import {
-  getColor,
-  HvColor,
-  HvColorAny,
-  HvSize,
-  theme,
-} from "@hitachivantara/uikit-styles";
+import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvIconContainer, HvIconContainerProps } from "./IconContainer";
 import { getSizeStyles } from "./utils";
@@ -21,8 +15,6 @@ const getColorVars = (colorArray: string[]) => {
 const getIconColors = (
   palette: string[] = [],
   color?: HvColorAny | HvColorAny[],
-  semantic?: string,
-  inverted = false,
 ) => {
   // Copy array to avoid mutating the palette
   const colorArray = [...palette];
@@ -33,18 +25,6 @@ const getIconColors = (
     colorArray.forEach((_, i) => {
       colorArray[i] = color[i];
     });
-  }
-
-  // TODO: remove in v6
-  if (semantic) {
-    colorArray[0] = theme.colors?.[semantic as HvColor] || colorArray[0];
-  }
-
-  // TODO: remove in v6
-  if (inverted && colorArray[1]) {
-    // eslint-disable-next-line prefer-destructuring
-    colorArray[1] = colorArray[0];
-    colorArray[0] = "none";
   }
 
   return colorArray;
@@ -62,10 +42,6 @@ export interface IconBaseProps extends Omit<HvIconContainerProps, "color"> {
   /**
    * The size of the SVG icon. Takes in a `number` in pixels or any `HvSize` or `IconSize`.
    *
-   * Using this new prop:
-   * - overrides the deprecated `iconSize`, `height`, and `width` props
-   * - makes the icon use the `"currentcolor"`, if the `color` isn't passed
-   *
    * @example
    * size={16} // 16px
    * size="S" // 16px
@@ -77,31 +53,6 @@ export interface IconBaseProps extends Omit<HvIconContainerProps, "color"> {
   size?: HvSize | IconSize | number;
   /** Sets one of the standard sizes of the icons @deprecated use `size` instead */
   iconSize?: IconSize;
-  /**
-   * A string that will override the viewbox of the svg
-   * @deprecated DO NOT OVERRIDE viewbox - use the `size` instead
-   */
-  viewbox?: string;
-  /**
-   * A string that will override the height of the svg
-   * @deprecated use `size` instead (or `svgProps.style.height`)
-   */
-  height?: number;
-  /**
-   * A string that will override the width of the svg
-   * @deprecated use `size` instead (or `svgProps.style.height`)
-   */
-  width?: number;
-  /**
-   * Sets one of the standard semantic palette colors of the icon
-   * @deprecated use the `color` prop instead
-   */
-  semantic?: string;
-  /**
-   * Inverts the background-foreground on semantic icons
-   * @deprecated use the `color` prop instead
-   */
-  inverted?: boolean;
   /** Props passed down to the svg element. */
   svgProps?: React.SVGProps<SVGSVGElement>;
 }
@@ -132,13 +83,6 @@ const IconBaseInternal = (
     iconName,
     viewBox,
 
-    // deprecated props
-    viewbox: viewBoxProp,
-    height,
-    width,
-    semantic,
-    inverted,
-
     // standard props
     title: titleProp,
     // keep aria-label for `HvTooltip`+icon compatibility
@@ -151,7 +95,7 @@ const IconBaseInternal = (
     svgProps,
     ...others
   } = props;
-  const colorArray = getIconColors(palette, color, semantic, inverted);
+  const colorArray = getIconColors(palette, color);
   const [color0, ...otherColors] = colorArray.map((c) => getColor(c)!);
   const title = titleProp ?? ariaLabel;
 
@@ -172,11 +116,9 @@ const IconBaseInternal = (
       {...others}
     >
       <StyledSvg
-        viewBox={viewBoxProp ?? viewBox}
+        viewBox={viewBox}
         focusable={false}
         role={title ? "img" : "none"}
-        // TODO: remove in v6
-        style={width && height ? { width, height } : undefined}
         {...svgProps}
       >
         {title ? <title>{title}</title> : null}

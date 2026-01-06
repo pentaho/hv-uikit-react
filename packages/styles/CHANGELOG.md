@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.4...@hitachivantara/uikit-styles@6.0.0-next.5) (2025-12-15)
+
+### Bug Fixes
+
+- **types:** app-shell-shared types path ([#5017](https://github.com/pentaho/hv-uikit-react/issues/5017)) ([a95db38](https://github.com/pentaho/hv-uikit-react/commit/a95db3877f2fc2a55f49cfb3277ecf6c473e0e77))
+
+# [6.0.0-next.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.3...@hitachivantara/uikit-styles@6.0.0-next.4) (2025-12-05)
+
+### Bug Fixes
+
+- **theme:** add v5 theme component tokens ([#5011](https://github.com/pentaho/hv-uikit-react/issues/5011)) ([0db7d28](https://github.com/pentaho/hv-uikit-react/commit/0db7d2845f0c5921be060eef54a2c8fb89ad34ab)), closes [#4841](https://github.com/pentaho/hv-uikit-react/issues/4841)
+
+# [6.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@5.54.0...@hitachivantara/uikit-styles@6.0.0-next.3) (2025-12-04)
+
+### Bug Fixes
+
+- **theme:** add compat colors.modes key ([#4954](https://github.com/pentaho/hv-uikit-react/issues/4954)) ([063b250](https://github.com/pentaho/hv-uikit-react/commit/063b250cbf6227aa7db53f7218809d095fc817f2))
+
+### Features
+
+- **theme:** rename themes to align with supported next and pentaho design systems ([#5007](https://github.com/pentaho/hv-uikit-react/issues/5007)) ([620652d](https://github.com/pentaho/hv-uikit-react/commit/620652dfdbe251b54b33fe900f8d014876e6ea57))
+- **theme:** support only light/dark color modes ([#4857](https://github.com/pentaho/hv-uikit-react/issues/4857)) ([83973d2](https://github.com/pentaho/hv-uikit-react/commit/83973d2bc54e5eb71a7923035b789016d36b9456))
+
 # [5.54.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@5.53.0...@hitachivantara/uikit-styles@5.54.0) (2025-12-03)
 
 ### Features

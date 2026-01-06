@@ -38,10 +38,4 @@ export const { useClasses, staticClasses } = createClasses("HvBannerContent", {
   },
   actionContainer: {},
   closeAction: {},
-  /** @deprecated use ´classes.root` instead */
-  baseVariant: {},
-  /** @deprecated use `classes.root` instead */
-  outContainer: {},
-  /** @deprecated use `classes.actionContainer` instead */
-  actionsInnerContainer: {},
 });

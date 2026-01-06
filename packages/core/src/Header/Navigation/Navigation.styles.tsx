@@ -1,8 +1,7 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 
-// TODO - rename to HvHeaderNavigation (the actual component's name) in v6
 export const { staticClasses, useClasses } = createClasses(
-  "HvHeader-Navigation",
+  "HvHeaderNavigation",
   {
     root: {
       position: "absolute",

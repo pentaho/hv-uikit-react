@@ -8,22 +8,16 @@ import {
 import { LOCAL_STORAGE_KEYS } from "./useLocalStorage";
 import useThemeEventListenerHook from "./useThemeEventListener";
 
-const mockedChangeTheme = vi.fn();
+const mockedChangeMode = vi.fn();
 vi.mock("@hitachivantara/uikit-react-core", async () => {
   const mod = await vi.importActual("@hitachivantara/uikit-react-core");
   return {
-    ...(mod as object),
+    ...mod,
     useTheme: () => {
       return {
-        selectedTheme: "dummyTheme",
-        changeTheme: mockedChangeTheme,
-        selectedMode: "dummyColor1",
-        colorModes: [
-          "dummyColor1",
-          "dummyColor2",
-          "dummyColor3",
-          "dummyColor4",
-        ],
+        changeMode: mockedChangeMode,
+        selectedMode: "light",
+        colorModes: ["light", "dark"],
       };
     },
   };
@@ -42,14 +36,12 @@ describe("useThemeEventListener Hook", () => {
 
     themeEventListenerHook.current.handleThemeEvent(
       new CustomEvent<HvAppShellEventTheme>(HvAppShellEventThemeTrigger, {
-        detail: { colorMode: "dummyColor3" },
+        detail: { colorMode: "dark" },
       }),
     );
 
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor3");
-    expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
-      "dummyColor3",
-    );
+    expect(mockedChangeMode).toHaveBeenCalledWith("dark");
+    expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe("dark");
   });
 
   it("should call `changeTheme` with selectedTheme and the second color in the array when none is provided, the color should also be stored in the localStorage", () => {
@@ -63,26 +55,7 @@ describe("useThemeEventListener Hook", () => {
       }),
     );
 
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor2");
-    expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
-      "dummyColor2",
-    );
-  });
-
-  it("should call `changeTheme` with selectedTheme and the second color in the array when a non existent color is used", () => {
-    const { result: themeEventListenerHook } = renderHook(() =>
-      useThemeEventListenerHook(),
-    );
-
-    themeEventListenerHook.current.handleThemeEvent(
-      new CustomEvent<HvAppShellEventTheme>(HvAppShellEventThemeTrigger, {
-        detail: { colorMode: "wrongColor" },
-      }),
-    );
-
-    expect(mockedChangeTheme).toHaveBeenCalledWith("dummyTheme", "dummyColor2");
-    expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe(
-      "dummyColor2",
-    );
+    expect(mockedChangeMode).toHaveBeenCalledWith("dark");
+    expect(localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR_MODE)).toBe("dark");
   });
 });

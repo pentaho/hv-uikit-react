@@ -6,7 +6,7 @@ export const registerTheme = (
   mode: string,
   themeStructure?: HvTheme,
 ) => {
-  const colors = themeStructure?.colors.modes[mode];
+  const colors = themeStructure?.colors[mode];
   // if theme & mode is invalid, exit (to use the default theme)
   if (!colors) return;
 

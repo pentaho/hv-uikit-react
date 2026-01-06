@@ -136,7 +136,7 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
           label={banner.message}
           showIcon
           actions={banner.actions}
-          actionsCallback={banner.actionsCallback}
+          onAction={banner.onAction}
           bannerContentProps={{
             actionProps: { "aria-label": t("close") },
           }}

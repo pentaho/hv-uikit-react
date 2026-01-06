@@ -1,8 +1,7 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-// TODO - rename to HvHeaderActions (the actual component's name) in v6
-export const { staticClasses, useClasses } = createClasses("HvHeader-Actions", {
+export const { staticClasses, useClasses } = createClasses("HvHeaderActions", {
   root: {
     backgroundColor: "transparent",
     display: "flex",

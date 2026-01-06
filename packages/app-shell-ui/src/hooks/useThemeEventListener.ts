@@ -4,14 +4,12 @@ import { useTheme } from "@hitachivantara/uikit-react-core";
 import useLocalStorage from "./useLocalStorage";
 
 const useThemeEventListener = () => {
-  const { selectedTheme, changeTheme, selectedMode, colorModes } = useTheme();
+  const { selectedMode, colorModes, changeMode } = useTheme();
   const { setStoredValue } = useLocalStorage("COLOR_MODE");
 
   const getNextColorMode = () => {
-    const index = colorModes.indexOf(selectedMode);
-
-    const nextIndex = (index + 1) % colorModes.length;
-    return colorModes[nextIndex];
+    const nextIndex = colorModes.indexOf(selectedMode) + 1;
+    return colorModes[nextIndex % colorModes.length];
   };
 
   const handleThemeEvent = (event: CustomEvent<HvAppShellEventTheme>) => {
@@ -21,8 +19,7 @@ const useThemeEventListener = () => {
         ? getNextColorMode()
         : colorMode;
 
-    // For now we only want to change the colorMode
-    changeTheme(selectedTheme, newColorMode);
+    changeMode(newColorMode);
     setStoredValue(newColorMode);
   };
 

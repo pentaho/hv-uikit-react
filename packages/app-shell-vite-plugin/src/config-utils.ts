@@ -112,14 +112,6 @@ export function getAppModules(root: string, modules: string[] = []) {
   }, {});
 }
 
-export function startsWithSelf(value: string) {
-  return value.startsWith("@self/");
-}
-
-export function replaceSelf(value: string, replaceWith = "") {
-  return value.replace(/^@self\//, replaceWith);
-}
-
 export function getBasePath(configBaseUrl?: string, viteConfigBase?: string) {
   return viteConfigBase ?? configBaseUrl ?? "/";
 }

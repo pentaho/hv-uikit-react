@@ -13,11 +13,7 @@ import {
 
 export { staticClasses as simpleGridClasses };
 
-/** @deprecated use `HvBreakpoints` instead */
-export type Spacing = HvBreakpoints;
-
-// TODO: rename in v6 (or inline)
-export interface Breakpoint {
+export interface HvGridBreakpoint {
   cols?: number;
   maxWidth?: number;
   minWidth?: number;
@@ -36,7 +32,7 @@ export interface HvSimpleGridProps extends HvBaseProps {
    * - `cols`: number of columns per row at given max-width
    * - `spacing`: optional spacing at given max-width, if not provided spacing from component prop will be used instead
    */
-  breakpoints?: Breakpoint[];
+  breakpoints?: HvGridBreakpoint[];
   /** Number of how many columns the content will be displayed */
   cols?: number;
   /** A Jss Object used to override or extend the styles applied to the component. */

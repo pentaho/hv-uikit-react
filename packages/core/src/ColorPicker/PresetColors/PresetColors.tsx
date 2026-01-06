@@ -1,5 +1,3 @@
-// @ts-ignore @types/react-color seems to be broken
-import { Swatch } from "react-color/lib/components/common";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -7,11 +5,12 @@ import {
 import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvTypography } from "../../Typography";
+import { Swatch } from "../Swatch";
 import { useClasses } from "./PresetColors.styles";
 
 interface PresetColorsProps {
   colors: HvColorAny[];
-  onClick: (color: { hex: string; source: string }) => void;
+  onClick: (hex: string) => void;
   title?: string;
   className?: string;
   classes?: ExtractNames<typeof useClasses>;
@@ -27,13 +26,6 @@ export const PresetColors = (props: PresetColorsProps) => {
   } = useDefaultProps("HvColorPickerPresetColors", props);
   const { classes, cx } = useClasses(classesProp);
 
-  const handleClick = (hex: string) => {
-    onClick({
-      hex,
-      source: "hex",
-    });
-  };
-
   return (
     <div className={cx(classes.root, className)}>
       {title && (
@@ -43,19 +35,12 @@ export const PresetColors = (props: PresetColorsProps) => {
       )}
       <div className={classes.colors}>
         {colors.map((color, index) => (
-          <div
+          <Swatch
             key={`recommended-color-${color}-${index}`}
-            className={classes.swatchWrap}
-          >
-            <Swatch
-              color={color}
-              style={{ backgroundColor: getColor(color) }}
-              onClick={handleClick}
-              focusStyle={{
-                boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${color}`,
-              }}
-            />
-          </div>
+            color={color}
+            style={{ backgroundColor: getColor(color) }}
+            onClick={() => onClick(color)}
+          />
         ))}
       </div>
     </div>

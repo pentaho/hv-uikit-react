@@ -26,7 +26,7 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvChartEmptyCellMode, HvLineChartMeasures } from "../types";
+import { HvChartEmptyCellMode, HvLineChartMeasure } from "../types";
 import {
   Arrayable,
   HvAxisChartCommonProps,
@@ -51,7 +51,7 @@ export interface HvLineChartProps
   extends HvAxisChartCommonProps,
     HvChartCommonProps {
   /** Columns to measure on the chart. */
-  measures: Arrayable<HvLineChartMeasures>;
+  measures: Arrayable<HvLineChartMeasure>;
   /** Strategy to use when there are empty cells. Defaults to `void`. */
   emptyCellMode?: HvChartEmptyCellMode;
   /** Whether the area under the lines should be filled. Defaults to `false`. */

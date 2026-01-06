@@ -28,7 +28,7 @@ const Details = () => {
 
   const { cardId, cardText } = params;
 
-  const actionsCallbackHandler = () => {
+  const handleAction = () => {
     if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
     } else {
@@ -52,7 +52,7 @@ const Details = () => {
               label: "Go back",
             },
           ]}
-          actionsCallback={actionsCallbackHandler}
+          onAction={handleAction}
         />
       </HvActionBar>
     </HvCard>

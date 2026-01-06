@@ -42,12 +42,11 @@ describe("Banner", () => {
     expect(callbackSpy).toHaveBeenCalledOnce();
   });
 
-  // TODO - only test onAction in v6
-  it("should render the actions and call onAction and actionsCallback when clicked", async () => {
+  it("should render the actions and call onAction when clicked", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();
 
-    render(<Banner onAction={callbackSpy} actionsCallback={callbackSpy} />);
+    render(<Banner onAction={callbackSpy} />);
 
     const buttons = screen.getAllByRole("button");
     const action1 = screen.getByRole("button", { name: "action1" });
@@ -59,6 +58,6 @@ describe("Banner", () => {
     expect(buttons).toHaveLength(2);
     expect(action1).toBeInTheDocument();
     expect(action2).toBeInTheDocument();
-    expect(callbackSpy).toHaveBeenCalledTimes(4);
+    expect(callbackSpy).toHaveBeenCalledTimes(2);
   });
 });

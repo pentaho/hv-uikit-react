@@ -32,14 +32,21 @@ const makeVarsProxy = (themeObject: Record<string, any>, parentKey = "") => {
  * @param options The options to generate the theme
  * @returns The generated theme
  */
-export const makeTheme = <Mode extends string = string>(
-  options: HvCustomTheme<Mode> | ((theme: HvTheme) => HvCustomTheme<Mode>),
-): HvThemeStructure<Mode> => {
+export const makeTheme = (
+  options: HvCustomTheme | ((theme: HvTheme) => HvCustomTheme),
+): HvThemeStructure => {
   const customTheme = typeof options === "function" ? options(theme) : options;
   const newTheme = mergeTheme(baseTheme, customTheme);
 
   // @ts-expect-error type this correctly
   newTheme.vars = makeVarsProxy(newTheme);
+  // add `modes` for backwards compatibility with existing v5 apps
+  // TODO: remove when this is no longer deemed necessary
+  // @ts-expect-error backwards compatibility hack
+  newTheme.colors.modes = {
+    dawn: newTheme.colors.light,
+    wicked: newTheme.colors.dark,
+  };
 
   return newTheme;
 };
@@ -75,22 +82,12 @@ const compatMap: Partial<Record<keyof HvThemeColors, string>> = {
   border: "atmo4",
 };
 
-/** Compatibility object between UI Kit tokens and old theme alias */
-const aliasMap: Partial<Record<keyof HvThemeColors, keyof HvThemeColors>> = {
-  bgPage: "backgroundColor",
-  bgHover: "containerBackgroundHover",
-};
-
 /** Adds the NEXT compatibility colors for a given palette. @example `bgPage` => `bgPage` => `atmo2` */
 const extendCompatColors = (colors: Partial<HvThemeColors>) => {
   return Object.entries(colors).reduce((acc, [key, color]) => {
     const compatKey = compatMap[key as keyof typeof compatMap];
     if (compatKey) {
       acc[compatKey as keyof typeof acc] = color;
-    }
-    const aliasKey = aliasMap[key as keyof typeof aliasMap];
-    if (aliasKey) {
-      acc[aliasKey] = color;
     }
     return acc;
   }, colors);
@@ -103,7 +100,7 @@ const extendCompatColors = (colors: Partial<HvThemeColors>) => {
  */
 export const makeColors = (
   inputColors: Partial<Record<keyof HvThemeColors, string[] | string>>,
-): HvCustomTheme<"dawn" | "wicked">["colors"] => {
+): HvCustomTheme["colors"] => {
   const [lightColors, darkColors] = Object.entries(inputColors).reduce(
     (acc, [key, color]) => {
       const [lightColor, darkColor] =
@@ -121,24 +118,16 @@ export const makeColors = (
   );
 
   return {
-    // TODO: review allowing generic modes vs light/dark only
-    modes: {
-      dawn: {
-        type: "light",
-        ...extendCompatColors({
-          ...colors.common,
-          ...colors.light,
-          ...lightColors,
-        }),
-      },
-      wicked: {
-        type: "dark",
-        ...extendCompatColors({
-          ...colors.common,
-          ...colors.dark,
-          ...darkColors,
-        }),
-      },
-    },
+    light: extendCompatColors({
+      ...colors.common,
+      ...colors.light,
+      ...lightColors,
+    }),
+
+    dark: extendCompatColors({
+      ...colors.common,
+      ...colors.dark,
+      ...darkColors,
+    }),
   };
 };

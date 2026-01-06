@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-services@2.0.0-next.2...@hitachivantara/app-shell-services@2.0.0-next.3) (2025-12-15)
+
+### Bug Fixes
+
+- **types:** app-shell-shared types path ([#5017](https://github.com/pentaho/hv-uikit-react/issues/5017)) ([a95db38](https://github.com/pentaho/hv-uikit-react/commit/a95db3877f2fc2a55f49cfb3277ecf6c473e0e77))
+
+# [2.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-services@1.1.3...@hitachivantara/app-shell-services@2.0.0-next.2) (2025-12-04)
+
+### Features
+
+- **AppShell:** add client condition configuration [PPUC-34] ([#4988](https://github.com/pentaho/hv-uikit-react/issues/4988)) ([1a4c56e](https://github.com/pentaho/hv-uikit-react/commit/1a4c56e955d87c7afc83117b0975ed7d193fb33c))
+
 ## [1.1.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-services@1.1.2...@hitachivantara/app-shell-services@1.1.3) (2025-11-14)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-services

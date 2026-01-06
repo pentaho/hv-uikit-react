@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { EmotionCache } from "@emotion/cache";
 import {
-  createTheme,
+  createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material/styles";
 import {
@@ -12,8 +12,12 @@ import {
   type HvTheme,
   type HvThemeContextValue,
 } from "@hitachivantara/uikit-react-shared";
-import { HvThemeStructure, parseTheme } from "@hitachivantara/uikit-styles";
+import {
+  HvThemeColorMode,
+  HvThemeStructure,
+} from "@hitachivantara/uikit-styles";
 
+import { getContainerElement } from "../utils/document";
 import { setElementAttrs } from "../utils/theme";
 
 export { HvThemeContext };
@@ -23,79 +27,73 @@ export { defaultCacheKey, defaultEmotionCache, EmotionContext };
 
 interface HvThemeProviderProps {
   children: React.ReactNode;
-  themes: (HvTheme | HvThemeStructure)[];
-  theme: string;
+  theme: HvTheme | HvThemeStructure;
   emotionCache: EmotionCache;
-  colorMode: string;
+  colorMode: HvThemeColorMode;
   themeRootId?: string;
 }
 
 export const HvThemeProvider = ({
   children,
-  themes: themesList,
-  theme: themeProp,
+  theme,
   emotionCache,
   colorMode: colorModeProp,
   themeRootId: rootId,
 }: HvThemeProviderProps) => {
-  const [theme, setTheme] = useState(themeProp);
-  const [colorMode, setColorMode] = useState(colorModeProp);
+  const [colorModeValue, setColorModeValue] = useState(colorModeProp);
 
-  const {
-    theme: activeTheme,
-    selectedTheme,
-    selectedMode,
-    colorModes,
-    colorScheme,
-  } = parseTheme(themesList, theme, colorMode);
-
-  const themes = themesList.map((t) => t.name);
+  /** safe `colorMode`, ensuring no invalid values are used */
+  const colorMode = colorModeValue === "dark" ? "dark" : "light";
 
   // review in v6 so that theme/colorMode isn't both controlled & uncontrolled
   useEffect(() => {
-    setTheme(themeProp);
-    setColorMode(colorModeProp);
-  }, [colorModeProp, themeProp]);
+    setColorModeValue(colorModeProp);
+  }, [colorModeProp]);
 
   useEffect(() => {
-    setElementAttrs(selectedTheme, selectedMode, colorScheme, rootId);
-  }, [colorScheme, rootId, selectedMode, selectedTheme]);
-
-  const changeTheme = useCallback(
-    (newTheme = selectedTheme, newMode = selectedMode) => {
-      setTheme(newTheme);
-      setColorMode(newMode);
-    },
-    [selectedMode, selectedTheme],
-  );
+    const element = getContainerElement(rootId);
+    if (!element) return;
+    setElementAttrs(element, theme.name, colorMode);
+  }, [colorMode, rootId, theme.name]);
 
   const value = useMemo<HvThemeContextValue>(
     () => ({
-      themes,
-      colorModes,
-      activeTheme: activeTheme as HvTheme,
-      selectedTheme,
-      selectedMode,
-      changeTheme,
+      colorModes: ["light", "dark"],
+      // activeTheme: theme as HvTheme,
+      selectedMode: colorMode,
+      changeMode(newMode = colorMode) {
+        setColorModeValue(newMode);
+      },
       rootId,
+
+      // TODO: remove once backwards-compatibility is not needed anymore
+      activeTheme: {
+        ...(theme as HvTheme),
+        colors: {
+          ...theme.colors,
+          modes: {
+            ...theme.colors,
+            light: { ...theme.colors.light, type: "light" },
+            dark: { ...theme.colors.dark, type: "dark" },
+          },
+        },
+      },
+      themes: [theme],
+      selectedTheme: theme.name,
+      changeTheme(theme: string, mode: string) {
+        setColorModeValue(mode as any);
+      },
     }),
-    [
-      themes,
-      colorModes,
-      activeTheme,
-      selectedTheme,
-      selectedMode,
-      changeTheme,
-      rootId,
-    ],
+    [theme, colorMode, rootId],
   );
 
   const muiTheme = useMemo(() => {
-    const colors = activeTheme.colors.modes[selectedMode];
-    return createTheme({
-      spacing: activeTheme.space.base,
+    const colors = theme.colors[colorMode] || theme.colors.light;
+    return createMuiTheme({
+      colorSchemes: { light: true, dark: true },
+      spacing: theme.space.base,
       typography: {
-        fontFamily: activeTheme.fontFamily.body,
+        fontFamily: theme.fontFamily.body,
       },
       palette: {
         primary: { main: colors.primary },
@@ -129,9 +127,9 @@ export const HvThemeProvider = ({
           },
         },
       },
-      breakpoints: activeTheme.breakpoints,
+      breakpoints: theme.breakpoints,
     });
-  }, [activeTheme, selectedMode]);
+  }, [theme, colorMode]);
 
   const emotionCacheValue = useMemo(
     () => ({ cache: emotionCache }),

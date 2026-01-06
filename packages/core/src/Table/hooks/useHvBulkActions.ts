@@ -10,8 +10,7 @@ import {
 
 // #region ##### TYPES #####
 
-// TODO: fix typo in v6
-export interface HvTAbleBulkActionsProps extends TableCommonProps {
+export interface HvTableBulkActionsProps extends TableCommonProps {
   numTotal: number;
   numSelected: number;
   showSelectAllPages: boolean;
@@ -22,7 +21,7 @@ export interface HvTAbleBulkActionsProps extends TableCommonProps {
 
 export type HvBulkActionsPropGetter<D extends object> = PropGetter<
   D,
-  HvTAbleBulkActionsProps
+  HvTableBulkActionsProps
 >;
 
 export interface UseHvBulkActionsHooks<D extends object> {
@@ -30,9 +29,8 @@ export interface UseHvBulkActionsHooks<D extends object> {
 }
 
 export type UseHvBulkActionsTableOptions = {
-  // TODO: fix typo in v6
   /** Controls whether the "Select all" should _select_ or _unselect_ the rows, in a partial selection state. */
-  aditivePageBulkSelection?: boolean;
+  additivePageBulkSelection?: boolean;
   /** Controls whether _only the current page_ or _all pages_ should be unselected */
   subtractivePageBulkDeselection?: boolean;
   showSelectAllPages?: boolean;
@@ -41,7 +39,7 @@ export type UseHvBulkActionsTableOptions = {
 export interface UseHvBulkActionsTableInstanceProps<D extends object> {
   getHvBulkActionsProps: (
     propGetter?: HvBulkActionsPropGetter<D>,
-  ) => HvTAbleBulkActionsProps;
+  ) => HvTableBulkActionsProps;
   invertedToggleAllRowsSelected: () => void;
 }
 
@@ -72,7 +70,7 @@ const useInstanceHook = (instance: any) => {
     if (!isPaginated) return toggleAllRowsSelected();
 
     const {
-      aditivePageBulkSelection: additivePageBulkSelection,
+      additivePageBulkSelection,
       subtractivePageBulkDeselection,
       isNoRowsSelected,
       isNoPageRowsSelected,
@@ -125,7 +123,7 @@ const useInstanceHook = (instance: any) => {
   Object.assign(instance, {
     getHvBulkActionsProps,
     invertedToggleAllRowsSelected,
-    aditivePageBulkSelection: !!instance.aditivePageBulkSelection,
+    additivePageBulkSelection: !!instance.additivePageBulkSelection,
     subtractivePageBulkDeselection: !!instance.subtractivePageBulkDeselection,
   });
 };
@@ -145,7 +143,7 @@ const defaultGetHvBulkActionsProps = (props: any, { instance }: any) => {
 
   const isPaginated = !!page;
 
-  const nextProps: HvTAbleBulkActionsProps = {
+  const nextProps: HvTableBulkActionsProps = {
     numTotal: applyToggleAllRowsSelectedToPrefilteredRows
       ? initialRows.length
       : rows.length,

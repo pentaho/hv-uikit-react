@@ -1,139 +1,95 @@
-import {
-  ComponentType,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { I18nContext } from "react-i18next";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellCombinedProvidersContext,
-  HvAppShellConfig,
   HvAppShellContext,
-  HvAppShellContextValue,
+  HvAppShellModelContext,
+  HvAppShellProvidersComponent,
   HvAppShellRuntimeContext,
+  type HvAppShellConfig,
+  type HvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 import {
   themes as baseThemes,
   HvProvider,
-  HvProviderProps,
 } from "@hitachivantara/uikit-react-core";
+import {
+  HvThemeColorMode,
+  HvThemeStructure,
+} from "@hitachivantara/uikit-styles";
 
+import { useFilteredModel } from "../../hooks/useFilteredModel";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useModelFromConfig } from "../../hooks/useModelFromConfig";
 import { addResourceBundles } from "../../i18n";
+import CombinedProviders from "../../utils/CombinedProviders";
 
-export type AppShellProviderProps = {
-  children: ReactNode;
-  config?: Partial<HvAppShellConfig>;
-  configUrl?: string;
-};
+interface AppShellProviderInnerProps extends React.PropsWithChildren {
+  config: HvAppShellConfig;
+  model: HvAppShellModel;
+}
 
-const AppShellProvider = ({
+const AppShellProviderInner = ({
+  config,
+  model,
   children,
-  config: localConfig,
-  configUrl,
-}: AppShellProviderProps) => {
-  const { i18n } = useContext(I18nContext);
+}: AppShellProviderInnerProps) => {
   const { value: storedColorModeValue } = useLocalStorage("COLOR_MODE");
-  const [loadedConfig, setLoadedConfig] = useState<
-    HvAppShellConfig | undefined
-  >(undefined);
+  const { i18n } = useContext(I18nContext);
 
-  const [hasError, setHasError] = useState<boolean>(false);
+  const { isPending: isModelPending, model: filteredModel } =
+    useFilteredModel(model);
 
-  useEffect(() => {
-    if (!localConfig && configUrl) {
-      fetch(new URL(configUrl))
-        .then((result) => {
-          return result.json();
-        })
-        .then((data) => setLoadedConfig(data))
-        .catch((e) => {
-          console.error(
-            `It was not possible to obtain the context from: ${configUrl}`,
-            e,
-          );
-          setLoadedConfig(undefined);
-          setHasError(true);
-        });
-    }
-  }, [localConfig, configUrl]);
-
-  const theConfig: HvAppShellContextValue | undefined = useMemo(
-    () => localConfig ?? loadedConfig,
-    [localConfig, loadedConfig],
-  );
-
-  if (hasError) {
-    throw Error("It was not possible to obtain the configuration");
-  }
-
-  if (theConfig?.translations) {
+  if (filteredModel?.translations) {
     addResourceBundles(
       i18n,
-      theConfig.translations,
+      filteredModel.translations,
       CONFIG_TRANSLATIONS_NAMESPACE,
     );
   }
 
-  const [themes, setThemes] = useState<HvProviderProps["themes"]>(undefined);
-  const [providers, setProviders] = useState<
-    | Array<{
-        component: ComponentType<{ children: ReactNode }>;
-        config?: Record<string, unknown>;
-      }>
-    | undefined
-  >(undefined);
+  const [theme, setTheme] = useState<HvThemeStructure>();
 
   useEffect(() => {
-    if (theConfig?.theming?.themes) {
-      Promise.all(
-        theConfig.theming.themes?.map((bundle) => {
-          return (
-            baseThemes[bundle as keyof typeof baseThemes] ??
-            import(/* @vite-ignore */ bundle)
-              .then((module) => module.default)
-              .catch((e) => {
-                console.error(`Import of theme bundle ${bundle} failed! ${e}`);
-              })
-          );
-        }),
-      )
-        .then((loadedThemes) => {
-          setThemes(loadedThemes.filter((theme) => !!theme));
-        })
-        .catch((e) => {
-          console.error(`Import of themes failed! ${e}`);
-        });
-    }
-  }, [theConfig?.theming?.themes]);
+    const theme = filteredModel?.theming?.theme;
+    if (!theme) return;
 
-  useEffect(() => {
-    if (theConfig?.providers) {
-      Promise.all(
-        theConfig.providers.map((provider) => {
-          return import(/* @vite-ignore */ provider.bundle)
-            .then((module) => ({
-              component: module.default,
-              config: provider.config,
-            }))
-            .catch((e) => {
-              console.error(
-                `Import of provider '${provider.bundle}' failed! ${e}`,
-              );
-            });
-        }),
-      )
-        .then((loadedProviders) =>
-          setProviders(loadedProviders.filter((provider) => !!provider)),
-        )
-        .catch((e) => {
-          console.error(`Import of providers failed!`, e);
-        });
+    if (baseThemes[theme as keyof typeof baseThemes]) {
+      setTheme(baseThemes[theme as keyof typeof baseThemes]);
+      return;
     }
-  }, [theConfig?.providers]);
+
+    import(/* @vite-ignore */ theme)
+      .then((module) => {
+        setTheme(module.default);
+      })
+      .catch((e) => {
+        console.error(`Import of theme bundle ${theme} failed! ${e}`);
+      });
+  }, [filteredModel?.theming?.theme]);
+
+  const providers = useMemo(() => {
+    if (!filteredModel?.providers) {
+      return;
+    }
+
+    const providersComponents: HvAppShellProvidersComponent[] = [];
+
+    for (const { bundle, key, config } of filteredModel.providers) {
+      const component = model.preloadedBundles.get(
+        bundle,
+      ) as React.ComponentType<React.PropsWithChildren>;
+
+      providersComponents.push({
+        key,
+        component,
+        config,
+      });
+    }
+
+    return providersComponents;
+  }, [filteredModel?.providers, model.preloadedBundles]);
 
   const runtimeContext = useMemo(
     () => ({
@@ -149,28 +105,114 @@ const AppShellProvider = ({
     [providers],
   );
 
+  const appShellConfigContextValue = useMemo(() => config, [config]);
+
+  const appShellModelContextValue = useMemo(
+    () => filteredModel,
+    [filteredModel],
+  );
+
   if (
-    !theConfig ||
-    (theConfig.theming?.themes && !themes) ||
-    (theConfig.providers != null && providers === undefined)
+    isModelPending ||
+    !filteredModel ||
+    (filteredModel.theming?.theme && !theme)
   ) {
     return null;
   }
 
   return (
-    <HvAppShellContext.Provider value={theConfig}>
-      <HvAppShellRuntimeContext.Provider value={runtimeContext}>
-        <HvProvider
-          themes={themes}
-          theme={theConfig.theming?.theme}
-          colorMode={storedColorModeValue ?? theConfig.theming?.colorMode}
-        >
-          <HvAppShellCombinedProvidersContext.Provider value={providersContext}>
-            {children}
-          </HvAppShellCombinedProvidersContext.Provider>
-        </HvProvider>
-      </HvAppShellRuntimeContext.Provider>
+    <HvAppShellContext.Provider value={appShellConfigContextValue}>
+      <HvAppShellModelContext.Provider value={appShellModelContextValue}>
+        <HvAppShellRuntimeContext.Provider value={runtimeContext}>
+          <HvProvider
+            theme={theme}
+            colorMode={
+              (storedColorModeValue as HvThemeColorMode) ??
+              filteredModel.theming?.colorMode
+            }
+          >
+            <HvAppShellCombinedProvidersContext.Provider
+              value={providersContext}
+            >
+              {children}
+            </HvAppShellCombinedProvidersContext.Provider>
+          </HvProvider>
+        </HvAppShellRuntimeContext.Provider>
+      </HvAppShellModelContext.Provider>
     </HvAppShellContext.Provider>
+  );
+};
+
+interface AppShellProviderProps extends React.PropsWithChildren {
+  config?: Partial<HvAppShellConfig>;
+  configUrl?: string;
+}
+
+const AppShellProvider = ({
+  children,
+  config: localConfig,
+  configUrl,
+}: AppShellProviderProps) => {
+  const [loadedConfig, setLoadedConfig] = useState<HvAppShellConfig>();
+  const [hasError, setHasError] = useState(false);
+
+  // Load config from URL
+  useEffect(() => {
+    if (!localConfig && configUrl) {
+      fetch(new URL(configUrl))
+        .then((result) => result.json())
+        .then((data) => setLoadedConfig(data))
+        .catch((e) => {
+          console.error(`Failed to obtain the context from: ${configUrl}`, e);
+          setLoadedConfig(undefined);
+          setHasError(true);
+        });
+    }
+  }, [localConfig, configUrl]);
+
+  const rawConfig = useMemo(
+    () => localConfig ?? loadedConfig,
+    [localConfig, loadedConfig],
+  );
+  const { model, isPending: areBundlesLoading } = useModelFromConfig(rawConfig);
+
+  const systemProviders = useMemo(() => {
+    if (!model?.systemProviders) {
+      return undefined;
+    }
+
+    const providersComponents: HvAppShellProvidersComponent[] = [];
+
+    for (const provider of model.systemProviders) {
+      const component = model.preloadedBundles.get(
+        provider.bundle,
+      ) as React.ComponentType<React.PropsWithChildren>;
+
+      providersComponents.push({
+        key: provider.key,
+        component,
+        config: provider.config,
+      });
+    }
+
+    return providersComponents;
+  }, [model?.systemProviders, model?.preloadedBundles]);
+
+  if (hasError) {
+    throw Error("Failed to obtain the configuration");
+  }
+
+  // Wait for config and condition bundles to load
+  if (!rawConfig || !model || areBundlesLoading) {
+    return null;
+  }
+
+  return (
+    <CombinedProviders providers={systemProviders}>
+      <AppShellProviderInner config={rawConfig} model={model}>
+        {children}
+      </AppShellProviderInner>
+    </CombinedProviders>
   );
 };
 

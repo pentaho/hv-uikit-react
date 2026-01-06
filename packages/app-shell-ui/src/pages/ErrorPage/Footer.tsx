@@ -3,7 +3,7 @@ import { useErrorBoundary } from "react-error-boundary";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
-import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../providers/NavigationProvider";
@@ -15,7 +15,7 @@ const StyledFooterWrapper = styled("div")({
 export const Footer = () => {
   const { t } = useTranslation();
   const { navigate } = useHvNavigation();
-  const { navigationMode } = useHvAppShellConfig();
+  const { navigationMode } = useHvAppShellModel();
   const { resetBoundary } = useErrorBoundary();
   const { items, verticalNavigationItems, isCompactMode } =
     useNavigationContext();
