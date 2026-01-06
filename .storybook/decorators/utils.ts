@@ -37,6 +37,14 @@ export const getInitialTheme = (themes: Theme[]) => {
   );
 };
 
+export const getInitialMode = (): HvThemeColorMode => {
+  const prefersDark = window?.matchMedia?.(
+    "(prefers-color-scheme: dark)",
+  )?.matches;
+
+  return prefersDark ? "dark" : "light";
+};
+
 /** Return a `ref` that adds/removes `dark` class variant depending on `mode` */
 export const useDarkClass = <T extends HTMLElement = HTMLDivElement>(
   mode: string,

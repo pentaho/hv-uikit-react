@@ -1,6 +1,6 @@
 import { addons } from "storybook/manager-api";
 
-import { getInitialMode } from "./addons/mode-selector/utils";
+import { getInitialMode } from "./decorators/utils";
 import { themes } from "./theme";
 
 const initialMode = getInitialMode();

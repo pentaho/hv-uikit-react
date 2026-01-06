@@ -14,8 +14,7 @@ import {
   theme,
 } from "@hitachivantara/uikit-react-core";
 
-import { ADDON_EVENT } from "../addons/mode-selector/constants";
-import { getInitialMode } from "../addons/mode-selector/utils";
+import { getInitialMode } from "../decorators/utils";
 import { themes } from "../theme";
 import { getDocsStyles } from "../theme/styles/docs";
 
@@ -60,6 +59,7 @@ export default ({
   };
 
   useEffect(() => {
+    const ADDON_EVENT = "MODE_SELECT";
     const channel = addons.getChannel();
     channel.on(ADDON_EVENT, switchMode);
 
