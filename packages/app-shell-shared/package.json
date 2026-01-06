@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-shared",
-  "version": "2.0.0-next.9",
+  "version": "2.0.0",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",

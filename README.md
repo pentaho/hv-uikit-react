@@ -13,8 +13,8 @@ Open-source **React UI library** to build high-quality digital products.
 <br/>
 
 ![License](https://img.shields.io/badge/license-Apache%202-blue.svg)
-![React](https://img.shields.io/badge/react-17+-blue.svg)
-![Node](https://img.shields.io/badge/node-16+-brightgreen.svg)
+![React](https://img.shields.io/badge/react-18+-blue.svg)
+![Node](https://img.shields.io/badge/node-22+-brightgreen.svg)
 [![Nightly](https://github.com/pentaho/hv-uikit-react/actions/workflows/nightly.yml/badge.svg)](https://github.com/pentaho/hv-uikit-react/actions/workflows/nightly.yml)
 
 </div>
