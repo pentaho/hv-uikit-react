@@ -246,9 +246,36 @@ const header = {
 
 See [Header actions](./header-actions) for more information and see the available **App Shell** built-in actions.
 
+### `systemProviders`
+
+This prop defines the _System Providers_ that will wrap the entire **App Shell** application, including all _Views_, _Shared Modules_, and regular _Providers_. System providers are positioned at the top of the React component tree and provide context that should be available throughout the entire application.
+
+System providers follow the [module structure](#module-structure) object API (important to note that they do not support conditions).
+
+```ts
+const systemProviders = [
+  { bundle: "@hv-apps/auth-app/providers/AuthProvider.js" },
+  {
+    bundle: "@hv-apps/config-app/providers/ConfigProvider.js",
+    config: {
+      apiUrl: "https://api.example.com",
+    },
+  },
+];
+```
+
+The usage of system providers should not be abused and well thought of since they will exist, regardless of conditional logic, and available to all application.
+This may be useful when some context needs to be available before rendering any content or context required by conditions to evaluate properly.
+
+**Key Differences from Regular Providers:**
+
+- **Position in tree**: System providers wrap the entire App Shell (including the theme provider), while regular providers are nested deeper in the component tree
+- **No conditions**: System providers are not affected by conditions
+- **Context availability**: Context from system providers is available to conditions, regular providers, views, and all other modules
+
 ### `providers`
 
-This prop defines the _Providers_ that will wrap all the _Views_ and _Shared Modules_. It follows the [module structure](#module-structure) object API.
+This prop defines the _Providers_ that will wrap all the _Views_ and _Shared Modules_. Unlike system providers, these can be conditionally loaded based on [conditions](#conditions). They follow the [module structure](#module-structure) object API.
 
 ```ts
 const providers = [
@@ -259,6 +286,14 @@ const providers = [
       someConfig: "value",
     },
   },
+  {
+    bundle: "@hv-apps/feature-app/providers/FeatureProvider.js",
+    conditions: [
+      {
+        bundle: "@hv-apps/feature-app/conditions/useFeatureEnabled.js",
+      },
+    ],
+  },
 ];
 ```
 
@@ -267,6 +302,136 @@ Notes:
 - Each _Application Bundle_ ideally should expose just a single _Provider_. If multiple _Providers_ are needed, they can be composed into a single _Provider_.
 - The **App Shell** will instantiate the _Providers_ in the order they are declared in the configuration file. However, dependencies between _Providers_ should be avoided, and never rely on the existence of another _Provider_.
 - This shouldn't be abused: Context only needed for the rendering of a _View_ shouldn't be put on a global _Provider_ just because another _View_ needs it. E.g. the i18next provider should continue to be instantiated on every view, using a HOC for example, instead of having a global provider for each _Application Bundle_, each with its own i18next provider always instanced in case it is needed.
+- Providers can be conditionally loaded using the [`conditions`](#conditions) property.
+
+### `conditions`
+
+Conditions are bundles that control whether certain elements (views, menu items, header actions, providers, or services) should be displayed or loaded in the final App Shell Model. They provide a powerful mechanism for conditional rendering based on dynamic runtime criteria.
+
+#### How Conditions Work
+
+A condition is a _Shared Module_ that exports a React hook as its default export. This hook must return an object with the following structure:
+
+```ts
+interface UseConditionResult {
+  isPending: boolean; // Whether the condition is still being evaluated
+  error: Error | null; // Any error that occurred during evaluation
+  result: boolean; // The condition result
+}
+```
+
+#### Using Conditions
+
+Conditions can be applied to various configuration elements by adding a `conditions` array:
+
+```ts
+// Example: Conditional view
+{
+  bundle: "@hv-apps/my-app/pages/AdminPanel.js",
+  route: "/admin",
+  conditions: [
+    {
+      bundle: "@hv-apps/my-app/conditions/useIsAdmin.js",
+    },
+    {
+      bundle: "@hv-apps/my-app/conditions/useFeatureEnabled.js",
+      config: {
+        featureFlag: "admin-panel",
+      },
+    },
+  ],
+}
+```
+
+#### Condition Behavior
+
+- **Multiple conditions**: When multiple conditions are present, ALL must return `true` for the element to be shown (AND logic)
+- **Pending state**: Elements remain hidden while any condition is still pending (`isPending: true`)
+- **Error handling**: If a condition returns an error, the element is treated as hidden
+- **Menu inheritance**: Menu items automatically inherit conditions from their target view routes
+
+#### Example Condition Implementation
+
+**Synchronous condition:**
+
+```ts
+// useIsAdmin.ts
+import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+
+const useIsAdmin = (): UseConditionResult => {
+  const user = useCurrentUser(); // From a system provider context
+
+  return {
+    isPending: false,
+    error: null,
+    result: user?.role === "admin",
+  };
+};
+
+export default useIsAdmin;
+```
+
+**Asynchronous condition:**
+
+```ts
+// useFeatureEnabled.ts
+import { useEffect, useState } from "react";
+import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+
+interface FeatureConfig {
+  featureFlag: string;
+}
+
+const useFeatureEnabled = (config?: FeatureConfig): UseConditionResult => {
+  const [isPending, setIsPending] = useState(true);
+  const [result, setResult] = useState(false);
+
+  useEffect(() => {
+    if (!config?.featureFlag) {
+      setIsPending(false);
+      return;
+    }
+
+    fetch(`/api/features/${config.featureFlag}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setResult(data.enabled);
+        setIsPending(false);
+      })
+      .catch(() => {
+        setIsPending(false);
+      });
+  }, [config?.featureFlag]);
+
+  return {
+    isPending,
+    error: null,
+    result,
+  };
+};
+
+export default useFeatureEnabled;
+```
+
+#### Context from System Providers
+
+Conditions can access context provided by [`systemProviders`](#systemproviders). This is particularly useful when conditions need to evaluate based on authentication state, user permissions, or global configuration:
+
+```ts
+// System provider gives context
+const systemProviders = [{ bundle: "@hv-apps/auth/AuthProvider.js" }];
+
+// Condition uses that context
+const useIsAuthenticated = (): UseConditionResult => {
+  const { isAuthenticated } = useAuth(); // From AuthProvider
+
+  return {
+    isPending: false,
+    error: null,
+    result: isAuthenticated,
+  };
+};
+```
 
 ### `services`
 
@@ -290,6 +455,8 @@ Each service definition can be configured in one of two ways:
 
 A `ranking` property is used to determine the order of precedence when multiple implementations are available. Higher ranking values indicate higher precedence.
 
+Services also support [`conditions`](#conditions) to control their availability dynamically:
+
 ```ts
 const appShellConfig = {
   services: {
@@ -305,12 +472,17 @@ const appShellConfig = {
         },
         ranking: 10,
       },
-      // Instance - module reference
+      // Instance - module reference with conditions
       {
         instance: {
           bundle: "some-app/actions/create/useCreateReportAction.js",
         },
         ranking: 50,
+        conditions: [
+          {
+            bundle: "@hv-apps/my-app/conditions/useHasReportPermission.js",
+          },
+        ],
       },
       // Factory - module reference
       {
@@ -319,13 +491,19 @@ const appShellConfig = {
           config: { option: true },
         },
       },
-      // Component - module reference
+      // Component - module reference with conditions
       {
         component: {
           bundle: "@my-app/components/HelloComponent.js",
           config: { name: "John" },
         },
         ranking: 50,
+        conditions: [
+          {
+            bundle: "@hv-apps/my-app/conditions/useFeatureEnabled.js",
+            config: { featureFlag: "hello-component" },
+          },
+        ],
       },
     ],
   },

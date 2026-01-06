@@ -3,6 +3,8 @@
 The **App Shell** allows to add actions to the right-hand side of the header.
 These actions are defined in the **App Shell** configuration file, under the `header.actions` property and will be displayed in the same order as they are declared on the configuration file.
 
+Header actions support [conditions](./configuration#conditions), allowing conditional display of actions based on runtime criteria such as user permissions or feature flags.
+
 ## Example
 
 Create `src/header/SayHelloButton.tsx` with the following code:
@@ -23,6 +25,15 @@ const header = {
       config: {
         planet: "Mars",
       },
+    },
+    // Conditional header action
+    {
+      bundle: "@hv-apps/my-app/header/AdminButton.js",
+      conditions: [
+        {
+          bundle: "@hv-apps/my-app/conditions/useIsAdmin.js",
+        },
+      ],
     },
   ],
 };

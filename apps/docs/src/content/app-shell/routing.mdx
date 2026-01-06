@@ -39,6 +39,32 @@ You can also enable the `autoViewsAndRoutes` option in the `vite.config.ts` file
 For details on file-based routing, refer to the [plugin documentation](https://github.com/pentaho/hv-uikit-react/tree/master/packages/app-shell-vite-plugin#readme).
 Note that _Shared Modules_ other than _Views_ must still be listed in the `modules` parameter at the `vite.config.ts` file.
 
+## Conditional Routes
+
+Views support [conditions](./configuration#conditions) to control whether a route is accessible. When all conditions for a view evaluate to `false`, attempting to navigate to that route will result in a 404 error.
+
+```ts
+mainPanel: {
+  views: [
+    {
+      bundle: "@hv-apps/my-app/pages/AdminPanel.js",
+      route: "/admin",
+      conditions: [
+        {
+          bundle: "@hv-apps/my-app/conditions/useIsAdmin.js",
+        },
+      ],
+    },
+  ];
+}
+```
+
+When using conditions on views:
+
+- Menu items targeting these routes will automatically inherit the view's conditions
+- Users without proper access will see a 404 page when trying to access the route directly
+- The route will not be accessible until all conditions return `true`
+
 ## Route Parameters
 
 Routes can contain parameters (the same parameters that react-router supports). The main use-case are the ones defined by a colon followed by the name of the parameter. For example, the route `/hello/:name` defines a parameter named `name`.
