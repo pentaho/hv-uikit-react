@@ -20,13 +20,13 @@ npm i react@18 react-dom@18
 Update MUI to v7 and UI Kit to packages you depend on
 
 ```sh
-npm i @mui/material@7 @hitachivantara/uikit-react-core@next
+npm i @mui/material@7 @hitachivantara/uikit-react-core@latest
 ```
 
 If you depend on other UI Kit packages or are using App Shell, it's best to update them all at once:
 
 ```sh
-npm i @mui/material@7 @hitachivantara/uikit-react-{core,icons}@next @hitachivantara/uikit-uno-preset@next @hitachivantara/app-shell-vite-plugin@next
+npm i @mui/material@7 @hitachivantara/uikit-react-{core,icons}@latest @hitachivantara/uikit-uno-preset@latest @hitachivantara/app-shell-vite-plugin@latest
 ```
 
 ## Breaking Changes & Migration Steps
