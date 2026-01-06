@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.5...@hitachivantara/uikit-styles@6.0.1) (2026-01-06)
+
+**Note:** Version bump only for package @hitachivantara/uikit-styles
+
 # [6.0.0-next.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.4...@hitachivantara/uikit-styles@6.0.0-next.5) (2025-12-15)
 
 ### Bug Fixes
