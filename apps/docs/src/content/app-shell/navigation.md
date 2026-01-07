@@ -18,6 +18,28 @@ Check the [configuration file reference](./configuration#menu) for more informat
 You can also enable the `autoMenu` option that when set, will have the plugin trying to automatically add the configured views as menu entries. Any menu defined in the App Shell config file will be overwritten.
 For more details refer to the [plugin documentation](https://github.com/pentaho/hv-uikit-react/tree/master/packages/app-shell-vite-plugin#readme).
 
+## Conditional Navigation with Conditions
+
+Menu items support [conditions](./configuration#conditions) to control their visibility based on runtime criteria. Additionally, **menu items automatically inherit conditions from their target view routes**, implementing an AND logic where all conditions must be met for the menu to be visible.
+
+```tsx
+menu: [
+  {
+    label: "Admin Panel",
+    target: "/admin",
+    // This menu will automatically inherit any conditions from the /admin view
+    // You can also add explicit menu-only conditions:
+    conditions: [
+      {
+        bundle: "@hv-apps/my-app/conditions/useShowInMenu.js",
+      },
+    ],
+  },
+];
+```
+
+This inheritance ensures that menu items automatically hide when their corresponding views are inaccessible, maintaining a consistent user experience.
+
 ## Navigation between Views
 
 Each _View_ doesn't know the final route path it will be mounted at, as it is defined by the application that integrates it. Most noticeable, the _View_ doesn't know the path of other _Views_ it wants to navigate to.
