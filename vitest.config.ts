@@ -1,6 +1,5 @@
-/// <reference types="@vitest/browser/providers/playwright" />
-
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import { playwright } from "@vitest/browser-playwright";
 import { defineConfig, mergeConfig } from "vitest/config";
 
 import viteConfig from "./.config/vite.config";
@@ -13,12 +12,14 @@ export default mergeConfig(
       globals: true,
 
       maxWorkers: process.env.CI ? 2 : undefined,
+      slowTestThreshold: process.env.CI ? 800 : 400,
       projects: [
         // storybook tests
         {
           extends: true,
           plugins: [
             storybookTest({
+              storybookUrl: "http://localhost:6006",
               tags: { skip: ["skipTestRunner"] },
             }),
           ],
@@ -27,7 +28,7 @@ export default mergeConfig(
             browser: {
               enabled: true,
               headless: true,
-              provider: "playwright",
+              provider: playwright(),
               instances: [{ browser: "chromium" }],
             },
             setupFiles: [".storybook/vitest.setup.ts"],
