@@ -1,11 +1,9 @@
-import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
+import react from "@vitejs/plugin-react";
+import unoCSS from "unocss/vite";
 import { mergeConfig } from "vite";
-
-import viteConfig from "./vite.config";
-
-const require = createRequire(import.meta.url);
 
 export default {
   framework: {
@@ -25,8 +23,6 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-themes"),
-    `${__dirname}/addons/version-selector`,
-    `${__dirname}/addons/mode-selector`,
   ],
   features: {},
   staticDirs: [
@@ -41,7 +37,12 @@ export default {
     },
   ],
   async viteFinal(config) {
-    return mergeConfig(config, viteConfig);
+    return mergeConfig(config, {
+      optimizeDeps: {
+        exclude: ["xmllint-wasm"],
+      },
+      plugins: [react(), unoCSS()],
+    });
   },
   typescript: {
     reactDocgen: "react-docgen",
@@ -54,6 +55,6 @@ export default {
   },
 } as StorybookConfig;
 
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+function getAbsolutePath(value: string) {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }

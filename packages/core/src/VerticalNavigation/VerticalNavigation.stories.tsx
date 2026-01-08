@@ -22,20 +22,14 @@ import { TreeViewMode as TreeViewModeStory } from "./stories/TreeViewMode";
 const meta: Meta<typeof HvVerticalNavigation> = {
   title: "Components/Vertical Navigation",
   component: HvVerticalNavigation,
+  // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: {
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationHeader,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationTree,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationActions,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationAction,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationTreeView,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationTreeViewItem,
-    // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
     HvVerticalNavigationSlider,
   },
   decorators: [
@@ -51,7 +45,6 @@ export const Main: StoryObj<HvVerticalNavigationProps> = {
     slider: false,
   },
   argTypes: {},
-  parameters: {},
   render: (args) => <MainStory {...args} />,
 };
 

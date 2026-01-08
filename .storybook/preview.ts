@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
+import type { Viewport } from "storybook/viewport";
 
 import DocsContainer from "./blocks/DocsContainer";
 import { DocsPage } from "./blocks/DocsPage";
@@ -38,16 +39,16 @@ export const parameters: Preview["parameters"] = {
   },
   // Chromatic default viewport
   viewport: {
-    viewports: {
+    options: {
       desktop: {
         name: "desktop",
+        type: "desktop",
         styles: {
           height: "1080px",
           width: "1920px",
         },
       },
-    },
-    defaultViewport: "desktop",
+    } satisfies Record<string, Viewport>,
   },
 };
 
@@ -55,4 +56,7 @@ export default {
   parameters,
   decorators: [withThemeDecorator()],
   tags: ["autodocs"],
+  initialGlobals: {
+    viewport: { value: "desktop", isRotated: false },
+  },
 } satisfies Preview;
