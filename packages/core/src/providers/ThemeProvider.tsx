@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { EmotionCache } from "@emotion/cache";
 import {
-  createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider,
+  useColorScheme,
 } from "@mui/material/styles";
 import {
   defaultCacheKey,
@@ -19,6 +19,7 @@ import {
 
 import { getContainerElement } from "../utils/document";
 import { setElementAttrs } from "../utils/theme";
+import { createMuiTheme } from "./utils";
 
 export { HvThemeContext };
 export type { HvThemeContextValue };
@@ -33,14 +34,14 @@ interface HvThemeProviderProps {
   themeRootId?: string;
 }
 
-export const HvThemeProvider = ({
+function HvThemeProviderInner({
   children,
   theme,
-  emotionCache,
   colorMode: colorModeProp,
   themeRootId: rootId,
-}: HvThemeProviderProps) => {
+}: HvThemeProviderProps) {
   const [colorModeValue, setColorModeValue] = useState(colorModeProp);
+  const { setMode } = useColorScheme();
 
   /** safe `colorMode`, ensuring no invalid values are used */
   const colorMode = colorModeValue === "dark" ? "dark" : "light";
@@ -48,6 +49,8 @@ export const HvThemeProvider = ({
   // review in v6 so that theme/colorMode isn't both controlled & uncontrolled
   useEffect(() => {
     setColorModeValue(colorModeProp);
+    setMode(colorModeProp);
+    // eslint-disable-next-line react-hooks/exhaustive-deps setMode isn't stable
   }, [colorModeProp]);
 
   useEffect(() => {
@@ -63,6 +66,7 @@ export const HvThemeProvider = ({
       selectedMode: colorMode,
       changeMode(newMode = colorMode) {
         setColorModeValue(newMode);
+        setMode(newMode);
       },
       rootId,
 
@@ -80,56 +84,25 @@ export const HvThemeProvider = ({
       },
       themes: [theme],
       selectedTheme: theme.name,
-      changeTheme(theme: string, mode: string) {
-        setColorModeValue(mode as any);
+      changeTheme(theme: string, mode: HvThemeColorMode) {
+        setColorModeValue(mode);
+        setMode(mode);
       },
     }),
-    [theme, colorMode, rootId],
+    [theme, colorMode, setMode, rootId],
   );
 
+  return (
+    <HvThemeContext.Provider value={value}>{children}</HvThemeContext.Provider>
+  );
+}
+
+export function HvThemeProvider(props: HvThemeProviderProps) {
+  const { theme, emotionCache, colorMode } = props;
+
   const muiTheme = useMemo(() => {
-    const colors = theme.colors[colorMode] || theme.colors.light;
-    return createMuiTheme({
-      colorSchemes: { light: true, dark: true },
-      spacing: theme.space.base,
-      typography: {
-        fontFamily: theme.fontFamily.body,
-      },
-      palette: {
-        primary: { main: colors.primary },
-        success: { main: colors.positive },
-        warning: { main: colors.warning },
-        error: { main: colors.negative },
-        info: { main: colors.info },
-        text: {
-          primary: colors.text,
-          secondary: colors.textSubtle,
-          disabled: colors.textDisabled,
-        },
-        background: {
-          default: colors.bgPage,
-          paper: colors.bgContainer,
-        },
-        divider: colors.border,
-        action: {
-          active: colors.primary,
-          hover: colors.primaryStrong,
-          selected: colors.primaryStrong,
-          disabled: colors.textDisabled,
-          disabledBackground: colors.bgDisabled,
-        },
-      },
-      components: {
-        MuiButtonBase: {
-          defaultProps: {
-            disableRipple: true,
-            disableTouchRipple: true,
-          },
-        },
-      },
-      breakpoints: theme.breakpoints,
-    });
-  }, [theme, colorMode]);
+    return createMuiTheme(theme);
+  }, [theme]);
 
   const emotionCacheValue = useMemo(
     () => ({ cache: emotionCache }),
@@ -137,12 +110,10 @@ export const HvThemeProvider = ({
   );
 
   return (
-    <MuiThemeProvider theme={muiTheme}>
-      <HvThemeContext.Provider value={value}>
-        <EmotionContext.Provider value={emotionCacheValue}>
-          {children}
-        </EmotionContext.Provider>
-      </HvThemeContext.Provider>
+    <MuiThemeProvider theme={muiTheme} defaultMode={colorMode}>
+      <EmotionContext.Provider value={emotionCacheValue}>
+        <HvThemeProviderInner {...props} />
+      </EmotionContext.Provider>
     </MuiThemeProvider>
   );
-};
+}
