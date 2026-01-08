@@ -15,7 +15,6 @@ export const { staticClasses, useClasses } = createClasses("HvStatusIcon", {
     display: "inline-flex",
     lineHeight: 0,
     flexShrink: 0,
-    padding: theme.space.xxs,
     borderRadius: theme.radii.base,
     "--icsize": "auto",
     ":where([data-size=md])": { borderRadius: theme.radii.round },
@@ -23,6 +22,7 @@ export const { staticClasses, useClasses } = createClasses("HvStatusIcon", {
     ":where([data-size=xl])": { borderRadius: theme.radii.large },
     ":where([data-type=full])": {
       outline: "1px solid currentcolor",
+      padding: theme.space.xxs,
     },
     ...Object.fromEntries(
       Object.entries(notificationMap).map(([variant, color]) => [
