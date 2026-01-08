@@ -1,7 +1,6 @@
 import type {
   DeepString,
   HvThemeBreakpoint,
-  HvThemeColorMode,
   HvThemeStructure,
   HvThemeVars,
   SpacingValue,
@@ -81,29 +80,34 @@ export const mergeTheme = (...objects: any[]): HvThemeStructure => {
   }, {});
 };
 
+/** removes from `obj` properties that are equal to `base` */
+function removeDuplicate(obj: Record<string, any>, base: Record<string, any>) {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key, value]) => base[key] !== value),
+  );
+}
+
 export const getThemeVars = (theme: HvThemeStructure) => {
   const cssVars: Record<string, any> = {};
 
-  const colorModes: HvThemeColorMode[] = ["light", "dark"];
+  const defaultColorMode = theme.defaultColorMode || "light";
+  const altColorMode = defaultColorMode === "light" ? "dark" : "light";
 
-  colorModes.forEach((colorMode) => {
-    const styleName = `[data-theme="${theme.name}"][data-color-mode="${colorMode}"]`;
-    const themeName = `[data-theme="${theme.name}"]`;
+  const styleName = `[data-theme="${theme.name}"][data-color-mode="${altColorMode}"]`;
+  const themeName = `[data-theme="${theme.name}"]`;
 
-    // exclude properties that shouldn't be mapped to CSS variables
-    // @ts-expect-error align HvTheme <-> HvThemeStructure?
-    const { base, components, name, colors, palette, icons, vars, ...rest } =
-      theme;
+  // exclude properties that shouldn't be mapped to CSS variables
+  // @ts-expect-error align HvTheme <-> HvThemeStructure?
+  const { base, components, name, colors, palette, icons, vars, ...rest } =
+    theme;
 
-    cssVars[styleName] = toCSSVars({
-      colors: {
-        ...colors[colorMode],
-      },
-    });
+  cssVars[styleName] = toCSSVars({
+    colors: removeDuplicate(colors[altColorMode], colors[defaultColorMode]),
+  });
 
-    cssVars[themeName] = toCSSVars({
-      ...rest,
-    });
+  cssVars[themeName] = toCSSVars({
+    ...rest,
+    colors: colors[defaultColorMode],
   });
 
   return cssVars;
