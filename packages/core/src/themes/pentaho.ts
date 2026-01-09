@@ -8,6 +8,7 @@ import {
 } from "@hitachivantara/uikit-styles";
 
 import type { HvBadgeProps } from "../Badge";
+import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvBaseDropdownProps } from "../BaseDropdown";
@@ -39,7 +40,7 @@ import type { HvNumberInputProps } from "../NumberInput";
 import type { HvPaginationProps } from "../Pagination";
 import type { HvSectionProps } from "../Section";
 import type { HvSelectProps } from "../Select";
-import type { HvSnackbarProps } from "../Snackbar";
+import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvSwitchProps } from "../Switch";
 import type { HvTabsProps } from "../Tabs";
@@ -1101,5 +1102,20 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSingleCalendarProps>,
+    HvBannerContent: {
+      classes: {
+        root: {
+          overflow: "hidden",
+          minHeight: "unset",
+        },
+      },
+    } satisfies CSSClasses<HvBannerContentProps>,
+    HvSnackbarContent: {
+      classes: {
+        root: {
+          minHeight: "unset",
+        },
+      },
+    } satisfies CSSClasses<HvSnackbarContentProps>,
   },
 });

@@ -22,8 +22,18 @@ const { useClasses } = createClasses("HvCallout", {
     position: "relative",
     boxShadow: "none",
     flexWrap: "nowrap",
-    padding: 0,
     borderRadius: theme.radii.round,
+    alignItems: "center",
+
+    "&[data-size='large']": {
+      padding: theme.space.sm,
+    },
+    "&[data-size='regular']": {
+      padding: theme.space.xs,
+    },
+    "&[data-size='micro']": {
+      padding: 0,
+    },
   },
   success: {
     backgroundColor: theme.colors.positiveDimmed,
@@ -48,6 +58,7 @@ const { useClasses } = createClasses("HvCallout", {
     alignItems: "center",
     padding: 0,
     color: theme.colors.textDark,
+    width: "100%",
   },
   messageContent: {
     textWrap: "balance",
@@ -68,6 +79,7 @@ const { useClasses } = createClasses("HvCallout", {
     height: "100%",
     justifyContent: "space-between",
     gap: theme.space.xs,
+    alignItems: "flex-start",
   },
   actionCustom: {
     flex: "0 0 auto",
@@ -116,6 +128,8 @@ export interface HvCalloutProps
   actionsPosition?: HvCalloutActionPosition;
   /** The props to pass down to the Action Container. */
   actionProps?: Partial<HvButtonProps>;
+  /** The size of the banner. */
+  size?: "large" | "regular" | "micro";
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvCalloutClasses;
 }
@@ -144,6 +158,7 @@ export const HvCallout = forwardRef<
     actionsPosition: actionsPositionProp = "auto",
     children,
     actionProps,
+    size = "regular",
     ...others
   } = useDefaultProps("HvCallout", props);
   const { classes, cx } = useClasses(classesProp, false);
@@ -180,10 +195,12 @@ export const HvCallout = forwardRef<
         message: classes.message,
         action: classes.action,
       }}
+      data-size={size}
       message={
         <>
           {icon && (
             <HvStatusIcon
+              size={size === "large" ? "md" : "sm"}
               className={classes.messageIcon}
               variant={variant === "default" ? "info" : variant}
               customIcon={customIcon}
@@ -193,6 +210,7 @@ export const HvCallout = forwardRef<
             {title && <b className={classes.messageTitle}>{title}</b>}
             {children}
           </div>
+          <div style={{ flex: 1 }} />
           {actions && actionsPosition === "inline" && actionsContent}
         </>
       }
