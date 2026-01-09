@@ -1,10 +1,11 @@
+import { loadEnv } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
 
 const {
   VITE_SAMPLE_APP_URL = "https://lumada-design.github.io/modules/sample-app/",
   VITE_USER_INFORMATION_URL = "http://localhost:8081/",
   VITE_USER_NOTIFICATIONS_URL = "http://localhost:8080/",
-} = process.env;
+} = loadEnv(process.env.NODE_ENV, process.cwd());
 
 export default {
   baseUrl: "/",
@@ -13,8 +14,10 @@ export default {
     "@hv/user-information-client/": VITE_USER_INFORMATION_URL,
     "@hv/user-notifications-client/": VITE_USER_NOTIFICATIONS_URL,
   },
+  name: "App Shell",
   logo: {
     name: "PENTAHO",
+    description: "App Shell",
   },
   theming: {
     theme: "pentaho",

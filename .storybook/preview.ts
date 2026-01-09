@@ -17,7 +17,7 @@ export const parameters: Preview["parameters"] = {
   controls: {},
   options: {
     storySort: {
-      order: ["Components", "Visualizations"],
+      order: ["Tests", "Components", "Visualizations"],
     },
   },
   a11y: {
