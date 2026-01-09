@@ -3,21 +3,18 @@ import { theme } from "@hitachivantara/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
   root: {
-    "--first-row-cell-height": "52px",
+    "--first-row-cell-height": "32px",
     "--cell-height": "32px",
     height: "var(--cell-height)",
     verticalAlign: "inherit",
     alignContent: "inherit",
     textAlign: "left",
-    padding: theme.spacing(0, 1, 0, 4),
+    padding: theme.spacing(0, "sm"),
     borderColor: theme.colors.border,
     borderBottomWidth: 1,
   },
   head: {
-    paddingTop: 8,
-    verticalAlign: "top",
-    alignContent: "start",
-    ...theme.typography.label,
+    fontWeight: theme.fontWeights.semibold,
     backgroundColor: theme.colors.bgContainer,
     borderBottomWidth: 1,
 
@@ -35,15 +32,11 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
     },
 
     "&$sortable": {
-      verticalAlign: "initial",
-      alignContent: "initial",
-      paddingTop: 0,
-      paddingLeft: 0,
       cursor: "pointer",
 
       ":hover, :focus-within": {
         backgroundColor: theme.colors.bgHover,
-        "& $sortIcon": {
+        "& $sortButton": {
           opacity: 1,
         },
       },
@@ -54,9 +47,6 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
     ...theme.typography.body,
     ":where($sorted)": {
       backgroundColor: theme.alpha("bgContainer", 0.4),
-    },
-    "&$sortable:not($variantNone)": {
-      paddingLeft: 32,
     },
   },
   footer: {},
@@ -84,31 +74,40 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
       borderLeftWidth: 0,
     },
   },
-  headerContent: { display: "flex", alignItems: "flex-start", width: "100%" },
+  headerContent: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xxs,
+    width: "100%",
+  },
   headerText: { overflow: "hidden", textOverflow: "ellipsis" },
-  headerParagraph: { overflow: "hidden", display: "-webkit-box" },
-  sortableHeaderText: { paddingTop: "8px" },
+  headerParagraph: { textOverflow: "inherit", display: "-webkit-box" },
+  /** @deprecated use `sortable: &$headerText` */
+  sortableHeaderText: {},
   sorted: {
-    "& $sortIcon": {
+    "& $sortButton": {
       opacity: 1,
     },
   },
   sortable: {},
   sortButton: {
+    opacity: 0,
     paddingLeft: 4,
     paddingTop: 4,
-    ":focus-visible": {
+    ":focus-visible,:hover": {
       boxShadow: "none",
       backgroundColor: "transparent",
     },
   },
-  sortIcon: { opacity: 0 },
+  /** @deprecated use `classes.sortButton` instead */
+  sortIcon: {},
+  // TODO: deprecate & merge these classes in favour of data-align
   alignLeft: { textAlign: "left" },
   alignRight: { textAlign: "right", flexDirection: "row-reverse" },
   alignCenter: { textAlign: "center" },
   alignJustify: { textAlign: "justify" },
   alignFlexLeft: { justifyContent: "flex-start" },
-  alignFlexRight: { justifyContent: "flex-end" },
+  alignFlexRight: { flexDirection: "row-reverse" },
   alignFlexCenter: { justifyContent: "center" },
   alignFlexJustify: { textAlign: "justify" },
   variantCheckbox: {

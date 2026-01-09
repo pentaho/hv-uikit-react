@@ -623,9 +623,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     } satisfies CSSClasses<HvDropdownButtonProps>,
     HvPagination: {
       classes: {
-        root: {
-          ...theme.typography.caption1,
-        },
         icon: {
           fontSize: 16,
         },

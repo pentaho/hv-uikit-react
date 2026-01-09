@@ -29,11 +29,14 @@ const meta: Meta<typeof HvPagination> = {
 export default meta;
 
 export const Main: StoryObj<HvPaginationProps> = {
-  args: {},
+  args: {
+    showPageSizeOptions: true,
+    showPageJump: true,
+  },
   argTypes: {
     classes: { control: { disable: true } },
   },
-  render: () => {
+  render: (args) => {
     const pageSizeOptions = [4, 6, 12, 24, 48, 2000];
     const data = [...Array(64).keys()];
 
@@ -59,6 +62,7 @@ export const Main: StoryObj<HvPaginationProps> = {
           onPageChange={setPage}
           onPageSizeChange={setPageSize}
           labels={{ pageSizeEntryName: "items" }}
+          {...args}
         />
       </div>
     );

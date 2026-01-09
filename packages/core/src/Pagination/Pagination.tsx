@@ -12,7 +12,6 @@ import { useLabels } from "../hooks/useLabels";
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
 import { HvBaseProps } from "../types/generic";
-import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./Pagination.styles";
 import HvSelect, { Option } from "./Select";
 
@@ -159,8 +158,8 @@ export const HvPagination = forwardRef<
 
   return (
     <div ref={ref} id={id} className={cx(classes.root, className)} {...others}>
-      <div className={classes.pageSizeOptions} {...showPageProps}>
-        {showPageSizeOptions && (
+      {showPageSizeOptions && (
+        <div className={classes.pageSizeOptions} {...showPageProps}>
           <>
             {!isXsDown && (
               <span className={classes?.pageSizeTextContainer}>
@@ -189,8 +188,8 @@ export const HvPagination = forwardRef<
               </span>
             )}
           </>
-        )}
-      </div>
+        </div>
+      )}
       <div className={classes.pageNavigator} {...navigationProps}>
         <HvIconButton
           className={classes.iconContainer}
@@ -210,7 +209,7 @@ export const HvPagination = forwardRef<
         </HvIconButton>
         <div className={classes.pageInfo}>
           {showPageJump ? renderPageJump() : <span>{`${page + 1}`}</span>}
-          <HvTypography component="span">{`${labels?.pagesSeparator} `}</HvTypography>
+          <span>{`${labels?.pagesSeparator} `}</span>
           <span>{pages}</span>
         </div>
         <HvIconButton
