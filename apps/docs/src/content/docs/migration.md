@@ -4,7 +4,7 @@ UI Kit v6 is a **major release** focused on upgrading critical dependencies, cle
 
 ## Main changes
 
-- Updated dependencies: `react@18+` and `@mui/material@7`
+- Updated dependencies: `react@18+`, `@mui/material@7`, `node@22.18+`
 - Theme changes: `ds3` removed, `pentahoPlus` → `pentaho`, `ds5` → `next`
 - `HvProvider` simplified: single `theme` required, only `light`-`dark` modes
 - Removed deprecated components, props, and `classes`
@@ -204,6 +204,7 @@ display title1 title2 title3 title4 body label captionLabel caption1 caption2
 | HvBadge        | `count`                              | `label`                     |
 | HvBadge        | `text`                               | `children`                  |
 | HvBadge        | `textVariant`                        | `HvTypography` + `children` |
+| HvBulkActions  | `selectAllLabel`                     | `selectAllPagesLabel`       |
 | HvButton       | `overrideIconColors`                 | —                           |
 | HvDialog       | `firstFocusable`                     | `autoFocus` on the element  |
 | HvDrawer       | `showBackdrop`                       | `hideBackdrop`              |
@@ -229,6 +230,7 @@ The following CSS classes have been removed. Use the suggested replacements or m
 | ----------------- | ---------------------------------------------------- | -------------------------------------- |
 | HvAdornment       | `classes.icon`, `classes.adornment*`                 | `classes.root`                         |
 | HvAvatar          | `classes.status`                                     | `classes.container`                    |
+| HvBadge           | `classes.show*`, `classes.badgeContainer`            | `classes.badge`                        |
 | HvBannerContent   | `classes.baseVariant`, `classes.outContainer`        | `classes.root`                         |
 | HvBannerContent   | `classes.actionsInnerContainer`                      | `classes.actionContainer`              |
 | HvBaseDropdown    | `classes.headerOpen*`, `classes.panelOpened*`        | `[data-popper-placement]`              |

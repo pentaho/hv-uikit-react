@@ -14,8 +14,6 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
       },
     },
   },
-  /** class applied to the badge container when it has content */
-  badgeContainer: {},
   /** class applied to the badge */
   badge: {
     position: "absolute",
