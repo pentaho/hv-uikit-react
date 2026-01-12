@@ -278,7 +278,8 @@ Notes:
 - **Context availability**: Only conditions and regular providers benefit from this distinction (system providers' context is accessible to both conditions and regular providers, but regular providers' context is not accessible to conditions). Both types are equally accessible to views and other modules.
 
 > [!IMPORTANT]
-> If a condition hook needs context from a provider, that provider must be a system provider to ensure it is present when conditions are evaluated. Use system providers thoughtfully, as they exist regardless of conditional logic and are available to the entire application.
+> If a condition hook needs context from a provider, that provider must be a system provider to ensure it is present when conditions are evaluated.
+> Use system providers thoughtfully, as they exist regardless of conditional logic and are available to the entire application, on the other hand, regular providers are subject to other conditional providers logic (reloads).
 
 ### `providers`
 
