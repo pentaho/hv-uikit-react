@@ -179,7 +179,7 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
         defaultChecked={defaultChecked}
         classes={{
           root: classes.switch,
-          switchBase: cx(classes.switchBase),
+          switchBase: classes.switchBase,
           checked: classes.checked,
           track: cx(
             classes.track,
@@ -200,7 +200,10 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
           ),
           disabled: classes.disabled,
         }}
-        inputProps={inputProps}
+        slotProps={{
+          // keep switch squashed by `slotProps.input` https://github.com/mui/material-ui/pull/46482
+          input: { role: "switch", ...inputProps },
+        }}
         onFocusVisible={onFocusVisibleCallback}
         onBlur={onBlurCallback}
         data-size={size}

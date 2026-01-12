@@ -27,8 +27,8 @@ describe("Switch", () => {
         <HvSwitch defaultChecked aria-label="Engine 2" />
       </>,
     );
-    const switch1 = screen.getByRole("checkbox", { name: "Engine 1" });
-    const switch2 = screen.getByRole("checkbox", { name: "Engine 2" });
+    const switch1 = screen.getByRole("switch", { name: "Engine 1" });
+    const switch2 = screen.getByRole("switch", { name: "Engine 2" });
     expect(switch1).not.toBeChecked();
     expect(switch2).toBeChecked();
   });
@@ -46,7 +46,7 @@ describe("Switch", () => {
   it("changes state when clicked Controlled", async () => {
     render(<ControlledSwitch />);
 
-    const switchElement = screen.getByRole("checkbox");
+    const switchElement = screen.getByRole("switch");
 
     expect(switchElement).not.toBeChecked();
     await userEvent.click(switchElement);
@@ -64,7 +64,7 @@ describe("Switch", () => {
       />,
     );
 
-    const switchElement = screen.getByRole("checkbox");
+    const switchElement = screen.getByRole("switch");
 
     expect(switchElement).not.toBeChecked();
     await userEvent.click(switchElement);
