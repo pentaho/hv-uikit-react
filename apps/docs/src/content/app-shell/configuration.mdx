@@ -181,6 +181,7 @@ Describes the _Product's_ menus, with each item potentially having submenus and 
   - `iconType`: Type of icon to be used (at this moment the only possible value is `uikit`).
   - `name`: Name of the icon to be used (as identified at [UI Kit's icons library](/docs/icon-library#library))
 - `submenus`: Nested/recursive array of [`menu`](#menu) items.
+- `conditions`: Array of [condition](#conditions) objects. Menu items with an associated target view are implicitly subject to any conditions declared by the view's configuration element. These are composed with any conditions locally declared in the menu configuration element.
 
 > **WARNING:** `target` and `submenus` properties should not be used together in the definition of a menu item.
 
@@ -250,7 +251,7 @@ See [Header actions](./header-actions) for more information and see the availabl
 
 This prop defines the _System Providers_ that will wrap the entire **App Shell** application, including all _Views_, _Shared Modules_, and regular _Providers_. System providers are positioned at the top of the React component tree and provide context that should be available throughout the entire application.
 
-System providers follow the [module structure](#module-structure) object API (important to note that they do not support conditions).
+System providers follow the [module structure](#module-structure) object API and do not have an associated condition.
 
 ```ts
 const systemProviders = [
@@ -264,18 +265,24 @@ const systemProviders = [
 ];
 ```
 
-The usage of system providers should not be abused and well thought of since they will exist, regardless of conditional logic, and available to all application.
-This may be useful when some context needs to be available before rendering any content or context required by conditions to evaluate properly.
+Notes:
+
+- The **App Shell** instantiates _System Providers_ in their declaration order, but dependencies between _System Providers_ should be avoided and you should never rely on the existence of another _System Provider_.
+- Each _Application Bundle_ should expose just one _System Provider_, though if multiple are needed they can be composed into a single _System Provider_.
 
 **Key Differences from Regular Providers:**
 
-- **Position in tree**: System providers wrap the entire App Shell (including the theme provider), while regular providers are nested deeper in the component tree
-- **No conditions**: System providers are not affected by conditions
-- **Context availability**: Context from system providers is available to conditions, regular providers, views, and all other modules
+- **Position in tree**: System providers sit at the very top of the component tree, while regular providers are nested deeper just before navigation and views.
+- **Loading behavior**: System providers are always loaded and cannot have an associated condition, whereas regular providers can be conditionally loaded.
+- **Evaluation order**: System providers are evaluated first in their declaration order, followed by regular providers, which ensures their context is available when conditions are evaluated.
+- **Context availability**: Only conditions and regular providers benefit from this distinction (system providers' context is accessible to both conditions and regular providers, but regular providers' context is not accessible to conditions). Both types are equally accessible to views and other modules.
+
+> [!IMPORTANT]
+> If a condition hook needs context from a provider, that provider must be a system provider to ensure it is present when conditions are evaluated. Use system providers thoughtfully, as they exist regardless of conditional logic and are available to the entire application.
 
 ### `providers`
 
-This prop defines the _Providers_ that will wrap all the _Views_ and _Shared Modules_. Unlike system providers, these can be conditionally loaded based on [conditions](#conditions). They follow the [module structure](#module-structure) object API.
+This prop defines the _Providers_ that will wrap all the _Views_ and _Shared Modules_. Unlike system providers, these can be conditionally loaded based on [conditions](#conditions), but are not accessible to condition hooks. They follow the [module structure](#module-structure) object API.
 
 ```ts
 const providers = [
@@ -299,26 +306,29 @@ const providers = [
 
 Notes:
 
-- Each _Application Bundle_ ideally should expose just a single _Provider_. If multiple _Providers_ are needed, they can be composed into a single _Provider_.
-- The **App Shell** will instantiate the _Providers_ in the order they are declared in the configuration file. However, dependencies between _Providers_ should be avoided, and never rely on the existence of another _Provider_.
-- This shouldn't be abused: Context only needed for the rendering of a _View_ shouldn't be put on a global _Provider_ just because another _View_ needs it. E.g. the i18next provider should continue to be instantiated on every view, using a HOC for example, instead of having a global provider for each _Application Bundle_, each with its own i18next provider always instanced in case it is needed.
+- Each _Application Bundle_ should expose just one _Provider_, though if multiple are needed they can be composed into a single _Provider_.
+- The **App Shell** instantiates _Providers_ in their declaration order, but dependencies between _Providers_ should be avoided and you should never rely on the existence of another _Provider_.
+- **Providers' context is not accessible to conditions** (if a condition hook needs context from a provider, you must use a [system provider](#systemproviders) instead).
+- Don't abuse this feature: context that's only needed for one _View_ shouldn't be placed in a global _Provider_ just because another _View_ needs it. For example, the i18next provider should be instantiated per view using a HOC rather than as a global provider for each _Application Bundle_.
 - Providers can be conditionally loaded using the [`conditions`](#conditions) property.
 
 ### `conditions`
 
-Conditions are bundles that control whether certain elements (views, menu items, header actions, providers, or services) should be displayed or loaded in the final App Shell Model. They provide a powerful mechanism for conditional rendering based on dynamic runtime criteria.
+Conditions are bundles that control whether certain elements (such as views, menu items, header actions, providers, or services) should be displayed or loaded in the final App Shell Model, providing a powerful mechanism for conditional rendering based on dynamic runtime criteria.
 
 #### How Conditions Work
 
-A condition is a _Shared Module_ that exports a React hook as its default export. This hook must return an object with the following structure:
+A condition is a _Shared Module_ that exports a React hook as its default export. This hook must return an asynchronous result object with the following structure:
 
 ```ts
 interface UseConditionResult {
   isPending: boolean; // Whether the condition is still being evaluated
   error: Error | null; // Any error that occurred during evaluation
-  result: boolean; // The condition result
+  result: boolean | undefined; // The condition result (undefined when pending or on error)
 }
 ```
+
+The result is a discriminated union type that can be in one of three states: pending, error, or success.
 
 #### Using Conditions
 
@@ -345,10 +355,10 @@ Conditions can be applied to various configuration elements by adding a `conditi
 
 #### Condition Behavior
 
-- **Multiple conditions**: When multiple conditions are present, ALL must return `true` for the element to be shown (AND logic)
-- **Pending state**: Elements remain hidden while any condition is still pending (`isPending: true`)
-- **Error handling**: If a condition returns an error, the element is treated as hidden
-- **Menu inheritance**: Menu items automatically inherit conditions from their target view routes
+- **Multiple conditions**: When multiple conditions are present, ALL must return `true` for the element to be included in the configuration (AND logic)
+- **Pending state**: The associated configuration element is excluded from the configuration while any of its conditions is in a pending state
+- **Error handling**: If a condition returns an error, the associated configuration element is excluded from the configuration
+- **Menu conditions**: Menu configuration elements with an associated target view are implicitly subject to any conditions declared by the view's configuration element. These are composed with any conditions locally declared in the menu configuration element.
 
 #### Example Condition Implementation
 
@@ -359,7 +369,7 @@ Conditions can be applied to various configuration elements by adding a `conditi
 import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
 
 const useIsAdmin = (): UseConditionResult => {
-  const user = useCurrentUser(); // From a system provider context
+  const user = useCurrentUser(); // Possibly supported by a system provider context
 
   return {
     isPending: false,
@@ -370,6 +380,8 @@ const useIsAdmin = (): UseConditionResult => {
 
 export default useIsAdmin;
 ```
+
+Conditions can access context provided by [`systemProviders`](#systemproviders), which is useful when conditions need to evaluate based on authentication state, user permissions, or global configuration. In the example above, `useCurrentUser()` would be accessing context from an authentication system provider.
 
 **Asynchronous condition:**
 
@@ -385,6 +397,7 @@ interface FeatureConfig {
 const useFeatureEnabled = (config?: FeatureConfig): UseConditionResult => {
   const [isPending, setIsPending] = useState(true);
   const [result, setResult] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     if (!config?.featureFlag) {
@@ -400,37 +413,18 @@ const useFeatureEnabled = (config?: FeatureConfig): UseConditionResult => {
       })
       .catch(() => {
         setIsPending(false);
+        setError("Error fetching feature flag");
       });
   }, [config?.featureFlag]);
 
   return {
     isPending,
-    error: null,
+    error,
     result,
   };
 };
 
 export default useFeatureEnabled;
-```
-
-#### Context from System Providers
-
-Conditions can access context provided by [`systemProviders`](#systemproviders). This is particularly useful when conditions need to evaluate based on authentication state, user permissions, or global configuration:
-
-```ts
-// System provider gives context
-const systemProviders = [{ bundle: "@hv-apps/auth/AuthProvider.js" }];
-
-// Condition uses that context
-const useIsAuthenticated = (): UseConditionResult => {
-  const { isAuthenticated } = useAuth(); // From AuthProvider
-
-  return {
-    isPending: false,
-    error: null,
-    result: isAuthenticated,
-  };
-};
 ```
 
 ### `services`
@@ -455,7 +449,7 @@ Each service definition can be configured in one of two ways:
 
 A `ranking` property is used to determine the order of precedence when multiple implementations are available. Higher ranking values indicate higher precedence.
 
-Services also support [`conditions`](#conditions) to control their availability dynamically:
+Services support [`conditions`](#conditions) to control their availability dynamically:
 
 ```ts
 const appShellConfig = {
@@ -563,7 +557,7 @@ This property defines the theme of the _Product_, and it supports both the base 
 The config object for it has the following options:
 
 - `theme`: The active theme. It is the name of the built-in themes, or the module name.
-- `colorMode`: The color mode of the theme (`"light"` or `"dark"`). Defaults to `theme`'s default default color mode.
+- `colorMode`: The color mode of the theme (`"light"` or `"dark"`). Defaults to `theme`'s default color mode.
 
 Example:
 

@@ -20,15 +20,15 @@ For more details refer to the [plugin documentation](https://github.com/pentaho/
 
 ## Conditional Navigation with Conditions
 
-Menu items support [conditions](./configuration#conditions) to control their visibility based on runtime criteria. Additionally, **menu items automatically inherit conditions from their target view routes**, implementing an AND logic where all conditions must be met for the menu to be visible.
+Menu items support [conditions](./configuration#conditions) to control their visibility based on runtime criteria. Menu configuration elements with an associated target view are implicitly subject to any conditions declared by the view's configuration element, which are composed with any conditions locally declared in the menu configuration element (implementing an AND logic where all conditions must be met for the menu to be visible).
 
 ```tsx
 menu: [
   {
     label: "Admin Panel",
     target: "/admin",
-    // This menu will automatically inherit any conditions from the /admin view
-    // You can also add explicit menu-only conditions:
+    // This menu will be subject to any conditions from the /admin view
+    // You can also add explicit menu-specific conditions:
     conditions: [
       {
         bundle: "@hv-apps/my-app/conditions/useShowInMenu.js",
@@ -38,7 +38,7 @@ menu: [
 ];
 ```
 
-This inheritance ensures that menu items automatically hide when their corresponding views are inaccessible, maintaining a consistent user experience.
+This ensures that menu items are automatically excluded from the configuration when their corresponding views are inaccessible, maintaining a consistent user experience. Additionally, a menu is excluded if its parent menu is excluded, and a menu without a target view is excluded if it has no visible child menus.
 
 ## Navigation between Views
 
