@@ -204,6 +204,7 @@ display title1 title2 title3 title4 body label captionLabel caption1 caption2
 | HvBadge        | `count`                              | `label`                     |
 | HvBadge        | `text`                               | `children`                  |
 | HvBadge        | `textVariant`                        | `HvTypography` + `children` |
+| HvBulkActions  | `selectAllLabel`                     | `selectAllPagesLabel`       |
 | HvButton       | `overrideIconColors`                 | —                           |
 | HvDialog       | `firstFocusable`                     | `autoFocus` on the element  |
 | HvDrawer       | `showBackdrop`                       | `hideBackdrop`              |
