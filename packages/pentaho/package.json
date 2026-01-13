@@ -46,12 +46,9 @@
     "react-resize-detector": "^8.1.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "vite": "^7.1.1",
-    "vitest": "^3.2.4"
+    "vite": "^7.1.1"
   },
   "files": [
     "dist"
