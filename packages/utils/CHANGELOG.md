@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@6.1.0...@hitachivantara/uikit-react-utils@6.1.1) (2026-01-13)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-utils
+
 # [6.1.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@0.2.50...@hitachivantara/uikit-react-utils@6.1.0) (2026-01-06)
 
 # 6.0.0-next.7 (2025-12-16)

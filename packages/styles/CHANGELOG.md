@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.1...@hitachivantara/uikit-styles@6.0.2) (2026-01-13)
+
+### Bug Fixes
+
+- **Provider:** hoist default colors to root ([#5042](https://github.com/pentaho/hv-uikit-react/issues/5042)) ([e7194fb](https://github.com/pentaho/hv-uikit-react/commit/e7194fb0a8cf1346ec068c574fa59b07041d794b))
+
 ## [6.0.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.0-next.5...@hitachivantara/uikit-styles@6.0.1) (2026-01-06)
 
 **Note:** Version bump only for package @hitachivantara/uikit-styles

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.1.0...@hitachivantara/uikit-react-core@6.2.0) (2026-01-13)
+
+### Bug Fixes
+
+- **Provider:** align MUI Provider colorMode with UI Kit ([#5038](https://github.com/pentaho/hv-uikit-react/issues/5038)) ([f5ada45](https://github.com/pentaho/hv-uikit-react/commit/f5ada452b5db7fbfe48514c57c2e12b15a9e6a77))
+
+### Features
+
+- **Banner:** update to PD 0.9 specs ([#4985](https://github.com/pentaho/hv-uikit-react/issues/4985)) ([3f5f312](https://github.com/pentaho/hv-uikit-react/commit/3f5f3127dd117869d2169aa343a38288b81173e3))
+
 # [6.1.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@5.110.0...@hitachivantara/uikit-react-core@6.1.0) (2026-01-06)
 
 # 6.0.0-next.10 (2025-12-19)

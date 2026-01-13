@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-shared",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -29,7 +29,7 @@
     "react-router-dom": "^6.9.0"
   },
   "optionalDependencies": {
-    "@hitachivantara/uikit-react-core": "^6.1.0"
+    "@hitachivantara/uikit-react-core": "^6.2.0"
   },
   "files": [
     "dist"
