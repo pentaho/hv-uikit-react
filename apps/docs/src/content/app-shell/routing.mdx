@@ -6,7 +6,7 @@ A _View_ is a React Component exported as an ES module. It is the main building 
 >
 > The component to be rendered must be the **default export** of the module.
 
-A Route is a mapping between a URL and a _View_, and it is used to define the navigation tree of a _Product_. The **App Shell** is responsible for loading the _View_ and rendering it at the correct moment and place. On the main panel, it does it according to the active location route.
+Each _View_ is mapped to a URL path (defined by its `route` property) to enable navigation. The **App Shell** is responsible for loading the _View_ and rendering it at the correct moment and place. On the main panel, it does it according to the active location route.
 
 Example:
 
@@ -39,9 +39,9 @@ You can also enable the `autoViewsAndRoutes` option in the `vite.config.ts` file
 For details on file-based routing, refer to the [plugin documentation](https://github.com/pentaho/hv-uikit-react/tree/master/packages/app-shell-vite-plugin#readme).
 Note that _Shared Modules_ other than _Views_ must still be listed in the `modules` parameter at the `vite.config.ts` file.
 
-## Conditional Routes
+## Conditional Views
 
-Views support [conditions](./configuration#conditions) to control whether a route is accessible. When all conditions for a view evaluate to `false`, attempting to navigate to that route will result in a 404 error.
+Views support [conditions](./configuration#conditions) to control whether they are accessible. When all conditions for a view evaluate to `false`, attempting to navigate to that view's route will result in a 404 error.
 
 ```ts
 mainPanel: {
@@ -59,12 +59,6 @@ mainPanel: {
 }
 ```
 
-When using conditions on views:
-
-- Menu items targeting these routes will automatically inherit the view's conditions
-- Users without proper access will see a 404 page when trying to access the route directly
-- The route will not be accessible until all conditions return `true`
-
 ## Route Parameters
 
 Routes can contain parameters (the same parameters that react-router supports). The main use-case are the ones defined by a colon followed by the name of the parameter. For example, the route `/hello/:name` defines a parameter named `name`.
@@ -75,9 +69,7 @@ Nested _Views_ allows coupling segments of the URL to the component hierarchy, n
 
 > [!WARNING]
 >
-> Nested _Views_ are not supported by the file-based routing feature and must be
-> declared manually in the **App Shell** configuration file. The automatic and
-> manual definition of _Views_ will be merged.
+> Nested _Views_ are not supported by the file-based routing feature and must be declared manually in the **App Shell** configuration file. The automatic and manual definition of _Views_ will be merged.
 
 Example:
 
@@ -132,7 +124,7 @@ If keeping the _Shared Modules_ uncoupled from the App Shell is not a concern, y
 
 ## Index Route
 
-For the **App Shell** the index route, meaning the _View_ that is rendered when the URL matches the parent _View_ route exactly, is just a regular nested _View_ with `/` as the route:
+For the **App Shell** the index route is the _View_ that is rendered when the URL matches the parent _View_'s route exactly. It is configured as a regular nested _View_ with `/` as its route:
 
 ```ts
 mainPanel: {
