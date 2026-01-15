@@ -1,4 +1,5 @@
-import { forwardRef } from "react";
+// oxlint-disable complexity
+import { forwardRef, useEffect, useState } from "react";
 import type { SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
 import SnackbarContent, {
   type SnackbarContentProps as MuiSnackbarContentProps,
@@ -24,6 +25,7 @@ const { useClasses } = createClasses("HvCallout", {
     flexWrap: "nowrap",
     borderRadius: theme.radii.round,
     alignItems: "center",
+    overflow: "hidden",
 
     "&[data-size='large']": {
       padding: theme.space.sm,
@@ -87,6 +89,19 @@ const { useClasses } = createClasses("HvCallout", {
   actionClose: {
     alignSelf: "flex-end",
   },
+  messageContainer: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xs,
+  },
+  progress: {
+    height: 4,
+    position: "absolute",
+    backgroundColor: "var(--icolor)",
+    top: 0,
+    left: 0,
+  },
 });
 
 export type HvCalloutVariant =
@@ -128,11 +143,29 @@ export interface HvCalloutProps
   actionsPosition?: HvCalloutActionPosition;
   /** The props to pass down to the Action Container. */
   actionProps?: Partial<HvButtonProps>;
+  /** The number of milliseconds to wait before automatically calling the onClose function.
+   * onClose should then set the state of the open prop to hide the Snackbar */
+  autoHideDuration?: number;
+  /** Whether or not to show a progress bar indicating the auto-hide duration */
+  showProgress?: boolean;
+  /** Duration of transition in milliseconds. */
+  transitionDuration?: number;
   /** The size of the banner. */
-  size?: "large" | "regular" | "micro";
+  size?: "large" | "regular" | "toast" | "micro";
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvCalloutClasses;
 }
+
+const getIconSize = (size: HvCalloutProps["size"]) => {
+  switch (size) {
+    case "large":
+      return "md";
+    case "toast":
+      return "xs";
+    default:
+      return "sm";
+  }
+};
 
 /**
  * `HvCallout` is the internal content handler for the snackbars and banners. Might be promoted to a component.
@@ -158,11 +191,26 @@ export const HvCallout = forwardRef<
     actionsPosition: actionsPositionProp = "auto",
     children,
     actionProps,
+    autoHideDuration,
+    showProgress = false,
+    transitionDuration,
     size = "regular",
     ...others
   } = useDefaultProps("HvCallout", props);
   const { classes, cx } = useClasses(classesProp, false);
   const { activeTheme } = useTheme();
+  const [width, setWidth] = useState("0%");
+
+  useEffect(() => {
+    if (showProgress) {
+      // trigger on next tick
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          setWidth("100%");
+        });
+      }, transitionDuration || 300);
+    }
+  }, [showProgress, transitionDuration]);
 
   const icon = customIcon || (showIcon && iconVariant(variant));
 
@@ -198,17 +246,31 @@ export const HvCallout = forwardRef<
       data-size={size}
       message={
         <>
-          {icon && (
-            <HvStatusIcon
-              size={size === "large" ? "md" : "sm"}
-              className={classes.messageIcon}
-              variant={variant === "default" ? "info" : variant}
-              customIcon={customIcon}
+          {showProgress && (
+            <div
+              className={classes.progress}
+              style={{
+                // width: calculate based on the `autoHideDuration` if present
+                width,
+                transition: autoHideDuration
+                  ? `width ${autoHideDuration}ms linear`
+                  : "none",
+              }}
             />
           )}
-          <div className={classes.messageContent}>
-            {title && <b className={classes.messageTitle}>{title}</b>}
-            {children}
+          <div className={classes.messageContainer}>
+            {icon && (
+              <HvStatusIcon
+                size={getIconSize(size)}
+                className={classes.messageIcon}
+                variant={variant === "default" ? "info" : variant}
+                customIcon={customIcon}
+              />
+            )}
+            <div className={classes.messageContent}>
+              {title && <b className={classes.messageTitle}>{title}</b>}
+              {children}
+            </div>
           </div>
           <div style={{ flex: 1 }} />
           {actions && actionsPosition === "inline" && actionsContent}

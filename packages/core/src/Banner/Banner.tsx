@@ -59,7 +59,7 @@ export interface HvBannerProps
   /** Props to pass down to the banner Wrapper. An object `actionProps` can be included to be passed as others to actions. */
   bannerContentProps?: HvBannerContentProps;
   /** The size of the banner. */
-  size?: HvBannerContentProps["size"];
+  size?: Extract<HvBannerContentProps["size"], "regular" | "large" | "micro">;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBannerClasses;
   /** @ignore */

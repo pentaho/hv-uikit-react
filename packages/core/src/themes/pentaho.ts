@@ -1213,6 +1213,12 @@ export const pentaho = mergeTheme(pentahoBase, {
         root: {
           minHeight: "unset",
         },
+        messageContainer: {
+          paddingLeft: theme.space.xxs,
+        },
+        iconVariant: {
+          alignSelf: "center",
+        },
       },
     } satisfies CSSClasses<HvSnackbarContentProps>,
     HvBreadCrumb: {
