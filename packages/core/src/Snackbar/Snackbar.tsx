@@ -11,6 +11,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
+import { HvCalloutProps } from "../utils/Callout";
 import { capitalize } from "../utils/helpers";
 import { staticClasses, useClasses } from "./Snackbar.styles";
 import {
@@ -66,6 +67,10 @@ export interface HvSnackbarProps
   offset?: number;
   /** Others applied to the content of the snackbar. */
   snackbarContentProps?: HvSnackbarContentProps;
+  /** Whether or not to show a progress bar indicating the auto-hide duration */
+  showProgress?: boolean;
+  /** The size of the snackbar. */
+  size?: Extract<HvCalloutProps["size"], "regular" | "toast">;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvSnackbarClasses;
   /** @ignore */
@@ -106,6 +111,8 @@ export const HvSnackbar = forwardRef<
     container,
     offset = 60,
     snackbarContentProps,
+    showProgress = false,
+    size,
     ...others
   } = useDefaultProps("HvSnackbar", props);
   const { classes } = useClasses(classesProp);
@@ -159,6 +166,10 @@ export const HvSnackbar = forwardRef<
         action={action}
         onAction={onAction}
         onClose={onClose}
+        autoHideDuration={autoHideDuration}
+        showProgress={showProgress}
+        transitionDuration={transitionDuration}
+        size={size}
         {...snackbarContentProps}
       />
     </MuiSnackbar>

@@ -10,11 +10,13 @@ import { Header } from "../../components/Header";
   Component={HvSnackbar}
   componentName="HvSnackbar"
   controls={{
+    title: { defaultValue: "Snackbar Title" },
     label: { defaultValue: "This is a success message." },
     variant: { defaultValue: "success" },
     showIcon: { defaultValue: true },
     showClose: { defaultValue: true },
     open: { defaultValue: true },
+    size: { defaultValue: "regular", values: ["regular", "toast"] },
   }}
   componentProps={{
     style: { position: "relative", top: 0 },
@@ -81,17 +83,19 @@ Although not desirable, sometimes you may need to display a long message in the 
 
 ### Customization
 
-You can customize the `Snackbar` by setting its position, transition direction, and auto-hide duration.
+You can customize the `Snackbar` by setting its position, transition direction, auto-hide duration and whether or not to show a progress bar.
 
 - Use `anchorOrigin` to define its position on the screen.
 - Use `transitionDirection` to control how it appears and disappears.
 - Use `setAutoHideDuration` (in milliseconds) to specify how long it stays visible. When it closes, the `onClose` callback is triggered with the reason set to `"timeout"`.
+- Use `showProgress` to display a progress bar indicating the remaining time before auto-hide.
 
 ```tsx live
 import { useState } from "react";
 
 export default function Demo() {
   const [open, setOpen] = useState(false);
+  const [showProgress, setShowProgress] = useState(false);
   const [autoHideDuration, setAutoHideDuration] = useState(3000);
   const [anchorOrigin, setAnchorOrigin] = useState<
     HvSnackbarProps["anchorOrigin"]
@@ -113,9 +117,11 @@ export default function Demo() {
     <div className="flex justify-center w-full">
       <HvSnackbar
         open={open}
+        title={anchorOrigin.vertical + " " + anchorOrigin.horizontal}
         label="Data saved successfully."
         variant="success"
         showIcon
+        showProgress={showProgress}
         anchorOrigin={anchorOrigin}
         transitionDirection={transitionDirection}
         autoHideDuration={autoHideDuration}
@@ -124,7 +130,7 @@ export default function Demo() {
         }}
       />
       <div className="flex flex-col gap-md">
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between gap-xs items-end">
           <HvSelect
             label="Transition direction"
             value={transitionDirection}
@@ -144,6 +150,11 @@ export default function Demo() {
             label="Autohide duration"
             value={autoHideDuration}
             onChange={(_, val) => setAutoHideDuration(val)}
+          />
+          <HvCheckBox
+            label="Show Progress"
+            checked={showProgress}
+            onChange={(_, checked) => setShowProgress(checked)}
           />
         </div>
         <div className="flex gap-md w-full justify-between">
@@ -169,7 +180,7 @@ export default function Demo() {
           </HvButton>
         </div>
 
-        <div className="flex gap-md w-full">
+        <div className="flex gap-md w-full justify-between">
           <HvButton
             variant="primarySubtle"
             onClick={() =>
