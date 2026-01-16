@@ -148,6 +148,7 @@ export const { staticClasses, useClasses } = createClasses(
       },
       [`&& .${avatarClasses.root}`]: {
         fontSize: "15px",
+        borderColor: "transparent",
       },
     },
   },

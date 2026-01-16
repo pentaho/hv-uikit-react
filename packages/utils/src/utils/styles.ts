@@ -1,7 +1,7 @@
-function stripNullish<T extends Record<string, unknown>>(obj: T) {
+function stripEmpty<T extends Record<string, unknown>>(obj: T) {
   return Object.entries(obj).reduce<Record<string, unknown>>(
     (acc, [key, value]) => {
-      if (value != null && value !== "") {
+      if (value || value === 0) {
         acc[key] = value;
       }
       return acc;
@@ -18,4 +18,4 @@ function stripNullish<T extends Record<string, unknown>>(obj: T) {
 export const mergeStyles = (
   styleProp: React.CSSProperties | undefined,
   styles: Record<string, any>,
-): React.CSSProperties => ({ ...stripNullish(styles), ...styleProp });
+): React.CSSProperties => ({ ...stripEmpty(styles), ...styleProp });

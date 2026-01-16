@@ -8,13 +8,12 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import {
   HourGlass,
-  IconSize,
   IconType,
   Level0Good,
   Level3Bad,
 } from "@hitachivantara/uikit-react-icons";
 
-import { getColor, getSemantic } from "../utils";
+import { getSemantic } from "../utils";
 import { useClasses } from "./Step.styles";
 
 type HvStepClasses = ExtractNames<typeof useClasses>;
@@ -45,18 +44,12 @@ export interface HvStepProps
   disabled?: boolean;
 }
 
-const iconSizeObject: Record<HvSize, IconSize> = {
-  xs: "XS",
-  sm: "XS",
-  md: "S",
-  lg: "M",
-  xl: "M",
-};
-
-const stateObject: Record<string, number> = {
-  Pending: 16,
-  Failed: 24,
-  Completed: 24,
+const iconSizeObject: Record<HvSize, number> = {
+  xs: 8,
+  sm: 16,
+  md: 24,
+  lg: 32,
+  xl: 40,
 };
 
 const iconStateObject: Record<string, IconType> = {
@@ -80,18 +73,6 @@ export const HvStep = ({
 }: HvStepProps) => {
   const { classes, cx } = useClasses(classesProp);
 
-  const iconSize = iconSizeObject[size];
-  const squareL = stateObject[state];
-  const svgSize = {
-    xs: squareL - 8,
-    sm: squareL,
-    md: squareL + 8,
-    lg: squareL + 16,
-    xl: squareL + 24,
-  }[size];
-
-  const backgroundColor = getColor(state);
-
   const color = state === "Pending" ? "bgPage" : getSemantic(state);
   const status = state === "Current" ? "textDisabled" : undefined;
   const IconComponent = iconStateObject[state];
@@ -107,16 +88,12 @@ export const HvStep = ({
     >
       <HvAvatar
         className={cx(classes.avatar, classes[size])}
-        backgroundColor={backgroundColor}
+        backgroundColor={getSemantic(state)}
         status={status}
         size={size}
       >
         {IconComponent ? (
-          <IconComponent
-            color={color}
-            style={{ fontSize: svgSize }}
-            size={iconSize}
-          />
+          <IconComponent color={color} size={iconSizeObject[size]} />
         ) : (
           number
         )}
