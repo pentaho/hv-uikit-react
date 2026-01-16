@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import MuiAvatar, { AvatarProps as MuiAvatarProps } from "@mui/material/Avatar";
 import {
+  mergeStyles,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
@@ -75,8 +76,8 @@ export const HvAvatar = forwardRef<
     children: childrenProp,
     component = "div",
     size: sizeProp,
-    backgroundColor = "text",
-    color = "bgContainer",
+    backgroundColor,
+    color: colorProp,
     src,
     srcSet,
     sizes,
@@ -89,6 +90,10 @@ export const HvAvatar = forwardRef<
     ...others
   } = useDefaultProps("HvAvatar", props);
   const { classes, cx } = useClasses(classesProp);
+  // if a user-defined `backgroundColor` is passed, ignore the theme-defined `color`
+  const color = props.backgroundColor
+    ? props.color || "bgContainer"
+    : colorProp;
 
   const avatarGroupContext = useAvatarGroupContext();
 
@@ -120,40 +125,22 @@ export const HvAvatar = forwardRef<
     children = (
       <HvIcon
         name="User"
-        color={color}
         size={decreaseSizeMap[size]}
         className={classes.fallback}
       />
     );
   }
 
-  const inlineStyle: React.CSSProperties = {
-    ...style,
-  };
-
-  if (component != null && typeof component !== "string") {
-    // override border-radius with custom components
-    inlineStyle.borderRadius = "50%";
-  }
-
-  if (!hasImgNotFailing) {
-    inlineStyle.backgroundColor = getColor(backgroundColor, "text");
-    inlineStyle.color = getColor(color, "textDimmed");
-  }
-
-  const statusInlineStyle: React.CSSProperties = {};
-  if (status) {
-    // set the status border. we're using the boxShadow property to set the border
-    // to be inside the container and not on its edge.
-    const statusColor = getColor(status, "positive");
-    statusInlineStyle.boxShadow = `inset 0px 0px 0px 2px ${statusColor}`;
-  }
+  const statusColor = getColor(status, "positive");
 
   return (
     <div
       ref={ref}
       className={cx(classes.container, classes[variant])}
-      style={statusInlineStyle}
+      style={mergeStyles(undefined, {
+        // we're using the boxShadow to have the border inside the container and not on its edge.
+        boxShadow: status && `inset 0px 0px 0px 2px ${statusColor}`,
+      })}
       {...others}
     >
       {badge && (
@@ -166,7 +153,13 @@ export const HvAvatar = forwardRef<
         component={component}
         // Consider not using the root and className classes in this component
         className={cx(classes.root, classes.avatar, classes[size], className)}
-        style={inlineStyle}
+        data-color={color}
+        style={mergeStyles(style, {
+          "--bgColor": !hasImgNotFailing && getColor(backgroundColor, "text"),
+          "--textColor": !hasImgNotFailing && getColor(color, "bgContainer"),
+          borderRadius:
+            component != null && typeof component !== "string" && "50%",
+        })}
         variant={variant}
         size={size}
         {...avatarProps}

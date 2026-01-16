@@ -1,11 +1,10 @@
 import { Children, forwardRef } from "react";
 import {
   mergeStyles,
-  useCss,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvSize, theme } from "@hitachivantara/uikit-styles";
+import type { HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvAvatar } from "../Avatar/Avatar";
 import { HvBaseProps } from "../types/generic";
@@ -63,71 +62,28 @@ const getSpacingValue = (
   }
 };
 
-const getFontSize = (size: HvAvatarGroupProps["size"]) => {
-  switch (size) {
-    case "xs":
-      return "1em";
-    case "sm":
-      return "1.25em";
-    case "md":
-      return "1.5em";
-    case "lg":
-      return "1.75em";
-    case "xl":
-      return "3em";
-    default:
-      return "1em";
-  }
-};
-
-interface OverflowProps {
-  direction: HvAvatarGroupProps["direction"];
-  childrenToShow: React.ReactNode[];
-  spacingValue: number;
-  overflowComponent?: (n: number) => React.ReactNode;
-  totalChildren: number;
-  maxVisible: number;
-  size: HvAvatarGroupProps["size"];
+interface OverflowProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    Pick<HvAvatarGroupProps, "direction" | "overflowComponent" | "size"> {
+  value: number;
 }
 
 const Overflow = ({
   direction,
-  childrenToShow,
-  spacingValue,
   overflowComponent,
-  totalChildren,
-  maxVisible,
+  value,
   size,
+  ...others
 }: OverflowProps) => {
-  const { css } = useCss();
-
   return (
-    <div
-      style={{
-        marginLeft:
-          direction === "row" && childrenToShow.length > 0 ? -spacingValue : 0,
-        marginTop:
-          direction === "column" && childrenToShow.length > 0
-            ? -spacingValue
-            : 0,
-        zIndex: 0,
-      }}
-    >
-      {overflowComponent ? (
-        overflowComponent(totalChildren - maxVisible)
-      ) : (
+    <div {...others}>
+      {overflowComponent?.(value) || (
         <HvAvatar
           size={size}
-          backgroundColor={theme.colors.border}
-          classes={{
-            avatar: css({
-              [`&.HvAvatar-${size}`]: {
-                fontSize: getFontSize(size),
-              },
-            }),
-          }}
+          avatarProps={{ ["data-color" as string]: "neutral" }}
+          backgroundColor="border"
         >
-          +{totalChildren - maxVisible}
+          {`+${value}`}
         </HvAvatar>
       )}
     </div>
@@ -155,8 +111,6 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
     } = useDefaultProps("HvAvatarGroup", props);
     const { classes, cx } = useClasses(classesProp);
 
-    const spacingValue = getSpacingValue(spacing, size);
-
     const totalChildren = Children.count(children);
     const willOverflow = totalChildren > maxVisible;
 
@@ -164,6 +118,16 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
 
     // Since the `HvAvatar` components are displayed in reverse order using `row-reverse`, we need to reverse the array.
     if (toBack) childrenToShow.reverse();
+
+    const overflowElement = (
+      <Overflow
+        data-overflow-children={childrenToShow.length > 0}
+        direction={direction}
+        value={totalChildren - maxVisible}
+        overflowComponent={overflowComponent}
+        size={size}
+      />
+    );
 
     return (
       <div
@@ -177,35 +141,15 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
           className,
         )}
         style={mergeStyles(style, {
-          "--spacing": `-${spacingValue}px`,
+          "--spacing": `-${getSpacingValue(spacing, size)}px`,
         })}
         ref={ref}
         {...others}
       >
         <HvAvatarGroupProvider size={size}>
-          {toBack && willOverflow && (
-            <Overflow
-              childrenToShow={childrenToShow}
-              direction={direction}
-              maxVisible={maxVisible}
-              overflowComponent={overflowComponent}
-              size={size}
-              spacingValue={spacingValue}
-              totalChildren={totalChildren}
-            />
-          )}
+          {toBack && willOverflow && overflowElement}
           {childrenToShow}
-          {!toBack && willOverflow && (
-            <Overflow
-              childrenToShow={childrenToShow}
-              direction={direction}
-              maxVisible={maxVisible}
-              overflowComponent={overflowComponent}
-              size={size}
-              spacingValue={spacingValue}
-              totalChildren={totalChildren}
-            />
-          )}
+          {!toBack && willOverflow && overflowElement}
         </HvAvatarGroupProvider>
       </div>
     );
