@@ -1,7 +1,7 @@
+// oxlint-disable complexity
 "use client";
 
 import { Children, isValidElement, useCallback, useState } from "react";
-import jsxToString from "react-element-to-jsx-string";
 import { CodeEditor } from "react-live-runner";
 
 import { ComponentMeta } from "../../utils/component";
@@ -18,10 +18,111 @@ export interface PlaygroundProps {
   decoratorClassName?: string;
 }
 
-const parseChildren = (child: React.ReactNode) =>
-  (isValidElement(child) && jsxToString(child)) ||
-  (typeof child === "string" && child) ||
-  "";
+// Simple JSX serializer that builds string from props without relying on component names
+const elementToJSX = (element: React.ReactElement): string => {
+  const type = element.type as any;
+
+  // Try to get a reasonable component name
+  let name = "UnknownComponent";
+
+  // Check for lazy components
+  if (type?._payload?.value) {
+    const resolved = type._payload.value;
+
+    // Handle React Server Components format: [path, exports, name]
+    if (Array.isArray(resolved) && resolved.length >= 3) {
+      name = resolved[2] || "Component";
+    } else if (resolved.$$typeof?.toString() === "Symbol(react.forward_ref)") {
+      name =
+        resolved.render?.name ||
+        resolved.render?.displayName ||
+        resolved.displayName ||
+        "Component";
+    } else {
+      name = resolved.displayName || resolved.name || "Component";
+    }
+  } else if (type?.$$typeof?.toString() === "Symbol(react.forward_ref)") {
+    name = type.render?.name || type.displayName || "Component";
+  } else if (typeof type === "string") {
+    name = type;
+  } else {
+    name = type?.displayName || type?.name || "Component";
+  }
+
+  // Build props string
+  const props = Object.keys(element.props)
+    .filter((key) => key !== "children")
+    .map((key) => {
+      const value = element.props[key];
+      if (value === true) return key;
+      if (typeof value === "string") return `${key}="${value}"`;
+      if (typeof value === "number") return `${key}={${value}}`;
+      // Handle React element props recursively
+      if (isValidElement(value)) {
+        try {
+          return `${key}={${elementToJSX(value)}}`;
+        } catch (e) {
+          console.error("Failed to serialize element in prop:", key, e);
+          return null;
+        }
+      }
+      // Skip other objects to avoid serialization issues
+      if (typeof value === "object" && value !== null) {
+        return `${key}={${JSON.stringify(value)}}`;
+      }
+      return null;
+    })
+    .filter(Boolean)
+    .join(" ");
+
+  const propsStr = props ? ` ${props}` : "";
+
+  // Handle children
+  const { children } = element.props;
+  if (!children) {
+    return `<${name}${propsStr} />`;
+  }
+
+  if (typeof children === "string") {
+    return `<${name}${propsStr}>${children}</${name}>`;
+  }
+
+  // Handle React element children recursively
+  if (isValidElement(children)) {
+    const childCode = elementToJSX(children);
+    return `<${name}${propsStr}>\n  ${childCode}\n</${name}>`;
+  }
+
+  // Handle array of children
+  if (Array.isArray(children)) {
+    const childrenCode = children
+      .map((child) => {
+        if (typeof child === "string") return child;
+        if (isValidElement(child)) return elementToJSX(child);
+        return "";
+      })
+      .filter(Boolean)
+      .join("\n  ");
+
+    if (childrenCode) {
+      return `<${name}${propsStr}>\n  ${childrenCode}\n</${name}>`;
+    }
+  }
+
+  return `<${name}${propsStr} />`;
+};
+
+const parseChildren = (child: React.ReactNode): string => {
+  if (typeof child === "string") return child;
+  if (!isValidElement(child)) return "";
+
+  try {
+    return elementToJSX(child);
+  } catch (e) {
+    console.error("Failed to parse child:", e);
+    return "";
+  }
+};
 
 const generateCode = (
   componentName: string,
@@ -33,7 +134,15 @@ const generateCode = (
     .filter(([key]) => key !== "style")
     .map(([key, value]) => {
       if (typeof value === "string") return `${key}="${value}"`;
-      if (isValidElement(value)) return `${key}={${jsxToString(value)}}`;
+      if (isValidElement(value)) {
+        try {
+          const elementString = elementToJSX(value);
+          return `${key}={${elementString}}`;
+        } catch (e) {
+          console.error("Failed to serialize element prop:", key, e);
+          return null;
+        }
+      }
       if (typeof value === "object") return `${key}={${JSON.stringify(value)}}`;
       if (typeof value === "boolean") return value ? key : `${key}={false}`;
       return `${key}={${value}}`;
