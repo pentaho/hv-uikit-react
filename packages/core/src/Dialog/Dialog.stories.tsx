@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvDialog,
@@ -64,8 +64,8 @@ export const SemanticVariants: StoryObj<HvDialogProps> = {
     ),
   ],
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /success/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -89,8 +89,8 @@ export const Form: StoryObj<HvDialogProps> = {
     },
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /create a post/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -110,8 +110,8 @@ export const LongContent: StoryObj<HvDialogProps> = {
     ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /open dialog/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvAvatar,
@@ -79,8 +79,8 @@ export const CustomElements: StoryObj<HvTooltipProps> = {
     ...setupChromatic(),
   },
   // Open tooltip for visual tests
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /concise/i });
     await userEvent.hover(button);
     const tooltip = await canvas.findByRole("tooltip");
@@ -135,8 +135,8 @@ export const CustomContent: StoryObj<HvTooltipProps> = {
     (Story) => <div className="flex justify-around mt-200px">{Story()}</div>,
   ],
   // Open tooltip for visual tests
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /multiline content 1/i });
     await userEvent.hover(button);
     const tooltip = await canvas.findByRole("tooltip");
