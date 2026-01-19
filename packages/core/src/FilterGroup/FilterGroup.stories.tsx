@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Decorator, Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvFilterGroup,
@@ -77,8 +77,7 @@ export const Main: StoryObj<HvFilterGroupProps> = {
     ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const combobox = canvas.getByRole("combobox", { name: /main filter/i });
     await userEvent.click(combobox);
     await expect(

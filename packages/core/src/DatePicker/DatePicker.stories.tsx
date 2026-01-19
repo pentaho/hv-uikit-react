@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Decorator, Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvCalendar,
@@ -68,8 +68,7 @@ export const Variants: StoryObj<HvDatePickerProps> = {
     },
   },
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const picker = canvas.getByRole("combobox", { name: /required/i });
     await userEvent.click(picker);
     await expect(
@@ -186,8 +185,7 @@ export const NearInvalid: StoryObj<HvDatePickerProps> = {
 
 export const WithSelectionList: StoryObj<HvDatePickerProps> = {
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole("combobox", { name: /date/i }));
     await userEvent.click(canvas.getByRole("button", { name: /october/i }));
     const decemberButton = canvas.getByRole("button", { name: /dec/i });
@@ -280,8 +278,7 @@ export const WithSelectionList: StoryObj<HvDatePickerProps> = {
 };
 
 export const Test: StoryObj<HvDatePickerProps> = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole("button", { name: /october/i }));
   },
   parameters: {

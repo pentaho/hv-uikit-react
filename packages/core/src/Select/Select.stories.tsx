@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import {
   HvOption,
   HvOptionGroup,
@@ -36,8 +36,7 @@ export const Main: StoryObj<HvSelectProps<{}, false>> = {
     },
   },
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const select = canvas.getByRole("combobox", { name: /country/i });
     await userEvent.click(select);
     await expect(canvas.getAllByRole("option")).toHaveLength(6);
@@ -82,8 +81,7 @@ export const Variants: StoryObj<HvSelectProps<{}, false>> = {
     ),
   ],
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const select = canvas.getByRole("combobox", { name: /required/i });
     await userEvent.click(select);
     await expect(canvas.getAllByRole("option")).toHaveLength(2);

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import {
   HvBaseCheckBox,
   HvCheckBox,
@@ -41,9 +41,7 @@ export const Main: StoryObj<HvCheckBoxProps> = {
 };
 
 export const Test: StoryObj<HvCheckBoxProps> = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
+  play: async ({ canvas, userEvent }) => {
     await userEvent.click(canvas.getByTestId("anchor"));
     const checkbox = canvas.getByRole("checkbox", { name: /left/i });
     expect(checkbox).toBeChecked();

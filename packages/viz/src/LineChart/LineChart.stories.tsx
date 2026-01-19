@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 import { HvLineChart, HvLineChartProps } from "@hitachivantara/uikit-react-viz";
@@ -93,8 +93,7 @@ export const Test: StoryObj = {
       <div className={css({ height: 500, padding: 20 })}>{Story()}</div>
     ),
   ],
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const hideBtn = canvas.getByRole("button", { name: "Hide" });
     await userEvent.click(hideBtn);
     const showBtn = canvas.getByRole("button", { name: "Show" });

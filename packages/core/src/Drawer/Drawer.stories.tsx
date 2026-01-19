@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvButton,
@@ -49,8 +49,7 @@ export const Main: StoryObj<HvDrawerProps> = {
     ...setupChromatic(),
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const button = canvas.getByRole("button", { name: /open drawer/i });
     await userEvent.click(button);
     await expect(canvas.getByText("Lorem Ipsum")).toBeInTheDocument();

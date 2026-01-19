@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvPanel,
@@ -58,8 +58,7 @@ export const DataObject: StoryObj<HvTreeViewProps<false>> = {
     ...setupChromatic(),
   },
   // For visual testing
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const item = canvas.getByText("User"); // Not able to get it by role treeitem
     await userEvent.click(item);
     // Wait before clicking the other item to avoid errors in visual tests

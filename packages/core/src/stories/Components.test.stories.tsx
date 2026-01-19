@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { userEvent, within } from "storybook/test";
 import { renderStory, setupChromatic } from "@hitachivantara/internal";
 
 import { Disabled as AccordionDisabledStory } from "../Accordion/Accordion.stories";
@@ -237,9 +236,8 @@ export const TestOthers: StoryObj = {
       5000,
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvas, userEvent }) => {
     // Accordion disabled story
-    const canvas = within(canvasElement);
     const button = canvas.getByRole("button", { name: "System" });
     await userEvent.click(button);
   },

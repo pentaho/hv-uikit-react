@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvButton,
@@ -77,8 +77,7 @@ export const Variants: StoryObj<HvTimePickerProps> = {
     ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
   },
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const picker = canvas.getByRole("combobox", { name: /required/i });
     await userEvent.click(picker);
   },
@@ -123,8 +122,7 @@ export const Format12Hours: StoryObj<HvTimePickerProps> = {
   },
   decorators: [(Story) => <div className="min-h-200px w-220px">{Story()}</div>],
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const picker = canvas.getByRole("combobox", { name: /time picker/i });
     await userEvent.click(picker);
     await expect(
