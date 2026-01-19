@@ -19,7 +19,7 @@ export default meta;
  */
 export const Test: StoryObj = {
   parameters: {
-    ...setupChromatic(["Pentaho dawn", "Pentaho wicked"], 5000),
+    ...setupChromatic("pentaho", 5000),
   },
   render: (args, context: any) => (
     <HvSimpleGrid

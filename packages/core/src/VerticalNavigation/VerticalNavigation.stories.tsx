@@ -79,10 +79,7 @@ export const SliderMode: StoryObj<HvVerticalNavigationProps> = {
 
 export const Test: StoryObj<HvVerticalNavigationProps> = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
     const buttons = canvas.getAllByRole("button", { name: "collapseButton" });

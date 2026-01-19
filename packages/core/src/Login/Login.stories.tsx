@@ -25,7 +25,7 @@ export const Main: StoryObj<HvLoginProps> = {
     classes: { control: { disable: true } },
   },
   parameters: {
-    ...setupChromatic(["DS5 dawn"], 5000),
+    ...setupChromatic("default", 5000),
   },
   render: () => {
     return (

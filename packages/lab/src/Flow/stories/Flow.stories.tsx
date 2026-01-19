@@ -39,7 +39,7 @@ export default meta;
 export const Main: StoryObj<HvFlowProps> = {
   parameters: {
     docs: {},
-    ...setupChromatic(["DS5 dawn", "DS5 wicked"]),
+    ...setupChromatic("next"),
   },
   // For visual testing
   play: async ({ canvas, userEvent }) => {
@@ -61,7 +61,7 @@ export const InitialState: StoryObj<HvFlowProps> = {
         story: "A Flow with an initial state",
       },
     },
-    ...setupChromatic(["DS5 dawn", "DS5 wicked"]),
+    ...setupChromatic("next"),
   },
   render: () => <InitialStateStory />,
 };

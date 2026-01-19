@@ -74,7 +74,7 @@ const filters: HvFilterGroupProps["filters"] = [
 
 export const Main: StoryObj<HvFilterGroupProps> = {
   parameters: {
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   // For visual testing and a11y
   play: async ({ canvas, userEvent }) => {

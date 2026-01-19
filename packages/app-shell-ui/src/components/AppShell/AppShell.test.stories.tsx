@@ -3,7 +3,6 @@ import { Global } from "@emotion/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import HvAppShell from "@hitachivantara/app-shell-ui";
-import { setupChromatic } from "@hitachivantara/internal";
 
 const externalsEntries = [
   "react@18",
@@ -72,10 +71,7 @@ export const Main: StoryObj<HvAppShellConfig> = {
   },
   argTypes: {},
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    // ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
     const aboutLink = await canvas.findByRole("link", { name: /about/i });

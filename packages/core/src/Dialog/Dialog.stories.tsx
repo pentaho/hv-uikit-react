@@ -51,7 +51,7 @@ export const SemanticVariants: StoryObj<HvDialogProps> = {
           "The `HvDialog` component can receive a `variant` prop to set the status of the dialog. `HvDialogTitle` also accepts a `variant` prop that changes the icon. Alternatively, the `customIcon` prop allows for any custom icon",
       },
     },
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   decorators: [
     (Story) => (
@@ -107,7 +107,7 @@ export const LongContent: StoryObj<HvDialogProps> = {
           "With very long content the dialog grows in height, up to a maximum where a margin of 100px is left on top and bottom.",
       },
     },
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   // For visual testing and a11y
   play: async ({ canvasElement, userEvent }) => {

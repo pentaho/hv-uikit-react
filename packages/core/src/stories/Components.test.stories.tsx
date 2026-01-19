@@ -81,10 +81,7 @@ export default {
 /** Basic inputs */
 export const TestInputs: StoryObj = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   render: (args, context: any) => (
     <div className="grid gap-xs">
@@ -134,10 +131,7 @@ export const TestInputs: StoryObj = {
 /** Inputs that have popups */
 export const TestPopups: StoryObj = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   render: (args, context: any) => (
     <div className="flex gap-md items-start">
@@ -167,10 +161,7 @@ export const TestPopups: StoryObj = {
 /** Components that are mostly buttons/actions or containers for actions */
 export const TestButtons: StoryObj = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   render: (args, context: any) => (
     <div className="grid gap-sm">
@@ -203,10 +194,7 @@ export const TestButtons: StoryObj = {
 /** Surfaces and other containers */
 export const TestSurfaces: StoryObj = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   render: (args, context: any) => (
     <div className="flex gap-sm items-start">
@@ -231,10 +219,7 @@ export const TestSurfaces: StoryObj = {
 /** Misc components */
 export const TestOthers: StoryObj = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
     // Accordion disabled story
@@ -281,7 +266,7 @@ export const TestOthers: StoryObj = {
 /** Structural components */
 export const TestStructure: StoryObj = {
   parameters: {
-    ...setupChromatic(["DS5 dawn"], 5000),
+    ...setupChromatic("default", 5000),
   },
   render: (args, context: any) => (
     <div className="grid gap-sm">

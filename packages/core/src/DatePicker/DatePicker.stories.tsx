@@ -282,7 +282,7 @@ export const Test: StoryObj<HvDatePickerProps> = {
     await userEvent.click(canvas.getByRole("button", { name: /october/i }));
   },
   parameters: {
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"], 5000),
+    ...setupChromatic("light", 5000),
   },
   render: (args, context: any) => {
     const value = new Date("2023-01-01");

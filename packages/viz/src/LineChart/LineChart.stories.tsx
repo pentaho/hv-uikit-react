@@ -86,7 +86,7 @@ export const Main: StoryObj<HvLineChartProps> = {
 /** This tests if the horizontal slider resets when removed */
 export const Test: StoryObj = {
   parameters: {
-    ...setupChromatic(["DS5 dawn"], 5000, { diffThreshold: 0.8 }),
+    ...setupChromatic("default", { delay: 5000, diffThreshold: 0.8 }),
   },
   decorators: [
     (Story) => (

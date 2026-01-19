@@ -114,12 +114,7 @@ export const TableRenderers: StoryObj = {
 
 export const Test: StoryObj = {
   parameters: {
-    ...setupChromatic([
-      "DS5 dawn",
-      "DS5 wicked",
-      "Pentaho dawn",
-      "Pentaho wicked",
-    ]),
+    ...setupChromatic("all"),
   },
   play: async ({ canvas, userEvent }) => {
     // Group by
