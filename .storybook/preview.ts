@@ -1,11 +1,15 @@
+import "uno.css";
+
 import type { Preview } from "@storybook/react-vite";
 import type { Viewport } from "storybook/viewport";
+import { theme, type HvColor } from "@hitachivantara/uikit-styles";
 
 import DocsContainer from "./blocks/DocsContainer";
 import { DocsPage } from "./blocks/DocsPage";
+import { getInitialMode } from "./decorators/utils";
 import { withThemeDecorator } from "./decorators/withThemeDecorator.decorator";
 
-import "uno.css";
+const backgrounds: HvColor[] = ["bgPage", "bgContainer", "bgPageSecondary"];
 
 export const parameters: Preview["parameters"] = {
   layout: "fullscreen",
@@ -13,6 +17,11 @@ export const parameters: Preview["parameters"] = {
     source: { type: "dynamic" },
     container: DocsContainer,
     page: DocsPage,
+  },
+  backgrounds: {
+    options: Object.fromEntries(
+      backgrounds.map((bg) => [bg, { name: bg, value: theme.colors[bg] }]),
+    ),
   },
   controls: {},
   options: {
@@ -58,5 +67,6 @@ export default {
   tags: ["autodocs"],
   initialGlobals: {
     viewport: { value: "desktop", isRotated: false },
+    theme: `pentaho ${getInitialMode()}`,
   },
 } satisfies Preview;

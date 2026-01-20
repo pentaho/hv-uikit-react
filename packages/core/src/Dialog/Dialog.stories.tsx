@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvDialog,
@@ -51,7 +51,7 @@ export const SemanticVariants: StoryObj<HvDialogProps> = {
           "The `HvDialog` component can receive a `variant` prop to set the status of the dialog. `HvDialogTitle` also accepts a `variant` prop that changes the icon. Alternatively, the `customIcon` prop allows for any custom icon",
       },
     },
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   decorators: [
     (Story) => (
@@ -64,8 +64,8 @@ export const SemanticVariants: StoryObj<HvDialogProps> = {
     ),
   ],
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /success/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -89,8 +89,8 @@ export const Form: StoryObj<HvDialogProps> = {
     },
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /create a post/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -107,11 +107,11 @@ export const LongContent: StoryObj<HvDialogProps> = {
           "With very long content the dialog grows in height, up to a maximum where a margin of 100px is left on top and bottom.",
       },
     },
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /open dialog/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import {
   HvTable,
   HvTableBody,
@@ -78,8 +78,7 @@ export const UseHvSortByStory: StoryObj = {
 
 export const UseHvRowExpandStory: StoryObj = {
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const button = canvas.getAllByRole("button", { name: /expand/i })[0];
     await userEvent.click(button);
     await expect(
@@ -91,8 +90,7 @@ export const UseHvRowExpandStory: StoryObj = {
 
 export const UseHvGroupByStory: StoryObj = {
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const button = canvas.getAllByRole("button", { name: /collapse/i })[0];
     await userEvent.click(button);
     await expect(canvas.getByText("Event 2")).toBeInTheDocument();

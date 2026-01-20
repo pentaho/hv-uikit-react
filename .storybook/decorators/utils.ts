@@ -4,38 +4,10 @@ import {
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";
 
-const STORAGE_KEY = "sb-uikit-stories-theme";
-const DEFAULT_THEME = "pentaho";
-
 export interface Theme {
   label: string;
   mode: string;
 }
-
-export const setLocalTheme = (value: string) => {
-  localStorage?.setItem(STORAGE_KEY, value);
-};
-
-const getLocalTheme = () => {
-  return localStorage?.getItem(STORAGE_KEY);
-};
-
-export const getInitialTheme = (themes: Theme[]) => {
-  const localTheme = getLocalTheme();
-  const prefersDark = window?.matchMedia(
-    "(prefers-color-scheme: dark)",
-  ).matches;
-
-  const initialTheme = localTheme ? localTheme.split(" ")[0] : DEFAULT_THEME;
-  const initialMode = localTheme
-    ? localTheme.split(" ")[1]
-    : `${prefersDark ? "dark" : "light"}`;
-
-  return (
-    themes.find((theme) => theme.label === `${initialTheme} ${initialMode}`) ||
-    themes[0]
-  );
-};
 
 export const getInitialMode = (): HvThemeColorMode => {
   const prefersDark = window?.matchMedia?.(

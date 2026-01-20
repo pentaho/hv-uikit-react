@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvVerticalNavigation,
@@ -79,13 +79,9 @@ export const SliderMode: StoryObj<HvVerticalNavigationProps> = {
 
 export const Test: StoryObj<HvVerticalNavigationProps> = {
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const buttons = canvas.getAllByRole("button", { name: "collapseButton" });
     await userEvent.click(buttons[0]);
     const hwButtons = canvas.getAllByRole("button", { name: /hardware/i });

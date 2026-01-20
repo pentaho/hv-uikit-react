@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import {
   HvBaseDropdown,
   HvDropdown,
@@ -55,8 +55,8 @@ export const Variants: StoryObj<HvDropdownProps> = {
     ),
   ],
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const picker = canvas.getByRole("combobox", { name: /required/i });
     await userEvent.click(picker);
     await expect(canvas.getByRole("listbox")).toBeInTheDocument();
@@ -98,8 +98,8 @@ export const MultiSelection: StoryObj<HvDropdownProps> = {
   },
   decorators: [(Story) => <div className="min-h-120px w-310px">{Story()}</div>],
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const picker = canvas.getByRole("combobox");
     await userEvent.click(picker);
     await expect(canvas.getByRole("list")).toBeInTheDocument();

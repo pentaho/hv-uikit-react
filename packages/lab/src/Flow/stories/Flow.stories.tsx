@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvFlow,
@@ -39,11 +39,10 @@ export default meta;
 export const Main: StoryObj<HvFlowProps> = {
   parameters: {
     docs: {},
-    ...setupChromatic(["DS5 dawn", "DS5 wicked"]),
+    ...setupChromatic("next"),
   },
   // For visual testing
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const button = canvas.getByRole("button", { name: /add node/i });
     await userEvent.click(button);
     const expand = canvas.getAllByRole("button", { name: /expand group/i })[0];
@@ -62,7 +61,7 @@ export const InitialState: StoryObj<HvFlowProps> = {
         story: "A Flow with an initial state",
       },
     },
-    ...setupChromatic(["DS5 dawn", "DS5 wicked"]),
+    ...setupChromatic("next"),
   },
   render: () => <InitialStateStory />,
 };

@@ -1,5 +1,4 @@
 import { StoryObj } from "@storybook/react-vite";
-import { userEvent, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvTable,
@@ -115,16 +114,9 @@ export const TableRenderers: StoryObj = {
 
 export const Test: StoryObj = {
   parameters: {
-    ...setupChromatic([
-      "DS5 dawn",
-      "DS5 wicked",
-      "Pentaho dawn",
-      "Pentaho wicked",
-    ]),
+    ...setupChromatic("all"),
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
+  play: async ({ canvas, userEvent }) => {
     // Group by
     const collapseButton = canvas.getAllByRole("button", {
       name: /collapse/i,

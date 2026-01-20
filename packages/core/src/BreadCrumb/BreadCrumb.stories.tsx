@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import {
   HvBreadCrumb,
   HvBreadCrumbProps,
@@ -70,8 +70,8 @@ export const Test: StoryObj<HvBreadCrumbProps> = {
     },
   },
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     await userEvent.click(canvas.getByRole("button", { name: /dropdown/i }));
     await expect(await canvas.findByRole("menu")).toBeInTheDocument();
   },

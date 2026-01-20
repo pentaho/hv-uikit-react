@@ -1,7 +1,6 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Global } from "@emotion/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { userEvent, within } from "storybook/test";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import HvAppShell from "@hitachivantara/app-shell-ui";
 import { setupChromatic } from "@hitachivantara/internal";
@@ -63,6 +62,7 @@ export const Main: StoryObj<HvAppShellConfig> = {
           { label: "Submenu 2", target: "/about/submenu2" },
         ],
       },
+      { label: "Other", target: "/other" },
     ],
     mainPanel: {
       views: [
@@ -73,15 +73,24 @@ export const Main: StoryObj<HvAppShellConfig> = {
   },
   argTypes: {},
   parameters: {
-    ...setupChromatic(
-      ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
-      5000,
-    ),
+    ...setupChromatic("all", 5000),
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const aboutLink = await canvas.findByRole("link", { name: /about/i });
+  play: async ({ canvas, userEvent }) => {
+    const aboutLink = await canvas.findByRole("link", { name: /other/i });
     await userEvent.click(aboutLink);
   },
-  render: (args) => <HvAppShell config={args} />,
+  render: (args, context) => {
+    const [theme, colorMode] = context.globals.theme?.split(" ") || [];
+    const config: HvAppShellConfig = {
+      ...args,
+      logo: {
+        ...args.logo,
+        name: theme === "pentaho" ? "PENTAHO" : "HITACHI",
+      },
+      navigationMode: theme === "pentaho" ? "ONLY_LEFT" : "TOP_AND_LEFT",
+      theming: { theme, colorMode },
+    };
+
+    return <HvAppShell config={config} />;
+  },
 };

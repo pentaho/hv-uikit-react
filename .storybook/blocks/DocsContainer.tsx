@@ -1,39 +1,21 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import {
   DocsContainer,
   DocsContainerProps,
 } from "@storybook/addon-docs/blocks";
 import { addons } from "storybook/preview-api";
-import { Global } from "storybook/theming";
 import {
   HvProvider,
   HvThemeColorMode,
   HvTypography,
-  HvTypographyProps,
-  theme,
 } from "@hitachivantara/uikit-react-core";
 
 import { getInitialMode } from "../decorators/utils";
 import { themes } from "../theme";
-import { getDocsStyles } from "../theme/styles/docs";
 
-const components: Record<string, React.ComponentType> = {
-  a: (props: HvTypographyProps<"a">) => (
-    <HvTypography
-      link
-      component="a"
-      style={{ color: theme.colors.primary }}
-      target={
-        props.href?.includes("./?path=/docs/")
-          ? undefined
-          : props.href?.startsWith("#")
-            ? "_self"
-            : "_blank"
-      }
-      {...props}
-    />
-  ),
+const components = {
+  a: (props) => <HvTypography link component="a" {...props} />,
   p: (props) => <HvTypography component="p" {...props} />,
   li: (props) => <li {...props} />,
   h1: (props) => <HvTypography component="h1" variant="title1" {...props} />,
@@ -42,7 +24,7 @@ const components: Record<string, React.ComponentType> = {
   h4: (props) => <HvTypography component="h4" variant="title4" {...props} />,
   h5: (props) => <HvTypography component="h5" variant="title4" {...props} />,
   h6: (props) => <HvTypography component="h6" variant="title4" {...props} />,
-};
+} as const satisfies Record<string, React.ComponentType>;
 
 export default ({
   context,
@@ -68,11 +50,8 @@ export default ({
     };
   }, []);
 
-  const docsStyles = useMemo(() => getDocsStyles(), []);
-
   return (
     <MDXProvider components={components}>
-      <Global styles={docsStyles} />
       <HvProvider
         classNameKey="hv-storybook"
         cssTheme="scoped"

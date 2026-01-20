@@ -2,7 +2,7 @@ import { useCallback, useContext, useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvAccordion,
@@ -104,8 +104,8 @@ export const Main: StoryObj<HvWizardProps> = {
     classes: { control: { disable: true } },
   },
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /show wizard/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -168,8 +168,8 @@ export const Main: StoryObj<HvWizardProps> = {
 
 export const Skippable: StoryObj<HvWizardProps> = {
   // For a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /show wizard/i });
     await userEvent.click(button);
     await expect(canvas.getByRole("dialog")).toBeInTheDocument();
@@ -229,11 +229,11 @@ export const Skippable: StoryObj<HvWizardProps> = {
 
 export const ComponentBreakDown: StoryObj<HvWizardProps> = {
   parameters: {
-    ...setupChromatic(["DS5 dawn", "Pentaho dawn"]),
+    ...setupChromatic("light"),
   },
   // For visual testing and a11y
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement.parentElement!);
     const button = canvas.getByRole("button", { name: /show wizard/i });
     await userEvent.click(button);
     const summaryButton = canvas.getByRole("button", { name: /summary/i });

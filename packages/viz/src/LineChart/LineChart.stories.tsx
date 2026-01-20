@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 import { HvLineChart, HvLineChartProps } from "@hitachivantara/uikit-react-viz";
@@ -86,15 +86,14 @@ export const Main: StoryObj<HvLineChartProps> = {
 /** This tests if the horizontal slider resets when removed */
 export const Test: StoryObj = {
   parameters: {
-    ...setupChromatic(["DS5 dawn"], 5000, { diffThreshold: 0.8 }),
+    ...setupChromatic("default", { delay: 5000, diffThreshold: 0.8 }),
   },
   decorators: [
     (Story) => (
       <div className={css({ height: 500, padding: 20 })}>{Story()}</div>
     ),
   ],
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas, userEvent }) => {
     const hideBtn = canvas.getByRole("button", { name: "Hide" });
     await userEvent.click(hideBtn);
     const showBtn = canvas.getByRole("button", { name: "Show" });
