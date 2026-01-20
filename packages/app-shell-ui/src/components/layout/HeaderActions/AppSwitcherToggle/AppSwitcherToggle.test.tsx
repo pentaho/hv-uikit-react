@@ -1,7 +1,7 @@
 import { act } from "@testing-library/react";
 import { HvAppShellAppSwitcherItemConfig } from "@hitachivantara/app-shell-shared";
 
-import renderTestProvider from "../../../../../../tests/testUtils";
+import renderTestProvider from "../../../../tests/testUtils";
 import AppSwitcherToggle from "./AppSwitcherToggle";
 
 describe("<AppSwitcherToggle /> Component", () => {

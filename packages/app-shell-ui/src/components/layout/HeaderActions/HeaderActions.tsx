@@ -4,7 +4,7 @@ import { HvHeaderActions } from "@hitachivantara/uikit-react-core";
 import DynamicAction from "./DynamicAction";
 import InternalAction, {
   internalActions,
-} from "./InternalActions/InternalAction/InternalAction";
+} from "./InternalAction/InternalAction";
 
 const HeaderActions = () => {
   const { header } = useHvAppShellModel();

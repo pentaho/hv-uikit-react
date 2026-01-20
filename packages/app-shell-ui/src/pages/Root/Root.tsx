@@ -8,8 +8,8 @@ import {
 } from "@hitachivantara/app-shell-shared";
 
 import CustomHooksInitializer from "../../components/CustomHooksInitializer";
-import Header from "../../components/layout/Header";
-import Main from "../../components/layout/Main";
+import Header from "../../components/layout/Header/Header";
+import Main from "../../components/layout/Main/Main";
 import { BannerProvider } from "../../providers/BannerProvider";
 import { NavigationProvider } from "../../providers/NavigationProvider";
 import CombinedProviders from "../../utils/CombinedProviders";

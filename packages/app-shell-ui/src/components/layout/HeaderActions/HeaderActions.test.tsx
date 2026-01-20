@@ -1,12 +1,13 @@
+import { screen } from "@testing-library/dom";
 import { vi } from "vitest";
 import { HvAppShellAppSwitcherConfig } from "@hitachivantara/app-shell-shared";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 
-import renderTestProvider from "../../../../tests/testUtils";
+import renderTestProvider from "../../../tests/testUtils";
+import AppSwitcherToggle from "./AppSwitcherToggle/AppSwitcherToggle";
+import ColorModeSwitcher from "./ColorModeSwitcher";
 import HeaderActions from "./HeaderActions";
-import AppSwitcherToggle from "./InternalActions/AppSwitcherToggle";
-import ColorModeSwitcher from "./InternalActions/ColorModeSwitcher";
-import HelpButton from "./InternalActions/HelpButton";
+import HelpButton from "./HelpButton/HelpButton";
 
 const lazy = vi.fn();
 
@@ -56,7 +57,7 @@ describe("`HeaderActions`", () => {
       .mockImplementationOnce(() => <DummyActionComponent2 />)
       .mockImplementationOnce(() => <DummyActionComponent3 />);
 
-    const { getByLabelText } = await renderTestProvider(<HeaderActions />, {
+    await renderTestProvider(<HeaderActions />, {
       header: {
         actions: [
           { bundle: "@hv/testing/dummy-action1" },
@@ -66,9 +67,15 @@ describe("`HeaderActions`", () => {
       },
     });
 
-    const dummyAction1Element = getByLabelText("dummyActionComponent1");
-    const dummyAction2Element = getByLabelText("dummyActionComponent2");
-    const dummyAction3Element = getByLabelText("dummyActionComponent3");
+    const dummyAction1Element = await screen.findByLabelText(
+      "dummyActionComponent1",
+    );
+    const dummyAction2Element = await screen.findByLabelText(
+      "dummyActionComponent2",
+    );
+    const dummyAction3Element = await screen.findByLabelText(
+      "dummyActionComponent3",
+    );
 
     expect(lazy).toHaveBeenCalledTimes(3);
     expect(dummyAction1Element).toBeInTheDocument();
@@ -85,7 +92,7 @@ describe("`HeaderActions`", () => {
   it("should render the HelpButton internal action when configured", async () => {
     lazy.mockImplementation(() => <HelpButton {...buttonHelpConfig} />);
 
-    const { queryByRole } = await renderTestProvider(<HeaderActions />, {
+    await renderTestProvider(<HeaderActions />, {
       header: {
         actions: [
           {
@@ -98,7 +105,7 @@ describe("`HeaderActions`", () => {
 
     expect(lazy).toHaveBeenCalled();
     expect(
-      queryByRole("link", { name: "Help Button Description" }),
+      await screen.findByRole("link", { name: "Help Button Description" }),
     ).toBeInTheDocument();
   });
 
@@ -107,7 +114,7 @@ describe("`HeaderActions`", () => {
       <AppSwitcherToggle {...appSwitcherToggleConfig} />
     ));
 
-    const { queryByRole } = await renderTestProvider(<HeaderActions />, {
+    await renderTestProvider(<HeaderActions />, {
       header: {
         actions: [
           {
@@ -120,14 +127,14 @@ describe("`HeaderActions`", () => {
 
     expect(lazy).toHaveBeenCalled();
     expect(
-      queryByRole("button", { name: "Dummy App Switcher" }),
+      await screen.findByRole("button", { name: "Dummy App Switcher" }),
     ).toBeInTheDocument();
   });
 
   it("should render the ColorModeSwitcher internal action when configured", async () => {
     lazy.mockImplementation(() => <ColorModeSwitcher />);
 
-    const { queryByRole } = await renderTestProvider(<HeaderActions />, {
+    await renderTestProvider(<HeaderActions />, {
       header: {
         actions: [
           {
@@ -140,7 +147,7 @@ describe("`HeaderActions`", () => {
 
     expect(lazy).toHaveBeenCalled();
     expect(
-      queryByRole("button", { name: "Switch color mode" }),
+      await screen.findByRole("button", { name: "Switch color mode" }),
     ).toBeInTheDocument();
   });
 
@@ -165,7 +172,7 @@ describe("`HeaderActions`", () => {
       .mockImplementationOnce(() => <ColorModeSwitcher />)
       .mockImplementationOnce(() => <DummyActionComponent2 />);
 
-    const { queryByRole } = await renderTestProvider(<HeaderActions />, {
+    await renderTestProvider(<HeaderActions />, {
       header: {
         actions: [
           { bundle: "@hv/testing/dummy-action3" },
@@ -186,22 +193,22 @@ describe("`HeaderActions`", () => {
       },
     });
 
-    const dummyAction1Element = queryByRole("button", {
+    const dummyAction1Element = await screen.findByRole("button", {
       name: "dummyActionComponent1",
     });
-    const dummyAction2Element = queryByRole("button", {
+    const dummyAction2Element = await screen.findByRole("button", {
       name: "dummyActionComponent2",
     });
-    const dummyAction3Element = queryByRole("button", {
+    const dummyAction3Element = await screen.findByRole("button", {
       name: "dummyActionComponent3",
     });
-    const helpButtonElement = queryByRole("link", {
+    const helpButtonElement = await screen.findByRole("link", {
       name: "Help Button Description",
     });
-    const appSwitcherToggleElement = queryByRole("button", {
+    const appSwitcherToggleElement = await screen.findByRole("button", {
       name: "Dummy App Switcher",
     });
-    const colorModeSwitcherElement = queryByRole("button", {
+    const colorModeSwitcherElement = await screen.findByRole("button", {
       name: "Switch color mode",
     });
 

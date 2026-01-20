@@ -15,14 +15,14 @@ export const internalActions = [
   {
     bundle: "@hv/help-client/button.js",
     component: () =>
-      import("../HelpButton").then((module) => ({
+      import("../HelpButton/HelpButton").then((module) => ({
         default: module.default as React.ComponentType<HvAppShellHelp>,
       })),
   },
   {
     bundle: "@hv/app-switcher-client/toggle.js",
     component: () =>
-      import("../AppSwitcherToggle").then((module) => ({
+      import("../AppSwitcherToggle/AppSwitcherToggle").then((module) => ({
         default:
           module.default as React.ComponentType<HvAppShellAppSwitcherConfig>,
       })),

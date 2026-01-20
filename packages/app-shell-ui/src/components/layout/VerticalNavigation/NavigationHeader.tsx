@@ -1,7 +1,7 @@
 import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { AppSwitcher } from "@hitachivantara/uikit-react-icons";
 
-import BrandLogo from "../BrandLogo";
+import BrandLogo from "../BrandLogo/BrandLogo";
 import { classes } from "./styles";
 
 type NavigationHeaderProps = {
