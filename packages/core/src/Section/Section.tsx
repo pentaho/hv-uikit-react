@@ -78,7 +78,7 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
       <div
         ref={ref}
         className={cx(classes.root, className, {
-          [classes.raisedHeader]: raisedHeader && isOpen,
+          [classes.raisedHeader]: hasHeader && raisedHeader && isOpen,
         })}
         {...others}
       >
@@ -123,7 +123,7 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
         )}
         <div
           ref={contentRef}
-          hidden={!isOpen}
+          hidden={expandable && !isOpen}
           className={cx(classes.content, {
             [classes.hidden]: expandable && !isOpen,
             [classes.hasHeader]: hasHeader,
