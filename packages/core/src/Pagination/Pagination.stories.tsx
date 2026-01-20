@@ -11,12 +11,12 @@ const classes = {
   root: css({
     display: "flex",
     flexWrap: "wrap",
+    gap: theme.space.sm,
     "&>span": {
       width: "100px",
-      padding: "8px 12px",
-      margin: "12px",
+      padding: theme.space.xs,
       textAlign: "center",
-      borderRadius: "4px",
+      borderRadius: theme.radii.round,
       background: theme.colors.bgContainer,
     },
   }),

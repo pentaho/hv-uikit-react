@@ -10,22 +10,22 @@ export default {
   title: "Visualizations/Table/Table Section",
 };
 
-export const SimpleTableSectionStory: StoryObj = {
+export const SimpleTable: StoryObj = {
   render: () => <SimpleTableSection />,
 };
 
-export const CompleteTableSectionStory: StoryObj = {
+export const CompleteTable: StoryObj = {
   render: () => <CompleteTableSection />,
 };
 
-export const PropsTableSectionStory: StoryObj = {
+export const PropsTable: StoryObj = {
   render: () => <PropsTableSection />,
 };
 
-export const EditableStory: StoryObj = {
+export const Editable: StoryObj = {
   render: () => <TableEditable />,
 };
 
-export const FilterStory: StoryObj = {
+export const Filter: StoryObj = {
   render: () => <TableFilter />,
 };

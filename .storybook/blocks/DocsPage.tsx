@@ -2,13 +2,12 @@ import {
   Controls,
   Description,
   Primary,
-  Stories,
   Subtitle,
   Title,
   useOf,
 } from "@storybook/addon-docs/blocks";
 
-/** @see https://github.com/storybookjs/storybook/blob/v8.0.10/code/ui/blocks/src/blocks/DocsPage.tsx */
+/** @see https://github.com/storybookjs/storybook/blob/v10.2.0/code/addons/docs/src/blocks/blocks/DocsPage.tsx */
 export function DocsPage() {
   const resolvedOf = useOf("meta", ["meta"]);
   const { stories } = resolvedOf.csfFile;
@@ -22,7 +21,6 @@ export function DocsPage() {
       {isSingleStory ? <Description of="story" /> : null}
       <Primary />
       <Controls />
-      {isSingleStory ? null : <Stories includePrimary={false} />}
     </>
   );
 }

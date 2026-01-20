@@ -46,16 +46,22 @@ export const parameters: Preview["parameters"] = {
   chromatic: {
     disableSnapshot: true,
   },
-  // Chromatic default viewport
   viewport: {
     options: {
+      xs: {
+        name: "mobile",
+        type: "mobile",
+        styles: { height: "768px", width: "480px" },
+      },
+      split: {
+        name: "split",
+        type: "desktop",
+        styles: { height: "1080px", width: "960px" },
+      },
       desktop: {
         name: "desktop",
         type: "desktop",
-        styles: {
-          height: "1080px",
-          width: "1920px",
-        },
+        styles: { height: "1080px", width: "1920px" },
       },
     } satisfies Record<string, Viewport>,
   },

@@ -11,10 +11,10 @@ import {
   HvTableRow,
 } from "@hitachivantara/uikit-react-core";
 
+import { AllColumnRenderers } from "./AllColumnRenderers";
 import { ColumnResize } from "./TableHooks/ColumnResize";
-import { TestHeaders as TestHeadersStory } from "./TableHooks/TableHooks.stories";
+import { TestStickyHeaders as TestHeadersStory } from "./TableHooks/TableHooks.stories";
 import { UseHvGroupBy } from "./TableHooks/UseHvGroupBy";
-import { AllColumnRenderers } from "./TableRenderers/AllColumnRenderers";
 import { GroupedRows as GroupedRowsStory } from "./TableSamples/GroupedRows";
 import { ListRow as ListRowStory } from "./TableSamples/ListRow";
 import { Main as MainStory } from "./TableSamples/Main";
