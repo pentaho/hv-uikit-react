@@ -16,6 +16,7 @@ import login from "./login/page.mdx?raw";
 import menus from "./menus/page.mdx?raw";
 import switches from "./switches/page.mdx?raw";
 import tables from "./tables/page.mdx?raw";
+import tabs from "./tabs/page.mdx?raw";
 import tags from "./tags/page.mdx?raw";
 
 /**
@@ -39,6 +40,7 @@ const sections = [
   { slug: "menus", title: "Menus", total: countCodeBlocks(menus) },
   { slug: "switches", title: "Switches", total: countCodeBlocks(switches) },
   { slug: "tables", title: "Tables", total: countCodeBlocks(tables) },
+  { slug: "tabs", title: "Tabs", total: countCodeBlocks(tabs) },
   { slug: "tags", title: "Tags", total: countCodeBlocks(tags) },
 ] as const;
 
@@ -70,6 +72,8 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-squares-four" />;
     case "dialogs":
       return <div className="i-ph-browser" />;
+    case "tabs":
+      return <div className="i-ph-tabs" />;
     default:
       return null;
   }
