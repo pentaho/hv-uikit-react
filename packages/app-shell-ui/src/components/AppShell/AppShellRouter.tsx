@@ -126,7 +126,7 @@ function renderErrorRoutes(
   ];
 }
 
-const AppShellRoutes = () => {
+export function HvAppShellRouter() {
   const { baseUrl, mainPanel } = useHvAppShellModel();
 
   const prevRoutesRef = useRef<RouteObject[]>([]);
@@ -177,6 +177,4 @@ const AppShellRoutes = () => {
       )}
     />
   );
-};
-
-export default AppShellRoutes;
+}
