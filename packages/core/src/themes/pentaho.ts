@@ -18,7 +18,7 @@ import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvButtonProps } from "../Button";
 import type { HvButtonBaseProps } from "../ButtonBase";
-import {
+import type {
   HvCalendarCellProps,
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";

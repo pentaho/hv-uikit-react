@@ -39,33 +39,27 @@ Use the `separator` property on any data item to create groups of items within t
       id: "import",
       label: "Import",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-download-simple" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-download-simple" />
+        </HvIconContainer>
       ),
     },
     {
       id: "export",
       label: "Export",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-export" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-export" />
+        </HvIconContainer>
       ),
     },
     {
       id: "share",
       label: "Share",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-share-network" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-share-network" />
+        </HvIconContainer>
       ),
       separator: true,
     },
@@ -73,22 +67,18 @@ Use the `separator` property on any data item to create groups of items within t
       id: "settings",
       label: "Settings",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-sliders" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-sliders" />
+        </HvIconContainer>
       ),
     },
     {
       id: "filters",
       label: "Filters",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-funnel" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-funnel" />
+        </HvIconContainer>
       ),
       separator: true,
     },
@@ -96,11 +86,9 @@ Use the `separator` property on any data item to create groups of items within t
       id: "delete",
       label: "Delete",
       icon: (
-        <HvStatusIcon
-          variant="default"
-          type="simple"
-          customIcon={<div className="i-ph-trash" />}
-        />
+        <HvIconContainer>
+          <div className="i-ph-trash" />
+        </HvIconContainer>
       ),
     },
   ]}
