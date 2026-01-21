@@ -1,6 +1,4 @@
-export type PropertyWithName<K extends string, T> = {
-  [P in K]: T;
-};
+export type PropertyWithName<K extends string, T> = Record<K, T>;
 
 export type ErrorBase = NonNullable<unknown>;
 

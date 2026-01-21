@@ -197,7 +197,7 @@ export const HvVerticalNavigationTreeView = forwardRef<
         return nodeMap.current[key];
       })
       .filter((node) => node.parentId === id)
-      .sort((a, b) => a.index - b.index)
+      .toSorted((a, b) => a.index - b.index)
       .map((child) => child.id);
 
   const getNavigableChildrenIds = useCallback(

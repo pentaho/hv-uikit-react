@@ -65,8 +65,10 @@ export const useServerData = () => {
       const endRow = startRow + pageSize;
 
       const visibleData = allData.filter((x) => !x.hidden);
-      const newData = [...visibleData]
-        .sort(sortBy[0] ? (a, b) => simpleSortBy(a, b, sortBy[0]) : undefined)
+      const newData = visibleData
+        .toSorted(
+          sortBy[0] ? (a, b) => simpleSortBy(a, b, sortBy[0]) : undefined,
+        )
         .slice(startRow, endRow);
       setData(newData);
 

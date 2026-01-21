@@ -7,6 +7,7 @@
     "restriction": "error"
   },
   "rules": {
+    "oxc/no-map-spread": "off",
     "unicorn/prefer-set-has": "off",
 
     "import/no-duplicates": "off",
@@ -15,10 +16,12 @@
     "import/no-unassigned-import": "off",
     "react/react-in-jsx-scope": "off",
 
+    "eslint/complexity": "off",
     "eslint/default-case": "off",
     "eslint/no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "eslint/no-empty-function": "off",
     "eslint/no-eq-null": "off",
+    "eslint/no-param-reassign": "off",
     "eslint/no-plusplus": "off",
     "eslint/no-undefined": "off",
     "import/no-default-export": "off",

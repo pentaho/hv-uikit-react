@@ -72,7 +72,7 @@ export default function OverflowingTabs() {
       // Sort visible tabs by their position in the original tabs array
       const newOrder = [...tabOrder];
       const visibleSlice = newOrder.slice(0, count);
-      const sortedVisible = visibleSlice.sort((a, b) => {
+      const sortedVisible = visibleSlice.toSorted((a, b) => {
         const aIndex = tabs.findIndex((t) => t.label === a.label);
         const bIndex = tabs.findIndex((t) => t.label === b.label);
         return aIndex - bIndex;

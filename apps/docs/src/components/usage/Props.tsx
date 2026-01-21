@@ -32,7 +32,7 @@ const classes = {
 // Utility function to reorder props by required status and alphabetical order
 const reorderProps = (props: Record<string, PropItem>) =>
   Object.fromEntries(
-    Object.entries(props).sort(([keyA, a], [keyB, b]) => {
+    Object.entries(props).toSorted(([keyA, a], [keyB, b]) => {
       const aDeprecated =
         a.description?.toLowerCase().includes("deprecated") ?? false;
       const bDeprecated =

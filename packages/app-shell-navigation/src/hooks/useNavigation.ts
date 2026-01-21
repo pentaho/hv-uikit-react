@@ -129,7 +129,7 @@ export const useHvNavigation = () => {
 
       const matchingViews = flattenViews
         .filter((v) => isSameBundle(v, bundle, appId))
-        .sort((a, b) => {
+        .toSorted((a, b) => {
           const aSlashCount = (a.route.match(/\//g) ?? []).length;
           const bSlashCount = (b.route.match(/\//g) ?? []).length;
           return aSlashCount - bSlashCount;

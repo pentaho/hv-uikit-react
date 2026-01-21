@@ -49,7 +49,7 @@ async function main() {
     text: { type: "mrkdwn", text },
   }));
 
-  console.log(JSON.stringify(output));
+  console.info(JSON.stringify(output));
 }
 
 main();

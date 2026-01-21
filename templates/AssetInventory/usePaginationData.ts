@@ -87,7 +87,7 @@ export function useServerPagination<T extends DataObject = DataObject>({
 
     return {
       data: items
-        .sort(
+        .toSorted(
           sort
             ? (a, b) => {
                 return order === "desc"

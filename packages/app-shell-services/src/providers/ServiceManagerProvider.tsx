@@ -25,7 +25,7 @@ function createServiceReferenceMap(services: ServicesConfig = {}) {
         .map((serviceProviderConfig) =>
           createServiceReference(serviceId, serviceProviderConfig),
         )
-        .sort((a, b) => b.ranking - a.ranking);
+        .toSorted((a, b) => b.ranking - a.ranking);
 
       map.set(serviceId, serviceReferences);
       return map;

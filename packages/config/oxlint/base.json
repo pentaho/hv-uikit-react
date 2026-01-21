@@ -15,6 +15,7 @@
     "react/jsx-key": "off",
     "react/exhaustive-deps": "error",
     "react/rules-of-hooks": "error",
+    "react/only-export-components": "off",
 
     "eslint/no-unused-vars": [
       "error",
@@ -34,7 +35,7 @@
   "settings": {
     "react": {
       "formComponents": [],
-      "linkComponents": ["HvLink"]
+      "linkComponents": []
     },
     "jsx-a11y": {
       "polymorphicPropName": "component",
