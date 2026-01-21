@@ -17,7 +17,7 @@ export const { staticClasses, useClasses } = createClasses("HvWarningText", {
     alignItems: "center",
     gap: theme.space.xxs,
   },
-  topGutter: { paddingTop: "3px" },
+  topGutter: { paddingTop: theme.space.xxs },
   hideText: {
     // display none or visibility hidden prevents
     // browser to trigger the aria-alert

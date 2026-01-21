@@ -69,6 +69,7 @@ export const HvWarningText = (props: HvWarningTextProps) => {
         {
           [classes.show]: showWarning,
           [classes.topBorder]: !disableBorder,
+          [classes.topGutter]: !disableGutter,
         },
         className,
       )}
@@ -77,7 +78,6 @@ export const HvWarningText = (props: HvWarningTextProps) => {
       <span
         id={id}
         className={cx(classes.warningText, {
-          [classes.topGutter]: !disableGutter,
           [classes.hideText]: hideText,
         })}
         role="status"

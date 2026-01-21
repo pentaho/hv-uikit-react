@@ -27,7 +27,7 @@ import type { HvDialogActionsProps, HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
 import type { HvFooterProps } from "../Footer";
-import type { HvLabelProps } from "../FormElement";
+import type { HvLabelProps, HvWarningTextProps } from "../FormElement";
 import type { HvSuggestionsProps } from "../FormElement/Suggestions";
 import type { HvHeaderBrandProps, HvHeaderProps } from "../Header";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
@@ -1117,5 +1117,12 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSnackbarContentProps>,
+    HvWarningText: {
+      classes: {
+        defaultIcon: {
+          fontSize: 16,
+        },
+      },
+    } satisfies CSSClasses<HvWarningTextProps>,
   },
 });

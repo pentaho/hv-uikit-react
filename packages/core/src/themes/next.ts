@@ -289,6 +289,7 @@ export const next = mergeTheme(nextBase, {
       },
     } satisfies CSSClasses<HvDialogActionsProps>,
     HvWarningText: {
+      disableGutter: true,
       classes: {
         defaultIcon: {
           margin: 6,
