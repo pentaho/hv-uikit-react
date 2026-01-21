@@ -39,7 +39,7 @@ export default defineConfig({
     react(),
   ],
   build: {
-    target: "ES2022",
+    target: "baseline-widely-available",
     minify: false,
     emptyOutDir: true,
     lib: {

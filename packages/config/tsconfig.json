@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Base Options */
-    "target": "ES2022",
+    "target": "ES2023",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -22,6 +22,6 @@
 
     /* Others */
     "jsx": "react-jsx",
-    "lib": ["es2022", "dom", "dom.iterable"]
+    "lib": ["ES2023", "DOM", "DOM.Iterable"]
   }
 }
