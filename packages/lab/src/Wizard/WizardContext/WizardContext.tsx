@@ -12,9 +12,7 @@ export type HvWizardTab = {
   [other: string]: any;
 };
 
-export type HvWizardTabs = {
-  [tab in number]?: HvWizardTab;
-};
+export type HvWizardTabs = Partial<Record<number, HvWizardTab>>;
 
 type HvWizardContextProp = {
   context: HvWizardTabs;

@@ -47,7 +47,7 @@ export interface HvStepNavigationProps extends HvBaseProps {
    * Width of the component element on each breakpoint screen resolution.
    * If undefined and the step component has no title, the width of the separator element will be 100px.
    * */
-  width?: { [breakpoint in HvBreakpoints]?: number };
+  width?: Partial<Record<HvBreakpoints, number>>;
   /** Defines either show a title or only a tooltip on each step component. */
   showTitles?: boolean;
   /** A Jss Object used to override or extend the styles applied to the empty state StepNavigation. */

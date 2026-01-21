@@ -5,7 +5,9 @@ import { theme } from "@hitachivantara/uikit-styles";
 
 export const useWidth = () => {
   const muiTheme = useTheme();
-  const keys = Object.keys(theme.breakpoints.values).reverse() as Breakpoint[];
+  const keys = Object.keys(
+    theme.breakpoints.values,
+  ).toReversed() as Breakpoint[];
 
   return (
     keys.reduce<Breakpoint | null>((output, key) => {

@@ -12,7 +12,7 @@ import {
 interface HvDataHookProps {
   data: HvChartData;
   groupBy?: string;
-  measures: { [key: string]: string | undefined };
+  measures: Record<string, string | undefined>;
   filters?: Arrayable<HvChartFilter>;
 }
 

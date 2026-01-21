@@ -190,6 +190,7 @@ const extendScopeWithFiles = (
       console.error(`Error resolving file "${fileName}":`, err);
       throw new Error(
         `[Error in ${fileName}] ${err instanceof Error ? err.message : String(err)}`,
+        { cause: err },
       );
     }
   }

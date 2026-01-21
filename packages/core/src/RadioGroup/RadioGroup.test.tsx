@@ -19,28 +19,18 @@ const RadioGroupComp = ({ onChange = () => {}, defaultValue = "2" }) => {
   const [value, setValue] = useState<string>(defaultValue);
   const [status, setStatus] = useState<HvFormStatus>("standBy");
 
-  const handleOnChange = (
-    _: React.ChangeEvent<HTMLInputElement>,
-    newValue: string,
-  ) => {
-    setValue(newValue);
-
-    if (newValue === "none") {
-      setStatus("invalid");
-    } else {
-      setStatus("valid");
-    }
-
-    onChange();
-  };
-
   return (
     <HvRadioGroup
       label="Choose the best radio button"
       value={value}
-      onChange={handleOnChange}
+      onChange={(evt, newValue) => {
+        setValue(newValue);
+        setStatus(newValue === "none" ? "invalid" : "valid");
+
+        onChange();
+      }}
       status={status}
-      statusMessage={'Don\'t select "None"!'}
+      statusMessage="Don't select None!"
       defaultValue={defaultValue}
     >
       <HvRadio label="None" value="none" />

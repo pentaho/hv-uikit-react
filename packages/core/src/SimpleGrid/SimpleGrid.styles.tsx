@@ -21,11 +21,11 @@ function getSortedBreakpoints(breakpoints: HvGridBreakpoint[]) {
   }
 
   const property = "maxWidth" in breakpoints[0] ? "maxWidth" : "minWidth";
-  const sorted = [...breakpoints].sort(
+  const sorted = breakpoints.toSorted(
     (a, b) => getSize(b[property]) - getSize(a[property]),
   );
 
-  return property === "minWidth" ? sorted.reverse() : sorted;
+  return property === "minWidth" ? sorted.toReversed() : sorted;
 }
 
 export const getContainerStyle = (
