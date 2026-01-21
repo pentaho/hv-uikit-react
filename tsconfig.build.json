@@ -9,8 +9,6 @@
     "declarationMap": true,
 
     /* Others */
-    "lib": ["es2022", "dom", "dom.iterable"],
-    "jsx": "react-jsx",
     "types": ["@testing-library/jest-dom", "vite/client", "vitest/globals"]
   },
   "include": ["packages/**/src"]
