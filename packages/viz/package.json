@@ -6,7 +6,7 @@
   "author": "Hitachi Vantara UI Kit Team",
   "description": "Contributed React visualization components for the NEXT UI Kit.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "main": "src/index.ts",
+  "exports": "./src/index.ts",
   "sideEffects": false,
   "keywords": [
     "hitachi-vantara",
@@ -69,9 +69,6 @@
   "clean-publish": {
     "withoutPublish": true,
     "tempDir": "package",
-    "fields": [
-      "main"
-    ],
     "files": [
       "tsconfig.json"
     ]

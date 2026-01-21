@@ -54,11 +54,6 @@ import {
   useHvTable,
   useHvTableSticky,
 } from "@hitachivantara/uikit-react-core";
-// eslint-disable-next-line no-restricted-imports
-import {
-  AssetEvent,
-  makeData,
-} from "@hitachivantara/uikit-react-core/src/Table/stories/storiesUtils";
 import {
   Backwards,
   Ban,
@@ -73,6 +68,13 @@ import {
   Share,
   Upload,
 } from "@hitachivantara/uikit-react-icons";
+
+import {
+  AssetEvent,
+  makeData,
+  // eslint-disable-next-line no-restricted-imports
+  // @ts-ignore
+} from "../../../../packages/core/src/Table/stories/storiesUtils";
 
 const Tabs = () => {
   const [value, setValue] = useState(0);

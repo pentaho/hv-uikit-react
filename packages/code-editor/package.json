@@ -6,7 +6,7 @@
   "author": "Hitachi Vantara UI Kit Team",
   "description": "A wrapper to the React Monaco editor (https://github.com/react-monaco-editor/react-monaco-editor) using the Hitachi Vantara's Design System styles.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "main": "src/index.ts",
+  "exports": "./src/index.ts",
   "sideEffects": false,
   "keywords": [
     "hitachi-vantara",
@@ -71,9 +71,6 @@
   "clean-publish": {
     "withoutPublish": true,
     "tempDir": "package",
-    "fields": [
-      "main"
-    ],
     "files": [
       "tsconfig.json"
     ]
