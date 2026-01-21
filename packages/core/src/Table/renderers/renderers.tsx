@@ -101,7 +101,14 @@ export function hvExpandColumn<
       return (
         <ClassNames>
           {({ css }) => (
-            <>
+            <div
+              className={css({
+                display: "flex",
+                alignItems: "center",
+                position: "relative",
+                left: -16,
+              })}
+            >
               {hasContent && (
                 <HvButton
                   icon
@@ -112,21 +119,13 @@ export function hvExpandColumn<
                   }
                   aria-expanded={row.isExpanded}
                   onClick={expandedProps?.onClick}
-                  classes={{
-                    root: css({
-                      position: "absolute",
-                      left: 0,
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                    }),
-                  }}
                 >
                   {row.isExpanded ? ExpandedIcon : CollapsedIcon}
                 </HvButton>
               )}
 
               <HvOverflowTooltip data={hvStringFallback(value)} />
-            </>
+            </div>
           )}
         </ClassNames>
       );
