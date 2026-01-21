@@ -1,4 +1,4 @@
-import { RenderResult, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
@@ -18,17 +18,10 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
   };
 });
 
-describe("`ErrorPage` page", () => {
+describe("ErrorPage", () => {
   describe("with menus defined", () => {
-    const user = userEvent.setup();
-    let renderResult: RenderResult<
-      typeof import("@testing-library/dom/types/queries"),
-      HTMLElement,
-      HTMLElement
-    >;
-
     beforeEach(async () => {
-      renderResult = await renderTestProvider(
+      renderTestProvider(
         <ErrorPage
           title="dummyTitle"
           code="dummyCode"
@@ -37,32 +30,24 @@ describe("`ErrorPage` page", () => {
         />,
         {
           menu: [
-            {
-              label: "DummyMenu0",
-              target: "/target0",
-            },
-            {
-              label: "DummyMenu1",
-              target: "/target1",
-            },
+            { label: "DummyMenu0", target: "/target0" },
+            { label: "DummyMenu1", target: "/target1" },
           ],
         },
       );
     });
 
-    it("Should include textual and accessibility info", () => {
-      const headings = renderResult.getAllByRole("heading");
+    it("includes textual and accessibility info", async () => {
+      const headings = await screen.findAllByRole("heading");
       expect(headings[0].textContent).toBe("dummyCode");
       expect(headings[1].textContent).toBe("dummyTitle");
       expect(
-        screen.getByRole("img", {
-          name: "dummyBackgroundLabel",
-        }),
-      ).toBeDefined();
+        screen.getByRole("img", { name: "dummyBackgroundLabel" }),
+      ).toBeInTheDocument();
     });
 
-    it("should have a link element", () => {
-      const link = renderResult.getByRole("link");
+    it("has a link element", async () => {
+      const link = await screen.findByRole("link");
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute("href");
     });
@@ -70,9 +55,8 @@ describe("`ErrorPage` page", () => {
     it("should call `onClick` method on Link click", async () => {
       const link = { href: "./target0", id: "0" };
 
-      const linkElement = renderResult.getByRole("link");
-
-      await user.click(linkElement);
+      const linkElement = await screen.findByRole("link");
+      await userEvent.click(linkElement);
 
       expect(navigateSpy).toHaveBeenCalledWith(link.href);
     });
@@ -80,20 +64,20 @@ describe("`ErrorPage` page", () => {
 
   describe("without menus defined", () => {
     it("should not have message to first menu", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <ErrorPage
           title="dummyTitle"
           background="dummyLocation"
           backgroundLabel="dummyBackgroundLabel"
         />,
       );
-      expect(queryByRole("link")).not.toBeInTheDocument();
+      expect(screen.queryByRole("link")).not.toBeInTheDocument();
     });
   });
 
   describe("without footer included", () => {
     it("should not have message to first menu", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <ErrorPage
           title="dummyTitle"
           background="dummyLocation"
@@ -101,7 +85,7 @@ describe("`ErrorPage` page", () => {
           includeFooter={false}
         />,
       );
-      expect(queryByRole("link")).not.toBeInTheDocument();
+      expect(screen.queryByRole("link")).not.toBeInTheDocument();
     });
   });
 });

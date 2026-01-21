@@ -26,74 +26,69 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
   };
 });
 
-describe("`VerticalNavigation` component", () => {
+describe("VerticalNavigation", () => {
   afterEach(() => {
     navigateSpy.mockReset();
   });
-  describe("verify correct rendering", () => {
-    const user = userEvent.setup();
+  it("should have a navigation element on the page", async () => {
+    await renderTestProvider(<VerticalNavigation />);
 
-    it("should have a navigation element on the page", async () => {
-      await renderTestProvider(<VerticalNavigation />);
+    expect(await screen.findByRole("navigation")).toBeInTheDocument();
 
-      expect(screen.queryByRole("navigation")).toBeInTheDocument();
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-
-      expect(collapseButton).toBeInTheDocument();
+    const collapseButton = screen.getByRole("button", {
+      name: "Collapse vertical navigation",
     });
 
-    it("should have a button element to collapse the panel", async () => {
-      await renderTestProvider(<VerticalNavigation />);
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-
-      expect(collapseButton).toBeInTheDocument();
-    });
-
-    it("should collapse the menu when clicking on the button", async () => {
-      await renderTestProvider(<VerticalNavigation />);
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-
-      await user.click(collapseButton);
-
-      expect(collapseButton).toBeInTheDocument();
-    });
-
-    it("should be collapsed according to localStorage", async () => {
-      localStorage.setItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED, "false");
-      await renderTestProvider(<VerticalNavigation />);
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Expand vertical navigation",
-      });
-
-      expect(collapseButton).toBeInTheDocument();
-      localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
-    });
-
-    it("should render a header with the correct props", async () => {
-      await renderTestProvider(<VerticalNavigation />);
-
-      const collapseText = screen.getByText("Collapse Menu");
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-
-      expect(collapseText).toBeInTheDocument();
-      expect(collapseButton).toBeInTheDocument();
-    });
+    expect(collapseButton).toBeInTheDocument();
   });
 
-  describe("verify click on items", () => {
-    const user = userEvent.setup();
+  it("should have a button element to collapse the panel", async () => {
+    await renderTestProvider(<VerticalNavigation />);
+
+    const collapseButton = await screen.findByRole("button", {
+      name: "Collapse vertical navigation",
+    });
+
+    expect(collapseButton).toBeInTheDocument();
+  });
+
+  it("should collapse the menu when clicking on the button", async () => {
+    await renderTestProvider(<VerticalNavigation />);
+
+    const collapseButton = await screen.findByRole("button", {
+      name: "Collapse vertical navigation",
+    });
+
+    await userEvent.click(collapseButton);
+
+    expect(collapseButton).toBeInTheDocument();
+  });
+
+  it("should be collapsed according to localStorage", async () => {
+    localStorage.setItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED, "false");
+    await renderTestProvider(<VerticalNavigation />);
+
+    const collapseButton = await screen.findByRole("button", {
+      name: "Expand vertical navigation",
+    });
+
+    expect(collapseButton).toBeInTheDocument();
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
+  });
+
+  it("should render a header with the correct props", async () => {
+    await renderTestProvider(<VerticalNavigation />);
+
+    const collapseText = await screen.findByText("Collapse Menu");
+    const collapseButton = screen.getByRole("button", {
+      name: "Collapse vertical navigation",
+    });
+
+    expect(collapseText).toBeInTheDocument();
+    expect(collapseButton).toBeInTheDocument();
+  });
+
+  describe("actions", () => {
     const switchVerticalNavigationModeMock = vi.fn();
     const mockedConfigResponse: Partial<HvAppShellConfig> = {
       menu: [{ label: "Menu 1", target: "/menu1" }],
@@ -103,7 +98,7 @@ describe("`VerticalNavigation` component", () => {
     it("should have a navigation item inside the panel", async () => {
       await renderTestProvider(<VerticalNavigation />, mockedConfigResponse);
 
-      const navigationTree = screen.getByRole("navigation");
+      const navigationTree = await screen.findByRole("navigation");
 
       expect(navigationTree).toBeInTheDocument();
 
@@ -129,13 +124,13 @@ describe("`VerticalNavigation` component", () => {
 
       await renderTestProvider(<VerticalNavigation />, mockedConfigResponse);
 
-      const navigationTree = screen.getByRole("navigation");
+      const navigationTree = await screen.findByRole("navigation");
 
       expect(navigationTree).toBeInTheDocument();
 
-      const menuItem = within(navigationTree).getByText("Menu 2");
+      const menuItem = await within(navigationTree).findByText("Menu 2");
 
-      await user.click(menuItem);
+      await userEvent.click(menuItem);
       expect(navigateSpy).toHaveBeenCalledWith("/menu2", {
         state: {
           selectedItemId: "1",
@@ -155,13 +150,13 @@ describe("`VerticalNavigation` component", () => {
 
       await renderTestProvider(<VerticalNavigation />, mockedConfigResponse);
 
-      const navigationTree = screen.getByRole("navigation");
+      const navigationTree = await screen.findByRole("navigation");
 
       expect(navigationTree).toBeInTheDocument();
 
-      const menuItem = within(navigationTree).getByLabelText("Menu 1");
+      const menuItem = await within(navigationTree).findByLabelText("Menu 1");
 
-      await user.click(menuItem);
+      await userEvent.click(menuItem);
 
       expect(navigateSpy).toHaveBeenCalledWith("/menu1", {
         state: {

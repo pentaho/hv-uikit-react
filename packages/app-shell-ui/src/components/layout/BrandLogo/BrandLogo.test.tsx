@@ -1,28 +1,28 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import renderTestProvider from "../../../tests/testUtils";
 import BrandLogo from "./BrandLogo";
 
-describe("`BrandLogo` component", () => {
+describe("BrandLogo", () => {
   it("should render the default if no logo is provided", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Hitachi logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Hitachi logo")).toBeInTheDocument();
   });
 
   it("should render the default when empty logo prop", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo logo={{}} />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Hitachi logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Hitachi logo")).toBeInTheDocument();
   });
 
   it("shouldn't render any logo when logo prop is null", () => {
@@ -38,37 +38,37 @@ describe("`BrandLogo` component", () => {
   });
 
   it("should render the Lumada logo when provided", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo logo={{ name: "LUMADA" }} />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Lumada logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Lumada logo")).toBeInTheDocument();
   });
 
   it("should render the Hitachi logo when provided", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo logo={{ name: "HITACHI" }} />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Hitachi logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Hitachi logo")).toBeInTheDocument();
   });
 
   it("should render the Pentaho logo when provided", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo logo={{ name: "PENTAHO" }} />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Pentaho logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Pentaho logo")).toBeInTheDocument();
   });
 
   it("should have description with value (string without translation)", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo
           logo={{
@@ -79,17 +79,12 @@ describe("`BrandLogo` component", () => {
       </HvProvider>,
     );
 
-    expect(getByLabelText("Test logo description")).toBeInTheDocument();
+    expect(screen.getByLabelText("Test logo description")).toBeInTheDocument();
   });
 
   it("should have description with translated value (string with translation)", async () => {
-    const { getByLabelText } = await renderTestProvider(
-      <BrandLogo
-        logo={{
-          name: "LUMADA",
-          description: "logoDesc",
-        }}
-      />,
+    renderTestProvider(
+      <BrandLogo logo={{ name: "LUMADA", description: "logoDesc" }} />,
       undefined,
       {
         en: {
@@ -98,16 +93,18 @@ describe("`BrandLogo` component", () => {
       },
     );
 
-    expect(getByLabelText("Translated logo description")).toBeInTheDocument();
+    expect(
+      await screen.findByLabelText("Translated logo description"),
+    ).toBeInTheDocument();
   });
 
   it("should have logo default description (explicit null or prop not present)", () => {
-    const { getByLabelText } = render(
+    render(
       <HvProvider>
         <BrandLogo logo={{ name: "PENTAHO" }} />
       </HvProvider>,
     );
 
-    expect(getByLabelText("Pentaho logo")).toBeInTheDocument();
+    expect(screen.getByLabelText("Pentaho logo")).toBeInTheDocument();
   });
 });

@@ -1,3 +1,4 @@
+import { screen } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 
 import renderTestProvider from "../tests/testUtils";
@@ -10,11 +11,7 @@ const TestComponent = () => {
     <button
       type="button"
       onClick={() =>
-        show({
-          type: "banner",
-          variant: "default",
-          message: "Lorem Ipsum",
-        })
+        show({ type: "banner", variant: "default", message: "Lorem Ipsum" })
       }
     >
       Add Banner
@@ -25,30 +22,27 @@ const TestComponent = () => {
 describe("BannerProvider", () => {
   it("should show and dismiss the banner correctly", async () => {
     const user = userEvent.setup();
-    const { queryByText, getByText, getByRole } = await renderTestProvider(
-      <TestComponent />,
-      {
-        menu: [
-          {
-            label: "Menu 1",
-            target: "/menu1",
-          },
-        ],
-      },
-    );
+    renderTestProvider(<TestComponent />, {
+      menu: [
+        {
+          label: "Menu 1",
+          target: "/menu1",
+        },
+      ],
+    });
 
-    expect(queryByText("Lorem Ipsum")).not.toBeInTheDocument();
+    expect(screen.queryByText("Lorem Ipsum")).not.toBeInTheDocument();
 
-    const addBannerBtn = getByText("Add Banner");
+    const addBannerBtn = await screen.findByText("Add Banner");
     await user.click(addBannerBtn);
 
-    expect(getByText("Lorem Ipsum")).toBeInTheDocument();
+    expect(screen.getByText("Lorem Ipsum")).toBeInTheDocument();
 
-    const closeBannerBtn = getByRole("button", {
+    const closeBannerBtn = screen.getByRole("button", {
       name: "Close banner",
     });
     await user.click(closeBannerBtn);
 
-    expect(queryByText("Lorem Ipsum")).not.toBeInTheDocument();
+    expect(screen.queryByText("Lorem Ipsum")).not.toBeInTheDocument();
   });
 });

@@ -36,7 +36,7 @@ const buttonHelpConfig = {
   description: "Help Button Description",
 };
 
-describe("`HeaderActions`", () => {
+describe("HeaderActions", () => {
   beforeEach(() => {
     lazy.mockReset();
   });
@@ -103,10 +103,10 @@ describe("`HeaderActions`", () => {
       },
     });
 
-    expect(lazy).toHaveBeenCalled();
     expect(
       await screen.findByRole("link", { name: "Help Button Description" }),
     ).toBeInTheDocument();
+    expect(lazy).toHaveBeenCalled();
   });
 
   it("should render the AppSwitcherToggle internal action when configured", async () => {
@@ -125,10 +125,10 @@ describe("`HeaderActions`", () => {
       },
     });
 
-    expect(lazy).toHaveBeenCalled();
     expect(
       await screen.findByRole("button", { name: "Dummy App Switcher" }),
     ).toBeInTheDocument();
+    expect(lazy).toHaveBeenCalled();
   });
 
   it("should render the ColorModeSwitcher internal action when configured", async () => {
@@ -145,10 +145,10 @@ describe("`HeaderActions`", () => {
       },
     });
 
-    expect(lazy).toHaveBeenCalled();
     expect(
       await screen.findByRole("button", { name: "Switch color mode" }),
     ).toBeInTheDocument();
+    expect(lazy).toHaveBeenCalled();
   });
 
   it("should render all the internal actions and dynamic action in the right order", async () => {
