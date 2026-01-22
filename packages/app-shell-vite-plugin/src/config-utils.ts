@@ -1,19 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import { createEsmHooks, register } from "ts-node";
+import { createJiti } from "jiti";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
-import { require } from "./nodeModule.js";
 import type { AppShellVitePluginOptions } from "./vite-plugin.js";
 
-createEsmHooks(
-  register({
-    transpileOnly: true,
-    moduleTypes: {
-      "app-shell.config.ts": "cjs",
-    },
-  }),
-);
+const jiti = createJiti(import.meta.url, { debug: true, tryNative: true });
 
 export interface ConfigReplacement {
   token: string;
@@ -68,11 +60,7 @@ export function loadConfigFile(
     return JSON.parse(appShellConfigRaw) as HvAppShellConfig;
   }
 
-  // using require instead of import to avoid using --experimental-loader ts-node/esm
-  // eslint-disable-next-line import/no-dynamic-require
-  const loadedAppShellConfig = require(appShellConfigFile).default as
-    | AppShellConfigFunction
-    | HvAppShellConfig;
+  const loadedAppShellConfig = jiti(appShellConfigFile).default;
 
   if (typeof loadedAppShellConfig === "function") {
     return loadedAppShellConfig(opts, env);
