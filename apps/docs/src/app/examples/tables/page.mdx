@@ -4,6 +4,7 @@ title: "Tables"
 
 import { CodeBlock } from "../../../components/code/CodeBlock";
 
+import customCellsTableCode from "./CustomCellsTable?raw";
 import defaultTableCode from "./DefaultTable?raw";
 import filteringTableCode from "./FilteringTable?raw";
 import groupingTableCode from "./GroupingTable?raw";
@@ -57,6 +58,12 @@ Row filtering and global filtering can be configured by leveraging the `useHvFil
 Example of header grouping and row expansion via grouping
 
 <CodeBlock code={{ main: groupingTableCode, "./makeData": makeData }} />
+
+### Custom cell content
+
+Example of custom cell content rendering
+
+<CodeBlock code={{ main: customCellsTableCode, "./makeData": makeData }} />
 
 ### Other examples
 
