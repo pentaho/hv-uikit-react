@@ -82,6 +82,7 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
   },
   /** Styles passed down to the page selector Input component as `input`. */
   pageSizeInput: {
+    margin: 0,
     textAlign: "center",
     MozAppearance: "textfield",
   },

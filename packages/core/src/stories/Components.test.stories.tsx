@@ -163,6 +163,10 @@ export const TestButtons: StoryObj = {
   parameters: {
     ...setupChromatic("all", 5000),
   },
+  play: async ({ canvas, userEvent }) => {
+    // navigate to pagination last page
+    await userEvent.click(canvas.getByRole("button", { name: /last page/i }));
+  },
   render: (args, context: any) => (
     <div className="grid gap-sm">
       <div>{renderStory(ButtonTestStory, context)}</div>

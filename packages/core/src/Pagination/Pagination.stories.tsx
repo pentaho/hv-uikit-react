@@ -32,16 +32,16 @@ export const Main: StoryObj<HvPaginationProps> = {
   args: {
     showPageSizeOptions: true,
     showPageJump: true,
+    pageSizeOptions: [2, 4, 6, 12, 24, 48, 2000],
   },
   argTypes: {
     classes: { control: { disable: true } },
   },
   render: (args) => {
-    const pageSizeOptions = [4, 6, 12, 24, 48, 2000];
-    const data = [...Array(64).keys()];
+    const data = [...Array(256).keys()];
 
     const [page, setPage] = useState(0);
-    const [pageSize, setPageSize] = useState(pageSizeOptions[2]);
+    const [pageSize, setPageSize] = useState(args.pageSizeOptions?.[2] || 6);
 
     const numPages = Math.ceil(data.length / pageSize);
 
@@ -58,10 +58,9 @@ export const Main: StoryObj<HvPaginationProps> = {
           canPrevious={page > 0}
           canNext={page < numPages - 1}
           pageSize={pageSize}
-          pageSizeOptions={pageSizeOptions}
           onPageChange={setPage}
           onPageSizeChange={setPageSize}
-          labels={{ pageSizeEntryName: "items" }}
+          labels={{ pageSizeEntryName: `of ${data.length}` }}
           {...args}
         />
       </div>

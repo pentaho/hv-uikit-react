@@ -64,7 +64,7 @@ export default function Demo() {
         pageSizeOptions={pageSizeOptions}
         onPageChange={setPage}
         onPageSizeChange={setPageSize}
-        labels={{ pageSizeEntryName: "items" }}
+        labels={{ pageSizeEntryName: `of ${data.length}` }}
       />
     </>
   );
