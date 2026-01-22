@@ -58,7 +58,7 @@
     "rc-slider": "^10.5.0",
     "rc-tooltip": "~6.3.0",
     "react-popper": "^2.3.0",
-    "react-resize-detector": "^8.1.0",
+    "react-resize-detector": "^12.3.0",
     "react-table": "^7.8.0",
     "react-window": "^1.8.10"
   },
