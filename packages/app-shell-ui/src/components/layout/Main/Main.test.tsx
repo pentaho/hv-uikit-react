@@ -1,3 +1,4 @@
+import { screen } from "@testing-library/dom";
 import { vi } from "vitest";
 
 import * as NavigationProvider from "../../../providers/NavigationProvider";
@@ -10,27 +11,27 @@ const navigationContextSpy = vi.spyOn(
   "useNavigationContext",
 );
 
-describe("`Main` component", () => {
+describe("Main", () => {
   describe("with valid configuration", () => {
     it("should render the `StyledAppContainer` component", async () => {
-      const { getByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
       );
-      const appContainer = getByRole("main");
+      const appContainer = await screen.findByRole("main");
 
       expect(appContainer).toBeInTheDocument();
     });
 
     it("should not render the `VerticalNavigation` component when `hasVerticalNavigation` is false", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
       );
 
-      const navigationTree = queryByRole("navigation", {
+      const navigationTree = screen.queryByRole("navigation", {
         name: "Vertical navigation",
       });
 
@@ -57,13 +58,13 @@ describe("`Main` component", () => {
         hasVerticalNavigation: true,
       }));
 
-      const { findByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
       );
 
-      const navigationTree = await findByRole("navigation", {
+      const navigationTree = await screen.findByRole("navigation", {
         name: "Vertical navigation",
       });
 
@@ -80,7 +81,7 @@ describe("`Main` component", () => {
     });
 
     it("should render the `StyledAppContainer` component", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
@@ -108,17 +109,17 @@ describe("`Main` component", () => {
         },
       );
 
-      expect(queryByRole("main")).toBeInTheDocument();
+      expect(await screen.findByRole("main")).toBeInTheDocument();
     });
 
     it("should not render the `VerticalNavigation` component", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
       );
 
-      const navigationTree = queryByRole("navigation", {
+      const navigationTree = screen.queryByRole("navigation", {
         name: "Vertical navigation",
       });
 
@@ -128,7 +129,7 @@ describe("`Main` component", () => {
 
   describe("with navigationMode set to only left", () => {
     it("should not render the `VerticalNavigation` component when no menu are defined in the configuration", async () => {
-      const { queryByRole } = await renderTestProvider(
+      renderTestProvider(
         <Main>
           <div />
         </Main>,
@@ -136,7 +137,7 @@ describe("`Main` component", () => {
           navigationMode: "ONLY_LEFT",
         },
       );
-      const navigationTree = queryByRole("navigation", {
+      const navigationTree = screen.queryByRole("navigation", {
         name: "Vertical navigation",
       });
 

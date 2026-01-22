@@ -27,10 +27,10 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
   };
 });
 
-describe("`Header` component", () => {
+describe("Header", () => {
   describe("with empty menu configuration", () => {
     it("should not have an nav element", async () => {
-      await renderTestProvider(<Header />);
+      renderTestProvider(<Header />);
 
       expect(await screen.findByRole("banner")).toBeInTheDocument();
       expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
@@ -38,10 +38,8 @@ describe("`Header` component", () => {
   });
 
   describe("with valid menu configuration", () => {
-    const user = userEvent.setup();
-
     beforeEach(async () => {
-      await renderTestProvider(<Header />, {
+      renderTestProvider(<Header />, {
         menu: [
           {
             label: "errors",
@@ -64,8 +62,8 @@ describe("`Header` component", () => {
       });
     });
 
-    it("should have a navigation element with the correct menu items", () => {
-      const headerElement = screen.getByRole("banner");
+    it("should have a navigation element with the correct menu items", async () => {
+      const headerElement = await screen.findByRole("banner");
 
       expect(headerElement).toBeInTheDocument();
 
@@ -90,12 +88,12 @@ describe("`Header` component", () => {
         id: "1",
       };
 
-      const headerNavigationElement = screen.getByRole("navigation");
+      const headerNavigationElement = await screen.findByRole("navigation");
       const secondMenuItem = within(headerNavigationElement).getAllByRole(
         "link",
       )[1];
 
-      await user.click(secondMenuItem);
+      await userEvent.click(secondMenuItem);
 
       expect(navigateSpy).toHaveBeenCalledWith(dummySelectedItem.href, {
         state: { selectedItemId: dummySelectedItem.id },
@@ -105,11 +103,11 @@ describe("`Header` component", () => {
 
   describe("with translations", () => {
     it("should present value from `name` when no translation bundle with given key is provided", async () => {
-      const { getByRole } = await renderTestProvider(<Header />, {
+      renderTestProvider(<Header />, {
         name: "translationKey",
       });
 
-      const headerElement = getByRole("banner");
+      const headerElement = await screen.findByRole("banner");
       const headerBrand = within(headerElement).getByText("translationKey");
 
       expect(headerBrand).toBeInTheDocument();
@@ -121,7 +119,7 @@ describe("`Header` component", () => {
           translationKey: "Tests App",
         },
       };
-      const { getByRole } = await renderTestProvider(
+      renderTestProvider(
         <Header />,
         {
           name: "translationKey",
@@ -129,7 +127,7 @@ describe("`Header` component", () => {
         translations,
       );
 
-      const headerElement = getByRole("banner");
+      const headerElement = await screen.findByRole("banner");
       const headerBrand = within(headerElement).getByText("Tests App");
 
       expect(headerBrand).toBeInTheDocument();
@@ -138,7 +136,7 @@ describe("`Header` component", () => {
 
   describe("`Header` component with navigationMode set to `ONLY_LEFT`", () => {
     it("should not have a navigation element", async () => {
-      await renderTestProvider(<Header />, {
+      renderTestProvider(<Header />, {
         menu: [
           {
             label: "dummyMenu1",
@@ -161,7 +159,7 @@ describe("`Header` component", () => {
         navigationMode: "ONLY_LEFT",
       });
 
-      const headerElement = screen.getByRole("banner");
+      const headerElement = await screen.findByRole("banner");
       expect(headerElement).toBeInTheDocument();
 
       const headerNavigationElement =
@@ -185,10 +183,10 @@ describe("`Header` component", () => {
         isCompactMode: true,
       }));
 
-      const { queryByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
       expect(
-        queryByRole("button", {
+        await screen.findByRole("button", {
           name: "Close navigation panel",
         }),
       ).toBeInTheDocument();
@@ -201,10 +199,10 @@ describe("`Header` component", () => {
         isCompactMode: true,
       }));
 
-      const { queryByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
       expect(
-        queryByRole("button", {
+        screen.queryByRole("button", {
           name: "Close navigation panel",
         }),
       ).not.toBeInTheDocument();
@@ -225,17 +223,14 @@ describe("`Header` component", () => {
         verticalNavigationMode: "CLOSED",
       }));
 
-      const { queryByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
       expect(
-        queryByRole("button", {
-          name: "Open navigation panel",
-        }),
+        await screen.findByRole("button", { name: "Open navigation panel" }),
       ).toBeInTheDocument();
     });
 
     it("should trigger the function to toggle the vertical navigation panel when clicking the toggle", async () => {
-      const user = userEvent.setup();
       const switchVerticalNavigationModeMock = vi.fn();
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
@@ -252,13 +247,13 @@ describe("`Header` component", () => {
         switchVerticalNavigationMode: switchVerticalNavigationModeMock,
       }));
 
-      const { getByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
-      const button = getByRole("button", {
+      const button = await screen.findByRole("button", {
         name: "Close navigation panel",
       });
 
-      await user.click(button);
+      await userEvent.click(button);
 
       expect(switchVerticalNavigationModeMock).toHaveBeenCalledTimes(1);
     });
@@ -285,9 +280,9 @@ describe("`Header` component", () => {
         verticalNavigationMode: "EXPANDED",
       }));
 
-      const { getByRole } = await renderTestProvider(<Header />);
+      await renderTestProvider(<Header />);
 
-      const headerElement = getByRole("banner");
+      const headerElement = await screen.findByRole("banner");
       expect(headerElement).toBeInTheDocument();
 
       expect(

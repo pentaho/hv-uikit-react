@@ -148,72 +148,33 @@ interface AppShellProviderProps extends React.PropsWithChildren {
   configUrl?: string;
 }
 
-const AppShellProvider = ({
+export function HvAppShellProvider({
   children,
-  config: localConfig,
-  configUrl,
-}: AppShellProviderProps) => {
-  const [loadedConfig, setLoadedConfig] = useState<HvAppShellConfig>();
-  const [hasError, setHasError] = useState(false);
-
-  // Load config from URL
-  useEffect(() => {
-    if (!localConfig && configUrl) {
-      fetch(new URL(configUrl))
-        .then((result) => result.json())
-        .then((data) => setLoadedConfig(data))
-        .catch((e) => {
-          console.error(`Failed to obtain the context from: ${configUrl}`, e);
-          setLoadedConfig(undefined);
-          setHasError(true);
-        });
-    }
-  }, [localConfig, configUrl]);
-
-  const rawConfig = useMemo(
-    () => localConfig ?? loadedConfig,
-    [localConfig, loadedConfig],
-  );
-  const { model, isPending: areBundlesLoading } = useModelFromConfig(rawConfig);
+  config: configProp,
+}: AppShellProviderProps) {
+  const { model, isPending: areBundlesLoading } =
+    useModelFromConfig(configProp);
 
   const systemProviders = useMemo(() => {
-    if (!model?.systemProviders) {
-      return undefined;
-    }
+    if (!model?.systemProviders) return undefined;
 
-    const providersComponents: HvAppShellProvidersComponent[] = [];
-
-    for (const provider of model.systemProviders) {
-      const component = model.preloadedBundles.get(
-        provider.bundle,
-      ) as React.ComponentType<React.PropsWithChildren>;
-
-      providersComponents.push({
-        key: provider.key,
-        component,
-        config: provider.config,
-      });
-    }
-
-    return providersComponents;
+    return model.systemProviders.map(({ key, bundle, config }) => ({
+      key,
+      component: model.preloadedBundles.get(bundle) as React.ComponentType,
+      config,
+    }));
   }, [model?.systemProviders, model?.preloadedBundles]);
 
-  if (hasError) {
-    throw Error("Failed to obtain the configuration");
-  }
-
   // Wait for config and condition bundles to load
-  if (!rawConfig || !model || areBundlesLoading) {
+  if (!configProp || !model || areBundlesLoading) {
     return null;
   }
 
   return (
     <CombinedProviders providers={systemProviders}>
-      <AppShellProviderInner config={rawConfig} model={model}>
+      <AppShellProviderInner config={configProp} model={model}>
         {children}
       </AppShellProviderInner>
     </CombinedProviders>
   );
-};
-
-export default AppShellProvider;
+}

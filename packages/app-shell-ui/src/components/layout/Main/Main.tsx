@@ -3,7 +3,7 @@ import { theme, useTheme } from "@hitachivantara/uikit-react-core";
 
 import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
-import VerticalNavigation from "../VerticalNavigation";
+import VerticalNavigation from "../VerticalNavigation/VerticalNavigation";
 import { StyledContainer, StyledMain } from "./styles";
 
 export type MainProps = {

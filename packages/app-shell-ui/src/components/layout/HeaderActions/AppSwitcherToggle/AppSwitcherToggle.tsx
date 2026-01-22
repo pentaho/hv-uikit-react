@@ -16,10 +16,10 @@ import {
   theme,
 } from "@hitachivantara/uikit-react-core";
 
-import createAppContainerElement from "../../../../../../utils/documentUtil";
-import IconUiKit from "../../../../../IconUiKit";
-import BrandLogo from "../../../../BrandLogo";
-import StyledIconWrapper from "../../../styles";
+import createAppContainerElement from "../../../../utils/documentUtil";
+import IconUiKit from "../../../IconUiKit";
+import BrandLogo from "../../BrandLogo/BrandLogo";
+import StyledIconWrapper from "../../Header/styles";
 import StyledAppShellPanelWrapper from "./styles";
 
 const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({

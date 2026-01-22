@@ -8,7 +8,7 @@ import {
 } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
-import AppShellProvider from "../components/AppShellProvider/AppShellProvider";
+import { HvAppShellProvider } from "../components/AppShellProvider/AppShellProvider";
 import createI18Next, { addResourceBundles } from "../i18n";
 import GenericError from "../pages/GenericError";
 import { BannerProvider } from "../providers/BannerProvider";
@@ -31,25 +31,17 @@ const DummyRoot = ({ children }: { children: ReactNode }) => (
 const TestProvider = ({
   children,
   bundles = {},
-  config,
-  configUrl,
+  config = {},
 }: TestProviderProps) => {
   const { i18n } = createI18Next();
   if (bundles) {
     addResourceBundles(i18n, bundles, CONFIG_TRANSLATIONS_NAMESPACE);
   }
 
-  // AppShellProvider only needs filled either the config parameter or the configUrl parameter. When using this test component,
-  // if none is filled, then we just want it to render and as such, we just need to force an empty object through config parameter.
-  let configAsDefault = config;
-  if (!configUrl && !configAsDefault) {
-    configAsDefault = {};
-  }
-
   return (
     <HvProvider>
       <I18nextProvider i18n={i18n}>
-        <AppShellProvider config={configAsDefault} configUrl={configUrl}>
+        <HvAppShellProvider config={config}>
           <RouterProvider
             router={createBrowserRouter([
               {
@@ -58,7 +50,7 @@ const TestProvider = ({
               },
             ])}
           />
-        </AppShellProvider>
+        </HvAppShellProvider>
       </I18nextProvider>
     </HvProvider>
   );

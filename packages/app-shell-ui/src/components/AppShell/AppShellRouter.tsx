@@ -16,7 +16,7 @@ import { HvContainer } from "@hitachivantara/uikit-react-core";
 
 import GenericError from "../../pages/GenericError";
 import LoadingPage from "../../pages/LoadingPage";
-import RootRoute from "../../pages/Root";
+import RootRoute from "../../pages/Root/Root";
 import { getAppIdFromBundle } from "../../utils/navigationUtil";
 import AppShellViewProvider from "../AppShellViewProvider";
 
@@ -126,7 +126,7 @@ function renderErrorRoutes(
   ];
 }
 
-const AppShellRoutes = () => {
+export function HvAppShellRouter() {
   const { baseUrl, mainPanel } = useHvAppShellModel();
 
   const prevRoutesRef = useRef<RouteObject[]>([]);
@@ -177,6 +177,4 @@ const AppShellRoutes = () => {
       )}
     />
   );
-};
-
-export default AppShellRoutes;
+}

@@ -1,4 +1,4 @@
-import { act, render, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
@@ -6,7 +6,6 @@ import {
 } from "@hitachivantara/app-shell-shared";
 
 import * as i18next from "../../i18n";
-import TestProvider from "../../tests/TestProvider";
 import renderTestProvider from "../../tests/testUtils";
 
 const addResourceBundlesMock = vi.spyOn(i18next, "addResourceBundles");
@@ -30,37 +29,15 @@ describe("AppShellProvider component", () => {
       },
     };
 
-    it("should use the values passed trough the config parameter", async () => {
-      const { queryByText } = await renderTestProvider(
-        <DummyComponent />,
-        mockedConfigResponse,
-      );
+    it("should use the values passed through the config parameter", async () => {
+      await renderTestProvider(<DummyComponent />, mockedConfigResponse);
 
-      expect(queryByText("fromConfigParameter")).toBeInTheDocument();
-      expect(queryByText("fromConfigUrlParameter")).not.toBeInTheDocument();
-    });
-
-    it("should use the values loaded from the passed through the configUrl parameter", async () => {
-      const fetchMock = vi.fn();
-      global.fetch = fetchMock;
-      fetchMock.mockImplementation(() =>
-        Promise.resolve({
-          json: () => ({
-            name: "fromConfigUrlParameter",
-          }),
-        }),
-      );
-
-      const { queryByText } = await act(async () =>
-        render(
-          <TestProvider configUrl="http://dummy.url">
-            <DummyComponent />
-          </TestProvider>,
-        ),
-      );
-
-      expect(queryByText("fromConfigParameter")).not.toBeInTheDocument();
-      expect(queryByText("fromConfigUrlParameter")).toBeInTheDocument();
+      expect(
+        await screen.findByText("fromConfigParameter"),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText("fromConfigUrlParameter"),
+      ).not.toBeInTheDocument();
     });
 
     it("should add config translations correctly", async () => {
@@ -117,7 +94,7 @@ describe("AppShellProvider component", () => {
 
   describe("config providers prop", () => {
     it("should log error if import of a provider bundle fails and still render correctly", async () => {
-      const { queryByText } = await renderTestProvider(<div>dummy</div>, {
+      await renderTestProvider(<div>dummy</div>, {
         providers: [
           {
             bundle: "dummyProvider",
@@ -132,7 +109,7 @@ describe("AppShellProvider component", () => {
         );
       });
 
-      expect(queryByText("dummy")).toBeInTheDocument();
+      expect(await screen.findByText("dummy")).toBeInTheDocument();
     });
   });
 });

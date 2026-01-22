@@ -18,8 +18,8 @@ import {
 import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import IconUiKit from "../../IconUiKit";
-import BrandLogo from "../BrandLogo";
-import HeaderActions from "./HeaderActions";
+import BrandLogo from "../BrandLogo/BrandLogo";
+import HeaderActions from "../HeaderActions/HeaderActions";
 import StyledIconWrapper from "./styles";
 
 const Header = () => {

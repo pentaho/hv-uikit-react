@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/app-shell-shared";
 import { HvIconButton } from "@hitachivantara/uikit-react-core";
 
-import IconUiKit from "../../../../../IconUiKit";
+import IconUiKit from "../../../IconUiKit";
 
 const HelpButton: React.FC<HvAppShellHelp> = ({ url, description }) => {
   const { t } = useTranslation(undefined, { keyPrefix: "header.helpUrl" });

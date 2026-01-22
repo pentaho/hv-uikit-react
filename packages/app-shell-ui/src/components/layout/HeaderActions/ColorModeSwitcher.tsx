@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/app-shell-events";
 import { HvIconButton, useTheme } from "@hitachivantara/uikit-react-core";
 
-import IconUiKit from "../../../../IconUiKit";
+import IconUiKit from "../../IconUiKit";
 
 const ColorModeSwitcher: React.FC = () => {
   const { t } = useTranslation(undefined, {
