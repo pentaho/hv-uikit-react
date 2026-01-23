@@ -20,10 +20,10 @@ import {
   HvTableSection,
   HvTypography,
   theme,
-  useHvData,
   useHvFilters,
   useHvGlobalFilter,
   useHvPagination,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import { Add, Close, Filters } from "@hitachivantara/uikit-react-icons";
 
@@ -126,7 +126,7 @@ export const TableFilter = () => {
   const [selectedFilters, setSelectedFilters] = useState<HvFilterGroupValue>();
   const [checked, setChecked] = useState(true);
 
-  const columns: HvTableColumnConfig<AssetEvent, string>[] = useMemo(() => {
+  const columns: HvTableColumnConfig<AssetEvent>[] = useMemo(() => {
     const cols = getColumns();
 
     if (checked) {
@@ -169,17 +169,7 @@ export const TableFilter = () => {
     [selectedFilters],
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    getHvPaginationProps,
-    state: { pageSize },
-    setAllFilters,
-    setGlobalFilter,
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     { columns, data },
     useHvFilters,
     useHvGlobalFilter,
@@ -187,11 +177,11 @@ export const TableFilter = () => {
   );
 
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return (
       <HvTableRow {...row.getRowProps()}>
@@ -213,7 +203,7 @@ export const TableFilter = () => {
           .map((x) => filters[idx].data.find((i) => i.id === x)?.name)
           .filter(Boolean),
       })) || [];
-    setAllFilters?.(newFilters);
+    table.setAllFilters?.(newFilters);
   };
 
   return (
@@ -233,7 +223,7 @@ export const TableFilter = () => {
             <HvInput
               type="search"
               placeholder="Search all columns"
-              onChange={(e, v) => setGlobalFilter?.(v)}
+              onChange={(e, v) => table.setGlobalFilter?.(v)}
             />
             <HvFilterGroup
               ref={filterRef}
@@ -293,9 +283,9 @@ export const TableFilter = () => {
           </div>
         )}
         <HvTableContainer>
-          <HvTable {...getTableProps()}>
-            <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+          <HvTable {...table.getTableProps()}>
+            <HvTableHead {...table.getTableHeadProps?.()}>
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -311,24 +301,21 @@ export const TableFilter = () => {
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
+            <HvTableBody {...table.getTableBodyProps()}>
               {data.length === 0 ? (
                 <EmptyRow />
               ) : (
-                [...Array(pageSize ?? 0).keys()].map(renderTableRow)
+                [...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)
               )}
             </HvTableBody>
           </HvTable>
         </HvTableContainer>
-        {page.length > 0 ? (
+        {table.page.length > 0 && (
           <HvPagination
-            {...getHvPaginationProps?.()}
-            labels={{
-              pageSizePrev: "",
-              pageSizeEntryName: `of ${data.length}`,
-            }}
+            {...table.getHvPaginationProps?.()}
+            labels={{ pageSizeEntryName: `of ${data.length}` }}
           />
-        ) : undefined}
+        )}
       </HvTableSection>
     </>
   );

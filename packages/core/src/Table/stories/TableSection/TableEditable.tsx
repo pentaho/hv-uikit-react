@@ -26,11 +26,11 @@ import {
   HvTypography,
   snackbarContentClasses,
   theme,
-  useHvData,
   useHvPagination,
   useHvRowExpand,
   useHvRowState,
   useHvSnackbar,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import { Add, Delete, Edit } from "@hitachivantara/uikit-react-icons";
 
@@ -131,7 +131,7 @@ interface TableProps<T extends Data> {
   onUpdate?: (tableParams: HvTableState<T>) => void;
   loading?: boolean;
   pageCount: number;
-  columns: HvTableColumnConfig<T, string>[];
+  columns: HvTableColumnConfig<T>[];
   totalRecords?: number;
   onRowRestore?: (id: string) => Promise<void>;
   onRowDelete?: (id: string) => Promise<void>;
@@ -369,7 +369,7 @@ const Table = <T extends Data>({
     [closeSnackbar, enqueueSnackbar, handleDelete],
   );
 
-  const columns: HvTableColumnConfig<T, string>[] = useMemo(
+  const columns = useMemo<HvTableColumnConfig<T>[]>(
     () => [
       ...columnsProp,
       {
@@ -395,8 +395,7 @@ const Table = <T extends Data>({
       {
         id: "edit",
         variant: "actions",
-        Cell: (props: HvCellProps<T, string, any>) => {
-          const { row, setRowState } = props;
+        Cell: ({ row, setRowState }: HvCellProps<T>) => {
           return (
             <Fragment key={`${row.id}-edit`}>
               {!row.state?.isEditing && (
@@ -424,7 +423,7 @@ const Table = <T extends Data>({
       {
         id: "delete",
         variant: "actions",
-        Cell: ({ row }: { row: HvRowInstance<T> }) => (
+        Cell: ({ row }: HvCellProps<T>) => (
           <HvButton
             icon
             aria-label="Delete row"
@@ -438,15 +437,7 @@ const Table = <T extends Data>({
     [columnsProp, handleRequestDelete],
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    getHvPaginationProps,
-    state: { pageSize },
-  } = useHvData<T, string>(
+  const table = useHvTable<T>(
     {
       data,
       columns,
@@ -533,7 +524,7 @@ const Table = <T extends Data>({
     }
   };
 
-  const handleCancelEditRow = (row: HvRowInstance<T, string>) => {
+  const handleCancelEditRow = (row: HvRowInstance<T>) => {
     if (!row.state?.isDirty) {
       row.setState?.((state: object) => ({
         ...state,
@@ -572,7 +563,7 @@ const Table = <T extends Data>({
 
   const handleEditRow = async (
     event: FormEvent<HTMLFormElement>,
-    row: HvRowInstance<T, string>,
+    row: HvRowInstance<T>,
   ) => {
     try {
       event.preventDefault();
@@ -609,7 +600,7 @@ const Table = <T extends Data>({
     }
   };
 
-  const renderEditableRow = (row: HvRowInstance<T, string>) => {
+  const renderEditableRow = (row: HvRowInstance<T>) => {
     const formId = `edit-row-${row.original.id}`;
 
     return (
@@ -726,11 +717,11 @@ const Table = <T extends Data>({
   };
 
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return row.state?.isEditing ? (
       renderEditableRow(row)
@@ -749,9 +740,9 @@ const Table = <T extends Data>({
     <>
       <HvLoadingContainer hidden={!loading} label="Loading">
         <HvTableContainer>
-          <HvTable {...getTableProps()} className={classes.tableRoot}>
-            <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+          <HvTable {...table.getTableProps()} className={classes.tableRoot}>
+            <HvTableHead {...table.getTableHeadProps?.()}>
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -768,31 +759,28 @@ const Table = <T extends Data>({
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
+            <HvTableBody {...table.getTableBodyProps()}>
               {addRow && renderAddRow()}
               {data?.length === 0 ? (
                 <EmptyRow />
               ) : (
-                [...Array(pageSize ?? 0).keys()].map(renderTableRow)
+                [...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)
               )}
             </HvTableBody>
           </HvTable>
         </HvTableContainer>
       </HvLoadingContainer>
-      {page.length > 0 ? (
+      {table.page.length > 0 && (
         <HvPagination
-          {...getHvPaginationProps?.()}
-          labels={{
-            pageSizePrev: "",
-            pageSizeEntryName: `of ${totalRecords}`,
-          }}
+          {...table.getHvPaginationProps?.()}
+          labels={{ pageSizeEntryName: `of ${totalRecords}` }}
         />
-      ) : undefined}
+      )}
     </>
   );
 };
 
-const getEditableColumns = (): HvTableColumnConfig<AssetEvent, string>[] => [
+const getEditableColumns = (): HvTableColumnConfig<AssetEvent>[] => [
   { Header: "Title", accessor: "name", style: { width: "100%" } },
   { Header: "Status", accessor: "status", style: { width: "100%" } },
   { Header: "Severity", accessor: "severity", style: { width: "100%" } },
@@ -806,11 +794,11 @@ export const TableEditable = () => {
   const [add, setAdd] = useState(false);
   const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
 
-  const columns: HvTableColumnConfig<AssetEvent, string>[] = useMemo(
+  const columns: HvTableColumnConfig<AssetEvent>[] = useMemo(
     () =>
       getEditableColumns().map((col) => ({
         ...col,
-        Cell: EditableCell,
+        Cell: EditableCell as any,
       })),
     [],
   );

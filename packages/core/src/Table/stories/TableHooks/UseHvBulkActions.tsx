@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   HvActionGeneric,
   HvBulkActions,
@@ -12,9 +12,9 @@ import {
   HvTableHeader,
   HvTableRow,
   useHvBulkActions,
-  useHvData,
   useHvPagination,
   useHvRowSelection,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import {
   Ban,
@@ -30,67 +30,43 @@ export const UseHvBulkActions = () => {
   const columns = useMemo(() => getColumns(), []);
   const [data, setData] = useState(makeData(64));
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    selectedFlatRows,
-    toggleAllRowsSelected,
-    getHvBulkActionsProps,
-    getHvPaginationProps,
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     { columns, data },
     useHvPagination,
     useHvRowSelection,
     useHvBulkActions,
   );
 
-  const handleAction = useCallback(
-    (evt: React.SyntheticEvent, action: HvActionGeneric) => {
-      const selected = selectedFlatRows.map((el) => el.original);
+  const handleAction = (evt: React.SyntheticEvent, action: HvActionGeneric) => {
+    const selected = table.selectedFlatRows.map((el) => el.original);
 
-      switch (action.id) {
-        case "duplicate": {
-          const newEls = selected.map((el) => ({
-            ...el,
-            id: `${el.id}-copy`,
-            name: `${el.name}-copy`,
-          }));
-          setData([...data, ...newEls]);
-          break;
-        }
-        case "delete": {
-          const selectedIds = selected.map((el) => el.id);
-          toggleAllRowsSelected?.(false);
-          setData(data.filter((el) => !selectedIds.includes(el.id)));
-          break;
-        }
-        case "lock":
-        case "preview":
-        default:
-          break;
+    switch (action.id) {
+      case "duplicate": {
+        const newEls = selected.map((el) => ({
+          ...el,
+          id: `${el.id}-copy`,
+          name: `${el.name}-copy`,
+        }));
+        setData([...data, ...newEls]);
+        break;
       }
-    },
-    [data, selectedFlatRows, toggleAllRowsSelected],
-  );
-
-  const EmptyStateRow = useCallback(
-    () => (
-      <HvTableRow>
-        <HvTableCell colSpan={100} style={{ height: 96 }}>
-          <HvEmptyState message="No data to display." icon={<Ban />} />
-        </HvTableCell>
-      </HvTableRow>
-    ),
-    [],
-  );
+      case "delete": {
+        const selectedIds = selected.map((el) => el.id);
+        table.toggleAllRowsSelected?.(false);
+        setData(data.filter((el) => !selectedIds.includes(el.id)));
+        break;
+      }
+      case "lock":
+      case "preview":
+      default:
+        break;
+    }
+  };
 
   return (
     <>
       <HvBulkActions
-        {...getHvBulkActionsProps?.()}
+        {...table.getHvBulkActionsProps?.()}
         maxVisibleActions={1}
         onAction={handleAction}
         actions={[
@@ -101,9 +77,9 @@ export const UseHvBulkActions = () => {
         ]}
       />
       <HvTableContainer>
-        <HvTable {...getTableProps()}>
-          <HvTableHead>
-            {headerGroups.map((headerGroup) => (
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
               <HvTableRow
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.getHeaderGroupProps().key}
@@ -119,10 +95,10 @@ export const UseHvBulkActions = () => {
               </HvTableRow>
             ))}
           </HvTableHead>
-          <HvTableBody {...getTableBodyProps()}>
-            {page?.length ? (
-              page.map((row) => {
-                prepareRow(row);
+          <HvTableBody {...table.getTableBodyProps()}>
+            {table.page?.length > 0 ? (
+              table.page.map((row) => {
+                table.prepareRow(row);
                 const { key, ...rowProps } = row.getRowProps();
 
                 return (
@@ -144,9 +120,19 @@ export const UseHvBulkActions = () => {
           </HvTableBody>
         </HvTable>
       </HvTableContainer>
-      {page?.length ? (
-        <HvPagination {...getHvPaginationProps?.()} />
-      ) : undefined}
+      {table.page?.length > 0 && (
+        <HvPagination {...table.getHvPaginationProps?.()} />
+      )}
     </>
   );
 };
+
+function EmptyStateRow() {
+  return (
+    <HvTableRow>
+      <HvTableCell colSpan={100} style={{ height: 96 }}>
+        <HvEmptyState message="No data to display." icon={<Ban />} />
+      </HvTableCell>
+    </HvTableRow>
+  );
+}

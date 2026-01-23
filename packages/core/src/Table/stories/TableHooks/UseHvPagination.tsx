@@ -8,8 +8,8 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
   useHvPagination,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, getColumns, makeData } from "../storiesUtils";
@@ -24,22 +24,14 @@ export const UseHvPagination = () => {
   const columns = useMemo(() => getColumns(), []);
   const data = useMemo(() => makeData(32), []);
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    state: { pageSize },
-    getHvPaginationProps,
-  } = useHvData<AssetEvent, string>({ columns, data }, useHvPagination);
+  const table = useHvTable<AssetEvent>({ columns, data }, useHvPagination);
 
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return (
       <HvTableRow {...row.getRowProps()}>
@@ -55,9 +47,9 @@ export const UseHvPagination = () => {
   return (
     <>
       <HvTableContainer tabIndex={0}>
-        <HvTable {...getTableProps()}>
-          <HvTableHead>
-            {headerGroups.map((headerGroup) => (
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
               <HvTableRow
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.getHeaderGroupProps().key}
@@ -73,14 +65,14 @@ export const UseHvPagination = () => {
               </HvTableRow>
             ))}
           </HvTableHead>
-          <HvTableBody {...getTableBodyProps()}>
-            {pageSize && [...Array(pageSize).keys()].map(renderTableRow)}
+          <HvTableBody {...table.getTableBodyProps()}>
+            {[...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)}
           </HvTableBody>
         </HvTable>
       </HvTableContainer>
-      {page?.length ? (
-        <HvPagination {...getHvPaginationProps?.()} />
-      ) : undefined}
+      {table.page?.length > 0 && (
+        <HvPagination {...table.getHvPaginationProps?.()} />
+      )}
     </>
   );
 };

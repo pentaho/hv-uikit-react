@@ -18,7 +18,7 @@ import { AssetEvent, getColumns, makeData } from "../storiesUtils";
 export const ListRow = () => {
   const [checkedIdx, setCheckedIdx] = useState(0);
 
-  const columns = useMemo<HvTableColumnConfig<AssetEvent, string>[]>(() => {
+  const columns = useMemo<HvTableColumnConfig<AssetEvent>[]>(() => {
     return [...getColumns(), { Header: "Details", id: "link" }];
   }, []);
 
@@ -33,7 +33,9 @@ export const ListRow = () => {
           <HvTableRow>
             <HvTableCell variant="listcheckbox" />
             {columns.map((el) => (
-              <HvTableHeader key={el.Header}>{el.Header}</HvTableHeader>
+              <HvTableHeader key={String(el.Header)}>
+                {el.Header as any}
+              </HvTableHeader>
             ))}
           </HvTableRow>
         </HvTableHead>

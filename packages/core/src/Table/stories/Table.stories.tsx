@@ -19,9 +19,11 @@ import { GroupedRows as GroupedRowsStory } from "./TableSamples/GroupedRows";
 import { ListRow as ListRowStory } from "./TableSamples/ListRow";
 import { Main as MainStory } from "./TableSamples/Main";
 import { NoData as NoDataStory } from "./TableSamples/NoData";
-import { ResponsiveTable as ResponsiveTableStory } from "./TableSamples/ResponsiveTable";
 import { SimpleTable as SimpleTableStory } from "./TableSamples/SimpleTable";
+import { CompleteTableSection } from "./TableSection/CompleteTableSection";
 import { PropsTableSection } from "./TableSection/PropsTableSection";
+import { TableEditable } from "./TableSection/TableEditable";
+import { TableFilter } from "./TableSection/TableFilter";
 
 export default {
   title: "Visualizations/Table",
@@ -85,18 +87,6 @@ export const GroupedRows: StoryObj<HvTableProps> = {
   render: () => <GroupedRowsStory />,
 };
 
-export const ResponsiveTable: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A table with non-table elements and responsive layout (try resizing your browser).",
-      },
-    },
-  },
-  render: () => <ResponsiveTableStory />,
-};
-
 export const ListRow: StoryObj<HvTableProps> = {
   parameters: {
     docs: {
@@ -108,8 +98,24 @@ export const ListRow: StoryObj<HvTableProps> = {
   render: () => <ListRowStory />,
 };
 
-export const TableRenderers: StoryObj = {
+export const Renderers: StoryObj = {
   render: () => <AllColumnRenderers />,
+};
+
+export const PropsTable: StoryObj = {
+  render: () => <PropsTableSection />,
+};
+
+export const CompleteTable: StoryObj = {
+  render: () => <CompleteTableSection />,
+};
+
+export const Editable: StoryObj = {
+  render: () => <TableEditable />,
+};
+
+export const Filter: StoryObj = {
+  render: () => <TableFilter />,
 };
 
 export const Test: StoryObj = {

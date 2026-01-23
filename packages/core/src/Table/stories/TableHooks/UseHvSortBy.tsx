@@ -34,7 +34,7 @@ export const UseHvSortBy = () => {
 
   const data = useMemo(() => makeData(5), []);
 
-  const table = useHvTable<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     {
       columns,
       data,

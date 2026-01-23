@@ -11,10 +11,10 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
   useHvFilters,
   useHvGlobalFilter,
   useHvPagination,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import { Ban } from "@hitachivantara/uikit-react-icons";
 
@@ -44,17 +44,7 @@ export const UseHvFilters = () => {
   const columns = useMemo(() => getColumns(), []);
   const data = useMemo(() => makeData(32), []);
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    setFilter,
-    setGlobalFilter,
-    page,
-    state: { pageSize },
-    getHvPaginationProps,
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     { columns, data },
     useHvFilters,
     useHvGlobalFilter,
@@ -62,11 +52,11 @@ export const UseHvFilters = () => {
   );
 
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return (
       <HvTableRow {...row.getRowProps()}>
@@ -85,21 +75,21 @@ export const UseHvFilters = () => {
         <HvInput
           type="search"
           placeholder="Search any column"
-          onChange={(evt, val) => setGlobalFilter?.(val)}
+          onChange={(evt, val) => table.setGlobalFilter?.(val)}
         />
       </HvGrid>
       <HvGrid item sm={6} md={4}>
         <HvInput
           type="search"
           placeholder="Search by severity"
-          onChange={(evt, val) => setFilter?.("severity", val)}
+          onChange={(evt, val) => table.setFilter?.("severity", val)}
         />
       </HvGrid>
       <HvGrid item xs={12}>
         <HvTableContainer tabIndex={0}>
-          <HvTable {...getTableProps()}>
-            <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+          <HvTable {...table.getTableProps()}>
+            <HvTableHead {...table.getTableHeadProps?.()}>
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -115,18 +105,18 @@ export const UseHvFilters = () => {
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
-              {page.length > 0 ? (
-                [...Array(pageSize ?? 0).keys()].map(renderTableRow)
+            <HvTableBody {...table.getTableBodyProps()}>
+              {table.page.length > 0 ? (
+                [...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)
               ) : (
                 <NoDataRow message="No data" />
               )}
             </HvTableBody>
           </HvTable>
         </HvTableContainer>
-        {page?.length ? (
-          <HvPagination {...getHvPaginationProps?.()} />
-        ) : undefined}
+        {table.page?.length > 0 && (
+          <HvPagination {...table.getHvPaginationProps?.()} />
+        )}
       </HvGrid>
     </HvGrid>
   );

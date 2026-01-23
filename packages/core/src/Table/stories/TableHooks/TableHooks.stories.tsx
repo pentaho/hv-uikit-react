@@ -150,22 +150,21 @@ export const TestStickyHeaders: StoryObj = {
       [],
     );
 
-    const { getTableProps, getTableBodyProps, prepareRow, headerGroups, rows } =
-      useHvTable<Data>(
-        {
-          columns,
-          data,
-        },
-        useHvHeaderGroups,
-        useHvTableSticky,
-      );
+    const table = useHvTable<Data>(
+      {
+        columns,
+        data,
+      },
+      useHvHeaderGroups,
+      useHvTableSticky,
+    );
 
     return (
       <HvTableSection>
         <HvTableContainer tabIndex={0}>
-          <HvTable {...getTableProps()}>
+          <HvTable {...table.getTableProps()}>
             <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -181,9 +180,9 @@ export const TestStickyHeaders: StoryObj = {
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
-              {rows.map((row) => {
-                prepareRow(row);
+            <HvTableBody {...table.getTableBodyProps()}>
+              {table.rows.map((row) => {
+                table.prepareRow(row);
                 const { key, ...rowProps } = row.getRowProps();
 
                 return (
