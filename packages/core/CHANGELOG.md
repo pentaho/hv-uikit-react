@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.2.0...@hitachivantara/uikit-react-core@6.3.0) (2026-01-23)
+
+### Bug Fixes
+
+- **Pagination:** multi-digit page & labels docs ([#5067](https://github.com/pentaho/hv-uikit-react/issues/5067)) ([5dc72c2](https://github.com/pentaho/hv-uikit-react/commit/5dc72c2e303ad5b07032ef0dbef21dd50fe4ce77))
+- **Section:** align hidden & raisedHeader props ([#5051](https://github.com/pentaho/hv-uikit-react/issues/5051)) ([99b164d](https://github.com/pentaho/hv-uikit-react/commit/99b164dcc4ef37fcec971adfd59c1a7b5d2d9432))
+- **StatusIcon:** remove extra padding when in simple mode ([#5039](https://github.com/pentaho/hv-uikit-react/issues/5039)) ([90f253c](https://github.com/pentaho/hv-uikit-react/commit/90f253c7de2d24485578122e6667885239b2e234))
+- upgrade react-resize-detector to remove lodash ([#5066](https://github.com/pentaho/hv-uikit-react/issues/5066)) ([1ce11c7](https://github.com/pentaho/hv-uikit-react/commit/1ce11c75f3a69b2bd1434a6f8f7ac2c8af874119))
+
+### Features
+
+- **Table:** update Table & Pagination styles ([#5046](https://github.com/pentaho/hv-uikit-react/issues/5046)) ([910ff9b](https://github.com/pentaho/hv-uikit-react/commit/910ff9bc16869291c7e803f3f698e52ec89a873a))
+
 # [6.2.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.1.0...@hitachivantara/uikit-react-core@6.2.0) (2026-01-13)
 
 ### Bug Fixes

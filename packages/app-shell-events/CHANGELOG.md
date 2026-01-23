@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-events@2.0.1...@hitachivantara/app-shell-events@2.0.2) (2026-01-23)
+
+### Bug Fixes
+
+- **Section:** align hidden & raisedHeader props ([#5051](https://github.com/pentaho/hv-uikit-react/issues/5051)) ([99b164d](https://github.com/pentaho/hv-uikit-react/commit/99b164dcc4ef37fcec971adfd59c1a7b5d2d9432))
+
 ## [2.0.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-events@2.0.0-next.3...@hitachivantara/app-shell-events@2.0.1) (2026-01-06)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-events

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.5.3...@hitachivantara/uikit-config@0.6.0) (2026-01-23)
+
+### Features
+
+- bump lib to ES2023 ([#5063](https://github.com/pentaho/hv-uikit-react/issues/5063)) ([272c951](https://github.com/pentaho/hv-uikit-react/commit/272c951b7f6f6379aedb686e9e5ddad3dd80eb51))
+
+# 6.0.0 (2026-01-06)
+
 ## [0.5.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.5.2...@hitachivantara/uikit-config@0.5.3) (2025-11-14)
 
 ### Reverts

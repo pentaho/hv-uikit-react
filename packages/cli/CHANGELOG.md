@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-cli@6.0.1...@hitachivantara/uikit-cli@6.0.2) (2026-01-23)
+
+### Bug Fixes
+
+- **cli:** remove redundant HvProvider ([#5055](https://github.com/pentaho/hv-uikit-react/issues/5055)) ([5853261](https://github.com/pentaho/hv-uikit-react/commit/5853261fc4a768e49d2091231c69652b2eb03edc))
+
 ## [6.0.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-cli@6.0.0-next.1...@hitachivantara/uikit-cli@6.0.1) (2026-01-06)
 
 **Note:** Version bump only for package @hitachivantara/uikit-cli
