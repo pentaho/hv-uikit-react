@@ -8,14 +8,14 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
+  useHvTable,
   useHvTableSticky,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, makeData } from "../storiesUtils";
 
 export const UseHvTableSticky = () => {
-  const columns = useMemo<HvTableColumnConfig<AssetEvent, string>[]>(
+  const columns = useMemo<HvTableColumnConfig<AssetEvent>[]>(
     () => [
       { Header: "Title", accessor: "name", sticky: "left", width: 120 },
       {
@@ -45,14 +45,7 @@ export const UseHvTableSticky = () => {
   );
   const data = useMemo(() => makeData(100), []);
 
-  const {
-    getTableProps,
-    getTableHeadProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    rows,
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     {
       columns,
       data,
@@ -63,9 +56,9 @@ export const UseHvTableSticky = () => {
 
   return (
     <HvTableContainer style={{ maxHeight: 480 }}>
-      <HvTable {...getTableProps()}>
-        <HvTableHead {...getTableHeadProps?.()}>
-          {headerGroups.map((headerGroup) => (
+      <HvTable {...table.getTableProps()}>
+        <HvTableHead {...table.getTableHeadProps?.()}>
+          {table.headerGroups.map((headerGroup) => (
             <HvTableRow
               {...headerGroup.getHeaderGroupProps()}
               key={headerGroup.getHeaderGroupProps().key}
@@ -81,9 +74,9 @@ export const UseHvTableSticky = () => {
             </HvTableRow>
           ))}
         </HvTableHead>
-        <HvTableBody tabIndex={0} {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <HvTableBody tabIndex={0} {...table.getTableBodyProps()}>
+          {table.rows.map((row) => {
+            table.prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
 
             return (

@@ -22,7 +22,9 @@ export const Main = (props: Omit<HvTableProps, "children">) => {
         <HvTableHead>
           <HvTableRow>
             {columns.map((el) => (
-              <HvTableHeader key={el.Header}>{el.Header}</HvTableHeader>
+              <HvTableHeader key={String(el.Header)}>
+                {el.Header as any}
+              </HvTableHeader>
             ))}
           </HvTableRow>
         </HvTableHead>

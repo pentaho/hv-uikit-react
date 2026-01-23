@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import {
   HvAccordion,
   HvActionBar,
@@ -285,18 +285,7 @@ const Card1 = () => (
 const Table = () => {
   const [data, setData] = useState(() => makeData(64));
 
-  const {
-    getTableProps,
-    getTableHeadProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    selectedFlatRows,
-    toggleAllRowsSelected,
-    getHvBulkActionsProps,
-    getHvPaginationProps,
-  } = useHvTable<AssetEvent>(
+  const table = useHvTable<AssetEvent>(
     { data, stickyHeader: true },
     useHvTableSticky,
     useHvPagination,
@@ -304,50 +293,36 @@ const Table = () => {
     useHvBulkActions,
   );
 
-  const handleAction = useCallback(
-    (evt: React.SyntheticEvent, action: HvActionGeneric) => {
-      const selected = selectedFlatRows.map((el) => el.original);
+  const handleAction = (evt: React.SyntheticEvent, action: HvActionGeneric) => {
+    const selected = table.selectedFlatRows.map((el) => el.original);
 
-      switch (action.id) {
-        case "duplicate": {
-          const newEls = selected.map((el) => ({
-            ...el,
-            id: `${el.id}-copy`,
-            name: `${el.name}-copy`,
-          }));
-          setData([...data, ...newEls]);
-          break;
-        }
-        case "delete": {
-          const selectedIds = selected.map((el) => el.id);
-          toggleAllRowsSelected?.(false);
-          setData(data.filter((el) => !selectedIds.includes(el.id)));
-          break;
-        }
-        case "lock":
-        case "preview":
-        default:
-          break;
+    switch (action.id) {
+      case "duplicate": {
+        const newEls = selected.map((el) => ({
+          ...el,
+          id: `${el.id}-copy`,
+          name: `${el.name}-copy`,
+        }));
+        setData([...data, ...newEls]);
+        break;
       }
-    },
-    [data, selectedFlatRows, toggleAllRowsSelected],
-  );
-
-  const EmptyStateRow = useCallback(
-    () => (
-      <HvTableRow>
-        <HvTableCell colSpan={100} style={{ height: 96 }}>
-          <HvEmptyState message="No data to display." icon={<Ban />} />
-        </HvTableCell>
-      </HvTableRow>
-    ),
-    [],
-  );
+      case "delete": {
+        const selectedIds = selected.map((el) => el.id);
+        table.toggleAllRowsSelected?.(false);
+        setData(data.filter((el) => !selectedIds.includes(el.id)));
+        break;
+      }
+      case "lock":
+      case "preview":
+      default:
+        break;
+    }
+  };
 
   return (
     <>
       <HvBulkActions
-        {...getHvBulkActionsProps?.()}
+        {...table.getHvBulkActionsProps?.()}
         maxVisibleActions={1}
         onAction={handleAction}
         actions={[
@@ -358,9 +333,9 @@ const Table = () => {
         ]}
       />
       <HvTableContainer className="max-h-400px">
-        <HvTable {...getTableProps()}>
-          <HvTableHead {...getTableHeadProps?.()}>
-            {headerGroups.map((headerGroup) => (
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
               <HvTableRow
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.getHeaderGroupProps().key}
@@ -376,10 +351,10 @@ const Table = () => {
               </HvTableRow>
             ))}
           </HvTableHead>
-          <HvTableBody {...getTableBodyProps()}>
-            {page?.length ? (
-              page.map((row) => {
-                prepareRow(row);
+          <HvTableBody {...table.getTableBodyProps()}>
+            {table.page?.length ? (
+              table.page.map((row) => {
+                table.prepareRow(row);
                 const { key, ...rowProps } = row.getRowProps();
 
                 return (
@@ -396,12 +371,18 @@ const Table = () => {
                 );
               })
             ) : (
-              <EmptyStateRow />
+              <HvTableRow>
+                <HvTableCell colSpan={100} style={{ height: 96 }}>
+                  <HvEmptyState message="No data to display." icon={<Ban />} />
+                </HvTableCell>
+              </HvTableRow>
             )}
           </HvTableBody>
         </HvTable>
       </HvTableContainer>
-      {page?.length > 0 && <HvPagination {...getHvPaginationProps?.()} />}
+      {table.page?.length > 0 && (
+        <HvPagination {...table.getHvPaginationProps?.()} />
+      )}
     </>
   );
 };

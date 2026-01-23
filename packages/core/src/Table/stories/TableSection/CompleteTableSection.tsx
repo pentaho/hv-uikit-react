@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
-  HvActionGeneric,
   HvBulkActions,
+  HvButton,
   HvLoadingContainer,
   HvPagination,
   HvTable,
@@ -12,10 +12,11 @@ import {
   HvTableHeader,
   HvTableRow,
   HvTableSection,
+  HvTypography,
   useHvBulkActions,
-  useHvData,
   useHvPagination,
   useHvRowSelection,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import {
   Delete,
@@ -34,61 +35,21 @@ const EmptyRow = () => (
 
 export const CompleteTableSection = () => {
   const columns = useMemo(() => getColumns(), []);
-  const [data, setData] = useState(makeData(64));
+  const [data] = useState(makeData(64));
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    selectedFlatRows,
-    toggleAllRowsSelected,
-    getHvPaginationProps,
-    getHvBulkActionsProps,
-    state: { pageSize },
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     { columns, data },
     useHvPagination,
     useHvRowSelection,
     useHvBulkActions,
   );
 
-  const handleAction = useCallback(
-    (evt: React.SyntheticEvent, action: HvActionGeneric) => {
-      const selected = selectedFlatRows.map((el) => el.original);
-
-      switch (action.id) {
-        case "duplicate": {
-          const newEls = selected.map((el) => ({
-            ...el,
-            id: `${el.id}-copy`,
-            name: `${el.name}-copy`,
-          }));
-          setData([...data, ...newEls]);
-          break;
-        }
-        case "delete": {
-          const selectedIds = selected.map((el) => el.id);
-          toggleAllRowsSelected?.(false);
-          setData(data.filter((el) => !selectedIds.includes(el.id)));
-          break;
-        }
-        case "lock":
-        case "preview":
-        default:
-          break;
-      }
-    },
-    [data, selectedFlatRows, toggleAllRowsSelected],
-  );
-
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return (
       <HvTableRow {...row.getRowProps()}>
@@ -102,11 +63,16 @@ export const CompleteTableSection = () => {
   };
 
   return (
-    <HvTableSection>
+    <HvTableSection
+      raisedHeader
+      expandable
+      title={<HvTypography variant="title3">Complete table</HvTypography>}
+      actions={<HvButton>Save</HvButton>}
+    >
       <HvBulkActions
-        {...getHvBulkActionsProps?.()}
+        {...table.getHvBulkActionsProps?.()}
         maxVisibleActions={1}
-        onAction={handleAction}
+        onAction={() => {}}
         actions={[
           { id: "duplicate", label: "Duplicate", icon: <Duplicate /> },
           { id: "delete", label: "Delete", icon: <Delete /> },
@@ -116,9 +82,9 @@ export const CompleteTableSection = () => {
       />
       <HvLoadingContainer hidden>
         <HvTableContainer tabIndex={0}>
-          <HvTable {...getTableProps()}>
-            <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+          <HvTable {...table.getTableProps()}>
+            <HvTableHead {...table.getTableHeadProps?.()}>
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -134,18 +100,15 @@ export const CompleteTableSection = () => {
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
-              {pageSize && [...Array(pageSize).keys()].map(renderTableRow)}
+            <HvTableBody {...table.getTableBodyProps()}>
+              {[...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)}
             </HvTableBody>
           </HvTable>
         </HvTableContainer>
-        {page?.length > 0 && (
+        {table.page?.length > 0 && (
           <HvPagination
-            {...getHvPaginationProps?.()}
-            labels={{
-              pageSizePrev: "",
-              pageSizeEntryName: `of ${data.length}`,
-            }}
+            {...table.getHvPaginationProps?.()}
+            labels={{ pageSizeEntryName: `of ${data.length}` }}
           />
         )}
       </HvLoadingContainer>

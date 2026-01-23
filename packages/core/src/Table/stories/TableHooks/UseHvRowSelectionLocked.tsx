@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import {
   HvBulkActions,
   HvPagination,
-  HvRowInstance,
   HvTable,
   HvTableBody,
   HvTableCell,
@@ -11,11 +10,12 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  HvTableSection,
   HvToggleButton,
   useHvBulkActions,
-  useHvData,
   useHvPagination,
   useHvRowSelection,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import { Lock, Unlock } from "@hitachivantara/uikit-react-icons";
 
@@ -24,39 +24,27 @@ import { AssetEvent, getColumns, makeData } from "../storiesUtils";
 export const LockedSelection = () => {
   const data = useMemo(() => makeData(64), []);
 
-  const columns: HvTableColumnConfig<AssetEvent, string>[] = useMemo(
+  const columns: HvTableColumnConfig<AssetEvent>[] = useMemo(
     () => [
       ...getColumns(),
       {
         id: "actions",
         variant: "actions",
-        Cell: ({ row }: { row: HvRowInstance<AssetEvent> }) => {
-          return (
-            <HvToggleButton
-              aria-label="Lock"
-              notSelectedIcon={<Unlock />}
-              selectedIcon={<Lock />}
-              selected={row.isSelectionLocked}
-              onClick={() => row.toggleRowLockedSelection?.()}
-            />
-          );
-        },
+        Cell: ({ row }) => (
+          <HvToggleButton
+            aria-label="Lock"
+            notSelectedIcon={<Unlock />}
+            selectedIcon={<Lock />}
+            selected={row.isSelectionLocked}
+            onClick={() => row.toggleRowLockedSelection?.()}
+          />
+        ),
       },
     ],
     [],
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    rows,
-    selectedFlatRows,
-    getHvBulkActionsProps,
-    getHvPaginationProps,
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     {
       columns,
       data,
@@ -73,17 +61,17 @@ export const LockedSelection = () => {
   );
 
   return (
-    <>
+    <HvTableSection>
       <HvBulkActions
-        {...getHvBulkActionsProps?.()}
-        numTotal={rows.length}
-        numSelected={selectedFlatRows.length}
+        {...table.getHvBulkActionsProps?.()}
+        numTotal={table.rows.length}
+        numSelected={table.selectedFlatRows.length}
         showSelectAllPages
       />
       <HvTableContainer>
-        <HvTable {...getTableProps()}>
-          <HvTableHead>
-            {headerGroups.map((headerGroup) => (
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
               <HvTableRow
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.getHeaderGroupProps().key}
@@ -99,9 +87,9 @@ export const LockedSelection = () => {
               </HvTableRow>
             ))}
           </HvTableHead>
-          <HvTableBody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
+          <HvTableBody {...table.getTableBodyProps()}>
+            {table.rows.map((row) => {
+              table.prepareRow(row);
               const { key, ...rowProps } = row.getRowProps();
 
               return (
@@ -120,9 +108,9 @@ export const LockedSelection = () => {
           </HvTableBody>
         </HvTable>
       </HvTableContainer>
-      {page?.length ? (
-        <HvPagination {...getHvPaginationProps?.()} />
-      ) : undefined}
-    </>
+      {table.page?.length > 0 && (
+        <HvPagination {...table.getHvPaginationProps?.()} />
+      )}
+    </HvTableSection>
   );
 };

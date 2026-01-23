@@ -9,14 +9,14 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
   useHvResizeColumns,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, makeData } from "../storiesUtils";
 
 export const ColumnResize = () => {
-  const columns = useMemo<HvTableColumnConfig<AssetEvent, string>[]>(
+  const columns = useMemo<HvTableColumnConfig<AssetEvent>[]>(
     () => [
       { Header: "Title", accessor: "name", minWidth: 120 },
       { Header: "Time", accessor: "createdDate", minWidth: 100 },
@@ -47,22 +47,21 @@ export const ColumnResize = () => {
     [],
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useHvData<AssetEvent, string>(
-      {
-        columns,
-        data,
-        defaultColumn,
-      },
-      useBlockLayout,
-      useHvResizeColumns,
-    );
+  const table = useHvTable<AssetEvent>(
+    {
+      columns,
+      data,
+      defaultColumn,
+    },
+    useBlockLayout,
+    useHvResizeColumns,
+  );
 
   return (
     <HvTableContainer tabIndex={0}>
-      <HvTable {...getTableProps()}>
-        <HvTableHead>
-          {headerGroups.map((headerGroup) => (
+      <HvTable {...table.getTableProps()}>
+        <HvTableHead {...table.getTableHeadProps?.()}>
+          {table.headerGroups.map((headerGroup) => (
             <HvTableRow
               {...headerGroup.getHeaderGroupProps()}
               key={headerGroup.getHeaderGroupProps().key}
@@ -78,9 +77,9 @@ export const ColumnResize = () => {
             </HvTableRow>
           ))}
         </HvTableHead>
-        <HvTableBody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <HvTableBody {...table.getTableBodyProps()}>
+          {table.rows.map((row) => {
+            table.prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
 
             return (

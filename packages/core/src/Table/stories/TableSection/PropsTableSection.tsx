@@ -11,9 +11,9 @@ import {
   HvTableSection,
   HvTypography,
   useHvBulkActions,
-  useHvData,
   useHvPagination,
   useHvRowSelection,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, getColumns, makeData } from "../storiesUtils";
@@ -28,14 +28,7 @@ export const PropsTableSection = () => {
   const columns = useMemo(() => getColumns(), []);
   const [data] = useState(makeData(4));
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    headerGroups,
-    page,
-    state: { pageSize },
-  } = useHvData<AssetEvent, string>(
+  const table = useHvTable<AssetEvent>(
     { columns, data, initialState: { pageSize: 3 } },
     useHvPagination,
     useHvRowSelection,
@@ -66,11 +59,11 @@ export const PropsTableSection = () => {
   );
 
   const renderTableRow = (i: number) => {
-    const row = page[i];
+    const row = table.page[i];
 
     if (!row) return <EmptyRow key={i} />;
 
-    prepareRow(row);
+    table.prepareRow(row);
 
     return (
       <HvTableRow {...row.getRowProps()}>
@@ -92,9 +85,9 @@ export const PropsTableSection = () => {
       defaultExpanded
     >
       <HvTableContainer tabIndex={0}>
-        <HvTable {...getTableProps()}>
-          <HvTableHead>
-            {headerGroups.map((headerGroup) => (
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
               <HvTableRow
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.getHeaderGroupProps().key}
@@ -110,8 +103,8 @@ export const PropsTableSection = () => {
               </HvTableRow>
             ))}
           </HvTableHead>
-          <HvTableBody {...getTableBodyProps()}>
-            {pageSize && [...Array(pageSize).keys()].map(renderTableRow)}
+          <HvTableBody {...table.getTableBodyProps()}>
+            {[...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)}
           </HvTableBody>
         </HvTable>
       </HvTableContainer>

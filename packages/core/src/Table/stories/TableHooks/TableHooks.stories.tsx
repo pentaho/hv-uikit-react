@@ -16,7 +16,6 @@ import {
   useHvTableSticky,
 } from "@hitachivantara/uikit-react-core";
 
-import { AlternativeLayout } from "./AlternativeLayout";
 import { ColumnResize } from "./ColumnResize";
 import { UseHvBulkActions } from "./UseHvBulkActions";
 import { UseHvFilters } from "./UseHvFilters";
@@ -37,46 +36,52 @@ export default {
 };
 
 export const UseHvHooksStory: StoryObj = {
+  name: "useHvTable",
   render: () => <UseHvHooks />,
 };
 
-export const AlternativeLayoutStory: StoryObj = {
-  render: () => <AlternativeLayout />,
-};
-
 export const ColumnResizeStory: StoryObj = {
+  name: "useHvResizeColumns",
   render: () => <ColumnResize />,
 };
 
 export const UseHvPaginationStory: StoryObj = {
+  name: "useHvPagination",
   render: () => <UseHvPagination />,
 };
 
 export const UseHvSelectionStory: StoryObj = {
+  name: "useHvRowSelection",
   render: () => <UseHvSelection />,
 };
 
 export const UseHvSelectionControlledStory: StoryObj = {
+  name: "useHvRowSelection controlled",
   render: () => <UseHvSelectionControlled />,
 };
 
 export const LockedSelectionStory: StoryObj = {
+  name: "useHvRowSelection locked",
   render: () => <LockedSelection />,
 };
 
 export const UseHvFiltersStory: StoryObj = {
+  name: "useHvFilters",
   render: () => <UseHvFilters />,
 };
 
 export const UseHvBulkActionsStory: StoryObj = {
+  name: "useHvBulkActions",
   render: () => <UseHvBulkActions />,
 };
 
 export const UseHvSortByStory: StoryObj = {
+  name: "useHvSortBy",
   render: () => <UseHvSortBy />,
 };
 
 export const UseHvRowExpandStory: StoryObj = {
+  name: "useHvRowExpand",
   // For a11y
   play: async ({ canvas, userEvent }) => {
     const button = canvas.getAllByRole("button", { name: /expand/i })[0];
@@ -89,6 +94,7 @@ export const UseHvRowExpandStory: StoryObj = {
 };
 
 export const UseHvGroupByStory: StoryObj = {
+  name: "useHvRowExpand grouped",
   // For a11y
   play: async ({ canvas, userEvent }) => {
     const button = canvas.getAllByRole("button", { name: /collapse/i })[0];
@@ -99,19 +105,22 @@ export const UseHvGroupByStory: StoryObj = {
 };
 
 export const UseHvTableStickyStory: StoryObj = {
+  name: "useHvTableSticky",
   render: () => <UseHvTableSticky />,
 };
 
 export const UseHvHeaderGroupsStory: StoryObj = {
+  name: "useHvHeaderGroups",
   render: () => <UseHvHeaderGroups />,
 };
 
 export const UseHvRowStateStory: StoryObj = {
+  name: "useHvRowState",
   render: () => <UseHvRowState />,
 };
 
 /** This was created to test grouped headers with sticky columns */
-export const TestHeaders: StoryObj = {
+export const TestStickyHeaders: StoryObj = {
   render: () => {
     const data = useMemo(
       () => [
@@ -141,22 +150,21 @@ export const TestHeaders: StoryObj = {
       [],
     );
 
-    const { getTableProps, getTableBodyProps, prepareRow, headerGroups, rows } =
-      useHvTable<Data>(
-        {
-          columns,
-          data,
-        },
-        useHvHeaderGroups,
-        useHvTableSticky,
-      );
+    const table = useHvTable<Data>(
+      {
+        columns,
+        data,
+      },
+      useHvHeaderGroups,
+      useHvTableSticky,
+    );
 
     return (
       <HvTableSection>
         <HvTableContainer tabIndex={0}>
-          <HvTable {...getTableProps()}>
+          <HvTable {...table.getTableProps()}>
             <HvTableHead>
-              {headerGroups.map((headerGroup) => (
+              {table.headerGroups.map((headerGroup) => (
                 <HvTableRow
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroup.getHeaderGroupProps().key}
@@ -172,9 +180,9 @@ export const TestHeaders: StoryObj = {
                 </HvTableRow>
               ))}
             </HvTableHead>
-            <HvTableBody {...getTableBodyProps()}>
-              {rows.map((row) => {
-                prepareRow(row);
+            <HvTableBody {...table.getTableBodyProps()}>
+              {table.rows.map((row) => {
+                table.prepareRow(row);
                 const { key, ...rowProps } = row.getRowProps();
 
                 return (

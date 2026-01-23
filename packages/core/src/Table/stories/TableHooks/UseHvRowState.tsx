@@ -11,17 +11,17 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
   useHvRowState,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 import { Close, Edit } from "@hitachivantara/uikit-react-icons";
 
 import { AssetEvent, makeData } from "../storiesUtils";
 
-const EditableCell = ({ value, row }: HvCellProps<AssetEvent, string>) =>
+const EditableCell = ({ value, row }: HvCellProps<AssetEvent>) =>
   row.state?.isEditing ? <HvInput value={value} /> : value;
 
-const getRowStateColumns = (): HvTableColumnConfig<AssetEvent, string>[] => [
+const getRowStateColumns = (): HvTableColumnConfig<AssetEvent>[] => [
   {
     Header: "Title",
     accessor: "name",
@@ -49,23 +49,20 @@ const getRowStateColumns = (): HvTableColumnConfig<AssetEvent, string>[] => [
   {
     id: "edit",
     variant: "actions",
-    Cell: (props: HvCellProps<AssetEvent, string>) => {
-      const { row, setRowState } = props;
-      return (
-        <HvIconButton
-          title={row.state?.isEditing ? "Close" : "Edit"}
-          variant="secondaryGhost"
-          onClick={() =>
-            setRowState?.([row.id], (state: { isEditing: boolean }) => ({
-              ...state,
-              isEditing: !state.isEditing,
-            }))
-          }
-        >
-          {row.state?.isEditing ? <Close /> : <Edit />}
-        </HvIconButton>
-      );
-    },
+    Cell: ({ row, setRowState }) => (
+      <HvIconButton
+        title={row.state?.isEditing ? "Close" : "Edit"}
+        variant="secondaryGhost"
+        onClick={() => {
+          setRowState?.([row.id], (state: { isEditing: boolean }) => ({
+            ...state,
+            isEditing: !state.isEditing,
+          }));
+        }}
+      >
+        {row.state?.isEditing ? <Close /> : <Edit />}
+      </HvIconButton>
+    ),
   },
 ];
 
@@ -73,14 +70,13 @@ export const UseHvRowState = () => {
   const columns = useMemo(() => getRowStateColumns(), []);
   const data = useMemo(() => makeData(6), []);
 
-  const { getTableProps, getTableBodyProps, prepareRow, headerGroups, rows } =
-    useHvData<AssetEvent, string>({ columns, data }, useHvRowState);
+  const table = useHvTable<AssetEvent>({ columns, data }, useHvRowState);
 
   return (
     <HvTableContainer>
-      <HvTable {...getTableProps()}>
-        <HvTableHead>
-          {headerGroups.map((headerGroup) => (
+      <HvTable {...table.getTableProps()}>
+        <HvTableHead {...table.getTableHeadProps?.()}>
+          {table.headerGroups.map((headerGroup) => (
             <HvTableRow
               {...headerGroup.getHeaderGroupProps()}
               key={headerGroup.getHeaderGroupProps().key}
@@ -97,9 +93,9 @@ export const UseHvRowState = () => {
             </HvTableRow>
           ))}
         </HvTableHead>
-        <HvTableBody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <HvTableBody {...table.getTableBodyProps()}>
+          {table.rows.map((row) => {
+            table.prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
 
             return (

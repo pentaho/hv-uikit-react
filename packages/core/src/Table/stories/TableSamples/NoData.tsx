@@ -18,7 +18,9 @@ export const NoData = () => (
       <HvTableHead>
         <HvTableRow>
           {getColumns().map((el) => (
-            <HvTableHeader key={el.Header}>{el.Header}</HvTableHeader>
+            <HvTableHeader key={String(el.Header)}>
+              {el.Header as any}
+            </HvTableHeader>
           ))}
         </HvTableRow>
       </HvTableHead>

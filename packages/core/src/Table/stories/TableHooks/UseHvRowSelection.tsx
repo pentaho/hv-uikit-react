@@ -7,8 +7,8 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
   useHvRowSelection,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, getColumns, makeData } from "../storiesUtils";
@@ -17,14 +17,13 @@ export const UseHvSelection = () => {
   const columns = useMemo(() => getColumns(), []);
   const data = useMemo(() => makeData(6), []);
 
-  const { getTableProps, getTableBodyProps, prepareRow, headerGroups, rows } =
-    useHvData<AssetEvent, string>({ columns, data }, useHvRowSelection);
+  const table = useHvTable<AssetEvent>({ columns, data }, useHvRowSelection);
 
   return (
     <HvTableContainer>
-      <HvTable {...getTableProps()}>
-        <HvTableHead>
-          {headerGroups.map((headerGroup) => (
+      <HvTable {...table.getTableProps()}>
+        <HvTableHead {...table.getTableHeadProps?.()}>
+          {table.headerGroups.map((headerGroup) => (
             <HvTableRow
               {...headerGroup.getHeaderGroupProps()}
               key={headerGroup.getHeaderGroupProps().key}
@@ -40,9 +39,9 @@ export const UseHvSelection = () => {
             </HvTableRow>
           ))}
         </HvTableHead>
-        <HvTableBody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <HvTableBody {...table.getTableBodyProps()}>
+          {table.rows.map((row) => {
+            table.prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
 
             return (

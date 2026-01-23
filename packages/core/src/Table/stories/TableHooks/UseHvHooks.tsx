@@ -7,7 +7,7 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
-  useHvData,
+  useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
 import { AssetEvent, makeData } from "../storiesUtils";
@@ -15,14 +15,13 @@ import { AssetEvent, makeData } from "../storiesUtils";
 export const UseHvHooks = () => {
   const data = useMemo(() => makeData(6), []);
 
-  const { getTableProps, getTableBodyProps, prepareRow, headerGroups, rows } =
-    useHvData<AssetEvent, string>({ data });
+  const table = useHvTable<AssetEvent>({ data });
 
   return (
     <HvTableContainer>
-      <HvTable {...getTableProps()}>
-        <HvTableHead>
-          {headerGroups.map((headerGroup) => (
+      <HvTable {...table.getTableProps()}>
+        <HvTableHead {...table.getTableHeadProps?.()}>
+          {table.headerGroups.map((headerGroup) => (
             <HvTableRow
               {...headerGroup.getHeaderGroupProps()}
               key={headerGroup.getHeaderGroupProps().key}
@@ -38,9 +37,9 @@ export const UseHvHooks = () => {
             </HvTableRow>
           ))}
         </HvTableHead>
-        <HvTableBody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <HvTableBody {...table.getTableBodyProps()}>
+          {table.rows.map((row) => {
+            table.prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
 
             return (

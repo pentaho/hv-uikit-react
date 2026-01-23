@@ -11,17 +11,18 @@ import {
   HvTableRow,
 } from "@hitachivantara/uikit-react-core";
 
+import { AllColumnRenderers } from "./AllColumnRenderers";
 import { ColumnResize } from "./TableHooks/ColumnResize";
-import { TestHeaders as TestHeadersStory } from "./TableHooks/TableHooks.stories";
+import { TestStickyHeaders as TestHeadersStory } from "./TableHooks/TableHooks.stories";
 import { UseHvGroupBy } from "./TableHooks/UseHvGroupBy";
-import { AllColumnRenderers } from "./TableRenderers/AllColumnRenderers";
 import { GroupedRows as GroupedRowsStory } from "./TableSamples/GroupedRows";
 import { ListRow as ListRowStory } from "./TableSamples/ListRow";
 import { Main as MainStory } from "./TableSamples/Main";
 import { NoData as NoDataStory } from "./TableSamples/NoData";
-import { ResponsiveTable as ResponsiveTableStory } from "./TableSamples/ResponsiveTable";
 import { SimpleTable as SimpleTableStory } from "./TableSamples/SimpleTable";
+import { CompleteTableSection } from "./TableSection/CompleteTableSection";
 import { PropsTableSection } from "./TableSection/PropsTableSection";
+import { TableEditable } from "./TableSection/TableEditable";
 
 export default {
   title: "Visualizations/Table",
@@ -85,18 +86,6 @@ export const GroupedRows: StoryObj<HvTableProps> = {
   render: () => <GroupedRowsStory />,
 };
 
-export const ResponsiveTable: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A table with non-table elements and responsive layout (try resizing your browser).",
-      },
-    },
-  },
-  render: () => <ResponsiveTableStory />,
-};
-
 export const ListRow: StoryObj<HvTableProps> = {
   parameters: {
     docs: {
@@ -108,8 +97,20 @@ export const ListRow: StoryObj<HvTableProps> = {
   render: () => <ListRowStory />,
 };
 
-export const TableRenderers: StoryObj = {
+export const Renderers: StoryObj = {
   render: () => <AllColumnRenderers />,
+};
+
+export const PropsTable: StoryObj = {
+  render: () => <PropsTableSection />,
+};
+
+export const CompleteTable: StoryObj = {
+  render: () => <CompleteTableSection />,
+};
+
+export const Editable: StoryObj = {
+  render: () => <TableEditable />,
 };
 
 export const Test: StoryObj = {
@@ -118,10 +119,9 @@ export const Test: StoryObj = {
   },
   play: async ({ canvas, userEvent }) => {
     // Group by
-    const collapseButton = canvas.getAllByRole("button", {
-      name: /collapse/i,
-    })[0];
-    await userEvent.click(collapseButton);
+    await userEvent.click(
+      canvas.getAllByRole("button", { name: /collapse/i })[0],
+    );
   },
   render: (args, context: any) => (
     <>

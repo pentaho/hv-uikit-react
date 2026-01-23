@@ -27,7 +27,7 @@ export const makeData = (len = 10) => [...Array(len).keys()].map(makeEvent);
  * columns object. width is only used if explicitly passed in column.getHeaderProps
  * @see https://react-table-v7-docs.netlify.app/docs/api/useTable#column-options
  */
-export const getColumns = (): HvTableColumnConfig<AssetEvent, string>[] => [
+export const getColumns = (): HvTableColumnConfig<AssetEvent>[] => [
   { Header: "Title", accessor: "name", style: { minWidth: 120 } },
   { Header: "Time", accessor: "createdDate", style: { minWidth: 100 } },
   { Header: "Event Type", accessor: "eventType", style: { minWidth: 100 } },
