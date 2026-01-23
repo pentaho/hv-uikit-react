@@ -1,9 +1,8 @@
 import { useMemo } from "react";
 import {
   HvEmptyState,
-  HvGrid,
-  HvInput,
   HvPagination,
+  HvSearchInput,
   HvTable,
   HvTableBody,
   HvTableCell,
@@ -11,6 +10,7 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  HvTableSection,
   useHvFilters,
   useHvGlobalFilter,
   useHvPagination,
@@ -70,54 +70,52 @@ export const UseHvFilters = () => {
   };
 
   return (
-    <HvGrid container>
-      <HvGrid item sm={6} md={4}>
-        <HvInput
-          type="search"
-          placeholder="Search any column"
-          onChange={(evt, val) => table.setGlobalFilter?.(val)}
-        />
-      </HvGrid>
-      <HvGrid item sm={6} md={4}>
-        <HvInput
-          type="search"
-          placeholder="Search by severity"
-          onChange={(evt, val) => table.setFilter?.("severity", val)}
-        />
-      </HvGrid>
-      <HvGrid item xs={12}>
-        <HvTableContainer tabIndex={0}>
-          <HvTable {...table.getTableProps()}>
-            <HvTableHead {...table.getTableHeadProps?.()}>
-              {table.headerGroups.map((headerGroup) => (
-                <HvTableRow
-                  {...headerGroup.getHeaderGroupProps()}
-                  key={headerGroup.getHeaderGroupProps().key}
-                >
-                  {headerGroup.headers.map((col) => (
-                    <HvTableHeader
-                      {...col.getHeaderProps()}
-                      key={col.getHeaderProps().key}
-                    >
-                      {col.render("Header")}
-                    </HvTableHeader>
-                  ))}
-                </HvTableRow>
-              ))}
-            </HvTableHead>
-            <HvTableBody {...table.getTableBodyProps()}>
-              {table.page.length > 0 ? (
-                [...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)
-              ) : (
-                <NoDataRow message="No data" />
-              )}
-            </HvTableBody>
-          </HvTable>
-        </HvTableContainer>
-        {table.page?.length > 0 && (
-          <HvPagination {...table.getHvPaginationProps?.()} />
-        )}
-      </HvGrid>
-    </HvGrid>
+    <HvTableSection
+      raisedHeader
+      actions={
+        <>
+          <HvSearchInput
+            placeholder="Search any column"
+            onChange={(evt, val) => table.setGlobalFilter?.(val)}
+          />
+          <HvSearchInput
+            placeholder="Search by severity"
+            onChange={(evt, val) => table.setFilter?.("severity", val)}
+          />
+        </>
+      }
+    >
+      <HvTableContainer tabIndex={0}>
+        <HvTable {...table.getTableProps()}>
+          <HvTableHead {...table.getTableHeadProps?.()}>
+            {table.headerGroups.map((headerGroup) => (
+              <HvTableRow
+                {...headerGroup.getHeaderGroupProps()}
+                key={headerGroup.getHeaderGroupProps().key}
+              >
+                {headerGroup.headers.map((col) => (
+                  <HvTableHeader
+                    {...col.getHeaderProps()}
+                    key={col.getHeaderProps().key}
+                  >
+                    {col.render("Header")}
+                  </HvTableHeader>
+                ))}
+              </HvTableRow>
+            ))}
+          </HvTableHead>
+          <HvTableBody {...table.getTableBodyProps()}>
+            {table.page.length > 0 ? (
+              [...Array(table.state.pageSize ?? 0).keys()].map(renderTableRow)
+            ) : (
+              <NoDataRow message="No data" />
+            )}
+          </HvTableBody>
+        </HvTable>
+      </HvTableContainer>
+      {table.page?.length > 0 && (
+        <HvPagination {...table.getHvPaginationProps?.()} />
+      )}
+    </HvTableSection>
   );
 };

@@ -10,6 +10,7 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  HvTableSection,
   HvToggleButton,
   useHvBulkActions,
   useHvPagination,
@@ -60,7 +61,7 @@ export const LockedSelection = () => {
   );
 
   return (
-    <>
+    <HvTableSection>
       <HvBulkActions
         {...table.getHvBulkActionsProps?.()}
         numTotal={table.rows.length}
@@ -110,6 +111,6 @@ export const LockedSelection = () => {
       {table.page?.length > 0 && (
         <HvPagination {...table.getHvPaginationProps?.()} />
       )}
-    </>
+    </HvTableSection>
   );
 };

@@ -23,7 +23,6 @@ import { SimpleTable as SimpleTableStory } from "./TableSamples/SimpleTable";
 import { CompleteTableSection } from "./TableSection/CompleteTableSection";
 import { PropsTableSection } from "./TableSection/PropsTableSection";
 import { TableEditable } from "./TableSection/TableEditable";
-import { TableFilter } from "./TableSection/TableFilter";
 
 export default {
   title: "Visualizations/Table",
@@ -114,20 +113,15 @@ export const Editable: StoryObj = {
   render: () => <TableEditable />,
 };
 
-export const Filter: StoryObj = {
-  render: () => <TableFilter />,
-};
-
 export const Test: StoryObj = {
   parameters: {
     ...setupChromatic("all"),
   },
   play: async ({ canvas, userEvent }) => {
     // Group by
-    const collapseButton = canvas.getAllByRole("button", {
-      name: /collapse/i,
-    })[0];
-    await userEvent.click(collapseButton);
+    await userEvent.click(
+      canvas.getAllByRole("button", { name: /collapse/i })[0],
+    );
   },
   render: (args, context: any) => (
     <>

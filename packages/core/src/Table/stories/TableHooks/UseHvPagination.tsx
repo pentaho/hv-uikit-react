@@ -8,6 +8,7 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  HvTableSection,
   useHvPagination,
   useHvTable,
 } from "@hitachivantara/uikit-react-core";
@@ -45,7 +46,7 @@ export const UseHvPagination = () => {
   };
 
   return (
-    <>
+    <HvTableSection>
       <HvTableContainer tabIndex={0}>
         <HvTable {...table.getTableProps()}>
           <HvTableHead {...table.getTableHeadProps?.()}>
@@ -73,6 +74,6 @@ export const UseHvPagination = () => {
       {table.page?.length > 0 && (
         <HvPagination {...table.getHvPaginationProps?.()} />
       )}
-    </>
+    </HvTableSection>
   );
 };

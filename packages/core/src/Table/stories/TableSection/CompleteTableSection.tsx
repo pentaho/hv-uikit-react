@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  HvActionGeneric,
   HvBulkActions,
   HvButton,
   HvLoadingContainer,
@@ -36,7 +35,7 @@ const EmptyRow = () => (
 
 export const CompleteTableSection = () => {
   const columns = useMemo(() => getColumns(), []);
-  const [data, setData] = useState(makeData(64));
+  const [data] = useState(makeData(64));
 
   const table = useHvTable<AssetEvent>(
     { columns, data },
@@ -44,32 +43,6 @@ export const CompleteTableSection = () => {
     useHvRowSelection,
     useHvBulkActions,
   );
-
-  const handleAction = (evt: React.SyntheticEvent, action: HvActionGeneric) => {
-    const selected = table.selectedFlatRows.map((el) => el.original);
-
-    switch (action.id) {
-      case "duplicate": {
-        const newEls = selected.map((el) => ({
-          ...el,
-          id: `${el.id}-copy`,
-          name: `${el.name}-copy`,
-        }));
-        setData([...data, ...newEls]);
-        break;
-      }
-      case "delete": {
-        const selectedIds = selected.map((el) => el.id);
-        table.toggleAllRowsSelected?.(false);
-        setData(data.filter((el) => !selectedIds.includes(el.id)));
-        break;
-      }
-      case "lock":
-      case "preview":
-      default:
-        break;
-    }
-  };
 
   const renderTableRow = (i: number) => {
     const row = table.page[i];
@@ -99,7 +72,7 @@ export const CompleteTableSection = () => {
       <HvBulkActions
         {...table.getHvBulkActionsProps?.()}
         maxVisibleActions={1}
-        onAction={handleAction}
+        onAction={() => {}}
         actions={[
           { id: "duplicate", label: "Duplicate", icon: <Duplicate /> },
           { id: "delete", label: "Delete", icon: <Delete /> },

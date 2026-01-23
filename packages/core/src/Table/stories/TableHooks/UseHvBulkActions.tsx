@@ -11,6 +11,7 @@ import {
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  HvTableSection,
   useHvBulkActions,
   useHvPagination,
   useHvRowSelection,
@@ -64,7 +65,7 @@ export const UseHvBulkActions = () => {
   };
 
   return (
-    <>
+    <HvTableSection>
       <HvBulkActions
         {...table.getHvBulkActionsProps?.()}
         maxVisibleActions={1}
@@ -123,7 +124,7 @@ export const UseHvBulkActions = () => {
       {table.page?.length > 0 && (
         <HvPagination {...table.getHvPaginationProps?.()} />
       )}
-    </>
+    </HvTableSection>
   );
 };
 
