@@ -1,5 +1,7 @@
 import {
   HvIconContainer,
+  HvStatusIcon,
+  HvStatusIconVariant,
   HvTag,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
@@ -11,6 +13,12 @@ const securityData = [
   { title: "Warning", count: 12, color: "warning" },
   { title: "Informational", count: 20, color: "info" },
 ];
+
+const iconMap: Record<string, HvStatusIconVariant> = {
+  negative: "error",
+  warning: "warning",
+  info: "info",
+};
 
 export const DataSecurity = () => {
   return (
@@ -29,7 +37,12 @@ export const DataSecurity = () => {
             <HvTypography variant="captionLabel" className="mb-xs">
               {title}
             </HvTypography>
-            <HvTag label={count.toString()} color={color} className="w-48px" />
+            <HvTag
+              icon={<HvStatusIcon type="simple" variant={iconMap[color]} />}
+              label={count.toString()}
+              color={color}
+              // className="w-48px"
+            />
           </div>
         ))}
       </div>
