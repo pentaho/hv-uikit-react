@@ -17,6 +17,7 @@ import {
   useHvPagination,
   useHvRowSelection,
   useHvTable,
+  useHvTableSticky,
 } from "@hitachivantara/uikit-react-core";
 import {
   Delete,
@@ -38,7 +39,13 @@ export const CompleteTableSection = () => {
   const [data] = useState(makeData(64));
 
   const table = useHvTable<AssetEvent>(
-    { columns, data },
+    {
+      columns,
+      data,
+      stickyHeader: true,
+      initialState: { pageSize: 20 },
+    },
+    useHvTableSticky,
     useHvPagination,
     useHvRowSelection,
     useHvBulkActions,
@@ -69,19 +76,19 @@ export const CompleteTableSection = () => {
       title={<HvTypography variant="title3">Complete table</HvTypography>}
       actions={<HvButton>Save</HvButton>}
     >
-      <HvBulkActions
-        {...table.getHvBulkActionsProps?.()}
-        maxVisibleActions={1}
-        onAction={() => {}}
-        actions={[
-          { id: "duplicate", label: "Duplicate", icon: <Duplicate /> },
-          { id: "delete", label: "Delete", icon: <Delete /> },
-          { id: "lock", label: "Lock", icon: <Lock /> },
-          { id: "preview", label: "Preview", icon: <Preview /> },
-        ]}
-      />
       <HvLoadingContainer hidden>
-        <HvTableContainer tabIndex={0}>
+        <HvBulkActions
+          {...table.getHvBulkActionsProps?.()}
+          maxVisibleActions={1}
+          onAction={() => {}}
+          actions={[
+            { id: "duplicate", label: "Duplicate", icon: <Duplicate /> },
+            { id: "delete", label: "Delete", icon: <Delete /> },
+            { id: "lock", label: "Lock", icon: <Lock /> },
+            { id: "preview", label: "Preview", icon: <Preview /> },
+          ]}
+        />
+        <HvTableContainer tabIndex={0} style={{ maxHeight: 400 }}>
           <HvTable {...table.getTableProps()}>
             <HvTableHead {...table.getTableHeadProps?.()}>
               {table.headerGroups.map((headerGroup) => (

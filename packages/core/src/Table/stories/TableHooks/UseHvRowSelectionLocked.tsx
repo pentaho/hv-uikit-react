@@ -88,7 +88,7 @@ export const LockedSelection = () => {
             ))}
           </HvTableHead>
           <HvTableBody {...table.getTableBodyProps()}>
-            {table.rows.map((row) => {
+            {table.page.map((row) => {
               table.prepareRow(row);
               const { key, ...rowProps } = row.getRowProps();
 
