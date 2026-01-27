@@ -1,12 +1,9 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { outlineStyles } from "../utils/focusUtils";
-
 export const { staticClasses, useClasses } = createClasses("HvAvatar", {
-  root: {
-    fontSize: "1rem",
-  },
+  // use `classes.avatar` instead
+  root: {},
   img: {
     width: "100%",
     height: "100%",
@@ -24,20 +21,22 @@ export const { staticClasses, useClasses } = createClasses("HvAvatar", {
     alignItems: "center",
     position: "relative",
     padding: theme.space.xxs,
-
     height: "fit-content",
-
-    ":focus-visible": {
-      ...outlineStyles,
-      borderRadius: 0,
-    },
+    fontSize: "1rem",
   },
-  xs: { width: 24, height: 24, fontSize: "0.5rem" },
-  sm: { width: 32, height: 32, fontSize: "0.625rem" },
-  md: { width: 40, height: 40, fontSize: "1rem" },
-  lg: { width: 52, height: 52, fontSize: "1.5rem" },
-  xl: { width: 88, height: 88, fontSize: "2rem" },
-  avatar: { borderRadius: "inherit" },
+  xs: { "--size": "24px", fontSize: theme.fontSizes.sm },
+  sm: { "--size": "32px", fontSize: theme.fontSizes.base },
+  md: { "--size": "40px", fontSize: theme.fontSizes.xl },
+  lg: { "--size": "52px", fontSize: theme.fontSizes.xl2 },
+  xl: { "--size": "88px", fontSize: theme.fontSizes.xl3 },
+  avatar: {
+    fontSize: "1em",
+    borderRadius: "inherit",
+    color: "var(--textColor)",
+    width: "var(--size)",
+    height: "var(--size)",
+    backgroundColor: "var(--bgColor)",
+  },
   badge: {
     width: 8,
     height: 8,

@@ -17,15 +17,13 @@ export const { staticClasses, useClasses } = createClasses("HvAvatarGroup", {
   row: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    [`& .${avatarClasses.container}`]: {
-      "&:not(:first-of-type)": {
-        marginLeft: "var(--spacing)",
-      },
+    "&>*:not(:first-of-type)": {
+      marginLeft: "var(--spacing)",
     },
     "&$toBack": {
       flexDirection: "row-reverse",
       justifyContent: "flex-end",
-      [`& .${avatarClasses.container}`]: {
+      "&>*": {
         "&:last-of-type": {
           marginLeft: 0,
         },
@@ -37,14 +35,12 @@ export const { staticClasses, useClasses } = createClasses("HvAvatarGroup", {
   },
   column: {
     flexDirection: "column",
-    [`& .${avatarClasses.container}`]: {
-      "&:not(:first-of-type)": {
-        marginTop: "var(--spacing)",
-      },
+    "&>*:not(:first-of-type)": {
+      marginTop: "var(--spacing)",
     },
     "&$toBack": {
       flexDirection: "column-reverse",
-      [`& .${avatarClasses.container}`]: {
+      "&>*": {
         "&:last-of-type": {
           marginTop: 0,
         },
@@ -55,7 +51,7 @@ export const { staticClasses, useClasses } = createClasses("HvAvatarGroup", {
     },
   },
   highlight: {
-    [`& .${avatarClasses.container}:hover`]: {
+    "&>*:hover": {
       zIndex: theme.zIndices.popover,
     },
   },

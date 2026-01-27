@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
 
@@ -67,37 +67,26 @@ export const HvAppSwitcherAction = ({
     application;
 
   const color = getColor(
-    disabled ? "textDisabled" : application?.color,
-    "text",
+    (disabled && "textDisabled") || application?.color || "text",
   );
 
-  const [validIconUrl, setValidIconUrl] = useState<boolean>(true);
-
   const renderApplicationIcon = () => {
-    if (iconElement) {
-      return iconElement;
-    }
-
-    if (iconUrl && validIconUrl) {
-      return (
-        <img
-          className={classes.iconUrl}
-          src={iconUrl}
-          onError={() => {
-            setValidIconUrl(false);
-          }}
-          alt={description}
-        />
-      );
-    }
+    if (iconElement) return iconElement;
 
     const brokenTitle = name.split(" ");
     const initials =
-      brokenTitle[0].slice(0, 1) +
-      (brokenTitle[1] ? brokenTitle[1].slice(0, 1) : "");
+      brokenTitle[0].charAt(0) + (brokenTitle[1]?.charAt(0) || "");
 
     return (
-      <HvAvatar size="sm" backgroundColor={color} variant="square" aria-hidden>
+      <HvAvatar
+        size="sm"
+        src={iconUrl}
+        className={classes.iconUrl}
+        alt={description}
+        backgroundColor={color}
+        color="bgContainer"
+        aria-hidden
+      >
         {initials}
       </HvAvatar>
     );

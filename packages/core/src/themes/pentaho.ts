@@ -1,12 +1,20 @@
+import type { CSSObject } from "@emotion/serialize";
 import {
   blue,
   mergeTheme,
   neutral,
+  orange,
   pentaho as pentahoBase,
+  pink,
   slate,
+  teal,
   theme,
+  violet,
+  yellow,
 } from "@hitachivantara/uikit-styles";
 
+import type { HvAvatarProps } from "../Avatar";
+import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
 import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
@@ -63,6 +71,37 @@ const ld = (c1: string, c2: string) => `light-dark(${c1}, ${c2})`;
 
 const semaColors = ["positive", "warning", "negative", "info"] as const;
 
+const avatarColors = {
+  blue: {
+    color: ld(theme.colors.primaryStrong, blue[300]),
+    backgroundColor: ld(theme.colors.primaryDimmed, blue[900]),
+  },
+  orange: {
+    color: ld(orange[700], orange[200]),
+    backgroundColor: ld(orange[200], orange[900]),
+  },
+  teal: {
+    color: ld(teal[800], teal[200]),
+    backgroundColor: ld(teal[200], teal[900]),
+  },
+  violet: {
+    color: ld(violet[800], violet[200]),
+    backgroundColor: ld(violet[200], violet[900]),
+  },
+  pink: {
+    color: ld(pink[900], pink[200]),
+    backgroundColor: ld(pink[200], pink[900]),
+  },
+  yellow: {
+    color: ld(yellow[700], yellow[100]),
+    backgroundColor: ld(yellow[200], yellow[900]),
+  },
+  neutral: {
+    color: ld(slate[400], slate[300]),
+    backgroundColor: ld(slate[200], slate[700]),
+  },
+} satisfies Record<string, CSSObject>;
+
 const notificationMap = {
   success: "positive",
   warning: "warning",
@@ -103,6 +142,44 @@ export const pentaho = mergeTheme(pentahoBase, {
     End: "M141.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L124.69,128,50.34,53.66A8,8,0,0,1,61.66,42.34l80,80A8,8,0,0,1,141.66,133.66Zm80-11.32-80-80a8,8,0,0,0-11.32,11.32L204.69,128l-74.35,74.34a8,8,0,0,0,11.32,11.32l80-80A8,8,0,0,0,221.66,122.34Z",
   },
   components: {
+    HvAvatar: {
+      color: "primaryStrong",
+      backgroundColor: "primaryDimmed",
+      classes: {
+        avatar: {
+          border: `1px solid ${theme.colors.bgContainerSecondary}`,
+          fontWeight: theme.fontWeights.semibold,
+
+          ...Object.entries(avatarColors).reduce<Record<string, CSSObject>>(
+            (acc, [color, styles]) => {
+              acc[`&[data-color=${color}]`] = styles;
+              return acc;
+            },
+            {},
+          ),
+        },
+        xs: { "--size": "24px", fontSize: theme.fontSizes.sm },
+        sm: { "--size": "24px", fontSize: theme.fontSizes.sm },
+        md: { "--size": "32px", fontSize: theme.fontSizes.base },
+        lg: { "--size": "48px", fontSize: theme.fontSizes.xl2 },
+        xl: { "--size": "64px", fontSize: theme.fontSizes.xl3 },
+      },
+    } satisfies CSSClasses<HvAvatarProps>,
+    HvAvatarGroup: {
+      classes: {
+        root: {
+          // eslint-disable-next-line no-useless-spread
+          ...Object.values(avatarColors).reduce<Record<string, CSSObject>>(
+            (acc, styles, i) => {
+              const key = `&>.HvAvatar-container:nth-child(${i + 1}) .HvAvatar-avatar`;
+              acc[key] = styles;
+              return acc;
+            },
+            {},
+          ),
+        },
+      },
+    } satisfies CSSClasses<HvAvatarGroupProps>,
     HvLoading: {
       classes: {
         loadingBar: {
@@ -451,6 +528,7 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvButtonBase: {
       classes: {
         root: {
+          borderRadius: theme.radii.base,
           ":where(:not(.HvButtonBase-disabled))": {
             ":hover": { backgroundColor: theme.colors.primaryDimmed },
             ":active": { backgroundColor: theme.colors.primarySubtle },
