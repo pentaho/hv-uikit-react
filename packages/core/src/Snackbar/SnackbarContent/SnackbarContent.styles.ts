@@ -26,4 +26,5 @@ export const { useClasses, staticClasses } = createClasses(name, {
     maxHeight: "72px",
   },
   iconVariant: {},
+  messageContainer: {},
 });
