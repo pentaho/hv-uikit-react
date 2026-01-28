@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBadge,
   HvButton,
@@ -9,10 +8,10 @@ import {
   HvHeaderActions,
   HvHeaderBrand,
   HvHeaderNavigation,
-  HvHeaderProps,
 } from "@hitachivantara/uikit-react-core";
 import { Alert, Menu, User } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../.storybook/preview";
 import { HitachiLogo } from "./stories/HitachiLogo";
 
 const navigationDataMain = [
@@ -76,14 +75,14 @@ const navigationDataMain = [
   },
 ];
 
-export default {
+const meta = preview.meta({
   title: "Components/Header",
   component: HvHeader,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvHeaderBrand, HvHeaderNavigation, HvHeaderActions },
-} satisfies Meta<typeof HvHeader>;
+});
 
-export const Main: StoryObj<HvHeaderProps> = {
+export const Main = meta.story({
   args: {
     position: "relative",
   },
@@ -145,9 +144,9 @@ export const Main: StoryObj<HvHeaderProps> = {
       </div>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
       <HvHeader position="relative">
@@ -169,4 +168,4 @@ export const Test: StoryObj = {
       </HvHeader>
     </div>
   ),
-};
+});

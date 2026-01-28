@@ -1,21 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
-import {
-  HvCodeEditor,
-  HvCodeEditorProps,
-} from "@hitachivantara/uikit-react-code-editor";
+import { HvCodeEditor } from "@hitachivantara/uikit-react-code-editor";
 
+import preview from "../../../../.storybook/preview";
 import { MainStory } from "./stories/Main";
 
-const meta: Meta<typeof HvCodeEditor> = {
+const meta = preview.meta({
   title: "Components/Code Editor",
   component: HvCodeEditor,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvCodeEditorProps> = {
+export const Main = meta.story({
   parameters: {
     ...setupChromatic(["DS5 dawn"], 5000),
   },
   render: () => <MainStory />,
-};
+});

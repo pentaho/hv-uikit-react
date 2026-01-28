@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvPagination,
-  HvPaginationProps,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { HvPagination, theme } from "@hitachivantara/uikit-react-core";
+
+import preview from "../../../../.storybook/preview";
 
 const classes = {
   root: css({
@@ -22,13 +19,12 @@ const classes = {
   }),
 };
 
-const meta: Meta<typeof HvPagination> = {
+const meta = preview.meta({
   title: "Components/Pagination",
   component: HvPagination,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvPaginationProps> = {
+export const Main = meta.story({
   args: {
     showPageSizeOptions: true,
     showPageJump: true,
@@ -66,4 +62,4 @@ export const Main: StoryObj<HvPaginationProps> = {
       </div>
     );
   },
-};
+});

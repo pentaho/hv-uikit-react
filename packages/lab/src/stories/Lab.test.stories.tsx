@@ -1,18 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { renderStory, setupChromatic } from "@hitachivantara/internal";
 import { HvSimpleGrid } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { Variants as BladeVariantsStory } from "../Blade/Blade.stories";
 import { Main as BladesMainStory } from "../Blades/Blades.stories";
 import { Main as DashboardMainStory } from "../Dashboard/Dashboard.stories";
 import { Variants as StepNavigationVariantsStory } from "../StepNavigation/StepNavigation.stories";
 
 /** Visual tests for components from the Lab package */
-const meta: Meta = {
+const meta = preview.meta({
   title: "Tests/Lab",
   tags: ["skipTestRunner"],
-};
-export default meta;
+});
 
 /**
  * Visual tests for:
@@ -21,7 +20,7 @@ export default meta;
  * - Dashboard
  * - Step navigation
  */
-export const Test: StoryObj = {
+export const Test = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -38,4 +37,4 @@ export const Test: StoryObj = {
       {renderStory(StepNavigationVariantsStory, context)}
     </>
   ),
-};
+});

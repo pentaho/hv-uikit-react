@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvIconButton,
   HvIconButtonProps,
@@ -11,13 +10,14 @@ import {
   DropLeft,
 } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<HvIconButtonProps> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Icon Button",
   component: HvIconButton,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvIconButtonProps> = {
+export const Main = meta.story({
   args: {
     title: "Download",
   },
@@ -31,9 +31,9 @@ export const Main: StoryObj<HvIconButtonProps> = {
       <Download />
     </HvIconButton>
   ),
-};
+});
 
-export const Disabled: StoryObj<HvIconButtonProps> = {
+export const Disabled = meta.story({
   parameters: {
     docs: {
       description: {
@@ -47,9 +47,9 @@ export const Disabled: StoryObj<HvIconButtonProps> = {
       <Add />
     </HvIconButton>
   ),
-};
+});
 
-export const Variants: StoryObj<HvIconButtonProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div style={{ display: "flex", flexWrap: "wrap", gap: theme.space.sm }}>
@@ -73,4 +73,4 @@ export const Variants: StoryObj<HvIconButtonProps> = {
       </HvIconButton>
     </>
   ),
-};
+});

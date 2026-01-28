@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   CheckboxCheck,
@@ -7,9 +6,11 @@ import {
   icons,
 } from "@hitachivantara/uikit-react-icons";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Tests/Icons",
-} as Meta;
+});
 
 const SpriteCheckbox = (props: Partial<HvIconSpriteProps>) => (
   <HvIconSprite
@@ -19,7 +20,7 @@ const SpriteCheckbox = (props: Partial<HvIconSpriteProps>) => (
   />
 );
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   parameters: {
     ...setupChromatic(),
   },
@@ -60,4 +61,4 @@ export const Test: StoryObj = {
       </div>
     );
   },
-};
+});

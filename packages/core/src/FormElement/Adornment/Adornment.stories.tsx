@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAdornment,
-  HvAdornmentProps,
   HvBaseInput,
   HvButton,
   HvFormElement,
@@ -17,17 +15,18 @@ import {
   Success,
 } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../../.storybook/preview";
+
 const classes = {
   button: css({ width: "250px", height: "50px", margin: "10px" }),
 };
 
-const meta: Meta<typeof HvAdornment> = {
+const meta = preview.meta({
   title: "Components/Form Element Blocks/Adornment",
   component: HvAdornment,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvAdornmentProps> = {
+export const Main = meta.story({
   args: {
     showWhen: "valid",
     icon: <Preview />,
@@ -41,9 +40,9 @@ export const Main: StoryObj<HvAdornmentProps> = {
   render: (args) => {
     return <HvAdornment {...args}>List</HvAdornment>;
   },
-};
+});
 
-export const InputAdornment: StoryObj<HvAdornmentProps> = {
+export const InputAdornment = meta.story({
   render: () => {
     const [isPassword, setPasswordType] = useState(true);
     const toggleType = () => {
@@ -70,9 +69,9 @@ export const InputAdornment: StoryObj<HvAdornmentProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const DynamicAdornments: StoryObj<HvAdornmentProps> = {
+export const DynamicAdornments = meta.story({
   parameters: {
     docs: {
       description: {
@@ -126,4 +125,4 @@ export const DynamicAdornments: StoryObj<HvAdornmentProps> = {
       </>
     );
   },
-};
+});

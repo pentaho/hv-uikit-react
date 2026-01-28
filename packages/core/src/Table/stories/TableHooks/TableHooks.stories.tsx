@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import {
   HvTable,
@@ -16,6 +15,7 @@ import {
   useHvTableSticky,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../../../.storybook/preview";
 import { ColumnResize } from "./ColumnResize";
 import { UseHvBulkActions } from "./UseHvBulkActions";
 import { UseHvFilters } from "./UseHvFilters";
@@ -31,56 +31,56 @@ import { UseHvRowState } from "./UseHvRowState";
 import { UseHvSortBy } from "./UseHvSortBy";
 import { UseHvTableSticky } from "./UseHvTableSticky";
 
-export default {
+const meta = preview.meta({
   title: "Visualizations/Table/Table Hooks",
-};
+});
 
-export const UseHvHooksStory: StoryObj = {
+export const UseHvHooksStory = meta.story({
   name: "useHvTable",
   render: () => <UseHvHooks />,
-};
+});
 
-export const ColumnResizeStory: StoryObj = {
+export const ColumnResizeStory = meta.story({
   name: "useHvResizeColumns",
   render: () => <ColumnResize />,
-};
+});
 
-export const UseHvPaginationStory: StoryObj = {
+export const UseHvPaginationStory = meta.story({
   name: "useHvPagination",
   render: () => <UseHvPagination />,
-};
+});
 
-export const UseHvSelectionStory: StoryObj = {
+export const UseHvSelectionStory = meta.story({
   name: "useHvRowSelection",
   render: () => <UseHvSelection />,
-};
+});
 
-export const UseHvSelectionControlledStory: StoryObj = {
+export const UseHvSelectionControlledStory = meta.story({
   name: "useHvRowSelection controlled",
   render: () => <UseHvSelectionControlled />,
-};
+});
 
-export const LockedSelectionStory: StoryObj = {
+export const LockedSelectionStory = meta.story({
   name: "useHvRowSelection locked",
   render: () => <LockedSelection />,
-};
+});
 
-export const UseHvFiltersStory: StoryObj = {
+export const UseHvFiltersStory = meta.story({
   name: "useHvFilters",
   render: () => <UseHvFilters />,
-};
+});
 
-export const UseHvBulkActionsStory: StoryObj = {
+export const UseHvBulkActionsStory = meta.story({
   name: "useHvBulkActions",
   render: () => <UseHvBulkActions />,
-};
+});
 
-export const UseHvSortByStory: StoryObj = {
+export const UseHvSortByStory = meta.story({
   name: "useHvSortBy",
   render: () => <UseHvSortBy />,
-};
+});
 
-export const UseHvRowExpandStory: StoryObj = {
+export const UseHvRowExpandStory = meta.story({
   name: "useHvRowExpand",
   // For a11y
   play: async ({ canvas, userEvent }) => {
@@ -91,9 +91,9 @@ export const UseHvRowExpandStory: StoryObj = {
     ).toBeInTheDocument();
   },
   render: () => <UseHvRowExpand />,
-};
+});
 
-export const UseHvGroupByStory: StoryObj = {
+export const UseHvGroupByStory = meta.story({
   name: "useHvRowExpand grouped",
   // For a11y
   play: async ({ canvas, userEvent }) => {
@@ -102,25 +102,25 @@ export const UseHvGroupByStory: StoryObj = {
     await expect(canvas.getByText("Event 2")).toBeInTheDocument();
   },
   render: () => <UseHvGroupBy />,
-};
+});
 
-export const UseHvTableStickyStory: StoryObj = {
+export const UseHvTableStickyStory = meta.story({
   name: "useHvTableSticky",
   render: () => <UseHvTableSticky />,
-};
+});
 
-export const UseHvHeaderGroupsStory: StoryObj = {
+export const UseHvHeaderGroupsStory = meta.story({
   name: "useHvHeaderGroups",
   render: () => <UseHvHeaderGroups />,
-};
+});
 
-export const UseHvRowStateStory: StoryObj = {
+export const UseHvRowStateStory = meta.story({
   name: "useHvRowState",
   render: () => <UseHvRowState />,
-};
+});
 
 /** This was created to test grouped headers with sticky columns */
-export const TestStickyHeaders: StoryObj = {
+export const TestStickyHeaders = meta.story({
   render: () => {
     const data = useMemo(
       () => [
@@ -204,4 +204,4 @@ export const TestStickyHeaders: StoryObj = {
       </HvTableSection>
     );
   },
-};
+});

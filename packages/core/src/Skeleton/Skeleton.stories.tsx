@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvActionBar,
   HvActionsGeneric,
@@ -12,18 +11,18 @@ import {
   HvRadio,
   HvRadioGroup,
   HvSkeleton,
-  HvSkeletonProps,
   HvSwitch,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvSkeleton> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Skeleton",
   component: HvSkeleton,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvSkeletonProps> = {
+export const Main = meta.story({
   args: {
     width: 150,
     hidden: false,
@@ -38,9 +37,9 @@ export const Main: StoryObj<HvSkeletonProps> = {
       </HvTypography>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvSkeletonProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -66,9 +65,9 @@ export const Variants: StoryObj<HvSkeletonProps> = {
       </div>
     );
   },
-};
+});
 
-export const Card: StoryObj<HvSkeletonProps> = {
+export const Card = meta.story({
   parameters: {
     docs: {
       description: {
@@ -189,4 +188,4 @@ export const Card: StoryObj<HvSkeletonProps> = {
       </>
     );
   },
-};
+});

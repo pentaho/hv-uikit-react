@@ -1,26 +1,24 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvFormStatus,
   HvTagProps,
   HvTagsInput,
-  HvTagsInputProps,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import countryNamesArray from "./countries";
 import { ControlledTagArray as ControlledTagArrayStory } from "./stories/ControlledTagArray";
 
-const meta: Meta<typeof HvTagsInput> = {
+const meta = preview.meta({
   title: "Components/Tags Input",
   component: HvTagsInput,
   decorators: [
     (storyFn) => <div style={{ maxWidth: "600px" }}>{storyFn()}</div>,
   ],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvTagsInputProps> = {
+export const Main = meta.story({
   args: {
     label: "Enter your tags",
     description: "This is where you enter your tags",
@@ -39,9 +37,9 @@ export const Main: StoryObj<HvTagsInputProps> = {
   render: (args) => {
     return <HvTagsInput {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvTagsInputProps> = {
+export const Variants = meta.story({
   decorators: [(Story) => <div className="grid gap-sm">{Story()}</div>],
   render: () => {
     return (
@@ -82,9 +80,9 @@ export const Variants: StoryObj<HvTagsInputProps> = {
       </>
     );
   },
-};
+});
 
-export const ControlledStringArray: StoryObj<HvTagsInputProps> = {
+export const ControlledStringArray = meta.story({
   parameters: {
     docs: {
       description: {
@@ -114,9 +112,9 @@ export const ControlledStringArray: StoryObj<HvTagsInputProps> = {
       </>
     );
   },
-};
+});
 
-export const ControlledTagArray = {
+export const ControlledTagArray = meta.story({
   parameters: {
     docs: {
       description: {
@@ -125,9 +123,9 @@ export const ControlledTagArray = {
     },
   },
   render: () => <ControlledTagArrayStory />,
-};
+});
 
-export const ControlledWithValidation: StoryObj<HvTagsInputProps> = {
+export const ControlledWithValidation = meta.story({
   parameters: {
     docs: {
       description: {
@@ -171,9 +169,9 @@ export const ControlledWithValidation: StoryObj<HvTagsInputProps> = {
       </>
     );
   },
-};
+});
 
-export const AddTagOnBlur: StoryObj<HvTagsInputProps> = {
+export const AddTagOnBlur = meta.story({
   parameters: {
     docs: {
       description: {
@@ -208,9 +206,9 @@ export const AddTagOnBlur: StoryObj<HvTagsInputProps> = {
       />
     );
   },
-};
+});
 
-export const Multiline: StoryObj<HvTagsInputProps> = {
+export const Multiline = meta.story({
   parameters: {
     docs: {
       description: {
@@ -229,9 +227,9 @@ export const Multiline: StoryObj<HvTagsInputProps> = {
       />
     );
   },
-};
+});
 
-export const TagsCounterValidation: StoryObj<HvTagsInputProps> = {
+export const TagsCounterValidation = meta.story({
   parameters: {
     docs: {
       description: {
@@ -259,9 +257,9 @@ export const TagsCounterValidation: StoryObj<HvTagsInputProps> = {
       />
     );
   },
-};
+});
 
-export const Suggestions: StoryObj<HvTagsInputProps> = {
+export const Suggestions = meta.story({
   parameters: {
     docs: {
       description: {
@@ -300,9 +298,9 @@ export const Suggestions: StoryObj<HvTagsInputProps> = {
       />
     );
   },
-};
+});
 
-export const UnrestrictedSuggestions: StoryObj<HvTagsInputProps> = {
+export const UnrestrictedSuggestions = meta.story({
   parameters: {
     docs: {
       description: {
@@ -375,4 +373,4 @@ export const UnrestrictedSuggestions: StoryObj<HvTagsInputProps> = {
       />
     );
   },
-};
+});

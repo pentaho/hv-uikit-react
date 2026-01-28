@@ -1,18 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvButton } from "@hitachivantara/uikit-react-core";
-import {
-  HvCanvasToolbar,
-  HvCanvasToolbarProps,
-} from "@hitachivantara/uikit-react-pentaho";
+import { HvCanvasToolbar } from "@hitachivantara/uikit-react-pentaho";
 
-const meta: Meta<typeof HvCanvasToolbar> = {
+import preview from "../../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Pentaho/Canvas/Toolbar",
   component: HvCanvasToolbar,
   decorators: [(Story) => <div className="h-54px">{Story()}</div>],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvCanvasToolbarProps> = {
+export const Main = meta.story({
   args: {
     title: "Toolbar Title",
   },
@@ -30,4 +27,4 @@ export const Main: StoryObj<HvCanvasToolbarProps> = {
       </HvCanvasToolbar>
     );
   },
-};
+});

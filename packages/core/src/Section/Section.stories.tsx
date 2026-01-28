@@ -1,16 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { HvButton } from "../Button";
-import { HvSection, HvSectionProps } from "./Section";
+import { HvSection } from "./Section";
 
-const meta: Meta<typeof HvSection> = {
+const meta = preview.meta({
   title: "Components/Section",
   component: HvSection,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvSectionProps> = {
+export const Main = meta.story({
   args: {
     title: "Section Title",
     raisedHeader: false,
@@ -43,9 +42,9 @@ export const Main: StoryObj<HvSectionProps> = {
       </HvSection>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   decorators: [(Story) => <div className="grid gap-sm">{Story()}</div>],
   render: () => (
     <>
@@ -109,4 +108,4 @@ export const Test: StoryObj = {
       </HvSection>
     </>
   ),
-};
+});

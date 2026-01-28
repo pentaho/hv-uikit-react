@@ -1,6 +1,5 @@
 import { useCallback, useContext, useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
 import { expect, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
@@ -13,15 +12,12 @@ import {
   HvListItem,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
-import {
-  HvWizard,
-  HvWizardContext,
-  HvWizardProps,
-} from "@hitachivantara/uikit-react-lab";
+import { HvWizard, HvWizardContext } from "@hitachivantara/uikit-react-lab";
 
+import preview from "../../../../.storybook/preview";
 import mockText from "./mockData";
 
-const meta: Meta<typeof HvWizard> = {
+const meta = preview.meta({
   title: "Lab/Wizard",
   component: HvWizard,
   decorators: [
@@ -29,8 +25,7 @@ const meta: Meta<typeof HvWizard> = {
       <div style={{ minHeight: isChromatic() ? 1080 : 600 }}>{Story()}</div>
     ),
   ],
-};
-export default meta;
+});
 
 const RandomFormComponent = (props: Record<string, any>) => {
   const { context, setContext, tab } = useContext(HvWizardContext);
@@ -99,7 +94,7 @@ const RandomFormComponent = (props: Record<string, any>) => {
   );
 };
 
-export const Main: StoryObj<HvWizardProps> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
   },
@@ -164,9 +159,9 @@ export const Main: StoryObj<HvWizardProps> = {
       </>
     );
   },
-};
+});
 
-export const Skippable: StoryObj<HvWizardProps> = {
+export const Skippable = meta.story({
   // For a11y
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement.parentElement!);
@@ -225,9 +220,9 @@ export const Skippable: StoryObj<HvWizardProps> = {
       </>
     );
   },
-};
+});
 
-export const ComponentBreakDown: StoryObj<HvWizardProps> = {
+export const ComponentBreakDown = meta.story({
   parameters: {
     ...setupChromatic("light"),
   },
@@ -343,4 +338,4 @@ export const ComponentBreakDown: StoryObj<HvWizardProps> = {
       </>
     );
   },
-};
+});

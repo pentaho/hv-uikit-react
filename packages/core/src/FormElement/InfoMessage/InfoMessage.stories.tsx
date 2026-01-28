@@ -1,16 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvInfoMessage,
-  HvInfoMessageProps,
-} from "@hitachivantara/uikit-react-core";
+import preview from "../../../../../.storybook/preview";
+import { HvInfoMessage } from "./InfoMessage";
 
-const meta: Meta<typeof HvInfoMessage> = {
+const meta = preview.meta({
   title: "Components/Form Element Blocks/Info Message",
   component: HvInfoMessage,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvInfoMessageProps> = {
+export const Main = meta.story({
   args: {
     disabled: false,
     disableGutter: false,
@@ -21,9 +17,9 @@ export const Main: StoryObj<HvInfoMessageProps> = {
   render: (args) => {
     return <HvInfoMessage {...args}>Info Message</HvInfoMessage>;
   },
-};
+});
 
-export const DisabledInfoMessage: StoryObj<HvInfoMessageProps> = {
+export const DisabledInfoMessage = meta.story({
   parameters: {
     docs: {
       description: {
@@ -38,4 +34,4 @@ export const DisabledInfoMessage: StoryObj<HvInfoMessageProps> = {
       </HvInfoMessage>
     );
   },
-};
+});

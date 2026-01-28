@@ -1,20 +1,19 @@
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvContainer,
-  HvContainerProps,
   HvTypography,
   theme,
   useWidth,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvContainer> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Container",
   component: HvContainer,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvContainerProps> = {
+export const Main = meta.story({
   args: {
     maxWidth: "md",
     fixed: false,
@@ -59,4 +58,4 @@ export const Main: StoryObj<HvContainerProps> = {
       </HvContainer>
     );
   },
-};
+});

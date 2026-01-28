@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvActionBar,
   HvButton,
@@ -8,7 +7,6 @@ import {
   HvCardHeader,
   HvPanel,
   HvStack,
-  HvStackProps,
   HvToggleButton,
   HvTypography,
   theme,
@@ -20,6 +18,8 @@ import {
   Tool,
 } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../.storybook/preview";
+
 const Box = styled(HvPanel)({
   display: "grid",
   placeItems: "center",
@@ -28,13 +28,12 @@ const Box = styled(HvPanel)({
   height: 50,
 });
 
-const meta: Meta<typeof HvStack> = {
+const meta = preview.meta({
   title: "Components/Stack",
   component: HvStack,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvStackProps> = {
+export const Main = meta.story({
   args: {
     divider: true,
     direction: "row",
@@ -66,9 +65,9 @@ export const Main: StoryObj<HvStackProps> = {
       </HvStack>
     );
   },
-};
+});
 
-export const Spacing: StoryObj<HvStackProps> = {
+export const Spacing = meta.story({
   parameters: {
     docs: {
       description: {
@@ -102,9 +101,9 @@ export const Spacing: StoryObj<HvStackProps> = {
       </>
     );
   },
-};
+});
 
-export const WithNavigation: StoryObj<HvStackProps> = {
+export const WithNavigation = meta.story({
   decorators: [(Story) => <div style={{ overflow: "auto" }}>{Story()}</div>],
   parameters: {
     docs: {
@@ -225,9 +224,9 @@ export const WithNavigation: StoryObj<HvStackProps> = {
       </HvStack>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <>
       <div style={{ display: "flex", gap: theme.space.sm }}>
@@ -278,4 +277,4 @@ export const Test: StoryObj = {
       </div>
     </>
   ),
-};
+});

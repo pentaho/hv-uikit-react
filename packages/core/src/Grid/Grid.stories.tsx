@@ -1,18 +1,17 @@
 import styled from "@emotion/styled";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvGrid,
-  HvGridProps,
   HvTypography,
   theme,
   useWidth,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvGrid> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Grid",
   component: HvGrid,
-};
-export default meta;
+});
 
 const StyledItem = styled("div", { label: "StyledItem" })({
   display: "flex",
@@ -23,7 +22,7 @@ const StyledItem = styled("div", { label: "StyledItem" })({
   backgroundColor: theme.colors.infoDimmed,
 });
 
-export const Main: StoryObj<HvGridProps> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
   },
@@ -65,7 +64,7 @@ export const Main: StoryObj<HvGridProps> = {
       </>
     );
   },
-};
+});
 
 const BREAKPOINT_GUTTERS = {
   xs: "15px",
@@ -75,7 +74,7 @@ const BREAKPOINT_GUTTERS = {
   xl: "30px",
 };
 
-export const The12Columns: StoryObj<HvGridProps> = {
+export const The12Columns = meta.story({
   parameters: {
     docs: {
       description: {
@@ -102,7 +101,7 @@ export const The12Columns: StoryObj<HvGridProps> = {
       </>
     );
   },
-};
+});
 
 const BREAKPOINT_COLUMNS = {
   xs: 4,
@@ -112,7 +111,7 @@ const BREAKPOINT_COLUMNS = {
   xl: 12,
 };
 
-export const TheDesignSystemColumns: StoryObj<HvGridProps> = {
+export const TheDesignSystemColumns = meta.story({
   parameters: {
     docs: {
       description: {
@@ -139,4 +138,4 @@ export const TheDesignSystemColumns: StoryObj<HvGridProps> = {
       </div>
     );
   },
-};
+});

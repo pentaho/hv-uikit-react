@@ -1,16 +1,15 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvSlider, HvSliderProps } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvSlider> = {
+import preview from "../../../../.storybook/preview";
+import { HvSlider } from "./Slider";
+
+const meta = preview.meta({
   title: "Components/Slider",
   component: HvSlider,
   decorators: [(Story) => <div className="pt-md pb-md">{Story()}</div>],
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvSliderProps> = {
+export const Main = meta.story({
   args: {
     label: "Failure Rate",
     hideInput: false,
@@ -30,9 +29,9 @@ export const Main: StoryObj<HvSliderProps> = {
   render: (args) => {
     return <HvSlider {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvSliderProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -59,9 +58,9 @@ export const Variants: StoryObj<HvSliderProps> = {
       </>
     );
   },
-};
+});
 
-export const RangeVariants: StoryObj<HvSliderProps> = {
+export const RangeVariants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -88,9 +87,9 @@ export const RangeVariants: StoryObj<HvSliderProps> = {
       </>
     );
   },
-};
+});
 
-export const FormattedMark: StoryObj<HvSliderProps> = {
+export const FormattedMark = meta.story({
   parameters: {
     docs: {
       description: {
@@ -107,9 +106,9 @@ export const FormattedMark: StoryObj<HvSliderProps> = {
       />
     );
   },
-};
+});
 
-export const DecimalValues: StoryObj<HvSliderProps> = {
+export const DecimalValues = meta.story({
   parameters: {
     docs: {
       description: {
@@ -130,9 +129,9 @@ export const DecimalValues: StoryObj<HvSliderProps> = {
       />
     );
   },
-};
+});
 
-export const CustomValues: StoryObj<HvSliderProps> = {
+export const CustomValues = meta.story({
   parameters: {
     docs: {
       description: {
@@ -161,4 +160,4 @@ export const CustomValues: StoryObj<HvSliderProps> = {
       />
     );
   },
-};
+});

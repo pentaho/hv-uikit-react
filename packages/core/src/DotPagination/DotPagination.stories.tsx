@@ -1,8 +1,6 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvDotPagination,
-  HvDotPaginationProps,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 import {
@@ -10,25 +8,25 @@ import {
   RadioButtonUnselected,
 } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvDotPagination> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Dot Pagination",
   component: HvDotPagination,
-};
-
-export default meta;
+});
 
 const styles = {
   page: "text-center",
 };
 
-export const Main: StoryObj<HvDotPaginationProps> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
     unselectedIcon: { control: { disable: true } },
     selectedIcon: { control: { disable: true } },
   },
   render: () => {
-    const [page, setPage] = useState<number>(0);
+    const [page, setPage] = useState(0);
     const pages = [
       "This is page 1",
       "And this is page 2",
@@ -61,9 +59,9 @@ export const Main: StoryObj<HvDotPaginationProps> = {
       </div>
     );
   },
-};
+});
 
-export const CustomizedDotPagination: StoryObj<HvDotPaginationProps> = {
+export const CustomizedDotPagination = meta.story({
   parameters: {
     docs: {
       description: {
@@ -112,4 +110,4 @@ export const CustomizedDotPagination: StoryObj<HvDotPaginationProps> = {
       </div>
     );
   },
-};
+});

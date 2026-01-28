@@ -1,8 +1,6 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvListContainer,
-  HvListContainerProps,
   HvListItem,
   HvPanel,
   HvTypography,
@@ -16,15 +14,16 @@ import {
   User,
 } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvListContainer> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/List",
   component: HvListContainer,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvListItem },
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvListContainerProps> = {
+export const Main = meta.story({
   args: {
     interactive: true,
     condensed: false,
@@ -49,9 +48,9 @@ export const Main: StoryObj<HvListContainerProps> = {
       </HvPanel>
     );
   },
-};
+});
 
-export const SingleSelection: StoryObj<HvListContainerProps> = {
+export const SingleSelection = meta.story({
   render: () => {
     const [selectedItem, setSelectedItem] = useState(0);
 
@@ -105,9 +104,9 @@ export const SingleSelection: StoryObj<HvListContainerProps> = {
       </HvPanel>
     );
   },
-};
+});
 
-export const MultiSelection: StoryObj<HvListContainerProps> = {
+export const MultiSelection = meta.story({
   render: () => {
     const [selectedItems, setSelectedItems] = useState({
       0: false,
@@ -164,9 +163,9 @@ export const MultiSelection: StoryObj<HvListContainerProps> = {
       </HvPanel>
     );
   },
-};
+});
 
-export const WithIcons: StoryObj<HvListContainerProps> = {
+export const WithIcons = meta.story({
   decorators: [(Story) => <div className="flex gap-sm">{Story()}</div>],
   render: () => {
     return (
@@ -225,4 +224,4 @@ export const WithIcons: StoryObj<HvListContainerProps> = {
       </>
     );
   },
-};
+});

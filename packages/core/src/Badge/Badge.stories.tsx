@@ -1,19 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvBadge,
-  HvBadgeProps,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvBadge, HvTypography } from "@hitachivantara/uikit-react-core";
 import { Alert } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvBadge> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Badge",
   component: HvBadge,
   decorators: [(Story) => <div className="flex gap-60px">{Story()}</div>],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvBadgeProps> = {
+export const Main = meta.story({
   args: {
     label: 1,
     showCount: true,
@@ -26,9 +22,9 @@ export const Main: StoryObj<HvBadgeProps> = {
     icon: { control: { disable: true } },
   },
   render: (args) => <HvBadge {...args} />,
-};
+});
 
-export const Multiple: StoryObj<HvBadgeProps> = {
+export const Multiple = meta.story({
   render: () => {
     return (
       <>
@@ -40,9 +36,9 @@ export const Multiple: StoryObj<HvBadgeProps> = {
       </>
     );
   },
-};
+});
 
-export const WithIcon: StoryObj<HvBadgeProps> = {
+export const WithIcon = meta.story({
   parameters: {
     docs: {
       description: { story: "Badge sample that uses a custom icon." },
@@ -60,9 +56,9 @@ export const WithIcon: StoryObj<HvBadgeProps> = {
       </>
     );
   },
-};
+});
 
-export const WithText: StoryObj<HvBadgeProps> = {
+export const WithText = meta.story({
   parameters: {
     docs: {
       description: { story: "Badge sample using only text." },
@@ -92,9 +88,9 @@ export const WithText: StoryObj<HvBadgeProps> = {
       </>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <div style={{ display: "flex", gap: 60, flexWrap: "wrap" }}>
       <HvBadge label={10} icon={<Alert />} />
@@ -114,4 +110,4 @@ export const Test: StoryObj = {
       <HvBadge color="textSubtle" label={8} icon={<Alert />} />
     </div>
   ),
-};
+});

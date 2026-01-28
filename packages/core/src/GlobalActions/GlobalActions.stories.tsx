@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBreadCrumb,
   HvButton,
   HvContainer,
   HvDropDownMenu,
   HvGlobalActions,
-  HvGlobalActionsProps,
   HvTab,
   HvTabs,
   HvTypography,
   theme,
 } from "@hitachivantara/uikit-react-core";
 import { Backwards, Home } from "@hitachivantara/uikit-react-icons";
+
+import preview from "../../../../.storybook/preview";
 
 const lorem =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed. Tortor at risus viverra adipiscing at in tellus. Et netus et malesuada fames ac turpis. Sed blandit libero volutpat sed cras ornare arcu. Arcu odio ut sem nulla pharetra diam sit amet. Sagittis purus sit amet volutpat consequat mauris nunc congue. Sed vulputate mi sit amet mauris commodo quis imperdiet massa. Dictum varius duis at consectetur. Lorem sed risus ultricies tristique nulla aliquet enim tortor at. Turpis egestas maecenas pharetra convallis posuere morbi. Eget sit amet tellus cras adipiscing. Egestas erat imperdiet sed euismod nisi. Morbi tincidunt augue interdum velit euismod in pellentesque massa. At augue eget arcu dictum varius duis at. Tellus elementum sagittis vitae et. In est ante in nibh mauris cursus mattis. Faucibus nisl tincidunt eget nullam non. Cursus metus aliquam eleifend mi in nulla posuere.";
@@ -26,7 +26,7 @@ const data = [
   { label: "Label 5", path: "route5" },
 ];
 
-const meta: Meta<typeof HvGlobalActions> = {
+const meta = preview.meta({
   title: "Components/Global Actions",
   component: HvGlobalActions,
   decorators: [
@@ -36,10 +36,9 @@ const meta: Meta<typeof HvGlobalActions> = {
       </HvContainer>
     ),
   ],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvGlobalActionsProps> = {
+export const Main = meta.story({
   args: {
     title: "Details Page Title",
     headingLevel: 1,
@@ -116,9 +115,9 @@ export const Main: StoryObj<HvGlobalActionsProps> = {
       </>
     );
   },
-};
+});
 
-export const GlobalVariant: StoryObj<HvGlobalActionsProps> = {
+export const GlobalVariant = meta.story({
   parameters: {
     docs: {
       description: {
@@ -154,9 +153,9 @@ export const GlobalVariant: StoryObj<HvGlobalActionsProps> = {
       </>
     );
   },
-};
+});
 
-export const SectionVariant: StoryObj<HvGlobalActionsProps> = {
+export const SectionVariant = meta.story({
   parameters: {
     docs: {
       description: {
@@ -190,9 +189,9 @@ export const SectionVariant: StoryObj<HvGlobalActionsProps> = {
       </>
     );
   },
-};
+});
 
-export const CustomContent: StoryObj<HvGlobalActionsProps> = {
+export const CustomContent = meta.story({
   parameters: {
     docs: {
       description: {
@@ -256,9 +255,9 @@ export const CustomContent: StoryObj<HvGlobalActionsProps> = {
       </HvGlobalActions>
     );
   },
-};
+});
 
-export const Test: StoryObj<HvGlobalActionsProps> = {
+export const Test = meta.story({
   render: () => {
     const backButton = (
       <HvButton aria-label="Back" icon>
@@ -280,4 +279,4 @@ export const Test: StoryObj<HvGlobalActionsProps> = {
       </>
     );
   },
-};
+});
