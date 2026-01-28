@@ -37,6 +37,17 @@ describe("TimeAgo with timestamp", () => {
     expect(screen.getByText(/^yesterday/)).toBeVisible();
   });
 
+  it("should show yesterday for timestamp less than a day ago from previous day", () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(23, 58, 0, 0); // Late night timestamp
+    const timestamp = yesterday.getTime();
+
+    render(<HvTimeAgo timestamp={timestamp} locale="en" />);
+
+    expect(screen.getByText(/^yesterday/i)).toBeVisible();
+  });
+
   it("should contain the relative time when the day is tomorrow", () => {
     const timestamp = new Date().setDate(new Date().getDate() + 1);
     render(<HvTimeAgo timestamp={timestamp} />);
