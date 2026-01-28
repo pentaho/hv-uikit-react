@@ -29,13 +29,13 @@ export const SimpleTable = () => {
       <HvTable>
         <HvTableHead>
           <HvTableRow>
-            <HvTableCell variant="checkbox" />
+            <HvTableHeader variant="checkbox" />
             {columns.map((el) => (
               <HvTableHeader key={String(el.Header)}>
                 {el.Header as any}
               </HvTableHeader>
             ))}
-            <HvTableCell variant="actions" />
+            <HvTableHeader variant="actions" />
           </HvTableRow>
         </HvTableHead>
         <HvTableBody>
