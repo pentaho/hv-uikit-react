@@ -1,9 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import {
-  HvBreadCrumb,
-  HvBreadCrumbProps,
-} from "@hitachivantara/uikit-react-core";
+
+import preview from "../../../../.storybook/preview";
+import { HvBreadCrumb } from "./BreadCrumb";
 
 const data = [
   { label: "Label 1", path: "route1" },
@@ -17,16 +15,15 @@ const data = [
   { label: "Label 9", path: "route9" },
 ];
 
-const meta: Meta<typeof HvBreadCrumb> = {
+const meta = preview.meta({
   title: "Components/Breadcrumb",
   component: HvBreadCrumb,
   argTypes: {
     onClick: { action: "clicked" },
   },
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvBreadCrumbProps> = {
+export const Main = meta.story({
   args: {
     maxVisible: 5,
   },
@@ -40,9 +37,9 @@ export const Main: StoryObj<HvBreadCrumbProps> = {
   render: (args) => {
     return <HvBreadCrumb listRoute={data} aria-label="Breadcrumb" {...args} />;
   },
-};
+});
 
-export const WithURL: StoryObj<HvBreadCrumbProps> = {
+export const WithURL = meta.story({
   parameters: {
     docs: {
       description: {
@@ -59,9 +56,9 @@ export const WithURL: StoryObj<HvBreadCrumbProps> = {
       />
     );
   },
-};
+});
 
-export const Test: StoryObj<HvBreadCrumbProps> = {
+export const Test = meta.story({
   parameters: {
     docs: {
       description: {
@@ -92,4 +89,4 @@ export const Test: StoryObj<HvBreadCrumbProps> = {
       />
     </>
   ),
-};
+});

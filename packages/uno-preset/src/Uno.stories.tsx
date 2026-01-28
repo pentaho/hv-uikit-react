@@ -1,12 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-export default {
-  title: "Tests/Uno",
-} as Meta;
+import preview from "../../../.storybook/preview";
 
-export const Test: StoryObj = {
+const meta = preview.meta({
+  title: "Tests/Uno",
+});
+
+export const Test = meta.story({
   parameters: {
     ...setupChromatic(["DS5 dawn", "DS5 wicked", "Pentaho wicked"]),
     docs: { disable: true },
@@ -47,4 +48,4 @@ export const Test: StoryObj = {
       </section>
     </>
   ),
-};
+});

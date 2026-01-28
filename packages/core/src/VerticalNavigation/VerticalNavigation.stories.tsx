@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
@@ -6,20 +5,20 @@ import {
   HvVerticalNavigationAction,
   HvVerticalNavigationActions,
   HvVerticalNavigationHeader,
-  HvVerticalNavigationProps,
   HvVerticalNavigationSlider,
   HvVerticalNavigationTree,
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { CollapsibleIcons as CollapsibleIconsStory } from "./stories/CollapsibleIcons";
 import { Main as MainStory } from "./stories/Main";
 import { SliderMode as SliderModeStory } from "./stories/SliderMode";
 import { Test as TestStory } from "./stories/Test";
 import { TreeViewMode as TreeViewModeStory } from "./stories/TreeViewMode";
 
-const meta: Meta<typeof HvVerticalNavigation> = {
+const meta = preview.meta({
   title: "Components/Vertical Navigation",
   component: HvVerticalNavigation,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
@@ -35,20 +34,18 @@ const meta: Meta<typeof HvVerticalNavigation> = {
   decorators: [
     (Story) => <div style={{ display: "flex", height: 530 }}>{Story()}</div>,
   ],
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvVerticalNavigationProps> = {
+export const Main = meta.story({
   args: {
     open: true,
     slider: false,
   },
   argTypes: {},
   render: (args) => <MainStory {...args} />,
-};
+});
 
-export const TreeViewMode: StoryObj<HvVerticalNavigationProps> = {
+export const TreeViewMode = meta.story({
   parameters: {
     docs: {
       description: {
@@ -59,9 +56,9 @@ export const TreeViewMode: StoryObj<HvVerticalNavigationProps> = {
     },
   },
   render: () => <TreeViewModeStory />,
-};
+});
 
-export const CollapsibleIcons: StoryObj<HvVerticalNavigationProps> = {
+export const CollapsibleIcons = meta.story({
   parameters: {
     docs: {
       description: {
@@ -71,13 +68,13 @@ export const CollapsibleIcons: StoryObj<HvVerticalNavigationProps> = {
     },
   },
   render: () => <CollapsibleIconsStory />,
-};
+});
 
-export const SliderMode: StoryObj<HvVerticalNavigationProps> = {
+export const SliderMode = meta.story({
   render: () => <SliderModeStory />,
-};
+});
 
-export const Test: StoryObj<HvVerticalNavigationProps> = {
+export const Test = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -97,4 +94,4 @@ export const Test: StoryObj<HvVerticalNavigationProps> = {
       <CollapsibleIconsStory />
     </div>
   ),
-};
+});

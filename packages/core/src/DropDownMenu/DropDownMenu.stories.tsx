@@ -1,15 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvDropDownMenu,
-  HvDropDownMenuProps,
-} from "@hitachivantara/uikit-react-core";
+import preview from "../../../../.storybook/preview";
+import { HvDropDownMenu } from "./DropDownMenu";
 
-export default {
+const meta = preview.meta({
   title: "Components/Dropdown Menu",
   component: HvDropDownMenu,
-} satisfies Meta<typeof HvDropDownMenu>;
+});
 
-export const Main: StoryObj<HvDropDownMenuProps> = {
+export const Main = meta.story({
   args: {
     dataList: [
       { label: "Item 1" },
@@ -35,4 +32,4 @@ export const Main: StoryObj<HvDropDownMenuProps> = {
   render: (args) => {
     return <HvDropDownMenu {...args} />;
   },
-};
+});

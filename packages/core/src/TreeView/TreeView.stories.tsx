@@ -1,13 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvPanel,
   HvTreeItem,
   HvTreeView,
-  HvTreeViewProps,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { DataObject as DataObjectStory } from "./stories/DataObject";
 
 // Function to emulate pausing between interactions
@@ -16,15 +15,15 @@ const sleep = (ms: number) =>
     setTimeout(() => resolve("Time passed"), ms);
   });
 
-export default {
+const meta = preview.meta({
   title: "Components/Tree View",
   component: HvTreeView,
   argTypes: {},
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvTreeItem },
-} satisfies Meta<typeof HvTreeView>;
+});
 
-export const Main: StoryObj<HvTreeViewProps<false>> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
   },
@@ -45,9 +44,9 @@ export const Main: StoryObj<HvTreeViewProps<false>> = {
       </HvTreeView>
     </HvPanel>
   ),
-};
+});
 
-export const DataObject: StoryObj<HvTreeViewProps<false>> = {
+export const DataObject = meta.story({
   parameters: {
     docs: {
       description: {
@@ -71,4 +70,4 @@ export const DataObject: StoryObj<HvTreeViewProps<false>> = {
     await expect(canvas.getAllByRole("treeitem")).toHaveLength(9);
   },
   render: () => <DataObjectStory />,
-};
+});

@@ -1,5 +1,4 @@
-import type { StoryObj } from "@storybook/react-vite";
-
+import preview from "../../../../.storybook/preview";
 import { HvTypography, HvTypographyProps } from "./Typography";
 
 const typographyVariants = [
@@ -15,12 +14,12 @@ const typographyVariants = [
   "caption2",
 ] satisfies HvTypographyProps["variant"][];
 
-export default {
+const meta = preview.meta({
   title: "Components/Typography",
   component: HvTypography,
-};
+});
 
-export const Main: StoryObj<HvTypographyProps> = {
+export const Main = meta.story({
   args: {
     variant: "title1",
     link: false,
@@ -35,9 +34,9 @@ export const Main: StoryObj<HvTypographyProps> = {
   },
   decorators: [(Story) => <div style={{ width: 400 }}>{Story()}</div>],
   render: (args) => <HvTypography {...args}>Welcome to UI Kit!</HvTypography>,
-};
+});
 
-export const Variants: StoryObj<HvTypographyProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -59,9 +58,9 @@ export const Variants: StoryObj<HvTypographyProps> = {
       </div>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   decorators: [
     (Story) => <div className="flex flex-wrap gap-sm">{Story()}</div>,
   ],
@@ -85,4 +84,4 @@ export const Test: StoryObj = {
       ))}
     </>
   ),
-};
+});

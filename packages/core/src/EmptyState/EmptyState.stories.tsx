@@ -1,18 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvEmptyState,
-  HvEmptyStateProps,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvEmptyState, HvTypography } from "@hitachivantara/uikit-react-core";
 import { BarChart, Info } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvEmptyState> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Empty State",
   component: HvEmptyState,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvEmptyStateProps> = {
+export const Main = meta.story({
   args: {
     title: "No data routes",
     message: "After you start adding Data Routes, they will appear here.",
@@ -26,9 +22,9 @@ export const Main: StoryObj<HvEmptyStateProps> = {
   render: (args) => {
     return <HvEmptyState {...args} />;
   },
-};
+});
 
-export const WithAction: StoryObj<HvEmptyStateProps> = {
+export const WithAction = meta.story({
   render: () => {
     return (
       <HvEmptyState
@@ -43,10 +39,10 @@ export const WithAction: StoryObj<HvEmptyStateProps> = {
       />
     );
   },
-};
+});
 
-export const Minimal: StoryObj<HvEmptyStateProps> = {
+export const Minimal = meta.story({
   render: () => {
     return <HvEmptyState message="No data to display" icon={<Info />} />;
   },
-};
+});

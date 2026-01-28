@@ -1,17 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvListItem,
-  HvSelectionList,
-  HvSelectionListProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvListItem, HvSelectionList } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvSelectionList> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Selection List",
   component: HvSelectionList,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvSelectionListProps> = {
+export const Main = meta.story({
   args: {
     label: "Choose your favorite items",
     orientation: "vertical",
@@ -38,9 +34,9 @@ export const Main: StoryObj<HvSelectionListProps> = {
       </HvSelectionList>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvSelectionListProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div className="flex gap-xs flex-wrap [&>*]:w-175px">{Story()}</div>
@@ -84,4 +80,4 @@ export const Variants: StoryObj<HvSelectionListProps> = {
       </>
     );
   },
-};
+});

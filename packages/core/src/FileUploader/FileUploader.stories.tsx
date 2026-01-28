@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvDialog,
   HvDialogContent,
@@ -7,22 +6,20 @@ import {
   HvFileData,
   HvFileUploader,
   HvFileUploaderPreview,
-  HvFileUploaderProps,
 } from "@hitachivantara/uikit-react-core";
 import { Code, DocWord } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../.storybook/preview";
 import { cancelUpload, simulateUpload } from "./stories/simulators";
 
-const meta: Meta<typeof HvFileUploader> = {
+const meta = preview.meta({
   title: "Components/File Uploader",
   component: HvFileUploader,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvFileUploaderPreview },
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvFileUploaderProps> = {
+export const Main = meta.story({
   args: { disabled: false },
   argTypes: {
     fileList: { control: { disable: true } },
@@ -91,9 +88,9 @@ export const Main: StoryObj<HvFileUploaderProps> = {
       />
     );
   },
-};
+});
 
-export const Basic: StoryObj<HvFileUploaderProps> = {
+export const Basic = meta.story({
   parameters: {
     docs: {
       description: { story: "FileUploader default usage sample" },
@@ -152,9 +149,9 @@ export const Basic: StoryObj<HvFileUploaderProps> = {
       />
     );
   },
-};
+});
 
-export const WithPreviewThumbnails: StoryObj<HvFileUploaderProps> = {
+export const WithPreviewThumbnails = meta.story({
   parameters: {
     docs: {
       description: {
@@ -317,9 +314,9 @@ export const WithPreviewThumbnails: StoryObj<HvFileUploaderProps> = {
       </>
     );
   },
-};
+});
 
-export const SingleUpload: StoryObj<HvFileUploaderProps> = {
+export const SingleUpload = meta.story({
   parameters: {
     docs: {
       description: {
@@ -384,9 +381,9 @@ export const SingleUpload: StoryObj<HvFileUploaderProps> = {
       />
     );
   },
-};
+});
 
-export const CustomizedFileTypes: StoryObj<HvFileUploaderProps> = {
+export const CustomizedFileTypes = meta.story({
   parameters: {
     docs: {
       description: {
@@ -451,4 +448,4 @@ export const CustomizedFileTypes: StoryObj<HvFileUploaderProps> = {
       />
     );
   },
-};
+});

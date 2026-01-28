@@ -1,20 +1,20 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvInput,
   HvTypography,
   theme,
 } from "@hitachivantara/uikit-react-core";
-import { HvBlade, HvBladeProps } from "@hitachivantara/uikit-react-lab";
+import { HvBlade } from "@hitachivantara/uikit-react-lab";
 
-const meta: Meta<typeof HvBlade> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Lab/Blades/Blade",
   component: HvBlade,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvBladeProps> = {
+export const Main = meta.story({
   args: {
     label: "Show answer",
     labelVariant: "label",
@@ -51,9 +51,9 @@ export const Main: StoryObj<HvBladeProps> = {
       </>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvBladeProps> = {
+export const Variants = meta.story({
   render: () => {
     return (
       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -78,9 +78,9 @@ export const Variants: StoryObj<HvBladeProps> = {
       </div>
     );
   },
-};
+});
 
-export const Controlled: StoryObj<HvBladeProps> = {
+export const Controlled = meta.story({
   render: () => {
     const [expandedState, setExpandedState] = useState(true);
     const handleToggle = (newState?: boolean) => {
@@ -135,4 +135,4 @@ export const Controlled: StoryObj<HvBladeProps> = {
       </>
     );
   },
-};
+});

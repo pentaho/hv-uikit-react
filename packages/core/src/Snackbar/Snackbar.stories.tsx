@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvOverflowTooltip,
   HvSnackbar,
   HvSnackbarContent,
-  HvSnackbarProps,
 } from "@hitachivantara/uikit-react-core";
 import { Deploy, Info } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvSnackbar> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Snackbar",
   component: HvSnackbar,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
@@ -16,10 +16,9 @@ const meta: Meta<typeof HvSnackbar> = {
   args: {
     offset: 20,
   },
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvSnackbarProps> = {
+export const Main = meta.story({
   args: {
     open: true,
     variant: "default",
@@ -38,9 +37,9 @@ export const Main: StoryObj<HvSnackbarProps> = {
     onAction: { control: { disable: true } },
     snackbarContentProps: { control: { disable: true } },
   },
-};
+});
 
-export const Variants: StoryObj<HvSnackbarProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -122,4 +121,4 @@ export const Variants: StoryObj<HvSnackbarProps> = {
       </>
     );
   },
-};
+});

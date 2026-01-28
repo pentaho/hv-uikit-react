@@ -30,7 +30,7 @@ export default ({
   context,
   children,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   context: DocsContainerProps["context"];
 }) => {
   const initialMode = getInitialMode();

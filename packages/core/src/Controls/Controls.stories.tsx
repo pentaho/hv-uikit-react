@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvControls,
@@ -6,20 +5,19 @@ import {
   HvRightControl,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { Controls as ControlsStory } from "./stories/Controls";
 
-const meta: Meta<typeof HvControls> = {
+const meta = preview.meta({
   title: "Components/Controls",
   component: HvControls,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvLeftControl, HvRightControl },
-};
+});
 
-export default meta;
-
-export const Main: StoryObj = {
+export const Main = meta.story({
   parameters: {
     ...setupChromatic(),
   },
   render: () => <ControlsStory />,
-};
+});

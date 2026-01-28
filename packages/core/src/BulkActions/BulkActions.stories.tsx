@@ -1,12 +1,12 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvActionGeneric,
   HvBulkActions,
-  HvBulkActionsProps,
   HvCheckBox,
 } from "@hitachivantara/uikit-react-core";
 import { Add, Delete, Preview } from "@hitachivantara/uikit-react-icons";
+
+import preview from "../../../../.storybook/preview";
 
 const actions: HvActionGeneric[] = [
   { id: "add", label: "Add", icon: <Add /> },
@@ -14,13 +14,11 @@ const actions: HvActionGeneric[] = [
   { id: "put", label: "Preview", icon: <Preview /> },
 ];
 
-const meta: Meta<typeof HvBulkActions> = {
+const meta = preview.meta({
   title: "Components/Bulk Actions",
   component: HvBulkActions,
   decorators: [(Story) => <div style={{ padding: 10 }}>{Story()}</div>],
-};
-
-export default meta;
+});
 
 type SampleComponentDatum = {
   id: string | number;
@@ -51,7 +49,7 @@ const SampleComponent = ({ data, onChange }: SampleComponentProps) => (
   </div>
 );
 
-export const Main: StoryObj<HvBulkActionsProps> = {
+export const Main = meta.story({
   args: {
     showSelectAllPages: false,
   },
@@ -96,9 +94,9 @@ export const Main: StoryObj<HvBulkActionsProps> = {
       </>
     );
   },
-};
+});
 
-export const Test: StoryObj<HvBulkActionsProps> = {
+export const Test = meta.story({
   render: () => (
     <>
       <HvBulkActions
@@ -123,4 +121,4 @@ export const Test: StoryObj<HvBulkActionsProps> = {
       />
     </>
   ),
-};
+});

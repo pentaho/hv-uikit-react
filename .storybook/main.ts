@@ -1,11 +1,11 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { StorybookConfig } from "@storybook/react-vite";
+import { defineMain } from "@storybook/react-vite/node";
 import react from "@vitejs/plugin-react";
 import unoCSS from "unocss/vite";
 import { mergeConfig } from "vite";
 
-export default {
+export default defineMain({
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},
@@ -23,6 +23,7 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-themes"),
+    getAbsolutePath("@storybook/addon-vitest"),
   ],
   features: {},
   staticDirs: [
@@ -53,7 +54,7 @@ export default {
       disableBlocks: false,
     },
   },
-} as StorybookConfig;
+});
 
 function getAbsolutePath(value: string) {
   return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));

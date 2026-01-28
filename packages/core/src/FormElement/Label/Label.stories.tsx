@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvLabel, HvLabelProps } from "@hitachivantara/uikit-react-core";
+import { HvLabel } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvLabel> = {
+import preview from "../../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Form Element Blocks/Label",
   component: HvLabel,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvLabelProps> = {
+export const Main = meta.story({
   args: {
     label: "My label",
     required: true,
@@ -20,4 +20,4 @@ export const Main: StoryObj<HvLabelProps> = {
   render: (args) => {
     return <HvLabel {...args} />;
   },
-};
+});
