@@ -97,6 +97,7 @@ export const HvBannerContent = forwardRef<
       actionProps={actionProps}
       onClose={(evt) => onClose?.(evt as React.MouseEvent<any>)}
       onAction={onAction}
+      size={size}
       {...others}
     >
       {children ?? content}

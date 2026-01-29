@@ -14,6 +14,7 @@ import inputs from "./inputs/page.mdx?raw";
 import kpis from "./kpis/page.mdx?raw";
 import login from "./login/page.mdx?raw";
 import menus from "./menus/page.mdx?raw";
+import notifications from "./notifications/page.mdx?raw";
 import switches from "./switches/page.mdx?raw";
 import tables from "./tables/page.mdx?raw";
 import tabs from "./tabs/page.mdx?raw";
@@ -38,6 +39,11 @@ const sections = [
   { slug: "kpis", title: "KPIs", total: countCodeBlocks(kpis) },
   { slug: "login", title: "Login", total: countCodeBlocks(login) },
   { slug: "menus", title: "Menus", total: countCodeBlocks(menus) },
+  {
+    slug: "notifications",
+    title: "Notifications",
+    total: countCodeBlocks(notifications),
+  },
   { slug: "switches", title: "Switches", total: countCodeBlocks(switches) },
   { slug: "tables", title: "Tables", total: countCodeBlocks(tables) },
   { slug: "tabs", title: "Tabs", total: countCodeBlocks(tabs) },
@@ -74,6 +80,8 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-browser" />;
     case "tabs":
       return <div className="i-ph-tabs" />;
+    case "notifications":
+      return <div className="i-ph-bell-ringing" />;
     default:
       return null;
   }
