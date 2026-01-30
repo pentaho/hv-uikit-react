@@ -15,14 +15,13 @@ import { AllColumnRenderers } from "./AllColumnRenderers";
 import { ColumnResize } from "./TableHooks/ColumnResize";
 import { TestStickyHeaders as TestHeadersStory } from "./TableHooks/TableHooks.stories";
 import { UseHvGroupBy } from "./TableHooks/UseHvGroupBy";
+import { CompleteTableSection } from "./TableSamples/CompleteTableSection";
 import { GroupedRows as GroupedRowsStory } from "./TableSamples/GroupedRows";
 import { ListRow as ListRowStory } from "./TableSamples/ListRow";
 import { Main as MainStory } from "./TableSamples/Main";
 import { NoData as NoDataStory } from "./TableSamples/NoData";
 import { SimpleTable as SimpleTableStory } from "./TableSamples/SimpleTable";
-import { CompleteTableSection } from "./TableSection/CompleteTableSection";
-import { PropsTableSection } from "./TableSection/PropsTableSection";
-import { TableEditable } from "./TableSection/TableEditable";
+import { TableEditable } from "./TableSamples/TableEditable";
 
 export default {
   title: "Visualizations/Table",
@@ -101,10 +100,6 @@ export const Renderers: StoryObj = {
   render: () => <AllColumnRenderers />,
 };
 
-export const PropsTable: StoryObj = {
-  render: () => <PropsTableSection />,
-};
-
 export const CompleteTable: StoryObj = {
   render: () => <CompleteTableSection />,
 };
@@ -122,22 +117,23 @@ export const Test: StoryObj = {
     await userEvent.click(
       canvas.getAllByRole("button", { name: /collapse/i })[0],
     );
+
+    await userEvent.click(canvas.getByRole("checkbox", { name: "0 / 64" }));
   },
-  render: (args, context: any) => (
+  render: (args, context) => (
     <>
       <div className="grid grid-cols-2 gap-sm">
         <div className="flex flex-col gap-sm">
-          {Main.render?.(Main.args as any, context)}
+          <SimpleTableStory />
           <UseHvGroupBy />
-          {GroupedRows.render?.(GroupedRows.args as any, context)}
-          {SimpleTable.render?.(SimpleTable.args as any, context)}
+          <GroupedRowsStory />
+          <ListRowStory />
         </div>
         <div className="flex flex-col gap-sm">
-          {NoData.render?.(NoData.args as any, context)}
+          <NoDataStory />
           <ColumnResize />
-          {TestHeadersStory.render?.(TestHeadersStory.args as any, context)}
-          <PropsTableSection />
-          {ListRow.render?.(ListRow.args as any, context)}
+          {TestHeadersStory.render?.(TestHeadersStory.args!, context)}
+          <CompleteTableSection />
         </div>
       </div>
       <br />
