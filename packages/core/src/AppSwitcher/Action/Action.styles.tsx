@@ -2,7 +2,7 @@ import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses(
-  "HvAppSwitcher-Action",
+  "HvAppSwitcherAction",
   {
     root: {
       width: "100%",
@@ -10,7 +10,7 @@ export const { staticClasses, useClasses } = createClasses(
       minHeight: 52,
     },
     icon: { display: "flex", minWidth: 40, justifyContent: "center" },
-    iconUrl: { width: 32 },
+    iconUrl: { borderColor: "transparent" },
     iconInfo: { minWidth: 32 },
     disabled: {},
     selected: {},

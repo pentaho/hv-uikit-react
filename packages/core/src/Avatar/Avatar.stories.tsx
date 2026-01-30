@@ -2,16 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAvatar,
   HvAvatarProps,
-  HvButton,
+  HvButtonBase,
 } from "@hitachivantara/uikit-react-core";
 import { Bookmark, Link as LinkIcon } from "@hitachivantara/uikit-react-icons";
 
 const meta: Meta<typeof HvAvatar> = {
   title: "Components/Avatar",
   component: HvAvatar,
-  decorators: [
-    (Story) => <div className="flex items-center gap-md">{Story()}</div>,
-  ],
 };
 export default meta;
 
@@ -48,11 +45,13 @@ export const Actions: StoryObj<HvAvatarProps> = {
       },
     },
   },
+  decorators: [
+    (Story) => <div className="flex items-center gap-sm">{Story()}</div>,
+  ],
   render: () => {
     return (
       <>
-        <HvButton
-          icon
+        <HvButtonBase
           component="a"
           href="#profile-url"
           aria-label="External link"
@@ -60,16 +59,16 @@ export const Actions: StoryObj<HvAvatarProps> = {
           <HvAvatar size="md">
             <LinkIcon color="textDimmed" />
           </HvAvatar>
-        </HvButton>
-        <HvButton icon aria-label="Open the user profile">
+        </HvButtonBase>
+        <HvButtonBase aria-label="Open the user profile">
           <HvAvatar size="md" />
-        </HvButton>
-        <HvButton icon aria-label="Business Manager">
+        </HvButtonBase>
+        <HvButtonBase aria-label="Business Manager">
           <HvAvatar backgroundColor="info" size="md" badge="negative">
             BM
           </HvAvatar>
-        </HvButton>
-        <HvButton icon aria-label="Business Manager" radius="none">
+        </HvButtonBase>
+        <HvButtonBase aria-label="Business Manager">
           <HvAvatar
             backgroundColor="info"
             size="md"
@@ -78,16 +77,16 @@ export const Actions: StoryObj<HvAvatarProps> = {
           >
             BM
           </HvAvatar>
-        </HvButton>
-        <HvButton icon aria-label="Clara Soul profile">
+        </HvButtonBase>
+        <HvButtonBase aria-label="Clara Soul profile">
           <HvAvatar
             alt="Clara Soul"
             src="https://i.imgur.com/6sYhSb6.png"
             size="lg"
             status="positive"
           />
-        </HvButton>
-        <HvButton icon aria-label="Clara Soul profile" radius="none">
+        </HvButtonBase>
+        <HvButtonBase aria-label="Clara Soul profile">
           <HvAvatar
             alt="Clara Soul"
             src="https://i.imgur.com/6sYhSb6.png"
@@ -95,7 +94,7 @@ export const Actions: StoryObj<HvAvatarProps> = {
             variant="square"
             status="positive"
           />
-        </HvButton>
+        </HvButtonBase>
       </>
     );
   },
@@ -103,19 +102,22 @@ export const Actions: StoryObj<HvAvatarProps> = {
 
 export const Test: StoryObj = {
   render: () => (
-    <div className="flex items-center gap-xs flex-wrap">
+    <div className="flex gap-xs">
       <HvAvatar size="xs" />
-      <HvAvatar size="xs" variant="square" />
-      <HvAvatar backgroundColor="cat4" size="sm">
+      <HvAvatar>
+        <span className="i-ph-user" />
+      </HvAvatar>
+      <HvAvatar backgroundColor="cat4" size="md">
         NA
       </HvAvatar>
       <HvAvatar size="lg" backgroundColor="warning">
         <Bookmark size="M" color={["textLight", "textDark"]} />
       </HvAvatar>
-      <HvAvatar size="xs" variant="square" status="positive">
+
+      <HvAvatar size="lg" status="warning" badge="negative">
         AB
       </HvAvatar>
-      <HvAvatar size="lg" status="warning" badge="negative">
+      <HvAvatar size="lg" variant="square" status="positive">
         AB
       </HvAvatar>
       <HvAvatar
