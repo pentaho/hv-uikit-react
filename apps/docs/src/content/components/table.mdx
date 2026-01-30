@@ -134,8 +134,9 @@ The usage of of the `useHvTable` hook along with the `HvTable*` components is as
 ### Setup
 
 ```tsx
-export default function Demo() {
-  // 👇 Define the `data` and `columns` configuration (MUST be memoized).
+// create your own 👇 Table component, that receives external `data` & `column` configuration
+export function MyTable({ data, columns }) {
+  // ⚠️ alternatively, inline `data` & `columns`, which MUST be memoized.
   const [data] = useState(() => makeData(1000));
   const columns = useMemo<HvTableColumnConfig<AssetEvent>[]>(
     () => [
@@ -198,7 +199,7 @@ We recommend that you separate the table definition (`HvTable*` and `useHvTable`
 You should strive to have simple API that allows passing the `data` and `columns`, and not worrying about the layout or hook logic:
 
 ```tsx
-<Table
+<MyTable
   // required parameters
   data={data}
   columns={columns}

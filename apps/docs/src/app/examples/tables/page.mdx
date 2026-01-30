@@ -6,16 +6,25 @@ import { CodeBlock } from "../../../components/code/CodeBlock";
 
 import customCellsTableCode from "./CustomCellsTable?raw";
 import defaultTableCode from "./DefaultTable?raw";
-import filteringTableCode from "./FilteringTable?raw";
 import groupingTableCode from "./GroupingTable?raw";
 import makeData from "./makeData?raw";
+import myTableCode from "./MyTable?raw";
 import simpleTableCode from "./SimpleTable?raw";
+
+This page showcases various examples of tables using the `HvTable` components and `useHvTable` hook and its plugin,
+using the [recommended Table component abstraction](/components/table#setup)
 
 ### Simple table
 
 A simple stateless table leveraging the `columns` configuration.
 
-<CodeBlock code={{ main: simpleTableCode, "./makeData": makeData }} />
+<CodeBlock
+  code={{
+    main: simpleTableCode,
+    "./MyTable": myTableCode,
+    "./makeData": makeData,
+  }}
+/>
 
 ### No data table
 
@@ -43,15 +52,17 @@ Custom content, like an `HvEmptyState`, can be displayed inside table cells, by 
 ### Client-side table
 
 A client-side table supporting the most commonly used table features:
-row sorting, selection, and actions, sticky header and columns, pagination, and bulk actions.
+row sorting, selection, filtering and actions, sticky header and columns, row pagination, and bulk actions.
 
-<CodeBlock code={{ main: defaultTableCode, "./makeData": makeData }} />
+Since filtering depends on access to the `table` instance utilities (such as `setFilter` and `setGlobalFilter`), the table instance is exposed via a `tableRef`.
 
-### Filtering
-
-Row filtering and global filtering can be configured by leveraging the `useHvFilters` and `useHvGlobalFilter` hooks respectively.
-
-<CodeBlock code={{ main: filteringTableCode, "./makeData": makeData }} />
+<CodeBlock
+  code={{
+    main: defaultTableCode,
+    "./MyTable": myTableCode,
+    "./makeData": makeData,
+  }}
+/>
 
 ### Grouping
 
@@ -63,7 +74,13 @@ Example of header grouping and row expansion via grouping
 
 Example of custom cell content rendering
 
-<CodeBlock code={{ main: customCellsTableCode, "./makeData": makeData }} />
+<CodeBlock
+  code={{
+    main: customCellsTableCode,
+    "./MyTable": myTableCode,
+    "./makeData": makeData,
+  }}
+/>
 
 ### Other examples
 
