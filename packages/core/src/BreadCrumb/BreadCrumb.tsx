@@ -106,7 +106,10 @@ export const HvBreadCrumb = forwardRef<
             >
               {(isValidElement(elem) && elem) ||
                 (isLast && (
-                  <HvTypography className={classes.currentPage} variant="body">
+                  <HvTypography
+                    className={classes.currentPage}
+                    variant="caption1"
+                  >
                     {removeExtension(elem.label)}
                   </HvTypography>
                 )) || (

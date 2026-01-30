@@ -39,7 +39,7 @@ export const HvBreadCrumbPage = (props: HvBreadCrumbPageProps) => {
   return (
     <HvTypography
       noWrap
-      variant="label"
+      variant="captionLabel"
       component={component || "a"}
       href={elem.path}
       onClick={onClick && handleClick}
