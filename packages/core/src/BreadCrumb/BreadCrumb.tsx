@@ -94,6 +94,7 @@ export const HvBreadCrumb = forwardRef<
         {listPath.map((elem, index) => {
           const key = `key_${index}`;
           const isLast = index === breadcrumbPath.length - 1;
+          const isFirst = index === 0;
 
           return (
             <HvPathElement
@@ -103,6 +104,7 @@ export const HvBreadCrumb = forwardRef<
               }}
               key={key}
               last={isLast}
+              first={isFirst}
             >
               {(isValidElement(elem) && elem) ||
                 (isLast && (
