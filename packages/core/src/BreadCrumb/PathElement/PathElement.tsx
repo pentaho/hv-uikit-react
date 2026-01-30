@@ -1,7 +1,6 @@
 import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvIcon } from "../../icons";
-import { HvTypography } from "../../Typography";
 import { staticClasses, useClasses } from "./PathElement.styles";
 
 export { staticClasses as pathElementClasses };
@@ -12,27 +11,15 @@ export interface HvPathElementProps {
   last?: boolean;
   first?: boolean;
   classes?: HvPathElementClasses;
+  separator?: React.ReactNode;
   children: React.ReactElement<any>;
 }
-
-const Separator = ({ themeName }: { themeName: string }) =>
-  themeName === "pentahoPlus" ? (
-    <HvTypography variant="caption1" style={{ marginLeft: 4, marginRight: 4 }}>
-      /
-    </HvTypography>
-  ) : (
-    <HvIcon
-      name="CaretRight"
-      size="xs"
-      color="textDisabled"
-      style={{ marginLeft: 4, marginRight: 4 }}
-    />
-  );
 
 export const HvPathElement = ({
   classes: classesProp,
   last = false,
   first = false,
+  separator,
   children,
 }: HvPathElementProps) => {
   const { classes } = useClasses(classesProp);
@@ -50,7 +37,16 @@ export const HvPathElement = ({
       ) : (
         children
       )}
-      {!last && <Separator themeName={activeTheme?.name as string} />}
+      {!last && separator ? (
+        <div className={classes.separatorContainer}>{separator}</div>
+      ) : (
+        <HvIcon
+          name="CaretRight"
+          size="xs"
+          color="textDisabled"
+          style={{ marginLeft: 4, marginRight: 4 }}
+        />
+      )}
     </li>
   );
 };

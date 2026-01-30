@@ -1140,8 +1140,13 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         currentPage: {
           fontWeight: theme.fontWeights.semibold,
+          padding: `0 ${theme.space.xxs}`,
+        },
+        separatorContainer: {
+          padding: `0 ${theme.space.xxs}`,
         },
       },
+      separator: "/",
     } satisfies CSSClasses<HvBreadCrumbProps>,
     HvBreadCrumbPage: {
       classes: {

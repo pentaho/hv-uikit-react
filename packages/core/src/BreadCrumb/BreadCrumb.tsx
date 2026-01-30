@@ -31,6 +31,8 @@ export interface HvBreadCrumbProps
   onClick?: (event: React.MouseEvent<HTMLElement>, data: any) => void;
   /** Props passed down to the DropDownMenu sub-menu component. */
   dropDownMenuProps?: Partial<HvDropDownMenuProps>;
+  /** Separator element between breadcrumb items. */
+  separator?: React.ReactNode;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBreadCrumbClasses;
 }
@@ -52,6 +54,7 @@ export const HvBreadCrumb = forwardRef<
     onClick,
     component,
     dropDownMenuProps,
+    separator,
     ...others
   } = useDefaultProps("HvBreadCrumb", props);
 
@@ -105,6 +108,7 @@ export const HvBreadCrumb = forwardRef<
               key={key}
               last={isLast}
               first={isFirst}
+              separator={separator}
             >
               {(isValidElement(elem) && elem) ||
                 (isLast && (
