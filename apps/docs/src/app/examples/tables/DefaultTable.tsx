@@ -1,41 +1,22 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import {
-  HvActionGeneric,
-  HvBulkActions,
-  HvEmptyState,
   HvIconButton,
-  HvPagination,
   HvRowInstance,
-  HvTable,
-  HvTableBody,
-  HvTableCell,
+  HvSearchInput,
+  HvTab,
   HvTableColumnConfig,
-  HvTableContainer,
-  HvTableHead,
-  HvTableHeader,
   HvTableInstance,
-  HvTableOptions,
-  HvTableRow,
-  HvTableSection,
-  HvTableState,
-  useHvBulkActions,
-  useHvPagination,
-  useHvRowSelection,
-  useHvSortBy,
-  useHvTable,
-  useHvTableSticky,
+  HvTabs,
 } from "@hitachivantara/uikit-react-core";
-import {
-  Ban,
-  Delete,
-  Duplicate,
-  Preview,
-} from "@hitachivantara/uikit-react-icons";
+import { Delete, Duplicate, Preview } from "@hitachivantara/uikit-react-icons";
 
-import { AssetEvent, makeData } from "./makeData";
+import { makeData, type AssetEvent } from "./makeData";
+import { MyTable } from "./MyTable";
 
 export default function Demo() {
   const [data, setData] = useState(() => makeData(128));
+  const [tab, setTab] = useState<string>("");
+  const tableRef = useRef<HvTableInstance<AssetEvent>>(null);
 
   const deleteRow = useCallback((row: HvRowInstance<AssetEvent>) => {
     setData((prev) => prev.filter((r) => r.id !== row.original.id));
@@ -69,9 +50,30 @@ export default function Demo() {
   );
 
   return (
-    <MyTable
+    <MyTable<AssetEvent>
       data={data}
       columns={columns}
+      tableRef={tableRef}
+      raisedHeader
+      title={
+        <HvTabs
+          value={tab}
+          onChange={(evt, val) => {
+            setTab(val);
+            tableRef.current?.setFilter?.("status", val || undefined);
+          }}
+        >
+          <HvTab value="" label="All" />
+          <HvTab value="open" label="Open" />
+          <HvTab value="closed" label="Closed" />
+        </HvTabs>
+      }
+      actions={
+        <HvSearchInput
+          placeholder="Search all columns"
+          onChange={(evt, val) => tableRef.current?.setGlobalFilter?.(val)}
+        />
+      }
       bulkActions={[
         { id: "clone", label: "Clone", icon: <Duplicate /> },
         { id: "remove", label: "Remove", icon: <Delete /> },
@@ -90,8 +92,6 @@ export default function Demo() {
         }
       }}
       options={{
-        // other `useHvTable` options
-        getRowId: (row) => row.id,
         initialState: {
           pageSize: 10,
         },
@@ -99,116 +99,3 @@ export default function Demo() {
     />
   );
 }
-
-/**
- * A generic client-side table.
- * Includes row selection & sorting, bulk actions, pagination, sticky headers.
- */
-export const MyTable = <T extends object>(props: {
-  columns: HvTableColumnConfig<T>[];
-  data: T[] | undefined;
-  initialState?: Partial<HvTableState<T>>;
-  bulkActions?: HvActionGeneric[];
-  onBulkAction?: (
-    event: React.SyntheticEvent,
-    action: HvActionGeneric,
-    selectedRows: HvTableInstance<T>["selectedFlatRows"],
-  ) => void;
-  options?: HvTableOptions<T>;
-}) => {
-  const { columns, data, bulkActions, onBulkAction, options } = props;
-
-  const table = useHvTable<T>(
-    {
-      columns,
-      data,
-      stickyHeader: true,
-      ...options,
-    },
-    useHvTableSticky,
-    useHvSortBy,
-    useHvPagination,
-    useHvRowSelection,
-    useHvBulkActions,
-  );
-
-  const renderTableRow = (i: number) => {
-    const row = table.page[i];
-
-    if (!row) {
-      // render up to 16 <EmptyRow> when there are multiple pages
-      const showEmptyRow = table.pageCount && table.pageCount > 1 && i < 16;
-      return showEmptyRow ? (
-        <HvTableRow key={`empty-${i}`}>
-          <HvTableCell colSpan={100} />
-        </HvTableRow>
-      ) : null;
-    }
-
-    table.prepareRow(row);
-
-    return (
-      <HvTableRow {...row.getRowProps()} key={row.getRowProps().key}>
-        {row.cells.map((cell) => (
-          <HvTableCell
-            className="text-nowrap"
-            {...cell.getCellProps()}
-            key={cell.getCellProps().key}
-          >
-            {cell.render("Cell")}
-          </HvTableCell>
-        ))}
-      </HvTableRow>
-    );
-  };
-
-  return (
-    <HvTableSection>
-      {table.page.length > 0 && (
-        <HvBulkActions
-          actions={bulkActions}
-          maxVisibleActions={1}
-          onAction={(evt, action) => {
-            onBulkAction?.(evt, action, table.selectedFlatRows);
-          }}
-          {...table.getHvBulkActionsProps?.()}
-        />
-      )}
-      <HvTableContainer className="max-h-500px">
-        <HvTable {...table.getTableProps()}>
-          <HvTableHead {...table.getTableHeadProps?.()}>
-            {table.headerGroups.map((headerGroup) => (
-              <HvTableRow
-                {...headerGroup.getHeaderGroupProps()}
-                key={headerGroup.getHeaderGroupProps().key}
-              >
-                {headerGroup.headers.map((col) => (
-                  <HvTableHeader
-                    {...col.getHeaderProps()}
-                    key={col.getHeaderProps().key}
-                  >
-                    {col.render("Header")}
-                  </HvTableHeader>
-                ))}
-              </HvTableRow>
-            ))}
-          </HvTableHead>
-          <HvTableBody {...table.getTableBodyProps()}>
-            {table.page.length > 0 ? (
-              [...Array(table.state.pageSize).keys()].map(renderTableRow)
-            ) : (
-              <HvTableRow>
-                <HvTableCell colSpan={100} style={{ height: 96 }}>
-                  <HvEmptyState message="No data to display" icon={<Ban />} />
-                </HvTableCell>
-              </HvTableRow>
-            )}
-          </HvTableBody>
-        </HvTable>
-      </HvTableContainer>
-      {table.page.length > 0 && (
-        <HvPagination {...table.getHvPaginationProps?.()} />
-      )}
-    </HvTableSection>
-  );
-};
