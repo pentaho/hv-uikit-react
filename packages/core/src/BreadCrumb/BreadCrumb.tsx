@@ -1,6 +1,7 @@
 import { forwardRef, isValidElement } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -59,6 +60,7 @@ export const HvBreadCrumb = forwardRef<
   } = useDefaultProps("HvBreadCrumb", props);
 
   const { classes, cx } = useClasses(classesProp);
+  const { activeTheme } = useTheme();
 
   const maxVisibleElem = maxVisible && maxVisible < 2 ? 2 : maxVisible;
   let listPath = listRoute.slice();
@@ -107,7 +109,6 @@ export const HvBreadCrumb = forwardRef<
               }}
               key={key}
               last={isLast}
-              first={isFirst}
               separator={separator}
             >
               {(isValidElement(elem) && elem) ||
@@ -121,6 +122,7 @@ export const HvBreadCrumb = forwardRef<
                 )) || (
                   <HvBreadCrumbPage
                     elem={elem}
+                    showHome={isFirst && activeTheme?.name === "pentahoPlus"}
                     classes={{
                       a: classes.a,
                       link: classes.link,

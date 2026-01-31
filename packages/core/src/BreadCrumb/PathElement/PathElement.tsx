@@ -1,4 +1,4 @@
-import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvIcon } from "../../icons";
 import { staticClasses, useClasses } from "./PathElement.styles";
@@ -9,7 +9,6 @@ export type HvPathElementClasses = ExtractNames<typeof useClasses>;
 
 export interface HvPathElementProps {
   last?: boolean;
-  first?: boolean;
   classes?: HvPathElementClasses;
   separator?: React.ReactNode;
   children: React.ReactElement<any>;
@@ -18,25 +17,14 @@ export interface HvPathElementProps {
 export const HvPathElement = ({
   classes: classesProp,
   last = false,
-  first = false,
   separator,
   children,
 }: HvPathElementProps) => {
   const { classes } = useClasses(classesProp);
 
-  const { activeTheme } = useTheme();
-
   return (
     <li className={classes.centerContainer}>
-      {first && activeTheme?.name === "pentahoPlus" ? (
-        <HvIcon
-          name="Home"
-          size="sm"
-          style={{ marginLeft: 4, marginRight: 4 }}
-        />
-      ) : (
-        children
-      )}
+      {children}
       {!last && separator ? (
         <div className={classes.separatorContainer}>{separator}</div>
       ) : (
