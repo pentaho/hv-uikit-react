@@ -10,12 +10,14 @@ export type HvPathElementClasses = ExtractNames<typeof useClasses>;
 export interface HvPathElementProps {
   last?: boolean;
   classes?: HvPathElementClasses;
+  separator?: React.ReactNode;
   children: React.ReactElement<any>;
 }
 
 export const HvPathElement = ({
   classes: classesProp,
   last = false,
+  separator,
   children,
 }: HvPathElementProps) => {
   const { classes } = useClasses(classesProp);
@@ -23,12 +25,14 @@ export const HvPathElement = ({
   return (
     <li className={classes.centerContainer}>
       {children}
-      {!last && (
+      {!last && separator ? (
+        <div className={classes.separatorContainer}>{separator}</div>
+      ) : (
         <HvIcon
           name="CaretRight"
           size="xs"
-          className={classes.separatorContainer}
           color="textDisabled"
+          style={{ marginLeft: 4, marginRight: 4 }}
         />
       )}
     </li>

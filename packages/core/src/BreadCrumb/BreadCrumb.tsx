@@ -1,6 +1,7 @@
 import { forwardRef, isValidElement } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -31,6 +32,8 @@ export interface HvBreadCrumbProps
   onClick?: (event: React.MouseEvent<HTMLElement>, data: any) => void;
   /** Props passed down to the DropDownMenu sub-menu component. */
   dropDownMenuProps?: Partial<HvDropDownMenuProps>;
+  /** Separator element between breadcrumb items. */
+  separator?: React.ReactNode;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBreadCrumbClasses;
 }
@@ -52,10 +55,12 @@ export const HvBreadCrumb = forwardRef<
     onClick,
     component,
     dropDownMenuProps,
+    separator,
     ...others
   } = useDefaultProps("HvBreadCrumb", props);
 
   const { classes, cx } = useClasses(classesProp);
+  const { activeTheme } = useTheme();
 
   const maxVisibleElem = maxVisible && maxVisible < 2 ? 2 : maxVisible;
   let listPath = listRoute.slice();
@@ -94,6 +99,7 @@ export const HvBreadCrumb = forwardRef<
         {listPath.map((elem, index) => {
           const key = `key_${index}`;
           const isLast = index === breadcrumbPath.length - 1;
+          const isFirst = index === 0;
 
           return (
             <HvPathElement
@@ -103,15 +109,20 @@ export const HvBreadCrumb = forwardRef<
               }}
               key={key}
               last={isLast}
+              separator={separator}
             >
               {(isValidElement(elem) && elem) ||
                 (isLast && (
-                  <HvTypography className={classes.currentPage} variant="body">
+                  <HvTypography
+                    className={classes.currentPage}
+                    variant="caption1"
+                  >
                     {removeExtension(elem.label)}
                   </HvTypography>
                 )) || (
                   <HvBreadCrumbPage
                     elem={elem}
+                    showHome={isFirst && activeTheme?.name === "pentahoPlus"}
                     classes={{
                       a: classes.a,
                       link: classes.link,
