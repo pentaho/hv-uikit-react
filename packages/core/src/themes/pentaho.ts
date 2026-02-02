@@ -166,12 +166,13 @@ export const pentaho = mergeTheme(pentahoBase, {
       },
     } satisfies CSSClasses<HvAvatarProps>,
     HvAvatarGroup: {
+      maxVisible: 4,
       classes: {
         root: {
           // eslint-disable-next-line no-useless-spread
           ...Object.values(avatarColors).reduce<Record<string, CSSObject>>(
             (acc, styles, i) => {
-              const key = `&>.HvAvatar-container:nth-child(${i + 1}) .HvAvatar-avatar`;
+              const key = `&>.HvAvatar-container:nth-of-type(${i + 1}) .HvAvatar-avatar`;
               acc[key] = styles;
               return acc;
             },

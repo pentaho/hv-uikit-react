@@ -73,9 +73,8 @@ export const HvAppSwitcherAction = ({
   const renderApplicationIcon = () => {
     if (iconElement) return iconElement;
 
-    const brokenTitle = name.split(" ");
-    const initials =
-      brokenTitle[0].charAt(0) + (brokenTitle[1]?.charAt(0) || "");
+    const nameParts = name.split(/\s+/);
+    const initials = nameParts[0].charAt(0) + (nameParts[1]?.charAt(0) || "");
 
     return (
       <HvAvatar

@@ -119,7 +119,7 @@ export const HvAvatar = forwardRef<
     );
   } else if (childrenProp != null) {
     children = childrenProp;
-  } else if (hasImg && alt) {
+  } else if (alt) {
     [children] = alt;
   } else {
     children = (

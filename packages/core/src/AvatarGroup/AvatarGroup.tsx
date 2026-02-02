@@ -47,47 +47,16 @@ const getSpacingValue = (
   size: HvAvatarGroupProps["size"],
 ) => {
   switch (size) {
-    case "xs":
-      return spacing === "compact" ? 24 : 16;
-    case "sm":
-      return spacing === "compact" ? 30 : 18;
-    case "md":
-      return spacing === "compact" ? 36 : 20;
-    case "lg":
-      return spacing === "compact" ? 44 : 24;
     case "xl":
-      return spacing === "compact" ? 72 : 34;
+      return spacing === "compact" ? 40 : 16;
+    case "lg":
+    case "md":
+      return spacing === "compact" ? 32 : 20;
+    case "xs":
+    case "sm":
     default:
-      return spacing === "compact" ? 30 : 18;
+      return spacing === "compact" ? 24 : 12;
   }
-};
-
-interface OverflowProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    Pick<HvAvatarGroupProps, "direction" | "overflowComponent" | "size"> {
-  value: number;
-}
-
-const Overflow = ({
-  direction,
-  overflowComponent,
-  value,
-  size,
-  ...others
-}: OverflowProps) => {
-  return (
-    <div {...others}>
-      {overflowComponent?.(value) || (
-        <HvAvatar
-          size={size}
-          avatarProps={{ ["data-color" as string]: "neutral" }}
-          backgroundColor="border"
-        >
-          {`+${value}`}
-        </HvAvatar>
-      )}
-    </div>
-  );
 };
 
 /**
@@ -113,6 +82,7 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
 
     const totalChildren = Children.count(children);
     const willOverflow = totalChildren > maxVisible;
+    const overflowValue = totalChildren - maxVisible;
 
     const childrenToShow = Children.toArray(children).slice(0, maxVisible);
 
@@ -120,13 +90,17 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
     if (toBack) childrenToShow.reverse();
 
     const overflowElement = (
-      <Overflow
-        data-overflow-children={childrenToShow.length > 0}
-        direction={direction}
-        value={totalChildren - maxVisible}
-        overflowComponent={overflowComponent}
-        size={size}
-      />
+      <div>
+        {overflowComponent?.(overflowValue) || (
+          <HvAvatar
+            size={size}
+            avatarProps={{ ["data-color" as string]: "neutral" }}
+            backgroundColor="border"
+          >
+            {`+${overflowValue}`}
+          </HvAvatar>
+        )}
+      </div>
     );
 
     return (
