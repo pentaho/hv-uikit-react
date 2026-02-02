@@ -90,6 +90,7 @@ export const HvBreadCrumb = forwardRef<
           maxVisibleElem,
           onClick,
           dropDownMenuProps,
+          activeTheme?.name === "pentahoPlus" ? 2 : 1,
         )
       : listPath;
 

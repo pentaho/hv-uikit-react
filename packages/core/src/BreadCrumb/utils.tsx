@@ -10,9 +10,13 @@ export const pathWithSubMenu = (
   maxVisible: number,
   onClick?: (event: React.MouseEvent<HTMLElement>, data: any) => void,
   dropDownMenuProps?: Partial<HvDropDownMenuProps>,
+  moreOptionsPosition = 1,
 ) => {
   const nbrElemToSubMenu = listRoute.length - maxVisible;
-  const subMenuList = listRoute.slice(1, nbrElemToSubMenu + 1);
+  const subMenuList = listRoute.slice(
+    1,
+    nbrElemToSubMenu + moreOptionsPosition,
+  );
 
   const handleClick = (event: any, data: any) => {
     event.preventDefault();
@@ -21,7 +25,7 @@ export const pathWithSubMenu = (
   };
 
   listRoute.splice(
-    1,
+    moreOptionsPosition,
     nbrElemToSubMenu,
     <HvDropDownMenu
       icon={<HvIcon name="DotsHorizontal" />}
