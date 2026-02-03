@@ -192,7 +192,8 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvBadge: {
       classes: {
         badge: {
-          color: ld(theme.colors.textLight, theme.colors.textDark),
+          "--bg-color": theme.colors.textSubtle,
+          color: ld("white", "black"),
           "&[data-color='textSubtle']:not(:empty)": {
             color: theme.colors.textSubtle,
             backgroundColor: theme.colors.bgPageSecondary,
