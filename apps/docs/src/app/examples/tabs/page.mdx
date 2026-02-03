@@ -3,7 +3,8 @@ title: "Tabs"
 ---
 
 import { CodeBlock } from "../../../components/code/CodeBlock";
-import overflowingTabs from "./OverflowingTabs?raw";
+import overflowComponentCode from "./OverflowComponent?raw";
+import overflowingTabsCode from "./OverflowingTabs?raw";
 
 ### Tabs Components
 
@@ -11,6 +12,13 @@ Explore different tabs types and features
 
 <div className="mt-20">
   <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
-    <CodeBlock code={overflowingTabs} layout="popup" title="Overflowing Tabs" />
+    <CodeBlock
+      code={{
+        main: overflowingTabsCode,
+        "./OverflowComponent": overflowComponentCode,
+      }}
+      layout="popup"
+      title="Overflowing Tabs"
+    />
   </div>
 </div>

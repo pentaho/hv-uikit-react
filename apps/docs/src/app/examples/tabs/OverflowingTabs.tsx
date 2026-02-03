@@ -2,11 +2,17 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  HvDropDownMenu,
+  HvBaseDropdown,
+  HvBaseDropdownProps,
+  HvListContainer,
+  HvListItem,
+  HvPanel,
   HvTab,
   HvTabs,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
+
+import { OverflowComponent } from "./OverflowComponent";
 
 const tabs = [
   { label: "Summary" },
@@ -24,6 +30,7 @@ export default function OverflowingTabs() {
   const containerRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLDivElement>(null);
   const [visibleCount, setVisibleCount] = useState(tabs.length);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   const visibleTabs = tabOrder.slice(0, visibleCount);
   const remainingTabs = tabOrder.slice(visibleCount);
@@ -44,7 +51,7 @@ export default function OverflowingTabs() {
 
     const containerWidth = container.offsetWidth;
     const tabWidths = tabEls.map((el) => el.offsetWidth);
-    const dropdownWidth = 56;
+    const dropdownWidth = 128;
 
     let total = 0;
     let count = 0;
@@ -160,6 +167,21 @@ export default function OverflowingTabs() {
     }
   };
 
+  const setFocusToContent: HvBaseDropdownProps["onContainerCreation"] = (
+    containerRef,
+  ) => {
+    const listItems =
+      containerRef != null ? [...containerRef.getElementsByTagName("li")] : [];
+
+    listItems.every((listItem) => {
+      if (listItem.tabIndex >= 0) {
+        listItem.focus();
+        return false;
+      }
+      return true;
+    });
+  };
+
   return (
     <>
       <div
@@ -171,12 +193,31 @@ export default function OverflowingTabs() {
             <HvTab key={tab.label} label={tab.label} />
           ))}
           {remainingTabs.length > 0 && (
-            <HvDropDownMenu
-              onClick={handleMenuItemClick}
-              dataList={remainingTabs.map((tab) => ({
-                label: tab.label,
-              }))}
-            />
+            <HvBaseDropdown
+              headerComponent={OverflowComponent}
+              {...({ count: remainingTabs.length } as any)}
+              dropdownHeaderProps={{
+                onClick: () => setMoreOpen((o) => !o),
+              }}
+              classes={{
+                panel: "min-w-200px",
+              }}
+              onContainerCreation={setFocusToContent}
+            >
+              <HvPanel className="py-xs px-sm">
+                <HvListContainer interactive>
+                  {remainingTabs.map((tab) => (
+                    <HvListItem
+                      onClick={(event) => handleMenuItemClick(event, tab)}
+                      key={tab.label}
+                      value={tab.label}
+                    >
+                      {tab.label}
+                    </HvListItem>
+                  ))}
+                </HvListContainer>
+              </HvPanel>
+            </HvBaseDropdown>
           )}
         </HvTabs>
         <div className="flex flex-col gap-sm p-xs">
@@ -196,7 +237,18 @@ export default function OverflowingTabs() {
           {tabOrder.map((tab) => (
             <HvTab key={tab.label} label={tab.label} />
           ))}
-          <HvDropDownMenu dataList={[{ label: "Menu" }]} />
+
+          <HvBaseDropdown
+            onToggle={(_evt, s) => setMoreOpen(s)}
+            expanded={moreOpen}
+            headerComponent={OverflowComponent}
+          >
+            <HvListContainer>
+              {remainingTabs.map((tab) => (
+                <HvListItem key={tab.label} value={tab.label} />
+              ))}
+            </HvListContainer>
+          </HvBaseDropdown>
         </HvTabs>
       </div>
     </>
