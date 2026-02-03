@@ -17,8 +17,6 @@ import type { HvBaseRadioProps } from "../BaseRadio";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
-import type { HvBreadCrumbPageProps } from "../BreadCrumb/Page";
-import type { HvPathElementProps } from "../BreadCrumb/PathElement";
 import type { HvButtonProps } from "../Button";
 import type { HvButtonBaseProps } from "../ButtonBase";
 import type {
@@ -1145,11 +1143,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         separatorContainer: {
           padding: `0 ${theme.space.xxs}`,
         },
-      },
-      separator: "/",
-    } satisfies CSSClasses<HvBreadCrumbProps>,
-    HvBreadCrumbPage: {
-      classes: {
         link: {
           height: 24,
           display: "flex",
@@ -1158,14 +1151,7 @@ export const pentaho = mergeTheme(pentahoBase, {
           fontWeight: theme.fontWeights.normal,
         },
       },
-    } satisfies CSSClasses<HvBreadCrumbPageProps>,
-    HvPathElement: {
-      classes: {
-        icon: {
-          marginLeft: 4,
-          marginRight: 4,
-        },
-      },
-    } satisfies CSSClasses<HvPathElementProps>,
+      separator: "/",
+    } satisfies CSSClasses<HvBreadCrumbProps>,
   },
 });

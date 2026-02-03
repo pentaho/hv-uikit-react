@@ -25,17 +25,13 @@ export const HvPathElement = ({
   return (
     <li className={classes.centerContainer}>
       {children}
-      {!last &&
-        (separator ? (
-          <div className={classes.separatorContainer}>{separator}</div>
-        ) : (
-          <HvIcon
-            name="CaretRight"
-            size="xs"
-            color="textDisabled"
-            className={classes.icon}
-          />
-        ))}
+      {!last && (
+        <div className={classes.separatorContainer}>
+          {separator || (
+            <HvIcon name="CaretRight" size="xs" color="textDisabled" />
+          )}
+        </div>
+      )}
     </li>
   );
 };
