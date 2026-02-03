@@ -11,33 +11,21 @@ import { Header } from "../../components/Header";
   Component={HvAvatarGroup}
   componentName="HvAvatarGroup"
   controls={{
-    size: {
-      defaultValue: "md",
-    },
-    spacing: {
-      defaultValue: "loose",
-    },
-    maxVisible: {
-      defaultValue: 3,
-    },
-    direction: {
-      defaultValue: "row",
-    },
-    highlight: {
-      defaultValue: false,
-    },
-    toBack: {
-      defaultValue: false,
-    },
+    size: { defaultValue: "lg" },
+    spacing: { defaultValue: "loose" },
+    maxVisible: { defaultValue: 4 },
+    direction: { defaultValue: "row" },
+    highlight: { defaultValue: false },
+    toBack: { defaultValue: false },
   }}
 >
   <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
-  <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
+  <HvAvatar alt="Beatrice" />
   <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
-  <HvAvatar alt="Clara" src="https://i.imgur.com/6sYhSb6.png" />
-  <HvAvatar alt="Steve" src="https://i.imgur.com/8we9311.jpeg" />
-  <HvAvatar alt="Sarah" src="https://i.imgur.com/2aJYRLM.jpeg" />
-  <HvAvatar alt="Cristina" src="https://i.imgur.com/fj50fND.jpeg" />
+  <HvAvatar alt="Clara" />
+  <HvAvatar alt="Steve" />
+  <HvAvatar alt="Sarah" />
+  <HvAvatar alt="Cristina" />
 </Header>
 
 ### Custom overflow component
@@ -46,10 +34,15 @@ By default, when the number of avatars exceeds the `maxVisible` prop, the `HvAva
 
 ```tsx live
 <HvAvatarGroup
+  size="md"
   maxVisible={3}
   overflowComponent={(overflowCount) => (
-    <HvTooltip title={`+${overflowCount}`}>
-      <HvAvatar backgroundColor="primary" color="bgContainer" role="img" />
+    <HvTooltip title={`+${overflowCount} more users`}>
+      <HvAvatar color="neutral" role="img">
+        <HvIconContainer size="md">
+          <div className="i-ph-dots-three" />
+        </HvIconContainer>
+      </HvAvatar>
     </HvTooltip>
   )}
 >

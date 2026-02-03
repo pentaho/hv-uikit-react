@@ -43,8 +43,8 @@ Avatars containing simple characters can be created by passing a string as child
 ```tsx live
 <div className="flex gap-xs">
   <HvAvatar>BM</HvAvatar>
-  <HvAvatar backgroundColor="cat3">W</HvAvatar>
-  <HvAvatar backgroundColor="cat4">CS</HvAvatar>
+  <HvAvatar color="violet">VL</HvAvatar>
+  <HvAvatar color="yellow">Y</HvAvatar>
 </div>
 ```
 
@@ -55,16 +55,13 @@ Icon avatars are created by passing an icon as children. Its size and color aren
 ```tsx live
 <div className="flex gap-xs">
   <HvAvatar>
-    <LogIn color="bgContainer" size="XS" />
+    <LogIn size="XS" />
   </HvAvatar>
   <HvAvatar backgroundColor="positive">
     <Archives color="bgContainer" size="XS" />
   </HvAvatar>
   <HvAvatar backgroundColor="info">
     <Search color="bgContainer" size="XS" />
-  </HvAvatar>
-  <HvAvatar backgroundColor="warning">
-    <Bookmark color="bgContainer" size="XS" />
   </HvAvatar>
 </div>
 ```
@@ -123,7 +120,7 @@ The color can be from the theme palette or any other valid CSS color like using 
   <HvAvatar size="md" status="negative">
     AB
   </HvAvatar>
-  <HvAvatar size="xl" status="#8CEB34" badge="#8CEB34">
+  <HvAvatar size="lg" status="purple" badge="purple">
     AB
   </HvAvatar>
 </div>
@@ -134,43 +131,21 @@ The color can be from the theme palette or any other valid CSS color like using 
 An avatar should be interacted with by wrapping it in an interactable element, such as an `HvButton` or a link. Make sure the elements are labelled accordingly.
 
 ```tsx live
-<div className="flex align-start gap-xs">
-  <HvButton
-    component="a"
-    href="#profile-url"
-    aria-label="External link"
-    radius="base"
-    icon
-    className="size-fit!"
-  >
+<div className="flex items-center gap-xs">
+  <HvButtonBase component="a" href="#actions">
     <HvAvatar size="md">
-      <Bookmark />
+      <Link aria-label="Link" />
     </HvAvatar>
-  </HvButton>
-  <HvButton
-    aria-label="Open the user profile"
-    icon
-    radius="base"
-    className="size-fit!"
-  >
+  </HvButtonBase>
+  <HvButtonBase aria-label="Open the user profile">
     <HvAvatar variant="square" size="md" />
-  </HvButton>
-  <HvButton
-    aria-label="Business Manager"
-    icon
-    radius="base"
-    className="size-fit!"
-  >
+  </HvButtonBase>
+  <HvButtonBase aria-label="Business Manager">
     <HvAvatar backgroundColor="info" size="md" badge="negative">
       BM
     </HvAvatar>
-  </HvButton>
-  <HvButton
-    aria-label="Business Manager"
-    radius="round"
-    icon
-    className="size-fit!"
-  >
+  </HvButtonBase>
+  <HvButtonBase aria-label="Business Manager">
     <HvAvatar
       backgroundColor="info"
       size="md"
@@ -179,34 +154,24 @@ An avatar should be interacted with by wrapping it in an interactable element, s
     >
       BM
     </HvAvatar>
-  </HvButton>
-  <HvButton
-    aria-label="Clara Soul profile"
-    radius="base"
-    icon
-    className="size-fit!"
-  >
+  </HvButtonBase>
+  <HvButtonBase>
     <HvAvatar
-      alt="Clara Soul"
+      alt="Clara Soul profile"
       src="https://i.imgur.com/6sYhSb6.png"
       size="lg"
       status="positive"
     />
-  </HvButton>
-  <HvButton
-    aria-label="Clara Soul profile"
-    radius="round"
-    icon
-    className="size-fit!"
-  >
+  </HvButtonBase>
+  <HvButtonBase>
     <HvAvatar
-      alt="Clara Soul"
+      alt="Clara Soul profile"
       src="https://i.imgur.com/6sYhSb6.png"
       size="lg"
       variant="square"
       status="positive"
     />
-  </HvButton>
+  </HvButtonBase>
 </div>
 ```
 

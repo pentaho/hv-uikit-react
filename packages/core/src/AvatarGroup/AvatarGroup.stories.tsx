@@ -65,24 +65,24 @@ export const Test: StoryObj = {
           <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
         </HvAvatarGroup>
 
-        <HvAvatarGroup size="md" maxVisible={3}>
-          <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
-          <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
-          <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
-          <HvAvatar alt="Clara Soul" src="https://i.imgur.com/6sYhSb6.png" />
-          <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
-          <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
-          <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
+        <HvAvatarGroup size="md" maxVisible={6}>
+          <HvAvatar alt="Ben" src="https://bad.website/image.png" />
+          <HvAvatar alt="Beatrice" src="https://bad.website/image.png" />
+          <HvAvatar alt="Wayne" src="https://bad.website/image.png" />
+          <HvAvatar alt="Clara Soul" src="https://bad.website/image.png" />
+          <HvAvatar alt="Ben" src="https://bad.website/image.png" />
+          <HvAvatar alt="Beatrice" src="https://bad.website/image.png" />
+          <HvAvatar alt="Wayne" src="https://bad.website/image.png" />
         </HvAvatarGroup>
 
-        <HvAvatarGroup size="lg" maxVisible={3}>
+        <HvAvatarGroup size="lg" maxVisible={5}>
           <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
-          <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
-          <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
+          <HvAvatar />
+          <HvAvatar />
           <HvAvatar alt="Clara Soul" src="https://i.imgur.com/6sYhSb6.png" />
           <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
-          <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
-          <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
+          <HvAvatar />
+          <HvAvatar />
         </HvAvatarGroup>
 
         <HvAvatarGroup size="xl" maxVisible={3} toBack={false}>
@@ -122,7 +122,7 @@ export const Test: StoryObj = {
           <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
         </HvAvatarGroup>
 
-        <HvAvatarGroup size="md" spacing="compact" maxVisible={3}>
+        <HvAvatarGroup size="md" spacing="compact" maxVisible={5}>
           <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
           <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
           <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
@@ -132,7 +132,7 @@ export const Test: StoryObj = {
           <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
         </HvAvatarGroup>
 
-        <HvAvatarGroup size="lg" spacing="compact" maxVisible={3}>
+        <HvAvatarGroup size="lg" spacing="compact" maxVisible={4}>
           <HvAvatar alt="Ben" src="https://i.imgur.com/56Eeg1g.png" />
           <HvAvatar alt="Beatrice" src="https://i.imgur.com/bE7vg3N.png" />
           <HvAvatar alt="Wayne" src="https://i.imgur.com/ea22egF.png" />
