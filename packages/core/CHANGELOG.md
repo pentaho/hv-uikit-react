@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.3.0...@hitachivantara/uikit-react-core@6.4.0) (2026-02-03)
+
+### Bug Fixes
+
+- **TimeAgo:** yesterday timestamps showing as today due to wrong calculation ([#5071](https://github.com/pentaho/hv-uikit-react/issues/5071)) ([8ac2223](https://github.com/pentaho/hv-uikit-react/commit/8ac2223374dccc6a46ab67bf04422841769ad3d7))
+
+### Features
+
+- **Avatar:** update to PD 0.9 specs ([#5057](https://github.com/pentaho/hv-uikit-react/issues/5057)) ([d2250b6](https://github.com/pentaho/hv-uikit-react/commit/d2250b69dbce3bacf7d297d0dcbbb42fae1acd28))
+- **Badge:** update to 0.10 specs ([#5078](https://github.com/pentaho/hv-uikit-react/issues/5078)) ([6aee4db](https://github.com/pentaho/hv-uikit-react/commit/6aee4db87575893736e095ab638fb5c1116872ba))
+- **BreadCrumb:** update to PD 0.10 specs ([#5075](https://github.com/pentaho/hv-uikit-react/issues/5075)) ([8b96a59](https://github.com/pentaho/hv-uikit-react/commit/8b96a59096296568d616b36c0102b4facb30d9f4))
+
 # [6.3.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.2.0...@hitachivantara/uikit-react-core@6.3.0) (2026-01-23)
 
 ### Bug Fixes

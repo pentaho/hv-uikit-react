@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@6.1.1...@hitachivantara/uikit-react-utils@6.2.0) (2026-02-03)
+
+### Features
+
+- **Avatar:** update to PD 0.9 specs ([#5057](https://github.com/pentaho/hv-uikit-react/issues/5057)) ([d2250b6](https://github.com/pentaho/hv-uikit-react/commit/d2250b69dbce3bacf7d297d0dcbbb42fae1acd28))
+
 ## [6.1.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-utils@6.1.0...@hitachivantara/uikit-react-utils@6.1.1) (2026-01-13)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-utils

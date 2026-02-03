@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-core",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -42,7 +42,7 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/serialize": "^1.1.2",
     "@hitachivantara/uikit-react-shared": "^6.0.2",
-    "@hitachivantara/uikit-react-utils": "^6.1.1",
+    "@hitachivantara/uikit-react-utils": "^6.2.0",
     "@hitachivantara/uikit-styles": "^6.0.2",
     "@internationalized/date": "^3.2.0",
     "@mui/base": "5.0.0-beta.68",
