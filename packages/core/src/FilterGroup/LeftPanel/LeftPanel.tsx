@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
 
+import { HvIcon } from "../../icons";
 import { HvListContainer, HvListItem } from "../../ListContainer";
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 import { HvPanel } from "../../Panel";
@@ -25,6 +26,9 @@ export const HvFilterGroupLeftPanel = ({
   classes: classesProp,
 }: HvFilterGroupLeftPanelProps) => {
   const { classes } = useClasses(classesProp);
+
+  const { activeTheme } = useTheme();
+
   const { filterOptions, activeGroup, setActiveGroup } =
     useContext(HvFilterGroupContext);
 
@@ -38,7 +42,13 @@ export const HvFilterGroupLeftPanel = ({
               className={classes.listItem}
               onClick={() => setActiveGroup(index)}
               selected={filterOptions[activeGroup].id === group.id}
-              endAdornment={<HvFilterGroupCounter groupId={group.id} />}
+              endAdornment={
+                activeTheme?.name === "pentahoPlus" ? (
+                  <HvIcon name="CaretRight" />
+                ) : (
+                  <HvFilterGroupCounter groupId={group.id} />
+                )
+              }
             >
               <HvOverflowTooltip data={group.name} />
             </HvListItem>

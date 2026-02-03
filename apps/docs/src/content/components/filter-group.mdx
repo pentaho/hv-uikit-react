@@ -25,253 +25,97 @@ export default function Demo() {
     ["data2", "data8"],
   ]);
 
-  return (
-    <HvFilterGroup
-      aria-label="Main filter group"
-      value={value}
-      filters={filters}
-      onChange={(_, values) => setValue(values)}
-      style={{ width: 200 }}
-    />
-  );
-}
-
-const filters: HvFilterGroupProps["filters"] = [
-  {
-    id: "format",
-    name: "Format",
-    data: [
-      { id: "format1", name: "CSV" },
-      { id: "format2", name: "JavaScript Object Notation (JSON)" },
-      { id: "format3", name: "Parquet" },
-      {
-        id: "format4",
-        name: "Extensible Markup Language (XML)",
-        disabled: true,
-      },
-    ],
-  },
-  {
-    id: "access",
-    name: "Access",
-    data: [
-      { id: "access1", name: "Public" },
-      { id: "access2", name: "Restricted Internal Use" },
-      { id: "access3", name: "Private" },
-      { id: "access4", name: "End-to-End Encrypted Data", disabled: true },
-    ],
-  },
-  {
-    id: "data",
-    name: "Storage, Location, and Deployment Strategies",
-    data: [
-      { id: "data1", name: "Cloud-Based Storage Solutions" },
-      { id: "data2", name: "On-Premises Data Center Storage" },
-      { id: "data3", name: "Hybrid Storage" },
-      { id: "data4", name: "Distributed File System" },
-      { id: "data5", name: "Relational Database Management Systems (RDBMS)" },
-      { id: "data6", name: "NoSQL" },
-      { id: "data7", name: "Object Storage" },
-      { id: "data8", name: "In-Memory Database" },
-      { id: "data9", name: "Cold Storage and Long-Term Data Archival" },
-      { id: "data10", name: "Edge Computing Storage" },
-      { id: "data11", name: "Encrypted Storage" },
-      { id: "data12", name: "Data Lakehouse Architecture" },
-    ],
-  },
-];
-```
-
-### Reset to default
-
-If you want to reset the filter group to its default state, you can set the `defaultValue` to the initial state you want and the `Clear Filters` button will work as a reset button.
-
-```tsx live
-import { useState } from "react";
-
-export default function Demo() {
-  const initialState = [["format1", "format2"], [], ["data2", "data8"]];
-
-  const [value, setValue] = useState<HvFilterGroupValue | undefined>(
-    initialState,
-  );
+  const [numSelected, setNumSelected] = useState<number>(value.flat().length);
 
   return (
-    <HvFilterGroup
-      aria-label="Main filter group"
-      value={value}
-      defaultValue={initialState}
-      filters={filters}
-      labels={{
-        clearLabel: "Reset",
-      }}
-      onChange={(_, values) => setValue(values)}
-      style={{ width: 200 }}
-    />
-  );
-}
-
-const filters: HvFilterGroupProps["filters"] = [
-  {
-    id: "format",
-    name: "Format",
-    data: [
-      { id: "format1", name: "CSV" },
-      { id: "format2", name: "JavaScript Object Notation (JSON)" },
-      { id: "format3", name: "Parquet" },
-      {
-        id: "format4",
-        name: "Extensible Markup Language (XML)",
-        disabled: true,
-      },
-    ],
-  },
-  {
-    id: "access",
-    name: "Access",
-    data: [
-      { id: "access1", name: "Public" },
-      { id: "access2", name: "Restricted Internal Use" },
-      { id: "access3", name: "Private" },
-      { id: "access4", name: "End-to-End Encrypted Data", disabled: true },
-    ],
-  },
-  {
-    id: "data",
-    name: "Storage, Location, and Deployment Strategies",
-    data: [
-      { id: "data1", name: "Cloud-Based Storage Solutions" },
-      { id: "data2", name: "On-Premises Data Center Storage" },
-      { id: "data3", name: "Hybrid Storage" },
-      { id: "data4", name: "Distributed File System" },
-      { id: "data5", name: "Relational Database Management Systems (RDBMS)" },
-      { id: "data6", name: "NoSQL" },
-      { id: "data7", name: "Object Storage" },
-      { id: "data8", name: "In-Memory Database" },
-      { id: "data9", name: "Cold Storage and Long-Term Data Archival" },
-      { id: "data10", name: "Edge Computing Storage" },
-      { id: "data11", name: "Encrypted Storage" },
-      { id: "data12", name: "Data Lakehouse Architecture" },
-    ],
-  },
-];
-```
-
-### Uncontrolled
-
-You can have the `FilterGroup` component uncontrolled by omitting the `value` and `onChange` props. In this case, the component will manage its own state.
-
-```tsx live
-import { useState } from "react";
-
-export default function Demo() {
-  return (
-    <HvFilterGroup
-      aria-label="Main filter group"
-      filters={filters}
-      style={{ width: 200 }}
-    />
-  );
-}
-
-const filters: HvFilterGroupProps["filters"] = [
-  {
-    id: "format",
-    name: "Format",
-    data: [
-      { id: "format1", name: "CSV" },
-      { id: "format2", name: "JavaScript Object Notation (JSON)" },
-      { id: "format3", name: "Parquet" },
-      {
-        id: "format4",
-        name: "Extensible Markup Language (XML)",
-        disabled: true,
-      },
-    ],
-  },
-  {
-    id: "access",
-    name: "Access",
-    data: [
-      { id: "access1", name: "Public" },
-      { id: "access2", name: "Restricted Internal Use" },
-      { id: "access3", name: "Private" },
-      { id: "access4", name: "End-to-End Encrypted Data", disabled: true },
-    ],
-  },
-  {
-    id: "data",
-    name: "Storage, Location, and Deployment Strategies",
-    data: [
-      { id: "data1", name: "Cloud-Based Storage Solutions" },
-      { id: "data2", name: "On-Premises Data Center Storage" },
-      { id: "data3", name: "Hybrid Storage" },
-      { id: "data4", name: "Distributed File System" },
-      { id: "data5", name: "Relational Database Management Systems (RDBMS)" },
-      { id: "data6", name: "NoSQL" },
-      { id: "data7", name: "Object Storage" },
-      { id: "data8", name: "In-Memory Database" },
-      { id: "data9", name: "Cold Storage and Long-Term Data Archival" },
-      { id: "data10", name: "Edge Computing Storage" },
-      { id: "data11", name: "Encrypted Storage" },
-      { id: "data12", name: "Data Lakehouse Architecture" },
-    ],
-  },
-];
-```
-
-### Empty filters
-
-If you need to show a placeholder element while loading the filters or the data for each filter, you can use the `leftEmptyElement` and `rightEmptyElement` props on the `filterContentProps` prop.
-
-```tsx live
-import { useState } from "react";
-
-export default function Demo() {
-  const [hasFilters, setHasFilters] = useState<boolean>(true);
-  const myFilters: HvFilterGroupProps["filters"] = hasFilters
-    ? [
-        {
-          id: "1",
-          name: "Filter with data",
-          data: Array.from(Array(5), (el, i) => ({
-            id: `opt${i}`,
-            name: `Option ${i}`,
-          })),
-        },
-        {
-          id: "2",
-          name: "Filter with no data",
-          data: [],
-        },
-      ]
-    : [];
-
-  const leftEmptyElement = (
-    <HvLoading label="Loading filters..." style={{ height: "100%" }} />
-  );
-  const rightEmptyElement = (
-    <HvEmptyState icon={<Info />} message="No values found for the filter" />
-  );
-
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-      <div style={{ width: 180 }}>
-        <HvFilterGroup
-          aria-label="Empty filter group"
-          filters={myFilters}
-          filterContentProps={{ leftEmptyElement, rightEmptyElement }}
-        />
+    <>
+      <div className="p-sm">
+        <HvTypography variant="label">Applied filters</HvTypography>
+        <div className="flex flex-wrap gap-xxs mt-2">
+          {value?.flat().map((filterId) => {
+            const tagLabel = filters
+              .flatMap((group) => group.data)
+              .find((item) => item.id === filterId)?.name;
+            return <HvTag key={filterId} label={tagLabel} />;
+          })}
+        </div>
       </div>
-      <HvSwitch
-        checked={hasFilters}
-        onChange={(_, checked) => setHasFilters(checked)}
-        aria-label="Loaded state"
-      />
-      <HvTypography>
-        {hasFilters ? "Filters in loaded state" : "Filters in loading state"}
-      </HvTypography>
-    </div>
+      <div className="flex justify-around">
+        <div className="w-200px">
+          <HvFilterGroup
+            aria-label="Main filter group"
+            value={value}
+            filters={filters}
+            onChange={(_, values) => {
+              setValue(values);
+              setNumSelected(values.flat().length);
+            }}
+            filterContentProps={{
+              iconOnly: true,
+            }}
+          />
+        </div>
+        <div className="w-200px">
+          <HvFilterGroup
+            aria-label="Main filter group"
+            value={value}
+            filters={filters}
+            onChange={(_, values) => {
+              setValue(values);
+              setNumSelected(values.flat().length);
+            }}
+            filterContentProps={{
+              iconOnly: false,
+            }}
+          />
+        </div>
+      </div>
+    </>
   );
 }
+
+const filters: HvFilterGroupProps["filters"] = [
+  {
+    id: "format",
+    name: "Format",
+    data: [
+      { id: "format1", name: "CSV" },
+      { id: "format2", name: "JavaScript Object Notation (JSON)" },
+      { id: "format3", name: "Parquet" },
+      {
+        id: "format4",
+        name: "Extensible Markup Language (XML)",
+        disabled: true,
+      },
+    ],
+  },
+  {
+    id: "access",
+    name: "Access",
+    data: [
+      { id: "access1", name: "Public" },
+      { id: "access2", name: "Restricted Internal Use" },
+      { id: "access3", name: "Private" },
+      { id: "access4", name: "End-to-End Encrypted Data", disabled: true },
+    ],
+  },
+  {
+    id: "data",
+    name: "Storage, Location, and Deployment Strategies",
+    data: [
+      { id: "data1", name: "Cloud-Based Storage Solutions" },
+      { id: "data2", name: "On-Premises Data Center Storage" },
+      { id: "data3", name: "Hybrid Storage" },
+      { id: "data4", name: "Distributed File System" },
+      { id: "data5", name: "Relational Database Management Systems (RDBMS)" },
+      { id: "data6", name: "NoSQL" },
+      { id: "data7", name: "Object Storage" },
+      { id: "data8", name: "In-Memory Database" },
+      { id: "data9", name: "Cold Storage and Long-Term Data Archival" },
+      { id: "data10", name: "Edge Computing Storage" },
+      { id: "data11", name: "Encrypted Storage" },
+      { id: "data12", name: "Data Lakehouse Architecture" },
+    ],
+  },
+];
 ```

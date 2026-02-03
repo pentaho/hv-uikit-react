@@ -1,6 +1,7 @@
-import { forwardRef, useContext, useMemo, useRef, useState } from "react";
+import { forwardRef, useContext, useMemo, useRef } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -8,6 +9,7 @@ import { HvActionBar } from "../../ActionBar";
 import { HvBaseDropdown, HvBaseDropdownProps } from "../../BaseDropdown";
 import { HvButton } from "../../Button";
 import { HvFormStatus } from "../../FormElement";
+import { useControlled } from "../../hooks/useControlled";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
 import { setId } from "../../utils/setId";
@@ -18,6 +20,7 @@ import { HvFilterGroupLeftPanel } from "../LeftPanel";
 import { HvFilterGroupRightPanel } from "../RightPanel";
 import { HvFilterGroupHorizontalPlacement, HvFilterGroupValue } from "../types";
 import { staticClasses, useClasses } from "./FilterContent.styles";
+import { HeaderButton } from "./HeaderButton";
 
 export { staticClasses as filterGroupContentClasses };
 
@@ -41,6 +44,9 @@ export interface HvFilterGroupContentProps
   leftEmptyElement?: React.ReactNode;
   rightEmptyElement?: React.ReactNode;
   disabled?: boolean;
+  open?: boolean;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  iconOnly?: boolean;
   classes?: HvFilterGroupContentClasses;
 }
 
@@ -66,13 +72,18 @@ export const HvFilterGroupContent = forwardRef<
     height,
     leftEmptyElement,
     rightEmptyElement,
+    open,
+    setOpen,
+    iconOnly,
     classes: classesProp,
     ...others
   } = useDefaultProps("HvFilterGroupContent", props);
 
   const { classes } = useClasses(classesProp);
 
-  const [filterGroupOpen, setFilterGroupOpen] = useState<boolean>(false);
+  const { activeTheme } = useTheme();
+
+  const [filterGroupOpen, setFilterGroupOpen] = useControlled(open, false);
 
   const {
     defaultValue,
@@ -92,6 +103,7 @@ export const HvFilterGroupContent = forwardRef<
   const onApplyHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     applyFilters();
     onChange?.(event, filterValues);
+    setOpen?.(false);
     setFilterGroupOpen(false);
   };
 
@@ -100,6 +112,7 @@ export const HvFilterGroupContent = forwardRef<
   ) => {
     rollbackFilters();
     onCancel?.(event);
+    setOpen?.(false);
     setFilterGroupOpen(false);
   };
 
@@ -115,6 +128,7 @@ export const HvFilterGroupContent = forwardRef<
      the datepicker changed the expanded value this baseDropdown behavior needs a review
     */
     if (event === null) return;
+    setOpen?.(open);
     setFilterGroupOpen(open);
     if (!open) onCancelHandler?.(event);
   };
@@ -127,6 +141,20 @@ export const HvFilterGroupContent = forwardRef<
       </>
     ),
     [labels?.placeholder],
+  );
+
+  const CustomHeaderButton = useMemo(
+    () =>
+      activeTheme?.name === "pentahoPlus"
+        ? (props: any) => (
+            <HeaderButton
+              {...props}
+              iconOnly={iconOnly}
+              count={filterValues?.flat().length ?? 0}
+            />
+          )
+        : undefined,
+    [activeTheme?.name, iconOnly, filterValues],
   );
 
   return (
@@ -148,7 +176,7 @@ export const HvFilterGroupContent = forwardRef<
       onToggle={handleToggle}
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}
-      placeholder={Header}
+      placeholder={activeTheme?.name === "pentahoPlus" ? undefined : Header}
       adornment={<HvFilterGroupCounter />}
       popperProps={{
         modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
@@ -163,6 +191,7 @@ export const HvFilterGroupContent = forwardRef<
           .join(" ")
           .trim() || undefined
       }
+      headerComponent={CustomHeaderButton}
       {...others}
     >
       <div ref={focusTarget} tabIndex={-1} />
