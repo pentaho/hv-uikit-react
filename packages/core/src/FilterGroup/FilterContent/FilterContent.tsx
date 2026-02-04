@@ -195,22 +195,24 @@ export const HvFilterGroupContent = forwardRef<
         <div aria-hidden="true" className={classes.space}>
           &nbsp;
         </div>
-        <HvButton
-          id={setId(id, "apply-button")}
-          disabled={applyDisabled}
-          variant="primary"
-          onClick={onApplyHandler}
-          className={classes.applyButton}
-        >
-          {labels?.applyLabel}
-        </HvButton>
-        <HvButton
-          id={setId(id, "cancel-button")}
-          variant="secondarySubtle"
-          onClick={onCancelHandler}
-        >
-          {labels?.cancelLabel}
-        </HvButton>
+        <div className={classes.actions}>
+          <HvButton
+            id={setId(id, "apply-button")}
+            disabled={applyDisabled}
+            variant="primary"
+            onClick={onApplyHandler}
+            className={classes.applyButton}
+          >
+            {labels?.applyLabel}
+          </HvButton>
+          <HvButton
+            id={setId(id, "cancel-button")}
+            variant="secondarySubtle"
+            onClick={onCancelHandler}
+          >
+            {labels?.cancelLabel}
+          </HvButton>
+        </div>
       </HvActionBar>
     </HvBaseDropdown>
   );

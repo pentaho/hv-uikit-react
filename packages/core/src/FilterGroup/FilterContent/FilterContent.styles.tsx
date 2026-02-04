@@ -42,10 +42,12 @@ export const { staticClasses, useClasses } = createClasses(name, {
     minHeight: "calc(370px - 75px)",
   },
   actionBar: {},
+  actions: {
+    display: "flex",
+    gap: theme.space.xs,
+  },
   space: {
     flex: 1,
   },
-  applyButton: {
-    marginRight: "8px",
-  },
+  applyButton: {},
 });
