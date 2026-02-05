@@ -3,6 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as reactHookForm from "react-hook-form";
 import { importCode, type Scope } from "react-live-runner";
+import * as useResizeDetector from "react-resize-detector";
 import * as reactTable from "react-table";
 import * as DndKitCore from "@dnd-kit/core";
 import * as DndKitModifiers from "@dnd-kit/modifiers";
@@ -55,6 +56,7 @@ const defaultScope: Scope = {
     "react-table": reactTable,
     "react-hook-form": reactHookForm,
     "@hookform/resolvers/zod": hookFormZod,
+    "react-resize-detector": useResizeDetector,
     zod,
     clsx,
     reactflow,
