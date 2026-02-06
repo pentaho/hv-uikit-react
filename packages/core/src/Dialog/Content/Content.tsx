@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useResizeDetector } from "react-resize-detector";
 import MuiDialogContent, {
   DialogContentProps as MuiDialogContentProps,
 } from "@mui/material/DialogContent";
 import {
-  mergeStyles,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
@@ -28,48 +28,36 @@ export const HvDialogContent = (props: HvDialogContentProps) => {
     classes: classesProp,
     className,
     children,
-    indentContent = false,
-    style,
+    indentContent,
+    dividers,
     ...others
   } = useDefaultProps("HvDialogContent", props);
 
   const { classes, cx } = useClasses(classesProp);
   const [hasBorder, setHasBorder] = useState(false);
-  const elRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (typeof ResizeObserver !== "undefined") {
-      const resizeObserver = new ResizeObserver(() => {
-        const el = elRef.current as HTMLElement | null;
-        if (el) {
-          const hasOverflow = el.scrollHeight > el.clientHeight;
-          setHasBorder(hasOverflow);
-        }
-      });
-
-      if (elRef.current) {
-        resizeObserver.observe(elRef.current as HTMLElement);
-      }
-
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
-    return undefined;
-  }, []);
+  const { ref: elRef } = useResizeDetector<HTMLDivElement>({
+    refreshMode: "throttle",
+    refreshRate: 100,
+    handleWidth: false,
+    disableRerender: true,
+    onResize: ({ entry }) => {
+      if (!entry) return;
+      const hasOverflow = entry.target.scrollHeight > entry.target.clientHeight;
+      setHasBorder(hasOverflow);
+    },
+  });
 
   return (
     <HvTypography
       ref={elRef}
       component={MuiDialogContent}
+      dividers={dividers ?? hasBorder}
       className={cx(
         classes.root,
         { [classes.textContent]: !!indentContent },
         className,
       )}
-      style={mergeStyles(style, {
-        "--borderW": hasBorder ? "1px" : "0px",
-      })}
       {...others}
     >
       {children}
