@@ -3,24 +3,29 @@ title: "Tabs"
 ---
 
 import { CodeBlock } from "../../../components/code/CodeBlock";
-import overflowComponentCode from "./OverflowComponent?raw";
+import defaultTabsCode from "./DefaultTabs?raw";
+import floatingTabsCode from "./FloatingTabsWithIcons?raw";
 import overflowingTabsCode from "./OverflowingTabs?raw";
 import useTabsCode from "./useTabs?raw";
 
-### Tabs Components
+### Default tabs
 
-Explore different tabs types and features
+<CodeBlock
+  code={{
+    main: defaultTabsCode,
+    "./useTabs": useTabsCode,
+    "./OverflowingTabs": overflowingTabsCode,
+  }}
+  layout="toggable"
+/>
 
-<div className="mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
-    <CodeBlock
-      code={{
-        main: overflowingTabsCode,
-        "./OverflowComponent": overflowComponentCode,
-        "./useTabs": useTabsCode,
-      }}
-      layout="popup"
-      title="Overflowing Tabs"
-    />
-  </div>
-</div>
+### Floating tabs with icons on top
+
+<CodeBlock
+  code={{
+    main: floatingTabsCode,
+    "./useTabs": useTabsCode,
+    "./OverflowingTabs": overflowingTabsCode,
+  }}
+  layout="toggable"
+/>

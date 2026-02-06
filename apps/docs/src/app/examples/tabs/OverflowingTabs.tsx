@@ -1,31 +1,79 @@
-"use client";
-
+import { forwardRef } from "react";
 import {
+  HvBadge,
   HvBaseDropdown,
+  HvButton,
   HvIconContainer,
   HvListContainer,
   HvListItem,
   HvPanel,
   HvTab,
+  HvTabProps,
   HvTabs,
-  HvTypography,
   theme,
 } from "@hitachivantara/uikit-react-core";
 
-import { OverflowComponent } from "./OverflowComponent";
-import { useTabs } from "./useTabs";
+import { OverflowTab, useTabs } from "./useTabs";
 
-const tabs = [
-  { id: "summary", label: "1 Summary" },
-  { id: "details", label: "2 Details", icon: <div className="i-ph-gear" /> },
-  { id: "custom-properties", label: "3 Custom Properties" },
-  { id: "contents", label: "4 Contents" },
-  { id: "metrics", label: "5 Metrics" },
-  { id: "rating", label: "6 Rating" },
-  { id: "comments", label: "7 Comments" },
-];
+export type { OverflowTab };
 
-export default function OverflowingTabs() {
+interface OverflowingTabsProps {
+  tabs: OverflowTab[];
+  floating?: boolean;
+  size?: "sm" | "md" | "lg";
+  iconPosition?: HvTabProps["iconPosition"];
+  dropdownWidth?: number;
+}
+
+interface OverflowComponentProps {
+  count?: number;
+  [key: string]: any;
+}
+
+const tabSizeMap = {
+  sm: 32,
+  md: 48,
+  lg: 64,
+};
+
+export const OverflowComponent = forwardRef<
+  HTMLDivElement,
+  OverflowComponentProps
+>((props, ref) => {
+  const { count, floating, ...otherProps } = props;
+
+  if (count === 0) return null;
+
+  return (
+    <div ref={ref} {...otherProps}>
+      <HvButton
+        className="mt-2px font-normal"
+        variant="secondaryGhost"
+        endIcon={
+          <HvIconContainer>
+            <div className="i-ph-caret-down" />
+          </HvIconContainer>
+        }
+      >
+        More
+        <HvBadge
+          color={floating ? "text" : "textSubtle"}
+          showCount
+          label={count}
+          classes={{ root: "ml-[-8px] mr-sm", badge: "relative" }}
+        />
+      </HvButton>
+    </div>
+  );
+});
+
+export const OverflowingTabs = ({
+  tabs,
+  floating = false,
+  size = "sm",
+  iconPosition = "start",
+  dropdownWidth = 128,
+}: OverflowingTabsProps) => {
   const {
     value,
     setValue,
@@ -38,27 +86,37 @@ export default function OverflowingTabs() {
     handleDropdownClick,
   } = useTabs({
     tabs,
+    dropdownWidth,
   });
 
   return (
     <>
-      <div
-        ref={rootRef}
-        className="p-xs flex flex-col w-full gap-md min-w-170px max-w-900px w-535px resize-x overflow-auto border-1 border-border"
-      >
-        <HvTabs value={value} onChange={(_, val) => setValue(val)}>
-          {tabOrder.slice(0, visibleCount).map((tab) => (
+      <div ref={rootRef} style={{ width: "100%" }}>
+        <HvTabs
+          floating={floating}
+          value={value}
+          onChange={(_, val) => setValue(val)}
+          classes={{
+            flexContainer: "items-center",
+          }}
+        >
+          {tabOrder.slice(0, visibleCount).map((tab: OverflowTab) => (
             <HvTab
               key={tab.id}
-              iconPosition="start"
+              iconPosition={iconPosition}
               {...tab}
-              icon={<HvIconContainer>{tab.icon}</HvIconContainer>}
+              icon={
+                tab.icon ? (
+                  <HvIconContainer>{tab.icon}</HvIconContainer>
+                ) : undefined
+              }
+              style={{ height: tabSizeMap[size] }}
             />
           ))}
           {visibleCount < tabOrder.length && (
             <HvBaseDropdown
               headerComponent={OverflowComponent}
-              {...({ count: tabOrder.length - visibleCount } as any)}
+              {...({ count: tabOrder.length - visibleCount, floating } as any)}
               variableWidth
               placement="left"
               expanded={moreOpen}
@@ -90,7 +148,6 @@ export default function OverflowingTabs() {
             </HvBaseDropdown>
           )}
         </HvTabs>
-        <HvTypography>{`Selected tab: ${tabs[value].label}`}</HvTypography>
       </div>
       <div
         ref={measureRef}
@@ -101,17 +158,28 @@ export default function OverflowingTabs() {
           overflow: "hidden",
         }}
       >
-        <HvTabs value={0}>
-          {tabOrder.map((tab) => (
+        <HvTabs
+          floating={floating}
+          value={0}
+          classes={{
+            flexContainer: "items-center",
+          }}
+        >
+          {tabOrder.map((tab: OverflowTab) => (
             <HvTab
               key={tab.id}
-              iconPosition="start"
+              iconPosition={iconPosition}
               {...tab}
-              icon={<HvIconContainer>{tab.icon}</HvIconContainer>}
+              icon={
+                tab.icon ? (
+                  <HvIconContainer>{tab.icon}</HvIconContainer>
+                ) : undefined
+              }
+              style={{ height: tabSizeMap[size] }}
             />
           ))}
         </HvTabs>
       </div>
     </>
   );
-}
+};

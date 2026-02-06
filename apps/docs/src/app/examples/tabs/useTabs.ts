@@ -1,14 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
+import { HvTabProps } from "@hitachivantara/uikit-react-core";
 
-interface Tab {
-  id: string;
-  label?: string;
-  [key: string]: any;
-}
+// Make sure the tab props include the `id` prop which might be undefined on the HvTabProps
+export type OverflowTab = HvTabProps & { id: string };
 
 interface UseTabsOptions {
-  tabs: Tab[];
+  tabs: OverflowTab[];
   dropdownWidth?: number;
 }
 
@@ -17,7 +15,7 @@ interface UseTabsReturn {
   setValue: (value: number) => void;
   moreOpen: boolean;
   setMoreOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
-  tabOrder: Tab[];
+  tabOrder: OverflowTab[];
   visibleCount: number;
   rootRef: React.RefObject<HTMLDivElement>;
   measureRef: React.RefObject<HTMLDivElement>;
