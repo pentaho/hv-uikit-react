@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import {
   HvBadge,
   HvBaseDropdown,
+  HvBaseDropdownProps,
   HvButton,
   HvIconContainer,
   HvListContainer,
@@ -47,7 +48,7 @@ export const OverflowComponent = forwardRef<
   return (
     <div ref={ref} {...otherProps}>
       <HvButton
-        className="mt-2px font-normal"
+        className="mt-2px font-normal h-full"
         variant="secondaryGhost"
         endIcon={
           <HvIconContainer>
@@ -89,6 +90,21 @@ export const OverflowingTabs = ({
     dropdownWidth,
   });
 
+  const setFocusToContent: HvBaseDropdownProps["onContainerCreation"] = (
+    containerRef,
+  ) => {
+    const listItems =
+      containerRef != null ? [...containerRef.getElementsByTagName("li")] : [];
+
+    listItems.every((listItem) => {
+      if (listItem.tabIndex >= 0) {
+        listItem.focus();
+        return false;
+      }
+      return true;
+    });
+  };
+
   return (
     <>
       <div ref={rootRef} style={{ width: "100%" }}>
@@ -96,9 +112,6 @@ export const OverflowingTabs = ({
           floating={floating}
           value={value}
           onChange={(_, val) => setValue(val)}
-          classes={{
-            flexContainer: "items-center",
-          }}
         >
           {tabOrder.slice(0, visibleCount).map((tab: OverflowTab) => (
             <HvTab
@@ -121,6 +134,11 @@ export const OverflowingTabs = ({
               placement="left"
               expanded={moreOpen}
               onToggle={() => setMoreOpen((p) => !p)}
+              onContainerCreation={setFocusToContent}
+              style={{
+                height: tabSizeMap[size],
+              }}
+              className="flex items-center"
             >
               <HvPanel>
                 <HvListContainer interactive>
