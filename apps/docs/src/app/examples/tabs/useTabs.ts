@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { HvTabProps } from "@hitachivantara/uikit-react-core";
 
-// Make sure the tab props include the `id` prop which might be undefined on the HvTabProps
+// Make sure the tab props include the `id` prop which might be undefined on the
 export type OverflowTab = HvTabProps & { id: string };
 
 interface UseTabsOptions {
@@ -17,7 +17,7 @@ interface UseTabsReturn {
   setMoreOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
   tabOrder: OverflowTab[];
   visibleCount: number;
-  rootRef: React.RefObject<HTMLDivElement>;
+  rootRef: React.Ref<HTMLDivElement>;
   measureRef: React.RefObject<HTMLDivElement>;
   handleDropdownClick: (tabId: string) => void;
 }
