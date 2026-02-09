@@ -1,19 +1,18 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvButtonProps,
   HvLoading,
-  HvLoadingProps,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvLoading> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Loading",
   component: HvLoading,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvLoadingProps> = {
+export const Main = meta.story({
   args: {
     label: "Loading",
     hidden: false,
@@ -25,9 +24,9 @@ export const Main: StoryObj<HvLoadingProps> = {
   render: (args) => {
     return <HvLoading {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvLoadingProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -45,7 +44,7 @@ export const Variants: StoryObj<HvLoadingProps> = {
       </>
     );
   },
-};
+});
 
 const LoadingButton = ({ onClick, ...others }: HvButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +68,7 @@ const LoadingButton = ({ onClick, ...others }: HvButtonProps) => {
   );
 };
 
-export const Buttons = () => {
+export const Buttons = meta.story(() => {
   const handleClick = async () => {
     await new Promise((resolve) => {
       setTimeout(resolve, 2000);
@@ -83,4 +82,4 @@ export const Buttons = () => {
       <LoadingButton variant="secondaryGhost" onClick={handleClick} />
     </div>
   );
-};
+});

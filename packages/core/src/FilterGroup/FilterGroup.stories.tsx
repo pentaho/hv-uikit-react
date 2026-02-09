@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Decorator, Meta, StoryObj } from "@storybook/react-vite";
+import type { Decorator } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
@@ -8,19 +8,18 @@ import {
   HvFilterGroupValue,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { EmptyFilters as EmptyFiltersStory } from "./stories/EmptyFilters";
 
 const widthDecorator: Decorator = (Story) => (
   <div style={{ width: 180 }}>{Story()}</div>
 );
 
-const meta: Meta<typeof HvFilterGroup> = {
+const meta = preview.meta({
   title: "Components/Filter Group",
   component: HvFilterGroup,
   decorators: [(storyFn) => <div style={{ height: 550 }}>{storyFn()}</div>],
-};
-
-export default meta;
+});
 
 const filters: HvFilterGroupProps["filters"] = [
   {
@@ -72,7 +71,7 @@ const filters: HvFilterGroupProps["filters"] = [
   },
 ];
 
-export const Main: StoryObj<HvFilterGroupProps> = {
+export const Main = meta.story({
   parameters: {
     ...setupChromatic("light"),
   },
@@ -101,8 +100,8 @@ export const Main: StoryObj<HvFilterGroupProps> = {
       />
     );
   },
-};
+});
 
-export const EmptyFilters: StoryObj<HvFilterGroupProps> = {
+export const EmptyFilters = meta.story({
   render: () => <EmptyFiltersStory />,
-};
+});

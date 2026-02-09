@@ -1,17 +1,17 @@
 import { useRef, useState } from "react";
 import { css } from "@emotion/css";
-import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
+import type { Decorator } from "@storybook/react-vite";
 import {
   HvBaseInput,
   HvFormStatus,
   HvInput,
-  HvInputProps,
   HvInputSuggestion,
   HvValidationMessages,
   theme,
 } from "@hitachivantara/uikit-react-core";
 import { Calendar, Map, Time } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../.storybook/preview";
 import { allCountries } from "./stories/countries";
 
 const showcaseDecorator: Decorator = (Story) => (
@@ -20,15 +20,14 @@ const showcaseDecorator: Decorator = (Story) => (
   </div>
 );
 
-const meta: Meta<typeof HvInput> = {
+const meta = preview.meta({
   title: "Components/Input",
   component: HvInput,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvBaseInput },
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvInputProps> = {
+export const Main = meta.story({
   args: {
     label: "First name",
     description: "Please enter your first name",
@@ -66,9 +65,9 @@ export const Main: StoryObj<HvInputProps> = {
   render: (args) => {
     return <HvInput {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvInputProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -141,9 +140,9 @@ export const Variants: StoryObj<HvInputProps> = {
       </>
     );
   },
-};
+});
 
-export const InvalidState: StoryObj<HvInputProps> = {
+export const InvalidState = meta.story({
   parameters: {
     docs: {
       description: {
@@ -177,9 +176,9 @@ export const InvalidState: StoryObj<HvInputProps> = {
       />
     );
   },
-};
+});
 
-export const CustomValidation: StoryObj<HvInputProps> = {
+export const CustomValidation = meta.story({
   parameters: {
     docs: {
       description: {
@@ -207,9 +206,9 @@ export const CustomValidation: StoryObj<HvInputProps> = {
       />
     );
   },
-};
+});
 
-export const CustomVariants: StoryObj<HvInputProps> = {
+export const CustomVariants = meta.story({
   decorators: [showcaseDecorator],
   parameters: {
     docs: {
@@ -259,9 +258,9 @@ export const CustomVariants: StoryObj<HvInputProps> = {
       </>
     );
   },
-};
+});
 
-export const Suggestion: StoryObj<HvInputProps> = {
+export const Suggestion = meta.story({
   parameters: {
     docs: {
       description: {
@@ -299,9 +298,9 @@ export const Suggestion: StoryObj<HvInputProps> = {
       />
     );
   },
-};
+});
 
-export const Adornments: StoryObj<HvInputProps> = {
+export const Adornments = meta.story({
   parameters: {
     docs: {
       description: {
@@ -336,9 +335,9 @@ export const Adornments: StoryObj<HvInputProps> = {
       />
     );
   },
-};
+});
 
-export const Test: StoryObj<HvInputProps> = {
+export const Test = meta.story({
   decorators: [showcaseDecorator],
   args: {
     description: "Enter name",
@@ -456,4 +455,4 @@ export const Test: StoryObj<HvInputProps> = {
       </>
     );
   },
-};
+});

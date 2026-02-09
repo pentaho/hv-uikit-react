@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAppSwitcher,
   HvAppSwitcherActionApplication,
-  HvAppSwitcherProps,
 } from "@hitachivantara/uikit-react-core";
 import { Code, LeftAlign } from "@hitachivantara/uikit-react-icons";
+
+import preview from "../../../../.storybook/preview";
 
 const applicationsList: HvAppSwitcherActionApplication[] = [
   {
@@ -41,13 +41,12 @@ const applicationsList: HvAppSwitcherActionApplication[] = [
   },
 ];
 
-const meta: Meta<typeof HvAppSwitcher> = {
+const meta = preview.meta({
   title: "Components/App Switcher",
   component: HvAppSwitcher,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvAppSwitcherProps> = {
+export const Main = meta.story({
   args: {
     layout: "single",
   },
@@ -73,9 +72,9 @@ export const Main: StoryObj<HvAppSwitcherProps> = {
       />
     );
   },
-};
+});
 
-export const ManyEntries: StoryObj<HvAppSwitcherProps> = {
+export const ManyEntries = meta.story({
   render: () => {
     const dummyApplicationsList = [
       ...Array(100).keys(),
@@ -105,4 +104,4 @@ export const ManyEntries: StoryObj<HvAppSwitcherProps> = {
       />
     );
   },
-};
+});

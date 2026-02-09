@@ -1,16 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvNumberInput,
-  HvNumberInputProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvNumberInput } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvNumberInput> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Number Input",
   component: HvNumberInput,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvNumberInputProps> = {
+export const Main = meta.story({
   args: {
     label: "Value",
     description: "Please enter a number",
@@ -27,4 +24,4 @@ export const Main: StoryObj<HvNumberInputProps> = {
   render: (args) => {
     return <HvNumberInput {...args} />;
   },
-};
+});

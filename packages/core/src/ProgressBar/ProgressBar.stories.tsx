@@ -1,20 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvProgressBar,
-  HvProgressBarProps,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvProgressBar, HvTypography } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { ProgressBarSimulator } from "./ProgressBarSimulator";
 
-const meta: Meta<typeof HvProgressBar> = {
+const meta = preview.meta({
   title: "Components/Progress Bar",
   component: HvProgressBar,
   decorators: [(Story) => <div className="pl-sm">{Story()}</div>],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvProgressBarProps> = {
+export const Main = meta.story({
   args: {
     value: 0,
     hideLabel: false,
@@ -25,9 +20,9 @@ export const Main: StoryObj<HvProgressBarProps> = {
     value: { control: { type: "range" } },
   },
   render: (args) => <HvProgressBar aria-label="Status" {...args} />,
-};
+});
 
-export const Progressive: StoryObj<HvProgressBarProps> = {
+export const Progressive = meta.story({
   render: () => {
     return (
       <>
@@ -70,9 +65,9 @@ export const Progressive: StoryObj<HvProgressBarProps> = {
       </>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvProgressBarProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div className="grid items-center gap-sm [&>span]:text-center">
@@ -105,4 +100,4 @@ export const Variants: StoryObj<HvProgressBarProps> = {
       </>
     );
   },
-};
+});

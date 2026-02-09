@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
@@ -9,17 +8,17 @@ import {
   HvDialogContent,
   HvDialogTitle,
   HvDrawer,
-  HvDrawerProps,
   HvGlobalActions,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvDrawer> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Drawer",
   component: HvDrawer,
   decorators: [(Story) => <div style={{ minHeight: 600 }}>{Story()}</div>],
-};
-export default meta;
+});
 
 const drawerWidth = "60%";
 
@@ -38,7 +37,7 @@ const classes = {
   }),
 };
 
-export const Main: StoryObj<HvDrawerProps> = {
+export const Main = meta.story({
   args: {
     anchor: "right",
   },
@@ -98,4 +97,4 @@ export const Main: StoryObj<HvDrawerProps> = {
       </>
     );
   },
-};
+});

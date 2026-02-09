@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import {
   HvOption,
   HvOptionGroup,
   HvSelect,
-  HvSelectProps,
 } from "@hitachivantara/uikit-react-core";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Select",
   component: HvSelect,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvOption, HvOptionGroup },
-} satisfies Meta<typeof HvSelect>;
+});
 
-export const Main: StoryObj<HvSelectProps<{}, false>> = {
+export const Main = meta.story({
   args: {
     multiple: false,
     size: "md",
@@ -65,9 +65,9 @@ export const Main: StoryObj<HvSelectProps<{}, false>> = {
       </HvSelect>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvSelectProps<{}, false>> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -110,9 +110,9 @@ export const Variants: StoryObj<HvSelectProps<{}, false>> = {
       </>
     );
   },
-};
+});
 
-export const Test: StoryObj<HvSelectProps<{}, false>> = {
+export const Test = meta.story({
   parameters: {
     a11y: {
       config: {
@@ -164,4 +164,4 @@ export const Test: StoryObj<HvSelectProps<{}, false>> = {
       </HvSelect>
     </>
   ),
-};
+});

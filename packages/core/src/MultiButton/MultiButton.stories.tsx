@@ -1,23 +1,21 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvMultiButton,
-  HvMultiButtonProps,
   HvSimpleGrid,
 } from "@hitachivantara/uikit-react-core";
 import { Abacus, LocationPin, Map } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../.storybook/preview";
 import { SplitButton as SplitButtonStory } from "./stories/SplitButton";
 import { VerticalOrientation as VerticalOrientationStory } from "./stories/VerticalOrientation";
 
-const meta: Meta<typeof HvMultiButton> = {
+const meta = preview.meta({
   title: "Components/Multi Button",
   component: HvMultiButton,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvMultiButtonProps> = {
+export const Main = meta.story({
   args: {
     disabled: false,
     vertical: false,
@@ -56,9 +54,9 @@ export const Main: StoryObj<HvMultiButtonProps> = {
       </HvMultiButton>
     );
   },
-};
+});
 
-export const VerticalOrientation: StoryObj<HvMultiButtonProps> = {
+export const VerticalOrientation = meta.story({
   parameters: {
     docs: {
       description: {
@@ -68,9 +66,9 @@ export const VerticalOrientation: StoryObj<HvMultiButtonProps> = {
     },
   },
   render: () => <VerticalOrientationStory />,
-};
+});
 
-export const SplitButton: StoryObj<HvMultiButtonProps> = {
+export const SplitButton = meta.story({
   parameters: {
     docs: {
       description: {
@@ -79,9 +77,9 @@ export const SplitButton: StoryObj<HvMultiButtonProps> = {
     },
   },
   render: () => <SplitButtonStory />,
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <>
       <SplitButtonStory />
@@ -195,4 +193,4 @@ export const Test: StoryObj = {
       </HvSimpleGrid>
     </>
   ),
-};
+});

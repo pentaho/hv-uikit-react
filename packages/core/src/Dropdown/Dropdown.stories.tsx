@@ -1,19 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import {
-  HvBaseDropdown,
-  HvDropdown,
-  HvDropdownProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvBaseDropdown, HvDropdown } from "@hitachivantara/uikit-react-core";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Dropdown",
   component: HvDropdown,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvBaseDropdown },
-} satisfies Meta<typeof HvDropdown>;
+});
 
-export const Main: StoryObj<HvDropdownProps> = {
+export const Main = meta.story({
   args: {
     multiSelect: false,
     showSearch: false,
@@ -41,9 +38,9 @@ export const Main: StoryObj<HvDropdownProps> = {
       ]}
     />
   ),
-};
+});
 
-export const Variants: StoryObj<HvDropdownProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: { story: "Dropdown in their various form state variants." },
@@ -79,14 +76,14 @@ export const Variants: StoryObj<HvDropdownProps> = {
       </>
     );
   },
-};
+});
 
 const values = [...Array(80).keys()].map((i) => ({
   label: `value ${i + 1}`,
   selected: i % 6 === 0,
 }));
 
-export const MultiSelection: StoryObj<HvDropdownProps> = {
+export const MultiSelection = meta.story({
   parameters: {
     docs: {
       description: {
@@ -113,4 +110,4 @@ export const MultiSelection: StoryObj<HvDropdownProps> = {
       {...args}
     />
   ),
-};
+});

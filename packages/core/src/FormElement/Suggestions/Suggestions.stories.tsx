@@ -1,5 +1,4 @@
 import { useMemo, useRef, useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBaseInput,
   HvBaseInputProps,
@@ -10,18 +9,18 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS } from "@hitachivantara/uikit-react-icons";
 
+import preview from "../../../../../.storybook/preview";
 import { allCountries } from "../../Input/stories/countries";
 
-const meta: Meta<typeof HvSuggestions> = {
+const meta = preview.meta({
   title: "Components/Form Element Blocks/Suggestions",
   component: HvSuggestions,
   decorators: [
     (Story) => <div style={{ width: 500, height: 320 }}>{Story()}</div>,
   ],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvSuggestionsProps> = {
+export const Main = meta.story({
   args: {
     open: true,
   },
@@ -93,9 +92,9 @@ export const Main: StoryObj<HvSuggestionsProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const ServerSideSuggestions: StoryObj<HvSuggestionsProps> = {
+export const ServerSideSuggestions = meta.story({
   render: () => {
     const [open, setOpen] = useState(false);
     const [suggestionList, setSuggestionList] = useState<string[]>([]);
@@ -171,9 +170,9 @@ export const ServerSideSuggestions: StoryObj<HvSuggestionsProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const CustomOpen: StoryObj<HvSuggestionsProps> = {
+export const CustomOpen = meta.story({
   parameters: {
     docs: {
       description: {
@@ -264,4 +263,4 @@ export const CustomOpen: StoryObj<HvSuggestionsProps> = {
       </HvFormElement>
     );
   },
-};
+});

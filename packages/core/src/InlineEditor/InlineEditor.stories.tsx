@@ -1,15 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvInlineEditor,
-  HvInlineEditorProps,
   HvTypographyVariants,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<HvInlineEditorProps> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Inline Editor",
   component: HvInlineEditor,
-};
-export default meta;
+});
 
 const variants: HvTypographyVariants[] = [
   "display",
@@ -23,7 +22,7 @@ const variants: HvTypographyVariants[] = [
   "caption2",
 ];
 
-export const Main: StoryObj<typeof HvInlineEditor> = {
+export const Main = meta.story({
   args: {
     showIcon: false,
     variant: "body",
@@ -33,9 +32,9 @@ export const Main: StoryObj<typeof HvInlineEditor> = {
   },
   decorators: [(Story) => <div style={{ width: 300 }}>{Story()}</div>],
   render: (args) => <HvInlineEditor {...args} />,
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => {
     return (
       <div className="flex flex-wrap gap-5px justify-start items-start">
@@ -54,4 +53,4 @@ export const Test: StoryObj = {
       </div>
     );
   },
-};
+});

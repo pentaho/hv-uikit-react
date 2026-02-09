@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps --only-shell
 
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.PROJECT }}
@@ -98,18 +98,10 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
-
-      - name: Build Storybook
-        run: npm run build:doc
-        env:
-          NODE_OPTIONS: "--max_old_space_size=8192"
+        run: npx playwright install --with-deps --only-shell chromium
 
       - name: Run Tests
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "npx serve dist -l 6006 -L" \
-          "npx wait-on tcp:6006 && npm run test:a11y"
+        run: npm run test:a11y
 
   build:
     name: Build

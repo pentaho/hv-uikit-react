@@ -1,18 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvCheckBox,
-  HvCheckBoxGroup,
-  HvCheckBoxGroupProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvCheckBox, HvCheckBoxGroup } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvCheckBoxGroup> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Checkbox Group",
   component: HvCheckBoxGroup,
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvCheckBoxGroupProps> = {
+export const Main = meta.story({
   args: {
     showSelectAll: true,
     label: "Choose your favorite checkboxes",
@@ -35,9 +30,9 @@ export const Main: StoryObj<HvCheckBoxGroupProps> = {
       </HvCheckBoxGroup>
     );
   },
-};
+});
 
-export const Variants: StoryObj<HvCheckBoxGroupProps> = {
+export const Variants = meta.story({
   decorators: [(Story) => <div className="flex gap-sm">{Story()}</div>],
   render: () => {
     return (
@@ -70,9 +65,9 @@ export const Variants: StoryObj<HvCheckBoxGroupProps> = {
       </>
     );
   },
-};
+});
 
-export const Horizontal: StoryObj<HvCheckBoxGroupProps> = {
+export const Horizontal = meta.story({
   parameters: {
     docs: {
       description: { story: "Layout checkboxes horizontally." },
@@ -91,4 +86,4 @@ export const Horizontal: StoryObj<HvCheckBoxGroupProps> = {
       </HvCheckBoxGroup>
     );
   },
-};
+});

@@ -1,18 +1,18 @@
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvTag, HvTagProps, theme } from "@hitachivantara/uikit-react-core";
+import { HvTag, theme } from "@hitachivantara/uikit-react-core";
 import { Abacus } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvTag> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Tag",
   component: HvTag,
   decorators: [
     (Story) => <div style={{ display: "flex", gap: 20 }}>{Story()}</div>,
   ],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvTagProps> = {
+export const Main = meta.story({
   args: {
     label: "Tag Label",
     type: "semantic",
@@ -28,9 +28,9 @@ export const Main: StoryObj<HvTagProps> = {
   render: (args) => {
     return <HvTag {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvTagProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => <div className="grid grid-cols-6 gap-sm">{Story()}</div>,
   ],
@@ -52,9 +52,9 @@ export const Variants: StoryObj<HvTagProps> = {
       </>
     );
   },
-};
+});
 
-export const WithActions: StoryObj<HvTagProps> = {
+export const WithActions = meta.story({
   render: () => {
     return (
       <>
@@ -63,9 +63,9 @@ export const WithActions: StoryObj<HvTagProps> = {
       </>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <div className="flex flex-wrap gap-xs">
       <HvTag label="Informational" />
@@ -128,4 +128,4 @@ export const Test: StoryObj = {
       <HvTag selectable size="md" label="rebeccapurple" color="rebeccapurple" />
     </div>
   ),
-};
+});

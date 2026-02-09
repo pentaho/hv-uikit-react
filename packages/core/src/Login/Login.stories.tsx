@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvButton,
   HvInput,
   HvLogin,
-  HvLoginProps,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvLogin> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Login",
   component: HvLogin,
   decorators: [
@@ -16,10 +16,9 @@ const meta: Meta<typeof HvLogin> = {
       <div style={{ display: "flex", height: "100vh" }}>{Story()}</div>
     ),
   ],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvLoginProps> = {
+export const Main = meta.story({
   args: {},
   argTypes: {
     classes: { control: { disable: true } },
@@ -68,4 +67,4 @@ export const Main: StoryObj<HvLoginProps> = {
       </HvLogin>
     );
   },
-};
+});

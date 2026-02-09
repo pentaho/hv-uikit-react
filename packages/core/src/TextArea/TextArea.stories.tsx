@@ -1,15 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvTextArea, HvTextAreaProps } from "@hitachivantara/uikit-react-core";
+import { HvTextArea } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvTextArea> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Text Area",
   component: HvTextArea,
   decorators: [(Story) => <div style={{ maxWidth: 600 }}>{Story()}</div>],
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvTextAreaProps> = {
+export const Main = meta.story({
   args: {
     label: "Label",
     placeholder: "Enter value",
@@ -31,9 +30,9 @@ export const Main: StoryObj<HvTextAreaProps> = {
   render: (args) => {
     return <HvTextArea {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvTextAreaProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div className="flex flex-wrap gap-xs [&>*]:w-130px">{Story()}</div>
@@ -74,9 +73,9 @@ export const Variants: StoryObj<HvTextAreaProps> = {
       </>
     );
   },
-};
+});
 
-export const LimitedWithCustomLabels: StoryObj<HvTextAreaProps> = {
+export const LimitedWithCustomLabels = meta.story({
   parameters: {
     docs: {
       description: { story: "Text area char count with a custom labels." },
@@ -101,9 +100,9 @@ export const LimitedWithCustomLabels: StoryObj<HvTextAreaProps> = {
       />
     );
   },
-};
+});
 
-export const LimitedBlocking: StoryObj<HvTextAreaProps> = {
+export const LimitedBlocking = meta.story({
   parameters: {
     docs: {
       description: {
@@ -124,4 +123,4 @@ export const LimitedBlocking: StoryObj<HvTextAreaProps> = {
       />
     );
   },
-};
+});

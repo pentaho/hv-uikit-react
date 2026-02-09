@@ -1,28 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCard,
   HvCardContent,
   HvCardHeader,
   HvCardMedia,
-  HvCardProps,
 } from "@hitachivantara/uikit-react-core";
 
+import preview from "../../../../.storybook/preview";
 import { Expandable as ExpandableStory } from "./stories/Expandable";
 import { KPICards as KPICardsStory } from "./stories/KPICards";
 import { Main as MainStory } from "./stories/Main";
 import { Selectable as SelectableStory } from "./stories/Selectable";
 import { Variants as VariantsStory } from "./stories/Variants";
 
-const meta: Meta<typeof HvCard> = {
+const meta = preview.meta({
   title: "Components/Card",
   component: HvCard,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvCardHeader, HvCardContent, HvCardMedia },
   decorators: [(Story) => <div style={{ margin: 20 }}>{Story()}</div>],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvCardProps> = {
+export const Main = meta.story({
   args: {
     bgcolor: "bgContainer",
     statusColor: "negative",
@@ -34,9 +32,9 @@ export const Main: StoryObj<HvCardProps> = {
     icon: { control: { disable: true } },
   },
   render: (args) => <MainStory {...args} />,
-};
+});
 
-export const Variants: StoryObj<HvCardProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -46,13 +44,13 @@ export const Variants: StoryObj<HvCardProps> = {
     },
   },
   render: () => <VariantsStory />,
-};
+});
 
-export const KPICards: StoryObj<HvCardProps> = {
+export const KPICards = meta.story({
   render: () => <KPICardsStory />,
-};
+});
 
-export const Selectable: StoryObj<HvCardProps> = {
+export const Selectable = meta.story({
   parameters: {
     docs: {
       description: {
@@ -62,9 +60,9 @@ export const Selectable: StoryObj<HvCardProps> = {
     },
   },
   render: () => <SelectableStory />,
-};
+});
 
-export const Expandable: StoryObj<HvCardProps> = {
+export const Expandable = meta.story({
   parameters: {
     docs: {
       description: {
@@ -74,4 +72,4 @@ export const Expandable: StoryObj<HvCardProps> = {
     },
   },
   render: () => <ExpandableStory />,
-};
+});

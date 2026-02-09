@@ -1,19 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
-  HvButton,
   HvTimePicker,
-  HvTimePickerProps,
   HvTimePickerValue,
 } from "@hitachivantara/uikit-react-core";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Time Picker",
   component: HvTimePicker,
-} satisfies Meta<typeof HvTimePicker>;
+});
 
-export const Main: StoryObj<HvTimePickerProps> = {
+export const Main = meta.story({
   args: {
     label: "Time Picker",
     description: "",
@@ -30,43 +29,9 @@ export const Main: StoryObj<HvTimePickerProps> = {
   render: (args) => {
     return <HvTimePicker {...args} />;
   },
-};
+});
 
-export const Form: StoryObj<HvTimePickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A Time Picker usage inside a form`form`. Give `HvTimePicker` a `name`, and it will be included in the form data, \
-          following the time [`input` format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time).",
-      },
-    },
-  },
-  decorators: [(Story) => <div className="min-h-200px w-200px">{Story()}</div>],
-  render: () => {
-    return (
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          const formData = new FormData(event.currentTarget);
-          const data = Object.fromEntries(formData.entries());
-          alert(JSON.stringify(data));
-        }}
-      >
-        <HvTimePicker
-          name="scheduleTime"
-          label="Time Picker"
-          defaultValue={{ hours: 5, minutes: 30, seconds: 14 }}
-          onChange={console.log}
-        />
-        <br />
-        <HvButton type="submit">Submit</HvButton>
-      </form>
-    );
-  },
-};
-
-export const Variants: StoryObj<HvTimePickerProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -108,9 +73,9 @@ export const Variants: StoryObj<HvTimePickerProps> = {
       </>
     );
   },
-};
+});
 
-export const Format12Hours: StoryObj<HvTimePickerProps> = {
+export const Format12Hours = meta.story({
   parameters: {
     docs: {
       description: {
@@ -138,4 +103,4 @@ export const Format12Hours: StoryObj<HvTimePickerProps> = {
       />
     );
   },
-};
+});

@@ -1,5 +1,4 @@
 import { useId, useRef, useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAdornment,
   HvBaseInput,
@@ -13,13 +12,14 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { CloseXS, Success } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvFormElement> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Form Element",
   component: HvFormElement,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvFormElementProps> = {
+export const Main = meta.story({
   args: {},
   argTypes: {
     classes: { control: { disable: true } },
@@ -128,9 +128,9 @@ export const Main: StoryObj<HvFormElementProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const Invalid: StoryObj<HvFormElementProps> = {
+export const Invalid = meta.story({
   parameters: {
     docs: {
       description: {
@@ -152,9 +152,9 @@ export const Invalid: StoryObj<HvFormElementProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const Valid: StoryObj<HvFormElementProps> = {
+export const Valid = meta.story({
   parameters: {
     docs: {
       description: {
@@ -184,9 +184,9 @@ export const Valid: StoryObj<HvFormElementProps> = {
       </HvFormElement>
     );
   },
-};
+});
 
-export const Disabled: StoryObj<HvFormElementProps> = {
+export const Disabled = meta.story({
   parameters: {
     docs: {
       description: {
@@ -205,4 +205,4 @@ export const Disabled: StoryObj<HvFormElementProps> = {
       </HvFormElement>
     );
   },
-};
+});

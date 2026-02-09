@@ -1,21 +1,20 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvFormElement,
   HvFormStatus,
   HvWarningText,
-  HvWarningTextProps,
 } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvWarningText> = {
+import preview from "../../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Form Element Blocks/Warning Text",
   component: HvWarningText,
   decorators: [(storyFn) => <div style={{ width: "400px" }}>{storyFn()}</div>],
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvWarningTextProps> = {
+export const Main = meta.story({
   args: {
     isVisible: true,
     disabled: false,
@@ -30,9 +29,9 @@ export const Main: StoryObj<HvWarningTextProps> = {
   render: (args) => {
     return <HvWarningText {...args}>List</HvWarningText>;
   },
-};
+});
 
-export const WarningTextWithStatus: StoryObj<HvWarningTextProps> = {
+export const WarningTextWithStatus = meta.story({
   parameters: {
     docs: {
       description: {
@@ -70,4 +69,4 @@ export const WarningTextWithStatus: StoryObj<HvWarningTextProps> = {
       </HvFormElement>
     );
   },
-};
+});

@@ -1,16 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvOverflowTooltip,
-  HvOverflowTooltipProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvOverflowTooltip } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvOverflowTooltip> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Overflow Tooltip",
   component: HvOverflowTooltip,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvOverflowTooltipProps> = {
+export const Main = meta.story({
   args: {
     open: true,
     placement: "top",
@@ -30,4 +27,4 @@ export const Main: StoryObj<HvOverflowTooltipProps> = {
   render: (args) => {
     return <HvOverflowTooltip {...args} />;
   },
-};
+});

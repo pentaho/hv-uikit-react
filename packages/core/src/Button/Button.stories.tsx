@@ -1,6 +1,5 @@
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StoryObj } from "@storybook/react-vite";
 import { HvButton, HvButtonProps } from "@hitachivantara/uikit-react-core";
 import {
   Delete,
@@ -14,9 +13,14 @@ import {
   Stop,
 } from "@hitachivantara/uikit-react-icons";
 
-export default { title: "Components/Button", component: HvButton };
+import preview from "../../../../.storybook/preview";
 
-export const Main: StoryObj<HvButtonProps> = {
+const meta = preview.meta({
+  title: "Components/Button",
+  component: HvButton,
+});
+
+export const Main = meta.story({
   args: {
     children: "Primary",
     variant: "primary",
@@ -33,9 +37,9 @@ export const Main: StoryObj<HvButtonProps> = {
     size: { control: { type: "select" } },
     radius: { control: { type: "select" } },
   },
-};
+});
 
-export const Variants: StoryObj<HvButtonProps> = {
+export const Variants = meta.story({
   decorators: [
     (Story) => (
       <div
@@ -84,9 +88,9 @@ export const Variants: StoryObj<HvButtonProps> = {
       </HvButton>
     </>
   ),
-};
+});
 
-export const Sizes: StoryObj<HvButtonProps> = {
+export const Sizes = meta.story({
   decorators: [
     (Story) => <div className="flex flex-wrap gap-sm">{Story()}</div>,
   ],
@@ -109,9 +113,9 @@ export const Sizes: StoryObj<HvButtonProps> = {
       </HvButton>
     </>
   ),
-};
+});
 
-export const FocusableWhenDisabled: StoryObj<HvButtonProps> = {
+export const FocusableWhenDisabled = meta.story({
   decorators: [
     (Story) => (
       <div
@@ -153,9 +157,9 @@ export const FocusableWhenDisabled: StoryObj<HvButtonProps> = {
       </HvButton>
     </>
   ),
-};
+});
 
-export const Icons: StoryObj<HvButtonProps> = {
+export const Icons = meta.story({
   decorators: [
     (Story) => (
       <div className="flex flex-col gap-sm [&>div]:flex [&>div]:gap-sm">
@@ -200,9 +204,9 @@ export const Icons: StoryObj<HvButtonProps> = {
       </div>
     </>
   ),
-};
+});
 
-export const Semantic: StoryObj<HvButtonProps> = {
+export const Semantic = meta.story({
   decorators: [
     (Story) => (
       <div className="flex gap-sm p-sm text-textDark bg-infoDimmed">
@@ -226,7 +230,7 @@ export const Semantic: StoryObj<HvButtonProps> = {
       </HvButton>
     </>
   ),
-};
+});
 
 interface CustomLinkProps extends HvButtonProps<"a"> {
   to: string;
@@ -238,7 +242,7 @@ const CustomLink = ({ to, children, ...others }: CustomLinkProps) => (
   </a>
 );
 
-export const CustomRootComponent: StoryObj<HvButtonProps> = {
+export const CustomRootComponent = meta.story({
   parameters: {
     docs: {
       description: {
@@ -273,9 +277,9 @@ export const CustomRootComponent: StoryObj<HvButtonProps> = {
       </HvButton>
     </>
   ),
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
       <HvButton variant="primary">Primary</HvButton>
@@ -415,4 +419,4 @@ export const Test: StoryObj = {
       <HvButton startIcon={<div className="i-ph-plus-bold" />}>Add</HvButton>
     </div>
   ),
-};
+});

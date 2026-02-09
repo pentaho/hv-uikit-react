@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { renderStory, setupChromatic } from "@hitachivantara/internal";
 
+import preview from "../../../../.storybook/preview";
 import { Disabled as AccordionDisabledStory } from "../Accordion/Accordion.stories";
 import { Main as ActionBarMainStory } from "../ActionBar/ActionBar.stories";
 import {
@@ -72,14 +72,13 @@ import { Variants as TextAreaVariantsStory } from "../TextArea/TextArea.stories"
 import { Multiple as ToggleButtonMultipleStory } from "../ToggleButton/ToggleButton.stories";
 import { Test as TypographyTestStory } from "../Typography/Typography.stories";
 
-/** Visual tests for components from the Core package */
-export default {
+const meta = preview.meta({
   title: "Tests/Components",
   tags: ["skipTestRunner"],
-} satisfies Meta;
+});
 
 /** Basic inputs */
-export const TestInputs: StoryObj = {
+export const TestInputs = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -126,10 +125,10 @@ export const TestInputs: StoryObj = {
       </div>
     </div>
   ),
-};
+});
 
 /** Inputs that have popups */
-export const TestPopups: StoryObj = {
+export const TestPopups = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -156,10 +155,10 @@ export const TestPopups: StoryObj = {
       </div>
     </div>
   ),
-};
+});
 
 /** Components that are mostly buttons/actions or containers for actions */
-export const TestButtons: StoryObj = {
+export const TestButtons = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -193,10 +192,10 @@ export const TestButtons: StoryObj = {
       {renderStory(TabsTestStory, context)}
     </div>
   ),
-};
+});
 
 /** Surfaces and other containers */
-export const TestSurfaces: StoryObj = {
+export const TestSurfaces = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -218,10 +217,10 @@ export const TestSurfaces: StoryObj = {
       </div>
     </div>
   ),
-};
+});
 
 /** Misc components */
-export const TestOthers: StoryObj = {
+export const TestOthers = meta.story({
   parameters: {
     ...setupChromatic("all", 5000),
   },
@@ -265,10 +264,10 @@ export const TestOthers: StoryObj = {
       </div>
     </div>
   ),
-};
+});
 
 /** Structural components */
-export const TestStructure: StoryObj = {
+export const TestStructure = meta.story({
   parameters: {
     ...setupChromatic("default", 5000),
   },
@@ -287,4 +286,4 @@ export const TestStructure: StoryObj = {
       </div>
     </div>
   ),
-};
+});

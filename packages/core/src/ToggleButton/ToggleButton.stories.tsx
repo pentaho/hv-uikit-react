@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvToggleButton,
-  HvToggleButtonProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvToggleButton } from "@hitachivantara/uikit-react-core";
 import {
   BackwardsEmpty,
   BackwardsSelected,
@@ -27,13 +23,14 @@ import {
   UpSelected,
 } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvToggleButton> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Toggle Button",
   component: HvToggleButton,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvToggleButtonProps> = {
+export const Main = meta.story({
   args: {
     defaultSelected: false,
     disabled: false,
@@ -48,9 +45,9 @@ export const Main: StoryObj<HvToggleButtonProps> = {
   render: (args) => {
     return <HvToggleButton aria-label="Favorite" {...args} />;
   },
-};
+});
 
-export const Multiple: StoryObj<HvToggleButtonProps> = {
+export const Multiple = meta.story({
   parameters: {
     docs: {
       description: {
@@ -113,9 +110,9 @@ export const Multiple: StoryObj<HvToggleButtonProps> = {
       </>
     );
   },
-};
+});
 
-export const Animated: StoryObj<HvToggleButtonProps> = {
+export const Animated = meta.story({
   parameters: {
     docs: {
       description: {
@@ -150,4 +147,4 @@ export const Animated: StoryObj<HvToggleButtonProps> = {
       </HvToggleButton>
     );
   },
-};
+});

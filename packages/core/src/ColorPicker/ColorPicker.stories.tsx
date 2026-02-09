@@ -1,18 +1,14 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvColorPicker,
-  HvColorPickerProps,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvColorPicker, HvTypography } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvColorPicker> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Color Picker",
   component: HvColorPicker,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvColorPickerProps> = {
+export const Main = meta.story({
   args: {
     label: "Color",
     showSavedColors: true,
@@ -33,9 +29,9 @@ export const Main: StoryObj<HvColorPickerProps> = {
       />
     );
   },
-};
+});
 
-export const IconOnly: StoryObj<HvColorPickerProps> = {
+export const IconOnly = meta.story({
   parameters: {
     docs: {
       description: {
@@ -53,9 +49,9 @@ export const IconOnly: StoryObj<HvColorPickerProps> = {
       />
     );
   },
-};
+});
 
-export const ControlledColorPicker: StoryObj<HvColorPickerProps> = {
+export const ControlledColorPicker = meta.story({
   parameters: {
     docs: {
       description: {
@@ -86,9 +82,9 @@ export const ControlledColorPicker: StoryObj<HvColorPickerProps> = {
       </div>
     );
   },
-};
+});
 
-export const Test: StoryObj = {
+export const Test = meta.story({
   decorators: [(Story) => <div className="flex gap-xs">{Story()}</div>],
   render: () => (
     <>
@@ -105,4 +101,4 @@ export const Test: StoryObj = {
       <HvColorPicker label="Color" iconOnly defaultValue="#59941B" />
     </>
   ),
-};
+});

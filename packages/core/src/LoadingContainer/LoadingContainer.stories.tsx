@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvListContainer,
   HvListItem,
   HvLoadingContainer,
-  HvLoadingContainerProps,
   HvPanel,
 } from "@hitachivantara/uikit-react-core";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Loading Container",
   component: HvLoadingContainer,
-} satisfies Meta<typeof HvLoadingContainer>;
+});
 
-export const Main: StoryObj<HvLoadingContainerProps> = {
+export const Main = meta.story({
   args: {
     label: "Loading",
     opacity: 0.8,
@@ -37,4 +37,4 @@ export const Main: StoryObj<HvLoadingContainerProps> = {
       </HvPanel>
     </HvLoadingContainer>
   ),
-};
+});

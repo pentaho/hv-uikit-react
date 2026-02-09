@@ -1,7 +1,6 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIcon as User } from "@phosphor-icons/react/User";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvIconContainer,
@@ -9,13 +8,14 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { User as HvUser } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvIconContainer> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Icon Container",
   component: HvIconContainer,
-};
-export default meta;
+});
 
-export const Main: StoryObj<typeof HvIconContainer> = {
+export const Main = meta.story({
   args: {
     color: "primary",
     size: "md",
@@ -26,9 +26,9 @@ export const Main: StoryObj<typeof HvIconContainer> = {
       <User />
     </HvIconContainer>
   ),
-};
+});
 
-export const Variants: StoryObj<typeof HvIconContainer> = {
+export const Variants = meta.story({
   args: {
     color: "warning",
     rotate: false,
@@ -93,4 +93,4 @@ export const Variants: StoryObj<typeof HvIconContainer> = {
       </div>
     );
   },
-};
+});

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBanner,
   HvBannerContent,
@@ -9,14 +8,16 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { Deploy } from "@hitachivantara/uikit-react-icons";
 
-export default {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Banner",
   component: HvBanner,
   // @ts-ignore https://github.com/storybookjs/storybook/issues/23170
   subcomponents: { HvBannerContent },
-} satisfies Meta<typeof HvBanner>;
+});
 
-export const Main: StoryObj<HvBannerProps> = {
+export const Main = meta.story({
   args: {
     open: true,
     variant: "default",
@@ -33,9 +34,9 @@ export const Main: StoryObj<HvBannerProps> = {
   render: (args) => {
     return <HvBanner style={{ position: "relative", top: 0 }} {...args} />;
   },
-};
+});
 
-export const Variants: StoryObj<HvBannerProps> = {
+export const Variants = meta.story({
   parameters: {
     docs: {
       description: {
@@ -120,9 +121,9 @@ export const Variants: StoryObj<HvBannerProps> = {
       </>
     );
   },
-};
+});
 
-export const BannerController: StoryObj<HvBannerProps> = {
+export const BannerController = meta.story({
   parameters: {
     docs: {
       description: {
@@ -179,4 +180,4 @@ export const BannerController: StoryObj<HvBannerProps> = {
       </>
     );
   },
-};
+});

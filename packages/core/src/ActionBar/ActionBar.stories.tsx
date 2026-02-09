@@ -1,12 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvActionBar,
-  HvActionBarProps,
-  HvButton,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { HvActionBar, HvButton, theme } from "@hitachivantara/uikit-react-core";
 
-const meta: Meta<typeof HvActionBar> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Action Bar",
   component: HvActionBar,
   decorators: [
@@ -16,11 +12,9 @@ const meta: Meta<typeof HvActionBar> = {
       </div>
     ),
   ],
-};
+});
 
-export default meta;
-
-export const Main: StoryObj<HvActionBarProps> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
   },
@@ -32,4 +26,4 @@ export const Main: StoryObj<HvActionBarProps> = {
       <HvButton variant="secondaryGhost">Cancel</HvButton>
     </HvActionBar>
   ),
-};
+});

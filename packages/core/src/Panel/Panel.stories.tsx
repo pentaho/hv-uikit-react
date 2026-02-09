@@ -1,20 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvIconButton,
   HvPanel,
-  HvPanelProps,
   HvTypography,
   theme,
 } from "@hitachivantara/uikit-react-core";
 import { Close } from "@hitachivantara/uikit-react-icons";
 
-const meta: Meta<typeof HvPanel> = {
+import preview from "../../../../.storybook/preview";
+
+const meta = preview.meta({
   title: "Components/Panel",
   component: HvPanel,
-};
-export default meta;
+});
 
-export const Main: StoryObj<HvPanelProps> = {
+export const Main = meta.story({
   argTypes: {
     classes: { control: { disable: true } },
   },
@@ -25,9 +24,9 @@ export const Main: StoryObj<HvPanelProps> = {
       </HvPanel>
     );
   },
-};
+});
 
-export const WithScroll: StoryObj<HvPanelProps> = {
+export const WithScroll = meta.story({
   render: () => {
     const chars = "abcdefghijklmnopqrstuvwxyz";
 
@@ -41,9 +40,9 @@ export const WithScroll: StoryObj<HvPanelProps> = {
       </HvPanel>
     );
   },
-};
+});
 
-export const Modal: StoryObj<HvPanelProps> = {
+export const Modal = meta.story({
   render: () => {
     return (
       <HvPanel
@@ -67,4 +66,4 @@ export const Modal: StoryObj<HvPanelProps> = {
       </HvPanel>
     );
   },
-};
+});
