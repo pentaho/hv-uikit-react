@@ -19,7 +19,10 @@ import type { HvBadgeProps } from "../Badge";
 import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
-import type { HvBaseDropdownProps } from "../BaseDropdown";
+import type {
+  HvBaseDropdownProps,
+  HvDropdownPanelProps,
+} from "../BaseDropdown";
 import type { HvBaseInputProps } from "../BaseInput";
 import type { HvBaseRadioProps } from "../BaseRadio";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
@@ -400,19 +403,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
         select: {
           borderRadius: theme.radii.round,
-        },
-        panel: {
-          ...popperStyles,
-        },
-        popper: {
-          "&[data-popper-placement*='bottom'] .HvSelect-panel": {
-            borderRadius: theme.radii.large,
-            top: 1,
-          },
-          "&[data-popper-placement*='top'] .HvSelect-panel": {
-            borderRadius: theme.radii.large,
-            top: -1,
-          },
         },
       },
     } satisfies CSSClasses<HvSelectProps<any>>,
@@ -1029,14 +1019,15 @@ export const pentaho = mergeTheme(pentahoBase, {
             borderColor: theme.colors.textDimmed,
           },
         },
-        panel: {
-          "&[data-popper-placement*='top'],&[data-popper-placement*='bottom']":
-            {
-              ...popperStyles,
-            },
-        },
       },
     } satisfies CSSClasses<HvBaseDropdownProps>,
+    HvDropdownPanel: {
+      classes: {
+        panel: {
+          ...popperStyles,
+        },
+      },
+    } satisfies CSSClasses<HvDropdownPanelProps>,
     HvDropDownMenu: {
       classes: {
         root: {

@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import {
-  Popper,
   SelectProvider,
   useSelect,
   type SelectOption,
@@ -12,10 +11,10 @@ import type { Placement } from "@popperjs/core";
 import { clsx, type ClassValue } from "clsx";
 import {
   useDefaultProps,
-  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
+import { HvDropdownPanel } from "../BaseDropdown";
 import { HvButtonProps } from "../Button";
 import { HvDropdownButton } from "../DropdownButton";
 import {
@@ -28,10 +27,11 @@ import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvListContainer } from "../ListContainer";
 import { fixedForwardRef } from "../types/generic";
-import { getContainerElement } from "../utils/document";
 import { setId } from "../utils/setId";
 import { HvOption } from "./Option";
 import { staticClasses, useClasses } from "./Select.styles";
+
+const noop = () => {};
 
 function defaultRenderValue<Value>(
   options: SelectOption<Value> | SelectOption<Value>[] | null,
@@ -152,8 +152,6 @@ export const HvSelect = fixedForwardRef(function HvSelect<
   } = useDefaultProps("HvSelect", props);
   const { classes, cx } = useClasses(classesProp);
 
-  const { rootId } = useTheme();
-
   const [placement, setPlacement] = useState<Placement>("bottom-start");
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -264,7 +262,7 @@ export const HvSelect = fixedForwardRef(function HvSelect<
         className={cx(classes.select, {
           [classes.invalid]: validationState === "invalid",
         })}
-        placement={placement}
+        data-popper-placement={placement} // NEXT5 border alignment
         size={size}
         variant={variant}
         aria-label={ariaLabel}
@@ -278,37 +276,28 @@ export const HvSelect = fixedForwardRef(function HvSelect<
       >
         {renderValue(actualValue as any) ?? placeholder}
       </HvDropdownButton>
-      <Popper
+      <HvDropdownPanel
         role="none"
         open={isOpen}
         keepMounted
+        variableWidth={variableWidth}
         disablePortal={!enablePortal}
-        container={enablePortal ? getContainerElement(rootId) : undefined}
         anchorEl={buttonRef.current}
-        className={classes.popper}
+        classes={{ container: classes.popper, panel: classes.panel }}
         placement={placement}
-        modifiers={[
-          {
-            enabled: true,
-            phase: "main",
-            fn: ({ state }) => setPlacement(state.placement),
-          },
-        ]}
+        onFirstUpdate={(state) => setPlacement(state.placement!)}
+        onClickAway={noop}
+        onToggle={noop}
       >
         <HvListContainer
           condensed
           selectable
-          style={{
-            width: variableWidth
-              ? "auto"
-              : (buttonRef.current?.clientWidth || 0) + 2,
-          }}
-          className={classes.panel}
+          data-is-dropdown
           {...getListboxProps()}
         >
           <SelectProvider value={contextValue}>{children}</SelectProvider>
         </HvListContainer>
-      </Popper>
+      </HvDropdownPanel>
       <input
         {...getHiddenInputProps()}
         autoComplete={autoComplete}

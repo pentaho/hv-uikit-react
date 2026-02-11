@@ -1,13 +1,11 @@
 import { useState } from "react";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Popper from "@mui/material/Popper";
 import {
   HvButton,
+  HvDropdownPanel,
   HvIconContainer,
   HvInput,
   HvListItem,
   HvMultiButton,
-  HvPanel,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS } from "@hitachivantara/uikit-react-icons";
@@ -112,20 +110,18 @@ function LoginMultiButton() {
           <DropDownXS />
         </HvButton>
       </HvMultiButton>
-      <Popper
+      <HvDropdownPanel
         disablePortal
         anchorEl={anchorEl}
         open={open}
         placement="bottom-end"
         className="z-popover"
+        onClickAway={() => setAnchorEl(undefined)}
+        classes={{ panel: "grid gap-sm p-sm" }}
       >
-        <ClickAwayListener onClickAway={() => setAnchorEl(undefined)}>
-          <HvPanel className="grid w-320px my-2px border rounded-large">
-            <ListItem name="Administrator" iconId="i-ph-user-gear" />
-            <ListItem name="Business User" iconId="i-ph-user" />
-          </HvPanel>
-        </ClickAwayListener>
-      </Popper>
+        <ListItem name="Administrator" iconId="i-ph-user-gear" />
+        <ListItem name="Business User" iconId="i-ph-user" />
+      </HvDropdownPanel>
     </>
   );
 }

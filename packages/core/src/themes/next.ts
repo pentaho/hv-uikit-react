@@ -6,7 +6,10 @@ import {
 
 import type { HvAvatarProps } from "../Avatar";
 import type { HvBannerContentProps } from "../Banner";
-import type { HvBaseDropdownProps } from "../BaseDropdown";
+import type {
+  HvBaseDropdownProps,
+  HvDropdownPanelProps,
+} from "../BaseDropdown";
 import { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvButtonProps } from "../Button";
@@ -20,7 +23,6 @@ import type {
 } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvMultiButtonProps } from "../MultiButton";
-import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps } from "../Snackbar";
 import type { HvStatusIconProps } from "../StatusIcon";
 import type { HvTabProps, HvTabsProps } from "../Tabs";
@@ -48,34 +50,36 @@ export const next = mergeTheme(nextBase, {
       classes: {
         headerOpen: {
           "--r": theme.radii.round,
-          "&[data-popper-placement*='top']": {
+          "&[data-popper-placement*=top]": {
             borderRadius: "0 0 var(--r) var(--r)",
           },
-          "&[data-popper-placement*='bottom']": {
+          "&[data-popper-placement*=bottom]": {
             borderRadius: "var(--r) var(--r) 0 0",
-          },
-        },
-        panel: {
-          "--r": theme.radii.round,
-          "&[data-popper-placement*='top']": {
-            top: 1,
-            borderRadius: "var(--r) var(--r) var(--r) 0",
-          },
-          "&[data-popper-placement*='top']:has([data-is-dropdown='true'])": {
-            top: 1,
-            borderRadius: "var(--r) var(--r) 0 0",
-          },
-          "&[data-popper-placement*='bottom']": {
-            top: -1,
-            borderRadius: "0 var(--r) var(--r) var(--r)",
-          },
-          "&[data-popper-placement*='bottom']:has([data-is-dropdown='true'])": {
-            top: -1,
-            borderRadius: "0 0 var(--r) var(--r)",
           },
         },
       },
     } satisfies CSSClasses<HvBaseDropdownProps>,
+    HvDropdownPanel: {
+      classes: {
+        panel: {
+          "--r": theme.radii.round,
+          "&[data-popper-placement*=top]": {
+            top: 1,
+            borderRadius: "var(--r) var(--r) var(--r) 0",
+            "&:has([data-is-dropdown])": {
+              borderRadius: "var(--r) var(--r) 0 0",
+            },
+          },
+          "&[data-popper-placement*=bottom]": {
+            top: -1,
+            borderRadius: "0 var(--r) var(--r) var(--r)",
+            "&:has([data-is-dropdown])": {
+              borderRadius: "0 0 var(--r) var(--r)",
+            },
+          },
+        },
+      },
+    } satisfies CSSClasses<HvDropdownPanelProps>,
     HvBreadCrumb: {
       classes: {
         link: {
@@ -200,19 +204,6 @@ export const next = mergeTheme(nextBase, {
         },
       },
     } satisfies CSSClasses<HvMultiButtonProps>,
-    HvSelect: {
-      classes: {
-        popper: {
-          "--r": theme.radii.round,
-          "&[data-popper-placement*='top'] .HvSelect-panel": {
-            borderRadius: "var(--r) var(--r) 0 0",
-          },
-          "&[data-popper-placement*='bottom'] .HvSelect-panel": {
-            borderRadius: "0 0 var(--r) var(--r)",
-          },
-        },
-      },
-    } satisfies CSSClasses<HvSelectProps<any>>,
     HvSnackbarContent: {
       classes: {
         root: {

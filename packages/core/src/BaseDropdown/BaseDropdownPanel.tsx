@@ -1,98 +1,114 @@
+import { useRef, useState } from "react";
 import ClickAwayListener, {
-  ClickAwayListenerProps,
+  type ClickAwayListenerProps,
 } from "@mui/material/ClickAwayListener";
-import Portal from "@mui/material/Portal";
-import { useCss, useTheme } from "@hitachivantara/uikit-react-utils";
+import Popper, { type PopperProps } from "@mui/material/Popper";
+import type { Instance, OptionsGeneric, Placement } from "@popperjs/core";
+import {
+  createClasses,
+  useDefaultProps,
+  useTheme,
+  type ExtractNames,
+} from "@hitachivantara/uikit-react-utils";
+import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvPanel } from "../Panel";
 import { getContainerElement } from "../utils/document";
-import type {
-  HvBaseDropdownClasses,
-  HvBaseDropdownProps,
-} from "./BaseDropdown";
-import { useBaseDropdownContext } from "./context";
+import { getFirstAndLastFocus } from "../utils/focusableElementFinder";
+import { isKey } from "../utils/keyboardUtils";
+import type { HvBaseDropdownProps } from "./BaseDropdown";
+import { usePopperModifiers } from "./utils";
 
-export interface BaseDropdownPanelProps
-  extends Pick<
-    HvBaseDropdownProps,
-    "disablePortal" | "onClickOutside" | "children"
-  > {
-  classes: Required<HvBaseDropdownClasses>;
+const name = "HvDropdownPanel";
+const { useClasses } = createClasses(name, {
+  container: {
+    zIndex: theme.zIndices.popover,
+    width: "auto",
+  },
+  panel: {
+    padding: 0, // TODO(major): remove padding as most elements need it
+    border: `1px solid ${theme.colors.text}`,
+  },
+});
+
+export interface HvDropdownPanelProps
+  extends Omit<PopperProps, "children">,
+    Pick<HvBaseDropdownProps, "disablePortal" | "children"> {
+  variableWidth?: boolean;
+  classes?: ExtractNames<typeof useClasses>;
   containerId?: string;
-  onContainerKeyDown: (event: any) => void;
+  onToggle?: (event: any) => void;
+  onFirstUpdate?: OptionsGeneric<any>["onFirstUpdate"];
   onClickAway: ClickAwayListenerProps["onClickAway"];
 }
 
-export const BaseDropdownPanel = ({
-  classes,
-  containerId,
-  children,
-  disablePortal,
-  onContainerKeyDown,
-  onClickAway,
-}: BaseDropdownPanelProps) => {
-  const { cx } = useCss();
-  const { popperPlacement, popper, referenceElement, setPopperElement } =
-    useBaseDropdownContext();
-
+export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
+  const {
+    classes: classesProp,
+    className,
+    containerId,
+    children,
+    variableWidth,
+    anchorEl,
+    disablePortal,
+    modifiers: modifiersProp,
+    popperOptions,
+    onToggle,
+    onClickAway,
+    onFirstUpdate,
+    ...others
+  } = useDefaultProps(name, props);
+  const { classes, cx } = useClasses(classesProp, false);
   const { rootId } = useTheme();
+  const popperRef = useRef<Instance>(null);
+  const [placement, setPlacement] = useState<Placement>();
 
-  const extensionWidth = referenceElement
-    ? referenceElement?.offsetWidth
-    : "inherit";
+  const modifiers = usePopperModifiers({
+    variableWidth,
+    modifiers: modifiersProp,
+    onPlacementChange: setPlacement,
+  });
 
-  const container = (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
-      ref={setPopperElement}
-      className={classes.container}
-      onKeyDown={onContainerKeyDown}
-      style={popper?.styles.popper}
-      {...popper?.attributes.popper}
-    >
-      {popperPlacement?.includes("bottom") && (
-        <div
-          style={{ width: extensionWidth }}
-          className={cx(classes.inputExtensionOpen, {
-            [classes.inputExtensionLeftPosition]:
-              popperPlacement.includes("end"),
-          })}
-        />
-      )}
-      <HvPanel
-        // TODO: review in v6. `containerId` needs to be on the role element (`children` has it)
-        id={containerId}
-        data-popper-placement={popperPlacement}
-        className={classes.panel}
-      >
-        {children}
-      </HvPanel>
-      {popperPlacement?.includes("top") && (
-        <div
-          style={{ width: extensionWidth }}
-          className={cx(
-            classes.inputExtensionOpen,
-            classes.inputExtensionOpenShadow,
-            {
-              [classes.inputExtensionFloatRight]:
-                popperPlacement.includes("end"),
-              [classes.inputExtensionFloatLeft]:
-                popperPlacement.includes("start"),
-            },
-          )}
-        />
-      )}
-    </div>
-  );
+  /** Handle keyboard inside children container. */
+  const handleKeyDown: React.KeyboardEventHandler = (event) => {
+    if (isKey(event, "Esc")) {
+      onToggle?.(event);
+    }
+    if (isKey(event, "Tab") && !event.shiftKey) {
+      const focusList = getFirstAndLastFocus(
+        popperRef.current?.state?.elements.popper as HTMLElement,
+      );
+      if (document.activeElement === focusList?.last) {
+        event.preventDefault();
+        focusList?.first?.focus();
+      }
+    }
+  };
 
   return (
-    <Portal
-      container={getContainerElement(rootId)}
+    <Popper
+      anchorEl={anchorEl}
+      popperRef={popperRef}
       disablePortal={disablePortal}
+      container={!disablePortal ? getContainerElement(rootId) : undefined}
+      className={cx(classes.container, className)}
+      modifiers={modifiers}
+      onKeyDown={handleKeyDown}
+      popperOptions={{
+        onFirstUpdate,
+        ...popperOptions,
+      }}
+      {...others}
     >
       <ClickAwayListener onClickAway={onClickAway}>
-        {container}
+        <HvPanel
+          id={containerId} // TODO(major): move `containerId` to role'd element
+          className={classes.panel}
+          data-popper-placement={placement}
+        >
+          {children}
+        </HvPanel>
       </ClickAwayListener>
-    </Portal>
+    </Popper>
   );
 };

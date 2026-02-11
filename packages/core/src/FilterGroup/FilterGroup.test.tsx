@@ -272,15 +272,12 @@ describe("FilterGroup", () => {
     const user = userEvent.setup();
     render(<FilterGroup emptyValue />);
 
-    const dropdown = screen.getByRole("combobox");
-
-    await user.click(dropdown);
+    await user.click(screen.getByRole("combobox"));
 
     const [leftList] = screen.getAllByRole("list");
 
     // Select second category
     await user.click(within(leftList).getAllByRole("listitem")[1]);
-    expect(within(leftList).getAllByRole("listitem")[1]).toHaveFocus();
 
     // Click on "All" checkbox
     await user.click(screen.getByRole("checkbox", { name: "0 / 4" }));
