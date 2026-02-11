@@ -20,6 +20,7 @@ import type { HvBannerContentProps } from "../Banner";
 import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvBaseDropdownProps } from "../BaseDropdown";
+import type { HvBaseDropdownPopperProps } from "../BaseDropdown/BaseDropdownPanel";
 import type { HvBaseInputProps } from "../BaseInput";
 import type { HvBaseRadioProps } from "../BaseRadio";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
@@ -1004,10 +1005,17 @@ export const pentaho = mergeTheme(pentahoBase, {
           },
         },
         panel: {
-          ...popperStyles,
+          ...popperStyles, // TODO(minor): remove in favor of HvBaseDropdownPopper
         },
       },
     } satisfies CSSClasses<HvBaseDropdownProps>,
+    HvBaseDropdownPopper: {
+      classes: {
+        panel: {
+          ...popperStyles,
+        },
+      },
+    } satisfies CSSClasses<HvBaseDropdownPopperProps>,
     HvDropDownMenu: {
       classes: {
         root: {

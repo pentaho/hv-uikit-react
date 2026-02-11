@@ -1,62 +1,83 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import ClickAwayListener, {
   ClickAwayListenerProps,
 } from "@mui/material/ClickAwayListener";
 import Popper, { PopperProps } from "@mui/material/Popper";
-import { detectOverflow, type Instance, type Options } from "@popperjs/core";
-import { useCss, useTheme } from "@hitachivantara/uikit-react-utils";
+import {
+  detectOverflow,
+  type Instance,
+  type Options,
+  type OptionsGeneric,
+  type Placement,
+} from "@popperjs/core";
+import {
+  createClasses,
+  ExtractNames,
+  useDefaultProps,
+  useTheme,
+} from "@hitachivantara/uikit-react-utils";
+import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvPanel } from "../Panel";
 import { getContainerElement } from "../utils/document";
 import { getFirstAndLastFocus } from "../utils/focusableElementFinder";
 import { isKey } from "../utils/keyboardUtils";
-import type {
-  HvBaseDropdownClasses,
-  HvBaseDropdownProps,
-} from "./BaseDropdown";
-import { BaseDropdownContext } from "./context";
+import type { HvBaseDropdownProps } from "./BaseDropdown";
+
+const name = "HvBaseDropdownPopper";
+const { useClasses } = createClasses(name, {
+  container: {
+    zIndex: theme.zIndices.popover,
+    width: "auto",
+  },
+  panel: {
+    padding: 0, // TODO(major): remove padding as most elements need it
+    border: `1px solid ${theme.colors.text}`,
+  },
+});
 
 export interface HvBaseDropdownPopperProps
   extends Omit<PopperProps, "children">,
-    Pick<
-      HvBaseDropdownProps,
-      "disablePortal" | "onClickOutside" | "onContainerCreation" | "children"
-    > {
+    Pick<HvBaseDropdownProps, "disablePortal" | "onClickOutside" | "children"> {
   variableWidth?: boolean;
-  classes: Required<HvBaseDropdownClasses>;
+  classes?: ExtractNames<typeof useClasses>;
   containerId?: string;
-  onToggle: (event: any) => void;
+  onToggle?: (event: any) => void;
+  onFirstUpdate?: OptionsGeneric<any>["onFirstUpdate"];
   onClickAway: ClickAwayListenerProps["onClickAway"];
 }
 
-export const HvBaseDropdownPopper = ({
-  classes,
-  className,
-  containerId,
-  children,
-  variableWidth,
-  anchorEl,
-  disablePortal,
-  modifiers: modifiersProp,
-  popperOptions,
-  onToggle,
-  onClickAway,
-  onContainerCreation,
-  ...others
-}: HvBaseDropdownPopperProps) => {
-  const { cx } = useCss();
+export const HvBaseDropdownPopper = (props: HvBaseDropdownPopperProps) => {
+  const {
+    classes: classesProp,
+    className,
+    containerId,
+    children,
+    variableWidth,
+    anchorEl,
+    disablePortal,
+    modifiers: modifiersProp,
+    popperOptions,
+    onToggle,
+    onClickAway,
+    onFirstUpdate,
+    ...others
+  } = useDefaultProps(name, props);
+  const { classes, cx } = useClasses(classesProp, false);
   const { rootId } = useTheme();
   const popperRef = useRef<Instance>(null);
+  const [placement, setPlacement] = useState<Placement>();
 
   const modifiers = usePopperModifiers({
     variableWidth,
     modifiers: modifiersProp,
+    onPlacementChange: setPlacement,
   });
 
   /** Handle keyboard inside children container. */
   const handleKeyDown: React.KeyboardEventHandler = (event) => {
     if (isKey(event, "Esc")) {
-      onToggle(event);
+      onToggle?.(event);
     }
     if (isKey(event, "Tab") && !event.shiftKey) {
       const focusList = getFirstAndLastFocus(
@@ -70,44 +91,52 @@ export const HvBaseDropdownPopper = ({
   };
 
   return (
-    <ClickAwayListener onClickAway={onClickAway}>
-      <Popper
-        anchorEl={anchorEl}
-        popperRef={popperRef}
-        disablePortal={disablePortal}
-        container={!disablePortal ? getContainerElement(rootId) : undefined}
-        className={cx(classes.container, className)}
-        onKeyDown={handleKeyDown}
-        modifiers={modifiers}
-        popperOptions={{
-          onFirstUpdate: ({ elements }) => {
-            onContainerCreation?.(elements?.popper ?? null);
-          },
-          ...popperOptions,
-        }}
-        {...others}
-      >
+    <Popper
+      anchorEl={anchorEl}
+      popperRef={popperRef}
+      disablePortal={disablePortal}
+      container={!disablePortal ? getContainerElement(rootId) : undefined}
+      className={cx(classes.container, className)}
+      modifiers={modifiers}
+      onKeyDown={handleKeyDown}
+      popperOptions={{
+        onFirstUpdate,
+        ...popperOptions,
+      }}
+      {...others}
+    >
+      <ClickAwayListener onClickAway={onClickAway}>
         <HvPanel
-          // TODO: review in v6. `containerId` needs to be on the role element (`children` has it)
-          id={containerId}
-          data-popper-placement={popperRef.current?.state?.placement}
+          id={containerId} // TODO(major): move `containerId` to role'd element
           className={classes.panel}
+          data-popper-placement={placement}
         >
-          <BaseDropdownContext.Provider value={{ popper: popperRef.current }}>
-            {children}
-          </BaseDropdownContext.Provider>
+          {children}
         </HvPanel>
-      </Popper>
-    </ClickAwayListener>
+      </ClickAwayListener>
+    </Popper>
   );
 };
+
+interface UsePopperModifiers
+  extends Pick<HvBaseDropdownPopperProps, "variableWidth" | "modifiers"> {
+  onPlacementChange?: (placement: Placement) => void;
+}
 
 function usePopperModifiers({
   variableWidth,
   modifiers,
-}: Pick<HvBaseDropdownPopperProps, "variableWidth" | "modifiers">) {
+  onPlacementChange,
+}: UsePopperModifiers) {
   return useMemo<Options["modifiers"]>(
     () => [
+      {
+        enabled: true,
+        phase: "main",
+        fn: ({ state }) => {
+          onPlacementChange?.(state.placement);
+        },
+      },
       {
         name: "variableWidth",
         enabled: !variableWidth,
@@ -161,6 +190,6 @@ function usePopperModifiers({
       },
       ...(modifiers || []),
     ],
-    [modifiers, variableWidth],
+    [modifiers, variableWidth, onPlacementChange],
   );
 }

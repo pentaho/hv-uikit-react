@@ -1,4 +1,5 @@
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo, useState } from "react";
+import { Placement } from "@popperjs/core";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -6,7 +7,6 @@ import {
 import { HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvBaseDropdown } from "../BaseDropdown";
-import { useBaseDropdownContext } from "../BaseDropdown/context";
 import { HvButtonVariant } from "../Button";
 import { HvDropdownButton, HvDropdownButtonProps } from "../DropdownButton";
 import { useControlled } from "../hooks/useControlled";
@@ -82,7 +82,6 @@ export interface HvDropDownMenuProps
 const HeaderComponent = forwardRef<HTMLButtonElement, HvDropdownButtonProps>(
   function HeaderComponent(props, ref) {
     const { open, icon, disabled, ...others } = props;
-    const { popperPlacement } = useBaseDropdownContext();
 
     return (
       <HvDropdownButton
@@ -92,7 +91,6 @@ const HeaderComponent = forwardRef<HTMLButtonElement, HvDropdownButtonProps>(
         disabled={disabled}
         aria-expanded={open}
         aria-haspopup="menu"
-        placement={popperPlacement}
         {...others}
       >
         {icon || <HvIcon name="DotsVertical" />}
@@ -131,7 +129,7 @@ export const HvDropDownMenu = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
-
+  const [computedPlacement, setComputedPlacement] = useState<Placement>();
   const [open, setOpen] = useControlled(expanded, Boolean(defaultExpanded));
   const id = useUniqueId(idProp);
 
@@ -171,6 +169,7 @@ export const HvDropDownMenu = forwardRef<
       }}
       expanded={open && !disabled}
       headerComponent={HeaderComponent}
+      data-popper-placement={computedPlacement}
       // @ts-expect-error infer HeaderComponent typings
       size={size}
       variant={variant}
@@ -186,7 +185,8 @@ export const HvDropDownMenu = forwardRef<
         onToggle?.(e, s);
       }}
       disabled={disabled}
-      onContainerCreation={(containerEl) => {
+      onContainerCreation={(containerEl, { placement }) => {
+        setComputedPlacement(placement);
         containerEl?.getElementsByTagName("li")[0]?.focus();
       }}
       {...others}

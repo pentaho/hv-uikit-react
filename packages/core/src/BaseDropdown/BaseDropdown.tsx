@@ -10,6 +10,7 @@ import {
 import type { ClickAwayListenerProps } from "@mui/material/ClickAwayListener";
 import type { PopperProps } from "@mui/material/Popper";
 import useForkRef from "@mui/utils/useForkRef";
+import type { Placement, State } from "@popperjs/core";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -102,7 +103,10 @@ export interface HvBaseDropdownProps
    * Callback called when the dropdown is opened and ready,
    * commonly used to set focus to the content.
    */
-  onContainerCreation?: (container: HTMLElement | null) => void;
+  onContainerCreation?: (
+    container: HTMLElement | null,
+    state: Partial<State>,
+  ) => void;
   /**
    * Attributes applied to the dropdown header element.
    */
@@ -161,8 +165,7 @@ export const HvBaseDropdown = forwardRef<
 
   const { classes, cx } = useClasses(classesProp);
 
-  const popperPlacement: PopperProps["placement"] = `bottom-${placementProp === "right" ? "start" : "end"}`;
-
+  const [computedPlacement, setComputedPlacement] = useState<Placement>();
   const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
     null,
   );
@@ -236,7 +239,7 @@ export const HvBaseDropdown = forwardRef<
 
   const defaultHeaderElement = (
     <div
-      data-popper-placement={popperPlacement}
+      data-popper-placement={computedPlacement}
       className={cx(classes.header, {
         [classes.headerOpen]: isOpen,
         [classes.headerReadOnly]: readOnly,
@@ -325,15 +328,18 @@ export const HvBaseDropdown = forwardRef<
       </HeaderComponent>
       <HvBaseDropdownPopper
         open={isOpen}
-        classes={classes}
-        placement={popperPlacement}
+        classes={{ container: classes.container, panel: classes.panel }}
+        placement={`bottom-${placementProp === "right" ? "start" : "end"}`}
         variableWidth={variableWidth}
         containerId={containerId}
         onClickAway={handleOutside}
         disablePortal={disablePortal}
         anchorEl={referenceElement}
         onToggle={handleToggle}
-        onContainerCreation={onContainerCreation}
+        onFirstUpdate={(state) => {
+          setComputedPlacement(state.placement);
+          onContainerCreation?.(state.elements?.popper ?? null, state);
+        }}
         popperOptions={popperProps}
       >
         {children}

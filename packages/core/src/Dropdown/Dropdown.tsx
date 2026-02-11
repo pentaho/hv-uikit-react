@@ -239,6 +239,7 @@ export const HvDropdown = fixedForwardRef(function HvDropdown<
 
   const elementId = useUniqueId(id);
 
+  const [popperStyles, setPopperStyles] = useState<CSSStyleDeclaration>();
   const [validationState, setValidationState] = useControlled<HvFormStatus>(
     status,
     "standBy",
@@ -478,7 +479,10 @@ export const HvDropdown = fixedForwardRef(function HvDropdown<
         placeholder={buildHeaderLabel()}
         onToggle={handleToggle}
         onClickOutside={handleClickOutside}
-        onContainerCreation={setFocusToContent}
+        onContainerCreation={(el, state) => {
+          setFocusToContent(el, state);
+          setPopperStyles(state.elements?.popper.style);
+        }}
         role="combobox"
         variableWidth={variableWidth}
         aria-label={ariaLabel}
@@ -507,6 +511,7 @@ export const HvDropdown = fixedForwardRef(function HvDropdown<
           }}
           values={internalValues}
           multiSelect={multiSelect}
+          popperStyles={popperStyles}
           showSearch={showSearch}
           onChange={handleSelection}
           onCancel={handleCancel}
