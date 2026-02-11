@@ -5,13 +5,11 @@ import {
   isValidElement,
   useCallback,
   useId,
-  useMemo,
   useState,
 } from "react";
-import { PopperProps, usePopper } from "react-popper";
 import type { ClickAwayListenerProps } from "@mui/material/ClickAwayListener";
-import { useForkRef } from "@mui/material/utils";
-import { detectOverflow, Options, Placement } from "@popperjs/core";
+import type { PopperProps } from "@mui/material/Popper";
+import useForkRef from "@mui/utils/useForkRef";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -22,11 +20,9 @@ import { useUniqueId } from "../hooks/useUniqueId";
 import { HvIcon } from "../icons";
 import { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
-import { getFirstAndLastFocus } from "../utils/focusableElementFinder";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./BaseDropdown.styles";
-import { BaseDropdownPanel } from "./BaseDropdownPanel";
-import { BaseDropdownContext, useBaseDropdownContext } from "./context";
+import { HvBaseDropdownPopper } from "./BaseDropdownPanel";
 
 export { staticClasses as baseDropdownClasses };
 
@@ -78,7 +74,7 @@ export interface HvBaseDropdownProps
   /**
    * An object containing props to be wired to the popper component.
    */
-  popperProps?: Partial<PopperProps<any>>;
+  popperProps?: PopperProps["popperOptions"];
   /**
    * Placement of the dropdown.
    */
@@ -126,12 +122,10 @@ export interface HvBaseDropdownProps
   ref?: React.Ref<HTMLDivElement>;
 }
 
-const BaseDropdown = forwardRef<
+export const HvBaseDropdown = forwardRef<
+  // no-indent
   HTMLDivElement,
-  Omit<
-    HvBaseDropdownProps,
-    "popperProps" | "variableWidth" | "placement" | "onContainerCreation"
-  >
+  HvBaseDropdownProps
 >(function BaseDropdown(props, ref) {
   const {
     id: idProp,
@@ -144,6 +138,11 @@ const BaseDropdown = forwardRef<
     headerComponent: HeaderComponentProp,
     adornment,
     expanded,
+
+    popperProps,
+    variableWidth,
+    placement: placementProp = "right",
+
     dropdownHeaderProps,
     defaultExpanded,
     disabled,
@@ -156,17 +155,17 @@ const BaseDropdown = forwardRef<
     dropdownHeaderRef: dropdownHeaderRefProp,
     onToggle,
     onClickOutside,
+    onContainerCreation,
     ...others
-  } = props;
+  } = useDefaultProps("HvBaseDropdown", props);
 
   const { classes, cx } = useClasses(classesProp);
 
-  const {
-    popperPlacement,
-    popperElement,
-    referenceElement,
-    setReferenceElement,
-  } = useBaseDropdownContext();
+  const popperPlacement: PopperProps["placement"] = `bottom-${placementProp === "right" ? "start" : "end"}`;
+
+  const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
+    null,
+  );
 
   const [isOpen, setIsOpen] = useControlled(expanded, Boolean(defaultExpanded));
 
@@ -286,20 +285,6 @@ const BaseDropdown = forwardRef<
         })
       : defaultHeaderElement;
 
-  /** Handle keyboard inside children container. */
-  const handleContainerKeyDown: React.KeyboardEventHandler = (event) => {
-    if (isKey(event, "Esc")) {
-      handleToggle(event);
-    }
-    if (isKey(event, "Tab") && !event.shiftKey) {
-      const focusList = getFirstAndLastFocus(popperElement);
-      if (document.activeElement === focusList?.last) {
-        event.preventDefault();
-        focusList?.first?.focus();
-      }
-    }
-  };
-
   const handleOutside: ClickAwayListenerProps["onClickAway"] = (event) => {
     const isButtonClick = referenceElement?.contains(event.target as any);
     if (!isButtonClick) {
@@ -338,131 +323,21 @@ const BaseDropdown = forwardRef<
       >
         {headerElement}
       </HeaderComponent>
-      {isOpen && (
-        <BaseDropdownPanel
-          classes={classes}
-          containerId={containerId}
-          onClickAway={handleOutside}
-          disablePortal={disablePortal}
-          onContainerKeyDown={handleContainerKeyDown}
-        >
-          {children}
-        </BaseDropdownPanel>
-      )}
+      <HvBaseDropdownPopper
+        open={isOpen}
+        classes={classes}
+        placement={popperPlacement}
+        variableWidth={variableWidth}
+        containerId={containerId}
+        onClickAway={handleOutside}
+        disablePortal={disablePortal}
+        anchorEl={referenceElement}
+        onToggle={handleToggle}
+        onContainerCreation={onContainerCreation}
+        popperOptions={popperProps}
+      >
+        {children}
+      </HvBaseDropdownPopper>
     </RootComponent>
   );
 });
-
-export const HvBaseDropdown = forwardRef<HTMLDivElement, HvBaseDropdownProps>(
-  function HvBaseDropdown(props, ref) {
-    const {
-      popperProps = {},
-      variableWidth,
-      placement: placementProp = "right",
-      onContainerCreation,
-      ...others
-    } = useDefaultProps("HvBaseDropdown", props);
-
-    const placement: Placement = `bottom-${
-      placementProp === "right" ? "start" : "end"
-    }`;
-
-    const { modifiers: popperPropsModifiers, ...otherPopperProps } =
-      popperProps;
-
-    const [referenceElement, setReferenceElement] =
-      useState<HTMLElement | null>(null);
-    const [popperElement, setPopperElement] = useState<HTMLElement | null>(
-      null,
-    );
-
-    const onFirstUpdate = useCallback(() => {
-      onContainerCreation?.(popperElement);
-    }, [onContainerCreation, popperElement]);
-
-    const modifiers = useMemo<Options["modifiers"]>(
-      () => [
-        {
-          name: "variableWidth",
-          enabled: !variableWidth,
-          phase: "beforeWrite",
-          requires: ["computeStyles"],
-          fn: ({ state }) => {
-            state.styles.popper.width = `${state.rects.reference.width}px`;
-          },
-          effect: ({ state }) => {
-            state.elements.popper.style.width = `${
-              (state.elements.reference as any).offsetWidth
-            }px`;
-          },
-        },
-        {
-          name: "maxSize",
-          enabled: true,
-          phase: "main",
-          requiresIfExists: ["offset", "preventOverflow", "flip"],
-          fn: ({ state, name, options }) => {
-            const overflow = detectOverflow(state, options);
-
-            const x = state.modifiersData.preventOverflow?.x || 0;
-            const y = state.modifiersData.preventOverflow?.y || 0;
-
-            const popperWidth = state.rects.popper.width;
-            const popperHeight = state.rects.popper.height;
-
-            const basePlacement = state.placement.split("-")[0];
-
-            const widthProp = basePlacement === "left" ? "left" : "right";
-            const heightProp = basePlacement === "top" ? "top" : "bottom";
-
-            state.modifiersData[name] = {
-              width: popperWidth - overflow[widthProp] - x,
-              height: popperHeight - overflow[heightProp] - y,
-            };
-          },
-        },
-        {
-          name: "applyMaxSize",
-          enabled: true,
-          phase: "beforeWrite",
-          requires: ["maxSize"],
-          fn: ({ state }) => {
-            // The `maxSize` modifier provides this data
-            const { width, height } = state.modifiersData.maxSize;
-            state.styles.popper.maxWidth = `${width}px`;
-            state.styles.popper.maxHeight = `${height}px`;
-          },
-        },
-        ...(popperPropsModifiers || []),
-      ],
-      [popperPropsModifiers, variableWidth],
-    );
-
-    const popper = usePopper(referenceElement, popperElement, {
-      placement,
-      modifiers,
-      onFirstUpdate,
-      ...otherPopperProps,
-    });
-
-    const value = useMemo(
-      () => ({
-        popperPlacement:
-          (popper?.attributes.popper?.["data-popper-placement"] as Placement) ??
-          "bottom",
-        popper,
-        popperElement,
-        setPopperElement,
-        referenceElement,
-        setReferenceElement,
-      }),
-      [popper, popperElement, referenceElement],
-    );
-
-    return (
-      <BaseDropdownContext.Provider value={value}>
-        <BaseDropdown ref={ref} {...others} />
-      </BaseDropdownContext.Provider>
-    );
-  },
-);

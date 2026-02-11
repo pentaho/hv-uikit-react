@@ -1,20 +1,11 @@
-import { createContext, Dispatch, SetStateAction, useContext } from "react";
-import { usePopper } from "react-popper";
-import type { Placement } from "@popperjs/core";
+import { createContext, useContext } from "react";
+import type { Instance } from "@popperjs/core";
 
 interface BaseDropdownValue {
-  popperPlacement?: Placement;
-  popper?: ReturnType<typeof usePopper>;
-  referenceElement: HTMLElement | null;
-  setReferenceElement?: Dispatch<SetStateAction<HTMLElement | null>>;
-  popperElement: HTMLElement | null;
-  setPopperElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  popper?: Instance | null;
 }
 
-export const BaseDropdownContext = createContext<BaseDropdownValue>({
-  referenceElement: null,
-  popperElement: null,
-});
+export const BaseDropdownContext = createContext<BaseDropdownValue>({});
 
 BaseDropdownContext.displayName = "BaseDropdownContext";
 

@@ -1004,10 +1004,7 @@ export const pentaho = mergeTheme(pentahoBase, {
           },
         },
         panel: {
-          "&[data-popper-placement*='top'],&[data-popper-placement*='bottom']":
-            {
-              ...popperStyles,
-            },
+          ...popperStyles,
         },
       },
     } satisfies CSSClasses<HvBaseDropdownProps>,
