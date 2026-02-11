@@ -67,8 +67,6 @@ export interface HvSnackbarProps
   offset?: number;
   /** Others applied to the content of the snackbar. */
   snackbarContentProps?: HvSnackbarContentProps;
-  /** Whether or not to show a progress bar indicating the auto-hide duration */
-  showProgress?: boolean;
   /** The size of the snackbar. */
   size?: Extract<HvCalloutProps["size"], "regular" | "toast">;
   /** A Jss Object used to override or extend the styles applied to the component. */
@@ -111,7 +109,6 @@ export const HvSnackbar = forwardRef<
     container,
     offset = 60,
     snackbarContentProps,
-    showProgress = false,
     size,
     ...others
   } = useDefaultProps("HvSnackbar", props);
@@ -166,9 +163,6 @@ export const HvSnackbar = forwardRef<
         action={action}
         onAction={onAction}
         onClose={onClose}
-        autoHideDuration={autoHideDuration}
-        showProgress={showProgress}
-        transitionDuration={transitionDuration}
         size={size}
         {...snackbarContentProps}
       />

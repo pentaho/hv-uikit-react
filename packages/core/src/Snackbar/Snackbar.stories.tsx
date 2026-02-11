@@ -119,7 +119,12 @@ export const Variants: StoryObj<HvSnackbarProps> = {
             />
           }
         />
-        <HvSnackbar {...props} variant="success" title="Toast snackbar" />
+        <HvSnackbar
+          {...props}
+          variant="success"
+          title="Toast snackbar"
+          size="toast"
+        />
       </>
     );
   },
