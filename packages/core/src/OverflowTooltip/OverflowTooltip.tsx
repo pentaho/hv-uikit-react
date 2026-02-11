@@ -1,5 +1,8 @@
 import { useMemo } from "react";
-import { useResizeDetector } from "react-resize-detector";
+import {
+  useResizeDetector,
+  useResizeDetectorProps,
+} from "react-resize-detector";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -37,6 +40,8 @@ export interface HvOverflowTooltipProps extends HvBaseProps {
   tooltipsProps?: Partial<HvTooltipProps>;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvOverflowTooltipClasses;
+  /** Override the default options passed to react-resize-detector's useResizeDetector hook. */
+  resizeDetectorProps?: Partial<useResizeDetectorProps<HTMLDivElement>>;
 }
 
 const isParagraph = (children = "") => /\s/.test(children);
@@ -64,10 +69,12 @@ export const HvOverflowTooltip = (props: HvOverflowTooltipProps) => {
     ref,
   } = useResizeDetector({
     refreshMode: "debounce",
+    handleHeight: false,
+    ...props.resizeDetectorProps,
     refreshOptions: {
       trailing: true,
+      ...props.resizeDetectorProps?.refreshOptions,
     },
-    handleHeight: false,
   });
 
   const isParag = useMemo(
