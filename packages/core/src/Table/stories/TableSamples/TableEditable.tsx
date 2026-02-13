@@ -375,6 +375,7 @@ const Table = <T extends Data>({
       {
         id: "view",
         variant: "actions",
+        disableGlobalFilter: true,
         style: { width: "70px", maxWidth: "unset" },
         Cell: ({ row }: { row: HvRowInstance<T> }) => (
           <Fragment key={`${row.id}-view`}>
@@ -395,6 +396,7 @@ const Table = <T extends Data>({
       {
         id: "edit",
         variant: "actions",
+        disableGlobalFilter: true,
         Cell: ({ row, setRowState }: HvCellProps<T>) => {
           return (
             <Fragment key={`${row.id}-edit`}>
@@ -423,6 +425,7 @@ const Table = <T extends Data>({
       {
         id: "delete",
         variant: "actions",
+        disableGlobalFilter: true,
         Cell: ({ row }: HvCellProps<T>) => (
           <HvButton
             icon

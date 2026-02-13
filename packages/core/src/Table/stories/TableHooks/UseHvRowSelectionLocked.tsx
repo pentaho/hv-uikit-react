@@ -30,6 +30,7 @@ export const LockedSelection = () => {
       {
         id: "actions",
         variant: "actions",
+        disableGlobalFilter: true,
         Cell: ({ row }) => (
           <HvToggleButton
             aria-label="Lock"
