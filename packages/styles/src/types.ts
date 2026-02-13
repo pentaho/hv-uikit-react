@@ -83,12 +83,14 @@ export interface HvThemeComponents {
 export interface HvThemeTypographyProps
   extends Pick<
     CSSProperties,
-    | "color"
     | "fontSize"
     | "letterSpacing"
     | "lineHeight"
-    | "fontWeight"
+    // TODO(major): remove `color` & `textDecoration` from NEXT v3
+    | "color"
     | "textDecoration"
+    // TODO(major): review typography `fontWeight` vs `bold` API
+    | "fontWeight"
   > {}
 
 type TypographyVariants =

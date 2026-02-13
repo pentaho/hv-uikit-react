@@ -41,26 +41,24 @@ const componentsSpec: DeepString<HvThemeComponents> = {
 };
 
 const typographyProps: DeepString<HvThemeTypographyProps> = {
-  color: "string",
   fontSize: "string",
   letterSpacing: "string",
   lineHeight: "string",
   fontWeight: "string",
-  textDecoration: "string",
 };
 
 const typographySpec: DeepString<HvThemeTypography> = {
   typography: {
-    display: { ...typographyProps },
-    title1: { ...typographyProps },
-    title2: { ...typographyProps },
-    title3: { ...typographyProps },
-    title4: { ...typographyProps },
-    label: { ...typographyProps },
-    body: { ...typographyProps },
-    captionLabel: { ...typographyProps },
-    caption1: { ...typographyProps },
-    caption2: { ...typographyProps },
+    display: typographyProps,
+    title1: typographyProps,
+    title2: typographyProps,
+    title3: typographyProps,
+    title4: typographyProps,
+    label: typographyProps,
+    body: typographyProps,
+    captionLabel: typographyProps,
+    caption1: typographyProps,
+    caption2: typographyProps,
   },
 };
 
