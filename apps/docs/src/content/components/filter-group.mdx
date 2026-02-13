@@ -15,10 +15,14 @@ import { Header } from "../../components/Header";
 
 ### Usage
 
+Use the prop `filterContentProps.iconOnly` to display the trigger component as an icon
+button (only available on the Pentaho theme).
+
 ```tsx live
 import { useState } from "react";
 
 export default function Demo() {
+  const [iconOnly, setIconOnly] = useState(false);
   const [value, setValue] = useState<HvFilterGroupValue | undefined>([
     ["format1", "format2"],
     [],
@@ -29,18 +33,25 @@ export default function Demo() {
 
   return (
     <>
-      <div className="p-sm">
+      <div className="flex flex-col gap-sm p-sm">
         <HvTypography variant="label">Applied filters</HvTypography>
-        <div className="flex flex-wrap gap-xxs mt-2">
-          {value?.flat().map((filterId) => {
-            const tagLabel = filters
-              .flatMap((group) => group.data)
-              .find((item) => item.id === filterId)?.name;
-            return <HvTag key={filterId} label={tagLabel} />;
-          })}
+        <div className="flex justify-between">
+          <div className="flex flex-wrap gap-xs">
+            {value?.flat().map((filterId) => {
+              const tagLabel = filters
+                .flatMap((group) => group.data)
+                .find((item) => item.id === filterId)?.name;
+              return <HvTag key={filterId} label={tagLabel} />;
+            })}
+          </div>
+
+          <HvCheckBox
+            label="Icon only"
+            checked={iconOnly}
+            onChange={(_, checked) => setIconOnly(checked)}
+          />
         </div>
-      </div>
-      <div className="flex justify-around">
+
         <div className="w-200px">
           <HvFilterGroup
             aria-label="Main filter group"
@@ -51,18 +62,7 @@ export default function Demo() {
               setNumSelected(values.flat().length);
             }}
             filterContentProps={{
-              iconOnly: true,
-            }}
-          />
-        </div>
-        <div className="w-200px">
-          <HvFilterGroup
-            aria-label="Main filter group"
-            value={value}
-            filters={filters}
-            onChange={(_, values) => {
-              setValue(values);
-              setNumSelected(values.flat().length);
+              iconOnly,
             }}
           />
         </div>

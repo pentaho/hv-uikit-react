@@ -65,7 +65,7 @@ export const HeaderButton = ({
       {...props}
     >
       <div className="flex items-center gap-xxs">
-        <HvTypography variant="label">Filter</HvTypography>
+        <HvTypography variant="label">Filters</HvTypography>
         <HvBadge
           color="primary"
           showCount
