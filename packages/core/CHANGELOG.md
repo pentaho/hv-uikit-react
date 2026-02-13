@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.4.0...@hitachivantara/uikit-react-core@6.4.1) (2026-02-13)
+
+### Bug Fixes
+
+- **DialogContent:** dividers & backgroundColor ([#5081](https://github.com/pentaho/hv-uikit-react/issues/5081)) ([630bc3a](https://github.com/pentaho/hv-uikit-react/commit/630bc3a5f677e28aea6078aeb40a59a61eadc5b8))
+
 # [6.4.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.3.0...@hitachivantara/uikit-react-core@6.4.0) (2026-02-03)
 
 ### Bug Fixes
