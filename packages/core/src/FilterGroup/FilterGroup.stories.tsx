@@ -78,8 +78,10 @@ export const Main: StoryObj<HvFilterGroupProps> = {
   },
   // For visual testing and a11y
   play: async ({ canvas, userEvent }) => {
-    const combobox = canvas.getByRole("button", { name: /Filters/i });
-    await userEvent.click(combobox);
+    let element = canvas.getByRole("combobox", {
+      name: /Main filter group/i,
+    });
+    await userEvent.click(element);
     await expect(
       canvas.getByRole("button", { name: /clear filters/i }),
     ).toBeInTheDocument();

@@ -23,48 +23,54 @@ import { useState } from "react";
 
 export default function Demo() {
   const [iconOnly, setIconOnly] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [value, setValue] = useState<HvFilterGroupValue | undefined>([
     ["format1", "format2"],
     [],
     ["data2", "data8"],
   ]);
 
-  const [numSelected, setNumSelected] = useState<number>(value.flat().length);
-
   return (
     <>
       <div className="flex flex-col gap-sm p-sm">
         <HvTypography variant="label">Applied filters</HvTypography>
-        <div className="flex justify-between">
-          <div className="flex flex-wrap gap-xs">
-            {value?.flat().map((filterId) => {
-              const tagLabel = filters
-                .flatMap((group) => group.data)
-                .find((item) => item.id === filterId)?.name;
-              return <HvTag key={filterId} label={tagLabel} />;
-            })}
-          </div>
 
-          <HvCheckBox
-            label="Icon only"
-            checked={iconOnly}
-            onChange={(_, checked) => setIconOnly(checked)}
-          />
+        <div className="flex flex-wrap gap-xs">
+          {value?.flat().map((filterId) => {
+            const tagLabel = filters
+              .flatMap((group) => group.data)
+              .find((item) => item.id === filterId)?.name;
+            return <HvTag key={filterId} label={tagLabel} />;
+          })}
         </div>
 
-        <div className="w-200px">
-          <HvFilterGroup
-            aria-label="Main filter group"
-            value={value}
-            filters={filters}
-            onChange={(_, values) => {
-              setValue(values);
-              setNumSelected(values.flat().length);
-            }}
-            filterContentProps={{
-              iconOnly,
-            }}
-          />
+        <div className="flex justify-between">
+          <div className="w-200px">
+            <HvFilterGroup
+              aria-label="Main filter group"
+              value={value}
+              disabled={disabled}
+              filters={filters}
+              onChange={(_, values) => {
+                setValue(values);
+              }}
+              filterContentProps={{
+                iconOnly,
+              }}
+            />
+          </div>
+          <div className="flex flex-col gap-xs">
+            <HvCheckBox
+              label="Icon only"
+              checked={iconOnly}
+              onChange={(_, checked) => setIconOnly(checked)}
+            />
+            <HvCheckBox
+              label="Disabled"
+              checked={disabled}
+              onChange={(_, checked) => setDisabled(checked)}
+            />
+          </div>
         </div>
       </div>
     </>

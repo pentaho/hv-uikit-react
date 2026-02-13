@@ -11,18 +11,32 @@ type HeaderButtonProps = {
   onClick: HvButtonProps["onClick"];
   iconOnly?: boolean;
   count?: number;
-};
+  title?: string;
+} & Omit<HvButtonProps, "onClick">;
 
 const styles = {
   iconOnly: css({
     "& > .HvBadge-badge": {
-      minWidth: "unset!important",
-      minHeight: "unset!important",
+      minWidth: "unset !important",
+      minHeight: "unset !important",
     },
   }),
   button: css({
     border: `1px solid ${theme.colors.primaryDimmed}`,
     borderRadius: theme.radii.full,
+  }),
+  heaaderContent: css({
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xxs,
+  }),
+  badgeRoot: css({
+    width: 0,
+    marginRight: theme.space.sm,
+    marginLeft: `-${theme.space.sm}`,
+  }),
+  badge: css({
+    position: "relative",
   }),
 };
 
@@ -30,6 +44,8 @@ export const HeaderButton = ({
   onClick,
   iconOnly,
   count = 0,
+  disabled,
+  title = "Filters",
   ...props
 }: HeaderButtonProps) => {
   return iconOnly ? (
@@ -44,6 +60,7 @@ export const HeaderButton = ({
         <HvIconButton
           onClick={onClick}
           title="Filters"
+          disabled={disabled}
           classes={{
             root: styles.button,
           }}
@@ -55,6 +72,7 @@ export const HeaderButton = ({
     />
   ) : (
     <HvButton
+      disabled={disabled}
       variant="secondarySubtle"
       onClick={onClick}
       startIcon={
@@ -63,14 +81,15 @@ export const HeaderButton = ({
         </HvIconContainer>
       }
       {...props}
+      role="combobox"
     >
-      <div className="flex items-center gap-xxs">
-        <HvTypography variant="label">Filters</HvTypography>
+      <div className={styles.heaaderContent}>
+        <HvTypography variant="label">Filter</HvTypography>
         <HvBadge
           color="primary"
           showCount
           label={count}
-          classes={{ root: "w-0, mr-sm ml-[-16px]", badge: "relative" }}
+          classes={{ root: styles.badgeRoot, badge: styles.badge }}
         />
       </div>
     </HvButton>

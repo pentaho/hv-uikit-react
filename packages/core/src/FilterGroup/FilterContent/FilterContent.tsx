@@ -121,16 +121,16 @@ export const HvFilterGroupContent = forwardRef<
     onClear?.(event);
   };
 
-  const handleToggle = (event: Event, open: boolean) => {
+  const handleToggle = (event: Event, newOpen: boolean) => {
     /* 
      If evt is null this toggle wasn't triggered by the user.
      instead it was triggered by the baseDropdown useEffect after
      the datepicker changed the expanded value this baseDropdown behavior needs a review
     */
     if (event === null) return;
-    setOpen?.(open);
-    setFilterGroupOpen(open);
-    if (!open) onCancelHandler?.(event);
+    setOpen?.(newOpen);
+    setFilterGroupOpen(newOpen);
+    if (!newOpen) onCancelHandler?.(event);
   };
 
   const Header = useMemo(
@@ -146,15 +146,16 @@ export const HvFilterGroupContent = forwardRef<
   const CustomHeaderButton = useMemo(
     () =>
       activeTheme?.name === "pentahoPlus"
-        ? (props: any) => (
+        ? (props: React.ComponentProps<typeof HeaderButton>) => (
             <HeaderButton
               {...props}
               iconOnly={iconOnly}
+              title={labels?.placeholder}
               count={filterValues?.flat().length ?? 0}
             />
           )
         : undefined,
-    [activeTheme?.name, iconOnly, filterValues],
+    [activeTheme?.name, iconOnly, filterValues, labels?.placeholder],
   );
 
   return (
@@ -177,7 +178,11 @@ export const HvFilterGroupContent = forwardRef<
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}
       placeholder={activeTheme?.name === "pentahoPlus" ? undefined : Header}
-      adornment={<HvFilterGroupCounter />}
+      adornment={
+        activeTheme?.name === "pentahoPlus" ? undefined : (
+          <HvFilterGroupCounter />
+        )
+      }
       popperProps={{
         modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
       }}
