@@ -149,6 +149,7 @@ const visibleColumnsHook = (columns: any) => {
     // but ensures it stays left of any sticky column
     sticky: "left",
 
+    disableGlobalFilter: true,
     Cell: CellWithCheckBox,
   };
 

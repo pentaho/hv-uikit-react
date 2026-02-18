@@ -27,6 +27,7 @@ export default function Demo() {
       {
         id: "delete",
         variant: "actions",
+        disableGlobalFilter: true,
         Cell: () => (
           <HvIconButton title="Delete">
             <Delete />

@@ -39,6 +39,7 @@ export default function Demo() {
       {
         id: "delete",
         variant: "actions",
+        disableGlobalFilter: true,
         Cell: ({ row }) => (
           <HvIconButton title="Delete" onClick={() => deleteRow(row)}>
             <Delete />

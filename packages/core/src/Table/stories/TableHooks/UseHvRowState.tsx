@@ -49,6 +49,7 @@ const getRowStateColumns = (): HvTableColumnConfig<AssetEvent>[] => [
   {
     id: "edit",
     variant: "actions",
+    disableGlobalFilter: true,
     Cell: ({ row, setRowState }) => (
       <HvIconButton
         title={row.state?.isEditing ? "Close" : "Edit"}
