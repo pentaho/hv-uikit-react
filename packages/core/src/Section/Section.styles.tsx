@@ -49,7 +49,6 @@ export const { staticClasses, useClasses } = createClasses("HvSection", {
     "& $header": {
       zIndex: 1,
       borderBottomWidth: 1,
-      boxShadow: theme.colors.shadow,
     },
     "& $content": {
       paddingTop: theme.space.sm,
