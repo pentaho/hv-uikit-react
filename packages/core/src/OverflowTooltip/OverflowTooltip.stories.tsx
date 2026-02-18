@@ -31,3 +31,31 @@ export const Main: StoryObj<HvOverflowTooltipProps> = {
     return <HvOverflowTooltip {...args} />;
   },
 };
+
+const makeText = (str: string) =>
+  `This is a ${str} long text that should be cut because it doesn't fit`;
+
+export const Test: StoryObj<HvOverflowTooltipProps> = {
+  args: {
+    data: makeText("extremely ".repeat(12)),
+  },
+  decorators: [
+    (Story) => (
+      <div className="grid gap-xs p-xs w-400px bg-infoDimmed overflow-auto resize">
+        {Story()}
+      </div>
+    ),
+  ],
+  play: async ({ canvas, userEvent }) => {
+    await userEvent.hover(canvas.getByTestId("test"));
+  },
+  render: (args) => {
+    return (
+      <>
+        <HvOverflowTooltip {...args} data={makeText("")} />
+        <HvOverflowTooltip paragraphOverflow {...args} />
+        <HvOverflowTooltip data-testid="test" {...args} placement="bottom" />
+      </>
+    );
+  },
+};
