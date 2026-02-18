@@ -1,0 +1,32 @@
+---
+title: "Accordion"
+---
+
+import { CodeBlock } from "../../../components/code/CodeBlock";
+import externalContainerCode from "./ExternalContainer?raw";
+import internalContainerCode from "./InternalContainer?raw";
+import internalContainerSectionCode from "./InternalContainerSection?raw";
+
+### Tabs Components
+
+Explore different implementations of the Accordion pattern using the [`HvSection`](/components/section) component.
+
+<div className="mt-20">
+  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
+    <CodeBlock
+      code={externalContainerCode}
+      layout="popup"
+      title="External Container"
+    />
+    <CodeBlock
+      code={internalContainerCode}
+      layout="popup"
+      title="Internal Container"
+    />
+    <CodeBlock
+      code={internalContainerSectionCode}
+      layout="popup"
+      title="Internal Container in a Section"
+    />
+  </div>
+</div>

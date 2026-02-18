@@ -5,6 +5,7 @@ import {
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
+import accordion from "./accordion/page.mdx?raw";
 import canvas from "./canvas/page.mdx?raw";
 import cards from "./cards/page.mdx?raw";
 import charts from "./charts/page.mdx?raw";
@@ -30,6 +31,7 @@ const countCodeBlocks = (fileContent: string): number => {
 };
 
 const sections = [
+  { slug: "accordion", title: "Accordion", total: countCodeBlocks(accordion) },
   { slug: "canvas", title: "Canvas", total: countCodeBlocks(canvas) },
   { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
   { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
@@ -82,6 +84,8 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-tabs" />;
     case "notifications":
       return <div className="i-ph-bell-ringing" />;
+    case "accordion":
+      return <div className="i-ph-caret-up-down" />;
     default:
       return null;
   }
