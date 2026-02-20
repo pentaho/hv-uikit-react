@@ -1,4 +1,4 @@
-import { forwardRef, useContext, useMemo, useRef } from "react";
+import { forwardRef, useContext, useMemo, useRef, useState } from "react";
 import {
   useDefaultProps,
   useTheme,
@@ -9,7 +9,6 @@ import { HvActionBar } from "../../ActionBar";
 import { HvBaseDropdown, HvBaseDropdownProps } from "../../BaseDropdown";
 import { HvButton } from "../../Button";
 import { HvFormStatus } from "../../FormElement";
-import { useControlled } from "../../hooks/useControlled";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
 import { setId } from "../../utils/setId";
@@ -44,8 +43,6 @@ export interface HvFilterGroupContentProps
   leftEmptyElement?: React.ReactNode;
   rightEmptyElement?: React.ReactNode;
   disabled?: boolean;
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   iconOnly?: boolean;
   classes?: HvFilterGroupContentClasses;
 }
@@ -72,18 +69,16 @@ export const HvFilterGroupContent = forwardRef<
     height,
     leftEmptyElement,
     rightEmptyElement,
-    open,
-    setOpen,
     iconOnly,
     classes: classesProp,
     ...others
   } = useDefaultProps("HvFilterGroupContent", props);
 
+  const [filterGroupOpen, setFilterGroupOpen] = useState<boolean>(false);
+
   const { classes } = useClasses(classesProp);
 
   const { activeTheme } = useTheme();
-
-  const [filterGroupOpen, setFilterGroupOpen] = useControlled(open, false);
 
   const {
     defaultValue,
@@ -103,7 +98,6 @@ export const HvFilterGroupContent = forwardRef<
   const onApplyHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     applyFilters();
     onChange?.(event, filterValues);
-    setOpen?.(false);
     setFilterGroupOpen(false);
   };
 
@@ -112,7 +106,6 @@ export const HvFilterGroupContent = forwardRef<
   ) => {
     rollbackFilters();
     onCancel?.(event);
-    setOpen?.(false);
     setFilterGroupOpen(false);
   };
 
@@ -121,16 +114,15 @@ export const HvFilterGroupContent = forwardRef<
     onClear?.(event);
   };
 
-  const handleToggle = (event: Event, newOpen: boolean) => {
+  const handleToggle = (event: Event, open: boolean) => {
     /* 
      If evt is null this toggle wasn't triggered by the user.
      instead it was triggered by the baseDropdown useEffect after
      the datepicker changed the expanded value this baseDropdown behavior needs a review
     */
     if (event === null) return;
-    setOpen?.(newOpen);
-    setFilterGroupOpen(newOpen);
-    if (!newOpen) onCancelHandler?.(event);
+    setFilterGroupOpen(open);
+    if (!open) onCancelHandler?.(event);
   };
 
   const Header = useMemo(
@@ -172,8 +164,8 @@ export const HvFilterGroupContent = forwardRef<
       disabled={disabled}
       disablePortal={disablePortal}
       variableWidth
-      placement={horizontalPlacement}
       expanded={filterGroupOpen}
+      placement={horizontalPlacement}
       onToggle={handleToggle}
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}

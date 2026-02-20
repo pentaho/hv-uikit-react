@@ -5,6 +5,7 @@ import { theme } from "@hitachivantara/uikit-styles";
 import { HvBadge } from "../../Badge";
 import { HvButton, HvButtonProps } from "../../Button";
 import { HvIconButton } from "../../IconButton";
+import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
 
 type HeaderButtonProps = {
@@ -25,7 +26,7 @@ const styles = {
     border: `1px solid ${theme.colors.primaryDimmed}`,
     borderRadius: theme.radii.full,
   }),
-  heaaderContent: css({
+  headerContent: css({
     display: "flex",
     alignItems: "center",
     gap: theme.space.xxs,
@@ -37,6 +38,16 @@ const styles = {
   }),
   badge: css({
     position: "relative",
+  }),
+  badgeIconOnly: css({
+    "&&>div:last-of-type": {
+      minWidth: "unset",
+      minHeight: "unset",
+    },
+  }),
+  badgeIcon: css({
+    minHeight: 0,
+    minWidth: 0,
   }),
 };
 
@@ -50,23 +61,22 @@ export const HeaderButton = ({
 }: HeaderButtonProps) => {
   return iconOnly ? (
     <HvBadge
-      color="primary"
       label={count}
       showCount
       classes={{
-        root: styles.iconOnly,
+        root: styles.badgeIconOnly,
       }}
       icon={
         <HvIconButton
           onClick={onClick}
-          title="Filters"
+          title={title}
           disabled={disabled}
           classes={{
             root: styles.button,
           }}
           {...props}
         >
-          <div className="i-ph-funnel" />
+          <HvIcon name="Filters" />
         </HvIconButton>
       }
     />
@@ -77,19 +87,22 @@ export const HeaderButton = ({
       onClick={onClick}
       startIcon={
         <HvIconContainer>
-          <div className="i-ph-funnel" />
+          <HvIcon name="Filters" />
         </HvIconContainer>
       }
       {...props}
       role="combobox"
     >
-      <div className={styles.heaaderContent}>
+      <div className={styles.headerContent}>
         <HvTypography variant="label">Filter</HvTypography>
         <HvBadge
-          color="primary"
           showCount
           label={count}
-          classes={{ root: styles.badgeRoot, badge: styles.badge }}
+          classes={{
+            root: styles.badgeRoot,
+            badge: styles.badge,
+            badgeIcon: styles.badgeIcon,
+          }}
         />
       </div>
     </HvButton>
