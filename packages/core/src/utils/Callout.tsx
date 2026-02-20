@@ -1,4 +1,3 @@
-// oxlint-disable complexity
 import { forwardRef } from "react";
 import type { SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
 import SnackbarContent, {

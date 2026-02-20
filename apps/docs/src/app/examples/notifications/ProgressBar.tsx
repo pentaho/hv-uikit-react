@@ -6,6 +6,7 @@ import { theme } from "@hitachivantara/uikit-styles";
 const styles = {
   snackbar: css({
     "& .HvSnackbarContent-root": {
+      overflow: "hidden",
       "&::after": {
         position: "absolute",
         height: 4,
@@ -23,6 +24,7 @@ const styles = {
         content: '""',
         backgroundColor: "var(--icolor)",
         animation: "progressAnimation 3000ms linear forwards",
+        animationDuration: "var(--duration)",
         transformOrigin: "left",
         zIndex: 1,
       },
@@ -41,16 +43,12 @@ const styles = {
 export default function Demo() {
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(false);
-    setTimeout(() => {
-      setOpen(true);
-    }, 100);
-  };
+  // Customize duration to change the speed of the progress bar.
+  const duration = 1000;
 
   return (
     <div className="flex justify-center w-full">
-      <HvButton onClick={handleOpen}>Show Snackbar</HvButton>
+      <HvButton onClick={() => setOpen(true)}>Show Snackbar</HvButton>
       <HvSnackbar
         className={styles.snackbar}
         open={open}
@@ -59,7 +57,12 @@ export default function Demo() {
         variant="success"
         transitionDirection="up"
         showIcon
-        autoHideDuration={3000}
+        autoHideDuration={duration}
+        style={
+          {
+            "--duration": `${duration}ms`,
+          } as React.CSSProperties & Record<string, any>
+        }
         onClose={() => {
           setOpen(false);
         }}
