@@ -8,8 +8,7 @@ import {
 } from "@hitachivantara/app-shell-shared";
 
 import CustomHooksInitializer from "../components/CustomHooksInitializer";
-import Header from "../components/layout/Header/Header";
-import Main from "../components/layout/Main/Main";
+import { HvAppShellLayout } from "../components/layout/AppShellLayout";
 import { BannerProvider } from "../providers/BannerProvider";
 import { NavigationProvider } from "../providers/NavigationProvider";
 import CombinedProviders from "../utils/CombinedProviders";
@@ -31,12 +30,11 @@ export const RootRoute = () => {
           <NavigationProvider>
             <BannerProvider>
               <CustomHooksInitializer />
-              <Header />
-              <Main>
+              <HvAppShellLayout>
                 <Suspense fallback={<LoadingPage />}>
                   <Outlet />
                 </Suspense>
-              </Main>
+              </HvAppShellLayout>
             </BannerProvider>
           </NavigationProvider>
         </CombinedProviders>

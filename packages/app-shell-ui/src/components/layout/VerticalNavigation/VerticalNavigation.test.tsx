@@ -7,7 +7,7 @@ import { LOCAL_STORAGE_KEYS } from "../../../hooks/useLocalStorage";
 import * as NavigationProvider from "../../../providers/NavigationProvider";
 import useNavigationContextDefaultMock from "../../../tests/defaultMocks";
 import renderTestProvider from "../../../tests/testUtils";
-import VerticalNavigation from "./VerticalNavigation";
+import { VerticalNavigation } from "./VerticalNavigation";
 
 const navigationContextSpy = vi.spyOn(
   NavigationProvider,

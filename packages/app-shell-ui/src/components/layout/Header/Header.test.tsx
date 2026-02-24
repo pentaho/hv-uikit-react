@@ -5,7 +5,7 @@ import { vi } from "vitest";
 import * as NavigationProvider from "../../../providers/NavigationProvider";
 import useNavigationContextDefaultMock from "../../../tests/defaultMocks";
 import renderTestProvider from "../../../tests/testUtils";
-import Header from "./Header";
+import { Header } from "./Header";
 
 vi.mock("react-helmet-async", () => ({
   Helmet: vi.fn(),

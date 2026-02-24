@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { css } from "@emotion/css";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
@@ -15,18 +14,16 @@ import {
   useTheme,
 } from "@hitachivantara/uikit-react-core";
 
-import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import IconUiKit from "../../IconUiKit";
 import BrandLogo from "../BrandLogo/BrandLogo";
 import HeaderActions from "../HeaderActions/HeaderActions";
 import StyledIconWrapper from "./styles";
 
-const Header = () => {
+export const Header = () => {
   const { t } = useTranslation(undefined, { keyPrefix: "header.navigation" });
   const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
   const { navigationMode, name, logo } = useHvAppShellModel();
-  const { verticalNavigationWidth } = useLayoutContext();
   const { activeTheme } = useTheme();
   const { navigate } = useHvNavigation();
 
@@ -59,18 +56,10 @@ const Header = () => {
   };
 
   const isPentahoTheme = activeTheme?.name === "pentahoPlus";
-  const shouldShrinkHeader = isPentahoTheme && verticalNavigationWidth > 0;
   const appName = name ? tConfig(name) : "";
 
   return (
-    <HvHeader
-      position="fixed"
-      className={css({
-        width: shouldShrinkHeader
-          ? `calc(100% - ${verticalNavigationWidth}px)`
-          : undefined,
-      })}
-    >
+    <HvHeader position="relative" style={{ gridArea: "header" }}>
       <Helmet>
         <title>{appName}</title>
       </Helmet>
@@ -113,5 +102,3 @@ const Header = () => {
     </HvHeader>
   );
 };
-
-export default Header;

@@ -19,6 +19,7 @@ export const { staticClasses, useClasses } = createClasses("HvHeader", {
     alignItems: "center",
     width: "100%",
     height: "100%",
+    position: "relative",
     padding: theme.spacing(0, "sm"),
     "& > *:not(nav)": {
       zIndex: 2,
