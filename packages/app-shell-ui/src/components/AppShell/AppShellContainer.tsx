@@ -9,7 +9,7 @@ import createI18Next from "../../i18n";
 import GenericError from "../../pages/GenericError";
 import { LayoutProvider } from "../../providers/LayoutProvider";
 import { HvAppShellProvider } from "../AppShellProvider/AppShellProvider";
-import GlobalStyles from "../GlobalStyles";
+import { GlobalStyles } from "../GlobalStyles";
 import SnackbarProvider from "../SnackbarProvider";
 import type { HvAppShellProps } from "./AppShell";
 

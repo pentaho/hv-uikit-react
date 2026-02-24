@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { theme } from "@hitachivantara/uikit-react-core";
+import { HvLoading, theme } from "@hitachivantara/uikit-react-core";
 
 interface StyledLoadingPageProps {
   showHeaderSubMenu?: boolean;
@@ -19,7 +19,7 @@ const calcHeight = ({
   return `calc(100vh - (${theme.header.height} + ${theme.space.lg} + ${theme.space.lg}))`;
 };
 
-const StyledLoadingPage = styled("div")<StyledLoadingPageProps>(
+export const StyledLoadingPage = styled("div")<StyledLoadingPageProps>(
   {
     flex: 1,
     display: "flex",
@@ -29,4 +29,9 @@ const StyledLoadingPage = styled("div")<StyledLoadingPageProps>(
   (props) => ({ height: calcHeight(props) }),
 );
 
-export default StyledLoadingPage;
+export const Loading = styled(HvLoading)({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
+});
