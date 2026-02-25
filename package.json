@@ -76,6 +76,7 @@
     "cpy-cli": "^5.0.0",
     "echarts": "^5.5.1",
     "echarts-for-react": "^3.0.2",
+    "encoding": "^0.1.13",
     "happy-dom": "^20.0.0",
     "husky": "^8.0.3",
     "lerna": "^9.0.0",
