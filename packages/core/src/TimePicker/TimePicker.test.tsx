@@ -1,6 +1,4 @@
-// @vitest-environment jsdom
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 
 import { HvTimePicker, HvTimePickerProps, HvTimePickerValue } from ".";
@@ -52,11 +50,11 @@ describe("TimePicker", () => {
     expect(screen.getByText(defaultProps.placeholder)).toBeInTheDocument();
   });
 
-  it("renders selectors when clicking on the dropdown", async () => {
+  it("renders selectors when clicking on the dropdown", () => {
     const defaultValue = { hours: 19, minutes: 30, seconds: 14 };
     setup({ timeFormat: "12", defaultValue });
 
-    await userEvent.click(screen.getByRole("combobox"));
+    fireEvent.click(screen.getByRole("combobox"));
 
     const inputs = screen.getAllByRole("spinbutton");
     expect(inputs).toHaveLength(7);
@@ -66,7 +64,7 @@ describe("TimePicker", () => {
     expect(amPmButton).toBeInTheDocument();
   });
 
-  it("calls onChange when changing the value", async () => {
+  it("calls onChange when changing the value", () => {
     const onChange = vi.fn();
     const defaultValue = { hours: 19, minutes: 30, seconds: 14 };
     setup({ onChange, defaultValue });
@@ -74,44 +72,44 @@ describe("TimePicker", () => {
     const inputs = screen.getAllByRole("spinbutton");
 
     expect(inputs).toHaveLength(3);
-    await userEvent.type(inputs[0], "{arrowup}");
-    await userEvent.type(inputs[1], "{arrowdown}");
-    await userEvent.type(inputs[2], "{arrowdown}");
+    fireEvent.keyDown(inputs[0], { key: "ArrowUp" });
+    fireEvent.keyDown(inputs[1], { key: "ArrowDown" });
+    fireEvent.keyDown(inputs[2], { key: "ArrowDown" });
 
     const newTime = { hours: 20, minutes: 29, seconds: 13 };
     assertTime(inputs, newTime);
     expect(onChange).toHaveBeenCalledWith(newTime);
   });
 
-  it("overflows correctly", async () => {
+  it("overflows correctly", () => {
     const onChange = vi.fn();
     const defaultValue = { hours: 23, minutes: 59, seconds: 59 };
     setup({ onChange, defaultValue });
 
     const inputs = screen.getAllByRole("spinbutton");
 
-    await userEvent.type(inputs[0], "{arrowup}");
+    fireEvent.keyDown(inputs[0], { key: "ArrowUp" });
     assertTime(inputs, { hours: 0, minutes: 59, seconds: 59 });
-    await userEvent.type(inputs[1], "{arrowup}");
+    fireEvent.keyDown(inputs[1], { key: "ArrowUp" });
     assertTime(inputs, { hours: 0, minutes: 0, seconds: 59 });
-    await userEvent.type(inputs[2], "{arrowup}");
+    fireEvent.keyDown(inputs[2], { key: "ArrowUp" });
     assertTime(inputs, { hours: 0, minutes: 0, seconds: 0 });
   });
 
-  it("underflows correctly", async () => {
+  it("underflows correctly", () => {
     const onChange = vi.fn();
     const defaultValue = { hours: 0, minutes: 0, seconds: 0 };
     setup({ onChange, defaultValue });
 
     const inputs = screen.getAllByRole("spinbutton");
 
-    await userEvent.type(inputs[0], "{arrowdown}");
+    fireEvent.keyDown(inputs[0], { key: "ArrowDown" });
     assertTime(inputs, { hours: 23, minutes: 0, seconds: 0 });
 
-    await userEvent.type(inputs[1], "{arrowdown}");
+    fireEvent.keyDown(inputs[1], { key: "ArrowDown" });
     assertTime(inputs, { hours: 23, minutes: 59, seconds: 0 });
 
-    await userEvent.type(inputs[2], "{arrowdown}");
+    fireEvent.keyDown(inputs[2], { key: "ArrowDown" });
     assertTime(inputs, { hours: 23, minutes: 59, seconds: 59 });
   });
 });

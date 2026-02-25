@@ -33,12 +33,11 @@
     "prepublishOnly": "npm run clean && npx clean-publish"
   },
   "dependencies": {
-    "chalk": "^5.2.0",
-    "colors": "^1.4.0",
-    "commander": "^10.0.0",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
     "fs-extra": "^11.1.0",
     "inquirer": "^9.1.4",
-    "node-plop": "^0.31.1"
+    "node-plop": "^0.32.3"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
@@ -50,9 +49,8 @@
     "react-router-dom": "^6.29.0",
     "vite-tsconfig-paths": "^5.1.0"
   },
-  "engineStrict": true,
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "files": [
     "src"
