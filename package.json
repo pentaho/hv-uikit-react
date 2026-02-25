@@ -78,7 +78,6 @@
     "echarts-for-react": "^3.0.2",
     "happy-dom": "^20.0.0",
     "husky": "^8.0.3",
-    "jsdom": "^26.1.0",
     "lerna": "^9.0.0",
     "license-compliance": "^3.0.0",
     "lint-staged": "^16.1.0",
