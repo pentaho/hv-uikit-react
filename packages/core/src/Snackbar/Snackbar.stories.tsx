@@ -124,6 +124,7 @@ export const Variants: StoryObj<HvSnackbarProps> = {
           {...props}
           variant="success"
           title="Toast snackbar"
+          showIcon
           size="toast"
         />
       </>

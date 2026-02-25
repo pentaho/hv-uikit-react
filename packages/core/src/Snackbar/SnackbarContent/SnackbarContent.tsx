@@ -79,7 +79,6 @@ export const HvSnackbarContent = forwardRef<
         messageIcon: classes.iconVariant,
         messageContent: classes.messageText,
         action: classes.action,
-        messageContainer: classes.messageContainer,
       }}
       showIcon={showIcon}
       showClose={showClose}

@@ -208,7 +208,9 @@ export const pentaho = mergeTheme(pentahoBase, {
     } satisfies CSSClasses<HvBadgeProps>,
     HvCallout: {
       classes: {
-        root: { outline: "1px solid var(--icolor, currentcolor)" },
+        root: {
+          outline: "1px solid var(--icolor, currentcolor)",
+        },
         ...Object.fromEntries(
           Object.entries(notificationMap).map(([variant, color]) => [
             variant,
@@ -1211,13 +1213,13 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvSnackbarContent: {
       classes: {
         root: {
+          width: 525,
           minHeight: "unset",
         },
-        messageContainer: {
-          paddingLeft: theme.space.xxs,
-        },
         iconVariant: {
-          alignSelf: "center",
+          alignSelf: "flex-start",
+          margin: theme.space.xxs,
+          marginRight: theme.space.sm,
         },
       },
     } satisfies CSSClasses<HvSnackbarContentProps>,

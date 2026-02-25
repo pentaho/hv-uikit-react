@@ -87,12 +87,6 @@ const { useClasses } = createClasses("HvCallout", {
   actionClose: {
     alignSelf: "flex-end",
   },
-  messageContainer: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    gap: theme.space.xs,
-  },
 });
 
 export type HvCalloutVariant =
@@ -215,20 +209,20 @@ export const HvCallout = forwardRef<
       data-size={size}
       message={
         <>
-          <div className={classes.messageContainer}>
-            {icon && (
-              <HvStatusIcon
-                size={getIconSize(size)}
-                className={classes.messageIcon}
-                variant={variant === "default" ? "info" : variant}
-                customIcon={customIcon}
-              />
-            )}
-            <div className={classes.messageContent}>
-              {title && <b className={classes.messageTitle}>{title}</b>}
-              {children}
-            </div>
+          {/* <div className={classes.messageContainer}> */}
+          {icon && (
+            <HvStatusIcon
+              size={getIconSize(size)}
+              className={classes.messageIcon}
+              variant={variant === "default" ? "info" : variant}
+              customIcon={customIcon}
+            />
+          )}
+          <div className={classes.messageContent}>
+            {title && <b className={classes.messageTitle}>{title}</b>}
+            {children}
           </div>
+          {/* </div> */}
           <div style={{ flex: 1 }} />
           {actions && actionsPosition === "inline" && actionsContent}
         </>
