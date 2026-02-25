@@ -16,9 +16,8 @@ import {
 
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import IconUiKit from "../../IconUiKit";
-import BrandLogo from "../BrandLogo/BrandLogo";
+import { BrandLogo } from "../BrandLogo/BrandLogo";
 import HeaderActions from "../HeaderActions/HeaderActions";
-import StyledIconWrapper from "./styles";
 
 export const Header = () => {
   const { t } = useTranslation(undefined, { keyPrefix: "header.navigation" });
@@ -80,13 +79,7 @@ export const Header = () => {
       )}
 
       <HvHeaderBrand
-        {...(!isPentahoTheme && {
-          logo: (
-            <StyledIconWrapper>
-              <BrandLogo logo={logo} />
-            </StyledIconWrapper>
-          ),
-        })}
+        logo={isPentahoTheme ? undefined : <BrandLogo logo={logo} />}
         name={appName}
       />
       {showNavigation && (

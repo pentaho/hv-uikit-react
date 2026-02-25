@@ -3,17 +3,13 @@ import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { theme } from "@hitachivantara/uikit-react-core";
 import { AppSwitcher } from "@hitachivantara/uikit-react-icons";
 
-import BrandLogo from "../BrandLogo/BrandLogo";
+import { BrandLogo } from "../BrandLogo/BrandLogo";
 
 const classes = {
   root: css({
     display: "flex",
-    width: "100%",
     alignItems: "center",
-    "& svg path": {
-      fill: theme.colors.textLight,
-    },
-    gap: theme.space.xs,
+    gap: theme.space.xxs,
   }),
 };
 

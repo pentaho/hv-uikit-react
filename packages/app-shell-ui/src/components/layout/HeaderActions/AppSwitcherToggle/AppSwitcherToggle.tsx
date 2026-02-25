@@ -18,8 +18,7 @@ import {
 
 import createAppContainerElement from "../../../../utils/documentUtil";
 import IconUiKit from "../../../IconUiKit";
-import BrandLogo from "../../BrandLogo/BrandLogo";
-import StyledIconWrapper from "../../Header/styles";
+import { BrandLogo } from "../../BrandLogo/BrandLogo";
 import StyledAppShellPanelWrapper from "./styles";
 
 const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
@@ -97,9 +96,7 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
         >
           <IconUiKit name="AppSwitcher" />
           {showLogo && (
-            <StyledIconWrapper style={{ paddingRight: theme.space.xs }}>
-              <BrandLogo logo={logo} />
-            </StyledIconWrapper>
+            <BrandLogo logo={logo} style={{ paddingRight: theme.space.xs }} />
           )}
         </HvIconButton>
         {isPanelOpen &&
