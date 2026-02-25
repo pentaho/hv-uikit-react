@@ -22,7 +22,7 @@ export const ImageDialog = ({ editor, open, setOpen }: ImageDialogProps) => {
   const handleInsert = useCallback(() => {
     insertImage(editor, localUrl);
     setOpen(false);
-  }, [setOpen, localUrl]);
+  }, [editor, setOpen, localUrl]);
 
   return (
     <HvDialog
@@ -34,7 +34,7 @@ export const ImageDialog = ({ editor, open, setOpen }: ImageDialogProps) => {
       <HvDialogTitle>Enter image URL</HvDialogTitle>
       <HvDialogContent className="p-t-xs!">
         <HvInput
-          placeholder={"Enter image URL..."}
+          placeholder="Enter image URL..."
           value={localUrl}
           onChange={(e, val) => setLocalUrl(val)}
         />

@@ -9,7 +9,7 @@ type SerializedImageNode = {
 export class ImageNode extends DecoratorNode<JSX.Element> {
   __src: string;
 
-  constructor(src: string = "", key?: NodeKey) {
+  constructor(src = "", key?: NodeKey) {
     super(key);
     this.__src = src;
   }

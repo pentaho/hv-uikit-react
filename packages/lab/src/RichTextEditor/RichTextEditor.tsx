@@ -29,12 +29,7 @@ export type HvRichTextEditorClasses = ExtractNames<typeof useClasses>;
 
 export type HvRichTextEditorMentionSearchFunction = MentionSearchFunction;
 
-export interface HvRichTextEditorProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
-  /**
-   * The content that will be rendered within the RichTextEditor.
-   */
-  children: React.ReactNode;
+export interface HvRichTextEditorProps extends HvBaseProps {
   /**
    * A Jss Object used to override or extend the styles applied.
    */

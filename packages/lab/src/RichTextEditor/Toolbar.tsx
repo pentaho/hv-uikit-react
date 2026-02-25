@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
+import { $isLinkNode } from "@lexical/link";
 import {
   $isListNode,
   INSERT_ORDERED_LIST_COMMAND,
@@ -181,7 +181,7 @@ export const Toolbar = ({
     }
 
     setCurrentList(listType);
-  }, []);
+  }, [editor]);
 
   const toggleList = useCallback(
     (type: "bullet" | "number") => {
