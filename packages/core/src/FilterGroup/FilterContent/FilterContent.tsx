@@ -19,7 +19,7 @@ import { HvFilterGroupLeftPanel } from "../LeftPanel";
 import { HvFilterGroupRightPanel } from "../RightPanel";
 import { HvFilterGroupHorizontalPlacement, HvFilterGroupValue } from "../types";
 import { staticClasses, useClasses } from "./FilterContent.styles";
-import { HeaderButton } from "./HeaderButton";
+import { HvHeaderButton } from "./HeaderButton";
 
 export { staticClasses as filterGroupContentClasses };
 
@@ -138,8 +138,8 @@ export const HvFilterGroupContent = forwardRef<
   const CustomHeaderButton = useMemo(
     () =>
       activeTheme?.name === "pentahoPlus"
-        ? (props: React.ComponentProps<typeof HeaderButton>) => (
-            <HeaderButton
+        ? (props: React.ComponentProps<typeof HvHeaderButton>) => (
+            <HvHeaderButton
               {...props}
               iconOnly={iconOnly}
               title={labels?.placeholder}

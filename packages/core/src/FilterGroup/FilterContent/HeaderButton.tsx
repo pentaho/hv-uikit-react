@@ -1,5 +1,9 @@
-import { css } from "@emotion/css";
 import { HvIconContainer } from "@hitachivantara/uikit-react-icons";
+import {
+  createClasses,
+  ExtractNames,
+  useDefaultProps,
+} from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvBadge } from "../../Badge";
@@ -8,63 +12,70 @@ import { HvIconButton } from "../../IconButton";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
 
-type HeaderButtonProps = {
-  onClick: HvButtonProps["onClick"];
-  iconOnly?: boolean;
-  count?: number;
-  title?: string;
-} & Omit<HvButtonProps, "onClick">;
-
-const styles = {
-  iconOnly: css({
+const { useClasses } = createClasses("HvHeaderButton", {
+  iconOnly: {
     "& > .HvBadge-badge": {
       minWidth: "unset !important",
       minHeight: "unset !important",
     },
-  }),
-  button: css({
+  },
+  button: {
     border: `1px solid ${theme.colors.primaryDimmed}`,
     borderRadius: theme.radii.full,
-  }),
-  headerContent: css({
+  },
+  headerContent: {
     display: "flex",
     alignItems: "center",
     gap: theme.space.xxs,
-  }),
-  badgeRoot: css({
+  },
+  badgeRoot: {
     width: 0,
     marginRight: theme.space.sm,
     marginLeft: `-${theme.space.sm}`,
-  }),
-  badge: css({
+  },
+  badge: {
     position: "relative",
-  }),
-  badgeIconOnly: css({
+  },
+  badgeIconOnly: {
     "&&>div:last-of-type": {
       minWidth: "unset",
       minHeight: "unset",
     },
-  }),
-  badgeIcon: css({
+  },
+  badgeIcon: {
     minHeight: 0,
     minWidth: 0,
-  }),
-};
+  },
+});
 
-export const HeaderButton = ({
-  onClick,
-  iconOnly,
-  count = 0,
-  disabled,
-  title = "Filters",
-  ...props
-}: HeaderButtonProps) => {
+export type HvHeaderButtonClasses = ExtractNames<typeof useClasses>;
+
+type HvHeaderButtonProps = {
+  onClick: HvButtonProps["onClick"];
+  iconOnly?: boolean;
+  count?: number;
+  title?: string;
+  classes?: HvHeaderButtonClasses;
+} & Omit<HvButtonProps, "onClick">;
+
+export const HvHeaderButton = (props: HvHeaderButtonProps) => {
+  const {
+    onClick,
+    iconOnly,
+    count = 0,
+    disabled,
+    title = "Filter",
+    classes: classesProp,
+    ...others
+  } = useDefaultProps("HvHeaderButton", props);
+  const { classes } = useClasses(classesProp, false);
+
   return iconOnly ? (
     <HvBadge
       label={count}
       showCount
       classes={{
-        root: styles.badgeIconOnly,
+        root: classes.badgeIconOnly,
       }}
       icon={
         <HvIconButton
@@ -72,9 +83,9 @@ export const HeaderButton = ({
           title={title}
           disabled={disabled}
           classes={{
-            root: styles.button,
+            root: classes.button,
           }}
-          {...props}
+          {...others}
         >
           <HvIcon name="Filters" />
         </HvIconButton>
@@ -90,18 +101,18 @@ export const HeaderButton = ({
           <HvIcon name="Filters" />
         </HvIconContainer>
       }
-      {...props}
+      {...others}
       role="combobox"
     >
-      <div className={styles.headerContent}>
-        <HvTypography variant="label">Filter</HvTypography>
+      <div className={classes.headerContent}>
+        <HvTypography variant="label">{title}</HvTypography>
         <HvBadge
           showCount
           label={count}
           classes={{
-            root: styles.badgeRoot,
-            badge: styles.badge,
-            badgeIcon: styles.badgeIcon,
+            root: classes.badgeRoot,
+            badge: classes.badge,
+            badgeIcon: classes.badgeIcon,
           }}
         />
       </div>
