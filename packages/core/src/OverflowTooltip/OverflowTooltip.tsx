@@ -51,8 +51,10 @@ export const HvOverflowTooltip = (props: HvOverflowTooltipProps) => {
     disableRerender: true,
     refreshRate: 100,
     refreshOptions: { trailing: true, leading: true },
-    onResize({ width, height, entry }) {
-      const { scrollHeight = 0, scrollWidth = 0 } = entry?.target || {};
+    onResize(payload) {
+      if (!payload || !payload.entry) return;
+      const { width, height, entry } = payload;
+      const { scrollHeight = 0, scrollWidth = 0 } = entry.target;
 
       // The difference should be higher than a pixel to be considered as overflowing
       setIsOverflowing(
