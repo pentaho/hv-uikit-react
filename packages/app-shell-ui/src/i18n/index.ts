@@ -23,7 +23,7 @@ export const addResourceBundles = (
   });
 };
 
-const createI18Next = (): { i18n: i18n } => {
+export const createI18Next = (): i18n => {
   const newInstance = createInstance();
   newInstance
     .use(LanguageDetector)
@@ -38,9 +38,5 @@ const createI18Next = (): { i18n: i18n } => {
   newInstance.addResourceBundle("en", APP_SHELL_NAMESPACE, en);
   newInstance.addResourceBundle("pt", APP_SHELL_NAMESPACE, pt);
 
-  return {
-    i18n: newInstance,
-  };
+  return newInstance;
 };
-
-export default createI18Next;

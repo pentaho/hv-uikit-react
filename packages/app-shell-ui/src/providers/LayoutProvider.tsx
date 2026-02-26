@@ -13,19 +13,14 @@ export interface LayoutContextValue {
 
 export const LayoutContext = createContext<LayoutContextValue>({
   bannerMaxHeight: 0,
-  setBannerMaxHeight: () => {
-    // Empty function
-  },
+  setBannerMaxHeight: () => {},
   verticalNavigationWidth: 0,
-  setVerticalNavigationWidth: () => {
-    // Empty function
-  },
+  setVerticalNavigationWidth: () => {},
 });
 
 export const LayoutProvider = ({ children }: LayoutProviderProps) => {
-  const [bannerMaxHeight, setBannerMaxHeight] = useState<number>(0);
-  const [verticalNavigationWidth, setVerticalNavigationWidth] =
-    useState<number>(0);
+  const [bannerMaxHeight, setBannerMaxHeight] = useState(0);
+  const [verticalNavigationWidth, setVerticalNavigationWidth] = useState(0);
 
   const value = useMemo(
     () => ({

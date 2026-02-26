@@ -5,7 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
-import createI18Next from "../../i18n";
+import { createI18Next } from "../../i18n";
 import GenericError from "../../pages/GenericError";
 import { LayoutProvider } from "../../providers/LayoutProvider";
 import { HvAppShellProvider } from "../AppShellProvider/AppShellProvider";
@@ -13,7 +13,7 @@ import { GlobalStyles } from "../GlobalStyles";
 import SnackbarProvider from "../SnackbarProvider";
 import type { HvAppShellProps } from "./AppShell";
 
-const { i18n } = createI18Next();
+const i18n = createI18Next();
 
 export interface HvAppShellContainerProps
   extends React.PropsWithChildren,

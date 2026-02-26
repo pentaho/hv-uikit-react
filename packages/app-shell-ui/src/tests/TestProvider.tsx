@@ -9,7 +9,7 @@ import {
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import { HvAppShellProvider } from "../components/AppShellProvider/AppShellProvider";
-import createI18Next, { addResourceBundles } from "../i18n";
+import { addResourceBundles, createI18Next } from "../i18n";
 import GenericError from "../pages/GenericError";
 import { BannerProvider } from "../providers/BannerProvider";
 import { NavigationProvider } from "../providers/NavigationProvider";
@@ -33,7 +33,7 @@ const TestProvider = ({
   bundles = {},
   config = {},
 }: TestProviderProps) => {
-  const { i18n } = createI18Next();
+  const i18n = createI18Next();
   if (bundles) {
     addResourceBundles(i18n, bundles, CONFIG_TRANSLATIONS_NAMESPACE);
   }

@@ -165,6 +165,8 @@ export function HvAppShellRouter() {
     <RouterProvider
       key={routerKey}
       fallbackElement={<LoadingPage />}
+      // TODO(minor): ensure apps don't wrong `React.lazy` before enabling or upgrading to v7
+      future={{ v7_startTransition: false }}
       router={createBrowserRouter(
         [
           {
