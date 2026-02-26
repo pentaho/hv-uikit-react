@@ -1,6 +1,6 @@
 import type { MenuItem } from "@hitachivantara/app-shell-shared";
 
-import IconUiKit from "../components/IconUiKit";
+import { ConfigIcon } from "../components/ConfigIcon";
 import type { NavigationMenuItem } from "../types";
 
 /**
@@ -27,9 +27,7 @@ const createNavigationMenuItems = (
       const updatedDepth = maxDepth !== undefined ? maxDepth - 1 : undefined;
       const navItem: NavigationMenuItem = {
         ...currentValue,
-        icon: currentValue.icon ? (
-          <IconUiKit name={currentValue.icon?.name || ""} />
-        ) : null,
+        icon: currentValue.icon && <ConfigIcon icon={currentValue.icon} />,
         data: currentValue.data
           ? createNavigationMenuItems(t, currentValue.data, updatedDepth)
           : undefined,

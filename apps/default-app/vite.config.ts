@@ -7,7 +7,7 @@ import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    unoCSS({ mode: "per-module" }),
+    unoCSS(),
     cssInjectedByJsPlugin({
       relativeCSSInjection: true,
     }),
