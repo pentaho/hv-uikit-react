@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import renderTestProvider from "../../../tests/testUtils";
-import BrandLogo from "./BrandLogo";
+import { BrandLogo } from "./BrandLogo";
 
 describe("BrandLogo", () => {
   it("should render the default if no logo is provided", () => {

@@ -753,7 +753,7 @@ export const pentaho = mergeTheme(pentahoBase, {
           width: 280,
           color: theme.colors.textLight,
           backgroundColor: slate[900],
-          borderRight: `1px solid ${slate[500]}`,
+          boxShadow: `inset -1px 0 0 0 ${slate[500]}`,
           "& > :not(nav:first-of-type)": {
             borderTop: `1px solid ${slate[500]}`,
           },

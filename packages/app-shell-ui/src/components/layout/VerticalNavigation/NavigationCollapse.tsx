@@ -1,9 +1,18 @@
 import { useTranslation } from "react-i18next";
-import { cx } from "@emotion/css";
-import { HvButton, HvTypography } from "@hitachivantara/uikit-react-core";
+import { css } from "@emotion/css";
+import { HvVerticalNavigationAction } from "@hitachivantara/uikit-react-core";
 import { End, Start } from "@hitachivantara/uikit-react-icons";
 
-import { classes } from "./styles";
+const classes = {
+  root: css({
+    position: "relative",
+  }),
+  icon: css({
+    position: "absolute",
+    pointerEvents: "none",
+    right: 0,
+  }),
+};
 
 type CollapseProps = {
   onClick: () => void;
@@ -13,25 +22,14 @@ type CollapseProps = {
 export const NavigationCollapse = ({ onClick, isOpen }: CollapseProps) => {
   const { t } = useTranslation(undefined, { keyPrefix: "verticalNavigation" });
   return (
-    <div className={classes.navigationCollapse}>
-      {isOpen && (
-        <HvTypography
-          variant="label"
-          className={classes.navigationCollapseText}
-        >
-          {t("collapseAction")}
-        </HvTypography>
-      )}
-      <HvButton
-        className={cx(classes.navigationCollapseButton, {
-          [classes.navigationCollapseAlignRight]: isOpen,
-        })}
+    <div className={classes.root}>
+      {isOpen && <Start className={classes.icon} />}
+      <HvVerticalNavigationAction
+        label={t("collapseAction")}
+        icon={isOpen ? undefined : <End />}
         aria-label={isOpen ? t("ariaLabelCollapse") : t("ariaLabelExpand")}
-        icon
         onClick={onClick}
-      >
-        {isOpen ? <Start /> : <End />}
-      </HvButton>
+      />
     </div>
   );
 };

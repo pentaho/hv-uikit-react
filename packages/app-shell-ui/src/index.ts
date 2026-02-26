@@ -1,3 +1,3 @@
-import HvAppShell from "./components/AppShell";
+import HvAppShell from "./components/AppShell/AppShell";
 
 export default HvAppShell;

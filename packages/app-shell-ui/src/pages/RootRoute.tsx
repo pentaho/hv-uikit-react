@@ -7,16 +7,19 @@ import {
   useHvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
 
-import CustomHooksInitializer from "../../components/CustomHooksInitializer";
-import Header from "../../components/layout/Header/Header";
-import Main from "../../components/layout/Main/Main";
-import { BannerProvider } from "../../providers/BannerProvider";
-import { NavigationProvider } from "../../providers/NavigationProvider";
-import CombinedProviders from "../../utils/CombinedProviders";
-import GenericError from "../GenericError";
-import LoadingPage from "../LoadingPage";
+import CustomHooksInitializer from "../components/CustomHooksInitializer";
+import { HvAppShellLayout } from "../components/layout/AppShellLayout";
+import { BannerProvider } from "../providers/BannerProvider";
+import { NavigationProvider } from "../providers/NavigationProvider";
+import CombinedProviders from "../utils/CombinedProviders";
+import GenericError from "./GenericError";
+import LoadingPage from "./LoadingPage";
 
-const Root = () => {
+/**
+ * Root route component for provides & visual layout that needs router provider context.
+ * When its not necessary, use `HvAppShellContainer` instead
+ */
+export const RootRoute = () => {
   const { services } = useHvAppShellModel();
   const { providers } = useHvAppShellCombinedProviders();
 
@@ -27,12 +30,11 @@ const Root = () => {
           <NavigationProvider>
             <BannerProvider>
               <CustomHooksInitializer />
-              <Header />
-              <Main>
+              <HvAppShellLayout>
                 <Suspense fallback={<LoadingPage />}>
                   <Outlet />
                 </Suspense>
-              </Main>
+              </HvAppShellLayout>
             </BannerProvider>
           </NavigationProvider>
         </CombinedProviders>
@@ -40,5 +42,3 @@ const Root = () => {
     </ErrorBoundary>
   );
 };
-
-export default Root;

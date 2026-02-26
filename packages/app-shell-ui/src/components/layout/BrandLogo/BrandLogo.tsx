@@ -1,4 +1,6 @@
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellConfig,
@@ -6,34 +8,42 @@ import {
 
 import { Hitachi, Lumada, Pentaho } from "./logos";
 
-export type HvBrandLogoProps = {
-  logo?: HvAppShellConfig["logo"];
-};
+const LogoContainer = styled("div")({
+  height: 20,
+  svg: {
+    height: "inherit",
+  },
+});
 
-const BrandLogo = ({ logo }: HvBrandLogoProps) => {
+interface BrandLogoProps extends React.ComponentProps<typeof LogoContainer> {
+  logo?: HvAppShellConfig["logo"];
+}
+
+export const BrandLogo = ({ logo, ...others }: BrandLogoProps) => {
   const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
 
-  if (!logo) {
-    // When the user explicitly passes "null" to the logo, we don't use any logo
-    if (logo === null) {
-      return null;
+  const LogoComponent = useMemo(() => {
+    const logoName = logo && logo.name?.toUpperCase();
+    switch (logoName) {
+      case "LUMADA":
+        return Lumada;
+      case "PENTAHO":
+      case "PENTAHO+":
+        return Pentaho;
+      default:
+        return Hitachi;
     }
+  }, [logo]);
 
-    // Otherwise, use Hitachi's logo
-    return <Hitachi />;
-  }
+  // When the user explicitly passes "null" to the logo, we don't use any logo
+  if (logo === null) return null;
 
-  // Rules out explicit null value or non-existent prop but assumes empty string
-  const description =
-    logo.description != null ? tConfig(logo.description) : undefined;
-
-  if (logo.name === "LUMADA") {
-    return <Lumada description={description} />;
-  }
-  if (logo.name === "PENTAHO" || logo.name === "PENTAHO+") {
-    return <Pentaho description={description} />;
-  }
-  return <Hitachi description={description} />;
+  return (
+    <LogoContainer {...others}>
+      <LogoComponent
+        // Rules out explicit null value or non-existent prop but assumes empty string
+        description={logo?.description && tConfig(logo.description)}
+      />
+    </LogoContainer>
+  );
 };
-
-export default BrandLogo;
