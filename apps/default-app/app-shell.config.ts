@@ -15,6 +15,7 @@ export default {
     "@hv/user-notifications-client/": VITE_USER_NOTIFICATIONS_URL,
   },
   name: "App Shell",
+  navigationMode: "TOP_AND_LEFT",
   logo: {
     name: "PENTAHO",
     description: "App Shell",
@@ -23,7 +24,6 @@ export default {
     theme: "pentaho",
     colorMode: "light",
   },
-  navigationMode: "TOP_AND_LEFT",
 
   menu: [
     {
@@ -73,10 +73,7 @@ export default {
         {
           label: "notifications",
           target: "/notifications",
-          icon: {
-            iconType: "uikit",
-            name: "Alert",
-          },
+          icon: { iconType: "unocss", name: "i-ph-bell" },
         },
         {
           label: "Multi-level Breadcrumb",

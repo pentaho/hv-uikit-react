@@ -36,7 +36,7 @@ export interface HvAppShellLogo {
 }
 
 export interface HvAppShellIcon {
-  iconType: "uikit";
+  iconType: "uikit" | "unocss";
   name: string;
 }
 

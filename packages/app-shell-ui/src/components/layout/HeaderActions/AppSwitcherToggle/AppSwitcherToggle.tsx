@@ -18,6 +18,7 @@ import {
 
 import createAppContainerElement from "../../../../utils/documentUtil";
 import IconUiKit from "../../../IconUiKit";
+import { MenuIcon } from "../../../MenuIcon";
 import { BrandLogo } from "../../BrandLogo/BrandLogo";
 import StyledAppShellPanelWrapper from "./styles";
 
@@ -42,7 +43,7 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
         : undefined,
       url: app.url?.includes(":") ? app.url : tConfig(app.url).toString(),
       target: app.target === "NEW" ? "_blank" : "_top",
-      iconElement: app.icon && <IconUiKit name={app.icon.name} />,
+      iconElement: app.icon && <MenuIcon icon={app.icon} />,
     }));
   }, [apps, tConfig]);
 

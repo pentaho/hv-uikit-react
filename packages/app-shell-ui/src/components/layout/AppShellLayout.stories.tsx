@@ -76,8 +76,7 @@ export const Main: StoryObj = {
                     {
                       label: "Submenu 2.2",
                       target: "/about/submenu2/submenu2",
-                      // TODO: add uno icon
-                      // icon: { iconType: "uno", name: "i-ph-upload" },
+                      icon: { iconType: "unocss", name: "i-ph-upload" },
                     },
                   ],
                 },
@@ -120,8 +119,7 @@ export const Main: StoryObj = {
                       description: "Application 3",
                       url: "#",
                       target: "SELF",
-                      // TODO: add uno icon
-                      // icon: { iconType: "uno", name: "i-ph-upload" },
+                      icon: { iconType: "unocss", name: "i-ph-upload" },
                     },
                     {
                       label: "App 4",
