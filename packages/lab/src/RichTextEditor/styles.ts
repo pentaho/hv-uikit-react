@@ -41,6 +41,7 @@ export const styles = css`
   .editor-link  {
     color: blue;
     text-decoration: underline;
+    cursor: pointer;
   }
   h1 {
     ${theme.typography.display}

@@ -2,6 +2,7 @@ import { Global } from "@emotion/react";
 import { LinkNode } from "@lexical/link";
 import { ListItemNode, ListNode } from "@lexical/list";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
+import { ClickableLinkPlugin } from "@lexical/react/LexicalClickableLinkPlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
@@ -98,6 +99,7 @@ export const HvRichTextEditor = (props: HvRichTextEditorProps) => {
         <Toolbar />
         <ListPlugin />
         <LinkPlugin />
+        <ClickableLinkPlugin newTab />
         <div className={classes.content}>
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor" />}
