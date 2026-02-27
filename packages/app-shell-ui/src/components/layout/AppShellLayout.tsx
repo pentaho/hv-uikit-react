@@ -42,7 +42,14 @@ const { useClasses } = createClasses("HvAppShellLayout", {
   },
 });
 
-export function HvAppShellLayout({ children }: { children: React.ReactNode }) {
+interface HvAppShellLayoutProps extends React.ComponentProps<"div"> {}
+
+export function HvAppShellLayout({
+  children,
+  style,
+  className,
+  ...others
+}: HvAppShellLayoutProps) {
   const { classes, cx } = useClasses();
   const { activeTheme } = useTheme();
 
@@ -60,18 +67,19 @@ export function HvAppShellLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={cx(classes.root, {
+      className={cx(classes.root, className, {
         // order (priority) of these classes is very important
         [classes.pentaho]: isPentahoTheme,
         [classes.compact]: isCompactMode || !showVerticalNavigation,
       })}
-      style={mergeStyles(undefined, {
+      style={mergeStyles(style, {
         "--vNavWidth": `${verticalNavigationWidth}px`,
         "--headerHeight":
           showHeaderSubMenu && !isCompactMode
             ? `calc(${theme.header.height} + ${theme.header.secondLevelHeight})`
             : theme.header.height,
       })}
+      {...others}
     >
       <Header />
 
