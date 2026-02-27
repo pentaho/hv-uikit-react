@@ -73,6 +73,7 @@ export const Main: StoryObj<HvAppShellConfig> = {
   },
   argTypes: {},
   parameters: {
+    layout: "fullscreen",
     ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {

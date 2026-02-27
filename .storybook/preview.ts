@@ -12,7 +12,7 @@ import { withThemeDecorator } from "./decorators/withThemeDecorator.decorator";
 const backgrounds: HvColor[] = ["bgPage", "bgContainer", "bgPageSecondary"];
 
 export const parameters: Preview["parameters"] = {
-  layout: "fullscreen",
+  layout: "padded",
   docs: {
     source: { type: "dynamic" },
     container: DocsContainer,

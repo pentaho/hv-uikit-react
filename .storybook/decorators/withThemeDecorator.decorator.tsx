@@ -36,11 +36,7 @@ export const withThemeDecorator = (): Decorator => {
         theme={themes[theme as keyof typeof themes]}
         colorMode={mode}
       >
-        <div
-          ref={containerRef}
-          className="hv-story-sample"
-          style={{ padding: 20 }}
-        >
+        <div ref={containerRef} className="hv-story-sample">
           <Story />
         </div>
       </HvProvider>
