@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.1.4...@hitachivantara/app-shell-ui@2.2.0) (2026-02-27)
+
+### Bug Fixes
+
+- **AppShell:** root layout & vertical navigation ([#5091](https://github.com/pentaho/hv-uikit-react/issues/5091)) ([4f6b216](https://github.com/pentaho/hv-uikit-react/commit/4f6b216f3ce005ddc067bd0b483342e323e787fd))
+
+### Features
+
+- **AppShell:** add `disableContainer` to remove HvContainer wrapper ([#5097](https://github.com/pentaho/hv-uikit-react/issues/5097)) ([83cfc3e](https://github.com/pentaho/hv-uikit-react/commit/83cfc3e5b1aab4bbd937c89ffcbbf5541f05e9f0))
+
 ## [2.1.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.1.3...@hitachivantara/app-shell-ui@2.1.4) (2026-02-13)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-ui

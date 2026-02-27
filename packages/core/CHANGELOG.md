@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.4.1...@hitachivantara/uikit-react-core@6.4.2) (2026-02-27)
+
+### Bug Fixes
+
+- **AppShell:** root layout & vertical navigation ([#5091](https://github.com/pentaho/hv-uikit-react/issues/5091)) ([4f6b216](https://github.com/pentaho/hv-uikit-react/commit/4f6b216f3ce005ddc067bd0b483342e323e787fd))
+- **OverflowTooltip:** stuck tooltips due to slow isOverflowing calculation ([#5086](https://github.com/pentaho/hv-uikit-react/issues/5086)) ([f60e495](https://github.com/pentaho/hv-uikit-react/commit/f60e495fd1e1659047af9f365badd9416de0c4c2))
+- **Table:** ensure selection row isn't filtered ([#5087](https://github.com/pentaho/hv-uikit-react/issues/5087)) ([54fa8fc](https://github.com/pentaho/hv-uikit-react/commit/54fa8fc3be95507edead0bb8ba22a7f8b0ca4ea6))
+
 ## [6.4.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.4.0...@hitachivantara/uikit-react-core@6.4.1) (2026-02-13)
 
 ### Bug Fixes
