@@ -23,6 +23,7 @@ export default {
     theme: "pentaho",
     colorMode: "light",
   },
+  navigationMode: "TOP_AND_LEFT",
 
   menu: [
     {
@@ -89,10 +90,10 @@ export default {
             name: "ColorPicker",
           },
         },
-        {
-          label: "Nested Views",
-          target: "/nested",
-        },
+        ...Array.from(Array(16).keys()).map((i) => ({
+          label: `Nested Views ${i + 1}`,
+          target: `/nested-${i + 1}`,
+        })),
         {
           label: "Services Demo",
           target: "/services-demo",
@@ -241,13 +242,8 @@ export default {
       {
         bundle: "@self/services/headerActions/CreateNewContentDropDownMenu.js",
       },
-      {
-        bundle: "@hv/user-notifications-client/index.js",
-        config: {
-          showCount: false,
-        },
-      },
-      { bundle: "@hv/user-information-client/index.js" },
+      // { bundle: "@hv/user-notifications-client/index.js", config: { showCount: false } },
+      // { bundle: "@hv/user-information-client/index.js" },
       { bundle: "@hv/theming-client/colorModeSwitcher.js" },
       {
         bundle: "@hv/app-switcher-client/toggle.js",
@@ -283,9 +279,9 @@ export default {
           description: "Hitachi Vantara Help Link",
         },
       },
-      { bundle: "@hv/sample-app/headerActions/HelloSimpleApp.js" },
+      // { bundle: "@hv/sample-app/headerActions/HelloSimpleApp.js" },
       { bundle: "@self/modules/ChangeContextValue.js" },
-      { bundle: "@hv/sample-app/headerActions/ChangeDefaultAppContext.js" },
+      // { bundle: "@hv/sample-app/headerActions/ChangeDefaultAppContext.js" },
     ],
   },
 
@@ -350,15 +346,9 @@ export default {
         ],
       },
       // Simple App
-      {
-        bundle: "@hv/sample-app/pages/Home.js",
-        route: "/simple-app/home",
-      },
+      // { bundle: "@hv/sample-app/pages/Home.js", route: "/simple-app/home" },
       // Scoped Simple App
-      {
-        bundle: "@hv/sample-app/pages/Home.js",
-        route: "/scoped-home",
-      },
+      // { bundle: "@hv/sample-app/pages/Home.js", route: "/scoped-home" },
       // Services Demo Page
       {
         bundle: "@self/pages/ServicesDemo.js",
