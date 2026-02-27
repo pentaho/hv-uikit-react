@@ -40,7 +40,7 @@ export default {
 
 export const Main: StoryObj = {
   parameters: {
-    ...setupChromatic("Pentaho dawn", 5000),
+    ...setupChromatic("pentaho light", 5000),
   },
   globals: { viewport: { value: "split" } },
   play: async ({ canvas, userEvent }) => {
@@ -149,7 +149,7 @@ export const Main: StoryObj = {
 
 export const Header: StoryObj = {
   parameters: {
-    ...setupChromatic("Pentaho dawn", 5000),
+    ...setupChromatic("pentaho light", 5000),
   },
   decorators: [ProviderDecorator],
   render: () => (
@@ -169,7 +169,7 @@ export const Header: StoryObj = {
 export const NotFoundPage: StoryObj = {
   name: "NotFound",
   parameters: {
-    ...setupChromatic("Pentaho dawn", 5000),
+    ...setupChromatic("pentaho light", 5000),
   },
   globals: { viewport: { value: "split" } },
   decorators: [ProviderDecorator, BoundaryDecorator],
@@ -179,7 +179,7 @@ export const NotFoundPage: StoryObj = {
 export const GenericErrorPage: StoryObj = {
   name: "GenericError",
   parameters: {
-    ...setupChromatic("Pentaho dawn", 5000),
+    ...setupChromatic("pentaho light", 5000),
   },
   globals: { viewport: { value: "split" } },
   decorators: [ProviderDecorator, BoundaryDecorator],

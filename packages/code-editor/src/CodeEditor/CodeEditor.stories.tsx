@@ -15,7 +15,7 @@ export default meta;
 
 export const Main: StoryObj<HvCodeEditorProps> = {
   parameters: {
-    ...setupChromatic(["DS5 dawn"], 5000),
+    ...setupChromatic("default", 5000),
   },
   render: () => <MainStory />,
 };

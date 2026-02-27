@@ -34,7 +34,7 @@ export const Variants: StoryObj<typeof HvIconContainer> = {
     rotate: false,
   },
   parameters: {
-    ...setupChromatic(["Pentaho wicked"]),
+    ...setupChromatic("pentaho dark"),
   },
   render: (args) => {
     return (
