@@ -24,7 +24,7 @@ export const RootRoute = () => {
   const { providers } = useHvAppShellCombinedProviders();
 
   return (
-    <ErrorBoundary fallback={<GenericError fullPage />}>
+    <ErrorBoundary fallback={<GenericError />}>
       <ServiceManagerProvider config={{ services }}>
         <CombinedProviders providers={providers}>
           <NavigationProvider>

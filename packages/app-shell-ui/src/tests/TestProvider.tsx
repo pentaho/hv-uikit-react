@@ -21,7 +21,7 @@ interface TestProviderProps extends PropsWithChildren {
 }
 
 const DummyRoot = ({ children }: { children: ReactNode }) => (
-  <ErrorBoundary fallback={<GenericError fullPage />}>
+  <ErrorBoundary fallback={<GenericError />}>
     <NavigationProvider>
       <BannerProvider>{children}</BannerProvider>
     </NavigationProvider>

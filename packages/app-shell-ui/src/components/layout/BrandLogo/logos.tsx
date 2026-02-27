@@ -6,7 +6,6 @@ export const Hitachi = ({ description = "Hitachi logo" }: LogoProps) => {
   return (
     <svg
       width="72px"
-      height="20px"
       viewBox="0 0 80.5 16.9"
       aria-label={description}
       fill="currentColor"
@@ -19,6 +18,7 @@ export const Hitachi = ({ description = "Hitachi logo" }: LogoProps) => {
 export const Lumada = ({ description = "Lumada logo" }: LogoProps) => {
   return (
     <svg
+      width="86px"
       viewBox="0 0 300.41 69.38"
       aria-label={description}
       fill="currentColor"
@@ -40,9 +40,8 @@ export const Lumada = ({ description = "Lumada logo" }: LogoProps) => {
 export const Pentaho = ({ description = "Pentaho logo" }: LogoProps) => {
   return (
     <svg
-      width="60px"
-      height="13px"
-      viewBox="0 0 60 13"
+      width="68px"
+      viewBox="0 0 62 12"
       aria-label={description}
       fill="currentColor"
     >

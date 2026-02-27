@@ -1,53 +1,52 @@
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import {
+  createClasses,
+  HvContainer,
+  HvTypography,
+  theme,
+} from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../providers/NavigationProvider";
 import { Footer } from "./Footer";
-import {
-  StyledErrorPage,
-  StyledImageWrapper,
-  StyledTitleWrapper,
-} from "./styles";
+
+const { useClasses } = createClasses("ErrorPage", {
+  root: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    paddingTop: theme.space.lg,
+    paddingBottom: theme.space.lg,
+    textAlign: "center",
+    "& > svg": {
+      flex: 1,
+    },
+  },
+});
 
 type ErrorPageProps = {
   code?: string;
   title: string;
-  /* Background Image location */
-  background: string;
-  backgroundLabel: string;
-  fullPage?: boolean;
+  /* image component */
+  image?: React.ReactNode;
   includeFooter?: boolean;
 };
 
-const ErrorPage = ({
-  code = undefined,
+export const ErrorPage = ({
+  code,
   title,
-  background,
-  backgroundLabel,
-  fullPage = false,
+  image,
   includeFooter = true,
 }: ErrorPageProps) => {
-  const { isCompactMode, showHeaderSubMenu } = useNavigationContext();
+  const { classes } = useClasses();
+  const { isCompactMode } = useNavigationContext();
 
   return (
-    <StyledErrorPage
-      showHeaderSubMenu={showHeaderSubMenu}
-      isCompactMode={isCompactMode}
-      fullPage={fullPage}
-    >
-      <StyledTitleWrapper>
-        {code && <HvTypography variant="title1">{code}</HvTypography>}
-        <HvTypography variant={isCompactMode ? "title3" : "display"}>
-          {title}
-        </HvTypography>
-      </StyledTitleWrapper>
-      <StyledImageWrapper
-        style={{ backgroundImage: background }}
-        role="img"
-        aria-label={backgroundLabel}
-      />
+    <HvContainer maxWidth="xl" className={classes.root}>
+      {code && <HvTypography variant="title1">{code}</HvTypography>}
+      <HvTypography variant={isCompactMode ? "title3" : "display"}>
+        {title}
+      </HvTypography>
+      {image}
       {includeFooter && <Footer />}
-    </StyledErrorPage>
+    </HvContainer>
   );
 };
-
-export default ErrorPage;
