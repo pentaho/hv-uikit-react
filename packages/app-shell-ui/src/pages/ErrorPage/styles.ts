@@ -36,10 +36,8 @@ export const StyledErrorPage = styled("div")<StyledErrorPageProps>(
 export const StyledImageWrapper = styled("div")({
   flex: 1,
   display: "flex",
-  backgroundSize: "contain",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat",
   flexDirection: "column",
+  justifyContent: "center",
   height: "100%",
 });
 

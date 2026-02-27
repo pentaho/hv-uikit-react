@@ -11,19 +11,17 @@ import {
 type ErrorPageProps = {
   code?: string;
   title: string;
-  /* Background Image location */
-  background: string;
-  backgroundLabel: string;
+  /* image component */
+  image?: React.ReactNode;
   fullPage?: boolean;
   includeFooter?: boolean;
 };
 
-const ErrorPage = ({
-  code = undefined,
+export const ErrorPage = ({
+  code,
   title,
-  background,
-  backgroundLabel,
-  fullPage = false,
+  image,
+  fullPage,
   includeFooter = true,
 }: ErrorPageProps) => {
   const { isCompactMode, showHeaderSubMenu } = useNavigationContext();
@@ -40,14 +38,8 @@ const ErrorPage = ({
           {title}
         </HvTypography>
       </StyledTitleWrapper>
-      <StyledImageWrapper
-        style={{ backgroundImage: background }}
-        role="img"
-        aria-label={backgroundLabel}
-      />
+      <StyledImageWrapper>{image}</StyledImageWrapper>
       {includeFooter && <Footer />}
     </StyledErrorPage>
   );
 };
-
-export default ErrorPage;
