@@ -1,4 +1,4 @@
-import { lazy, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import {
   createBrowserRouter,
@@ -74,6 +74,7 @@ function renderRoutes(
       maxWidth: viewMaxWidth,
       key,
       conditions,
+      disableContainer,
       ...viewContainerProps
     } = view;
 
@@ -81,17 +82,20 @@ function renderRoutes(
 
     const RouteComponent = lazy(() => import(/* @vite-ignore */ bundle));
 
-    const containerProps = {
+    const showContainer = !(disableContainer ?? mainPanel.disableContainer);
+    const containerProps = showContainer && {
       maxWidth: viewMaxWidth ?? maxWidth,
       ...mainContainerProps,
       ...viewContainerProps,
     };
 
+    const ContainerComponent = showContainer ? HvContainer : Fragment;
+
     return {
       path: route,
       // "Component" used instead of "element" due to lazy loading
       Component: () => (
-        <HvContainer {...containerProps}>
+        <ContainerComponent {...containerProps}>
           <AppShellViewProvider id={appId}>
             <ErrorBoundary
               key={view.key}
@@ -102,7 +106,7 @@ function renderRoutes(
               </RouteComponent>
             </ErrorBoundary>
           </AppShellViewProvider>
-        </HvContainer>
+        </ContainerComponent>
       ),
       children: renderNestedRoutes(nestedViews),
     };
