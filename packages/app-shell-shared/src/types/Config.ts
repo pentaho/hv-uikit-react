@@ -9,7 +9,9 @@ import type {
 } from "@hitachivantara/uikit-react-core";
 
 export interface ViewHvContainerProps
-  extends Omit<HvContainerProps, "children"> {}
+  extends Omit<HvContainerProps, "children"> {
+  disableContainer?: boolean;
+}
 
 export interface HvAppShellConditionConfig {
   bundle: string;
