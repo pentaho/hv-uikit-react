@@ -34,6 +34,8 @@ export interface HvBulkActionsProps extends HvBaseProps {
   semantic?: boolean;
   /** The renderable content inside the right actions slot, or an array of actions `{ id, label, icon, disabled, ... }` */
   actions?: HvActionsGenericProps["actions"];
+  /** Whether the bulk actions component is disabled */
+  disabled?: boolean;
   /** Whether actions should be all disabled */
   actionsDisabled?: boolean;
   /** The callback function called when an action is triggered, receiving `action` as parameter. */
@@ -58,14 +60,15 @@ export const HvBulkActions = forwardRef<
     className,
     classes: classesProp,
     selectAllPagesLabel,
-    actionsDisabled,
+    disabled,
+    actionsDisabled: actionsDisabledProp,
     maxVisibleActions,
     checkboxProps,
     actions,
     numTotal = 0,
     numSelected = 0,
     selectAllConjunctionLabel = "/",
-    showSelectAllPages = false,
+    showSelectAllPages,
     semantic = true,
     onAction,
     onSelectAll,
@@ -76,20 +79,21 @@ export const HvBulkActions = forwardRef<
 
   const anySelected = numSelected > 0;
   const isSemantic = semantic && anySelected;
+  const actionsDisabled = disabled || actionsDisabledProp;
 
   return (
     <div
       ref={ref}
       id={id}
-      className={cx(
-        classes.root,
-        { [classes.semantic]: isSemantic },
-        className,
-      )}
+      className={cx(classes.root, className, {
+        [classes.semantic]: isSemantic,
+        [classes.disabled]: disabled,
+      })}
       {...others}
     >
       <div className={classes.selectAllContainer}>
         <HvCheckBox
+          disabled={disabled}
           className={classes.selectAll}
           checked={numSelected > 0}
           semantic={isSemantic}
@@ -108,6 +112,7 @@ export const HvBulkActions = forwardRef<
           <>
             <div className={classes.divider} />
             <HvButton
+              disabled={disabled}
               className={classes.selectAllPages}
               variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
               onClick={onSelectAllPages}

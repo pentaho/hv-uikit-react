@@ -60,6 +60,16 @@ describe("BulkActions", () => {
     expect(callbackSpy).toHaveBeenCalledOnce();
   });
 
+  it("should disable all controls when disabled is true", () => {
+    render(<Sample disabled />);
+
+    const checkbox = screen.getByRole("checkbox");
+    const buttons = screen.getAllByRole("button");
+
+    expect(checkbox).toBeDisabled();
+    buttons.forEach((button) => expect(button).toBeDisabled());
+  });
+
   it("should render the actions correctly and call onAction when clicked", async () => {
     const user = userEvent.setup();
     const callbackSpy = vi.fn();

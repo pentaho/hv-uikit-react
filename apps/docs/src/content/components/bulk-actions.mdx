@@ -10,7 +10,6 @@ import { Header } from "../../components/Header";
   Component={HvBulkActions}
   componentName="HvBulkActions"
   controls={{
-    selectAllPagesLabel: { defaultValue: "Select All Items" },
     numTotal: { defaultValue: 10 },
     numSelected: { defaultValue: 3 },
     actions: {
@@ -23,7 +22,8 @@ import { Header } from "../../components/Header";
       ],
     },
     maxVisibleActions: { defaultValue: 2 },
-    semantic: { defaultValue: false },
+    disabled: { defaultValue: false },
+    actionsDisabled: { defaultValue: false },
   }}
   componentProps={{
     className: "w-full",
@@ -62,10 +62,8 @@ export default function Demo() {
             classes={{ container: "items-center w-120px h-40px" }}
             label={`Value ${el.id + 1}`}
             checked={el.checked}
-            onChange={(e, checked) => (evt, i, checked) => {
-              const newData = [...data];
-              newData[i].checked = checked;
-              setData(newData);
+            onChange={(e, checked) => {
+              setData(data.with(i, { ...data[i], checked }));
             }}
           />
         ))}
