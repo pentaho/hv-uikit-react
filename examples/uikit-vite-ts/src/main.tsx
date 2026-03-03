@@ -1,11 +1,10 @@
+import "virtual:uno.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import { App } from "./App";
 import { Container } from "./Container";
-
-import "virtual:uno.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

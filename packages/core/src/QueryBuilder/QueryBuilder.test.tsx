@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
+import { HvButton } from "../Button";
 import {
   HvQueryBuilder,
   hvQueryBuilderDefaultOperators,

@@ -1,6 +1,5 @@
-import "./lib/i18n";
 import "virtual:uno.css";
-
+import "./lib/i18n";
 import {
   createBrowserRouter,
   RouterProvider,

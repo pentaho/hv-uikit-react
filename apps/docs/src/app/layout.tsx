@@ -1,6 +1,5 @@
 import "nextra-theme-docs/style.css";
 import "./globals.css";
-
 import type { NextraMetadata } from "nextra";
 import { Layout, Navbar, ThemeSwitch } from "nextra-theme-docs";
 import { Head, Search } from "nextra/components";

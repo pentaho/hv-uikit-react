@@ -1,5 +1,4 @@
 import "uno.css";
-
 import type { Preview } from "@storybook/react-vite";
 import type { Viewport } from "storybook/viewport";
 import { theme, type HvColor } from "@hitachivantara/uikit-styles";

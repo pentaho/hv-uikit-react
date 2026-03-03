@@ -1,8 +1,7 @@
+import "@testing-library/jest-dom";
 import type { TransProps } from "react-i18next";
 import type { ThirdPartyModule, TOptionsBase } from "i18next";
 import { vi } from "vitest";
-
-import "@testing-library/jest-dom";
 
 vi.mock("react-i18next", async () => {
   const { initReactI18next } = await vi.importActual<{

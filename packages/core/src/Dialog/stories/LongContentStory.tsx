@@ -38,24 +38,23 @@ export const LongContentStory = () => {
           scelerisque in. Praesent rhoncus tempor turpis, nec vehicula nulla
           laoreet vel.
           <br />
-          <br />
-          Q uisque nec eros lacus. Aenean pharetra interdum justo, in commodo
-          sem porta non. Nam non lorem ultricies, suscipit ante ut, dictum
-          lacus. Duis pharetra orci sem, sit amet porta orci pulvinar vel.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Nunc tortor ligula, sollicitudin id augue ac,
-          maximus porttitor ante. Etiam ultricies dolor in pretium scelerisque.
-          Integer sed lectus eget lectus mollis elementum. Ut feugiat magna ac
-          venenatis aliquet. Nulla ut justo nulla. Class aptent taciti sociosqu
-          ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean
-          sollicitudin sodales dictum. Aenean vehicula magna venenatis mollis
-          suscipit. Aliquam gravida orci a lacinia convallis. Nunc dignissim
-          eros vel mi hendrerit, ac euismod quam vehicula. Proin sodales eget
-          est finibus aliquam. Maecenas in felis purus. Vestibulum dictum ex
-          elit, at mollis nibh tempor quis. Curabitur velit elit, scelerisque at
-          varius eget, porta nec dui. Sed efficitur augue laoreet, feugiat orci
-          a, pellentesque quam. Proin enim turpis, scelerisque eget enim non,
-          euismod semper magna.
+          <br />Q uisque nec eros lacus. Aenean pharetra interdum justo, in
+          commodo sem porta non. Nam non lorem ultricies, suscipit ante ut,
+          dictum lacus. Duis pharetra orci sem, sit amet porta orci pulvinar
+          vel. Pellentesque habitant morbi tristique senectus et netus et
+          malesuada fames ac turpis egestas. Nunc tortor ligula, sollicitudin id
+          augue ac, maximus porttitor ante. Etiam ultricies dolor in pretium
+          scelerisque. Integer sed lectus eget lectus mollis elementum. Ut
+          feugiat magna ac venenatis aliquet. Nulla ut justo nulla. Class aptent
+          taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+          himenaeos. Aenean sollicitudin sodales dictum. Aenean vehicula magna
+          venenatis mollis suscipit. Aliquam gravida orci a lacinia convallis.
+          Nunc dignissim eros vel mi hendrerit, ac euismod quam vehicula. Proin
+          sodales eget est finibus aliquam. Maecenas in felis purus. Vestibulum
+          dictum ex elit, at mollis nibh tempor quis. Curabitur velit elit,
+          scelerisque at varius eget, porta nec dui. Sed efficitur augue
+          laoreet, feugiat orci a, pellentesque quam. Proin enim turpis,
+          scelerisque eget enim non, euismod semper magna.
           <br />
           <br />
           Nam aliquam, turpis vitae pulvinar feugiat, enim turpis tincidunt

@@ -1,8 +1,7 @@
+import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { beforeEach } from "vitest";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
-
-import "@testing-library/jest-dom";
 
 const customRender = (ui: React.ReactElement<any>, options = {}) =>
   render(ui, {

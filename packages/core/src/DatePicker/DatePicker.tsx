@@ -304,7 +304,7 @@ export const HvDatePicker = forwardRef<HTMLDivElement, HvDatePickerProps>(
     };
 
     const handleToggle: HvBaseDropdownProps["onToggle"] = (evt, open) => {
-      /* 
+      /*
      If evt is null this toggle wasn't triggered by the user.
      instead it was triggered by the baseDropdown useEffect after
      the datepicker changed the expanded value this baseDropdown behavior needs a review
