@@ -25,6 +25,7 @@ import type { HvBaseRadioProps } from "../BaseRadio";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
+import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
 import type { HvButtonBaseProps } from "../ButtonBase";
 import type {
@@ -206,6 +207,15 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvBadgeProps>,
+    HvBulkActions: {
+      semantic: false,
+      classes: {
+        root: {
+          borderRadius: theme.radii.round,
+          padding: theme.space.xs,
+        },
+      },
+    } satisfies CSSClasses<HvBulkActionsProps>,
     HvCallout: {
       classes: {
         root: { outline: "1px solid var(--icolor, currentcolor)" },

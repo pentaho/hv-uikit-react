@@ -14,14 +14,9 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
   },
   semantic: {
     backgroundColor: theme.colors.bgHover,
-    "& $selectAll div": {
-      "&:hover:not(:disabled)": {
-        backgroundColor: theme.alpha("textLight", 0.3),
-      },
-    },
-    "& $selectAll:focus-within div": {
-      backgroundColor: theme.alpha("textLight", 0.3),
-    },
+  },
+  disabled: {
+    backgroundColor: theme.colors.bgDisabled,
   },
   actions: {
     display: "inline-flex",
@@ -33,7 +28,11 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
       },
     },
   },
-  selectAllContainer: { display: "flex", alignItems: "center" },
+  selectAllContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xs,
+  },
   selectAll: {},
   selectAllPages: {},
   divider: {
@@ -41,6 +40,5 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
     backgroundColor: theme.colors.border,
     width: "1px",
     height: "32px",
-    marginLeft: theme.space.sm,
   },
 });

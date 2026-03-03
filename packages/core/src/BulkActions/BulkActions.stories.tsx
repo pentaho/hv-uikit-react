@@ -116,6 +116,7 @@ export const Test: StoryObj<HvBulkActionsProps> = {
         showSelectAllPages
       />
       <HvBulkActions
+        disabled
         numTotal={10}
         numSelected={5}
         actions={actions}
