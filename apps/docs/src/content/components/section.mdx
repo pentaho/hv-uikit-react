@@ -76,3 +76,116 @@ export default function Demo() {
   );
 }
 ```
+
+### Different sizes
+
+The header section will naturally adapt to the content inside but you can also customize
+the looks of the header by using the `classes` prop and applying custom styles.
+
+```tsx live
+<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+  <HvSection
+    title={
+      <>
+        <HvStatusIcon
+          variant="default"
+          size="md"
+          customIcon={<div className="i-ph-tree-structure" />}
+        />
+        <HvTypography variant="title4">Section Title</HvTypography>
+      </>
+    }
+    actions={
+      <>
+        <HvIconButton title="Icon Button">
+          <HvIconContainer>
+            <div className="i-ph-gear" />
+          </HvIconContainer>
+        </HvIconButton>
+        <HvButton variant="primaryGhost">Action</HvButton>
+      </>
+    }
+    {...others}
+    classes={{
+      header: "px-sm py-12px",
+    }}
+    {...others}
+  >
+    <HvTypography>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor
+      blandit ipsum quis sollicitudin. Aliquam erat volutpat. Praesent nisi
+      nisl, sodales vitae blandit tincidunt, malesuada id sapien. Nulla dapibus
+      accumsan est, a pharetra velit consequat et. Nullam iaculis justo sed urna
+      condimentum ultricies. Integer nec interdum tortor.
+    </HvTypography>
+  </HvSection>
+
+  <HvSection
+    title={
+      <>
+        <HvStatusIcon
+          variant="default"
+          customIcon={<div className="i-ph-tree-structure" />}
+        />
+        <HvTypography variant="title4">Section Title</HvTypography>
+      </>
+    }
+    actions={
+      <>
+        <HvIconButton title="Icon Button">
+          <HvIconContainer>
+            <div className="i-ph-gear" />
+          </HvIconContainer>
+        </HvIconButton>
+        <HvButton variant="primaryGhost">Action</HvButton>
+      </>
+    }
+    {...others}
+  >
+    <HvTypography>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor
+      blandit ipsum quis sollicitudin. Aliquam erat volutpat. Praesent nisi
+      nisl, sodales vitae blandit tincidunt, malesuada id sapien. Nulla dapibus
+      accumsan est, a pharetra velit consequat et. Nullam iaculis justo sed urna
+      condimentum ultricies. Integer nec interdum tortor.
+    </HvTypography>
+  </HvSection>
+
+  <HvSection
+    title={
+      <>
+        <HvStatusIcon
+          variant="default"
+          size="xs"
+          customIcon={<div className="i-ph-tree-structure" />}
+        />
+        <HvTypography variant="label">Section Title</HvTypography>
+      </>
+    }
+    actions={
+      <div className="flex items-center">
+        <HvIconButton size="sm" className="p-0px" title="Icon Button">
+          <HvIconContainer size="xs">
+            <div className="i-ph-gear" />
+          </HvIconContainer>
+        </HvIconButton>
+        <HvButton variant="primaryGhost" size="sm">
+          Action
+        </HvButton>
+      </div>
+    }
+    classes={{
+      header: "px-xs py-xxs",
+    }}
+    {...others}
+  >
+    <HvTypography>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor
+      blandit ipsum quis sollicitudin. Aliquam erat volutpat. Praesent nisi
+      nisl, sodales vitae blandit tincidunt, malesuada id sapien. Nulla dapibus
+      accumsan est, a pharetra velit consequat et. Nullam iaculis justo sed urna
+      condimentum ultricies. Integer nec interdum tortor.
+    </HvTypography>
+  </HvSection>
+</div>
+```
