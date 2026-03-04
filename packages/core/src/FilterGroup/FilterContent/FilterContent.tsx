@@ -1,6 +1,7 @@
 import { forwardRef, useContext, useMemo, useRef, useState } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -18,6 +19,7 @@ import { HvFilterGroupLeftPanel } from "../LeftPanel";
 import { HvFilterGroupRightPanel } from "../RightPanel";
 import { HvFilterGroupHorizontalPlacement, HvFilterGroupValue } from "../types";
 import { staticClasses, useClasses } from "./FilterContent.styles";
+import { HvHeaderButton } from "./HeaderButton";
 
 export { staticClasses as filterGroupContentClasses };
 
@@ -41,6 +43,7 @@ export interface HvFilterGroupContentProps
   leftEmptyElement?: React.ReactNode;
   rightEmptyElement?: React.ReactNode;
   disabled?: boolean;
+  iconOnly?: boolean;
   classes?: HvFilterGroupContentClasses;
 }
 
@@ -66,13 +69,16 @@ export const HvFilterGroupContent = forwardRef<
     height,
     leftEmptyElement,
     rightEmptyElement,
+    iconOnly,
     classes: classesProp,
     ...others
   } = useDefaultProps("HvFilterGroupContent", props);
 
+  const [filterGroupOpen, setFilterGroupOpen] = useState<boolean>(false);
+
   const { classes } = useClasses(classesProp);
 
-  const [filterGroupOpen, setFilterGroupOpen] = useState<boolean>(false);
+  const { activeTheme } = useTheme();
 
   const {
     defaultValue,
@@ -109,7 +115,7 @@ export const HvFilterGroupContent = forwardRef<
   };
 
   const handleToggle = (event: Event, open: boolean) => {
-    /* 
+    /*
      If evt is null this toggle wasn't triggered by the user.
      instead it was triggered by the baseDropdown useEffect after
      the datepicker changed the expanded value this baseDropdown behavior needs a review
@@ -143,13 +149,17 @@ export const HvFilterGroupContent = forwardRef<
       disabled={disabled}
       disablePortal={disablePortal}
       variableWidth
-      placement={horizontalPlacement}
       expanded={filterGroupOpen}
+      placement={horizontalPlacement}
       onToggle={handleToggle}
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}
-      placeholder={Header}
-      adornment={<HvFilterGroupCounter />}
+      placeholder={activeTheme?.name === "pentahoPlus" ? undefined : Header}
+      adornment={
+        activeTheme?.name === "pentahoPlus" ? undefined : (
+          <HvFilterGroupCounter />
+        )
+      }
       popperProps={{
         modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
       }}
@@ -163,6 +173,12 @@ export const HvFilterGroupContent = forwardRef<
           .join(" ")
           .trim() || undefined
       }
+      {...(activeTheme?.name === "pentahoPlus" && {
+        headerComponent: HvHeaderButton,
+        iconOnly,
+        title: labels?.placeholder,
+        count: filterValues?.flat().length ?? 0,
+      })}
       {...others}
     >
       <div ref={focusTarget} tabIndex={-1} />
