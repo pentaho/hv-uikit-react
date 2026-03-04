@@ -2,7 +2,7 @@ name: Release
 
 on:
   schedule:
-    - cron: "0 5 * * 5" # at 05:00 on fridays
+    - cron: "0 5 1,15 * *" # at 05:00 on day 1 and 15 of every month
   workflow_dispatch:
 
 concurrency:
