@@ -7,7 +7,6 @@ import {
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvActionBar } from "../../ActionBar";
-import { useBaseDropdownContext } from "../../BaseDropdown/context";
 import { HvButton } from "../../Button";
 import { HvCheckBox } from "../../CheckBox";
 import { HvInput } from "../../Input";
@@ -84,6 +83,7 @@ export interface HvDropdownListProps {
    * Experimental. Uses dropdown in a virtualized form, where not all options are rendered initially. Good for use cases with a lot of options.
    */
   virtualized?: boolean;
+  popperStyles: any;
 }
 
 /**
@@ -122,6 +122,7 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
     notifyChangesOnFirstRender = false,
     singleSelectionToggle,
     height: heightProp,
+    popperStyles,
     maxHeight: maxHeightProp,
     virtualized = false,
     ...others
@@ -132,8 +133,7 @@ export const HvDropdownList = (props: HvDropdownListProps) => {
   const [list, setList] = useState<HvListValue[]>(clone(values));
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const [anySelected, setAnySelected] = useState<boolean>(false);
-  const { popper } = useBaseDropdownContext();
-  const { maxWidth, maxHeight } = popper?.styles.popper || {};
+  const { maxWidth, maxHeight } = popperStyles || {};
 
   const hasChanges = useMemo(() => {
     return String(getSelectedIds(values)) !== String(getSelectedIds(list));

@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { ClickAwayListener, Popper } from "@mui/base";
 import {
+  HvBaseDropdownPopper,
   HvButton,
   HvIconContainer,
   HvInput,
-  HvPanel,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
@@ -82,18 +81,23 @@ function EvaluatorButton() {
       <HvButton
         variant="secondaryGhost"
         endIcon={<div className="i-ph-caret-down" />}
-        onClick={(evt) => setAnchorEl(evt.currentTarget)}
+        onClick={(evt) => {
+          console.log("onClick");
+          setAnchorEl(evt.currentTarget);
+        }}
       >
         Log in as evaluator
       </HvButton>
-      <Popper disablePortal anchorEl={anchorEl} open={open}>
-        <ClickAwayListener onClickAway={() => setAnchorEl(undefined)}>
-          <HvPanel className="grid gap-sm w-312px my-2px border rounded-large">
-            <ListItem id="Admin" name="Administrator" />
-            <ListItem id="Suzy" name="Business User" />
-          </HvPanel>
-        </ClickAwayListener>
-      </Popper>
+      <HvBaseDropdownPopper
+        disablePortal
+        anchorEl={anchorEl}
+        open={open}
+        onClickAway={() => setAnchorEl(undefined)}
+        classes={{ panel: "grid gap-sm p-sm" }}
+      >
+        <ListItem id="Admin" name="Administrator" />
+        <ListItem id="Suzy" name="Business User" />
+      </HvBaseDropdownPopper>
     </>
   );
 }

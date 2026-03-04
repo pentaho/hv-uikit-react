@@ -12,7 +12,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     },
   },
   anchor: { display: "inline-block", width: "100%" },
-  container: { zIndex: theme.zIndices.popover, width: "auto" },
+  container: {},
   header: {
     cursor: "pointer",
     userSelect: "none",
@@ -77,23 +77,5 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     display: "block",
     color: theme.colors.textSubtle,
   },
-  panel: {
-    // TODO: remove padding override in v6 (most elements need it)
-    padding: 0,
-    border: `1px solid ${theme.colors.text}`,
-  },
-  inputExtensionOpen: {
-    height: "0px",
-    backgroundColor: theme.colors.bgContainer,
-    borderTop: "none",
-    borderBottom: "none",
-    borderRight: `1px solid ${theme.colors.text}`,
-    borderLeft: `1px solid ${theme.colors.text}`,
-  },
-  inputExtensionLeftPosition: { marginLeft: "auto" },
-  inputExtensionOpenShadow: {
-    boxShadow: `0px 8px 0px ${theme.colors.textDimmed}, 0px 0px 9px 0px rgba(65,65,65,.12)`,
-  },
-  inputExtensionFloatRight: { float: "right" },
-  inputExtensionFloatLeft: { float: "left" },
+  panel: {},
 });

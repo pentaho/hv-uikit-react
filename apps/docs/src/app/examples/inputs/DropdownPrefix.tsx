@@ -24,12 +24,11 @@ export default function Demo() {
         <HvSelect
           enablePortal
           value={value}
+          variableWidth
           onChange={(_, val) => setValue(val)}
           classes={{
-            root: "w-95px! border-r-1! border-r-border! rounded-none!",
-            panel: "w-200px! max-h-260px!",
-            select:
-              "border-none bg-bgContainer hover:bg-primaryDimmed rounded-none!",
+            panel: "w-200px max-h-260px",
+            select: "min-w-95px! border-0 border-r-1px rounded-none",
           }}
           placeholder="Select..."
           renderValue={(option) => option?.value ?? ""}

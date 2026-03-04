@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import type { Placement } from "@popperjs/core";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -19,8 +18,6 @@ export interface HvDropdownButtonProps
   readOnly?: boolean;
   /** Whether the content triggered by the button is opened or not. */
   open?: boolean;
-  /** Placement of the content triggered by the button. @default bottom */
-  placement?: Placement;
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvDropdownButtonClasses;
 }
@@ -37,7 +34,6 @@ export const HvDropdownButton = forwardRef<
   const {
     className,
     classes: classesProp,
-    placement = "bottom",
     disabled,
     open,
     icon,
@@ -63,7 +59,6 @@ export const HvDropdownButton = forwardRef<
       ref={ref}
       icon={icon}
       disabled={disabled || readOnly}
-      data-popper-placement={placement}
       className={cx(
         classes.root,
         {
