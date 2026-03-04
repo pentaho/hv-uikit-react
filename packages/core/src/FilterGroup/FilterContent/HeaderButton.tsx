@@ -1,4 +1,4 @@
-import { HvIconContainer } from "@hitachivantara/uikit-react-icons";
+import { forwardRef } from "react";
 import {
   createClasses,
   ExtractNames,
@@ -31,7 +31,6 @@ const { useClasses } = createClasses("HvHeaderButton", {
   badgeRoot: {
     width: 0,
     marginRight: theme.space.sm,
-    marginLeft: `-${theme.space.sm}`,
   },
   badge: {
     position: "relative",
@@ -48,17 +47,18 @@ const { useClasses } = createClasses("HvHeaderButton", {
   },
 });
 
-export type HvHeaderButtonClasses = ExtractNames<typeof useClasses>;
-
-type HvHeaderButtonProps = {
-  onClick: HvButtonProps["onClick"];
+interface HvHeaderButtonProps extends Omit<HvButtonProps, "classes"> {
   iconOnly?: boolean;
   count?: number;
   title?: string;
-  classes?: HvHeaderButtonClasses;
-} & Omit<HvButtonProps, "onClick">;
+  classes?: ExtractNames<typeof useClasses>;
+}
 
-export const HvHeaderButton = (props: HvHeaderButtonProps) => {
+export const HvHeaderButton = forwardRef<
+  // no-indent
+  HTMLElement,
+  HvHeaderButtonProps
+>((props, ref) => {
   const {
     onClick,
     iconOnly,
@@ -72,19 +72,16 @@ export const HvHeaderButton = (props: HvHeaderButtonProps) => {
 
   return iconOnly ? (
     <HvBadge
+      ref={ref as any}
       label={count}
       showCount
-      classes={{
-        root: classes.badgeIconOnly,
-      }}
+      className={classes.badgeIconOnly}
       icon={
         <HvIconButton
           onClick={onClick}
           title={title}
           disabled={disabled}
-          classes={{
-            root: classes.button,
-          }}
+          className={classes.button}
           {...others}
         >
           <HvIcon name="Filters" />
@@ -93,14 +90,11 @@ export const HvHeaderButton = (props: HvHeaderButtonProps) => {
     />
   ) : (
     <HvButton
+      ref={ref as any}
       disabled={disabled}
       variant="secondarySubtle"
       onClick={onClick}
-      startIcon={
-        <HvIconContainer>
-          <HvIcon name="Filters" />
-        </HvIconContainer>
-      }
+      startIcon={<HvIcon name="Filters" />}
       {...others}
       role="combobox"
     >
@@ -118,4 +112,4 @@ export const HvHeaderButton = (props: HvHeaderButtonProps) => {
       </div>
     </HvButton>
   );
-};
+});

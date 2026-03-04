@@ -115,7 +115,7 @@ export const HvFilterGroupContent = forwardRef<
   };
 
   const handleToggle = (event: Event, open: boolean) => {
-    /* 
+    /*
      If evt is null this toggle wasn't triggered by the user.
      instead it was triggered by the baseDropdown useEffect after
      the datepicker changed the expanded value this baseDropdown behavior needs a review
@@ -133,21 +133,6 @@ export const HvFilterGroupContent = forwardRef<
       </>
     ),
     [labels?.placeholder],
-  );
-
-  const CustomHeaderButton = useMemo(
-    () =>
-      activeTheme?.name === "pentahoPlus"
-        ? (props: React.ComponentProps<typeof HvHeaderButton>) => (
-            <HvHeaderButton
-              {...props}
-              iconOnly={iconOnly}
-              title={labels?.placeholder}
-              count={filterValues?.flat().length ?? 0}
-            />
-          )
-        : undefined,
-    [activeTheme?.name, iconOnly, filterValues, labels?.placeholder],
   );
 
   return (
@@ -188,7 +173,12 @@ export const HvFilterGroupContent = forwardRef<
           .join(" ")
           .trim() || undefined
       }
-      headerComponent={CustomHeaderButton}
+      {...(activeTheme?.name === "pentahoPlus" && {
+        headerComponent: HvHeaderButton,
+        iconOnly,
+        title: labels?.placeholder,
+        count: filterValues?.flat().length ?? 0,
+      })}
       {...others}
     >
       <div ref={focusTarget} tabIndex={-1} />
