@@ -14,22 +14,39 @@ export const { staticClasses, useClasses } = createClasses(
       backgroundColor: "transparent",
       transition: "visibility 0.3s ease, width 0.3s ease",
       overflow: "hidden",
-      "&$open": {
-        width: 320,
-        visibility: "visible",
-      },
-      "&$close": {
-        width: 0,
-        visibility: "hidden",
+    },
+    open: {
+      width: 320,
+      visibility: "visible",
+    },
+    close: {
+      width: 0,
+      visibility: "hidden",
+      "&+$separator": {
+        display: "none",
       },
     },
     tabs: {},
     content: {
       height: "100%",
     },
+    separator: {
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      width: 8,
+      cursor: "col-resize",
+      borderLeftWidth: 2,
+      borderColor: "transparent",
+      ":hover": {
+        borderColor: theme.colors.bgHover,
+      },
+      "&[data-resizing]": {
+        borderColor: theme.colors.primarySubtle,
+      },
+    },
     handle: {
       height: 44,
-      width: 44,
       display: "flex",
       justifyContent: "center",
       boxShadow,
@@ -41,16 +58,14 @@ export const { staticClasses, useClasses } = createClasses(
         backgroundColor: theme.colors.bgContainer,
       },
       top: "calc(50% - 44px)", // subtract handle's full height
-      "&$handleOpen": {
+      left: 0,
+      "&[aria-expanded=true]": {
         left: 320,
       },
-      "&$handleClose": {
-        left: 0,
-      },
     },
-    open: {},
-    close: {},
+    /** @deprecated use [aria-expanded] instead */
     handleOpen: {},
+    /** @deprecated use [aria-expanded] instead */
     handleClose: {},
   },
 );

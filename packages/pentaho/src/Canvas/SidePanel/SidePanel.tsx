@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useId } from "react";
 import {
   ExtractNames,
   HvBaseProps,
@@ -92,18 +92,20 @@ export const HvCanvasSidePanel = forwardRef<
   } = useDefaultProps("HvCanvasSidePanel", props);
 
   const id = useUniqueId(idProp);
+  const panelId = useId();
 
-  const canvasContext = useCanvasContext();
-  const handleSidePanelWidth = canvasContext?.handleSidePanelWidth;
-  const sidePanelOpen = canvasContext?.sidePanelOpen;
-  const handleSidePanelOpen = canvasContext?.handleSidePanelOpen;
-  const handleSidePanelDragging = canvasContext?.handleSidePanelDragging;
+  const {
+    handleSidePanelWidth,
+    sidePanelOpen,
+    handleSidePanelOpen,
+    handleSidePanelDragging,
+  } = useCanvasContext() || {};
 
   const { classes, cx } = useClasses(classesProp);
 
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
 
-  const [open, setOpen] = useControlled(openProp, Boolean(defaultOpen));
+  const [open, setOpen] = useControlled(openProp, defaultOpen);
   const [selectedTab, setSelectedTab] = useControlled<string | number | null>(
     tabProp,
     tabs?.[0]?.id ?? "none",
@@ -179,17 +181,24 @@ export const HvCanvasSidePanel = forwardRef<
         )}
         <HvPanel
           role={tabs ? "tabpanel" : undefined}
+          id={panelId}
           aria-labelledby={tabs ? `${id}-${selectedTab}` : undefined}
           className={classes.content}
         >
           {children}
         </HvPanel>
       </div>
-      <div {...getSeparatorProps()} />
+      <div
+        data-resizing={isDragging || undefined}
+        className={classes.separator}
+        {...getSeparatorProps()}
+      />
       <HvIconButton
         variant="primaryGhost"
         title={open ? labels.close : labels.open}
         onClick={handleTogglePanel}
+        aria-expanded={open}
+        aria-controls={panelId}
         className={cx(classes.handle, {
           [classes.handleOpen]: open,
           [classes.handleClose]: !open,
