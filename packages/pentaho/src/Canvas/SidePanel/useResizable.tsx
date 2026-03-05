@@ -22,14 +22,7 @@ interface ResizableProps {
   onResize?: (width: number) => void;
 }
 
-export const useResizable = (
-  resizableOptions: ResizableProps,
-): {
-  width: number;
-  isDragging: boolean;
-  getContainerProps: (overrides: any) => ContainerProps;
-  getSeparatorProps: () => SeparatorProps;
-} => {
+export const useResizable = (resizableOptions: ResizableProps) => {
   const { ref, initialWidth, minWidth, maxWidth, onResize } = resizableOptions;
 
   const [width, setWidth] = useState(initialWidth);
@@ -98,15 +91,7 @@ export const useResizable = (
   const getSeparatorProps = (
     overrides: Partial<SeparatorProps> = {},
   ): SeparatorProps => ({
-    style: {
-      left: width,
-      position: "absolute",
-      top: 0,
-      bottom: 0,
-      width: 5,
-      cursor: "col-resize",
-      ...overrides.style,
-    },
+    style: { left: width - 2, ...overrides.style },
     onMouseMove: handleMouseMove,
     onMouseLeave: () => setIsHover(false),
     onMouseDown: () => {
@@ -115,5 +100,5 @@ export const useResizable = (
     role: "separator",
   });
 
-  return { width, isDragging, getContainerProps, getSeparatorProps };
+  return { width, isDragging, getContainerProps, getSeparatorProps } as const;
 };

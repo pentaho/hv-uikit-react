@@ -3,7 +3,6 @@ import {
   HvCanvasSidePanel,
   HvCanvasSidePanelProps,
 } from "@hitachivantara/uikit-react-pentaho";
-import { theme } from "@hitachivantara/uikit-styles";
 
 const meta: Meta<typeof HvCanvasSidePanel> = {
   title: "Pentaho/Canvas/Side Panel",
@@ -20,22 +19,11 @@ export const Main: StoryObj<HvCanvasSidePanelProps> = {
     labels: { control: { disable: true } },
     children: { control: { disable: true } },
   },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          backgroundColor: theme.colors.bgPage,
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        {Story()}
-      </div>
-    ),
-  ],
+
   render: (args) => (
-    <HvCanvasSidePanel {...args}>Some content</HvCanvasSidePanel>
+    <div className="w-full h-lg bg-bgPage relative">
+      <HvCanvasSidePanel {...args}>Some content</HvCanvasSidePanel>
+      <p>Main content</p>
+    </div>
   ),
 };

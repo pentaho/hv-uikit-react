@@ -93,17 +93,18 @@ export const HvCanvasSidePanel = forwardRef<
 
   const id = useUniqueId(idProp);
 
-  const canvasContext = useCanvasContext();
-  const handleSidePanelWidth = canvasContext?.handleSidePanelWidth;
-  const sidePanelOpen = canvasContext?.sidePanelOpen;
-  const handleSidePanelOpen = canvasContext?.handleSidePanelOpen;
-  const handleSidePanelDragging = canvasContext?.handleSidePanelDragging;
+  const {
+    handleSidePanelWidth,
+    sidePanelOpen,
+    handleSidePanelOpen,
+    handleSidePanelDragging,
+  } = useCanvasContext() || {};
 
   const { classes, cx } = useClasses(classesProp);
 
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
 
-  const [open, setOpen] = useControlled(openProp, Boolean(defaultOpen));
+  const [open, setOpen] = useControlled(openProp, defaultOpen);
   const [selectedTab, setSelectedTab] = useControlled<string | number | null>(
     tabProp,
     tabs?.[0]?.id ?? "none",
@@ -185,15 +186,17 @@ export const HvCanvasSidePanel = forwardRef<
           {children}
         </HvPanel>
       </div>
-      <div {...getSeparatorProps()} />
+      <div
+        data-resizing={isDragging || undefined}
+        className={classes.separator}
+        {...getSeparatorProps()}
+      />
       <HvIconButton
         variant="primaryGhost"
         title={open ? labels.close : labels.open}
         onClick={handleTogglePanel}
-        className={cx(classes.handle, {
-          [classes.handleOpen]: open,
-          [classes.handleClose]: !open,
-        })}
+        data-open={open || undefined}
+        className={classes.handle}
         style={{
           left: open ? width : 0,
           transition: isDragging ? "none" : undefined,
