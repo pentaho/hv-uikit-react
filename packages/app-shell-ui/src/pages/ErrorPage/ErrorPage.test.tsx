@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
 import renderTestProvider from "../../tests/testUtils";
-import ErrorPage from "./ErrorPage";
+import { ErrorPage } from "./ErrorPage";
 
 const navigateSpy = vi.fn();
 vi.mock("@hitachivantara/app-shell-navigation", async () => {
@@ -25,8 +25,7 @@ describe("ErrorPage", () => {
         <ErrorPage
           title="dummyTitle"
           code="dummyCode"
-          background="dummyLocation"
-          backgroundLabel="dummyBackgroundLabel"
+          image={<img src="dummy.png" alt="dummyBackgroundLabel" />}
         />,
         {
           menu: [
@@ -64,13 +63,7 @@ describe("ErrorPage", () => {
 
   describe("without menus defined", () => {
     it("should not have message to first menu", async () => {
-      renderTestProvider(
-        <ErrorPage
-          title="dummyTitle"
-          background="dummyLocation"
-          backgroundLabel="dummyBackgroundLabel"
-        />,
-      );
+      renderTestProvider(<ErrorPage title="dummyTitle" />);
       expect(screen.queryByRole("link")).not.toBeInTheDocument();
     });
   });
@@ -78,12 +71,7 @@ describe("ErrorPage", () => {
   describe("without footer included", () => {
     it("should not have message to first menu", async () => {
       renderTestProvider(
-        <ErrorPage
-          title="dummyTitle"
-          background="dummyLocation"
-          backgroundLabel="dummyBackgroundLabel"
-          includeFooter={false}
-        />,
+        <ErrorPage title="dummyTitle" includeFooter={false} />,
       );
       expect(screen.queryByRole("link")).not.toBeInTheDocument();
     });
