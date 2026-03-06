@@ -1,8 +1,4 @@
-import {
-  buttonClasses,
-  createClasses,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { createClasses, theme } from "@hitachivantara/uikit-react-core";
 
 export const { staticClasses, useClasses } = createClasses(
   "HvCanvasBottomPanel",
@@ -32,44 +28,21 @@ export const { staticClasses, useClasses } = createClasses(
     },
     multipleTabs: {
       "& $tab": { maxWidth: "288px" },
-      "& $rightActions": {
-        right: `calc(100% - var(--right) + ${theme.space.xs})`,
-      },
     },
     overflowing: {},
     tab: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-start",
-      width: "100%",
-    },
-    tabTitle: {
-      display: "flex",
-      width: "100%",
-      padding: theme.space.sm,
-      paddingLeft: "var(--left-actions-width)",
-      paddingRight: "var(--right-actions-width)",
+      padding: theme.space.xs,
     },
     tabsRoot: {
       position: "relative",
     },
-    leftActions: {
-      position: "absolute",
-      left: `calc(var(--left) + ${theme.space.xs})`,
-      top: 8,
-    },
-    rightActions: {
-      position: "absolute",
-      right: theme.space.xs,
-      top: 8,
-    },
+    leftActions: {},
+    rightActions: {},
     actionsDisabled: {
       pointerEvents: "none",
-      [`&& .${buttonClasses.disabled}`]: {
+      "&&& button": {
         pointerEvents: "none",
-        backgroundColor: "transparent",
-        borderColor: "transparent",
-        ":hover": {
+        "&,&:hover": {
           backgroundColor: "transparent",
           borderColor: "transparent",
         },

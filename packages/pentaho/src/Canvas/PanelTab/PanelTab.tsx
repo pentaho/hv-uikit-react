@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
 import { Tab, TabProps } from "@mui/base";
 import {
   ExtractNames,
@@ -14,6 +14,10 @@ export type HvCanvasPanelTabClasses = ExtractNames<typeof useClasses>;
 export interface HvCanvasPanelTabProps extends TabProps {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvCanvasPanelTabClasses;
+  /** Start actions to be rendered in the tab. */
+  startActions?: React.ReactNode;
+  /** End actions to be rendered in the tab. */
+  endActions?: React.ReactNode;
 }
 
 /**
@@ -26,10 +30,27 @@ export const HvCanvasPanelTab = forwardRef<
   const {
     classes: classesProp,
     className,
+    startActions,
+    endActions,
     ...others
   } = useDefaultProps("HvCanvasPanelTab", props);
+  const tabRef = useRef<HTMLButtonElement>(null);
 
   const { classes, cx } = useClasses(classesProp);
 
-  return <Tab ref={ref} className={cx(classes.root, className)} {...others} />;
+  return (
+    <div
+      ref={ref as any}
+      className={cx(classes.root, className)}
+      // oxlint-disable-next-line jsx_a11y/click-events-have-key-events simulate tab click
+      onClick={(evt) => {
+        if (evt.target === tabRef.current) return; // stop propagation
+        tabRef.current?.click();
+      }}
+    >
+      {startActions}
+      <Tab ref={tabRef} className={classes.tab} {...others} />
+      {endActions}
+    </div>
+  );
 });
