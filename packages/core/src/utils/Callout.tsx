@@ -87,6 +87,12 @@ const { useClasses } = createClasses("HvCallout", {
   actionClose: {
     alignSelf: "flex-end",
   },
+  messageContainer: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    gap: theme.space.xs,
+  },
 });
 
 export type HvCalloutVariant =
@@ -129,10 +135,21 @@ export interface HvCalloutProps
   /** The props to pass down to the Action Container. */
   actionProps?: Partial<HvButtonProps>;
   /** The size of the banner. */
-  size?: "large" | "regular" | "micro";
+  size?: "large" | "regular" | "toast" | "micro";
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvCalloutClasses;
 }
+
+const getIconSize = (size: HvCalloutProps["size"]) => {
+  switch (size) {
+    case "large":
+      return "md";
+    case "toast":
+      return "xs";
+    default:
+      return "sm";
+  }
+};
 
 /**
  * `HvCallout` is the internal content handler for the snackbars and banners. Might be promoted to a component.
@@ -198,17 +215,19 @@ export const HvCallout = forwardRef<
       data-size={size}
       message={
         <>
-          {icon && (
-            <HvStatusIcon
-              size={size === "large" ? "md" : "sm"}
-              className={classes.messageIcon}
-              variant={variant === "default" ? "info" : variant}
-              customIcon={customIcon}
-            />
-          )}
-          <div className={classes.messageContent}>
-            {title && <b className={classes.messageTitle}>{title}</b>}
-            {children}
+          <div className={classes.messageContainer}>
+            {icon && (
+              <HvStatusIcon
+                size={getIconSize(size)}
+                className={classes.messageIcon}
+                variant={variant === "default" ? "info" : variant}
+                customIcon={customIcon}
+              />
+            )}
+            <div className={classes.messageContent}>
+              {title && <b className={classes.messageTitle}>{title}</b>}
+              {children}
+            </div>
           </div>
           <div style={{ flex: 1 }} />
           {actions && actionsPosition === "inline" && actionsContent}

@@ -45,7 +45,7 @@ export interface HvBannerContentProps
   /** The props to pass down to the Action Container. */
   actionProps?: Partial<HvButtonProps>;
   /** The size of the banner. */
-  size?: HvCalloutProps["size"];
+  size?: Extract<HvCalloutProps["size"], "regular" | "large" | "micro">;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvBannerContentClasses;
 }
@@ -97,6 +97,7 @@ export const HvBannerContent = forwardRef<
       actionProps={actionProps}
       onClose={(evt) => onClose?.(evt as React.MouseEvent<any>)}
       onAction={onAction}
+      size={size}
       {...others}
     >
       {children ?? content}

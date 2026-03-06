@@ -29,6 +29,7 @@ export const Main: StoryObj<HvSnackbarProps> = {
     showIcon: true,
     transitionDuration: 300,
     autoHideDuration: 5000,
+    action: { id: "post", label: "Action", disabled: false },
   },
   argTypes: {
     classes: { control: { disable: true } },
@@ -118,6 +119,12 @@ export const Variants: StoryObj<HvSnackbarProps> = {
               data="This message uses HvOverflowTooltip with paragraphOverflow to display ellipsis and a tooltip because it has a very very very very very very very very very very long text that takes more than 3 lines."
             />
           }
+        />
+        <HvSnackbar
+          {...props}
+          variant="success"
+          title="Toast snackbar"
+          size="toast"
         />
       </>
     );

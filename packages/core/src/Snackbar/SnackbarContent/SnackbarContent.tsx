@@ -7,7 +7,11 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionGeneric, HvActionsGenericProps } from "../../ActionsGeneric";
-import { HvCallout, HvCalloutVariant } from "../../utils/Callout";
+import {
+  HvCallout,
+  HvCalloutProps,
+  HvCalloutVariant,
+} from "../../utils/Callout";
 import { staticClasses, useClasses } from "./SnackbarContent.styles";
 
 export { staticClasses as snackbarContentClasses };
@@ -37,6 +41,8 @@ export interface HvSnackbarContentProps
   onAction?: HvActionsGenericProps["onAction"];
   /** @inheritdoc */
   onClose?: MuiSnackbarProps["onClose"];
+  /** The size of the snackbar. */
+  size?: Extract<HvCalloutProps["size"], "regular" | "toast">;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvSnackbarContentClasses;
 }
@@ -57,6 +63,7 @@ export const HvSnackbarContent = forwardRef<
     action,
     onAction,
     onClose,
+    size,
     ...others
   } = useDefaultProps("HvSnackbarContent", props);
   const { classes, cx } = useClasses(classesProp);
@@ -72,6 +79,7 @@ export const HvSnackbarContent = forwardRef<
         messageIcon: classes.iconVariant,
         messageContent: classes.messageText,
         action: classes.action,
+        messageContainer: classes.messageContainer,
       }}
       showIcon={showIcon}
       showClose={showClose}
@@ -79,6 +87,7 @@ export const HvSnackbarContent = forwardRef<
       actions={isActionGeneric(action) ? [action] : action}
       onClose={onClose}
       onAction={onAction}
+      size={size}
       {...others}
     >
       {label}
