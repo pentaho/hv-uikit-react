@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import {
   ExtractNames,
@@ -12,11 +12,14 @@ import {
   useDefaultProps,
   useUniqueId,
 } from "@hitachivantara/uikit-react-core";
+import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";
 import { HvCanvasPanelTabs, HvCanvasPanelTabsProps } from "../PanelTabs";
 import { staticClasses, useClasses } from "./BottomPanel.styles";
+
+const PANEL_RADIUS = 16;
 
 export { staticClasses as canvasBottomPanelClasses };
 
@@ -97,43 +100,51 @@ export const HvCanvasBottomPanel = forwardRef<
 
   const id = useUniqueId(idProp);
 
+  const buttonsWidthRef = useRef(0);
+  const [isTabsFullWidth, setIsTabsFullWidth] = useState(false);
+  const [overflowing, setOverflowing] = useState(false);
+
   // Tab resize detector: to position tab actions and set the panel top right border radius
-  const { width: tabWidth = 0, ref: tabRef } = useResizeDetector({
+  const { ref: tabRef } = useResizeDetector({
     handleHeight: false,
-  });
-  // Tab panel resize detector: to set the panel top right border radius
-  const { width: panelWidth = 0, ref: panelRef } = useResizeDetector({
-    handleHeight: false,
-  });
+    disableRerender: true,
+    onResize({ width, entry }) {
+      if (!overflowing && !buttonsWidthRef.current) {
+        const tabContainer = entry?.target;
 
-  // Left actions resize detector: to position tab title according with actions
-  const { width: leftActionWidth = 32, ref: leftActionRef } = useResizeDetector(
-    {
-      handleHeight: false,
-      refreshMode: "debounce",
-      refreshOptions: {
-        trailing: true,
-      },
+        const leftActionsWidth =
+          tabContainer?.querySelector(".HvCanvasBottomPanel-leftActions")
+            ?.clientWidth ?? 0;
+        const rightActionsWidth =
+          tabContainer?.querySelector(".HvCanvasBottomPanel-rightActions")
+            ?.clientWidth ?? 0;
+
+        buttonsWidthRef.current = leftActionsWidth + rightActionsWidth;
+      }
+
+      const hasSpace = (width || 0) - buttonsWidthRef.current > 60;
+      setOverflowing(!hasSpace);
     },
-  );
-  // Right actions resize detector: to position tab title according with actions
-  const { width: rightActionWidth = 32, ref: rightActionRef } =
-    useResizeDetector({
-      handleHeight: false,
-      refreshMode: "debounce",
-      refreshOptions: {
-        trailing: true,
-      },
-    });
+  });
 
-  const overflowing = useMemo(() => {
-    const availableWidth =
-      tabWidth -
-      (leftActions ? leftActionWidth : 0) -
-      (rightActions ? rightActionWidth : 0);
+  // Tab panel resize detector: to set the panel top right border radius
+  const { ref: panelRef } = useResizeDetector({
+    handleHeight: false,
+    disableRerender: true,
+    onResize({ entry }) {
+      const panelEl = entry?.target;
+      if (!panelEl) return;
+      const panelWidth = panelEl.clientWidth;
 
-    return availableWidth < 60;
-  }, [leftActionWidth, leftActions, rightActionWidth, rightActions, tabWidth]);
+      const firstTab =
+        panelEl.previousElementSibling?.firstElementChild?.firstElementChild;
+      const tabWidth = firstTab?.clientWidth || 0;
+
+      const numTabs = tabs.length;
+      const tabsWidth = numTabs * tabWidth;
+      setIsTabsFullWidth(tabsWidth + PANEL_RADIUS >= panelWidth);
+    },
+  });
 
   const [selectedTab, setSelectedTab] = useControlled<string | number | null>(
     selectedTabIdProp,
@@ -146,6 +157,43 @@ export const HvCanvasBottomPanel = forwardRef<
   ) => {
     setSelectedTab(tabId);
     onTabChange?.(event, tabId);
+  };
+
+  const renderEndActions = (tab: any) => {
+    const btnsDisabled = selectedTab !== tab.id && !minimize;
+    if (rightActions && !overflowing) {
+      return (
+        <HvActionsGeneric
+          maxVisibleActions={2}
+          actions={rightActions}
+          disabled={btnsDisabled}
+          className={cx(classes.rightActions, {
+            [classes.actionsDisabled]: btnsDisabled,
+          })}
+          onAction={(event, action) => onAction?.(event, action, tab.id)}
+          variant="secondaryGhost"
+          iconOnly
+        />
+      );
+    }
+
+    if (overflowActions && overflowing) {
+      return (
+        <HvActionsGeneric
+          maxVisibleActions={0}
+          actions={overflowActions}
+          disabled={btnsDisabled}
+          className={cx(classes.rightActions, {
+            [classes.actionsDisabled]: btnsDisabled,
+          })}
+          onAction={(event, action) => onAction?.(event, action, tab.id)}
+          variant="secondaryGhost"
+          iconOnly
+        />
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -171,123 +219,53 @@ export const HvCanvasBottomPanel = forwardRef<
       }}
       {...others}
     >
-      <div className={classes.tabsRoot}>
-        <HvCanvasPanelTabs
-          style={{
-            // @ts-ignore
-            "--left-actions-width":
-              overflowing || !leftActions
-                ? theme.space.sm
-                : `calc(${leftActionWidth}px + ${theme.space.xs})`,
-            "--right-actions-width":
-              !rightActions || (overflowing && !overflowActions)
-                ? theme.space.sm
-                : `calc(${overflowing ? 32 : rightActionWidth}px + ${theme.space.xs})`,
-          }}
-          onChange={handleTabChange}
-          value={selectedTab}
-        >
-          {tabs.map((tab, index) => (
-            <HvCanvasPanelTab
-              ref={index === 0 ? tabRef : undefined}
-              key={tab.id}
-              id={`${id}-${tab.id}`}
-              value={tab.id}
-              className={classes.tab}
-            >
-              <div className={classes.tabTitle}>
-                {typeof tab.title === "function"
-                  ? tab.title(overflowing)
-                  : tab.title}
-              </div>
-            </HvCanvasPanelTab>
-          ))}
-        </HvCanvasPanelTabs>
-        {/* For accessibility purposes, these buttons cannot be children of a tablist so they are rendered as HvCanvasTabs sibling. */}
-        {leftActions || rightActions || overflowActions
-          ? tabs.map((tab, index) => {
-              const btnsDisabled = selectedTab !== tab.id && !minimize;
-              return (
-                <div
-                  key={tab.id}
-                  style={{
-                    // @ts-ignore
-                    "--tab-width": `${tabWidth}px`,
-                    "--right": `calc((${index} + 1) * var(--tab-width))`,
-                    "--left": `calc(${index} * var(--tab-width))`,
-                  }}
-                >
-                  {leftActions && !overflowing && (
-                    <div
-                      ref={leftActionRef}
-                      className={cx(classes.leftActions, {
-                        [classes.actionsDisabled]: btnsDisabled,
-                      })}
-                    >
-                      <HvActionsGeneric
-                        maxVisibleActions={1}
-                        actions={leftActions}
-                        disabled={btnsDisabled}
-                        onAction={(event, action) =>
-                          onAction?.(event, action, tab.id)
-                        }
-                        variant="secondaryGhost"
-                        iconOnly
-                      />
-                    </div>
-                  )}
-                  {rightActions && !overflowing && (
-                    <div
-                      ref={rightActionRef}
-                      className={cx(classes.rightActions, {
-                        [classes.actionsDisabled]: btnsDisabled,
-                      })}
-                    >
-                      <HvActionsGeneric
-                        maxVisibleActions={2}
-                        actions={rightActions}
-                        disabled={btnsDisabled}
-                        onAction={(event, action) =>
-                          onAction?.(event, action, tab.id)
-                        }
-                        variant="secondaryGhost"
-                        iconOnly
-                      />
-                    </div>
-                  )}
-                  {overflowActions && overflowing && (
-                    <div
-                      className={cx(classes.rightActions, {
-                        [classes.actionsDisabled]: btnsDisabled,
-                      })}
-                    >
-                      <HvActionsGeneric
-                        maxVisibleActions={0}
-                        actions={overflowActions}
-                        disabled={btnsDisabled}
-                        onAction={(event, action) =>
-                          onAction?.(event, action, tab.id)
-                        }
-                        variant="secondaryGhost"
-                        iconOnly
-                      />
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          : null}
-      </div>
+      <HvCanvasPanelTabs
+        onChange={handleTabChange}
+        value={selectedTab}
+        className={classes.tabsRoot}
+      >
+        {tabs.map((tab, index) => (
+          <HvCanvasPanelTab
+            ref={index === 0 ? tabRef : undefined}
+            key={tab.id}
+            id={`${id}-${tab.id}`}
+            value={tab.id}
+            className={classes.tab}
+            startActions={
+              leftActions &&
+              !overflowing && (
+                <HvActionsGeneric
+                  maxVisibleActions={1}
+                  actions={leftActions}
+                  disabled={selectedTab !== tab.id && !minimize}
+                  className={cx(classes.leftActions, {
+                    [classes.actionsDisabled]:
+                      selectedTab !== tab.id && !minimize,
+                  })}
+                  onAction={(event, action) =>
+                    onAction?.(event, action, tab.id)
+                  }
+                  variant="secondaryGhost"
+                  iconOnly
+                />
+              )
+            }
+            endActions={renderEndActions(tab)}
+          >
+            {typeof tab.title === "function"
+              ? tab.title(overflowing)
+              : tab.title}
+          </HvCanvasPanelTab>
+        ))}
+      </HvCanvasPanelTabs>
       <HvPanel
         ref={panelRef}
         role="tabpanel"
         aria-labelledby={`${id}-${selectedTab}`}
         className={classes.content}
-        style={{
-          // @ts-ignore
-          "--right-border-radius":
-            tabWidth * tabs.length >= panelWidth ? "0px" : "16px",
-        }}
+        style={mergeStyles(undefined, {
+          "--right-border-radius": isTabsFullWidth ? 0 : `${PANEL_RADIUS}px`,
+        })}
       >
         {children}
       </HvPanel>
