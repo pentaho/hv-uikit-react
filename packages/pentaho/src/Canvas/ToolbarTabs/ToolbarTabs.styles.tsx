@@ -41,18 +41,19 @@ export const { staticClasses, useClasses } = createClasses(
       boxShadow: "none",
       backgroundColor: "inherit",
       "&:first-of-type": { borderEndStartRadius: theme.radii.base },
-      [`&.${tabClasses.selected}`]: {
+      [`:has(.${tabClasses.selected})`]: {
         color: theme.colors.primary,
         backgroundColor: TAB_COLOR,
         borderColor: theme.colors.border,
       },
-      [`&:hover:not(.${tabClasses.selected}), &:focus:not(.${tabClasses.selected})`]:
-        {
+      [`:not(:has(.${tabClasses.selected}))`]: {
+        "&:hover,&:focus": {
           borderRadius: 0,
           backgroundColor: TAB_COLOR,
           borderColor: TAB_COLOR,
           "&:first-of-type": { borderEndStartRadius: theme.radii.base },
         },
+      },
 
       // Hide icon when editor is hovered and focused
       [`&:has($tabLabelEditor:hover) $tabIconContainer, &:has(.${toolbarTabEditorClasses.edit}) $tabIconContainer`]:
@@ -80,6 +81,9 @@ export const { staticClasses, useClasses } = createClasses(
       alignItems: "center",
       width: "100%",
       padding: theme.space.xs,
+      [`&.${tabClasses.selected}`]: {
+        color: theme.colors.primary,
+      },
     },
     tabIconContainer: {
       display: "flex",

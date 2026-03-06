@@ -10,6 +10,17 @@ import {
 const meta: Meta<typeof HvCanvasBottomPanel> = {
   title: "Pentaho/Canvas/Bottom Panel",
   component: HvCanvasBottomPanel,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // Using experimental actions inside tabs: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-actions/
+          // Still better UX/a11y than having "unrelated floating" action buttons outside the tabs
+          { id: "aria-required-children", enabled: false },
+        ],
+      },
+    },
+  },
 };
 export default meta;
 

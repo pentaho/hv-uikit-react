@@ -5,14 +5,8 @@ import { describe, it, vi } from "vitest";
 import { HvCanvasBottomPanel, HvCanvasBottomPanelProps } from "./BottomPanel";
 
 const panelTabs = [
-  {
-    id: 0,
-    title: "Tab 1",
-  },
-  {
-    id: 1,
-    title: "Tab 2",
-  },
+  { id: 0, title: "Tab 1" },
+  { id: 1, title: "Tab 2" },
 ];
 
 const renderSimplePanel = (props?: Partial<HvCanvasBottomPanelProps>) =>
@@ -20,7 +14,7 @@ const renderSimplePanel = (props?: Partial<HvCanvasBottomPanelProps>) =>
     <HvCanvasBottomPanel
       open
       tabs={panelTabs}
-      overflowActions={[{ id: "action", label: "Action", icon: <div /> }]}
+      rightActions={[{ id: "action", label: "Action", icon: <div /> }]}
       {...props}
     >
       Content
@@ -85,12 +79,8 @@ describe("CanvasBottomPanel", () => {
     const clickMock = vi.fn();
     renderSimplePanel({ onAction: clickMock });
 
-    const dropdownMenu = screen.getAllByRole("button", {
-      name: "Dropdown menu",
-    });
-    await user.click(dropdownMenu[0]);
-    const menuItem = screen.getByRole("menuitem", { name: "Action" });
-    await user.click(menuItem);
+    const actions = screen.getAllByRole("button", { name: "Action" });
+    await user.click(actions[0]);
     expect(clickMock).toHaveBeenCalledTimes(1);
   });
 
@@ -101,7 +91,6 @@ describe("CanvasBottomPanel", () => {
 
     await user.keyboard("{tab}");
     await user.keyboard("{tab}");
-    await user.keyboard("{enter}");
     await user.keyboard("{enter}");
     expect(clickMock).toHaveBeenCalledTimes(1);
   });

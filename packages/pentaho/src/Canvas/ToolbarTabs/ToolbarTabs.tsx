@@ -264,60 +264,58 @@ export const HvCanvasToolbarTabs = forwardRef<
                   }}
                   key={tab.id}
                   id={String(tab.id)}
-                  className={classes.tab}
+                  classes={{ root: classes.tab, tab: classes.tabContent }}
                   value={tab.id}
                   onKeyDown={(event) =>
                     handleKeyDownTab(event, tab.id, removable)
                   }
                 >
-                  <div className={classes.tabContent}>
-                    {tab.icon && (
-                      <div className={classes.tabIconContainer}>{tab.icon}</div>
-                    )}
-                    {!btnSelected || disableTabEdit ? (
-                      <HvOverflowTooltip
-                        classes={{
-                          tooltipAnchor: classes.tabLabel,
-                        }}
-                        data={tab.label}
-                      />
-                    ) : (
-                      <ToolbarTabEditor
-                        classes={{
-                          label: cx(classes.tabLabel, classes.tabLabelEditor),
-                        }}
-                        value={tab.label}
-                        edit={isEditing}
-                        onEditChange={setIsEditing}
-                        onChange={(event, value) =>
-                          handleEdit(event, value, tab.id)
-                        }
-                        onBlur={(event, value) =>
-                          handleEdit(event, value, tab.id)
-                        }
-                        // We don't want the arrow keys to trigger the tab navigation
-                        onKeyDown={(e) => e.stopPropagation()}
-                      />
-                    )}
-                    {removable && (
-                      <div className={classes.closeIconContainer}>
-                        <CloseXS
-                          aria-hidden
-                          size="xs"
-                          onClick={(event) => {
-                            handleDeleteTab(event, tab.id);
+                  {tab.icon && (
+                    <div className={classes.tabIconContainer}>{tab.icon}</div>
+                  )}
+                  {!btnSelected || disableTabEdit ? (
+                    <HvOverflowTooltip
+                      classes={{
+                        tooltipAnchor: classes.tabLabel,
+                      }}
+                      data={tab.label}
+                    />
+                  ) : (
+                    <ToolbarTabEditor
+                      classes={{
+                        label: cx(classes.tabLabel, classes.tabLabelEditor),
+                      }}
+                      value={tab.label}
+                      edit={isEditing}
+                      onEditChange={setIsEditing}
+                      onChange={(event, value) =>
+                        handleEdit(event, value, tab.id)
+                      }
+                      onBlur={(event, value) =>
+                        handleEdit(event, value, tab.id)
+                      }
+                      // We don't want the arrow keys to trigger the tab navigation
+                      onKeyDown={(e) => e.stopPropagation()}
+                    />
+                  )}
+                  {removable && (
+                    <div className={classes.closeIconContainer}>
+                      <CloseXS
+                        aria-hidden
+                        size="xs"
+                        onClick={(event) => {
+                          handleDeleteTab(event, tab.id);
 
-                            // We don't want the click to also select the tab
-                            event.stopPropagation();
-                          }}
-                        />
-                      </div>
+                          // We don't want the click to also select the tab
+                          event.stopPropagation();
+                        }}
+                      />
+                    </div>
+                  )}
+                  {selectedTab !== tab.id &&
+                    visibleTabs[index + 1]?.id !== selectedTab && (
+                      <div className={classes.tabDivider} />
                     )}
-                    {selectedTab !== tab.id &&
-                      visibleTabs[index + 1]?.id !== selectedTab && (
-                        <div className={classes.tabDivider} />
-                      )}
-                  </div>
                 </HvCanvasPanelTab>
               );
             })}
