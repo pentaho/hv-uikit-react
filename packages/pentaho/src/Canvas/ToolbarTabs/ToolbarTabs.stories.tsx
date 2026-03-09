@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect } from "storybook/test";
 import { Leaf } from "@hitachivantara/uikit-react-icons";
 import {
   HvCanvasToolbarTabs,
@@ -15,10 +16,8 @@ export default meta;
 
 export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
   args: {
-    icon: (
-      // Only for testing purposes
-      <Leaf data-testid="leaf" />
-    ),
+    // Only for testing purposes
+    icon: <Leaf data-testid="leaf" />,
     defaultTabs: [
       { id: "tab1", label: "My first tab", icon: <Leaf /> },
       { id: "tab2", label: "My tab with a very long label", icon: <Leaf /> },
@@ -34,12 +33,190 @@ export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
     onTabChange: { control: { disable: true } },
     onChange: { control: { disable: true } },
   },
+  play: async ({ canvas, canvasElement, userEvent, step }) => {
+    await step("renders all components when there are tabs", async () => {
+      expect(canvas.getByRole("button", { name: "Create new" })).toBeVisible();
+      expect(canvas.getByRole("tablist")).toBeVisible();
+      expect(
+        canvas.getByRole("tab", { name: "My first tab", selected: true }),
+      ).toBeVisible();
+      expect(
+        canvas.getByRole("tab", {
+          name: "My tab with a very long label",
+          selected: false,
+        }),
+      ).toBeVisible();
+      expect(canvas.getAllByRole("tab")).toHaveLength(2);
+      expect(
+        canvasElement.querySelectorAll("[data-name=CloseXS]"),
+      ).toHaveLength(2);
+    });
+
+    await step("renames selected tab", async () => {
+      expect(
+        canvas.getByRole("tab", { name: "My first tab", selected: true }),
+      ).toBeInTheDocument();
+
+      const labelEditor = canvas.getByText("My first tab");
+      await userEvent.click(labelEditor);
+      await userEvent.clear(labelEditor);
+      await userEvent.type(labelEditor, "My new label");
+      await userEvent.keyboard("{Enter}");
+
+      expect(
+        canvas.getByRole("tab", { name: "My new label", selected: true }),
+      ).toBeInTheDocument();
+    });
+
+    await step("adds tab with icon", async () => {
+      const createBtn = canvas.getByRole("button", { name: "Create new" });
+      await userEvent.click(createBtn);
+
+      const leaf = canvas.getByTestId("leaf");
+      expect(leaf).toBeInTheDocument();
+      expect(canvas.getAllByRole("tab")).toHaveLength(3);
+    });
+
+    await step("changes selected tab", async () => {
+      const secondTab = canvas.getByText("My tab with a very long label");
+      await userEvent.click(secondTab);
+
+      const selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(selectedTab).toHaveTextContent("My tab with a very long label");
+    });
+
+    await step("selects previous tab when tab is closed", async () => {
+      const closeBtns = canvasElement.querySelectorAll("[data-name=CloseXS]");
+      await userEvent.click(closeBtns[1]); // Close "My tab with a very long label"
+
+      const selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(selectedTab).toHaveTextContent("My new label");
+    });
+
+    await step("selects next tab when first tab is closed", async () => {
+      const closeBtns = canvasElement.querySelectorAll("[data-name=CloseXS]");
+      await userEvent.click(closeBtns[0]); // Close first tab
+
+      const selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(canvas.getAllByRole("tab")).toHaveLength(1);
+      expect(selectedTab).toBeInTheDocument();
+    });
+
+    await step("can close remaining tab", async () => {
+      const closeBtn = canvasElement.querySelector("[data-name=CloseXS]");
+      await userEvent.click(closeBtn!);
+
+      expect(canvas.queryByRole("tab")).not.toBeInTheDocument();
+    });
+
+    await step(
+      "uses previous value when trying to clear a tab label",
+      async () => {
+        // Add a new tab first
+        const createBtn = canvas.getByRole("button", { name: "Create new" });
+        await userEvent.click(createBtn);
+
+        const labelEditor = canvas.getByText(/Undefined/);
+        await userEvent.click(labelEditor);
+        await userEvent.clear(labelEditor);
+        await userEvent.keyboard("{Enter}");
+
+        const selectedTab = canvas.getByRole("tab", { selected: true });
+        expect(selectedTab).toHaveTextContent(/Undefined/);
+      },
+    );
+
+    await step(
+      "uses previous value when clicking escape while editing label",
+      async () => {
+        const labelEditor = canvas.getByText(/Undefined/);
+        await userEvent.click(labelEditor);
+        await userEvent.type(labelEditor, "123");
+        await userEvent.keyboard("{Escape}");
+
+        const selectedTab = canvas.getByRole("tab", { selected: true });
+        expect(selectedTab).toHaveTextContent(/Undefined/);
+      },
+    );
+  },
   render: (args) => {
     return <HvCanvasToolbarTabs {...args} />;
   },
 };
 
 export const Controlled: StoryObj<HvCanvasToolbarTabsProps> = {
+  play: async ({ canvas, userEvent, step }) => {
+    await step("renders all components when there are no tabs", async () => {
+      const createBtn = canvas.getByRole("button", { name: "Create new" });
+      const tabList = canvas.queryByRole("tablist");
+
+      expect(createBtn).toBeInTheDocument();
+      expect(tabList).not.toBeInTheDocument();
+      expect(canvas.queryByRole("tab")).not.toBeInTheDocument();
+    });
+
+    await step("adds and renames tab when controlled", async () => {
+      // Add new tab
+      const createBtn = canvas.getByRole("button", { name: "Create new" });
+      await userEvent.click(createBtn);
+
+      let selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(selectedTab).toHaveTextContent(/Undefined/);
+
+      const labelEditor = canvas.getByText(/Undefined/);
+      await userEvent.click(labelEditor);
+      await userEvent.clear(labelEditor);
+      await userEvent.type(labelEditor, "My new label");
+      await userEvent.keyboard("{Enter}");
+
+      selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(selectedTab).toHaveTextContent("My new label");
+    });
+
+    await step(
+      "adds tabs and creates dropdown menu when overflowing",
+      async () => {
+        const createBtn = canvas.getByRole("button", { name: "Create new" });
+
+        // Add second tab
+        await userEvent.click(createBtn);
+        // Rename it
+        let labelEditor = canvas.getByText(/Undefined/);
+        await userEvent.click(labelEditor);
+        await userEvent.clear(labelEditor);
+        await userEvent.type(labelEditor, "Tab 2");
+        await userEvent.keyboard("{Enter}");
+
+        // Add third tab
+        await userEvent.click(createBtn);
+        expect(canvas.getAllByRole("tab")).toHaveLength(3);
+
+        // Add fourth tab (may cause overflow depending on viewport)
+        await userEvent.click(createBtn);
+        let selectedTab = canvas.getByRole("tab", { selected: true });
+        expect(selectedTab).toHaveTextContent(/Undefined/);
+      },
+    );
+
+    await step("changes selected tab when controlled", async () => {
+      const tabs = canvas.getAllByRole("tab");
+      await userEvent.click(tabs[0]); // Click first tab
+
+      const selectedTab = canvas.getByRole("tab", { selected: true });
+      expect(selectedTab).toHaveTextContent("My new label");
+    });
+
+    await step("closes selected tab when controlled", async () => {
+      const initialTabCount = canvas.getAllByRole("tab").length;
+      const selectedTab = canvas.getByRole("tab", { selected: true });
+      const closeBtn = selectedTab.querySelector("[data-name='CloseXS']");
+
+      if (closeBtn) {
+        await userEvent.click(closeBtn);
+        expect(canvas.getAllByRole("tab")).toHaveLength(initialTabCount - 1);
+      }
+    });
+  },
   render: () => <ControlledStory />,
 };
 

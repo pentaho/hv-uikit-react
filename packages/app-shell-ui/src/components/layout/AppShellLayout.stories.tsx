@@ -34,7 +34,6 @@ const BoundaryDecorator: Decorator = (Story) => (
 
 export default {
   title: "Tests/AppShell Layout",
-  tags: ["skipTestRunner"],
 } satisfies Meta;
 
 export const Main: StoryObj = {

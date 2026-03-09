@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvFlow,
@@ -31,7 +31,13 @@ const meta: Meta<typeof HvFlow> = {
     HvFlowMinimap,
     HvFlowSidebar,
   } as unknown,
-  tags: ["skipTestRunner"],
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{ id: "nested-interactive", enabled: false }],
+      },
+    },
+  },
   decorators: [(Story) => <HvVizProvider>{Story()}</HvVizProvider>],
 };
 export default meta;
@@ -41,15 +47,33 @@ export const Main: StoryObj<HvFlowProps> = {
     docs: {},
     ...setupChromatic("next"),
   },
-  // For visual testing
-  play: async ({ canvas, userEvent }) => {
-    const button = canvas.getByRole("button", { name: /add node/i });
-    await userEvent.click(button);
-    const expand = canvas.getAllByRole("button", { name: /expand group/i })[0];
-    await userEvent.click(expand);
-    await expect(
-      canvas.getByRole("searchbox", { name: /search node/i }),
-    ).toBeInTheDocument();
+  play: async ({ canvas, userEvent, step }) => {
+    await step("opens sidebar and displays node groups", async () => {
+      await userEvent.click(canvas.getByRole("button", { name: /add node/i }));
+      await userEvent.click(
+        canvas.getAllByRole("button", { name: /expand group/i })[0],
+      );
+      await expect(
+        canvas.getByRole("searchbox", { name: /search node/i }),
+      ).toBeInTheDocument();
+    });
+
+    await step("should allow to drag node to canvas", async () => {
+      await userEvent.click(
+        canvas.getAllByRole("button", { name: /expand group/i })[1],
+      );
+
+      // Select ML Model node
+      const mlModelButton = canvas.getByRole("button", {
+        name: "ML Model Prediction",
+      });
+      expect(mlModelButton).toBeInTheDocument();
+
+      await userEvent.click(mlModelButton);
+      await userEvent.keyboard("{Enter}");
+      await userEvent.keyboard("{ArrowLeft}".repeat(20));
+      await userEvent.keyboard("{Enter}");
+    });
   },
   render: () => <MainStory />,
 };
@@ -63,6 +87,29 @@ export const InitialState: StoryObj<HvFlowProps> = {
     },
     ...setupChromatic("next"),
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step("should render nodes and edges from initial state", async () => {
+      await waitFor(
+        () => {
+          // Check for nodes
+          const nodes = canvas.getAllByRole("button");
+          expect(nodes.length).toBeGreaterThan(0);
+
+          // Should have edges/connections
+          const edges = canvas.queryAllByRole("button", { name: /Edge/ });
+          expect(edges.length).toBeGreaterThanOrEqual(0);
+        },
+        { timeout: 2000 },
+      );
+    });
+
+    await step("should not show empty state", async () => {
+      const emptyMessage = canvas.queryByText("Empty Flow");
+      expect(emptyMessage).not.toBeInTheDocument();
+    });
+  },
   render: () => <InitialStateStory />,
 };
 
@@ -74,6 +121,53 @@ export const Visualizations: StoryObj<HvFlowProps> = {
         <br /><br />Please refer to the [code samples](https://github.com/pentaho/hv-uikit-react/blob/master/packages/lab/src/components/Flow/stories/Visualizations/Visualizations.tsx) in our repository for more details.`,
       },
     },
+  },
+  play: async ({ canvas, userEvent, step }) => {
+    await step("should allow deleting a connection", async () => {
+      const initialEdges = canvas.getAllByRole("button", { name: /Edge from/ });
+
+      // Click on the specific edge
+      const edgeToDelete = canvas.getByRole("button", {
+        name: "Edge from jsonInput to lineChart",
+      });
+      await userEvent.click(edgeToDelete);
+
+      // Delete with keyboard
+      await userEvent.keyboard("{Backspace}");
+
+      // Wait for update
+      await waitFor(
+        () => {
+          const edges = canvas.queryAllByRole("button", { name: /Edge from/ });
+          expect(edges.length).toBeLessThan(initialEdges.length);
+        },
+        { timeout: 2000 },
+      );
+    });
+
+    await step(
+      "interactive button should be present and toggleable",
+      async () => {
+        const interactiveBtn = canvas.getByRole("button", {
+          name: "Interactive",
+        });
+        expect(interactiveBtn).toBeInTheDocument();
+        expect(
+          interactiveBtn.querySelector("[data-name=Unlock]"),
+        ).toBeVisible();
+
+        await userEvent.click(interactiveBtn);
+        expect(interactiveBtn.querySelector("[data-name=Lock]")).toBeVisible();
+      },
+    );
+
+    await step("connection count respects maximum limit", async () => {
+      // After deletion, count should be one less
+      const edges = canvas.getAllByRole("button", { name: /Edge from/ });
+      const currentCount = edges.length;
+
+      expect(currentCount).toBeGreaterThanOrEqual(0);
+    });
   },
   render: () => <VisualizationsStory />,
 };

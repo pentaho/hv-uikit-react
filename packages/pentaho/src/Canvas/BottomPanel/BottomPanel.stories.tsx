@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, within } from "storybook/test";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 import { Favorite, Heart } from "@hitachivantara/uikit-react-icons";
 import {
@@ -39,6 +40,23 @@ export const Main: StoryObj<HvCanvasBottomPanelProps> = {
     leftActions: { control: { disable: true } },
     rightActions: { control: { disable: true } },
   },
+  play: async ({ canvas, userEvent }) => {
+    // press tab & arrow right to select next tab
+    await userEvent.tab();
+    await userEvent.keyboard("{ArrowRight}");
+
+    expect(
+      canvas.getByRole("tab", { name: "Tab 2", selected: true }),
+    ).toBeInTheDocument();
+
+    await userEvent.keyboard("{ArrowLeft}");
+    await userEvent.tab();
+    await userEvent.keyboard("{ArrowRight}");
+
+    expect(
+      canvas.getByRole("tab", { name: "Tab 1", selected: true }),
+    ).toBeInTheDocument();
+  },
   render: (args) => {
     return (
       <HvCanvasBottomPanel {...args} className="relative">
@@ -64,6 +82,78 @@ const tabs: HvCanvasBottomPanelProps["tabs"] = [
 ];
 
 export const PlaywrightTest: StoryObj = {
+  globals: {
+    viewport: { value: "split" },
+  },
+  play: async ({ canvas, canvasElement, userEvent }) => {
+    // Test: opens and closes by controlling the component
+    const toggleOpenBtn = canvas.getByRole("button", { name: "Open" });
+    await userEvent.click(toggleOpenBtn);
+    expect(canvas.queryByRole("tablist")).not.toBeInTheDocument();
+
+    // Reopen for next tests
+    await userEvent.click(toggleOpenBtn);
+
+    // Test: minimizes and maximizes the tabs
+    expect(canvas.getByRole("tablist")).toBeInTheDocument();
+    expect(canvas.getByRole("tabpanel")).toBeInTheDocument();
+
+    const toggleMinimizeBtn = canvas.getByRole("button", { name: "Minimize" });
+    await userEvent.click(toggleMinimizeBtn);
+
+    expect(canvas.getByRole("tablist")).toBeInTheDocument();
+    expect(canvas.queryByRole("tabpanel")).not.toBeInTheDocument();
+
+    // Restore for next tests
+    await userEvent.click(toggleMinimizeBtn);
+
+    // Test: renders the correct number of right and left actions
+    const dropdownMenus = canvas.getAllByRole("button", {
+      name: "Dropdown menu",
+    });
+    expect(dropdownMenus).toHaveLength(4);
+
+    const action1Buttons = canvas.getAllByRole("button", { name: "Action 1" });
+    expect(action1Buttons).toHaveLength(2);
+
+    const action3Buttons = canvas.getAllByRole("button", { name: "Action 3" });
+    expect(action3Buttons).toHaveLength(2);
+
+    const action4Buttons = canvas.getAllByRole("button", { name: "Action 4" });
+    expect(action4Buttons).toHaveLength(2);
+
+    // Click left action for first tab
+    await userEvent.click(dropdownMenus[0]);
+    const menu1 = within(canvasElement.parentElement!).getByRole("menu");
+    expect(menu1).toBeInTheDocument();
+    expect(within(menu1).getAllByRole("menuitem")).toHaveLength(1);
+    expect(
+      within(menu1).getByRole("menuitem", { name: "Action 2" }),
+    ).toBeVisible();
+
+    // Close menu by clicking elsewhere
+    await userEvent.click(document.body);
+
+    // Click right action for first tab
+    await userEvent.click(dropdownMenus[1]);
+    const menu2 = within(canvasElement.parentElement!).getByRole("menu");
+    expect(menu2).toBeInTheDocument();
+    expect(within(menu2).getAllByRole("menuitem")).toHaveLength(1);
+    expect(
+      within(menu2).getByRole("menuitem", { name: "Action 5" }),
+    ).toBeVisible();
+    // Close menu
+
+    const tab2 = canvas.getByRole("tab", { name: "Tab 2" });
+    await userEvent.click(tab2);
+    const tab1 = canvas.getByRole("tab", { name: "Tab 1", selected: false });
+    expect(tab1).toBeVisible();
+
+    // Note: Test for overflow actions requires viewport change
+    // which is not easily achievable in Storybook play functions
+    // Consider keeping that test in the separate Playwright spec file
+    // or create a separate story with a narrower viewport
+  },
   render: () => {
     const [minimize, setMinimize] = useState(false);
     const [open, setOpen] = useState(true);
@@ -71,12 +161,12 @@ export const PlaywrightTest: StoryObj = {
 
     return (
       <>
-        <HvButton onClick={() => setOpen((prev) => !prev)}>
-          Toggle Open
-        </HvButton>
-        <HvButton onClick={() => setMinimize((prev) => !prev)}>
-          Toggle Minimize
-        </HvButton>
+        <div className="flex gap-xs mb-xs">
+          <HvButton onClick={() => setOpen((prev) => !prev)}>Open</HvButton>
+          <HvButton onClick={() => setMinimize((prev) => !prev)}>
+            Minimize
+          </HvButton>
+        </div>
         <HvCanvasBottomPanel
           open={open}
           className="relative"
