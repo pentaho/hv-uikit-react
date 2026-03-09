@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import ReactECharts from "echarts-for-react/lib/core";
+import type ReactECharts from "echarts-for-react";
 import { PieChart } from "echarts/charts";
 import {
   DatasetComponent,

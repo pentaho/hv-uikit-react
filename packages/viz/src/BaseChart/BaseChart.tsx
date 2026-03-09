@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { useForkRef } from "@mui/material/utils";
-import ReactECharts from "echarts-for-react/lib/core";
+import ReactECharts from "echarts-for-react";
 import { AriaComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";

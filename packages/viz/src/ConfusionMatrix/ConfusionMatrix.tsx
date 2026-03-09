@@ -1,5 +1,5 @@
 import { forwardRef, useMemo } from "react";
-import ReactECharts from "echarts-for-react/lib/core";
+import type ReactECharts from "echarts-for-react";
 import { HeatmapChart } from "echarts/charts";
 import {
   GridComponent,
