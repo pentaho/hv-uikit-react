@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-viz@6.1.3...@hitachivantara/uikit-react-viz@6.1.4) (2026-03-10)
+
+### Bug Fixes
+
+- **viz:** echarts-for-react imports ([#5110](https://github.com/pentaho/hv-uikit-react/issues/5110)) ([94d56fe](https://github.com/pentaho/hv-uikit-react/commit/94d56feee33df4cf63fc5c5e55bd5dc6a0d6a3fe))
+
 ## [6.1.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-viz@6.1.2...@hitachivantara/uikit-react-viz@6.1.3) (2026-02-03)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-viz
