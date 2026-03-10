@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import ReactECharts from "echarts-for-react/lib/core";
+import type ReactECharts from "echarts-for-react";
 import { BoxplotChart } from "echarts/charts";
 import { TooltipComponent, VisualMapComponent } from "echarts/components";
 import * as echarts from "echarts/core";
