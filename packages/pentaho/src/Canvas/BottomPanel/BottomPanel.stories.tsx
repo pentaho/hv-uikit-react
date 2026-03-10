@@ -100,7 +100,7 @@ export const PlaywrightTest: StoryObj = {
 
 export const Test: StoryObj = {
   render: () => (
-    <>
+    <div className="flex flex-col gap-xs">
       <HvCanvasBottomPanel
         open
         className="relative"
@@ -149,6 +149,6 @@ export const Test: StoryObj = {
       >
         Content
       </HvCanvasBottomPanel>
-    </>
+    </div>
   ),
 };

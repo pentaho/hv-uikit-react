@@ -101,7 +101,7 @@ const defaultTabs3 = [
 
 export const Test: StoryObj = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+    <div className="flex flex-col gap-xs">
       <HvCanvasToolbarTabs />
       <HvCanvasToolbarTabs hideCreateNew />
       <HvCanvasToolbarTabs defaultTabs={defaultTabs} />

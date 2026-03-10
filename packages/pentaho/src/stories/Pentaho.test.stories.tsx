@@ -3,6 +3,7 @@ import { renderStory, setupChromatic } from "@hitachivantara/internal";
 import { HvSimpleGrid } from "@hitachivantara/uikit-react-core";
 
 import { Test as BottomPanelTestStory } from "../Canvas/BottomPanel/BottomPanel.stories";
+import { Main as SidePanelMainStory } from "../Canvas/SidePanel/SidePanel.stories";
 import { Test as ToolbarTabsTestStory } from "../Canvas/ToolbarTabs/ToolbarTabs.stories";
 
 /** Visual tests for components from the Pentaho package */
@@ -21,13 +22,14 @@ export const Test: StoryObj = {
   parameters: {
     ...setupChromatic("pentaho", 5000),
   },
-  render: (args, context: any) => (
+  render: (args, context) => (
     <HvSimpleGrid
       cols={2}
       style={{ alignItems: "start", justifyContent: "start" }}
     >
       {renderStory(BottomPanelTestStory, context)}
       {renderStory(ToolbarTabsTestStory, context)}
+      {renderStory(SidePanelMainStory, context)}
     </HvSimpleGrid>
   ),
 };
