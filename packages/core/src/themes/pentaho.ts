@@ -1239,6 +1239,7 @@ export const pentaho = mergeTheme(pentahoBase, {
       },
     } satisfies CSSClasses<HvSnackbarContentProps>,
     HvBreadCrumb: {
+      maxVisible: 5,
       classes: {
         currentPage: {
           fontWeight: theme.fontWeights.semibold,
