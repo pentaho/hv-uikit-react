@@ -1216,6 +1216,9 @@ export const pentaho = mergeTheme(pentahoBase, {
           width: 525,
           minHeight: "unset",
         },
+        messageText: {
+          paddingLeft: 0,
+        },
         iconVariant: {
           alignSelf: "flex-start",
           margin: theme.space.xxs,

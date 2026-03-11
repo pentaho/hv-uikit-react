@@ -151,7 +151,7 @@ export const TestPopups: StoryObj = {
       <div className="ml-auto">
         {renderStory(DropDownMenuMainStory, context)}
       </div>
-      <div className="grid w-340px">
+      <div className="grid w-525px">
         {renderStory(SnackbarVariantsStory, context)}
       </div>
     </div>

@@ -209,7 +209,6 @@ export const HvCallout = forwardRef<
       data-size={size}
       message={
         <>
-          {/* <div className={classes.messageContainer}> */}
           {icon && (
             <HvStatusIcon
               size={getIconSize(size)}
@@ -222,7 +221,6 @@ export const HvCallout = forwardRef<
             {title && <b className={classes.messageTitle}>{title}</b>}
             {children}
           </div>
-          {/* </div> */}
           <div style={{ flex: 1 }} />
           {actions && actionsPosition === "inline" && actionsContent}
         </>

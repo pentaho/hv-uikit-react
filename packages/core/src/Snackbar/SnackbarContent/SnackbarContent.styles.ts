@@ -22,8 +22,8 @@ export const { useClasses, staticClasses } = createClasses(name, {
   },
   action: {},
   messageText: {
+    paddingLeft: theme.space.xs,
     maxHeight: "72px",
   },
   iconVariant: {},
-  messageContainer: {},
 });
