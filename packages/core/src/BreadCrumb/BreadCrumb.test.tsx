@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
 import { HvBreadCrumb } from "./BreadCrumb";
@@ -47,5 +48,20 @@ describe("BreadCrumb", () => {
     expect(firstLink).toHaveAttribute("href", "/path1");
     expect(screen.getByRole("link", { name: /path2/i })).toBeInTheDocument();
     expect(screen.getByText(/path3/i)).toBeInTheDocument();
+  });
+
+  it("renders home icon and triggers onClick", async () => {
+    const handleClick = vi.fn();
+    render(
+      <HvBreadCrumb
+        listRoute={data}
+        home={{ label: "Home", path: "/" }}
+        onClick={handleClick}
+      />,
+    );
+    const homeButton = screen.getByRole("link", { name: /home/i });
+    expect(homeButton).toBeInTheDocument();
+    await userEvent.click(homeButton);
+    expect(handleClick).toHaveBeenCalled();
   });
 });

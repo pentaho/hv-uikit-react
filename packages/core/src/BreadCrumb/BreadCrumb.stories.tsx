@@ -38,7 +38,14 @@ export const Main: StoryObj<HvBreadCrumbProps> = {
     maxVisible: { control: { type: "range", min: 0, max: data.length } },
   },
   render: (args) => {
-    return <HvBreadCrumb listRoute={data} aria-label="Breadcrumb" {...args} />;
+    return (
+      <HvBreadCrumb
+        listRoute={data}
+        home={{ label: "Home", path: "/" }}
+        aria-label="Breadcrumb"
+        {...args}
+      />
+    );
   },
 };
 
@@ -72,7 +79,9 @@ export const Test: StoryObj<HvBreadCrumbProps> = {
   // For a11y
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement.parentElement!);
-    await userEvent.click(canvas.getByRole("button", { name: /dropdown/i }));
+    await userEvent.click(
+      canvas.getAllByRole("button", { name: /dropdown/i })[0],
+    );
     await expect(await canvas.findByRole("menu")).toBeInTheDocument();
   },
   decorators: [(Story) => <div className="grid gap-sm">{Story()}</div>],
@@ -89,6 +98,23 @@ export const Test: StoryObj<HvBreadCrumbProps> = {
           label: `Long label ${i + 1} With Some Long Text`,
           path: `route${i}`,
         }))}
+      />
+      <HvBreadCrumb
+        aria-label="Test"
+        maxVisible={4}
+        listRoute={data}
+        home={{ label: "Home", path: "#home" }}
+      />
+      <HvBreadCrumb
+        aria-label="Test"
+        maxVisible={1}
+        listRoute={data}
+        home={{ label: "Home", path: "#home" }}
+      />
+      <HvBreadCrumb
+        aria-label="Test"
+        listRoute={data}
+        home={{ label: "Home", path: "#home" }}
       />
     </>
   ),
