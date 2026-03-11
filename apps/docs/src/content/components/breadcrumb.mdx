@@ -15,6 +15,7 @@ import { Header } from "../../components/Header";
     },
   }}
   componentProps={{
+    home: { label: "Home", path: "#home" },
     listRoute: [
       { label: "Label 1", path: "#route1" },
       { label: "Label 2", path: "#route2" },
@@ -49,6 +50,7 @@ export default function Demo() {
   return (
     <HvBreadCrumb
       maxVisible={5}
+      home={{ label: "Home", path: "#home" }}
       listRoute={[
         { label: "Label 1", path: "route1" },
         { label: "Label 2", path: "route2" },
