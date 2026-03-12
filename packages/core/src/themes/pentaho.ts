@@ -32,7 +32,11 @@ import type {
   HvCalendarCellProps,
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";
-import type { HvCardHeaderProps, HvCardProps } from "../Card";
+import type {
+  HvCardContentProps,
+  HvCardHeaderProps,
+  HvCardProps,
+} from "../Card";
 import type { HvDialogActionsProps, HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
@@ -904,6 +908,11 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         root: {
           flexDirection: "row-reverse",
+          padding: theme.space.sm,
+          // remove top padding from the next sibling
+          "&& + *": {
+            paddingTop: 0,
+          },
         },
         subheader: {
           color: theme.colors.textSubtle,
@@ -913,6 +922,13 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvCardHeaderProps>,
+    HvCardContent: {
+      classes: {
+        content: {
+          paddingBottom: 0,
+        },
+      },
+    } satisfies CSSClasses<HvCardContentProps>,
     HvFooter: {
       name: "Pentaho",
     } satisfies CSSClasses<HvFooterProps>,
