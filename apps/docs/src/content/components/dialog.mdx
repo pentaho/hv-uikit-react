@@ -137,6 +137,9 @@ const buttonVariantMap: Record<
 
 With very long content the dialog grows in height, up to a maximum where a margin of `100px` is left on top and bottom.
 
+Furthermore [dialogs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alertdialog_role) that require explicit user acknowledgment, shouldn't be easily dismissible.
+This can be achieved by _NOT_ having a `onClose` on the dialog; which removes the ability to dismiss the dialog using the close "X" button, ESC, or background click.
+
 ```tsx live
 import { useState } from "react";
 
@@ -146,7 +149,7 @@ export default function Demo() {
   return (
     <>
       <HvButton onClick={() => setOpen(true)}>Open dialog</HvButton>
-      <HvDialog disableBackdropClick open={open} onClose={() => setOpen(false)}>
+      <HvDialog open={open} role="alertdialog">
         <HvDialogTitle variant="warning">Terms and Conditions</HvDialogTitle>
         <HvDialogContent indentContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut sem
@@ -220,11 +223,10 @@ export default function Demo() {
           cursus gravida dictum. Phasellus dapibus venenatis mi et dapibus.
         </HvDialogContent>
         <HvDialogActions>
-          <HvButton
-            autoFocus
-            variant="secondaryGhost"
-            onClick={() => setOpen(false)}
-          >
+          <HvButton variant="secondaryGhost" onClick={() => setOpen(false)}>
+            Cancel
+          </HvButton>
+          <HvButton autoFocus variant="primary" onClick={() => setOpen(false)}>
             I Accept
           </HvButton>
         </HvDialogActions>
@@ -273,10 +275,12 @@ export default function Demo() {
 }
 ```
 
-### Form
+### Alert Dialog
 
-An example of using a `form` in `HvDialog`. The sample uses the `autoFocus` attribute to focus the Title input by default.
+This example demonstrates using a `form` in `HvDialog`. The sample uses the `autoFocus` attribute to focus the Title input by default.
 Accessibility-wise, `HvDialogTitle` automatically labels the dialog. A `aria-describedby` can be used to describe the content.
+Dialogs with forms are [alert dialogs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alertdialog_role),
+and shouldn't not provide an `onClose`.
 
 ```tsx live
 import { useId, useState } from "react";
@@ -292,10 +296,9 @@ export default function Demo() {
       <HvTypography variant="title4">Form data:</HvTypography>
       <pre>{JSON.stringify(postData, null, 2)}</pre>
       <HvDialog
-        disableBackdropClick
+        role="alertdialog"
         fullHeight
         open={open}
-        onClose={() => setOpen(false)}
         aria-describedby={descId}
       >
         <HvDialogTitle>Create a new post</HvDialogTitle>
