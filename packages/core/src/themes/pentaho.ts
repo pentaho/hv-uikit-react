@@ -908,7 +908,6 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         root: {
           flexDirection: "row-reverse",
-          padding: theme.space.sm,
           // remove top padding from the next sibling
           "&& + *": {
             paddingTop: 0,
@@ -926,6 +925,9 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         content: {
           paddingBottom: 0,
+          "&& + .HvCardMedia-root": {
+            paddingTop: theme.space.xs,
+          },
         },
       },
     } satisfies CSSClasses<HvCardContentProps>,
