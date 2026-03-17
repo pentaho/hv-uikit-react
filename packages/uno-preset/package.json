@@ -39,8 +39,7 @@
     "@unocss/preset-rem-to-px": "^66.4.2"
   },
   "devDependencies": {
-    "@unocss/preset-wind3": "^66.4.2",
-    "vite": "^7.1.1"
+    "@unocss/preset-wind3": "^66.4.2"
   },
   "files": [
     "dist"

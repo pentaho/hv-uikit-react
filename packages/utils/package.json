@@ -41,8 +41,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "vite": "^7.1.1"
+    "@types/react-dom": "^18.2.17"
   },
   "files": [
     "dist"

@@ -65,8 +65,7 @@
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@types/react-window": "^1.8.8",
-    "vite": "^7.1.1"
+    "@types/react-window": "^1.8.8"
   },
   "files": [
     "dist"
