@@ -12,6 +12,13 @@ import {
 
 vi.mock("path", async () => vi.importActual("./mocks/path.mock.ts"));
 
+const jitiMock = vi.hoisted(() => ({
+  import: vi.fn(),
+}));
+vi.mock("jiti", () => ({
+  createJiti: () => jitiMock,
+}));
+
 const existsSyncMock = vi.fn();
 const readFileSyncMock = vi.fn();
 fs.existsSync = existsSyncMock;
@@ -38,12 +45,12 @@ describe("test app-shell-vite-generate-base plugin", () => {
   });
 
   describe("test `loadConfigFile`", () => {
-    it("returns an empty config if the config file is not defined", () => {
-      const appShellConfig = loadConfigFile(undefined, {}, {});
+    it("returns an empty config if the config file is not defined", async () => {
+      const appShellConfig = await loadConfigFile(undefined, {}, {});
       expect(appShellConfig).toMatchObject({});
     });
 
-    it("returns the config if config file exists", () => {
+    it("returns the config if config file exists", async () => {
       const config: HvAppShellConfig = {
         baseUrl: "dummyBaseUrl",
       };
@@ -56,7 +63,7 @@ describe("test app-shell-vite-generate-base plugin", () => {
         return JSON.stringify(config);
       });
 
-      const appShellConfig = loadConfigFile(
+      const appShellConfig = await loadConfigFile(
         "/dummyPath/dummyRootProject/app-shell.config.json",
         {},
         {},
@@ -64,7 +71,7 @@ describe("test app-shell-vite-generate-base plugin", () => {
       expect(appShellConfig).toMatchObject(config);
     });
 
-    it("replaces tokens at configurations defined at json files", () => {
+    it("replaces tokens at configurations defined at json files", async () => {
       const config: HvAppShellConfig = {
         baseUrl: "@@BASE_URL@@",
       };
@@ -77,7 +84,7 @@ describe("test app-shell-vite-generate-base plugin", () => {
         return JSON.stringify(config);
       });
 
-      const appShellConfig = loadConfigFile(
+      const appShellConfig = await loadConfigFile(
         "/dummyPath/dummyRootProject/app-shell.config.json",
         {
           configReplacements: [
@@ -89,6 +96,65 @@ describe("test app-shell-vite-generate-base plugin", () => {
       expect(appShellConfig).toMatchObject({
         baseUrl: "dummyBaseUrlWithTokens",
       });
+    });
+
+    it("loads a .ts config with a plain object default export", async () => {
+      const config: HvAppShellConfig = { baseUrl: "dummyBaseUrl" };
+
+      jitiMock.import.mockResolvedValue(config);
+
+      const result = await loadConfigFile(
+        "/dummyPath/dummyRootProject/app-shell.config.ts",
+        {},
+        {},
+      );
+      expect(result).toMatchObject(config);
+    });
+
+    it("forwards env to a .ts config function", async () => {
+      jitiMock.import.mockResolvedValue(
+        (_opts: unknown, env: Record<string, string>) => ({
+          baseUrl: env.APP_BASE ?? "/",
+        }),
+      );
+
+      const result = await loadConfigFile(
+        "/dummyPath/dummyRootProject/app-shell.config.ts",
+        {},
+        { APP_BASE: "http://env-base.example.com" },
+      );
+      expect(result).toMatchObject({ baseUrl: "http://env-base.example.com" });
+    });
+
+    it("forwards opts to a .ts config function", async () => {
+      jitiMock.import.mockResolvedValue(
+        (opts: { configReplacements?: { value: string }[] }) => ({
+          baseUrl: opts.configReplacements?.[0]?.value ?? "/",
+        }),
+      );
+
+      const result = await loadConfigFile(
+        "/dummyPath/dummyRootProject/app-shell.config.ts",
+        {
+          configReplacements: [
+            { token: "BASE", value: "http://opts-base.example.com" },
+          ],
+        },
+        {},
+      );
+      expect(result).toMatchObject({ baseUrl: "http://opts-base.example.com" });
+    });
+
+    it("propagates errors thrown by jiti during .ts config loading", async () => {
+      jitiMock.import.mockRejectedValue(new Error("config loading error"));
+
+      await expect(
+        loadConfigFile(
+          "/dummyPath/dummyRootProject/app-shell.config.ts",
+          {},
+          {},
+        ),
+      ).rejects.toThrow("config loading error");
     });
   });
 
@@ -182,7 +248,7 @@ describe("test app-shell-vite-generate-base plugin", () => {
       expect(getBasePath(undefined, "/viteBase")).toBe("/viteBase");
     });
     it("config url and vite base are undefined", () => {
-      expect(getBasePath(undefined, undefined)).toBe("/");
+      expect(getBasePath()).toBe("/");
     });
   });
 });

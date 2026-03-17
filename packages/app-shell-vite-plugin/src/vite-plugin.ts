@@ -142,10 +142,10 @@ export interface AppShellVitePluginOptions {
  * @param opts Plugin options
  * @param env Environment variable
  */
-export function HvAppShellVitePlugin(
+export async function HvAppShellVitePlugin(
   opts: AppShellVitePluginOptions = {},
   env: Record<string, string> = {},
-): PluginOption {
+): Promise<PluginOption[]> {
   const {
     root = process.cwd(),
     mode = ViteBuildMode.PRODUCTION,
@@ -178,7 +178,7 @@ export function HvAppShellVitePlugin(
   const appShellConfigFile = !generateEmptyShell
     ? findAppShellConfigFile(root)
     : undefined;
-  const appShellConfiguration: HvAppShellConfig = loadConfigFile(
+  const appShellConfiguration: HvAppShellConfig = await loadConfigFile(
     appShellConfigFile,
     opts,
     env,

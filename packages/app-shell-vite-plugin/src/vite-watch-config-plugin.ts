@@ -2,8 +2,6 @@ import path from "node:path";
 import type { PluginOption } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
-import { require } from "./nodeModule.js";
-
 const prepareConfigForDevMode = (
   config: HvAppShellConfig,
   selfAppName: string,
@@ -30,7 +28,6 @@ export default function serveAppShellConfig(
       const restartServer = (file: string) => {
         if (appShellConfigFile != null && file.endsWith(appShellConfigFile)) {
           console.info("App Shell configuration file changed. Reloading...");
-          delete require.cache[require.resolve(appShellConfigFile)];
           server
             .restart()
             .catch((e) => console.error(`Restart failed with: ${e}`));
