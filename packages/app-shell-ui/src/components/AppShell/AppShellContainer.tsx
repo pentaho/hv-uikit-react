@@ -57,7 +57,7 @@ export function HvAppShellContainer({
         <I18nextProvider i18n={i18n}>
           <ErrorBoundary
             key="general"
-            fallback={<GenericError fullPage includeFooter={false} />}
+            fallback={<GenericError includeFooter={false} />}
           >
             <HvAppShellProvider config={config}>
               <LayoutProvider>

@@ -41,10 +41,7 @@ function renderNestedRoutes(
       // "Component" used instead of "element" due to lazy loading
       Component: () => (
         <AppShellViewProvider id={appId}>
-          <ErrorBoundary
-            key={view.key}
-            fallback={<GenericError fullPage={false} />}
-          >
+          <ErrorBoundary key={view.key} fallback={<GenericError />}>
             <RouteComponent {...view.config}>
               {view.views ? <Outlet /> : null}
             </RouteComponent>
@@ -95,39 +92,19 @@ function renderRoutes(
       path: route,
       // "Component" used instead of "element" due to lazy loading
       Component: () => (
-        <ContainerComponent {...containerProps}>
-          <AppShellViewProvider id={appId}>
-            <ErrorBoundary
-              key={view.key}
-              fallback={<GenericError fullPage={false} />}
-            >
+        <ErrorBoundary key={view.key} fallback={<GenericError />}>
+          <ContainerComponent {...containerProps}>
+            <AppShellViewProvider id={appId}>
               <RouteComponent {...config}>
                 {nestedViews ? <Outlet /> : null}
               </RouteComponent>
-            </ErrorBoundary>
-          </AppShellViewProvider>
-        </ContainerComponent>
+            </AppShellViewProvider>
+          </ContainerComponent>
+        </ErrorBoundary>
       ),
       children: renderNestedRoutes(nestedViews),
     };
   });
-}
-
-function renderErrorRoutes(
-  mainPanel: HvAppShellMainPanelModel | undefined,
-): RouteObject[] {
-  const { views, maxWidth = "xl", ...mainContainerProps } = mainPanel ?? {};
-
-  return [
-    {
-      path: "*",
-      element: (
-        <HvContainer maxWidth={maxWidth} {...mainContainerProps}>
-          <NotFound />
-        </HvContainer>
-      ),
-    },
-  ];
 }
 
 export function HvAppShellRouter() {
@@ -137,7 +114,11 @@ export function HvAppShellRouter() {
   const [routerKey, setRouterKey] = useState<string>("router-initial");
 
   const childRoutes = useMemo(
-    () => [...renderRoutes(mainPanel), ...renderErrorRoutes(mainPanel)],
+    () => [
+      ...renderRoutes(mainPanel),
+      // catch-all for 404 route
+      { path: "*", element: <NotFound /> },
+    ],
     [mainPanel],
   );
 
@@ -175,7 +156,7 @@ export function HvAppShellRouter() {
         [
           {
             element: <RootRoute />,
-            errorElement: <GenericError fullPage />,
+            errorElement: <GenericError />,
             children: childRoutes,
           },
         ],

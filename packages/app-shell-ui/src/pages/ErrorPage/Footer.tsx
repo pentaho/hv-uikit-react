@@ -1,16 +1,10 @@
-import { MouseEventHandler } from "react";
 import { useErrorBoundary } from "react-error-boundary";
 import { Trans, useTranslation } from "react-i18next";
-import styled from "@emotion/styled";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../providers/NavigationProvider";
-
-const StyledFooterWrapper = styled("div")({
-  textAlign: "center",
-});
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -32,9 +26,7 @@ export const Footer = () => {
 
   const firstMenuItem = getFirstMenuItem();
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> | undefined = (
-    event,
-  ) => {
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
     event.preventDefault();
     /*
       we need to remove the "." because we might be on a sub path (e.g. https://summyhost/path1/path2/) and we need to
@@ -50,31 +42,29 @@ export const Footer = () => {
     }
   };
 
+  if (!firstMenuItem) return null;
+
   return (
-    firstMenuItem && (
-      <StyledFooterWrapper>
-        <HvTypography variant="body">
-          <Trans
-            t={t}
-            i18nKey="errors.footer"
-            values={{ label: firstMenuItem.label }}
-            components={{
-              navigate: (
-                <HvTypography
-                  link
-                  component="a"
-                  href={firstMenuItem.href}
-                  variant="label"
-                  onClick={handleClick}
-                >
-                  {/* Place the content of the anchor inside the HvTypography */}
-                  {firstMenuItem.label}
-                </HvTypography>
-              ),
-            }}
-          />
-        </HvTypography>
-      </StyledFooterWrapper>
-    )
+    <HvTypography variant="body">
+      <Trans
+        t={t}
+        i18nKey="errors.footer"
+        values={{ label: firstMenuItem.label }}
+        components={{
+          navigate: (
+            <HvTypography
+              link
+              component="a"
+              href={firstMenuItem.href}
+              variant="label"
+              onClick={handleClick}
+            >
+              {/* Place the content of the anchor inside the HvTypography */}
+              {firstMenuItem.label}
+            </HvTypography>
+          ),
+        }}
+      />
+    </HvTypography>
   );
 };

@@ -9,7 +9,7 @@ import ColorModeSwitcher from "./ColorModeSwitcher";
 import HeaderActions from "./HeaderActions";
 import HelpButton from "./HelpButton/HelpButton";
 
-const lazy = vi.fn();
+const lazy = vi.hoisted(() => vi.fn());
 
 vi.mock("react", async () => {
   const mod = await vi.importActual("react");
