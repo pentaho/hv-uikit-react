@@ -8,8 +8,7 @@ const footerLinks = [
     links: [
       { label: "Get Started", href: "/docs/get-started" },
       { label: "Project Status", href: "/docs/project-status" },
-      { label: "Contributing", href: "/docs/contributing" },
-      { label: "Releases", href: "/docs/releases" },
+      { label: "Community", href: "/docs/community" },
     ],
   },
   {

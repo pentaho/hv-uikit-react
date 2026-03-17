@@ -1,0 +1,55 @@
+# Community
+
+Contributions to the **UI Kit** are welcome — whether it's fixing bugs, improving docs, suggesting components, or joining the discussion via GitHub or our community channels.
+
+## Contributing
+
+### Submitting an Issue
+
+Use our [issue templates](https://github.com/pentaho/hv-uikit-react/issues/new/choose) when filing issues.
+Before submitting, search existing issues to check if your question or bug has already been addressed.
+
+### Submitting a Pull Request
+
+All contributions should target the `master` branch (or a previous supported major version). Maintainers will review and merge approved pull requests.
+
+Please check out the [Contributing Guide on GitHub](https://github.com/pentaho/hv-uikit-react/tree/master?tab=contributing-ov-file) for the full details on how to contribute,
+including our coding standards, commit message guidelines, testing requirements, and more.
+
+## Releases & Versioning
+
+**UI Kit** follows [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`):
+
+| Type      | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| **Major** | Significant new functionality, may include breaking changes |
+| **Minor** | New features, backward-compatible                           |
+| **Patch** | Bug fixes and minor improvements                            |
+
+Releases happen periodically for the `master` branch, as well as manually for pressing issues.
+Preview builds (`next.*` pre-releases) are published during new major version development.
+
+The **two most recent major versions** receive maintenance support (security updates, bug fixes).
+
+Release changelogs are published in [GitHub Releases](https://github.com/pentaho/hv-uikit-react/releases).
+
+### Long-Term Support (LTS)
+
+**UI Kit** offers maintenance—including security updates, bug fixes, and compatibility adjustments—for the **two most recent major** versions. LTS support is available upon request via the [GitHub Issues](https://github.com/pentaho/hv-uikit-react/issues) page.
+
+### Deprecation Policy
+
+- Deprecations are clearly announced in changelogs and, when feasible, surfaced via runtime warnings.
+- Each deprecation includes guidance on how to migrate to the recommended alternative.
+- Stable APIs marked as deprecated will continue to function during the deprecation window to ensure a smooth migration experience.
+
+### Breaking Change Exceptions
+
+We define a “breaking change” as any modification to public APIs that requires users to change their implementation. However, the following cases are not considered breaking:
+
+- Changes to **unstable APIs**, marked as experimental or prefixed with `unstable_`.
+- Changes to **private APIs**, including non-exported or undocumented modules.
+- **Minor CSS adjustments**, particularly when aligning with updated design system specifications.
+- **Accessibility improvements** that adjust semantics without affecting visual presentation or user-facing functionality (although they may impact tests).
+- **TypeScript declaration corrections** when typings were previously inaccurate or misaligned with runtime behavior.
+- **Reverts of recent breaking changes**, restoring prior behavior.

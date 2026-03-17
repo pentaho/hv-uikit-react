@@ -1,5 +1,5 @@
 name: Bug report 🐛
-description: Create a bug report for NEXT UI Kit.
+description: Create a bug report for UI Kit, with enough detail to reproduce the issue. A pull request with a fix is even better!
 labels: ["⌛ needs triage"]
 body:
   - type: markdown

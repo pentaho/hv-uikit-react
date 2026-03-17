@@ -34,3 +34,78 @@ HvComp/
   - Prefer alternative selectors like the `data-*` attribute or CSS variables when applicable.
   - When targeting non-root elements, make the purpose clear (e.g., `classes.label`, `classes.iconContainer`).
   - For conditional styles, use descriptive names that reflect the condition (e.g. `classes.containerOpen`).
+
+## Example
+
+```tsx
+// HvComp.tsx
+import {
+  useDefaultProps,
+  type ExtractNames,
+} from "@hitachivantara/uikit-react-utils";
+
+import { HvBaseProps } from "../types/generic";
+import { useClasses } from "./MyComp.styles";
+
+// extend the types to where `...others` 👇 is being passed
+export interface HvCompProps extends HvBaseProps<HTMLDivElement> {
+  selected?: boolean;
+  /** Disables the component visually and its controls */
+  disabled?: boolean;
+  children?: React.ReactNode;
+  buttonContent?: React.ReactNode;
+  onClick?: HvButtonProps["onClick"];
+  onButtonClick?: HvButtonProps["onClick"]; // 👈 call handlers `on[<Element>]<Action>`
+}
+
+/** HvComp documentation block */
+export const HvComp = forwardRef<
+  // no-indent
+  React.ComponentRef<"div">,
+  HvCompProps
+>(function HvComp(props, ref) {
+  const {
+    children,
+    classes: classesProp, // 👈 fix collisions by renaming to `<x>Prop`
+    className,
+    selected, // 👈 make booleans be opt-in (default is false/undefined)
+    disabled, // 👈 don't  set defaults (ie `false`) unnecessarily
+    buttonContent,
+    onClick,
+    onButtonClick,
+    ...others
+  } = useDefaultProps("HvComp", props);
+  const { classes, css, cx } = useClasses(classesProp);
+
+  // rename handlers 👇 `handle<Action>` and 👇 type them accordingly, or ideally inline them
+  const handleButtonClick: HvButtonProps["onClick"] = (evt) => {
+    evt.preventDefault();
+    onButtonClick?.(evt);
+  };
+
+  const renderContent = (
+    <div>
+      <span />
+    </div>
+  );
+
+  return (
+    <div
+      ref={ref}
+      // ensure `classes.root` 👇 is on the root element
+      className={cx(classes.root, className, {
+        [classes.selected]: selected, // 👈 names are based on their *condition*
+        [classes.disabled]: disabled, // 👈 higher priority classes come after
+      })}
+      onClick={disabled ? undefined : onClick}
+      {...others}
+    >
+      <HvButton className={classes.button} onClick={handleButtonClick}>
+        {buttonContent}
+      </HvButton>
+      {selected && renderContent}
+      {children}
+    </div>
+  );
+});
+```

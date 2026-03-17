@@ -1,5 +1,5 @@
 name: Feature request 💄
-description: Suggest a new idea for NEXT UI Kit.
+description: Suggest a new component, improvement, or feature for UI Kit.
 labels: ["⌛ needs triage"]
 body:
   - type: markdown

@@ -12,9 +12,7 @@ export default {
     type: "separator",
     title: "Community",
   },
-  contributing: "Contributing",
-  guidelines: "Guidelines",
-  releases: "Releases",
+  community: "Community",
   "-- Foundation": {
     type: "separator",
     title: "Foundation",
