@@ -107,7 +107,7 @@ const MultiButtons = () => {
     <HvMultiButton>
       {buttons.map((button, i) => (
         <HvButton
-          key={`${buttons[i]}`}
+          key={button}
           aria-label={button}
           selected={selection.includes(i)}
           onClick={() => handleChange(i)}

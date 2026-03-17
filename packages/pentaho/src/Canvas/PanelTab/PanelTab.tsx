@@ -40,11 +40,11 @@ export const HvCanvasPanelTab = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   return (
+    // oxlint-disable-next-line jsx_a11y/click-events-have-key-events jsx_a11y/no-static-element-interactions simulate tab click
     <div
       ref={ref as any}
       style={style}
       className={cx(classes.root, className)}
-      // oxlint-disable-next-line jsx_a11y/click-events-have-key-events simulate tab click
       onClick={(evt) => {
         if (evt.target === tabRef.current) return; // stop propagation
         tabRef.current?.click();

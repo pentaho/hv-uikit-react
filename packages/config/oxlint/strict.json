@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/tags/oxlint_v1.1.0/npm/oxlint/configuration_schema.json",
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/tags/oxlint_v1.56.0/npm/oxlint/configuration_schema.json",
   "extends": ["./base.json", "./default.json"],
   "rules": {
     // #region Pedantic
