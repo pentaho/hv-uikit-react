@@ -16,7 +16,7 @@ npm run doc
 
 ## Submitting an Issue
 
-Use our [Github issue templates](https://github.com/pentaho/hv-uikit-react/issues/new/choose) when filing issues.
+Use our [GitHub issue templates](https://github.com/pentaho/hv-uikit-react/issues/new/choose) when filing issues.
 Before submitting, search existing issues to check if your question or bug has already been addressed.
 
 ## Submitting a Pull Request
@@ -42,7 +42,9 @@ chore(deps): bump dev dependencies
 
 ### Coding Standards
 
-We strive to keep enforce our standards as automatically as possible, by declaring them in the linter and code formatter, and enforcing them in the CI pipeline.
+We strive to enforce our standards as seamlessly and automatically as possible, by declaring them in the linter and code formatter, and enforcing them in the CI pipeline.
+
+To validate locally, run:
 
 ```sh
 npm run check
@@ -52,7 +54,7 @@ Furthermore, Copilot is fed our [best-practices instructions](/.github/instructi
 
 ### Tests
 
-We run various quality checks on each pull request, which must all pass for the it to be merged.
+We run various quality checks on each pull request, which must all pass for it to be merged.
 Run `npm run check` and `npm test` to validate locally.
 
 Our [Pull Request CI pipeline](/.github/workflows/pr.yml) runs:

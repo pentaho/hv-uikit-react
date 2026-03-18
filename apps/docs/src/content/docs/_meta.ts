@@ -8,10 +8,6 @@ export default {
   index: "Introduction",
   "get-started": "Get started",
   "project-status": "Project Status",
-  "-- Community": {
-    type: "separator",
-    title: "Community",
-  },
   community: "Community",
   "-- Foundation": {
     type: "separator",

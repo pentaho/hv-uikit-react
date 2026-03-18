@@ -45,7 +45,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvBaseProps } from "../types/generic";
-import { useClasses } from "./MyComp.styles";
+import { useClasses } from "./HvComp.styles";
 
 // extend the types to where `...others` 👇 is being passed
 export interface HvCompProps extends HvBaseProps<HTMLDivElement> {
