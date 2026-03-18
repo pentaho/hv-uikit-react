@@ -209,12 +209,9 @@ export const Controlled: StoryObj<HvCanvasToolbarTabsProps> = {
     await step("closes selected tab when controlled", async () => {
       const initialTabCount = canvas.getAllByRole("tab").length;
       const selectedTab = canvas.getByRole("tab", { selected: true });
-      const closeBtn = selectedTab.querySelector("[data-name='CloseXS']");
 
-      if (closeBtn) {
-        await userEvent.click(closeBtn);
-        expect(canvas.getAllByRole("tab")).toHaveLength(initialTabCount - 1);
-      }
+      await userEvent.click(selectedTab.querySelector("[data-name=CloseXS]")!);
+      expect(canvas.getAllByRole("tab")).toHaveLength(initialTabCount - 1);
     });
   },
   render: () => <ControlledStory />,

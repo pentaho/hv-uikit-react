@@ -99,7 +99,7 @@ export const InitialState: StoryObj<HvFlowProps> = {
 
           // Should have edges/connections
           const edges = canvas.queryAllByRole("button", { name: /Edge/ });
-          expect(edges.length).toBeGreaterThanOrEqual(0);
+          expect(edges.length).toBeGreaterThan(0);
         },
         { timeout: 2000 },
       );
@@ -164,9 +164,7 @@ export const Visualizations: StoryObj<HvFlowProps> = {
     await step("connection count respects maximum limit", async () => {
       // After deletion, count should be one less
       const edges = canvas.getAllByRole("button", { name: /Edge from/ });
-      const currentCount = edges.length;
-
-      expect(currentCount).toBeGreaterThanOrEqual(0);
+      expect(edges.length).toBe(3);
     });
   },
   render: () => <VisualizationsStory />,

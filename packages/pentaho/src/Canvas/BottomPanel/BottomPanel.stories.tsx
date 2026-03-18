@@ -81,13 +81,13 @@ const tabs: HvCanvasBottomPanelProps["tabs"] = [
   { id: 1, title: "Tab 2" },
 ];
 
-export const PlaywrightTest: StoryObj = {
+export const InteractionTest: StoryObj = {
   globals: {
     viewport: { value: "split" },
   },
   play: async ({ canvas, canvasElement, userEvent }) => {
     // Test: opens and closes by controlling the component
-    const toggleOpenBtn = canvas.getByRole("button", { name: "Open" });
+    const toggleOpenBtn = canvas.getByRole("button", { name: "Toggle Open" });
     await userEvent.click(toggleOpenBtn);
     expect(canvas.queryByRole("tablist")).not.toBeInTheDocument();
 
@@ -98,7 +98,7 @@ export const PlaywrightTest: StoryObj = {
     expect(canvas.getByRole("tablist")).toBeInTheDocument();
     expect(canvas.getByRole("tabpanel")).toBeInTheDocument();
 
-    const toggleMinimizeBtn = canvas.getByRole("button", { name: "Minimize" });
+    const toggleMinimizeBtn = canvas.getByRole("button", { name: /minimize/i });
     await userEvent.click(toggleMinimizeBtn);
 
     expect(canvas.getByRole("tablist")).toBeInTheDocument();
@@ -148,11 +148,6 @@ export const PlaywrightTest: StoryObj = {
     await userEvent.click(tab2);
     const tab1 = canvas.getByRole("tab", { name: "Tab 1", selected: false });
     expect(tab1).toBeVisible();
-
-    // Note: Test for overflow actions requires viewport change
-    // which is not easily achievable in Storybook play functions
-    // Consider keeping that test in the separate Playwright spec file
-    // or create a separate story with a narrower viewport
   },
   render: () => {
     const [minimize, setMinimize] = useState(false);
@@ -162,9 +157,11 @@ export const PlaywrightTest: StoryObj = {
     return (
       <>
         <div className="flex gap-xs mb-xs">
-          <HvButton onClick={() => setOpen((prev) => !prev)}>Open</HvButton>
+          <HvButton onClick={() => setOpen((prev) => !prev)}>
+            Toggle Open
+          </HvButton>
           <HvButton onClick={() => setMinimize((prev) => !prev)}>
-            Minimize
+            Toggle Minimize
           </HvButton>
         </div>
         <HvCanvasBottomPanel
