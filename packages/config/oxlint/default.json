@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/tags/oxlint_v1.1.0/npm/oxlint/configuration_schema.json",
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/tags/oxlint_v1.56.0/npm/oxlint/configuration_schema.json",
   "extends": ["./base.json"],
   "categories": {
     "perf": "warn",
@@ -24,12 +24,18 @@
     "eslint/no-param-reassign": "off",
     "eslint/no-plusplus": "off",
     "eslint/no-undefined": "off",
+    "eslint/no-shadow": "warn",
+    "eslint/no-use-before-define": "off",
     "import/no-default-export": "off",
+    "import/no-relative-parent-imports": "off",
     "import/unambiguous": "off",
     "oxc/no-async-await": "off",
     "oxc/no-barrel-file": "off",
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
+    "react/no-multi-comp": "off",
+    "react/no-clone-element": "warn",
+    "react/no-react-children": "warn",
     "react/jsx-filename-extension": "off",
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-module-boundary-types": "off",
@@ -39,6 +45,7 @@
     "typescript/no-non-null-assertion": "off",
     "unicorn/consistent-function-scoping": "off",
     "unicorn/no-anonymous-default-export": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-nested-ternary": "off"
