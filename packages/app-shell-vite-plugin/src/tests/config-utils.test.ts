@@ -145,6 +145,38 @@ describe("test app-shell-vite-generate-base plugin", () => {
       expect(result).toMatchObject({ baseUrl: "http://opts-base.example.com" });
     });
 
+    it("supports sync config functions returning HvAppShellConfig", async () => {
+      jitiMock.import.mockResolvedValue(
+        (_opts: unknown, env: Record<string, string>) => ({
+          baseUrl: env.APP_BASE ?? "/",
+        }),
+      );
+
+      const result = await loadConfigFile(
+        "/dummyPath/dummyRootProject/app-shell.config.ts",
+        {},
+        { APP_BASE: "http://sync-base.example.com" },
+      );
+      expect(result).toMatchObject({ baseUrl: "http://sync-base.example.com" });
+    });
+
+    it("supports async config functions returning Promise<HvAppShellConfig>", async () => {
+      jitiMock.import.mockResolvedValue(
+        async (_opts: unknown, env: Record<string, string>) => ({
+          baseUrl: env.APP_BASE ?? "/",
+        }),
+      );
+
+      const result = await loadConfigFile(
+        "/dummyPath/dummyRootProject/app-shell.config.ts",
+        {},
+        { APP_BASE: "http://async-base.example.com" },
+      );
+      expect(result).toMatchObject({
+        baseUrl: "http://async-base.example.com",
+      });
+    });
+
     it("propagates errors thrown by jiti during .ts config loading", async () => {
       jitiMock.import.mockRejectedValue(new Error("config loading error"));
 

@@ -5,7 +5,9 @@ import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import type { AppShellVitePluginOptions } from "./vite-plugin.js";
 
-const jiti = createJiti(import.meta.url);
+// moduleCache is disabled so that config file changes are always picked up
+// on Vite server restart (which re-runs the full plugin pipeline in-process)
+const jiti = createJiti(import.meta.url, { moduleCache: false });
 
 export interface ConfigReplacement {
   token: string;
@@ -15,7 +17,7 @@ export interface ConfigReplacement {
 export type AppShellConfigFunction = (
   pluginOptions: AppShellVitePluginOptions,
   env: Record<string, string>,
-) => HvAppShellConfig;
+) => HvAppShellConfig | Promise<HvAppShellConfig>;
 
 export const DEFAULT_CONFIG_FILES = [
   "app-shell.config.ts",
