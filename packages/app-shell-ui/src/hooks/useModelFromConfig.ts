@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react";
 import {
   useAsync,
   type AsyncResult,
+  type HvAppShellAppSwitcherConfig,
   type HvAppShellConfig,
   type HvAppShellModel,
 } from "@hitachivantara/app-shell-shared";
@@ -53,9 +54,32 @@ export const useModelFromConfig = (
     [initialModel],
   );
 
+  const headerActionBundles = useMemo(() => {
+    const bundles: string[] = [];
+    for (const action of initialModel?.header?.actions ?? []) {
+      const appSwitcherConfig = action.config as
+        | HvAppShellAppSwitcherConfig
+        | undefined;
+      if (appSwitcherConfig?.dynamicApps?.bundle) {
+        bundles.push(appSwitcherConfig.dynamicApps.bundle);
+      }
+    }
+    return bundles;
+  }, [initialModel]);
+
   const bundles = useMemo(
-    () => [...systemProvidersBundles, ...conditionBundles, ...providerBundles],
-    [systemProvidersBundles, conditionBundles, providerBundles],
+    () => [
+      ...systemProvidersBundles,
+      ...conditionBundles,
+      ...providerBundles,
+      ...headerActionBundles,
+    ],
+    [
+      systemProvidersBundles,
+      conditionBundles,
+      providerBundles,
+      headerActionBundles,
+    ],
   );
 
   const promiseFactory = useCallback(async () => {

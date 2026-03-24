@@ -1,4 +1,5 @@
 import type {
+  AsyncResult,
   ServiceId,
   ServiceProviderConfig,
 } from "@hitachivantara/app-shell-services";
@@ -102,10 +103,25 @@ export type HvAppShellThemingConfig = {
   colorMode?: HvThemeColorMode;
 };
 
+export type UseDynamicAppsResult = AsyncResult<
+  HvAppShellAppSwitcherItemConfig[],
+  Error,
+  "result"
+>;
+
+export type UseDynamicApps = (
+  config?: Record<string, unknown>,
+) => UseDynamicAppsResult;
+
 export interface HvAppShellAppSwitcherConfig {
   title?: string;
   showLogo?: boolean;
-  apps: HvAppShellAppSwitcherItemConfig[];
+  apps?: HvAppShellAppSwitcherItemConfig[];
+  /** Module reference for a hook that dynamically provides apps at runtime. */
+  dynamicApps?: {
+    bundle: string;
+    config?: Record<string, unknown>;
+  };
 }
 
 export interface HvAppShellAppSwitcherItemConfig {

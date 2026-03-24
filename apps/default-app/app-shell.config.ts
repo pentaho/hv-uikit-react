@@ -270,6 +270,9 @@ export default {
               target: "NEW",
             },
           ],
+          dynamicApps: {
+            bundle: "@self/hooks/useDynamicApps.js",
+          },
         },
       },
       {

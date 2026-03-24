@@ -1,8 +1,26 @@
 import { act, screen } from "@testing-library/react";
-import { HvAppShellAppSwitcherItemConfig } from "@hitachivantara/app-shell-shared";
+import {
+  HvAppShellAppSwitcherItemConfig,
+  type UseDynamicAppsResult,
+} from "@hitachivantara/app-shell-shared";
 
 import renderTestProvider from "../../../../tests/testUtils";
 import AppSwitcherToggle from "./AppSwitcherToggle";
+
+const mockPreloadedBundles = new Map<string, unknown>();
+
+vi.mock("@hitachivantara/app-shell-shared", async (importOriginal) => {
+  const actual =
+    await importOriginal<typeof import("@hitachivantara/app-shell-shared")>();
+  return {
+    ...actual,
+    useHvAppShellModel: () => ({
+      preloadedBundles: mockPreloadedBundles,
+      allConditions: [],
+      logo: undefined,
+    }),
+  };
+});
 
 describe("AppSwitcherToggle", () => {
   const title = "DummyAppSwitcherTitle";
@@ -102,5 +120,96 @@ describe("AppSwitcherToggle", () => {
 
     expect(appSwitcherToggle).toBeInTheDocument();
     expect(logo).toBeInTheDocument();
+  });
+
+  const useAppsSuccessMock = (): UseDynamicAppsResult => ({
+    isPending: false,
+    error: null,
+    result: [
+      {
+        label: "Dynamic App",
+        url: "https://example.com/dynamic",
+        target: "NEW",
+      },
+    ],
+  });
+
+  it("should render apps from a dynamicApps hook bundle", async () => {
+    mockPreloadedBundles.set(
+      "@self/hooks/useExternalApps.js",
+      useAppsSuccessMock,
+    );
+
+    renderTestProvider(
+      <AppSwitcherToggle
+        title={title}
+        dynamicApps={{ bundle: "@self/hooks/useExternalApps.js" }}
+      />,
+    );
+
+    const appSwitcherToggle = await screen.findByRole("button", {
+      name: "DummyAppSwitcherTitle",
+    });
+
+    expect(appSwitcherToggle).toBeInTheDocument();
+
+    act(() => {
+      appSwitcherToggle.click();
+    });
+
+    expect(screen.getByText("Dynamic App")).toBeInTheDocument();
+
+    mockPreloadedBundles.clear();
+  });
+
+  it("should merge static and dynamic apps", async () => {
+    mockPreloadedBundles.set(
+      "@self/hooks/useExternalApps.js",
+      useAppsSuccessMock,
+    );
+
+    renderTestProvider(
+      <AppSwitcherToggle
+        title={title}
+        apps={apps}
+        dynamicApps={{ bundle: "@self/hooks/useExternalApps.js" }}
+      />,
+    );
+
+    const appSwitcherToggle = await screen.findByRole("button", {
+      name: "DummyAppSwitcherTitle",
+    });
+
+    act(() => {
+      appSwitcherToggle.click();
+    });
+
+    expect(screen.getByText("dummyApp1")).toBeInTheDocument();
+    expect(screen.getByText("Dynamic App")).toBeInTheDocument();
+
+    mockPreloadedBundles.clear();
+  });
+
+  it("should not render when dynamicApps hook is pending", async () => {
+    const useAppsMock = (): UseDynamicAppsResult => ({
+      isPending: true,
+      error: null,
+      result: undefined,
+    });
+
+    mockPreloadedBundles.set("@self/hooks/useExternalApps.js", useAppsMock);
+
+    renderTestProvider(
+      <AppSwitcherToggle
+        title={title}
+        dynamicApps={{ bundle: "@self/hooks/useExternalApps.js" }}
+      />,
+    );
+
+    expect(
+      screen.queryByRole("button", { name: "DummyAppSwitcherTitle" }),
+    ).not.toBeInTheDocument();
+
+    mockPreloadedBundles.clear();
   });
 });
