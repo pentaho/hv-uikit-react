@@ -58,6 +58,9 @@ export const Main: StoryObj<HvFlowProps> = {
       ).toBeInTheDocument();
     });
 
+    // Allow Safari to settle between steps (dnd-kit keyboard drag fails without this)
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     await step("should allow to drag node to canvas", async () => {
       await userEvent.click(
         canvas.getAllByRole("button", { name: /expand group/i })[1],
