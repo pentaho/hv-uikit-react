@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@hitachivantara/app-shell-shared": "^2.2.3",
-    "path-to-regexp": "^8.1.0"
+    "path-to-regexp": "^8.4.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
