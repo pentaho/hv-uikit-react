@@ -11,7 +11,11 @@ import { uniqueId } from "../../utils/helpers";
 import { useQueryBuilderContext } from "../Context";
 
 function formatDate(date?: Date) {
-  return date?.toISOString().slice(0, 10);
+  if (!date) return undefined;
+  const d = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+  );
+  return d.toISOString().slice(0, 10);
 }
 
 function formatTime(time?: HvTimePickerValue) {

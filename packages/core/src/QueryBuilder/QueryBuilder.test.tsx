@@ -1021,4 +1021,26 @@ describe("QueryBuilder", () => {
     expect(error).toBeInTheDocument();
     expect(error).toHaveTextContent("Needs to be greater.");
   });
+
+  it("selects a date accordingly", async () => {
+    const user = userEvent.setup();
+    render(<HvQueryBuilder attributes={attributes} />);
+
+    await user.click(screen.getByRole("button", { name: /Add condition/i }));
+    await user.click(screen.getByRole("combobox", { name: /Attribute/i }));
+    await user.click(screen.getByRole("option", { name: /Release/i }));
+
+    await user.click(screen.getByRole("combobox", { name: /Operator/i }));
+    await user.click(
+      screen.getAllByRole("option", { name: /Greater than/i })[0],
+    );
+
+    const dateInput = screen.getByRole("combobox", { name: /Date/i });
+    expect(dateInput).toBeInTheDocument();
+    await user.click(dateInput);
+
+    const dayButton = screen.getByRole("button", { name: "15" });
+    await user.click(dayButton);
+    expect(dateInput).toHaveTextContent(/15/);
+  });
 });
