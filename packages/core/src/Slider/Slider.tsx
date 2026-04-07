@@ -48,8 +48,10 @@ export { staticClasses as sliderClasses };
 
 export type HvSliderClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSliderProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "onBlur"> {
+export interface HvSliderProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "onBlur"
+> {
   /** The slider name. */
   name?: string;
   /** The label of the slider. If not provided, an aria-label or aria-labelledby must be inputted via sliderProps. */

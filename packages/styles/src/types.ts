@@ -15,8 +15,10 @@ import type { zIndices } from "./tokens/zIndices";
 interface CSSProperties extends StandardProperties<string | number> {}
 
 /** @experimental extendable theme spacing units */
-export interface HvThemeZIndices
-  extends Record<keyof typeof zIndices, number> {}
+export interface HvThemeZIndices extends Record<
+  keyof typeof zIndices,
+  number
+> {}
 
 /** UI Kit static theme tokens */
 export interface HvThemeTokens {
@@ -80,16 +82,15 @@ export interface HvThemeComponents {
 
 // Theme typography
 // TODO: remove in favor of `CSSProperties` when supported
-export interface HvThemeTypographyProps
-  extends Pick<
-    CSSProperties,
-    | "color"
-    | "fontSize"
-    | "letterSpacing"
-    | "lineHeight"
-    | "fontWeight"
-    | "textDecoration"
-  > {}
+export interface HvThemeTypographyProps extends Pick<
+  CSSProperties,
+  | "color"
+  | "fontSize"
+  | "letterSpacing"
+  | "lineHeight"
+  | "fontWeight"
+  | "textDecoration"
+> {}
 
 type TypographyVariants =
   | "display"
@@ -120,12 +121,12 @@ export type HvThemeColorMode = "light" | "dark";
 
 /** extendable `HvThemeColors` type */
 export interface HvThemeColorsAny
-  extends HvThemeColors,
-    Record<string, string> {}
+  extends HvThemeColors, Record<string, string> {}
 
 /** Complete theme structure and values */
 export interface HvThemeStructure
-  extends HvThemeComponents,
+  extends
+    HvThemeComponents,
     HvThemeComponentsProps,
     HvThemeTypography,
     Omit<HvThemeTokens, "colors"> {
@@ -141,8 +142,9 @@ export interface HvThemeStructure
 }
 
 // Custom theme
-export interface HvCustomTheme
-  extends DeepPartial<Omit<HvThemeStructure, "base">> {}
+export interface HvCustomTheme extends DeepPartial<
+  Omit<HvThemeStructure, "base">
+> {}
 
 // Deep string: set all props to strings
 export type DeepString<T> = {
@@ -155,6 +157,7 @@ type DeepPartial<T> = T extends {}
 
 // Theme CSS vars
 export interface HvThemeVars
-  extends DeepString<HvThemeTokens>,
+  extends
+    DeepString<HvThemeTokens>,
     DeepString<HvThemeComponents>,
     DeepString<HvThemeTypography> {}

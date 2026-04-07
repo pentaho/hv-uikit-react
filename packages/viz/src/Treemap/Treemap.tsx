@@ -27,11 +27,10 @@ export type HvTreemapData = {
 
 export interface HvTreemapChartClasses extends HvChartTooltipClasses {}
 
-export interface HvTreemapChartProps
-  extends Omit<
-    HvChartCommonProps,
-    "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
-  > {
+export interface HvTreemapChartProps extends Omit<
+  HvChartCommonProps,
+  "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
+> {
   /** The name of the treemap */
   name?: string;
   /** The data to use on the treemap */

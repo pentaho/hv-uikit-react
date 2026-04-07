@@ -162,8 +162,10 @@ const requestsSummary = {
   },
 };
 
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<ListViewEntry>, "endpoint" | "db"> {}
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<ListViewEntry>,
+  "endpoint" | "db"
+> {}
 
 export const usePaginationData = (props: PaginationDataProps) => {
   return useServerPagination({ endpoint: "/requests", db, ...props });

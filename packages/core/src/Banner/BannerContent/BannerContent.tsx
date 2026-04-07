@@ -22,8 +22,10 @@ export type HvBannerActionPosition = "auto" | "inline" | "bottom-right";
 
 export type HvBannerContentClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBannerContentProps
-  extends Omit<MuiSnackbarContentProps, "variant" | "classes" | "onClose"> {
+export interface HvBannerContentProps extends Omit<
+  MuiSnackbarContentProps,
+  "variant" | "classes" | "onClose"
+> {
   /** The message to display. @deprecated use `children` instead */
   content?: string;
   /** The message to display. */

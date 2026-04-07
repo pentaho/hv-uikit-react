@@ -18,8 +18,7 @@ export { staticClasses as wizardClasses };
 export type HvWizardClasses = ExtractNames<typeof useClasses>;
 
 export interface HvWizardProps
-  extends HvBaseProps,
-    Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
+  extends HvBaseProps, Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
   /** Current state of the Wizard. */
   open: boolean;
   /** Function executed on close. */

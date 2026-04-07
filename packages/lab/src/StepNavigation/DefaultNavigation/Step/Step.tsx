@@ -19,8 +19,7 @@ import { useClasses } from "./Step.styles";
 type HvStepClasses = ExtractNames<typeof useClasses>;
 
 export interface HvStepProps
-  extends Pick<HvButtonBaseProps, "onClick">,
-    Omit<HvBaseProps, "onClick"> {
+  extends Pick<HvButtonBaseProps, "onClick">, Omit<HvBaseProps, "onClick"> {
   /** A Jss Object used to override or extend the styles applied to the empty state StepNavigation. */
   classes?: HvStepClasses;
   /** State of the step. Values = {"Pending", "Failed", "Completed", "Current", "Disabled", "Enabled"} */

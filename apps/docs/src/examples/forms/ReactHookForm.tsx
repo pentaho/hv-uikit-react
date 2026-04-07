@@ -85,7 +85,8 @@ const getStatusProps = (error?: FieldError) => {
 };
 
 interface InputControlProps
-  extends Pick<ControllerProps<FormSchema>, "name" | "control">,
+  extends
+    Pick<ControllerProps<FormSchema>, "name" | "control">,
     Omit<HvInputProps, "name">,
     Record<string, any> {
   component?: any;

@@ -12,8 +12,10 @@ export { staticClasses as dropdownButtonClasses };
 
 export type HvDropdownButtonClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDropdownButtonProps
-  extends Omit<HvButtonProps, "startAdornment" | "endAdornment" | "classes"> {
+export interface HvDropdownButtonProps extends Omit<
+  HvButtonProps,
+  "startAdornment" | "endAdornment" | "classes"
+> {
   /** Whether the button is in read only mode when used as a form element. */
   readOnly?: boolean;
   /** Whether the content triggered by the button is opened or not. */

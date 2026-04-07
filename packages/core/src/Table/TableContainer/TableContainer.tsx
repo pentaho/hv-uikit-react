@@ -11,8 +11,10 @@ export { staticClasses as tableContainerClasses };
 
 export type HvTableContainerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableContainerProps
-  extends HvBaseProps<HTMLDivElement, "children"> {
+export interface HvTableContainerProps extends HvBaseProps<
+  HTMLDivElement,
+  "children"
+> {
   /**
    * Content to be rendered
    */

@@ -57,8 +57,10 @@ export { staticClasses as checkBoxGroupClasses };
 
 export type HvCheckBoxGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCheckBoxGroupProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvCheckBoxGroupProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /**
    * The form element name.
    *

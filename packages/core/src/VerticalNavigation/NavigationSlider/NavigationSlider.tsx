@@ -18,8 +18,10 @@ export { staticClasses as verticalNavigationSliderClasses };
 
 export type HvVerticalNavigationSliderClasses = ExtractNames<typeof useClasses>;
 
-export interface HvVerticalNavigationSliderProps
-  extends Omit<HvListContainerProps, "classes"> {
+export interface HvVerticalNavigationSliderProps extends Omit<
+  HvListContainerProps,
+  "classes"
+> {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvVerticalNavigationSliderClasses;
   /**

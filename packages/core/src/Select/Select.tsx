@@ -60,7 +60,9 @@ export type HvSelectClasses = ExtractNames<typeof useClasses>;
 export interface HvSelectProps<
   OptionValue extends {},
   Multiple extends boolean = false,
-> extends Omit<HvFormElementProps, "value" | "defaultValue" | "onChange">,
+>
+  extends
+    Omit<HvFormElementProps, "value" | "defaultValue" | "onChange">,
     Pick<
       UseSelectParameters<OptionValue, Multiple>,
       | "name"

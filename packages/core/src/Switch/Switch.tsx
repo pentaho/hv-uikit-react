@@ -24,8 +24,10 @@ export { staticClasses as switchClasses };
 
 export type HvSwitchClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSwitchProps
-  extends Omit<MuiSwitchProps, "color" | "onChange" | "classes" | "size"> {
+export interface HvSwitchProps extends Omit<
+  MuiSwitchProps,
+  "color" | "onChange" | "classes" | "size"
+> {
   /**
    * A Jss Object used to override or extend the styles applied to the switch.
    */

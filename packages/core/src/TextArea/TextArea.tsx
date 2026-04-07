@@ -43,11 +43,10 @@ export { staticClasses as textAreaClasses };
 
 export type HvTextAreaClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTextAreaProps
-  extends Omit<
-    HvBaseInputProps,
-    "onChange" | "onBlur" | "rows" | "classes" | "onFocus" | "placeholder"
-  > {
+export interface HvTextAreaProps extends Omit<
+  HvBaseInputProps,
+  "onChange" | "onBlur" | "rows" | "classes" | "onFocus" | "placeholder"
+> {
   /** The placeholder value of the text area. */
   placeholder?: string;
   /**

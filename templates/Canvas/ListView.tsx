@@ -61,8 +61,7 @@ interface ItemProps {
 }
 
 interface ItemCardProps
-  extends Omit<HvListItemProps, "title">,
-    Omit<ItemProps, "id"> {
+  extends Omit<HvListItemProps, "title">, Omit<ItemProps, "id"> {
   isDragging?: boolean;
 }
 

@@ -2,10 +2,7 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvButtonBase } from "../../../ButtonBase";
 import type { ViewMode } from "../../enums";
-import type {
-  DateRangeProp,
-  VisibilitySelectorActions,
-} from "../../types";
+import type { DateRangeProp, VisibilitySelectorActions } from "../../types";
 import { getMonthNamesList } from "../../utils";
 import { staticClasses, useClasses } from "./MonthSelector.styles";
 

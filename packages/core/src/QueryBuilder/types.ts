@@ -40,8 +40,10 @@ export type HvQueryBuilderQueryRuleValue =
 
 export type HvQueryBuilderQueryRule = HvOptional<QueryRule, "id">;
 
-export interface HvQueryBuilderQueryGroup
-  extends Omit<HvOptional<QueryGroup, "id">, "rules"> {
+export interface HvQueryBuilderQueryGroup extends Omit<
+  HvOptional<QueryGroup, "id">,
+  "rules"
+> {
   rules: Array<HvQueryBuilderQueryRule | HvQueryBuilderQueryGroup>;
 }
 

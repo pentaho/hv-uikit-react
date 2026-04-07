@@ -22,8 +22,10 @@ export { staticClasses as bannerClasses };
 
 export type HvBannerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBannerProps
-  extends Omit<MuiSnackbarProps, "anchorOrigin" | "classes" | "onClose"> {
+export interface HvBannerProps extends Omit<
+  MuiSnackbarProps,
+  "anchorOrigin" | "classes" | "onClose"
+> {
   /** If true, the snackbar is open. */
   open: boolean;
   /**

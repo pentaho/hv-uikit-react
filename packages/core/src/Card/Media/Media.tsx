@@ -10,7 +10,8 @@ export { staticClasses as cardMediaClasses };
 export type HvCardMediaClasses = ExtractNames<typeof useClasses>;
 
 export interface HvCardMediaProps
-  extends Omit<MuiCardMediaProps, "classes">,
+  extends
+    Omit<MuiCardMediaProps, "classes">,
     React.ImgHTMLAttributes<HTMLDivElement> {
   /** The title of the media. */
   title?: string;

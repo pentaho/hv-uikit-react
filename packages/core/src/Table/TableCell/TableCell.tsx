@@ -18,8 +18,10 @@ export { staticClasses as tableCellClasses };
 
 export type HvTableCellClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableCellProps
-  extends Omit<React.TdHTMLAttributes<HTMLTableCellElement>, "align"> {
+export interface HvTableCellProps extends Omit<
+  React.TdHTMLAttributes<HTMLTableCellElement>,
+  "align"
+> {
   /** The component used for the root node. Either a string to use a HTML element or a component. Defaults to td. */
   component?: React.ElementType;
   /** Content to be rendered */

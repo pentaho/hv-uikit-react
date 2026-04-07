@@ -161,7 +161,9 @@ export default function Demo() {
     >
       <HvListContainer selectable className="w-250px">
         <SortableContext items={itemsIds}>
-          {items?.map((item) => <ItemCard key={item.id} item={item} />)}
+          {items?.map((item) => (
+            <ItemCard key={item.id} item={item} />
+          ))}
         </SortableContext>
       </HvListContainer>
 

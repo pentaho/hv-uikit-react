@@ -16,8 +16,10 @@ export { staticClasses as scrollToHorizontalClasses };
 
 export type HvScrollToHorizontalClasses = ExtractNames<typeof useClasses>;
 
-export interface HvScrollToHorizontalProps
-  extends HvBaseProps<HTMLOListElement, "onChange" | "onClick"> {
+export interface HvScrollToHorizontalProps extends HvBaseProps<
+  HTMLOListElement,
+  "onChange" | "onClick"
+> {
   /** An Array of Objects with Label and Value. Label is the displayed Element and Value is the local navigation location applied */
   options: HvScrollToOption[];
   /**

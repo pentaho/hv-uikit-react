@@ -35,8 +35,7 @@ const StyledIconContainer = styled("div")({
   alignItems: "center",
 });
 
-export interface HvIconContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvIconContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * A color to override the default icon colors.
    * Accepts any valid CSS color or color from the UI Kit palette.

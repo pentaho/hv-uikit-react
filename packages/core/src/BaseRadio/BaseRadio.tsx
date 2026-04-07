@@ -15,8 +15,10 @@ export { staticClasses as baseRadioClasses };
 
 export type HvBaseRadioClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseRadioProps
-  extends Omit<MuiRadioProps, "onChange" | "classes" | "color"> {
+export interface HvBaseRadioProps extends Omit<
+  MuiRadioProps,
+  "onChange" | "classes" | "color"
+> {
   /**
    * Class names to be applied.
    */

@@ -18,11 +18,10 @@ export { staticClasses as baseInputClasses };
 
 export type HvBaseInputClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseInputProps
-  extends Omit<
-    InputBaseProps,
-    "onChange" | "classes" | "ref" | "color" | "size" | "inputProps"
-  > {
+export interface HvBaseInputProps extends Omit<
+  InputBaseProps,
+  "onChange" | "classes" | "ref" | "color" | "size" | "inputProps"
+> {
   /** The input name. */
   name?: string;
   /** The value of the input, when controlled. */

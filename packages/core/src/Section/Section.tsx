@@ -14,8 +14,10 @@ export { staticClasses as sectionClasses };
 
 export type HvSectionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSectionProps
-  extends Omit<HvBaseProps<HTMLDivElement>, "title" | "onToggle"> {
+export interface HvSectionProps extends Omit<
+  HvBaseProps<HTMLDivElement>,
+  "title" | "onToggle"
+> {
   /** The title of the section */
   title?: React.ReactNode;
   /** Whether or not the section is expandable.  */

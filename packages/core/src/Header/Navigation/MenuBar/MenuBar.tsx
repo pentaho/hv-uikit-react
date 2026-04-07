@@ -5,8 +5,10 @@ import { HvHeaderMenuItem } from "../MenuItem";
 import type { HvHeaderNavigationItemProp } from "../useSelectionPath";
 import { Bar, type BarProps, type HvHeaderMenuBarClasses } from "./Bar";
 
-export interface HvHeaderMenuBarProps
-  extends HvBaseProps<HTMLDivElement, "onClick"> {
+export interface HvHeaderMenuBarProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick"
+> {
   data: HvHeaderNavigationItemProp[];
   type?: BarProps["type"];
   onClick?: (

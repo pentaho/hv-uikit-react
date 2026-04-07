@@ -28,8 +28,10 @@ export { staticClasses as filterGroupContentClasses };
 
 export type HvFilterGroupContentClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFilterGroupContentProps
-  extends Omit<HvBaseDropdownProps, "onChange"> {
+export interface HvFilterGroupContentProps extends Omit<
+  HvBaseDropdownProps,
+  "onChange"
+> {
   description?: React.ReactNode;
   status?: HvFormStatus;
   onChange?: (

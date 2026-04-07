@@ -15,8 +15,10 @@ export { staticClasses as emptyStateClasses };
 
 export type HvEmptyStateClasses = ExtractNames<typeof useClasses>;
 
-export interface HvEmptyStateProps
-  extends HvBaseProps<HTMLDivElement, "title"> {
+export interface HvEmptyStateProps extends HvBaseProps<
+  HTMLDivElement,
+  "title"
+> {
   /** Icon to be presented. */
   icon: React.ReactNode;
   /** The title to be shown. */

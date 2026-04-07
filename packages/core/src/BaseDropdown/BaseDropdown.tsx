@@ -29,8 +29,10 @@ export { staticClasses as baseDropdownClasses };
 
 export type HvBaseDropdownClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseDropdownProps
-  extends HvBaseProps<HTMLDivElement, "onToggle"> {
+export interface HvBaseDropdownProps extends HvBaseProps<
+  HTMLDivElement,
+  "onToggle"
+> {
   /**
    * The role of the element that triggers the popup.
    *

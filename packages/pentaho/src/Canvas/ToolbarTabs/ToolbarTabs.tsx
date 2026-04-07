@@ -50,8 +50,10 @@ interface ToolbarTabsTab {
   fixed?: boolean;
 }
 
-export interface HvCanvasToolbarTabsProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvCanvasToolbarTabsProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /** When controlled, defines the tabs. */
   tabs?: ToolbarTabsTab[];
   /** When uncontrolled, defines the initial tabs. */

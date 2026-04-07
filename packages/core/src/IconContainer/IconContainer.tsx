@@ -47,8 +47,7 @@ export { staticClasses as iconContainerClasses };
 
 export type HvIconContainerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvIconContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvIconContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   classes?: HvIconContainerClasses;
   /**
    * A color to override the default icon colors.

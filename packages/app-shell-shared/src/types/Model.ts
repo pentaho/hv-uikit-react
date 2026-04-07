@@ -29,23 +29,25 @@ export interface HvAppShellConditionalModel {
 }
 
 export interface HvAppShellMenuModel
-  extends HvAppShellConditionalModel,
+  extends
+    HvAppShellConditionalModel,
     Omit<HvAppShellMenuConfig, "conditions" | "submenus"> {
   submenus?: HvAppShellMenuModel[];
 }
 
 export interface HvAppShellViewsModel
-  extends HvAppShellConditionalModel,
+  extends
+    HvAppShellConditionalModel,
     Omit<HvAppShellViewsConfig, "conditions" | "views"> {
   views: HvAppShellViewsModel[];
 }
 
 export interface HvAppShellTopViewModel
-  extends HvAppShellViewsModel,
-    Omit<ViewHvContainerProps, "key"> {}
+  extends HvAppShellViewsModel, Omit<ViewHvContainerProps, "key"> {}
 
 export interface HvAppShellHeaderActionModel
-  extends HvAppShellConditionalModel,
+  extends
+    HvAppShellConditionalModel,
     Omit<HvAppShellHeaderAction, "conditions"> {}
 
 export type HvAppShellSystemProvidersModel = HvAppShellSystemProvidersConfig & {
@@ -53,7 +55,8 @@ export type HvAppShellSystemProvidersModel = HvAppShellSystemProvidersConfig & {
 };
 
 export interface HvAppShellProvidersModel
-  extends HvAppShellConditionalModel,
+  extends
+    HvAppShellConditionalModel,
     Omit<HvAppShellProvidersConfig, "conditions"> {}
 
 export type HvAppShellServiceProviderModel = HvAppShellConditionalModel &
@@ -64,26 +67,24 @@ export type HvAppShellServicesModel = Record<
   HvAppShellServiceProviderModel[]
 >;
 
-export interface HvAppShellMainPanelModel
-  extends Omit<HvAppShellMainPanelConfig, "views"> {
+export interface HvAppShellMainPanelModel extends Omit<
+  HvAppShellMainPanelConfig,
+  "views"
+> {
   views?: HvAppShellTopViewModel[];
 }
 
-export interface HvAppShellHeaderModel
-  extends Omit<HvAppShellHeader, "actions"> {
+export interface HvAppShellHeaderModel extends Omit<
+  HvAppShellHeader,
+  "actions"
+> {
   actions: HvAppShellHeaderActionModel[];
 }
 
-export interface HvAppShellModel
-  extends Omit<
-    HvAppShellConfig,
-    | "menu"
-    | "mainPanel"
-    | "header"
-    | "systemProviders"
-    | "providers"
-    | "services"
-  > {
+export interface HvAppShellModel extends Omit<
+  HvAppShellConfig,
+  "menu" | "mainPanel" | "header" | "systemProviders" | "providers" | "services"
+> {
   menu?: HvAppShellMenuModel[];
   mainPanel?: HvAppShellMainPanelModel;
   header?: HvAppShellHeaderModel;

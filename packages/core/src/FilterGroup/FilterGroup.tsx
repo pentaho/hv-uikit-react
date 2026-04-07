@@ -31,11 +31,10 @@ export { staticClasses as filterGroupClasses };
 
 export type HvFilterGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFilterGroupProps
-  extends Omit<
-    HvFormElementProps,
-    "classes" | "onChange" | "defaultValue" | "statusMessage"
-  > {
+export interface HvFilterGroupProps extends Omit<
+  HvFormElementProps,
+  "classes" | "onChange" | "defaultValue" | "statusMessage"
+> {
   /** The initial value of the input when in single calendar mode. */
   filters: HvFilterGroupFilters;
   /** The form element name. */

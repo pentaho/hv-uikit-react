@@ -24,8 +24,10 @@ export type HvRadioClasses = ExtractNames<typeof useClasses>;
 
 export type HvRadioStatus = "standBy" | "valid" | "invalid";
 
-export interface HvRadioProps
-  extends Omit<MuiRadioProps, "onChange" | "classes"> {
+export interface HvRadioProps extends Omit<
+  MuiRadioProps,
+  "onChange" | "classes"
+> {
   /**
    * A Jss Object used to override or extend the styles applied to the radio button.
    */

@@ -28,7 +28,8 @@ const DEFAULT_LABELS = {
 export type HvDashboardNodeClasses = ExtractNames<typeof useClasses>;
 
 export interface HvDashboardNodeProps
-  extends HvFlowNodeProps,
+  extends
+    HvFlowNodeProps,
     Pick<HvDialogProps, "open" | "onClose">,
     Pick<HvDashboardProps, "layout"> {
   classes?: HvDashboardNodeClasses;

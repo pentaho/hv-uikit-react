@@ -12,8 +12,7 @@ import {
   type HvVerticalNavigationPopupClasses,
 } from "./NavigationPopupContainer";
 
-export interface HvVerticalNavigationPopupProps
-  extends HvBaseProps<HTMLDivElement> {
+export interface HvVerticalNavigationPopupProps extends HvBaseProps<HTMLDivElement> {
   id?: string;
   anchorEl?: HTMLElement | null;
   fixedMode?: boolean;

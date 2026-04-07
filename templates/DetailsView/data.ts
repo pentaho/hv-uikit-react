@@ -42,8 +42,10 @@ const model = {
 export type ModelDetails = typeof model;
 
 // #region Endpoints
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<DetailsViewEntry>, "endpoint" | "db"> {
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<DetailsViewEntry>,
+  "endpoint" | "db"
+> {
   id: string;
 }
 

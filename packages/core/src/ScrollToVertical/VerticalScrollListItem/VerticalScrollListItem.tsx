@@ -11,8 +11,9 @@ export { staticClasses as verticalScrollListItemClasses };
 
 export type HvVerticalScrollListItemClasses = ExtractNames<typeof useClasses>;
 
-export interface HvVerticalScrollListItemProps
-  extends HvBaseProps<HTMLDivElement | HTMLAnchorElement> {
+export interface HvVerticalScrollListItemProps extends HvBaseProps<
+  HTMLDivElement | HTMLAnchorElement
+> {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvVerticalScrollListItemClasses;
   /** Whether the element is selected. */

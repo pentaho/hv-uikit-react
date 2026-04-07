@@ -16,8 +16,10 @@ export { staticClasses as accordionClasses };
 
 export type HvAccordionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvAccordionProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
+export interface HvAccordionProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "children"
+> {
   /** Content to be rendered. */
   children: React.ReactNode;
   /** The accordion label button. */

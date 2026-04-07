@@ -44,7 +44,8 @@ const DEFAULT_LABELS = {
 };
 
 export interface HvDatePickerProps
-  extends Omit<HvFormElementProps, "onChange">,
+  extends
+    Omit<HvFormElementProps, "onChange">,
     Pick<
       HvBaseDropdownProps,
       | "disablePortal"

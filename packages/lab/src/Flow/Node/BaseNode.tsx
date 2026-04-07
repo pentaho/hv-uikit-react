@@ -35,7 +35,8 @@ export const DEFAULT_LABELS = {
 };
 
 export interface HvFlowBaseNodeProps<T = any>
-  extends Omit<HvBaseProps, "id" | "color">,
+  extends
+    Omit<HvBaseProps, "id" | "color">,
     Omit<HvUseNodeParams, "id">,
     NodeProps<T> {
   /** Header items */

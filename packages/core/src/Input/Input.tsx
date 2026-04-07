@@ -61,9 +61,9 @@ export interface HvInputSuggestion {
 export interface HvInputProps<
   InputElement extends HTMLElement = HTMLInputElement | HTMLTextAreaElement,
 > extends Omit<
-    HvBaseInputProps,
-    "onChange" | "onBlur" | "onFocus" | "onKeyDown"
-  > {
+  HvBaseInputProps,
+  "onChange" | "onBlur" | "onFocus" | "onKeyDown"
+> {
   /** @inheritdoc */
   name?: string;
   /** @inheritdoc */

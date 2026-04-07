@@ -8,7 +8,8 @@ import type { HvBaseProps } from "../types/generic";
 import { useClasses } from "./Carousel.styles";
 
 interface HvCarouselThumbnailsProps
-  extends HvBaseProps<HTMLDivElement, "children">,
+  extends
+    HvBaseProps<HTMLDivElement, "children">,
     Pick<HvPaginationProps, "page" | "pages" | "canPrevious" | "canNext"> {
   width?: React.CSSProperties["width"];
   classes?: ExtractNames<typeof useClasses>;

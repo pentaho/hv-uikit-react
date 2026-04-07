@@ -20,32 +20,39 @@ export const useTreeViewModels = <
     "defaultizedParams"
   >,
 ) => {
-  const modelsRef = React.useRef<Record<string, {
-      controlledProp: keyof typeof props;
-      defaultProp: keyof typeof props;
-      isControlled: boolean;
-    }>>({});
-
-  const [modelsState, setModelsState] = React.useState<Record<string, any>>(() => {
-    const initialState: Record<string, any> = {};
-
-    plugins.forEach((plugin) => {
-      if (plugin.models) {
-        Object.entries(plugin.models).forEach(([modelName, model]) => {
-          modelsRef.current[modelName] = {
-            controlledProp: model.controlledProp as keyof typeof props,
-            defaultProp: model.defaultProp as keyof typeof props,
-            isControlled:
-              props[model.controlledProp as keyof typeof props] !== undefined,
-          };
-          initialState[modelName] =
-            props[model.defaultProp as keyof typeof props];
-        });
+  const modelsRef = React.useRef<
+    Record<
+      string,
+      {
+        controlledProp: keyof typeof props;
+        defaultProp: keyof typeof props;
+        isControlled: boolean;
       }
-    });
+    >
+  >({});
 
-    return initialState;
-  });
+  const [modelsState, setModelsState] = React.useState<Record<string, any>>(
+    () => {
+      const initialState: Record<string, any> = {};
+
+      plugins.forEach((plugin) => {
+        if (plugin.models) {
+          Object.entries(plugin.models).forEach(([modelName, model]) => {
+            modelsRef.current[modelName] = {
+              controlledProp: model.controlledProp as keyof typeof props,
+              defaultProp: model.defaultProp as keyof typeof props,
+              isControlled:
+                props[model.controlledProp as keyof typeof props] !== undefined,
+            };
+            initialState[modelName] =
+              props[model.defaultProp as keyof typeof props];
+          });
+        }
+      });
+
+      return initialState;
+    },
+  );
 
   const models = Object.fromEntries(
     Object.entries(modelsRef.current).map(([modelName, model]) => {

@@ -179,8 +179,8 @@ type HvFooterProps<D extends object = Record<string, unknown>> =
 interface HvHeaderGroup<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends HvColumnInstance<D, H>,
-    Omit<UseTableHeaderGroupProps<D>, "headers"> {
+>
+  extends HvColumnInstance<D, H>, Omit<UseTableHeaderGroupProps<D>, "headers"> {
   headers: Array<HvHeaderGroup<D, H>>;
 }
 
@@ -287,7 +287,9 @@ export type HvTableColumnConfig<
 export interface HvHooks<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<Hooks<D>, "useOptions">,
+>
+  extends
+    Omit<Hooks<D>, "useOptions">,
     Partial<UseExpandedHooks<D>>,
     Partial<UseGroupByHooks<D>>,
     Partial<UseSortByHooks<D>>,
@@ -349,7 +351,8 @@ export interface HvHooks<
 
 // #region STATE
 export interface HvTableState<D extends object = Record<string, unknown>>
-  extends TableState<D>,
+  extends
+    TableState<D>,
     Partial<UseColumnOrderState<D>>,
     Partial<UseExpandedState<D>>,
     Partial<UseFiltersState<D>>,
@@ -368,7 +371,9 @@ export interface HvTableState<D extends object = Record<string, unknown>>
 export interface HvTableOptions<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<
+>
+  extends
+    Omit<
       TableOptions<D>,
       | "columns"
       | "data"
@@ -415,7 +420,9 @@ export interface HvTableOptions<
 export interface HvTableColumnOptions<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<ColumnInterface<D>, "Header" | "Footer">,
+>
+  extends
+    Omit<ColumnInterface<D>, "Header" | "Footer">,
     Partial<UseFiltersColumnOptions<D>>,
     Partial<UseGroupByColumnOptions<D>>,
     Partial<UseResizeColumnsColumnOptions<D>>,
@@ -432,7 +439,9 @@ export interface HvTableColumnOptions<
 export interface HvTableInstance<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<
+>
+  extends
+    Omit<
       TableInstance<D>,
       | "pageCount"
       | "data"
@@ -495,7 +504,9 @@ export interface HvTableInstance<
 export interface HvColumnInstance<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<
+>
+  extends
+    Omit<
       ColumnInstance<D>,
       | "Cell"
       | "columns"
@@ -527,7 +538,9 @@ export interface HvColumnInstance<
 export interface HvRowInstance<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
-> extends Omit<Row<D>, "cells" | "allCells" | "subRows" | "getRowProps">,
+>
+  extends
+    Omit<Row<D>, "cells" | "allCells" | "subRows" | "getRowProps">,
     Partial<Omit<UseGroupByRowProps<D>, "subRows" | "values">>,
     Partial<UseRowStateRowProps<D>>,
     Partial<Omit<UseHvRowExpandRowInstance<D>, "subRows">>,
@@ -545,7 +558,9 @@ export interface HvCellInstance<
   D extends object = Record<string, unknown>,
   H extends HvTableHeaderRenderer | undefined = HvTableHeaderRenderer,
   V = any,
-> extends Omit<Cell<D, V>, "column" | "row" | "getCellProps">,
+>
+  extends
+    Omit<Cell<D, V>, "column" | "row" | "getCellProps">,
     Partial<UseGroupByCellProps<D>> {
   column: HvColumnInstance<D, H>;
   row: HvRowInstance<D, H>;
@@ -555,12 +570,11 @@ export interface HvCellInstance<
 
 // #region PROPS
 export interface HvUseTableProps
-  extends Omit<TableProps, "role">,
-    UseHvTableStickyTableProps,
-    HvTableProps {}
+  extends Omit<TableProps, "role">, UseHvTableStickyTableProps, HvTableProps {}
 
 export interface HvUseTableHeaderProps
-  extends Omit<TableHeaderProps, "role">,
+  extends
+    Omit<TableHeaderProps, "role">,
     Omit<UseHvTableStylesTableCellProps, "classes">,
     UseHvTableStickyColumnProps,
     UseHvHeaderGroupsColumnProps,
@@ -569,18 +583,19 @@ export interface HvUseTableHeaderProps
     HvTableHeaderProps {}
 
 export interface HvUseTableFooterProps
-  extends TableFooterProps,
-    UseHvTableStylesTableCellProps {}
+  extends TableFooterProps, UseHvTableStylesTableCellProps {}
 
 export interface HvUseTableRowProps
-  extends Omit<TableRowProps, "role">,
+  extends
+    Omit<TableRowProps, "role">,
     UseHvTableStylesTableRowProps,
     UseHvRowSelectionTableRowProps,
     UseHvRowExpandTableRowProps,
     HvTableRowProps {}
 
 export interface HvUseTableCellProps
-  extends Omit<TableCellProps, "role">,
+  extends
+    Omit<TableCellProps, "role">,
     Omit<UseHvTableStylesTableCellProps, "variant" | "classes">,
     UseHvTableStickyCellProps,
     UseHvHeaderGroupsCellProps,

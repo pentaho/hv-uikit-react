@@ -33,8 +33,10 @@ export { staticClasses as selectionListClasses };
 
 export type HvSelectionListClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSelectionListProps
-  extends HvBaseProps<HTMLUListElement, "onChange"> {
+export interface HvSelectionListProps extends HvBaseProps<
+  HTMLUListElement,
+  "onChange"
+> {
   /** The form element name. */
   name?: string;
   /**

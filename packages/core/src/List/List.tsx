@@ -33,8 +33,10 @@ export { staticClasses as listClasses };
 
 export type HvListClasses = ExtractNames<typeof useClasses>;
 
-export interface HvListProps
-  extends HvBaseProps<HTMLUListElement, "onChange" | "onClick"> {
+export interface HvListProps extends HvBaseProps<
+  HTMLUListElement,
+  "onChange" | "onClick"
+> {
   /**
    * A list containing the elements to be rendered.
    *

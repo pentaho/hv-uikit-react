@@ -45,11 +45,10 @@ export interface HvTagSuggestion extends HvInputSuggestion {}
 
 export type HvTagsInputClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTagsInputProps
-  extends Omit<
-    HvInputProps,
-    "onChange" | "onBlur" | "onFocus" | "onKeyDown" | "value" | "defaultValue"
-  > {
+export interface HvTagsInputProps extends Omit<
+  HvInputProps,
+  "onChange" | "onBlur" | "onFocus" | "onKeyDown" | "value" | "defaultValue"
+> {
   /** The value of the form element. */
   value?: string[] | HvTagProps[];
   /** When uncontrolled, defines the initial input value. */

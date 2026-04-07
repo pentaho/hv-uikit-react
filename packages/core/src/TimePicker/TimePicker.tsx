@@ -64,11 +64,10 @@ export type HvTimePickerValue = {
   seconds: number;
 };
 
-export interface HvTimePickerProps
-  extends Omit<
-    HvFormElementProps,
-    "classes" | "value" | "defaultValue" | "onChange"
-  > {
+export interface HvTimePickerProps extends Omit<
+  HvFormElementProps,
+  "classes" | "value" | "defaultValue" | "onChange"
+> {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvTimePickerClasses;
   /** Current value of the element when _controlled_. Follows the 24-hour format. */

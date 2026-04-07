@@ -4,9 +4,7 @@ import type {
   UnsubscribeFn,
 } from "./CleanupTracking";
 
-export class FinalizationRegistryBasedCleanupTracking
-  implements CleanupTracking
-{
+export class FinalizationRegistryBasedCleanupTracking implements CleanupTracking {
   registry = new FinalizationRegistry<UnsubscribeFn>((unsubscribe) => {
     if (typeof unsubscribe === "function") {
       unsubscribe();

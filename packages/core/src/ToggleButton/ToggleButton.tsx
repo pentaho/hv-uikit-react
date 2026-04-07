@@ -5,8 +5,10 @@ import { HvButton } from "../Button";
 import { useControlled } from "../hooks/useControlled";
 import type { HvBaseProps } from "../types/generic";
 
-export interface HvToggleButtonProps
-  extends HvBaseProps<HTMLButtonElement, "onClick"> {
+export interface HvToggleButtonProps extends HvBaseProps<
+  HTMLButtonElement,
+  "onClick"
+> {
   /** When uncontrolled, defines the initial selected state. */
   defaultSelected?: boolean;
   /** Defines if the button is selected. When defined the button state becomes controlled. */

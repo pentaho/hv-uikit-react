@@ -14,8 +14,10 @@ export { staticClasses as baseSwitchClasses };
 
 export type HvBaseSwitchClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseSwitchProps
-  extends Omit<MuiSwitchProps, "onChange" | "classes" | "color"> {
+export interface HvBaseSwitchProps extends Omit<
+  MuiSwitchProps,
+  "onChange" | "classes" | "color"
+> {
   /**
    * Class names to be applied.
    */

@@ -10,10 +10,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import type {
-  HvActionGeneric,
-  HvActionsGenericProps,
-} from "../ActionsGeneric";
+import type { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
 import type { HvCalloutProps } from "../utils/Callout";
 import { capitalize } from "../utils/helpers";
 import { staticClasses, useClasses } from "./Snackbar.styles";
@@ -27,8 +24,10 @@ export { staticClasses as snackbarClasses };
 
 export type HvSnackbarClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSnackbarProps
-  extends Omit<MuiSnackbarProps, "action" | "classes" | "children"> {
+export interface HvSnackbarProps extends Omit<
+  MuiSnackbarProps,
+  "action" | "classes" | "children"
+> {
   /** If true, Snackbar is open. */
   open?: boolean;
   /**

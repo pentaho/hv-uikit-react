@@ -20,8 +20,7 @@ const { useClasses } = createClasses("HvLabelContainer", {
   description: {},
 });
 
-export interface HvLabelContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvLabelContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   classes?: ExtractNames<typeof useClasses>;
   label?: React.ReactNode;
   description?: React.ReactNode;

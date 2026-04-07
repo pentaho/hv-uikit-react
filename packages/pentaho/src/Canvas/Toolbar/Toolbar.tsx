@@ -22,8 +22,10 @@ const DEFAULT_LABELS = {
   back: "Back",
 };
 
-export interface HvCanvasToolbarProps
-  extends HvBaseProps<HTMLDivElement, "title"> {
+export interface HvCanvasToolbarProps extends HvBaseProps<
+  HTMLDivElement,
+  "title"
+> {
   /** Text to display in the component. */
   title: React.ReactNode;
   /** Fully customized button or false for when the back button should not be rendered. */

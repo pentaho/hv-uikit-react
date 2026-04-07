@@ -48,8 +48,7 @@ echarts.use([
 export interface HvScatterPlotClasses extends HvChartTooltipClasses {}
 
 export interface HvScatterPlotProps
-  extends HvChartCommonProps,
-    Omit<HvAxisChartCommonProps, "stack"> {
+  extends HvChartCommonProps, Omit<HvAxisChartCommonProps, "stack"> {
   /** Columns to measure on the plot. */
   measures: Arrayable<HvScatterPlotMeasure>;
   /** A Jss Object used to override or extend the styles applied to the component. */

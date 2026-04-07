@@ -18,8 +18,10 @@ export { staticClasses as headerNavigationClasses };
 
 export type HvHeaderNavigationClasses = ExtractNames<typeof useClasses>;
 
-export interface HvHeaderNavigationProps
-  extends HvBaseProps<HTMLDivElement, "onClick"> {
+export interface HvHeaderNavigationProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick"
+> {
   data: HvHeaderNavigationItemProp[];
   selected?: string;
   onClick?: (

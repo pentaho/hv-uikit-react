@@ -11,8 +11,10 @@ export const Option = ({ ...props }: Partial<HvListItemProps>) => (
   <HvListItem {...props} />
 );
 
-export interface HvPaginationSelectProps
-  extends Omit<HvBaseDropdownProps, "onChange"> {
+export interface HvPaginationSelectProps extends Omit<
+  HvBaseDropdownProps,
+  "onChange"
+> {
   onChange: (event: React.SyntheticEvent, val: number) => void;
   value: number;
 }

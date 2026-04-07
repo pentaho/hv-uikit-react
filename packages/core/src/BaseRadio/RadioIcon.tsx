@@ -33,8 +33,10 @@ const { useClasses } = createClasses("HvRadioIcon", {
 
 export type HvRadioIconClasses = ExtractNames<typeof useClasses>;
 
-export interface HvRadioIconProps
-  extends Pick<HvBaseRadioProps, "checked" | "disabled" | "className"> {
+export interface HvRadioIconProps extends Pick<
+  HvBaseRadioProps,
+  "checked" | "disabled" | "className"
+> {
   color?: HvColorAny;
   classes?: HvRadioIconClasses;
 }

@@ -19,7 +19,8 @@ export { staticClasses as treeView2Classes }; // TODO: remove old `treeViewClass
 export type HvTreeViewClasses = ExtractNames<typeof useClasses>;
 
 export interface HvTreeViewProps<Multiple extends boolean | undefined>
-  extends HvBaseProps<HTMLUListElement>,
+  extends
+    HvBaseProps<HTMLUListElement>,
     DefaultTreeViewPluginParameters<Multiple> {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvTreeViewClasses;

@@ -12,11 +12,10 @@ export { staticClasses as flowMinimapClasses };
 
 export type HvFlowMinimapClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFlowMinimapProps<NodeData = any>
-  extends Omit<
-    MiniMapProps<NodeData>,
-    "nodeColor" | "nodeStrokeColor" | "maskColor" | "maskStrokeColor"
-  > {
+export interface HvFlowMinimapProps<NodeData = any> extends Omit<
+  MiniMapProps<NodeData>,
+  "nodeColor" | "nodeStrokeColor" | "maskColor" | "maskStrokeColor"
+> {
   /** Node color. */
   nodeColor?: HvColorAny | GetMiniMapNodeAttribute<NodeData>;
   /** Node stroke color. */

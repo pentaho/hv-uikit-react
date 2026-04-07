@@ -48,8 +48,7 @@ echarts.use([
 export interface HvBarChartClasses extends HvChartTooltipClasses {}
 
 export interface HvBarChartProps
-  extends HvAxisChartCommonProps,
-    HvChartCommonProps {
+  extends HvAxisChartCommonProps, HvChartCommonProps {
   /**  Columns to measure on the chart. */
   measures: Arrayable<HvBarChartMeasure>;
   /** Whether the bar chart should be horizontal. Defaults to `false`. */

@@ -165,17 +165,16 @@ export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
 // TODO: refactor this out
 HvCalendarHeader.formElementType = "HvCalendarHeader";
 
-export interface HvCalendarHeaderProps
-  extends Pick<
-    HvSingleCalendarProps,
-    | "id"
-    | "value"
-    | "locale"
-    | "onChange"
-    | "showEndDate"
-    | "showDayOfWeek"
-    | "invalidDateLabel"
-  > {
+export interface HvCalendarHeaderProps extends Pick<
+  HvSingleCalendarProps,
+  | "id"
+  | "value"
+  | "locale"
+  | "onChange"
+  | "showEndDate"
+  | "showDayOfWeek"
+  | "invalidDateLabel"
+> {
   /**
    * A Jss Object used to override or extend the component styles.
    */

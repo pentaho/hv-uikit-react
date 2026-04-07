@@ -247,8 +247,10 @@ export const createEntry = (i: number): AssetInventoryEntry => {
 // --- Data & Endpoint ---
 const db = [...Array(50).keys()].map(createEntry);
 
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<AssetInventoryEntry>, "endpoint" | "db"> {}
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<AssetInventoryEntry>,
+  "endpoint" | "db"
+> {}
 
 export const usePaginationData = (props: PaginationDataProps) => {
   return useServerPagination({ endpoint: "/events", db, ...props });

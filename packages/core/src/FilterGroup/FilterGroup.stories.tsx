@@ -1,9 +1,5 @@
 import { useState } from "react";
-import type {
-  Decorator,
-  Meta,
-  StoryObj,
-} from "@storybook/react-vite";
+import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {

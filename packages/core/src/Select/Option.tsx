@@ -23,7 +23,8 @@ export { staticClasses as optionClasses };
 export type HvOptionClasses = ExtractNames<typeof useClasses>;
 
 export interface HvOptionProps<OptionValue extends {}>
-  extends Omit<HvListItemProps, "value" | "disabled">,
+  extends
+    Omit<HvListItemProps, "value" | "disabled">,
     Pick<OptionOwnProps<OptionValue>, "disabled" | "label" | "value"> {
   classes?: HvOptionClasses;
 }

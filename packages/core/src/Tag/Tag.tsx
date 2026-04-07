@@ -32,11 +32,10 @@ const colorMap: Partial<Record<HvColorAny, HvColor>> = {
   neutral_20: "info",
 };
 
-export interface HvTagProps
-  extends Omit<
-    HvButtonBaseProps,
-    "type" | "color" | "classes" | "onClick" | "onToggle"
-  > {
+export interface HvTagProps extends Omit<
+  HvButtonBaseProps,
+  "type" | "color" | "classes" | "onClick" | "onToggle"
+> {
   /** The label of the tag element. */
   label?: React.ReactNode;
   /** Indicates that the form element is disabled. */

@@ -12,8 +12,10 @@ export { staticClasses as sliderInputClasses };
 
 export type HvSliderInputClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSliderInputProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvSliderInputProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /**
    * Used to generate the aria-label for the inputs.
    */

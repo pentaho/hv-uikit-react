@@ -10,11 +10,7 @@ import {
   type HvDropZoneLabels,
   type HvDropZoneProps,
 } from "./DropZone";
-import type {
-  HvFileData,
-  HvFileRemovedEvent,
-  HvFilesAddedEvent,
-} from "./File";
+import type { HvFileData, HvFileRemovedEvent, HvFilesAddedEvent } from "./File";
 import { HvFileList } from "./FileList";
 import { staticClasses, useClasses } from "./FileUploader.styles";
 

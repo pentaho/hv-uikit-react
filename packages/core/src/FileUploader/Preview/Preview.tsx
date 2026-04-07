@@ -12,8 +12,10 @@ export { staticClasses as fileUploaderPreviewClasses };
 
 export type HvFileUploaderPreviewClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFileUploaderPreviewProps
-  extends Omit<HvButtonProps, "children" | "classes"> {
+export interface HvFileUploaderPreviewProps extends Omit<
+  HvButtonProps,
+  "children" | "classes"
+> {
   /**
    * Content that represents the preview of an uploaded file.
    */

@@ -10,16 +10,19 @@ import type { HvFlowNodeProps } from "./Node";
 // Node types
 
 /** HvFlowNode component type. @extends React.FC */
-export interface HvFlowNodeFC<NodeData = any>
-  extends React.FC<NodeProps<NodeData>> {}
+export interface HvFlowNodeFC<NodeData = any> extends React.FC<
+  NodeProps<NodeData>
+> {}
 
 export type HvFlowNodeTypes<NodeData = any> = Record<
   string,
   HvFlowNodeFC<NodeData>
 >;
 
-export interface HvFlowGroupItem<NodeData = any>
-  extends Pick<HvFlowNodeProps, "params" | "subtitle"> {
+export interface HvFlowGroupItem<NodeData = any> extends Pick<
+  HvFlowNodeProps,
+  "params" | "subtitle"
+> {
   /** The node identifier registered in `nodeTypes` */
   nodeType: string;
   label: string;
@@ -87,7 +90,8 @@ export interface HvFlowNodeSelectParam extends HvFlowNodeSharedParam {
 }
 
 export interface HvFlowNodeSliderParam
-  extends HvFlowNodeSharedParam,
+  extends
+    HvFlowNodeSharedParam,
     Omit<HvSliderProps, keyof HvFlowNodeSharedParam> {
   type: "slider";
 }

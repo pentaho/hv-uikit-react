@@ -2,7 +2,10 @@ import * as React from "react";
 
 import type { TreeViewAnyPluginSignature, TreeViewUsedEvents } from "../types";
 import type { TreeViewEventListener } from "../types/events";
-import type { CleanupTracking, UnregisterToken } from "../utils/CleanupTracking";
+import type {
+  CleanupTracking,
+  UnregisterToken,
+} from "../utils/CleanupTracking";
 import { FinalizationRegistryBasedCleanupTracking } from "../utils/FinalizationRegistryBasedCleanupTracking";
 import { TimerBasedCleanupTracking } from "../utils/TimerBasedCleanupTracking";
 import type { UseTreeViewInstanceEventsInstance } from "./useTreeViewInstanceEvents.types";

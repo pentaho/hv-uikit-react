@@ -15,11 +15,7 @@ import {
   useYAxis,
 } from "../hooks";
 import type { HvChartTooltip } from "../types";
-import type {
-  HvChartCommonProps,
-  XAxis,
-  YAxis,
-} from "../types/common";
+import type { HvChartCommonProps, XAxis, YAxis } from "../types/common";
 import { useClasses } from "./Heatmap.styles";
 
 // Register chart components
@@ -31,11 +27,10 @@ export type HvHeatmapItem = Array<number | string>;
 
 export type HvHeatmapData = Array<HvHeatmapItem>;
 
-export interface HvHeatmapProps
-  extends Omit<
-    HvChartCommonProps,
-    "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
-  > {
+export interface HvHeatmapProps extends Omit<
+  HvChartCommonProps,
+  "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
+> {
   /** The name of the heatmap */
   name?: string;
   /** The data to use on the heatmap */

@@ -17,11 +17,10 @@ export { staticClasses as adornmentClasses };
 
 export type HvAdornmentClasses = ExtractNames<typeof useClasses>;
 
-export interface HvAdornmentProps
-  extends HvBaseProps<
-    HTMLDivElement | HTMLButtonElement,
-    "onMouseDown" | "onKeyDown"
-  > {
+export interface HvAdornmentProps extends HvBaseProps<
+  HTMLDivElement | HTMLButtonElement,
+  "onMouseDown" | "onKeyDown"
+> {
   /** The icon to be added into the input. */
   icon: React.ReactNode;
   /** Controls the visibility of the adornment based on the form element's status. `isVisible` overrides this behavior. */

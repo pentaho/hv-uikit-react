@@ -13,7 +13,8 @@ export { staticClasses as wizardContainerClasses };
 export type HvWizardContainerClasses = ExtractNames<typeof useClasses>;
 
 export interface HvWizardContainerProps
-  extends Omit<HvBaseProps, "onClose">,
+  extends
+    Omit<HvBaseProps, "onClose">,
     Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
   /** Current state of the Wizard. */
   open: boolean;

@@ -12,8 +12,10 @@ export { staticClasses as cardContentClasses };
 
 export type HvCardContentClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCardContentProps
-  extends Omit<MuiCardContentProps, "classes"> {
+export interface HvCardContentProps extends Omit<
+  MuiCardContentProps,
+  "classes"
+> {
   /** The function that will be executed when this section is clicked. */
   onClick?: (event: React.SyntheticEvent) => void;
   /** A Jss Object used to override or extend the styles applied to the component. */

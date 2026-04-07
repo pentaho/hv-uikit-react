@@ -42,7 +42,9 @@ export default function Demo() {
       }}
       placeholder={
         <div className="flex gap-xxs overflow-scroll">
-          {selected?.map((item) => <HvTag label={item} />)}
+          {selected?.map((item) => (
+            <HvTag label={item} />
+          ))}
         </div>
       }
       onContainerCreation={() => searchRef.current?.focus()}

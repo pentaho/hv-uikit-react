@@ -44,8 +44,10 @@ const { useClasses } = createClasses("HvCheckBoxIcon", {
 
 export type HvCheckBoxIconClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCheckBoxIconProps
-  extends Pick<HvBaseCheckBoxProps, "className" | "disabled" | "semantic"> {
+export interface HvCheckBoxIconProps extends Pick<
+  HvBaseCheckBoxProps,
+  "className" | "disabled" | "semantic"
+> {
   variant?: "default" | "checked" | "indeterminate";
   color?: HvColorAny;
   classes?: HvCheckBoxIconClasses;

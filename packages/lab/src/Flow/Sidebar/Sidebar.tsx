@@ -31,8 +31,10 @@ export { staticClasses as flowSidebarClasses };
 
 export type HvFlowSidebarClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFlowSidebarProps
-  extends Omit<HvDrawerProps, "classes" | "title"> {
+export interface HvFlowSidebarProps extends Omit<
+  HvDrawerProps,
+  "classes" | "title"
+> {
   /** Sidebar title. */
   title?: string;
   /** Sidebar description. */

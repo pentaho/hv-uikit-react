@@ -16,8 +16,7 @@ import type { HvAppShellProps } from "./AppShell";
 const i18n = createI18Next();
 
 export interface HvAppShellContainerProps
-  extends React.PropsWithChildren,
-    HvAppShellProps {}
+  extends React.PropsWithChildren, HvAppShellProps {}
 
 export function HvAppShellContainer({
   config: configProp,

@@ -48,8 +48,10 @@ echarts.use([
 
 export type HvConfusionMatrixClasses = ExtractNames<typeof useClasses>;
 
-export interface HvConfusionMatrixProps
-  extends Omit<HvChartCommonProps, "tooltip"> {
+export interface HvConfusionMatrixProps extends Omit<
+  HvChartCommonProps,
+  "tooltip"
+> {
   /** Column to measure. */
   measure: HvConfusionMatrixMeasure;
   /** Columns to use to split the measure. */

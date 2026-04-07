@@ -12,8 +12,10 @@ export { staticClasses as actionClasses };
 
 export type HvVerticalNavigationActionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvVerticalNavigationActionProps
-  extends Omit<HvButtonProps, "classes" | "icon"> {
+export interface HvVerticalNavigationActionProps extends Omit<
+  HvButtonProps,
+  "classes" | "icon"
+> {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvVerticalNavigationActionClasses;
   /** Visual label. */

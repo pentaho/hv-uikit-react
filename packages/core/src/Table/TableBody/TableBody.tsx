@@ -24,8 +24,10 @@ export { staticClasses as tableBodyClasses };
 
 export type HvTableBodyClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableBodyProps
-  extends HvBaseProps<HTMLTableSectionElement, "children"> {
+export interface HvTableBodyProps extends HvBaseProps<
+  HTMLTableSectionElement,
+  "children"
+> {
   /**
    * Content to be rendered
    */

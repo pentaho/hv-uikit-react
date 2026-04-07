@@ -10,8 +10,7 @@ import {
 } from "./SidebarGroupItem";
 
 export interface HvFlowDraggableSidebarGroupItemProps
-  extends HvFlowSidebarGroupItemProps,
-    HvFlowGroupItem {}
+  extends HvFlowSidebarGroupItemProps, HvFlowGroupItem {}
 
 export const HvFlowDraggableSidebarGroupItem = ({
   id: idProp,

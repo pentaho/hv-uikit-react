@@ -36,7 +36,9 @@ export interface HvDropdownProps<
   // TODO: make default `false` in v6
   Multiple extends boolean = boolean,
   OptionValue extends HvListValue = HvListValue,
-> extends Omit<HvFormElementProps, "value" | "onChange">,
+>
+  extends
+    Omit<HvFormElementProps, "value" | "onChange">,
     Pick<
       HvBaseDropdownProps,
       | "placement"

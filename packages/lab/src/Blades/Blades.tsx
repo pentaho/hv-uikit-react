@@ -18,8 +18,10 @@ export { staticClasses as bladesClasses };
 
 export type HvBladesClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBladesProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
+export interface HvBladesProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "children"
+> {
   /**
    * Array of indices representing the expanded state of each blade.
    *

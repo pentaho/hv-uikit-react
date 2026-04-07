@@ -14,8 +14,10 @@ export { staticClasses as calendarClasses };
 
 export type HvCalendarClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCalendarProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface HvCalendarProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /**
    * Styles applied from the theme.
    */

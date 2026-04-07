@@ -30,8 +30,10 @@ const DEFAULT_LABELS = {
   dropdownMenu: "Dropdown menu",
 };
 
-export interface HvDropDownMenuProps
-  extends HvBaseProps<HTMLDivElement, "onClick" | "onToggle"> {
+export interface HvDropDownMenuProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick" | "onToggle"
+> {
   /** Icon. */
   icon?: React.ReactElement<any>;
   /**

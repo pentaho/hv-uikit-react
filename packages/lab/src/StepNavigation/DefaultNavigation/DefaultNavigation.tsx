@@ -23,8 +23,10 @@ export type ComponentChildProps = {
   };
 };
 
-export interface HvDefaultNavigationProps
-  extends Omit<HvBaseProps, "children"> {
+export interface HvDefaultNavigationProps extends Omit<
+  HvBaseProps,
+  "children"
+> {
   /** Number of steps to show on the component. */
   numSteps: number;
   /** Sets one of the standard sizes of the steps. */

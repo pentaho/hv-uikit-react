@@ -185,8 +185,10 @@ export const HvSingleCalendar = (props: HvSingleCalendarProps) => {
   );
 };
 
-export interface HvSingleCalendarProps
-  extends Omit<HvCalendarProps, "classes"> {
+export interface HvSingleCalendarProps extends Omit<
+  HvCalendarProps,
+  "classes"
+> {
   /**
    * Styles applied from the theme.
    */

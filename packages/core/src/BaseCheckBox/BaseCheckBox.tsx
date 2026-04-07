@@ -15,8 +15,10 @@ export { staticClasses as baseCheckBoxClasses };
 
 export type HvBaseCheckBoxClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseCheckBoxProps
-  extends Omit<MuiCheckboxProps, "onChange" | "classes" | "color"> {
+export interface HvBaseCheckBoxProps extends Omit<
+  MuiCheckboxProps,
+  "onChange" | "classes" | "color"
+> {
   /**
    * The input name.
    */

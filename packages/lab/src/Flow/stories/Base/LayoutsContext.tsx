@@ -8,8 +8,10 @@ import {
 } from "react";
 import type { HvDashboardProps } from "@hitachivantara/uikit-react-lab";
 
-export interface LayoutConfig
-  extends Pick<HvDashboardProps, "layout" | "cols"> {
+export interface LayoutConfig extends Pick<
+  HvDashboardProps,
+  "layout" | "cols"
+> {
   items?: {
     id: string;
     type: string;

@@ -12,8 +12,10 @@ export const LAYOUT_COLS = 12;
 
 type Node = NonNullable<ReturnType<HvFlowInstance<NodeData>["getNode"]>>;
 
-export interface DashboardSpecs
-  extends Pick<HvDashboardProps, "layout" | "cols"> {
+export interface DashboardSpecs extends Pick<
+  HvDashboardProps,
+  "layout" | "cols"
+> {
   items: Node[];
 }
 

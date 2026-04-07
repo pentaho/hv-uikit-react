@@ -22,8 +22,10 @@ export { staticClasses as tableHeaderClasses };
 
 export type HvTableHeaderClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableHeaderProps
-  extends Omit<React.ThHTMLAttributes<HTMLTableCellElement>, "align"> {
+export interface HvTableHeaderProps extends Omit<
+  React.ThHTMLAttributes<HTMLTableCellElement>,
+  "align"
+> {
   /** The component used for the root node. Either a string to use a HTML element or a component. Defaults to th. */
   component?: React.ElementType;
   /** Content to be rendered */

@@ -14,10 +14,8 @@ export { staticClasses as dotClasses };
 export type HvDotClasses = ExtractNames<typeof useClasses>;
 
 export interface HvDotProps
-  extends Pick<
-      HvStepProps,
-      "size" | "title" | "state" | "onClick" | "disabled"
-    >,
+  extends
+    Pick<HvStepProps, "size" | "title" | "state" | "onClick" | "disabled">,
     Omit<HvBaseProps, "title" | "onClick"> {
   /** A Jss Object used to override or extend the styles applied to the empty state StepNavigation. */
   classes?: HvDotClasses;

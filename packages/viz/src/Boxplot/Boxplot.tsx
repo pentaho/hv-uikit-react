@@ -29,7 +29,8 @@ echarts.use([BoxplotChart, TooltipComponent, VisualMapComponent]);
 export type HvBoxplotClasses = ExtractNames<typeof useClasses>;
 
 export interface HvBoxplotProps
-  extends Omit<
+  extends
+    Omit<
       HvAxisChartCommonProps,
       "splitBy" | "horizontalRangeSlider" | "seriesNameFormatter" | "stack"
     >,

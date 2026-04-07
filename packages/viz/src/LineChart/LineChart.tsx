@@ -48,8 +48,7 @@ echarts.use([
 export interface HvLineChartClasses extends HvChartTooltipClasses {}
 
 export interface HvLineChartProps
-  extends HvAxisChartCommonProps,
-    HvChartCommonProps {
+  extends HvAxisChartCommonProps, HvChartCommonProps {
   /** Columns to measure on the chart. */
   measures: Arrayable<HvLineChartMeasure>;
   /** Strategy to use when there are empty cells. Defaults to `void`. */

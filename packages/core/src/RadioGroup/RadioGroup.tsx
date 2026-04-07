@@ -26,8 +26,10 @@ export { staticClasses as radioGroupClasses };
 
 export type HvRadioGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvRadioGroupProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvRadioGroupProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /**
    * The form element name.
    *

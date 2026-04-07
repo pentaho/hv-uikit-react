@@ -67,8 +67,10 @@ export { staticClasses as toolbarTabEditorClasses };
 
 type ToolbarTabEditorClasses = ExtractNames<typeof useClasses>;
 
-interface ToolbarTabEditorProps
-  extends Omit<HvTypographyProps, "classes" | "onBlur" | "onChange"> {
+interface ToolbarTabEditorProps extends Omit<
+  HvTypographyProps,
+  "classes" | "onBlur" | "onChange"
+> {
   /** The value of the component. When used, the component has to be controlled. */
   value?: string;
   /** The default value of the component. */

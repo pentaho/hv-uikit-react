@@ -104,11 +104,10 @@ export type HvCalloutActionPosition = "auto" | "inline" | "bottom-right";
 
 export type HvCalloutClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCalloutProps
-  extends Omit<
-    MuiSnackbarContentProps,
-    "title" | "variant" | "classes" | "onClose"
-  > {
+export interface HvCalloutProps extends Omit<
+  MuiSnackbarContentProps,
+  "title" | "variant" | "classes" | "onClose"
+> {
   /** The title to display. */
   title?: React.ReactNode;
   /** The message to display. */

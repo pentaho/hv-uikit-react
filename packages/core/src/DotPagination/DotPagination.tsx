@@ -25,8 +25,10 @@ export { staticClasses as dotPaginationClasses };
 
 export type HvDotPaginationClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDotPaginationProps
-  extends Omit<HvRadioGroupProps, "classes"> {
+export interface HvDotPaginationProps extends Omit<
+  HvRadioGroupProps,
+  "classes"
+> {
   /**
    * Icon to override the default one used for the unselected state.
    *

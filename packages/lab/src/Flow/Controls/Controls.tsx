@@ -24,11 +24,10 @@ import { useFlowInstance } from "../hooks";
 
 export type HvFlowControlsPosition = PanelPosition;
 
-export interface HvFlowControlsProps
-  extends Omit<
-    ControlProps,
-    "position" | "showFitView" | "showInteractive" | "showZoom"
-  > {
+export interface HvFlowControlsProps extends Omit<
+  ControlProps,
+  "position" | "showFitView" | "showInteractive" | "showZoom"
+> {
   /** Controls position. Defaults to `bottom-center`. */
   position?: HvFlowControlsPosition;
   /** Controls orientation. Defaults to `horizontal`. */

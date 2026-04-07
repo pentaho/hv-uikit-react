@@ -14,8 +14,9 @@ export { staticClasses as horizontalScrollListItemClasses };
 
 export type HvHorizontalScrollListItemClasses = ExtractNames<typeof useClasses>;
 
-export interface HvHorizontalScrollListItemProps
-  extends HvBaseProps<HTMLDivElement | HTMLAnchorElement> {
+export interface HvHorizontalScrollListItemProps extends HvBaseProps<
+  HTMLDivElement | HTMLAnchorElement
+> {
   /** The text to render.  */
   label?: React.ReactNode;
   /** Whether the element is selected. */

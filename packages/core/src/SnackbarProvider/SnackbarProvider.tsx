@@ -42,8 +42,10 @@ export interface HvSnackbarProviderProps {
   container?: SnackbarProviderProps["domRoot"];
 }
 
-export interface HvNotistackSnackMessageProps
-  extends Omit<OptionsObject, "variant"> {
+export interface HvNotistackSnackMessageProps extends Omit<
+  OptionsObject,
+  "variant"
+> {
   /** Id to be applied to the root node. */
   id?: string;
   /** class name to apply on the root node */

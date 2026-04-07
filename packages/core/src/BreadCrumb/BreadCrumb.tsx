@@ -19,8 +19,10 @@ export { staticClasses as breadCrumbClasses };
 
 export type HvBreadCrumbClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBreadCrumbProps
-  extends HvBaseProps<HTMLDivElement, "onClick"> {
+export interface HvBreadCrumbProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick"
+> {
   /** List of breadcrumb. */
   listRoute?: HvBreadCrumbPathElement[];
   /** Home breadcrumb element. If passed, it will be displayed as the first breadcrumb item as a Home icon */

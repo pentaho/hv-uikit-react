@@ -112,8 +112,10 @@ export const HvCalendarCell = (props: HvCalendarCellProps) => {
   );
 };
 
-export interface HvCalendarCellProps
-  extends Omit<HvButtonBaseProps, "value" | "classes" | "onChange"> {
+export interface HvCalendarCellProps extends Omit<
+  HvButtonBaseProps,
+  "value" | "classes" | "onChange"
+> {
   /**
    * A Jss Object used to override or extend the component styles.
    */

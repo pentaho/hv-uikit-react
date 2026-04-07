@@ -43,8 +43,10 @@ const DEFAULT_LABELS = {
 
 export type HvDropZoneLabels = Partial<typeof DEFAULT_LABELS>;
 
-export interface HvDropZoneProps
-  extends Pick<HvFormElementProps, "id" | "disabled" | "label"> {
+export interface HvDropZoneProps extends Pick<
+  HvFormElementProps,
+  "id" | "disabled" | "label"
+> {
   /**
    * Labels to present in FileUploader.
    */
