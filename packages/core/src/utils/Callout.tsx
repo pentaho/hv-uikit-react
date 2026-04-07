@@ -11,8 +11,11 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { HvActionsGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvButton, HvButtonProps } from "../Button";
+import {
+  HvActionsGeneric,
+  type HvActionsGenericProps,
+} from "../ActionsGeneric";
+import { HvButton, type HvButtonProps } from "../Button";
 import { HvIcon } from "../icons";
 import { HvStatusIcon } from "../StatusIcon";
 import { iconVariant } from "./iconVariant";

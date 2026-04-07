@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { useEventCallback } from "@mui/material/utils";
 import type { EventHandlers } from "@mui/utils/types";
 
-import { TreeViewPlugin, TreeViewPluginSignature } from "../../types";
+import type { TreeViewPlugin, TreeViewPluginSignature } from "../../types";
 import {
   getFirstNode,
   getLastNode,
@@ -57,7 +57,7 @@ export const useTreeViewKeyboardNavigation: TreeViewPlugin<
 > = ({ instance, params, state }) => {
   const theme = useTheme();
   const isRtl = theme.direction === "rtl";
-  const firstCharMap = React.useRef<{ [nodeId: string]: string }>({});
+  const firstCharMap = React.useRef<Record<string, string>>({});
 
   const mapFirstChar = useEventCallback((nodeId: string, firstChar: string) => {
     firstCharMap.current[nodeId] = firstChar;

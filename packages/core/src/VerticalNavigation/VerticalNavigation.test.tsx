@@ -9,7 +9,7 @@ import {
   HvVerticalNavigationActions,
   HvVerticalNavigationHeader,
   HvVerticalNavigationTree,
-  NavigationData,
+  type NavigationData,
 } from ".";
 
 const Sample = ({

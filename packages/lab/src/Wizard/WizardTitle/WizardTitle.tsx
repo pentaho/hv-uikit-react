@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
   HvDialogTitle,
   HvTypography,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { Report } from "@hitachivantara/uikit-react-icons";
 
-import { HvStepNavigation, HvStepNavigationProps } from "../../StepNavigation";
-import { HvStepProps } from "../../StepNavigation/DefaultNavigation";
-import { HvWizardContext, HvWizardTab } from "../WizardContext";
+import {
+  HvStepNavigation,
+  type HvStepNavigationProps,
+} from "../../StepNavigation";
+import type { HvStepProps } from "../../StepNavigation/DefaultNavigation";
+import { HvWizardContext, type HvWizardTab } from "../WizardContext";
 import { staticClasses, useClasses } from "./WizardTitle.styles";
 
 export { staticClasses as wizardTitleClasses };

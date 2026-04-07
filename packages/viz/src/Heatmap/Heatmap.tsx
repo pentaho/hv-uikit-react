@@ -4,7 +4,7 @@ import { HeatmapChart } from "echarts/charts";
 import { TooltipComponent, VisualMapComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvBaseChart } from "../BaseChart";
 import {
@@ -14,8 +14,12 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvChartTooltip } from "../types";
-import { HvChartCommonProps, XAxis, YAxis } from "../types/common";
+import type { HvChartTooltip } from "../types";
+import type {
+  HvChartCommonProps,
+  XAxis,
+  YAxis,
+} from "../types/common";
 import { useClasses } from "./Heatmap.styles";
 
 // Register chart components

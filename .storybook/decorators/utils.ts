@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import {
+import type {
   HvThemeColorMode,
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";

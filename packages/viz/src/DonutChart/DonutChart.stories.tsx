@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvDonutChart,
-  HvDonutChartProps,
+  type HvDonutChartProps,
 } from "@hitachivantara/uikit-react-viz";
 
 import { vizDecorator } from "../BaseChart/stories/utils";

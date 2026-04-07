@@ -1,4 +1,4 @@
-import { StoryObj } from "@storybook/react-vite";
+import type { StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvTable,
@@ -7,8 +7,8 @@ import {
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
-  HvTableProps,
   HvTableRow,
+  type HvTableProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { AllColumnRenderers } from "./AllColumnRenderers";

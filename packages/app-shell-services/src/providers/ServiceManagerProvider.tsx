@@ -1,13 +1,13 @@
 import {
   createContext,
   createElement,
-  FC,
-  PropsWithChildren,
   useMemo,
+  type FC,
+  type PropsWithChildren,
 } from "react";
 
-import { ServiceId, ServicesConfig } from "../types/config";
-import {
+import type { ServiceId, ServicesConfig } from "../types/config";
+import type {
   GetServiceBaseOptions,
   GetServiceOptions,
   GetServiceReferenceOptions,

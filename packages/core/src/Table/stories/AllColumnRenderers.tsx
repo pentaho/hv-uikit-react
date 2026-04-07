@@ -7,7 +7,6 @@ import {
   hvNumberColumn,
   HvPagination,
   hvProgressColumn,
-  HvRowInstance,
   hvSwitchColumn,
   HvTable,
   HvTableBody,
@@ -24,6 +23,7 @@ import {
   useHvPagination,
   useHvRowExpand,
   useHvTable,
+  type HvRowInstance,
 } from "@hitachivantara/uikit-react-core";
 import { Ban } from "@hitachivantara/uikit-react-icons";
 

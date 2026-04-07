@@ -3,8 +3,8 @@ import {
   HvCardContent,
   HvCardHeader,
   HvCardMedia,
-  HvCardProps,
   HvTypography,
+  type HvCardProps,
 } from "@hitachivantara/uikit-react-core";
 import { Level2Average } from "@hitachivantara/uikit-react-icons";
 

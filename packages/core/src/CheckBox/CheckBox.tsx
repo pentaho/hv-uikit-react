@@ -4,14 +4,14 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseCheckBox, HvBaseCheckBoxProps } from "../BaseCheckBox";
+import { HvBaseCheckBox, type HvBaseCheckBoxProps } from "../BaseCheckBox";
 import {
   HvFormElement,
-  HvFormStatus,
   HvLabel,
-  HvLabelProps,
   HvWarningText,
   isInvalid,
+  type HvFormStatus,
+  type HvLabelProps,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";

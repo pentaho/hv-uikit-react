@@ -5,7 +5,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvTooltip, HvTooltipProps } from "../Tooltip";
+import { HvTooltip, type HvTooltipProps } from "../Tooltip";
 import { staticClasses, useClasses } from "./OverflowTooltip.styles";
 
 export { staticClasses as overflowTooltipClasses };

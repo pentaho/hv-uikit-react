@@ -4,9 +4,9 @@ import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
+import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Card.styles";
 
 export { staticClasses as cardClasses };

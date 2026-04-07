@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvQueryBuilder,
-  HvQueryBuilderProps,
+  type HvQueryBuilderProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { CustomRenderers as CustomRenderersStory } from "./stories/CustomRenderers";

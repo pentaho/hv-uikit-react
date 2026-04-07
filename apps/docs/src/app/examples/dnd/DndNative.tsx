@@ -3,8 +3,8 @@ import { clsx } from "clsx";
 import {
   HvListContainer,
   HvListItem,
-  HvListItemProps,
   HvTypography,
+  type HvListItemProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   Battery,

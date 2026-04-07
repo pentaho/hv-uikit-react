@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 import {
   HvBreadCrumb,
-  HvBreadCrumbProps,
+  type HvBreadCrumbProps,
 } from "@hitachivantara/uikit-react-core";
 
 const data = [

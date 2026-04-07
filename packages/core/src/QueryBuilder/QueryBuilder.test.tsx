@@ -6,7 +6,7 @@ import { vi } from "vitest";
 import {
   HvQueryBuilder,
   hvQueryBuilderDefaultOperators,
-  HvQueryBuilderProps,
+  type HvQueryBuilderProps,
 } from ".";
 import { HvButton } from "../Button";
 

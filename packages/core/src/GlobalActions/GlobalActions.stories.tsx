@@ -7,11 +7,11 @@ import {
   HvContainer,
   HvDropDownMenu,
   HvGlobalActions,
-  HvGlobalActionsProps,
   HvTab,
   HvTabs,
   HvTypography,
   theme,
+  type HvGlobalActionsProps,
 } from "@hitachivantara/uikit-react-core";
 import { Backwards, Home } from "@hitachivantara/uikit-react-icons";
 

@@ -10,7 +10,7 @@ import type {
   HvBaseDropdownProps,
   HvDropdownPanelProps,
 } from "../BaseDropdown";
-import { HvRadioIconProps } from "../BaseRadio/RadioIcon";
+import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvButtonProps } from "../Button";
 import type { HvCalendarProps } from "../Calendar";

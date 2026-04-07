@@ -1,4 +1,4 @@
-import { DeepPartial } from "../types/generic";
+import type { DeepPartial } from "../types/generic";
 
 const isObject = (val: any): val is object =>
   val && typeof val === "object" && !Array.isArray(val);

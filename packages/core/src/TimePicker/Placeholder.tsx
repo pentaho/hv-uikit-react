@@ -1,12 +1,12 @@
 import { forwardRef, useRef } from "react";
 import { useDateSegment } from "@react-aria/datepicker";
-import {
+import type {
   DateFieldState,
   DateSegment,
   SegmentType,
 } from "@react-stately/datepicker";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 
 /** Convert `Date` into `hh:mm:ss` format */
 const getDateValue = (date: any) => {

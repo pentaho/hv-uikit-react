@@ -10,8 +10,8 @@ import {
   HvHeader,
   HvHeaderBrand,
   HvHeaderNavigation,
-  HvHeaderNavigationProps,
   useTheme,
+  type HvHeaderNavigationProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../../providers/NavigationProvider";

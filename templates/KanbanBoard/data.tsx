@@ -5,7 +5,7 @@ import {
   Success,
 } from "@hitachivantara/uikit-react-icons";
 
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 export const columns: Column[] = [
   {

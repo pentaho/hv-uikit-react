@@ -7,7 +7,7 @@ import { theme } from "@hitachivantara/uikit-styles";
 import { HvInput } from "../../Input";
 import { uniqueId } from "../../utils/helpers";
 import { useQueryBuilderContext } from "../Context";
-import { HvQueryBuilderNumericRange } from "../types";
+import type { HvQueryBuilderNumericRange } from "../types";
 
 const { useClasses } = createClasses("HvQueryBuilderNumericValue", {
   root: {},

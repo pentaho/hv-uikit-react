@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormStatus } from "../../FormElement";
-import { HvInput, HvInputProps } from "../../Input";
-import { HvBaseProps } from "../../types/generic";
+import type { HvFormStatus } from "../../FormElement";
+import { HvInput, type HvInputProps } from "../../Input";
+import type { HvBaseProps } from "../../types/generic";
 import { setId } from "../../utils/setId";
 import { knobsValuesToString, stringValuesToKnobs } from "../utils";
 import { staticClasses, useClasses } from "./SliderInput.styles";

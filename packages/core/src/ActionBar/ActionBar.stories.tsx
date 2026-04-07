@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvActionBar,
-  HvActionBarProps,
   HvButton,
   theme,
+  type HvActionBarProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvActionBar> = {

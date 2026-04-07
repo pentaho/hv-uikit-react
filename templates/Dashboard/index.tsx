@@ -6,9 +6,9 @@ import {
   HvGrid,
   HvLoading,
   HvMultiButton,
-  HvMultiButtonProps,
   HvTypography,
   theme,
+  type HvMultiButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { Add, User } from "@hitachivantara/uikit-react-icons";
 import {

@@ -1,12 +1,8 @@
-import { ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 
 import { DynamicContext } from "./shared/dynamicContext";
 
-type DynamicProviderProps = {
-  children: ReactNode;
-};
-
-const DynamicProvider = ({ children }: DynamicProviderProps) => {
+const DynamicProvider = ({ children }: React.PropsWithChildren) => {
   const value = useMemo(
     () => ({
       message: "Dynamic Provider is active and visible after 10s delay",

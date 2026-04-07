@@ -1,7 +1,7 @@
 import { loadArrow } from "arquero";
 import useSWR from "swr";
 
-import { DashboardSpecs, LAYOUT_COLS } from "./types";
+import { LAYOUT_COLS, type DashboardSpecs } from "./types";
 
 export const datasets = [
   {

@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvFormStatus } from "../FormElement";
+import type { HvFormStatus } from "../FormElement";
 import { HvRadio } from "../Radio";
 import { HvRadioGroup } from "./RadioGroup";
 

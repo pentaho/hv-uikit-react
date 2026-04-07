@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import {
+import type {
   ConvertPluginsIntoSignatures,
   MergePluginsProperty,
   TreeViewAnyPluginSignature,
@@ -20,18 +20,14 @@ export const useTreeViewModels = <
     "defaultizedParams"
   >,
 ) => {
-  const modelsRef = React.useRef<{
-    [modelName: string]: {
+  const modelsRef = React.useRef<Record<string, {
       controlledProp: keyof typeof props;
       defaultProp: keyof typeof props;
       isControlled: boolean;
-    };
-  }>({});
+    }>>({});
 
-  const [modelsState, setModelsState] = React.useState<{
-    [modelName: string]: any;
-  }>(() => {
-    const initialState: { [modelName: string]: any } = {};
+  const [modelsState, setModelsState] = React.useState<Record<string, any>>(() => {
+    const initialState: Record<string, any> = {};
 
     plugins.forEach((plugin) => {
       if (plugin.models) {

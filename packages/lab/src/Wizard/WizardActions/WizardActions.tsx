@@ -1,13 +1,13 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
   HvDialogActions,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { Backwards, Forwards } from "@hitachivantara/uikit-react-icons";
 
-import { HvWizardContext, HvWizardTabs } from "../WizardContext";
+import { HvWizardContext, type HvWizardTabs } from "../WizardContext";
 import { staticClasses, useClasses } from "./WizardActions.styles";
 
 export { staticClasses as wizardActionsClasses };

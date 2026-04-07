@@ -1,4 +1,4 @@
-import { MessageService, MessageServiceConfig } from "../types";
+import type { MessageService, MessageServiceConfig } from "../types";
 
 // Simple factory function that creates a message service
 export default function createMessageService(

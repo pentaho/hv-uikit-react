@@ -1,5 +1,5 @@
 import MuiDialogActions, {
-  DialogActionsProps as MuiDialogActionsProps,
+  type DialogActionsProps as MuiDialogActionsProps,
 } from "@mui/material/DialogActions";
 import {
   useDefaultProps,

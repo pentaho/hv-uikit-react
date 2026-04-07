@@ -1,11 +1,10 @@
 import { useMemo } from "react";
-import { StoryObj } from "@storybook/react-vite";
+import type { StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
@@ -14,6 +13,7 @@ import {
   useHvHeaderGroups,
   useHvTable,
   useHvTableSticky,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
 import { ColumnResize } from "./ColumnResize";

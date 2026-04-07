@@ -1,13 +1,13 @@
-import { HTMLAttributes, useMemo, useState } from "react";
+import { useMemo, useState, type HTMLAttributes } from "react";
 import {
   DndContext,
-  DragOverEvent,
   DragOverlay,
-  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  type DragOverEvent,
+  type DragStartEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,

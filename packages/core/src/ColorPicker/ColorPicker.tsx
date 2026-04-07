@@ -3,10 +3,10 @@ import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvBaseDropdown } from "../BaseDropdown";
-import { HvDropdownProps } from "../Dropdown";
+import type { HvDropdownProps } from "../Dropdown";
 import { HvFormElement } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";

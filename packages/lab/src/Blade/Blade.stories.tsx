@@ -6,7 +6,7 @@ import {
   HvTypography,
   theme,
 } from "@hitachivantara/uikit-react-core";
-import { HvBlade, HvBladeProps } from "@hitachivantara/uikit-react-lab";
+import { HvBlade, type HvBladeProps } from "@hitachivantara/uikit-react-lab";
 
 const meta: Meta<typeof HvBlade> = {
   title: "Lab/Blades/Blade",

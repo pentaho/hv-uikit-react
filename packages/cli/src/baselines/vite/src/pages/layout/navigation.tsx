@@ -5,11 +5,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   HvButton,
   HvContainer,
-  HvContainerProps,
   HvHeader,
   HvHeaderBrand,
   HvHeaderNavigation,
   theme,
+  type HvContainerProps,
 } from "@hitachivantara/uikit-react-core";
 import { Menu } from "@hitachivantara/uikit-react-icons";
 

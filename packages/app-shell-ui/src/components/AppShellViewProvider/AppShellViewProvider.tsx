@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import {
   HvAppShellViewContext,
-  HvAppShellViewContextValue,
+  type HvAppShellViewContextValue,
 } from "@hitachivantara/app-shell-shared";
 
 export type AppShellViewProviderProps = {

@@ -1,18 +1,18 @@
 import {
-  ExtractNames,
   HvButton,
   HvDialog,
   HvDialogActions,
   HvDialogContent,
-  HvDialogProps,
   HvDialogTitle,
   HvEmptyState,
   useLabels,
+  type ExtractNames,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 import { Info } from "@hitachivantara/uikit-react-icons";
 
-import { HvDashboard, HvDashboardProps } from "../../Dashboard";
-import { HvFlowNode, HvFlowNodeProps } from "../Node";
+import { HvDashboard, type HvDashboardProps } from "../../Dashboard";
+import { HvFlowNode, type HvFlowNodeProps } from "../Node";
 import { staticClasses, useClasses } from "./DashboardNode.styles";
 
 export { staticClasses as hvDashboardNodeClasses };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormStatus } from "../../FormElement";
+import type { HvFormStatus } from "../../FormElement";
 import { HvInput } from "../../Input";
 import { useQueryBuilderContext } from "../Context";
 

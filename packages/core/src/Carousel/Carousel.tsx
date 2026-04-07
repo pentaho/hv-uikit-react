@@ -16,9 +16,9 @@ import {
 import { HvButton } from "../Button";
 import { HvContainer } from "../Container";
 import { useLabels } from "../hooks/useLabels";
-import { HvIconButton, HvIconButtonProps } from "../IconButton";
+import { HvIconButton, type HvIconButtonProps } from "../IconButton";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./Carousel.styles";
 import { HvCarouselControls } from "./CarouselControls";

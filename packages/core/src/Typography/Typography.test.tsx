@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { HvTypography, HvTypographyProps } from "./Typography";
+import { HvTypography, type HvTypographyProps } from "./Typography";
 
 interface CustomLinkProps extends HvTypographyProps<"a"> {
   to: string;

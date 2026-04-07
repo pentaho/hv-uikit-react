@@ -7,11 +7,11 @@ import { HvButton } from "../../Button";
 import { HvIcon } from "../../icons";
 import {
   HvListContainer,
-  HvListContainerProps,
   HvListItem,
+  type HvListContainerProps,
 } from "../../ListContainer";
 import { HvOverflowTooltip } from "../../OverflowTooltip";
-import { NavigationData } from "../VerticalNavigationContext";
+import type { NavigationData } from "../VerticalNavigationContext";
 import { staticClasses, useClasses } from "./NavigationSlider.styles";
 
 export { staticClasses as verticalNavigationSliderClasses };

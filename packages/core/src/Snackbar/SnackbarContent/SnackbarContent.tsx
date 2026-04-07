@@ -6,11 +6,14 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionGeneric, HvActionsGenericProps } from "../../ActionsGeneric";
+import type {
+  HvActionGeneric,
+  HvActionsGenericProps,
+} from "../../ActionsGeneric";
 import {
   HvCallout,
-  HvCalloutProps,
-  HvCalloutVariant,
+  type HvCalloutProps,
+  type HvCalloutVariant,
 } from "../../utils/Callout";
 import { staticClasses, useClasses } from "./SnackbarContent.styles";
 

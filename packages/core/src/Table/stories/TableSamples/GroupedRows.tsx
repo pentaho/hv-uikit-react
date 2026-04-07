@@ -2,15 +2,15 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
   HvTableRow,
   theme,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, makeData } from "../storiesUtils";
+import { makeData, type AssetEvent } from "../storiesUtils";
 
 const style = {
   borderRight: `1px solid ${theme.colors.border}`,

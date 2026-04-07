@@ -4,8 +4,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../../types/generic";
-import { HvHeaderNavigationItemProp } from "../useSelectionPath";
+import type { HvBaseProps } from "../../../types/generic";
+import type { HvHeaderNavigationItemProp } from "../useSelectionPath";
 import { SelectionContext } from "../utils/SelectionContext";
 import { staticClasses, useClasses } from "./Bar.styles";
 

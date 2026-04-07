@@ -2,10 +2,10 @@ import useSWR from "swr";
 
 import {
   delay,
-  ServerPaginationProps,
   useServerPagination,
+  type ServerPaginationProps,
 } from "./usePaginationData";
-import { createEntry, DetailsViewEntry } from "./utils";
+import { createEntry, type DetailsViewEntry } from "./utils";
 
 // --- Data ---
 

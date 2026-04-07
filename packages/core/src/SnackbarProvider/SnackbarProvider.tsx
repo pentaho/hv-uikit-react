@@ -1,11 +1,11 @@
 import { forwardRef, useCallback, useMemo } from "react";
-import { SnackbarOrigin } from "@mui/material/Snackbar";
+import type { SnackbarOrigin } from "@mui/material/Snackbar";
 import {
-  OptionsObject,
   SnackbarContent,
   SnackbarProvider,
-  SnackbarProviderProps,
   useSnackbar,
+  type OptionsObject,
+  type SnackbarProviderProps,
 } from "notistack";
 import {
   useDefaultProps,
@@ -14,8 +14,8 @@ import {
 
 import {
   HvSnackbarContent,
-  HvSnackbarContentProps,
-  HvSnackbarVariant,
+  type HvSnackbarContentProps,
+  type HvSnackbarVariant,
 } from "../Snackbar/SnackbarContent";
 import { staticClasses, useClasses } from "./SnackbarProvider.styles";
 

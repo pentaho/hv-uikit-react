@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvChartTooltip, HvChartTooltipParams } from "../../types";
-import { HvEChartsOption } from "../../types/common";
-import { getMeasure, SingleMeasure } from "../../utils";
+import type { HvChartTooltip, HvChartTooltipParams } from "../../types";
+import type { HvEChartsOption } from "../../types/common";
+import { getMeasure, type SingleMeasure } from "../../utils";
 import { useClasses } from "./styles";
 
 export type HvChartTooltipClasses = ExtractNames<typeof useClasses>;

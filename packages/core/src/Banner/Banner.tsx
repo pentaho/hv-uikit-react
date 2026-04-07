@@ -1,21 +1,21 @@
 import { forwardRef, useCallback } from "react";
-import Slide, { SlideProps } from "@mui/material/Slide";
+import Slide, { type SlideProps } from "@mui/material/Slide";
 import Snackbar, {
-  SnackbarProps as MuiSnackbarProps,
-  SnackbarOrigin,
+  type SnackbarProps as MuiSnackbarProps,
+  type SnackbarOrigin,
 } from "@mui/material/Snackbar";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionsGenericProps } from "../ActionsGeneric";
+import type { HvActionsGenericProps } from "../ActionsGeneric";
 import { staticClasses, useClasses } from "./Banner.styles";
 import {
-  HvBannerActionPosition,
   HvBannerContent,
-  HvBannerContentProps,
-  HvBannerVariant,
+  type HvBannerActionPosition,
+  type HvBannerContentProps,
+  type HvBannerVariant,
 } from "./BannerContent/BannerContent";
 
 export { staticClasses as bannerClasses };

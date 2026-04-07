@@ -1,6 +1,5 @@
-import { ReactNode } from "react";
 import { css } from "@emotion/css";
-import { Global, GlobalProps } from "@emotion/react";
+import { Global, type GlobalProps } from "@emotion/react";
 import {
   HvContainer,
   HvHeader,
@@ -15,7 +14,7 @@ const globalStyles: GlobalProps["styles"] = {
   "code::before, code::after": { content: '"`"' },
 };
 
-export const Container = ({ children }: { children: ReactNode }) => {
+export const Container = ({ children }: React.PropsWithChildren) => {
   const { selectedMode, changeMode } = useTheme();
 
   const handleChangeTheme = () => {

@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeProps,
   useFlowInputNodes,
+  type HvFlowNodeFC,
+  type HvFlowNodeProps,
 } from "@hitachivantara/uikit-react-lab";
 
-import { NodeData } from "../types";
+import type { NodeData } from "../types";
 
 export const LineChart: HvFlowNodeFC = (props) => {
   const inputNodes = useFlowInputNodes<NodeData>();

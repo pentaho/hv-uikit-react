@@ -1,14 +1,14 @@
 import {
-  HvAppShellEventTheme,
   HvAppShellEventThemeTrigger,
+  type HvAppShellEventTheme,
 } from "@hitachivantara/app-shell-events";
 import {
   HvButton,
   HvGlobalActions,
   HvGrid,
-  HvThemeColorMode,
   HvTypography,
   useTheme,
+  type HvThemeColorMode,
 } from "@hitachivantara/uikit-react-core";
 
 function Button({ colorMode }: { colorMode: HvThemeColorMode }) {

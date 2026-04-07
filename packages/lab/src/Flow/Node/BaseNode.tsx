@@ -1,15 +1,15 @@
-import { Handle, NodeProps, NodeToolbar, Position } from "reactflow";
+import { Handle, NodeToolbar, Position, type NodeProps } from "reactflow";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvIconButton,
   HvTypography,
   useLabels,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 
-import { HvUseNodeParams, useHvNode } from "../hooks";
-import {
+import { useHvNode, type HvUseNodeParams } from "../hooks";
+import type {
   HvFlowNodeInput,
   HvFlowNodeInputGroup,
   HvFlowNodeOutput,

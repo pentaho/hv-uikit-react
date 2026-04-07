@@ -1,22 +1,22 @@
 import { forwardRef, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import {
-  ExtractNames,
-  HvActionGeneric,
   HvActionsGeneric,
-  HvActionsGenericProps,
-  HvBaseProps,
   HvPanel,
   theme,
   useControlled,
   useDefaultProps,
   useUniqueId,
+  type ExtractNames,
+  type HvActionGeneric,
+  type HvActionsGenericProps,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";
-import { HvCanvasPanelTabs, HvCanvasPanelTabsProps } from "../PanelTabs";
+import { HvCanvasPanelTabs, type HvCanvasPanelTabsProps } from "../PanelTabs";
 import { staticClasses, useClasses } from "./BottomPanel.styles";
 
 const PANEL_RADIUS = 16;

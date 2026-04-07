@@ -2,10 +2,10 @@ import { useId, useState } from "react";
 import {
   HvCard,
   HvCardContent,
-  HvColor,
   HvRadio,
   HvStatusIcon,
   HvTypography,
+  type HvColor,
 } from "@hitachivantara/uikit-react-core";
 
 const colors = ["positive", "warning", "negative", "info"] satisfies HvColor[];

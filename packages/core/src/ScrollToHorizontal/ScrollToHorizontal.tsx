@@ -7,7 +7,7 @@ import {
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import { HvHorizontalScrollListItem } from "./HorizontalScrollListItem";
 import { staticClasses, useClasses } from "./ScrollToHorizontal.styles";

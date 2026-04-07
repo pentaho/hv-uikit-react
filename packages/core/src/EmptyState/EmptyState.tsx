@@ -7,8 +7,8 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { HvBaseProps } from "../types/generic";
-import { HvTypography, HvTypographyProps } from "../Typography";
+import type { HvBaseProps } from "../types/generic";
+import { HvTypography, type HvTypographyProps } from "../Typography";
 import { staticClasses, useClasses } from "./EmptyState.styles";
 
 export { staticClasses as emptyStateClasses };

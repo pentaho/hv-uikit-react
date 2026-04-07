@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAvatar,
-  HvAvatarProps,
   HvButtonBase,
+  type HvAvatarProps,
 } from "@hitachivantara/uikit-react-core";
 import { Bookmark, Link as LinkIcon } from "@hitachivantara/uikit-react-icons";
 

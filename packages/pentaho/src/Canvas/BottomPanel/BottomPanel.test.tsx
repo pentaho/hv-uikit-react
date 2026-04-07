@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, vi } from "vitest";
 
-import { HvCanvasBottomPanel, HvCanvasBottomPanelProps } from "./BottomPanel";
+import {
+  HvCanvasBottomPanel,
+  type HvCanvasBottomPanelProps,
+} from "./BottomPanel";
 
 const panelTabs = [
   { id: 0, title: "Tab 1" },

@@ -4,8 +4,8 @@ import {
   HvButton,
   HvInput,
   HvLogin,
-  HvLoginProps,
   HvTypography,
+  type HvLoginProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvLogin> = {

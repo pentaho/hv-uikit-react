@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvSnackbarProvider } from "@hitachivantara/uikit-react-core";
+import type { HvSnackbarProvider } from "@hitachivantara/uikit-react-core";
 
 import { SnackbarProviderButtons } from "./stories/SnackbarProviderButtons";
 

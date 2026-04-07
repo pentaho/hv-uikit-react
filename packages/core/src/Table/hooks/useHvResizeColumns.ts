@@ -1,4 +1,4 @@
-import { ensurePluginOrder, Hooks } from "react-table";
+import { ensurePluginOrder, type Hooks } from "react-table";
 
 // #region ##### TYPES #####
 

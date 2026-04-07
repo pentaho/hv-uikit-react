@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { capitalize } from "../../utils/helpers";
-import {
+import type {
   HvTableCellAlign,
   HvTableCellType,
   HvTableCellVariant,

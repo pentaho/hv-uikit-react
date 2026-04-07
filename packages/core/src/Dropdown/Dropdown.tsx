@@ -5,25 +5,25 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseDropdown, HvBaseDropdownProps } from "../BaseDropdown";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import {
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
   isInvalid,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
 import { useLabels } from "../hooks/useLabels";
 import { useUniqueId } from "../hooks/useUniqueId";
-import { HvListValue } from "../List";
+import type { HvListValue } from "../List";
 import { fixedForwardRef } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { CounterLabel } from "../utils/CounterLabel";
 import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./Dropdown.styles";
-import { HvDropdownList, HvDropdownListProps } from "./List";
+import { HvDropdownList, type HvDropdownListProps } from "./List";
 import { getSelected, getSelectionLabel } from "./utils";
 
 export { staticClasses as dropdownClasses };

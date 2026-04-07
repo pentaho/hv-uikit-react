@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import {
   createClasses,
-  ExtractNames,
   HvTypography,
-  HvTypographyProps,
   isKey,
   theme,
   useControlled,
   useEnhancedEffect,
+  type ExtractNames,
+  type HvTypographyProps,
 } from "@hitachivantara/uikit-react-core";
 import { Edit } from "@hitachivantara/uikit-react-icons";
 

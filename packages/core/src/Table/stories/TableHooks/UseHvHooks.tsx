@@ -10,7 +10,7 @@ import {
   useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, makeData } from "../storiesUtils";
+import { makeData, type AssetEvent } from "../storiesUtils";
 
 export const UseHvHooks = () => {
   const data = useMemo(() => makeData(6), []);

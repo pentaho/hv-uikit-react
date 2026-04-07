@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import {
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
-  HvVerticalNavigationTreeViewProps,
+  type HvVerticalNavigationTreeViewProps,
 } from ".";
 
 const Sample = (props: HvVerticalNavigationTreeViewProps) => (

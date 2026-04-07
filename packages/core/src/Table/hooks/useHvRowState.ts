@@ -1,4 +1,4 @@
-import { Hooks, useRowState } from "react-table";
+import { useRowState, type Hooks } from "react-table";
 
 // #region ##### TYPES #####
 

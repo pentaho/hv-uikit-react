@@ -4,16 +4,16 @@ import { useTranslation } from "react-i18next";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellAppSwitcherConfig,
-  HvAppShellAppSwitcherItemConfig,
   useHvAppShellModel,
+  type HvAppShellAppSwitcherConfig,
+  type HvAppShellAppSwitcherItemConfig,
 } from "@hitachivantara/app-shell-shared";
 import {
   HvAppSwitcher,
-  HvAppSwitcherActionApplication,
   HvIconButton,
   HvTypography,
   theme,
+  type HvAppSwitcherActionApplication,
 } from "@hitachivantara/uikit-react-core";
 
 import createAppContainerElement from "../../../../utils/documentUtil";

@@ -3,7 +3,7 @@ import fs from "fs-extra";
 // utility function to order alphabetically an object's keys
 const sortObjectKeys = (obj) => {
   return Object.keys(obj)
-    .sort()
+    .toSorted()
     .reduce((result, key) => {
       result[key] = obj[key];
       return result;

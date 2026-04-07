@@ -1,5 +1,5 @@
-import { OutputBundle } from "rollup";
-import { PluginOption } from "vite";
+import type { OutputBundle } from "rollup";
+import type { PluginOption } from "vite";
 
 const replacer = (match: string) =>
   match.replace(

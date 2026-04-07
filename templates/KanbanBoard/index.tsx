@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
 import {
   DndContext,
-  DragEndEvent,
-  DragOverEvent,
   DragOverlay,
-  DragStartEvent,
   PointerSensor,
   useSensor,
   useSensors,
+  type DragEndEvent,
+  type DragOverEvent,
+  type DragStartEvent,
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 
@@ -15,7 +15,7 @@ import { ColumnContainer } from "./ColumnContainer";
 import { columns as defaultColumns, tasks as defaultTasks } from "./data";
 import classes from "./styles";
 import { TaskCard } from "./TaskCard";
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 const KanbanBoard = () => {
   const sensors = useSensors(

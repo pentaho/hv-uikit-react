@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { useMemo, useState, type FC } from "react";
 import { useService, useServices } from "@hitachivantara/app-shell-services";
 import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
 import {
@@ -12,7 +12,7 @@ import {
 
 import { MainContainer } from "../../components/MainContainer";
 import { ServiceDefinitions } from "../../services/serviceDefinition";
-import {
+import type {
   MessageService,
   NotificationComponentProps,
   SimpleDataService,

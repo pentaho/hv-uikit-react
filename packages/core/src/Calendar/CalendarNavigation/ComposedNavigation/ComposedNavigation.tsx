@@ -1,7 +1,7 @@
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { ViewMode } from "../../enums";
-import { VisibilitySelectorActions } from "../../types";
+import type { ViewMode } from "../../enums";
+import type { VisibilitySelectorActions } from "../../types";
 import { getMonthNamesList } from "../../utils";
 import { Navigation } from "../Navigation";
 import { staticClasses, useClasses } from "./ComposedNavigation.styles";

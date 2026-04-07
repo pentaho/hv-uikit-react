@@ -3,14 +3,14 @@ import type { StandardProperties } from "csstype";
 import type { HvThemeBreakpoints } from "./tokens/breakpoints";
 import type { HvThemeColors } from "./tokens/colors";
 import type { HvThemeRadii } from "./tokens/radii";
-import { HvThemeSpace, space } from "./tokens/space";
-import {
+import type { HvThemeSpace, space } from "./tokens/space";
+import type {
   fontFamily,
   fontSizes,
   fontWeights,
   lineHeights,
 } from "./tokens/typography";
-import { zIndices } from "./tokens/zIndices";
+import type { zIndices } from "./tokens/zIndices";
 
 interface CSSProperties extends StandardProperties<string | number> {}
 

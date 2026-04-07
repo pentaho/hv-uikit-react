@@ -1,5 +1,5 @@
 import { isEqual, uniqueId } from "../../utils/helpers";
-import {
+import type {
   HvQueryBuilderQueryGroup,
   HvQueryBuilderQueryRule,
   Query,

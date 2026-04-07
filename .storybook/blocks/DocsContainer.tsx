@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import {
   DocsContainer,
-  DocsContainerProps,
+  type DocsContainerProps,
 } from "@storybook/addon-docs/blocks";
 import { addons } from "storybook/preview-api";
 import {
   HvProvider,
-  HvThemeColorMode,
   HvTypography,
+  type HvThemeColorMode,
 } from "@hitachivantara/uikit-react-core";
 
 import { getInitialMode } from "../decorators/utils";

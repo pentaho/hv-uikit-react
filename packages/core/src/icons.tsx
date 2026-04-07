@@ -1,7 +1,11 @@
 import { forwardRef, memo, useMemo } from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
 /** sizes for the <svg> icon */
 const svgSizeMap = {

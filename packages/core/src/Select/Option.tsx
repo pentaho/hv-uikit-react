@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { OptionOwnProps, useOption } from "@mui/base";
+import { useOption, type OptionOwnProps } from "@mui/base";
 import { useForkRef } from "@mui/material/utils";
 import {
   createClasses,
@@ -7,7 +7,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvListItem, HvListItemProps } from "../ListContainer";
+import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { fixedForwardRef } from "../types/generic";
 import { outlineStyles } from "../utils/focusUtils";
 

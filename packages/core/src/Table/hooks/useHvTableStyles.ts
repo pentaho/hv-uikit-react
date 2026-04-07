@@ -1,4 +1,4 @@
-import { Hooks } from "react-table";
+import type { Hooks } from "react-table";
 import { clsx } from "clsx";
 
 // #region ##### TYPES #####

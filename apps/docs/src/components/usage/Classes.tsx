@@ -10,7 +10,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import type { HvTableColumnConfig } from "@hitachivantara/uikit-react-core";
 
-import { ComponentMeta } from "../../utils/component";
+import type { ComponentMeta } from "../../utils/component";
 
 type ClassItem = {
   name: string;

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { HvListValue } from "./types";
+import type { HvListValue } from "./types";
 
 export const useSelectableList = (defaultList: HvListValue[] = []) => {
   const [list, setList] = useState(defaultList);

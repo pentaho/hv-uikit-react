@@ -2,8 +2,8 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvColorPicker,
-  HvColorPickerProps,
   HvTypography,
+  type HvColorPickerProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvColorPicker> = {

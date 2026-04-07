@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
-import { loadEnv, PluginOption } from "vite";
+import { loadEnv, type PluginOption } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
@@ -10,10 +10,10 @@ import {
   applyAutomaticViewsAndRoutes,
 } from "./automatic-utils.js";
 import {
-  ConfigReplacement,
   findAppShellConfigFile,
   getFinalModuleName,
   loadConfigFile,
+  type ConfigReplacement,
 } from "./config-utils.js";
 import { resolveModule } from "./nodeModule.js";
 import SHARED_DEPENDENCIES from "./shared-dependencies.js";

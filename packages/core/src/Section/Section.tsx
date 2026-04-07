@@ -4,10 +4,10 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../Button";
+import { HvButton, type HvButtonProps } from "../Button";
 import { useExpandable } from "../hooks/useExpandable";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Section.styles";
 
 export { staticClasses as sectionClasses };

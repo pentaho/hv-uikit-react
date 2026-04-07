@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvTypography,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { Drag } from "@hitachivantara/uikit-react-icons";
 

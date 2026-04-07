@@ -1,9 +1,9 @@
 import {
-  ExtractNames,
-  HvBaseProps,
   HvDialog,
-  HvDialogProps,
   useDefaultProps,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./WizardContainer.styles";

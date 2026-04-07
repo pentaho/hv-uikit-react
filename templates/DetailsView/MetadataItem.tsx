@@ -1,15 +1,14 @@
-import { ReactNode } from "react";
 import { css } from "@emotion/css";
 import {
   HvGrid,
-  HvGridProps,
   HvTypography,
   theme,
+  type HvGridProps,
 } from "@hitachivantara/uikit-react-core";
 
 export interface MetadataItemProps extends Omit<HvGridProps, "title"> {
-  title?: ReactNode;
-  children?: ReactNode;
+  title?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const MetadataItem = ({

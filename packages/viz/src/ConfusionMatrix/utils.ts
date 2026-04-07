@@ -2,8 +2,8 @@ import { useCallback, useMemo } from "react";
 import type ColumnTable from "arquero/dist/types/table/column-table";
 import { useTheme } from "@hitachivantara/uikit-react-utils";
 
-import { HvChartXAxis } from "../types/common";
-import {
+import type { HvChartXAxis } from "../types/common";
+import type {
   HvConfusionMatrixColorScale,
   HvConfusionMatrixFormat,
   HvConfusionMatrixValuesProps,

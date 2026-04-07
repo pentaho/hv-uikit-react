@@ -3,8 +3,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvTooltip, HvTooltipProps } from "../../Tooltip";
-import { HvBaseProps } from "../../types/generic";
+import { HvTooltip, type HvTooltipProps } from "../../Tooltip";
+import type { HvBaseProps } from "../../types/generic";
 import { staticClasses, useClasses } from "./VerticalScrollListItem.styles";
 
 export { staticClasses as verticalScrollListItemClasses };

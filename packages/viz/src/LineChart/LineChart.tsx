@@ -14,7 +14,6 @@ import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvChartTooltipClasses,
   useData,
   useDataset,
   useDataZoom,
@@ -25,9 +24,10 @@ import {
   useTooltip,
   useXAxis,
   useYAxis,
+  type HvChartTooltipClasses,
 } from "../hooks";
-import { HvChartEmptyCellMode, HvLineChartMeasure } from "../types";
-import {
+import type { HvChartEmptyCellMode, HvLineChartMeasure } from "../types";
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,

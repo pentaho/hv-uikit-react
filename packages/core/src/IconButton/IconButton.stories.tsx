@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvIconButton,
-  HvIconButtonProps,
   theme,
+  type HvIconButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   Add,

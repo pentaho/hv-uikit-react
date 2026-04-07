@@ -1,21 +1,21 @@
 import {
-  HTMLAttributes,
-  SyntheticEvent,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
+  type HTMLAttributes,
+  type SyntheticEvent,
 } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvTypography,
-  HvTypographyVariants,
   setId,
   useControlled,
   useDefaultProps,
   useUniqueId,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvTypographyVariants,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blade.styles";

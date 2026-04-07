@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useGroupBy } from "react-table";
 import {
-  HvCellInstance,
-  HvRowInstance,
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
   HvTableRow,
   HvTableSection,
-  HvTableState,
   theme,
   useHvHeaderGroups,
   useHvRowExpand,
   useHvTable,
+  type HvCellInstance,
+  type HvRowInstance,
+  type HvTableColumnConfig,
+  type HvTableState,
 } from "@hitachivantara/uikit-react-core";
 
 import { makeData, type AssetEvent } from "./makeData";

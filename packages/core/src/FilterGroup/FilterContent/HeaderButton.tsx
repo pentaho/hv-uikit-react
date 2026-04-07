@@ -1,13 +1,13 @@
 import { forwardRef } from "react";
 import {
   createClasses,
-  ExtractNames,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvBadge } from "../../Badge";
-import { HvButton, HvButtonProps } from "../../Button";
+import { HvButton, type HvButtonProps } from "../../Button";
 import { HvIconButton } from "../../IconButton";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";

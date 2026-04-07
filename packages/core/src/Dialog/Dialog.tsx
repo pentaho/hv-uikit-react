@@ -1,5 +1,7 @@
 import { forwardRef, useMemo } from "react";
-import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
+import MuiDialog, {
+  type DialogProps as MuiDialogProps,
+} from "@mui/material/Dialog";
 import {
   useDefaultProps,
   useTheme,

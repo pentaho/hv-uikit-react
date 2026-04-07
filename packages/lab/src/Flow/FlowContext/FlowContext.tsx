@@ -1,12 +1,12 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useMemo,
   useState,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 
-import { HvFlowNodeAction, HvFlowNodeGroups } from "../types";
+import type { HvFlowNodeAction, HvFlowNodeGroups } from "../types";
 import { HvFlowNodeMetaProvider } from "./NodeMetaContext";
 
 export interface HvFlowContextValue<NodeGroups extends keyof any = string> {

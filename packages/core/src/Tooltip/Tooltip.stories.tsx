@@ -5,8 +5,8 @@ import {
   HvAvatar,
   HvButton,
   HvTooltip,
-  HvTooltipProps,
   HvTypography,
+  type HvTooltipProps,
 } from "@hitachivantara/uikit-react-core";
 import { Play } from "@hitachivantara/uikit-react-icons";
 

@@ -4,10 +4,13 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionsGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvButton, HvButtonProps } from "../Button";
-import { HvCheckBox, HvCheckBoxProps } from "../CheckBox";
-import { HvBaseProps } from "../types/generic";
+import {
+  HvActionsGeneric,
+  type HvActionsGenericProps,
+} from "../ActionsGeneric";
+import { HvButton, type HvButtonProps } from "../Button";
+import { HvCheckBox, type HvCheckBoxProps } from "../CheckBox";
+import type { HvBaseProps } from "../types/generic";
 import { CounterLabel } from "../utils/CounterLabel";
 import { staticClasses, useClasses } from "./BulkActions.styles";
 

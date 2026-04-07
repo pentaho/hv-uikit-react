@@ -4,11 +4,11 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps, HvButtonVariant } from "../Button";
-import { HvDropDownMenu, HvDropDownMenuProps } from "../DropDownMenu";
+import { HvButton, type HvButtonProps, type HvButtonVariant } from "../Button";
+import { HvDropDownMenu, type HvDropDownMenuProps } from "../DropDownMenu";
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./ActionsGeneric.styles";
 

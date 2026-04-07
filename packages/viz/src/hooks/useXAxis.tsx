@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useTheme } from "@hitachivantara/uikit-react-utils";
 
-import { HvChartXAxis, HvEChartsOption } from "../types/common";
+import type { HvChartXAxis, HvEChartsOption } from "../types/common";
 import { getAxisType } from "../utils";
 
 interface HvXAxisHookProps extends HvChartXAxis {

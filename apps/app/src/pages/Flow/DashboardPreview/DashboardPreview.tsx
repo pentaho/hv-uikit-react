@@ -5,15 +5,18 @@ import {
   HvGlobalActions,
   HvLoading,
 } from "@hitachivantara/uikit-react-core";
-import { HvDashboard, HvDashboardProps } from "@hitachivantara/uikit-react-lab";
+import {
+  HvDashboard,
+  type HvDashboardProps,
+} from "@hitachivantara/uikit-react-lab";
 import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
 
 import {
   DASHBOARDS_STORAGE_KEY,
-  DashboardSpecs,
-  DashboardsStorage,
+  type DashboardSpecs,
+  type DashboardsStorage,
 } from "../types";
-import { Renderer, RendererProps } from "./Renderers";
+import { Renderer, type RendererProps } from "./Renderers";
 
 interface DashboardConfig extends Pick<HvDashboardProps, "layout" | "cols"> {
   items?: RendererProps[] & Record<string, any>;

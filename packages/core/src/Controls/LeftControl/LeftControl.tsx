@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvInput, HvInputProps } from "../../Input";
-import { HvBaseProps } from "../../types/generic";
+import { HvInput, type HvInputProps } from "../../Input";
+import type { HvBaseProps } from "../../types/generic";
 import { HvControlsContext } from "../context/ControlsContext";
 import { staticClasses, useClasses } from "./LeftControl.styles";
 

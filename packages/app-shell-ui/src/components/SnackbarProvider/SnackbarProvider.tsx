@@ -1,9 +1,9 @@
 import { css } from "@emotion/css";
 import {
-  HvSnackbarProps,
   HvSnackbarProvider,
   theme,
   useTheme,
+  type HvSnackbarProps,
 } from "@hitachivantara/uikit-react-core";
 
 const snackbarClasses = {

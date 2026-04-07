@@ -1,8 +1,8 @@
 import { renderHook } from "@testing-library/react";
 import { vi } from "vitest";
 import {
-  HvAppShellEventTheme,
   HvAppShellEventThemeTrigger,
+  type HvAppShellEventTheme,
 } from "@hitachivantara/app-shell-events";
 
 import { LOCAL_STORAGE_KEYS } from "./useLocalStorage";

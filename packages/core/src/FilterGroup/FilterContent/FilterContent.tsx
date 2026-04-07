@@ -6,9 +6,9 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionBar } from "../../ActionBar";
-import { HvBaseDropdown, HvBaseDropdownProps } from "../../BaseDropdown";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../../BaseDropdown";
 import { HvButton } from "../../Button";
-import { HvFormStatus } from "../../FormElement";
+import type { HvFormStatus } from "../../FormElement";
 import { HvIcon } from "../../icons";
 import { HvTypography } from "../../Typography";
 import { setId } from "../../utils/setId";
@@ -17,7 +17,10 @@ import type { HvFilterGroupLabels } from "../FilterGroup";
 import { HvFilterGroupContext } from "../FilterGroupContext";
 import { HvFilterGroupLeftPanel } from "../LeftPanel";
 import { HvFilterGroupRightPanel } from "../RightPanel";
-import { HvFilterGroupHorizontalPlacement, HvFilterGroupValue } from "../types";
+import type {
+  HvFilterGroupHorizontalPlacement,
+  HvFilterGroupValue,
+} from "../types";
 import { staticClasses, useClasses } from "./FilterContent.styles";
 import { HvHeaderButton } from "./HeaderButton";
 

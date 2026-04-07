@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import Tabs, { TabsProps as MuiTabsProps } from "@mui/material/Tabs";
+import Tabs, { type TabsProps as MuiTabsProps } from "@mui/material/Tabs";
 import {
   useDefaultProps,
   type ExtractNames,

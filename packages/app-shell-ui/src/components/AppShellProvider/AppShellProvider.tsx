@@ -5,16 +5,16 @@ import {
   HvAppShellCombinedProvidersContext,
   HvAppShellContext,
   HvAppShellModelContext,
-  HvAppShellProvidersComponent,
   HvAppShellRuntimeContext,
   type HvAppShellConfig,
   type HvAppShellModel,
+  type HvAppShellProvidersComponent,
 } from "@hitachivantara/app-shell-shared";
 import {
   themes as baseThemes,
   HvProvider,
 } from "@hitachivantara/uikit-react-core";
-import {
+import type {
   HvThemeColorMode,
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";

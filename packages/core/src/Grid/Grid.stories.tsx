@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvGrid,
-  HvGridProps,
   HvTypography,
   theme,
   useWidth,
+  type HvGridProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvGrid> = {

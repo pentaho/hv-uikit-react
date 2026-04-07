@@ -15,13 +15,13 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvDropdownPanel } from "../BaseDropdown";
-import { HvButtonProps } from "../Button";
+import type { HvButtonProps } from "../Button";
 import { HvDropdownButton } from "../DropdownButton";
 import {
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useUniqueId } from "../hooks/useUniqueId";

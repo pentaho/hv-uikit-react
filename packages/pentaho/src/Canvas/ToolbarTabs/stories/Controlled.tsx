@@ -11,7 +11,7 @@ import { Info } from "@hitachivantara/uikit-react-icons";
 import {
   HvCanvasToolbar,
   HvCanvasToolbarTabs,
-  HvCanvasToolbarTabsProps,
+  type HvCanvasToolbarTabsProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 const classes = {

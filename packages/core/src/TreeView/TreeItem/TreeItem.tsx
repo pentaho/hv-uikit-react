@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import Collapse from "@mui/material/Collapse";
-import { TransitionProps } from "@mui/material/transitions";
+import type { TransitionProps } from "@mui/material/transitions";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -9,12 +9,12 @@ import {
 import { useForkRef } from "../../hooks/useForkRef";
 import {
   DescendantProvider,
-  TreeItemDescendant,
   useDescendant,
+  type TreeItemDescendant,
 } from "../internals/DescendantProvider";
-import { DefaultTreeViewPlugins } from "../internals/hooks/plugins";
+import type { DefaultTreeViewPlugins } from "../internals/hooks/plugins";
 import { useTreeViewContext } from "../internals/TreeViewProvider";
-import { DefaultContent, HvTreeContentClasses } from "./DefaultContent";
+import { DefaultContent, type HvTreeContentClasses } from "./DefaultContent";
 import { staticClasses, useClasses } from "./TreeItem.styles";
 
 export { staticClasses as treeItemClasses };

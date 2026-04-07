@@ -1,4 +1,4 @@
-import { HvHeatmapData } from "../Heatmap";
+import type { HvHeatmapData } from "../Heatmap";
 
 export const hours = [
   "12a",

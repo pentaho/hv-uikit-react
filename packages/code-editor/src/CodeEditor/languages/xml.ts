@@ -1,8 +1,8 @@
 import type { Monaco } from "@monaco-editor/react";
-import formatter, { XMLFormatterOptions } from "xml-formatter";
+import formatter, { type XMLFormatterOptions } from "xml-formatter";
 import { validateXML } from "xmllint-wasm";
 
-import { LanguagePlugin } from "../types";
+import type { LanguagePlugin } from "../types";
 
 // Helpful notes
 // model - editor content

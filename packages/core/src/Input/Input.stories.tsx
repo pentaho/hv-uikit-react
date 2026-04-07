@@ -3,12 +3,12 @@ import { css } from "@emotion/css";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBaseInput,
-  HvFormStatus,
   HvInput,
-  HvInputProps,
-  HvInputSuggestion,
-  HvValidationMessages,
   theme,
+  type HvFormStatus,
+  type HvInputProps,
+  type HvInputSuggestion,
+  type HvValidationMessages,
 } from "@hitachivantara/uikit-react-core";
 import { Calendar, Map, Time } from "@hitachivantara/uikit-react-icons";
 

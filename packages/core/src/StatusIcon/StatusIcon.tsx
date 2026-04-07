@@ -4,11 +4,11 @@ import {
   useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvSize } from "@hitachivantara/uikit-styles";
+import type { HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvIconContainer } from "../IconContainer";
 import { HvIcon, SvgBase } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import type { HvCalloutVariant } from "../utils/Callout";
 import { staticClasses, useClasses } from "./StatusIcon.styles";
 

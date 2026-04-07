@@ -1,4 +1,4 @@
-import { HvAppShellMenuConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellMenuConfig } from "@hitachivantara/app-shell-shared";
 
 import type { MenuItem } from "../types/menu";
 import {

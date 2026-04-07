@@ -3,7 +3,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvFile, HvFileData, HvFileRemovedEvent } from "../File";
+import { HvFile, type HvFileData, type HvFileRemovedEvent } from "../File";
 import { staticClasses, useClasses } from "./FileList.styles";
 
 export { staticClasses as fileListClasses };

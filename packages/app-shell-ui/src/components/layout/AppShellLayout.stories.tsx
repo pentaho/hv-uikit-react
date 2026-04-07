@@ -3,7 +3,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
 import { MemoryRouter } from "react-router-dom";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 

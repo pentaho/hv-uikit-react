@@ -3,8 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HvTab, HvTabs } from "@hitachivantara/uikit-react-core";
 
-import { ComponentMeta } from "../../utils/component";
-import { Playground, PlaygroundProps } from "../code/Playground";
+import type { ComponentMeta } from "../../utils/component";
+import { Playground, type PlaygroundProps } from "../code/Playground";
 import { Classes } from "./Classes";
 import { Props } from "./Props";
 

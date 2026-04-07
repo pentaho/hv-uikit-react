@@ -14,7 +14,6 @@ import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvChartTooltipClasses,
   useData,
   useDataset,
   useDataZoom,
@@ -25,13 +24,14 @@ import {
   useTooltip,
   useXAxis,
   useYAxis,
+  type HvChartTooltipClasses,
 } from "../hooks";
-import {
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,
 } from "../types/common";
-import { HvScatterPlotMeasure } from "../types/measures";
+import type { HvScatterPlotMeasure } from "../types/measures";
 
 // Register chart components
 echarts.use([

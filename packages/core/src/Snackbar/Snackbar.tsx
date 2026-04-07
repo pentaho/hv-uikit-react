@@ -1,23 +1,26 @@
 import { forwardRef, useCallback } from "react";
-import Slide, { SlideProps } from "@mui/material/Slide";
+import Slide, { type SlideProps } from "@mui/material/Slide";
 import MuiSnackbar, {
-  SnackbarProps as MuiSnackbarProps,
-  SnackbarCloseReason,
-  SnackbarOrigin,
+  type SnackbarProps as MuiSnackbarProps,
+  type SnackbarCloseReason,
+  type SnackbarOrigin,
 } from "@mui/material/Snackbar";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvCalloutProps } from "../utils/Callout";
+import type {
+  HvActionGeneric,
+  HvActionsGenericProps,
+} from "../ActionsGeneric";
+import type { HvCalloutProps } from "../utils/Callout";
 import { capitalize } from "../utils/helpers";
 import { staticClasses, useClasses } from "./Snackbar.styles";
 import {
   HvSnackbarContent,
-  HvSnackbarContentProps,
-  HvSnackbarVariant,
+  type HvSnackbarContentProps,
+  type HvSnackbarVariant,
 } from "./SnackbarContent";
 
 export { staticClasses as snackbarClasses };

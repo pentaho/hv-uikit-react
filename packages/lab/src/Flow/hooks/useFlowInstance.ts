@@ -1,6 +1,6 @@
 import { useReactFlow } from "reactflow";
 
-import { HvFlowInstance } from "../types";
+import type { HvFlowInstance } from "../types";
 
 /** Retrieves the React Flow instance */
 export function useFlowInstance<

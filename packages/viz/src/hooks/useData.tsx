@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { desc, escape, not } from "arquero";
 
-import {
+import type {
   HvBarChartMeasure,
   HvChartAggregation,
   HvChartData,
@@ -11,7 +11,7 @@ import {
   HvLineChartMeasure,
   HvScatterPlotMeasure,
 } from "../types";
-import {
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,
@@ -21,7 +21,7 @@ import {
   getHvArqueroCombinedFilters,
   normalizeColumnName,
   processTableData,
-  SingleMeasure,
+  type SingleMeasure,
 } from "../utils";
 
 const getAgFunc = (func: HvChartAggregation, field: string) =>

@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvHeatmap, HvHeatmapProps } from "@hitachivantara/uikit-react-viz";
+import {
+  HvHeatmap,
+  type HvHeatmapProps,
+} from "@hitachivantara/uikit-react-viz";
 
 import { vizDecorator } from "../../BaseChart/stories/utils";
 import { data as customData, days, hours } from "./data";

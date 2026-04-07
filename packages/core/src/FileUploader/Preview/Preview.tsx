@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../../Button";
+import { HvButton, type HvButtonProps } from "../../Button";
 import { EyeIcon } from "../../Input/icons";
 import { staticClasses, useClasses } from "./Preview.styles";
 

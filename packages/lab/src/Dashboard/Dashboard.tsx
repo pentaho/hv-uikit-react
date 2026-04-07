@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 import {
-  Layouts,
-  ReactGridLayoutProps,
   Responsive as ResponsiveGrid,
-  ResponsiveProps,
   WidthProvider,
+  type Layouts,
+  type ReactGridLayoutProps,
+  type ResponsiveProps,
 } from "react-grid-layout";
 import { Global } from "@emotion/react";
 import {
-  ExtractNames,
   useDefaultProps,
   useTheme,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-core";
 
 import { gridStyles, staticClasses, useClasses } from "./Dashboard.styles";

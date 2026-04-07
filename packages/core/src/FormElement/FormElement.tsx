@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useUniqueId } from "../hooks/useUniqueId";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import {
   HvFormElementContext,
   HvFormElementDescriptorsContext,

@@ -18,7 +18,7 @@ import {
 import {
   HvBlade,
   HvBlades,
-  HvBladesProps,
+  type HvBladesProps,
 } from "@hitachivantara/uikit-react-lab";
 
 const meta: Meta<typeof HvBlades> = {

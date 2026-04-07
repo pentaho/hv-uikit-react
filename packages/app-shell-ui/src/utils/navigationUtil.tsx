@@ -1,7 +1,7 @@
-import { MenuItem } from "@hitachivantara/app-shell-shared";
+import type { MenuItem } from "@hitachivantara/app-shell-shared";
 
 import IconUiKit from "../components/IconUiKit";
-import { NavigationMenuItem } from "../types";
+import type { NavigationMenuItem } from "../types";
 
 /**
  * Creates a navigation data structure ({@link MenuItem}) from the provided menu configuration ({@link NavigationMenuItem}).

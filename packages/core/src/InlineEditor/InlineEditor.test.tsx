@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvInlineEditor, HvInlineEditorProps } from "./InlineEditor";
+import { HvInlineEditor, type HvInlineEditorProps } from "./InlineEditor";
 
 const controlledValue = "My value";
 const controlledLabel = "Label";

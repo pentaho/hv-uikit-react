@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
+import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvAvatar } from "../../Avatar";
 import { useUniqueId } from "../../hooks/useUniqueId";
@@ -8,7 +8,7 @@ import { HvIcon } from "../../icons";
 import { HvListItem } from "../../ListContainer";
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 import { HvTooltip } from "../../Tooltip";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { HvTypography } from "../../Typography";
 import { staticClasses, useClasses } from "./Action.styles";
 

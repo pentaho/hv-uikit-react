@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvProgressBar,
-  HvProgressBarProps,
   HvTypography,
+  type HvProgressBarProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { ProgressBarSimulator } from "./ProgressBarSimulator";

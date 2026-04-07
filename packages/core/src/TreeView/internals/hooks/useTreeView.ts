@@ -5,9 +5,9 @@ import useForkRef from "@mui/utils/useForkRef";
 import { TREE_VIEW_CORE_PLUGINS } from "../corePlugins";
 import {
   DEFAULT_TREE_VIEW_CONTEXT_VALUE,
-  TreeViewContextValue,
+  type TreeViewContextValue,
 } from "../TreeViewProvider";
-import {
+import type {
   ConvertPluginsIntoSignatures,
   MergePluginsProperty,
   TreeViewAnyPluginSignature,

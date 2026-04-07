@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBadge,
-  HvBadgeProps,
   HvTypography,
+  type HvBadgeProps,
 } from "@hitachivantara/uikit-react-core";
 import { Alert } from "@hitachivantara/uikit-react-icons";
 

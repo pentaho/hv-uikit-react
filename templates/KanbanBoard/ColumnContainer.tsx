@@ -10,7 +10,7 @@ import { Add } from "@hitachivantara/uikit-react-icons";
 
 import classes from "./styles";
 import { TaskCard } from "./TaskCard";
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 interface ColumnProps {
   column: Column;

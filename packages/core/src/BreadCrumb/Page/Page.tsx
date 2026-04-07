@@ -5,7 +5,7 @@ import {
 
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 import { HvTypography } from "../../Typography";
-import { HvBreadCrumbPathElement } from "../types";
+import type { HvBreadCrumbPathElement } from "../types";
 import { staticClasses, useClasses } from "./Page.styles";
 
 export { staticClasses as breadCrumbPageClasses };

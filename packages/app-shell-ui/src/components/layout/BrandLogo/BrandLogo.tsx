@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellConfig,
+  type HvAppShellConfig,
 } from "@hitachivantara/app-shell-shared";
 
 import { Hitachi, Lumada, Pentaho } from "./logos";

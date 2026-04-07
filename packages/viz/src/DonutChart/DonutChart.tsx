@@ -11,7 +11,6 @@ import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvChartTooltipClasses,
   useData,
   useDataset,
   useGrid,
@@ -19,9 +18,10 @@ import {
   useOption,
   useSeries,
   useTooltip,
+  type HvChartTooltipClasses,
 } from "../hooks";
-import { HvDonutChartMeasure } from "../types";
-import { HvChartCommonProps } from "../types/common";
+import type { HvDonutChartMeasure } from "../types";
+import type { HvChartCommonProps } from "../types/common";
 
 // Register chart components
 echarts.use([

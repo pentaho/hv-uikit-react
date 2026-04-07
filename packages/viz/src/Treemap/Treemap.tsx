@@ -5,9 +5,9 @@ import { TooltipComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
-import { HvChartTooltipClasses, useOption, useTooltip } from "../hooks";
-import { HvChartTooltip } from "../types";
-import { HvChartCommonProps } from "../types/common";
+import { useOption, useTooltip, type HvChartTooltipClasses } from "../hooks";
+import type { HvChartTooltip } from "../types";
+import type { HvChartCommonProps } from "../types/common";
 
 // Register chart components
 echarts.use([TreemapChart, TooltipComponent]);

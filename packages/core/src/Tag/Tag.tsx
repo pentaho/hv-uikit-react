@@ -14,7 +14,7 @@ import {
 } from "@hitachivantara/uikit-styles";
 
 import { HvCheckBoxIcon } from "../BaseCheckBox/CheckBoxIcon";
-import { HvButtonBase, HvButtonBaseProps } from "../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../ButtonBase";
 import { useControlled } from "../hooks/useControlled";
 import { HvIcon } from "../icons";
 import { HvTypography } from "../Typography";

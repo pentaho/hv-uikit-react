@@ -8,11 +8,11 @@ import {
   HvCheckBox,
   HvSimpleGrid,
   HvSkeleton,
-  HvTableInstance,
   HvTypography,
+  type HvTableInstance,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetInventoryEntry, getStatusIcon } from "./data";
+import { getStatusIcon, type AssetInventoryEntry } from "./data";
 
 interface CardViewProps {
   id?: string;

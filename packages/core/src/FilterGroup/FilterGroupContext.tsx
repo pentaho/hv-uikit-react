@@ -1,17 +1,17 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useCallback,
   useEffect,
   useMemo,
   useState,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
 import { isEqual } from "../utils/helpers";
 import { useSavedState } from "../utils/useSavedState";
-import { HvFilterGroupFilters, HvFilterGroupValue } from "./types";
+import type { HvFilterGroupFilters, HvFilterGroupValue } from "./types";
 
 interface HvFilterGroupContextValue {
   activeGroup: number;

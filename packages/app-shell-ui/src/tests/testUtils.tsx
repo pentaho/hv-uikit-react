@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import TestProvider from "./TestProvider";
 

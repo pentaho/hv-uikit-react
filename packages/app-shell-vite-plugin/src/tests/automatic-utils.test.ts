@@ -1,7 +1,7 @@
 // @ts-expect-error no types
 import mock from "mock-fs";
 import { expect } from "vitest";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import {
   applyAutomaticMenu,

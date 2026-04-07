@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
 import { HvDropDownMenu } from ".";
-import { HvListValue } from "../List";
+import type { HvListValue } from "../List";
 
 const dataList: HvListValue[] = [
   { id: "item1", label: "item1" },

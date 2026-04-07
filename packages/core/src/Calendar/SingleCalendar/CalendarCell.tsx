@@ -4,10 +4,10 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButtonBase, HvButtonBaseProps } from "../../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../../ButtonBase";
 import { HvTypography } from "../../Typography";
-import CalendarModel from "../model";
-import { DateRangeProp } from "../types";
+import type CalendarModel from "../model";
+import type { DateRangeProp } from "../types";
 import {
   checkIfDateIsDisabled,
   dateInProvidedValueRange,

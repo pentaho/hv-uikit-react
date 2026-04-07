@@ -7,9 +7,12 @@ import {
 import { HvListContainer } from "../ListContainer";
 import { HvOverflowTooltip } from "../OverflowTooltip";
 import { HvPanel } from "../Panel";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
-import { HvAppSwitcherAction, HvAppSwitcherActionApplication } from "./Action";
+import {
+  HvAppSwitcherAction,
+  type HvAppSwitcherActionApplication,
+} from "./Action";
 import { staticClasses, useClasses } from "./AppSwitcher.styles";
 
 export { staticClasses as appSwitcherClasses };

@@ -1,19 +1,19 @@
 import { forwardRef, useEffect, useId } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
   HvPanel,
   useControlled,
   useDefaultProps,
   useLabels,
   useUniqueId,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { End } from "@hitachivantara/uikit-react-icons";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";
-import { HvCanvasPanelTabs, HvCanvasPanelTabsProps } from "../PanelTabs";
+import { HvCanvasPanelTabs, type HvCanvasPanelTabsProps } from "../PanelTabs";
 import { staticClasses, useClasses } from "./SidePanel.styles";
 import { useResizable } from "./useResizable";
 

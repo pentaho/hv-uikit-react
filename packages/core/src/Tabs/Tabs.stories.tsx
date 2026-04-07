@@ -5,9 +5,9 @@ import {
   HvBadge,
   HvSimpleGrid,
   HvTab,
-  HvTabProps,
   HvTabs,
-  HvTabsProps,
+  type HvTabProps,
+  type HvTabsProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   Alert,

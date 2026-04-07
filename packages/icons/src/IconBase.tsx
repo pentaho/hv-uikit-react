@@ -1,8 +1,12 @@
 import { forwardRef, memo } from "react";
 import styled from "@emotion/styled";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
-import { HvIconContainer, HvIconContainerProps } from "./IconContainer";
+import { HvIconContainer, type HvIconContainerProps } from "./IconContainer";
 import { getSizeStyles } from "./utils";
 
 const getColorVars = (colorArray: string[]) => {

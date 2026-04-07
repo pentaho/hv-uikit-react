@@ -1,10 +1,10 @@
 import {
-  ControlProps,
   Panel,
-  PanelPosition,
-  ReactFlowState,
   useStore,
   useStoreApi,
+  type ControlProps,
+  type PanelPosition,
+  type ReactFlowState,
 } from "reactflow";
 import { shallow } from "zustand/shallow";
 import {

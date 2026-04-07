@@ -1,11 +1,11 @@
 import {
-  HvBulkActionsProps,
-  HvColor,
-  HvControlsProps,
-  HvRightControlProps,
   HvSkeleton,
-  HvTableColumnConfig,
   HvTooltip,
+  type HvBulkActionsProps,
+  type HvColor,
+  type HvControlsProps,
+  type HvRightControlProps,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import {
   Add,
@@ -20,9 +20,9 @@ import {
 } from "@hitachivantara/uikit-react-icons";
 
 import {
-  DataObject,
-  ServerPaginationProps,
   useServerPagination,
+  type DataObject,
+  type ServerPaginationProps,
 } from "./usePaginationData";
 
 // --- Table data utils ---

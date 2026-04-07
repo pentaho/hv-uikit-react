@@ -1,6 +1,6 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseSwitch, HvBaseSwitchProps } from "../../BaseSwitch";
+import { HvBaseSwitch, type HvBaseSwitchProps } from "../../BaseSwitch";
 import { HvTypography } from "../../Typography";
 
 const switchStyle = {

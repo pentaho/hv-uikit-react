@@ -1,5 +1,5 @@
 import { useTreeViewInstanceEvents } from "./hooks/useTreeViewInstanceEvents";
-import { ConvertPluginsIntoSignatures, MergePlugins } from "./types";
+import type { ConvertPluginsIntoSignatures, MergePlugins } from "./types";
 
 /**
  * Internal plugins that creates the tools used by the other plugins.

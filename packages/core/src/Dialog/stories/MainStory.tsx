@@ -4,8 +4,8 @@ import {
   HvDialog,
   HvDialogActions,
   HvDialogContent,
-  HvDialogProps,
   HvDialogTitle,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
 export const MainStory = (props: HvDialogProps) => {

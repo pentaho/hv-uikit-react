@@ -1,4 +1,4 @@
-import { HvThemeStructure } from "@hitachivantara/uikit-styles";
+import type { HvThemeStructure } from "@hitachivantara/uikit-styles";
 
 /** This type allows to pass undetermined extra props to components recursively */
 type HvExtraDeepProps<T> = {

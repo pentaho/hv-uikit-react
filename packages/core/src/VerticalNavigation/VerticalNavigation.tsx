@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import {
   fillDataWithParentId,
   getNavigationItemById,
@@ -12,8 +12,8 @@ import {
 } from "./NavigationSlider/utils";
 import { staticClasses, useClasses } from "./VerticalNavigation.styles";
 import {
-  NavigationData,
   VerticalNavigationContext,
+  type NavigationData,
 } from "./VerticalNavigationContext";
 
 export { staticClasses as verticalNavigationClasses };

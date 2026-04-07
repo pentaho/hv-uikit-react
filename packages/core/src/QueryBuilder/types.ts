@@ -1,4 +1,4 @@
-import { HvOptional } from "../types/generic";
+import type { HvOptional } from "../types/generic";
 
 export const defaultRendererKey = "DEFAULT";
 

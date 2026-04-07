@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvTypography, HvTypographyProps } from "../../Typography";
+import { HvTypography, type HvTypographyProps } from "../../Typography";
 import { setId } from "../../utils/setId";
 import { HvFormElementContext } from "../context";
 import { staticClasses, useClasses } from "./InfoMessage.styles";

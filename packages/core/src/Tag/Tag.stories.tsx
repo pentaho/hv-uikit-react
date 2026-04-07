@@ -1,6 +1,10 @@
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvTag, HvTagProps, theme } from "@hitachivantara/uikit-react-core";
+import {
+  HvTag,
+  theme,
+  type HvTagProps,
+} from "@hitachivantara/uikit-react-core";
 import { Abacus } from "@hitachivantara/uikit-react-icons";
 
 const meta: Meta<typeof HvTag> = {

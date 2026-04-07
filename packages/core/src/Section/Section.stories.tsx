@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { HvButton } from "../Button";
-import { HvSection, HvSectionProps } from "./Section";
+import { HvSection, type HvSectionProps } from "./Section";
 
 const meta: Meta<typeof HvSection> = {
   title: "Components/Section",

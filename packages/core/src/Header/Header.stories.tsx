@@ -9,7 +9,7 @@ import {
   HvHeaderActions,
   HvHeaderBrand,
   HvHeaderNavigation,
-  HvHeaderProps,
+  type HvHeaderProps,
 } from "@hitachivantara/uikit-react-core";
 import { Alert, Menu, User } from "@hitachivantara/uikit-react-icons";
 

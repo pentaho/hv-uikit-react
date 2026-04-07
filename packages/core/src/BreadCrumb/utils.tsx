@@ -1,4 +1,4 @@
-import { HvDropDownMenu, HvDropDownMenuProps } from "../DropDownMenu";
+import { HvDropDownMenu, type HvDropDownMenuProps } from "../DropDownMenu";
 import { HvIcon } from "../icons";
 
 export const removeExtension = (label: string) =>

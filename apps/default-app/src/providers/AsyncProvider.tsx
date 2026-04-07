@@ -1,4 +1,4 @@
-import { PropsWithChildren, useMemo } from "react";
+import { useMemo, type PropsWithChildren } from "react";
 
 import { AsyncContext } from "./shared/asyncContext";
 

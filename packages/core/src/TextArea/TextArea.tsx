@@ -13,25 +13,25 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseInput, HvBaseInputProps } from "../BaseInput";
+import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {
   computeValidationMessage,
   computeValidationState,
   DEFAULT_ERROR_MESSAGES,
   hasBuiltInValidations,
-  HvInputValidity,
-  HvValidationMessages,
   validateInput,
+  type HvInputValidity,
+  type HvValidationMessages,
 } from "../BaseInput/validations";
 import {
   HvCharCounter,
-  HvCharCounterProps,
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvInfoMessage,
   HvWarningText,
   isInvalid,
+  type HvCharCounterProps,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";

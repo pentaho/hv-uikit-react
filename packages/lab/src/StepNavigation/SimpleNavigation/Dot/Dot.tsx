@@ -1,11 +1,11 @@
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 
-import { HvStepProps } from "../../DefaultNavigation";
+import type { HvStepProps } from "../../DefaultNavigation";
 import { dotSizes, getColor } from "../utils";
 import { staticClasses, useClasses } from "./Dot.styles";
 

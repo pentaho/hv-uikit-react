@@ -1,5 +1,5 @@
 import MuiCardContent, {
-  CardContentProps as MuiCardContentProps,
+  type CardContentProps as MuiCardContentProps,
 } from "@mui/material/CardContent";
 import {
   useDefaultProps,

@@ -1,7 +1,7 @@
 import { palette } from "./palette";
 import { baseTheme as tokens } from "./tokens";
 import { colors, type HvColor, type HvColorAny } from "./tokens/colors";
-import {
+import type {
   DeepString,
   HvThemeComponents,
   HvThemeTypography,

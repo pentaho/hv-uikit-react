@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvFormElementDescriptorsContext } from "../../FormElement";
-import { HvInput, HvInputProps } from "../../Input";
+import { HvInput, type HvInputProps } from "../../Input";
 import { HvTypography } from "../../Typography";
 import { isKey } from "../../utils/keyboardUtils";
 import type { HvSingleCalendarProps } from "../SingleCalendar";

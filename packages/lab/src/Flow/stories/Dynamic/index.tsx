@@ -11,12 +11,12 @@ import { Add, Backwards, DataSource } from "@hitachivantara/uikit-react-icons";
 import {
   HvFlow,
   HvFlowControls,
-  HvFlowGroupItem,
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeProps,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowGroupItem,
+  type HvFlowNodeFC,
+  type HvFlowNodeProps,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 import { restrictToSample } from "../Base";

@@ -6,7 +6,7 @@ import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvDatePicker } from "../../DatePicker";
 import { HvWarningText } from "../../FormElement";
-import { HvTimePicker, HvTimePickerValue } from "../../TimePicker";
+import { HvTimePicker, type HvTimePickerValue } from "../../TimePicker";
 import { uniqueId } from "../../utils/helpers";
 import { useQueryBuilderContext } from "../Context";
 

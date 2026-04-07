@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from "react";
 import { useTheme } from "@hitachivantara/uikit-react-utils";
 
-import { HvChartAxisType } from "../types";
-import { HvEChartsOption, YAxis } from "../types/common";
+import type { HvChartAxisType } from "../types";
+import type { HvEChartsOption, YAxis } from "../types/common";
 import { getAxisType } from "../utils";
 
 interface HvYAxisHookProps {

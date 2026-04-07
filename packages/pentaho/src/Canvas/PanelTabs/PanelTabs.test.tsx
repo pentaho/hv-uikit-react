@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { HvCanvasPanelTab } from "../PanelTab/PanelTab";
-import { HvCanvasPanelTabs, HvCanvasPanelTabsProps } from "./PanelTabs";
+import { HvCanvasPanelTabs, type HvCanvasPanelTabsProps } from "./PanelTabs";
 
 const Controlled = ({
   onChange,

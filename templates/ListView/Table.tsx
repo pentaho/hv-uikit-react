@@ -6,11 +6,11 @@ import {
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
-  HvTableInstance,
   HvTableRow,
+  type HvTableInstance,
 } from "@hitachivantara/uikit-react-core";
 
-import { getColumns, ListViewEntry } from "./data";
+import { getColumns, type ListViewEntry } from "./data";
 
 interface TableProps {
   instance: HvTableInstance<ListViewEntry, string>;

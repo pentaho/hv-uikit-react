@@ -1,21 +1,21 @@
 import { useState } from "react";
 import {
-  ExtractNames,
   HvActionsGeneric,
-  HvActionsGenericProps,
   HvButton,
-  HvButtonProps,
   HvInlineEditor,
   HvTooltip,
   HvTypography,
   theme,
   useLabels,
+  type ExtractNames,
+  type HvActionsGenericProps,
+  type HvButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS, Info } from "@hitachivantara/uikit-react-icons";
 
 import { useFlowContext, useFlowNode, useFlowNodeUtils } from "../hooks";
-import { HvFlowNodeParam } from "../types";
-import { HvFlowBaseNode, HvFlowBaseNodeProps } from "./BaseNode";
+import type { HvFlowNodeParam } from "../types";
+import { HvFlowBaseNode, type HvFlowBaseNodeProps } from "./BaseNode";
 import { staticClasses, useClasses } from "./Node.styles";
 import { ParamRenderer } from "./Parameters";
 

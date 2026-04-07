@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvStepNavigation,
-  HvStepNavigationProps,
+  type HvStepNavigationProps,
 } from "@hitachivantara/uikit-react-lab";
 
-import { HvDefaultNavigation, HvStep, HvStepProps } from "./DefaultNavigation";
+import {
+  HvDefaultNavigation,
+  HvStep,
+  type HvStepProps,
+} from "./DefaultNavigation";
 import { HvDot, HvSimpleNavigation } from "./SimpleNavigation";
 
 type StepType = Pick<

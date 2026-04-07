@@ -5,8 +5,8 @@ import {
   HvRadio,
   HvRadioGroup,
   HvTimeAgo,
-  HvTimeAgoProps,
   theme,
+  type HvTimeAgoProps,
 } from "@hitachivantara/uikit-react-core";
 
 const styles = {

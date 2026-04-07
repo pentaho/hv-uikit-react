@@ -3,7 +3,7 @@ import {
   HvOverflowTooltip,
   HvSnackbar,
   HvSnackbarContent,
-  HvSnackbarProps,
+  type HvSnackbarProps,
 } from "@hitachivantara/uikit-react-core";
 import { Deploy, Info } from "@hitachivantara/uikit-react-icons";
 

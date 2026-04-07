@@ -15,15 +15,15 @@ import {
 
 import {
   HvFormElement,
-  HvFormStatus,
   HvInfoMessage,
   HvLabel,
   HvWarningText,
+  type HvFormStatus,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvListContainer } from "../ListContainer";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import { multiSelectionEventHandler } from "../utils/multiSelectionEventHandler";
 import { setId } from "../utils/setId";

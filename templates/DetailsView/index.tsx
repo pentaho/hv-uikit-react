@@ -1,13 +1,13 @@
-import { ElementType, ReactNode, Suspense, useState } from "react";
+import { Suspense, useState } from "react";
 import { css } from "@emotion/css";
 import {
   HvButton,
   HvGlobalActions,
-  HvGlobalActionsProps,
   HvGrid,
-  HvGridProps,
   HvLoading,
   theme,
+  type HvGlobalActionsProps,
+  type HvGridProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { KPIs } from "./KPIs";
@@ -18,8 +18,8 @@ const MODEL_ID = "123";
 
 interface SectionProps extends HvGridProps {
   variant?: HvGlobalActionsProps["variant"];
-  actions?: ReactNode;
-  component?: ElementType;
+  actions?: React.ReactNode;
+  component?: React.ElementType;
 }
 
 const Section = ({

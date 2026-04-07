@@ -4,11 +4,11 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButtonBase, HvButtonBaseProps } from "../../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../../ButtonBase";
 import { HvIcon } from "../../icons";
-import { HvTypography, HvTypographyProps } from "../../Typography";
+import { HvTypography, type HvTypographyProps } from "../../Typography";
 import { capitalize } from "../../utils/helpers";
-import {
+import type {
   HvTableCellAlign,
   HvTableCellType,
   HvTableCellVariant,

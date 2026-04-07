@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { css, cx } from "@emotion/css";
-import { NodeProps as ReactFlowNodeProps } from "reactflow";
+import type { NodeProps as ReactFlowNodeProps } from "reactflow";
 import { theme } from "@hitachivantara/uikit-react-core";
 import {
   useFlowNodeIntersections,
@@ -8,7 +8,7 @@ import {
 } from "@hitachivantara/uikit-react-lab";
 
 import { FactTable } from "./FactTable";
-import { HierarchyData, Level } from "./Level";
+import { Level, type HierarchyData } from "./Level";
 
 const classes = {
   root: css({

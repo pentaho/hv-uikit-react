@@ -5,12 +5,12 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvButtonBase } from "../../ButtonBase";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import {
   HvFormElementContext,
   HvFormElementDescriptorsContext,
 } from "../context";
-import { HvFormStatus } from "../FormElement";
+import type { HvFormStatus } from "../FormElement";
 import { staticClasses, useClasses } from "./Adornment.styles";
 
 export { staticClasses as adornmentClasses };

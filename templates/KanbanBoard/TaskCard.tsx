@@ -21,7 +21,7 @@ import {
 } from "@hitachivantara/uikit-react-icons";
 
 import classes from "./styles";
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 interface TaskProps {
   task: Task;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseDropdown, HvBaseDropdownProps } from "../BaseDropdown";
-import { HvListItem, HvListItemProps } from "../ListContainer";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
+import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { HvPanel } from "../Panel";
-import { HvSelectionList, HvSelectionListProps } from "../SelectionList";
+import { HvSelectionList, type HvSelectionListProps } from "../SelectionList";
 import { useClasses } from "./Select.styles";
 
 export const Option = ({ ...props }: Partial<HvListItemProps>) => (

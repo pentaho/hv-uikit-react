@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { HvTypography } from "../../Typography";
 import { setId } from "../../utils/setId";
 import { HvFormElementContext } from "../context";

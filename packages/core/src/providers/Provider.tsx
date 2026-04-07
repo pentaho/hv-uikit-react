@@ -1,5 +1,5 @@
 import { useId, useMemo } from "react";
-import createCache, { EmotionCache } from "@emotion/cache";
+import createCache, { type EmotionCache } from "@emotion/cache";
 import {
   CacheProvider,
   ClassNames,
@@ -11,8 +11,8 @@ import {
   CssBaseline,
   CssScopedBaseline,
   getThemeVars,
-  HvThemeColorMode,
-  HvThemeStructure,
+  type HvThemeColorMode,
+  type HvThemeStructure,
 } from "@hitachivantara/uikit-styles";
 
 import { pentaho } from "../themes";

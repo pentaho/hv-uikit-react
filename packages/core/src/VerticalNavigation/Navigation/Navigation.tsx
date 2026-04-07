@@ -5,22 +5,22 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useControlled } from "../../hooks/useControlled";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { uniqueId } from "../../utils/helpers";
 import { NavigationPopupContainer } from "../NavigationPopup/NavigationPopupContainer";
 import {
   HvVerticalNavigationSlider,
-  HvVerticalNavigationSliderProps,
+  type HvVerticalNavigationSliderProps,
 } from "../NavigationSlider";
 import { getParentItemById } from "../NavigationSlider/utils";
 import {
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
-  NavigationMode,
+  type NavigationMode,
 } from "../TreeView";
 import {
-  NavigationData,
   VerticalNavigationContext,
+  type NavigationData,
 } from "../VerticalNavigationContext";
 import { staticClasses, useClasses } from "./Navigation.styles";
 

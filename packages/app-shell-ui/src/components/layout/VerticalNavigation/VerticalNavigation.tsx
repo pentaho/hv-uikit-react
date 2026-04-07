@@ -16,7 +16,7 @@ import {
 import { useResizeObserver } from "../../../hooks/useResizeObserver";
 import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
-import { NavigationMenuItem } from "../../../types";
+import type { NavigationMenuItem } from "../../../types";
 import { NavigationCollapse } from "./NavigationCollapse";
 import { NavigationHeader } from "./NavigationHeader";
 

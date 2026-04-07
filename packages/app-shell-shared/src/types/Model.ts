@@ -3,7 +3,7 @@ import type {
   ServiceProviderConfig,
 } from "@hitachivantara/app-shell-services";
 
-import {
+import type {
   HvAppShellConditionConfig,
   HvAppShellConfig,
   HvAppShellHeader,

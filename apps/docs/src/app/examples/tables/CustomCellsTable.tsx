@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import {
-  HvCellProps,
   HvIconButton,
   HvStatusIcon,
-  HvTableColumnConfig,
   HvTag,
   HvTypography,
+  type HvCellProps,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import { Delete } from "@hitachivantara/uikit-react-icons";
 

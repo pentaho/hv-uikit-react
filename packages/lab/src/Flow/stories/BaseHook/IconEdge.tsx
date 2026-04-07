@@ -1,8 +1,8 @@
 import {
   BaseEdge,
   EdgeLabelRenderer,
-  EdgeProps,
   getBezierPath,
+  type EdgeProps,
 } from "reactflow";
 import { Level0Good } from "@hitachivantara/uikit-react-icons";
 

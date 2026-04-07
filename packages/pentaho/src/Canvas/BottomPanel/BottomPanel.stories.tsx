@@ -5,7 +5,7 @@ import { HvButton } from "@hitachivantara/uikit-react-core";
 import { Favorite, Heart } from "@hitachivantara/uikit-react-icons";
 import {
   HvCanvasBottomPanel,
-  HvCanvasBottomPanelProps,
+  type HvCanvasBottomPanelProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasBottomPanel> = {

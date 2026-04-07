@@ -1,12 +1,12 @@
 import { forwardRef } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvIconButton,
-  HvIconButtonProps,
   HvTypography,
   useDefaultProps,
   useLabels,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvIconButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { Previous } from "@hitachivantara/uikit-react-icons";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";

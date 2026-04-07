@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { VisualMapComponentOption } from "echarts";
+import type { VisualMapComponentOption } from "echarts";
 
-import { HvChartLegend } from "../types";
-import { HvEChartsOption } from "../types/common";
+import type { HvChartLegend } from "../types";
+import type { HvEChartsOption } from "../types/common";
 import { getLegendIcon } from "../utils";
 
 export type HvVisualMapHookProps = VisualMapComponentOption & {

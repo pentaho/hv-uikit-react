@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import TableContext from "../TableContext";
 import { TableSectionContext } from "../TableSectionContext";
 import { staticClasses, useClasses } from "./TableRow.styles";

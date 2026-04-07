@@ -3,8 +3,8 @@ import { css } from "@emotion/css";
 import {
   HvPanel,
   HvTreeItem,
-  HvTreeItemProps,
   HvTreeView,
+  type HvTreeItemProps,
 } from "@hitachivantara/uikit-react-core";
 import { Doc, Folders } from "@hitachivantara/uikit-react-icons";
 

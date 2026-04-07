@@ -4,7 +4,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import {
   calculateOffset,

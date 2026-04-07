@@ -1,18 +1,18 @@
 import { useState } from "react";
 import {
-  HvAppShellEventNotification,
   HvAppShellEventNotificationTrigger,
-  HvAppShellEventNotificationType,
+  type HvAppShellEventNotification,
+  type HvAppShellEventNotificationType,
 } from "@hitachivantara/app-shell-events";
 import {
-  HvBannerVariant,
   HvButton,
   HvCheckBox,
   HvGlobalActions,
   HvGrid,
   HvInput,
-  HvSnackbarVariant,
   HvTypography,
+  type HvBannerVariant,
+  type HvSnackbarVariant,
 } from "@hitachivantara/uikit-react-core";
 
 const Notifications = () => {

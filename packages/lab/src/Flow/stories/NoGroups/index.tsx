@@ -12,8 +12,8 @@ import { Add, Backwards } from "@hitachivantara/uikit-react-icons";
 import {
   HvFlow,
   HvFlowControls,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 // The code for these utils are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/Base

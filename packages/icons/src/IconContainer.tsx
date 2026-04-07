@@ -1,6 +1,10 @@
 import { forwardRef } from "react";
 import styled from "@emotion/styled";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
 import type { IconSize } from "./IconBase";
 import { getSizeStyles } from "./utils";

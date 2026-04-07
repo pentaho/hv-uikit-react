@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import {
   ensurePluginOrder,
-  Hooks,
   makePropGetter,
-  PropGetter,
-  TableCommonProps,
   useGetLatest,
+  type Hooks,
+  type PropGetter,
+  type TableCommonProps,
 } from "react-table";
 
 // #region ##### TYPES #####

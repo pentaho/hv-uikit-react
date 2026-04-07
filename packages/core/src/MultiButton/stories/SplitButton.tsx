@@ -3,7 +3,7 @@ import {
   HvButton,
   HvDropDownMenu,
   HvMultiButton,
-  HvMultiButtonProps,
+  type HvMultiButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS } from "@hitachivantara/uikit-react-icons";
 

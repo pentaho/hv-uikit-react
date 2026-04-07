@@ -1,7 +1,11 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 
-import { HvTimePicker, HvTimePickerProps, HvTimePickerValue } from ".";
+import {
+  HvTimePicker,
+  type HvTimePickerProps,
+  type HvTimePickerValue,
+} from ".";
 
 const defaultProps = {
   label: "TimePicker",

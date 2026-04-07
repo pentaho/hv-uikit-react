@@ -1,12 +1,11 @@
-import { ReactNode } from "react";
 import {
   MapContainer,
-  MapContainerProps,
   Marker,
-  MarkerProps,
   Popup,
-  PopupProps,
   TileLayer,
+  type MapContainerProps,
+  type MarkerProps,
+  type PopupProps,
 } from "react-leaflet";
 import { css, cx } from "@emotion/css";
 import { Global } from "@emotion/react";
@@ -33,7 +32,7 @@ const LevelIcons = [
 });
 
 interface MapProps extends MapContainerProps {
-  children?: ReactNode;
+  children?: React.ReactNode;
   markers?: {
     position: MarkerProps["position"];
     label: PopupProps["children"];

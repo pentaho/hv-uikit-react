@@ -1,12 +1,12 @@
 import { css } from "@emotion/css";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
   useFlowInputNodes,
+  type HvFlowNodeFC,
 } from "@hitachivantara/uikit-react-lab";
 import { HvBarChart } from "@hitachivantara/uikit-react-viz";
 
-import { data, NodeData } from "./data";
+import { data, type NodeData } from "./data";
 
 export const BarChart: HvFlowNodeFC = (props) => {
   const inputNodes = useFlowInputNodes<NodeData>();

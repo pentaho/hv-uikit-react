@@ -26,7 +26,7 @@ import {
   Preview,
 } from "@hitachivantara/uikit-react-icons";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 const EmptyRow = () => (
   <HvTableRow>

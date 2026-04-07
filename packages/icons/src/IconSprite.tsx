@@ -1,6 +1,6 @@
 import type { HvColor } from "@hitachivantara/uikit-styles";
 
-import { IconBase, IconBaseProps } from "./IconBase";
+import { IconBase, type IconBaseProps } from "./IconBase";
 import { isSelector, isSort } from "./utils";
 
 const getSecondaryColor = (iconName: string): HvColor => {

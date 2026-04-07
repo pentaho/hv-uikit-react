@@ -1,15 +1,15 @@
 import {
   Children,
   cloneElement,
-  SyntheticEvent,
   useCallback,
   useMemo,
+  type SyntheticEvent,
 } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   useControlled,
   useDefaultProps,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blades.styles";

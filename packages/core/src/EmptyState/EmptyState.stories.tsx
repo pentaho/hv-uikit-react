@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvEmptyState,
-  HvEmptyStateProps,
   HvTypography,
+  type HvEmptyStateProps,
 } from "@hitachivantara/uikit-react-core";
 import { BarChart, Info } from "@hitachivantara/uikit-react-icons";
 

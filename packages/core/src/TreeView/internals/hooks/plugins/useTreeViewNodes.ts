@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEventCallback } from "@mui/material/utils";
 
-import {
+import type {
   DefaultizedProps,
   TreeViewNode,
   TreeViewPlugin,
@@ -52,7 +52,7 @@ export const useTreeViewNodes: TreeViewPlugin<UseTreeViewNodesSignature> = ({
   instance,
   params,
 }) => {
-  const nodeMap = React.useRef<{ [nodeId: string]: TreeViewNode }>({});
+  const nodeMap = React.useRef<Record<string, TreeViewNode>>({});
 
   const getNode = React.useCallback(
     (nodeId: string) => nodeMap.current[nodeId],
@@ -105,7 +105,7 @@ export const useTreeViewNodes: TreeViewPlugin<UseTreeViewNodesSignature> = ({
   const getChildrenIds = useEventCallback((nodeId: string | null) =>
     Object.values(nodeMap.current)
       .filter((node) => node.parentId === nodeId)
-      .sort((a, b) => a.index - b.index)
+      .toSorted((a, b) => a.index - b.index)
       .map((child) => child.id),
   );
 

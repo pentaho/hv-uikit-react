@@ -6,7 +6,6 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
@@ -16,6 +15,7 @@ import {
   useHvData,
   useHvPagination,
   useHvSortBy,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
 import { delay } from "./utils";

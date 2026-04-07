@@ -6,14 +6,14 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
   HvTableRow,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 export const ListRow = () => {
   const [checkedIdx, setCheckedIdx] = useState(0);

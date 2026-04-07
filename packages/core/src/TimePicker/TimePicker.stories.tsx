@@ -4,8 +4,8 @@ import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvButton,
   HvTimePicker,
-  HvTimePickerProps,
-  HvTimePickerValue,
+  type HvTimePickerProps,
+  type HvTimePickerValue,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

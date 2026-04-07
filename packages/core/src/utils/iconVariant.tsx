@@ -1,4 +1,4 @@
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvIcon } from "../icons";
 import type { HvCalloutVariant } from "./Callout";

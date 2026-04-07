@@ -1,15 +1,15 @@
 import { ClassNames } from "@emotion/react";
 
-import { HvBaseSwitchProps } from "../../BaseSwitch";
+import type { HvBaseSwitchProps } from "../../BaseSwitch";
 import { HvButton } from "../../Button";
-import { HvDropdownProps } from "../../Dropdown";
+import type { HvDropdownProps } from "../../Dropdown";
 import { HvIcon } from "../../icons";
-import { HvListValue } from "../../List";
+import type { HvListValue } from "../../List";
 import {
   HvOverflowTooltip,
-  HvOverflowTooltipProps,
+  type HvOverflowTooltipProps,
 } from "../../OverflowTooltip";
-import { HvTag, HvTagProps } from "../../Tag";
+import { HvTag, type HvTagProps } from "../../Tag";
 import { setId } from "../../utils/setId";
 import type {
   HvCellProps,

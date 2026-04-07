@@ -1,10 +1,8 @@
-import { ReactNode } from "react";
-
 export type CreateNewContentAction = {
   id: string;
   ordinal?: number;
   label: string;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
   onAction: () => void;
 };
 

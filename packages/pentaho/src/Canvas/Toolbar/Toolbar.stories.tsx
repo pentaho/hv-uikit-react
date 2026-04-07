@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 import {
   HvCanvasToolbar,
-  HvCanvasToolbarProps,
+  type HvCanvasToolbarProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasToolbar> = {

@@ -6,7 +6,7 @@ import {
 
 import { useControlled } from "../hooks/useControlled";
 import { useLabels } from "../hooks/useLabels";
-import { DeepPartial } from "../types/generic";
+import type { DeepPartial } from "../types/generic";
 import { isEqual } from "../utils/helpers";
 import { ConfirmationDialog } from "./ConfirmationDialog";
 import {
@@ -18,14 +18,14 @@ import {
 import { staticClasses, useClasses } from "./QueryBuilder.styles";
 import { RuleGroup } from "./RuleGroup";
 import {
-  AskAction,
   defaultRendererKey,
-  HvQueryBuilderAttribute,
-  HvQueryBuilderLabels,
-  HvQueryBuilderQuery,
-  HvQueryBuilderQueryCombinator,
-  HvQueryBuilderQueryOperator,
-  HvQueryBuilderRenderers,
+  type AskAction,
+  type HvQueryBuilderAttribute,
+  type HvQueryBuilderLabels,
+  type HvQueryBuilderQuery,
+  type HvQueryBuilderQueryCombinator,
+  type HvQueryBuilderQueryOperator,
+  type HvQueryBuilderRenderers,
 } from "./types";
 import { clearNodeIds, emptyGroup, setNodeIds } from "./utils";
 import reducer from "./utils/reducer";

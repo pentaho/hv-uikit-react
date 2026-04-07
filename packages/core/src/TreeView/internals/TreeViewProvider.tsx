@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
 import { DescendantProvider } from "./DescendantProvider";
-import { TreeViewAnyPluginSignature, TreeViewInstance } from "./types";
+import type { TreeViewAnyPluginSignature, TreeViewInstance } from "./types";
 
 export interface TreeViewContextValue<
   TPlugins extends readonly TreeViewAnyPluginSignature[],

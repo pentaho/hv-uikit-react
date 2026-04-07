@@ -3,8 +3,8 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
-import { HvFilterGroup, HvFilterGroupProps } from "./FilterGroup";
-import { HvFilterGroupValue } from "./types";
+import { HvFilterGroup, type HvFilterGroupProps } from "./FilterGroup";
+import type { HvFilterGroupValue } from "./types";
 
 const filters: HvFilterGroupProps["filters"] = [
   {

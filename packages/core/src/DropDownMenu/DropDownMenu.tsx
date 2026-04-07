@@ -4,17 +4,20 @@ import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvSize } from "@hitachivantara/uikit-styles";
+import type { HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvBaseDropdown } from "../BaseDropdown";
-import { HvButtonVariant } from "../Button";
-import { HvDropdownButton, HvDropdownButtonProps } from "../DropdownButton";
+import type { HvButtonVariant } from "../Button";
+import {
+  HvDropdownButton,
+  type HvDropdownButtonProps,
+} from "../DropdownButton";
 import { useControlled } from "../hooks/useControlled";
 import { useLabels } from "../hooks/useLabels";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvIcon } from "../icons";
-import { HvList, HvListProps, HvListValue } from "../List";
-import { HvBaseProps } from "../types/generic";
+import { HvList, type HvListProps, type HvListValue } from "../List";
+import type { HvBaseProps } from "../types/generic";
 import { getPrevNextFocus } from "../utils/focusableElementFinder";
 import { isKey } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./DropDownMenu.styles";

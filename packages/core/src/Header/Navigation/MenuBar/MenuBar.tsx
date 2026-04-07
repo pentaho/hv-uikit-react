@@ -1,9 +1,9 @@
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../../types/generic";
+import type { HvBaseProps } from "../../../types/generic";
 import { HvHeaderMenuItem } from "../MenuItem";
-import { HvHeaderNavigationItemProp } from "../useSelectionPath";
-import { Bar, BarProps, HvHeaderMenuBarClasses } from "./Bar";
+import type { HvHeaderNavigationItemProp } from "../useSelectionPath";
+import { Bar, type BarProps, type HvHeaderMenuBarClasses } from "./Bar";
 
 export interface HvHeaderMenuBarProps
   extends HvBaseProps<HTMLDivElement, "onClick"> {

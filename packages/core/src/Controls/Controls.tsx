@@ -8,7 +8,7 @@ import { HvButton } from "../Button";
 import { useControlled } from "../hooks/useControlled";
 import { HvMultiButton } from "../MultiButton";
 import type { HvTableInstance } from "../Table/hooks/useHvTable";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvControlsContextProvider } from "./context/ControlsContext";
 import { staticClasses, useClasses } from "./Controls.styles";
 

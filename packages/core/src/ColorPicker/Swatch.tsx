@@ -1,12 +1,12 @@
 import {
   createClasses,
-  ExtractNames,
   mergeStyles,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { HvButtonBase, HvButtonBaseProps } from "../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../ButtonBase";
 
 const { useClasses } = createClasses("HvColorPickerSwatch", {
   root: {

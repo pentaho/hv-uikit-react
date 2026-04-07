@@ -3,7 +3,7 @@ import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
 import { HvButton } from "../Button";
 import { useControlled } from "../hooks/useControlled";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 
 export interface HvToggleButtonProps
   extends HvBaseProps<HTMLButtonElement, "onClick"> {

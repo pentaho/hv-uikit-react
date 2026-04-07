@@ -5,8 +5,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvLoading, HvLoadingProps } from "../Loading";
-import { HvBaseProps } from "../types/generic";
+import { HvLoading, type HvLoadingProps } from "../Loading";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./LoadingContainer.styles";
 
 export { staticClasses as loadingContainerClasses };

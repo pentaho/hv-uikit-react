@@ -3,7 +3,7 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvCheckBox } from "../../CheckBox";
 import { HvInput } from "../../Input";
-import { HvList, HvListProps } from "../../List";
+import { HvList, type HvListProps } from "../../List";
 import { HvPanel } from "../../Panel";
 import { CounterLabel } from "../../utils/CounterLabel";
 import { HvFilterGroupContext } from "../FilterGroupContext";

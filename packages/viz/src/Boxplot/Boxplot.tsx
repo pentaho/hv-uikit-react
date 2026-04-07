@@ -14,8 +14,8 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvBoxplotMeasure, HvChartTooltip } from "../types";
-import {
+import type { HvBoxplotMeasure, HvChartTooltip } from "../types";
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,

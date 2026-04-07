@@ -1,4 +1,4 @@
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import { getAppTitle } from "../vite-generate-base-plugin";
 

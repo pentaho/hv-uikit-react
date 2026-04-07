@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useState } from "react";
-import { RadioProps as MuiRadioProps } from "@mui/material/Radio";
+import type { RadioProps as MuiRadioProps } from "@mui/material/Radio";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -9,9 +9,9 @@ import { HvBaseRadio } from "../BaseRadio";
 import {
   HvFormElement,
   HvLabel,
-  HvLabelProps,
   HvWarningText,
   isInvalid,
+  type HvLabelProps,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";

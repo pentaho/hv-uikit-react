@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvLabel, HvLabelProps } from "@hitachivantara/uikit-react-core";
+import { HvLabel, type HvLabelProps } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvLabel> = {
   title: "Components/Form Element Blocks/Label",

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { EmotionCache } from "@emotion/cache";
+import type { EmotionCache } from "@emotion/cache";
 import {
   ThemeProvider as MuiThemeProvider,
   useColorScheme,
@@ -12,7 +12,7 @@ import {
   type HvTheme,
   type HvThemeContextValue,
 } from "@hitachivantara/uikit-react-shared";
-import {
+import type {
   HvThemeColorMode,
   HvThemeStructure,
 } from "@hitachivantara/uikit-styles";

@@ -13,15 +13,15 @@ import { Info } from "@hitachivantara/uikit-react-icons";
 import {
   HvDashboard,
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeInput,
+  type HvFlowNodeFC,
+  type HvFlowNodeInput,
 } from "@hitachivantara/uikit-react-lab";
 
 import {
   DASHBOARDS_STORAGE_KEY,
-  DashboardSpecs,
-  DashboardsStorage,
-  NodeData,
+  type DashboardSpecs,
+  type DashboardsStorage,
+  type NodeData,
 } from "../types";
 import { toTitleCase } from "../utils";
 

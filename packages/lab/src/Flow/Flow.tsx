@@ -1,17 +1,17 @@
 import {
   DndContext,
-  DndContextProps,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  type DndContextProps,
 } from "@dnd-kit/core";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { ReactFlowProvider } from "reactflow";
 
-import { HvDroppableFlow, HvDroppableFlowProps } from "./DroppableFlow";
+import { HvDroppableFlow, type HvDroppableFlowProps } from "./DroppableFlow";
 import { HvFlowProvider } from "./FlowContext";
-import { HvFlowNodeAction, HvFlowNodeGroups } from "./types";
+import type { HvFlowNodeAction, HvFlowNodeGroups } from "./types";
 
 export interface HvFlowProps<
   NodeGroups extends keyof any = string,

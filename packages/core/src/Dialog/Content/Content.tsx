@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import MuiDialogContent, {
-  DialogContentProps as MuiDialogContentProps,
+  type DialogContentProps as MuiDialogContentProps,
 } from "@mui/material/DialogContent";
 import {
   useDefaultProps,

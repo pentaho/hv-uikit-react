@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeProps,
+  type HvFlowNodeFC,
+  type HvFlowNodeProps,
 } from "@hitachivantara/uikit-react-lab";
 
 export const Table: HvFlowNodeFC = (props) => {

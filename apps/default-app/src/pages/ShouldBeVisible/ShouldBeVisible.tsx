@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { HvContainer, HvTypography } from "@hitachivantara/uikit-react-core";
 
 const ShouldBeVisible: FC = () => {

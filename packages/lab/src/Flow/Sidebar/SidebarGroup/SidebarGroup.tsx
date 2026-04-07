@@ -1,19 +1,19 @@
 import { useCallback, useMemo } from "react";
 import {
-  ExtractNames,
   HvButton,
-  HvButtonProps,
   HvTypography,
+  type ExtractNames,
+  type HvButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS } from "@hitachivantara/uikit-react-icons";
 import { getColor } from "@hitachivantara/uikit-styles";
 
 import { useFlowContext } from "../../hooks";
-import { HvFlowNodeGroup } from "../../types";
+import type { HvFlowNodeGroup } from "../../types";
 import { staticClasses, useClasses } from "./SidebarGroup.styles";
 import {
   HvFlowDraggableSidebarGroupItem,
-  HvFlowDraggableSidebarGroupItemProps,
+  type HvFlowDraggableSidebarGroupItemProps,
 } from "./SidebarGroupItem";
 
 export { staticClasses as flowSidebarGroupClasses };

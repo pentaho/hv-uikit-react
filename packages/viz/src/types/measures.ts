@@ -1,4 +1,4 @@
-import { HvChartEmptyCellMode } from "./generic";
+import type { HvChartEmptyCellMode } from "./generic";
 
 /** Sampling functions */
 export type HvChartSampling =

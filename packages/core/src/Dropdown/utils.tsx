@@ -1,4 +1,4 @@
-import { HvListValue } from "../List";
+import type { HvListValue } from "../List";
 import type { HvDropdownLabels } from "./Dropdown";
 
 /** Filter selected elements. */

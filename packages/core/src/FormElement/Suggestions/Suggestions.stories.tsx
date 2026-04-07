@@ -2,11 +2,11 @@ import { useMemo, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBaseInput,
-  HvBaseInputProps,
   HvFormElement,
   HvLabel,
   HvSuggestions,
-  HvSuggestionsProps,
+  type HvBaseInputProps,
+  type HvSuggestionsProps,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS } from "@hitachivantara/uikit-react-icons";
 

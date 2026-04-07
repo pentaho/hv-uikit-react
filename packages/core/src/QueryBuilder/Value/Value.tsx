@@ -1,8 +1,8 @@
 import { useQueryBuilderContext } from "../Context";
 import {
   defaultRendererKey,
-  HvQueryBuilderRendererProps,
-  ValueRenderer,
+  type HvQueryBuilderRendererProps,
+  type ValueRenderer,
 } from "../types";
 import { BooleanValue } from "./BooleanValue";
 import { DateTimeValue } from "./DateTimeValue";

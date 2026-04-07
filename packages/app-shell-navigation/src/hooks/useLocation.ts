@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import {
-  Location,
   matchRoutes,
   useLocation as useLocationReactRouter,
+  type Location,
 } from "react-router-dom";
 import {
-  HvAppShellViewsModel,
   useHvAppShellModel,
+  type HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 
 interface IndexedView {

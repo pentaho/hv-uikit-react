@@ -4,7 +4,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvButton } from "@hitachivantara/uikit-react-core";
-import { HvLineChart, HvLineChartProps } from "@hitachivantara/uikit-react-viz";
+import {
+  HvLineChart,
+  type HvLineChartProps,
+} from "@hitachivantara/uikit-react-viz";
 
 import { vizDecorator } from "../BaseChart/stories/utils";
 import { emptyCellMode } from "../types/generic";

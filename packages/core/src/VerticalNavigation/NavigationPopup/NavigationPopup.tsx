@@ -1,15 +1,15 @@
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import {
   HvVerticalNavigationTree,
-  HvVerticalNavigationTreeProps,
+  type HvVerticalNavigationTreeProps,
 } from "../Navigation";
-import { NavigationData } from "../VerticalNavigationContext";
+import type { NavigationData } from "../VerticalNavigationContext";
 import { useClasses } from "./NavigationPopup.styles";
 import {
-  HvVerticalNavigationPopupClasses,
   NavigationPopupContainer,
+  type HvVerticalNavigationPopupClasses,
 } from "./NavigationPopupContainer";
 
 export interface HvVerticalNavigationPopupProps

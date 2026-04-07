@@ -2,13 +2,13 @@ import { useCallback, useMemo } from "react";
 import {
   actions,
   ensurePluginOrder,
-  Hooks,
-  IdType,
   makePropGetter,
-  PropGetter,
-  Row,
   useGetLatest,
   useMountedLayoutEffect,
+  type Hooks,
+  type IdType,
+  type PropGetter,
+  type Row,
 } from "react-table";
 
 import { HvCheckBox } from "../../CheckBox";

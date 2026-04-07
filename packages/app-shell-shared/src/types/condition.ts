@@ -1,4 +1,4 @@
-import { AsyncResult } from "@hitachivantara/app-shell-services";
+import type { AsyncResult } from "@hitachivantara/app-shell-services";
 
 export type UseConditionResult = AsyncResult<boolean, Error, "result">;
 

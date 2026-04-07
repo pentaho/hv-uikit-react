@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { Decorator, Meta, StoryObj } from "@storybook/react-vite";
+import type {
+  Decorator,
+  Meta,
+  StoryObj,
+} from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvCalendar,
   HvDatePicker,
-  HvDatePickerProps,
   HvListContainer,
   HvListItem,
   HvPanel,
   HvRadio,
   HvRadioGroup,
+  type HvDatePickerProps,
 } from "@hitachivantara/uikit-react-core";
 
 const containerDecorator: Decorator = (Story) => (

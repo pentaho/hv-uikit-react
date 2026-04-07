@@ -4,7 +4,7 @@ import {
   HvVerticalNavigationAction,
   HvVerticalNavigationActions,
   HvVerticalNavigationTree,
-  HvVerticalNavigationTreeProps,
+  type HvVerticalNavigationTreeProps,
 } from "@hitachivantara/uikit-react-core";
 import { LogOut, User } from "@hitachivantara/uikit-react-icons";
 

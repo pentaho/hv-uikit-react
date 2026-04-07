@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { vi } from "vitest";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import {
   findAppShellConfigFile,

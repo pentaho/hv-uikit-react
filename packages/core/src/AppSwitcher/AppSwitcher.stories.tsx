@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAppSwitcher,
-  HvAppSwitcherActionApplication,
-  HvAppSwitcherProps,
+  type HvAppSwitcherActionApplication,
+  type HvAppSwitcherProps,
 } from "@hitachivantara/uikit-react-core";
 import { Code, LeftAlign } from "@hitachivantara/uikit-react-icons";
 

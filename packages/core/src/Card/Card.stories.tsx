@@ -4,7 +4,7 @@ import {
   HvCardContent,
   HvCardHeader,
   HvCardMedia,
-  HvCardProps,
+  type HvCardProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { Expandable as ExpandableStory } from "./stories/Expandable";

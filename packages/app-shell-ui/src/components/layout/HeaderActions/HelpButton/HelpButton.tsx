@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellHelp,
+  type HvAppShellHelp,
 } from "@hitachivantara/app-shell-shared";
 import { HvIconButton } from "@hitachivantara/uikit-react-core";
 

@@ -1,6 +1,10 @@
-import { GetMiniMapNodeAttribute, MiniMap, MiniMapProps } from "reactflow";
-import { ExtractNames } from "@hitachivantara/uikit-react-core";
-import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
+import {
+  MiniMap,
+  type GetMiniMapNodeAttribute,
+  type MiniMapProps,
+} from "reactflow";
+import type { ExtractNames } from "@hitachivantara/uikit-react-core";
+import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { staticClasses, useClasses } from "./Minimap.styles";
 

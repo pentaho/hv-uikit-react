@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvStatusIcon,
-  HvStatusIconProps,
+  type HvStatusIconProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvStatusIcon> = {

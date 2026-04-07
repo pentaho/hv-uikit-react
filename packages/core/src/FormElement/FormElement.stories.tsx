@@ -3,13 +3,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAdornment,
   HvBaseInput,
-  HvBaseInputProps,
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvInfoMessage,
   HvLabel,
   HvWarningText,
+  type HvBaseInputProps,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "@hitachivantara/uikit-react-core";
 import { CloseXS, Success } from "@hitachivantara/uikit-react-icons";
 

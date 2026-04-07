@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvMultiButton,
-  HvMultiButtonProps,
   HvSimpleGrid,
+  type HvMultiButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { Abacus, LocationPin, Map } from "@hitachivantara/uikit-react-icons";
 

@@ -12,9 +12,9 @@ import {
   HvRadio,
   HvRadioGroup,
   HvSkeleton,
-  HvSkeletonProps,
   HvSwitch,
   HvTypography,
+  type HvSkeletonProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvSkeleton> = {

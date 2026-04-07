@@ -10,7 +10,7 @@ import { HvTypography } from "../Typography";
 import { useQueryBuilderContext } from "./Context";
 import { useClasses } from "./QueryBuilder.styles";
 import { Rule } from "./Rule/Rule";
-import { HvQueryBuilderQueryCombinator, Query } from "./types";
+import type { HvQueryBuilderQueryCombinator, Query } from "./types";
 
 export interface RuleGroupProps {
   id: React.Key;

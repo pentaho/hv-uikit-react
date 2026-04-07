@@ -4,7 +4,7 @@
 import { Children, isValidElement, useCallback, useState } from "react";
 import { CodeEditor } from "react-live-runner";
 
-import { ComponentMeta } from "../../utils/component";
+import type { ComponentMeta } from "../../utils/component";
 import { Controls, type Control } from "./Controls";
 import { DocsProvider } from "./DocsProvider";
 

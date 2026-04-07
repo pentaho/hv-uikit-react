@@ -3,7 +3,7 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvToggleButton,
-  HvToggleButtonProps,
+  type HvToggleButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   BackwardsEmpty,

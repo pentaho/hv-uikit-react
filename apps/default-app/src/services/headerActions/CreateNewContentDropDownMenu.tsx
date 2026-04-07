@@ -1,16 +1,19 @@
-import { FC, useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, type FC } from "react";
 import { PlusCircleIcon } from "@phosphor-icons/react/PlusCircle";
 import { useServices } from "@hitachivantara/app-shell-services";
 import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
 import {
   HvDropDownMenu,
-  HvDropDownMenuProps,
   HvIconContainer,
-  HvListValue,
+  type HvDropDownMenuProps,
+  type HvListValue,
 } from "@hitachivantara/uikit-react-core";
 
 import { ServiceDefinitions } from "../serviceDefinition";
-import { CreateNewContentAction, UseCreateNewContentAction } from "../types";
+import type {
+  CreateNewContentAction,
+  UseCreateNewContentAction,
+} from "../types";
 
 type OnDropDownMenuClickCallback = NonNullable<HvDropDownMenuProps["onClick"]>;
 

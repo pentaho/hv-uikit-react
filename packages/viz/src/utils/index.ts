@@ -11,9 +11,9 @@ import type {
   HvDonutChartMeasure,
   HvLineChartMeasure,
 } from "../types";
-import { HvChartCommonProps } from "../types/common";
-import { HvChartLegendIcon } from "../types/legend";
-import { HvScatterPlotMeasure } from "../types/measures";
+import type { HvChartCommonProps } from "../types/common";
+import type { HvChartLegendIcon } from "../types/legend";
+import type { HvScatterPlotMeasure } from "../types/measures";
 
 export const getAxisType = (type?: HvChartAxisType) => {
   switch (type) {

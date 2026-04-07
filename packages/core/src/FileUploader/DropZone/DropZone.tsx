@@ -4,14 +4,17 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormElementContext, HvFormElementProps } from "../../FormElement";
+import {
+  HvFormElementContext,
+  type HvFormElementProps,
+} from "../../FormElement";
 import { HvLabelContainer } from "../../FormElement/LabelContainer";
 import { useLabels } from "../../hooks/useLabels";
 import { useUniqueId } from "../../hooks/useUniqueId";
 import { HvIcon } from "../../icons";
 import { uniqueId } from "../../utils/helpers";
 import { setId } from "../../utils/setId";
-import { HvFileData, HvFilesAddedEvent } from "../File";
+import type { HvFileData, HvFilesAddedEvent } from "../File";
 import { convertUnits } from "../utils";
 import { staticClasses, useClasses } from "./DropZone.styles";
 

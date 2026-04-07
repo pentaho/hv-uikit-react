@@ -1,4 +1,4 @@
-import { HvTheme, theme } from "./theme";
+import { theme, type HvTheme } from "./theme";
 import { baseTheme } from "./tokens";
 import {
   colors,

@@ -3,8 +3,8 @@ import {
   HvContainer,
   HvPanel,
   HvScrollToVertical,
-  HvScrollToVerticalProps,
   HvTypography,
+  type HvScrollToVerticalProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvScrollToVertical> = {

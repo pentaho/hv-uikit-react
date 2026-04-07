@@ -5,10 +5,10 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvIcon } from "../icons";
-import { fixedForwardRef, HvBaseProps } from "../types/generic";
+import { fixedForwardRef, type HvBaseProps } from "../types/generic";
 import {
   DEFAULT_TREE_VIEW_PLUGINS,
-  DefaultTreeViewPluginParameters,
+  type DefaultTreeViewPluginParameters,
 } from "./internals/hooks/plugins";
 import { useTreeView } from "./internals/hooks/useTreeView";
 import { TreeViewProvider } from "./internals/TreeViewProvider";

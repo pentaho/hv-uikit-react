@@ -1,16 +1,16 @@
 import {
   BaseEdge,
   EdgeLabelRenderer,
-  EdgeProps,
   getBezierPath,
+  type EdgeProps,
 } from "reactflow";
 import {
   HvDropDownMenu,
-  HvDropDownMenuProps,
+  type HvDropDownMenuProps,
 } from "@hitachivantara/uikit-react-core";
 import { useFlowInstance } from "@hitachivantara/uikit-react-lab";
 
-import { FlowStatus, flowStatusesSpecs } from "./utils";
+import { flowStatusesSpecs, type FlowStatus } from "./utils";
 
 export type StatusEdgeData =
   | undefined

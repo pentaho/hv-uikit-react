@@ -1,10 +1,10 @@
 import {
   createClasses,
-  ExtractNames,
   mergeStyles,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny, theme } from "@hitachivantara/uikit-styles";
+import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { SvgBase } from "../icons";
 import type { HvBaseRadioProps } from "./BaseRadio";

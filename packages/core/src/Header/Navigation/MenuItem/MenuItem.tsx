@@ -4,11 +4,11 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../../types/generic";
+import type { HvBaseProps } from "../../../types/generic";
 import { HvTypography } from "../../../Typography";
 import { isKey } from "../../../utils/keyboardUtils";
 import { Bar } from "../MenuBar/Bar";
-import { HvHeaderNavigationItemProp } from "../useSelectionPath";
+import type { HvHeaderNavigationItemProp } from "../useSelectionPath";
 import { FocusContext } from "../utils/FocusContext";
 import { SelectionContext } from "../utils/SelectionContext";
 import { staticClasses, useClasses } from "./MenuItem.styles";

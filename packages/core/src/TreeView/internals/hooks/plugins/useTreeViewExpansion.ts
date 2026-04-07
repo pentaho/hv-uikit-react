@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEventCallback } from "@mui/material/utils";
 
-import {
+import type {
   DefaultizedProps,
   TreeViewPlugin,
   TreeViewPluginSignature,

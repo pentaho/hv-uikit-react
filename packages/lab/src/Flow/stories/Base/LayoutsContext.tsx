@@ -1,12 +1,12 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useContext,
   useMemo,
   useState,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
-import { HvDashboardProps } from "@hitachivantara/uikit-react-lab";
+import type { HvDashboardProps } from "@hitachivantara/uikit-react-lab";
 
 export interface LayoutConfig
   extends Pick<HvDashboardProps, "layout" | "cols"> {

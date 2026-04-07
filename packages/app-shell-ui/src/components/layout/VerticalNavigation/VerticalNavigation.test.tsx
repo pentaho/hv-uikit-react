@@ -1,7 +1,7 @@
 import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import { LOCAL_STORAGE_KEYS } from "../../../hooks/useLocalStorage";
 import * as NavigationProvider from "../../../providers/NavigationProvider";

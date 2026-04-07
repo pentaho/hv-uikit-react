@@ -2,9 +2,9 @@ import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvBreakpoints } from "@hitachivantara/uikit-styles";
+import type { HvBreakpoints } from "@hitachivantara/uikit-styles";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import {
   getContainerStyle,
   staticClasses,

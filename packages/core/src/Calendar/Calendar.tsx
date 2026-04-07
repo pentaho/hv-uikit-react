@@ -7,7 +7,7 @@ import {
 import { HvFormElementValueContext } from "../FormElement";
 import { staticClasses, useClasses } from "./Calendar.styles";
 import { HvSingleCalendar } from "./SingleCalendar";
-import { DateRangeProp, VisibilitySelectorActions } from "./types";
+import type { DateRangeProp, VisibilitySelectorActions } from "./types";
 import { DEFAULT_LOCALE, isRange } from "./utils";
 
 export { staticClasses as calendarClasses };

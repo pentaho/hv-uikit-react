@@ -2,15 +2,15 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
-  HvTableInstance,
   HvTableRow,
+  type HvTableColumnConfig,
+  type HvTableInstance,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetInventoryEntry } from "./data";
+import type { AssetInventoryEntry } from "./data";
 
 interface ListViewProps {
   id?: string;

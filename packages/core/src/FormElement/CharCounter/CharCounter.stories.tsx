@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCharCounter,
-  HvCharCounterProps,
+  type HvCharCounterProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvCharCounter> = {

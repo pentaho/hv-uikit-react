@@ -2,17 +2,17 @@ import { useMemo } from "react";
 import {
   HvCheckBox,
   HvCheckBoxGroup,
-  HvCheckBoxGroupProps,
   theme,
+  type HvCheckBoxGroupProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
   useFlowInputNodes,
   useFlowNodeUtils,
+  type HvFlowNodeFC,
 } from "@hitachivantara/uikit-react-lab";
 
-import { NodeData } from "./data";
+import type { NodeData } from "./data";
 
 function filterDataByCountries(
   data: NodeData["jsonData"],

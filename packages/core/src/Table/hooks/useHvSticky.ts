@@ -1,9 +1,9 @@
 import {
-  Hooks,
   makePropGetter,
-  PropGetter,
-  TableCommonProps,
   useGetLatest,
+  type Hooks,
+  type PropGetter,
+  type TableCommonProps,
 } from "react-table";
 import { theme } from "@hitachivantara/uikit-styles";
 

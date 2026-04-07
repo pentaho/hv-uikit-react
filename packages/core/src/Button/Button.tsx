@@ -6,16 +6,16 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 import {
   getColor,
-  HvColorAny,
-  HvRadius,
-  HvSize,
   theme,
+  type HvColorAny,
+  type HvRadius,
+  type HvSize,
 } from "@hitachivantara/uikit-styles";
 
 import {
   fixedForwardRef,
-  PolymorphicComponentRef,
-  PolymorphicRef,
+  type PolymorphicComponentRef,
+  type PolymorphicRef,
 } from "../types/generic";
 import {
   getIconSizeStyles,

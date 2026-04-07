@@ -16,7 +16,7 @@ import {
 import {
   HvWizard,
   HvWizardContext,
-  HvWizardProps,
+  type HvWizardProps,
 } from "@hitachivantara/uikit-react-lab";
 
 import mockText from "./mockData";

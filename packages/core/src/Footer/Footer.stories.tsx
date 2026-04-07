@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvFooter,
-  HvFooterProps,
   HvTypography,
+  type HvFooterProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvFooter> = {

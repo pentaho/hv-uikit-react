@@ -6,8 +6,8 @@ import {
   HvFlowBackground,
   HvFlowControls,
   HvFlowMinimap,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
 

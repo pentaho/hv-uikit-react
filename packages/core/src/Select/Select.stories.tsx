@@ -4,7 +4,7 @@ import {
   HvOption,
   HvOptionGroup,
   HvSelect,
-  HvSelectProps,
+  type HvSelectProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

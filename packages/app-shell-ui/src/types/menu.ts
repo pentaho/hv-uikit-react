@@ -1,4 +1,4 @@
-import { MenuItem } from "@hitachivantara/app-shell-shared";
+import type { MenuItem } from "@hitachivantara/app-shell-shared";
 
 export interface NavigationMenuItem extends Omit<MenuItem, "icon" | "data"> {
   icon?: React.ReactNode;

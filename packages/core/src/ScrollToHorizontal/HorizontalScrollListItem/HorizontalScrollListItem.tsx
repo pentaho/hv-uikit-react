@@ -5,9 +5,9 @@ import {
 
 import {
   HvOverflowTooltip,
-  HvOverflowTooltipProps,
+  type HvOverflowTooltipProps,
 } from "../../OverflowTooltip";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { staticClasses, useClasses } from "./HorizontalScrollListItem.styles";
 
 export { staticClasses as horizontalScrollListItemClasses };

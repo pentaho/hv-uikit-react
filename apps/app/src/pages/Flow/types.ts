@@ -1,4 +1,4 @@
-import {
+import type {
   HvDashboardProps,
   HvFlowInstance,
 } from "@hitachivantara/uikit-react-lab";

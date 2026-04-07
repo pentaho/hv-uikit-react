@@ -12,11 +12,11 @@ import {
 
 import { HvFocus } from "../../Focus";
 import { useForkRef } from "../../hooks/useForkRef";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import TableContext from "../TableContext";
 import {
   TableSectionContext,
-  TableSectionContextValue,
+  type TableSectionContextValue,
 } from "../TableSectionContext";
 import { staticClasses, useClasses } from "./TableBody.styles";
 

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
-import { ComponentDataParams, getComponentData } from "../utils/component";
-import { PlaygroundProps } from "./code/Playground";
+import { getComponentData, type ComponentDataParams } from "../utils/component";
+import type { PlaygroundProps } from "./code/Playground";
 import { Description } from "./usage/Description";
 import { Tabs } from "./usage/Tabs";
 
