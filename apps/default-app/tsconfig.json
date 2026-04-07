@@ -1,9 +1,5 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "compilerOptions": {
-    // this can't be upgraded because app-shell-config's ts-node loader overrides it
-    "moduleResolution": "Node"
-  }
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
