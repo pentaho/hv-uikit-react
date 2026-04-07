@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.6.0...@hitachivantara/uikit-react-core@6.6.1) (2026-04-07)
+
+### Bug Fixes
+
+- **QueryBuilder:** fix incorrect date ([#5129](https://github.com/pentaho/hv-uikit-react/issues/5129)) ([75dab8d](https://github.com/pentaho/hv-uikit-react/commit/75dab8d0cb81e7078cb7955e1bdc5eaf8473e54d))
+
 # [6.6.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.5.0...@hitachivantara/uikit-react-core@6.6.0) (2026-03-19)
 
 ### Bug Fixes
