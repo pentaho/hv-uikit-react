@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { EventHandlers } from "@mui/base";
+import type { EventHandlers } from "@mui/utils/types";
 
 import type { TreeViewCorePluginsSignature } from "../corePlugins";
 import type { TreeViewContextValue } from "../TreeViewProvider";

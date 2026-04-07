@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ClickAwayListener, Popper } from "@mui/base";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Popper from "@mui/material/Popper";
 import {
   HvAdornment,
   HvPanel,

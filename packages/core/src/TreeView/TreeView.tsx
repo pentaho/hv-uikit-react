@@ -1,4 +1,4 @@
-import { useSlotProps } from "@mui/base";
+import useSlotProps from "@mui/utils/useSlotProps";
 import {
   useDefaultProps,
   type ExtractNames,

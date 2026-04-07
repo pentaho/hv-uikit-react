@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-restricted-imports
+// eslint-disable no-restricted-imports
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as reactHookForm from "react-hook-form";
@@ -10,8 +10,6 @@ import * as DndKitSortable from "@dnd-kit/sortable";
 import * as DndKitUtilities from "@dnd-kit/utilities";
 import * as emotionCss from "@emotion/css";
 import * as hookFormZod from "@hookform/resolvers/zod";
-import * as muiBase from "@mui/base";
-// oxlint-disable-next-line no-restricted-imports
 import * as muiMaterial from "@mui/material";
 import * as muiUtils from "@mui/utils";
 import * as clsx from "clsx";
@@ -49,7 +47,6 @@ const defaultScope: Scope = {
     "@hitachivantara/uikit-react-pentaho": HvPentaho,
     "@hitachivantara/uikit-styles": HvStyles,
     "@emotion/css": emotionCss,
-    "@mui/base": muiBase,
     "@mui/material": muiMaterial,
     "@mui/utils": muiUtils,
     "react-table": reactTable,

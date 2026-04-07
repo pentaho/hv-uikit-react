@@ -1,4 +1,7 @@
-import { ClickAwayListener, ClickAwayListenerProps, Portal } from "@mui/base";
+import ClickAwayListener, {
+  ClickAwayListenerProps,
+} from "@mui/material/ClickAwayListener";
+import Portal from "@mui/material/Portal";
 import { useCss, useTheme } from "@hitachivantara/uikit-react-utils";
 
 import { HvPanel } from "../Panel";
