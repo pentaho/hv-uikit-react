@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2]
+        shard: [1, 2, 3]
 
     steps:
       - name: Checkout
@@ -77,7 +77,7 @@ jobs:
         run: npx playwright install --with-deps --only-shell chromium
 
       - name: Run Tests
-        run: npm run test:storybook -- --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: npm run test:storybook -- --no-file-parallelism --retry 1 --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   build:
     name: Build

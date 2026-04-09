@@ -23,7 +23,6 @@ export default mergeConfig(
           ],
           test: {
             name: { label: "storybook", color: "magenta" },
-            fileParallelism: !process.env.CI,
             browser: {
               enabled: true,
               headless: true,
