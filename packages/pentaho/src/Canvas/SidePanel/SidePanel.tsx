@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useId } from "react";
 import {
   ExtractNames,
   HvBaseProps,
-  HvIconButton,
+  HvButton,
   HvPanel,
   useControlled,
   useDefaultProps,
@@ -193,9 +193,10 @@ export const HvCanvasSidePanel = forwardRef<
         className={classes.separator}
         {...getSeparatorProps()}
       />
-      <HvIconButton
+      <HvButton
+        icon
         variant="primaryGhost"
-        title={open ? labels.close : labels.open}
+        aria-label={open ? labels.close : labels.open}
         onClick={handleTogglePanel}
         aria-expanded={open}
         aria-controls={panelId}
@@ -209,7 +210,7 @@ export const HvCanvasSidePanel = forwardRef<
         }}
       >
         <End rotate={open} />
-      </HvIconButton>
+      </HvButton>
     </>
   );
 });
