@@ -14,7 +14,7 @@ runs:
         fi
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Start Deployment
       uses: bobheadxi/deployments@v1
@@ -26,7 +26,7 @@ runs:
         ref: ${{ env.DEPLOYMENT_REF }}
 
     - name: Checkout Artifacts Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
         ref: master
@@ -39,7 +39,7 @@ runs:
       shell: bash
 
     - name: Fetch Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: ${{ env.ARTIFACT }}
         path: ${{ github.workspace }}/gh-docs/${{env.PUBLISH_FOLDER}}

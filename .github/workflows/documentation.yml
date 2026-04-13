@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -35,7 +35,7 @@ jobs:
 
       - name: Archive Nextra Docs
         if: ${{ env.PUBLISH_DOCS == 'true' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nextra-docs
           path: ${{ github.workspace }}/apps/docs/dist
@@ -47,7 +47,7 @@ jobs:
 
       - name: Archive App
         if: ${{ env.PUBLISH_APP == 'true' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uikit-app
           path: ${{ github.workspace }}/apps/app/dist
@@ -64,7 +64,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Deploy Docs
         if: ${{ env.PUBLISH_DOCS == 'true' }}

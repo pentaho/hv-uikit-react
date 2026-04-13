@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Pulls all commits (needed for semantic release to correctly version)
           # See https://github.com/semantic-release/semantic-release/issues/1526
@@ -121,7 +121,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Send Slack message
         uses: slackapi/slack-github-action@v1.27.0
