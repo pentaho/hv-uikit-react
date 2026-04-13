@@ -17,7 +17,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
       cursor: "default",
     },
 
-    "&:hover": {
+    ":hover:not($disabled,$readOnly)": {
       backgroundColor: theme.colors.bgHover,
     },
 
@@ -26,7 +26,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
       "&:hover": {
         backgroundColor: "transparent",
       },
-
       "&$checked": {
         transform: "translateX(16px)",
         "& + $track": {
@@ -36,9 +35,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
         },
         "&:not($disabled) $thumb": {
           borderColor: "transparent",
-        },
-        "&:hover": {
-          backgroundColor: "transparent",
         },
       },
     },
