@@ -1,15 +1,16 @@
 import { forwardRef, useContext, useRef } from "react";
-import ClickAwayListener, {
-  type ClickAwayListenerProps,
-} from "@mui/material/ClickAwayListener";
-import Popper, { type PopperProps } from "@mui/material/Popper";
 import { useForkRef } from "@mui/material/utils";
 import {
+  mergeStyles,
   useDefaultProps,
   useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
+import {
+  HvDropdownPanel,
+  type HvDropdownPanelProps,
+} from "../../BaseDropdown/BaseDropdownPanel";
 import { HvListItem } from "../../ListContainer";
 import { HvSelectionList } from "../../SelectionList";
 import type { HvBaseProps } from "../../types/generic";
@@ -39,7 +40,7 @@ export interface HvSuggestionsProps extends HvBaseProps {
   /** Function called when a suggestion is selected */
   onSuggestionSelected?: (event: React.MouseEvent, value: HvSuggestion) => void;
   /** Function called when suggestion list is closed */
-  onClose?: ClickAwayListenerProps["onClickAway"];
+  onClose?: HvDropdownPanelProps["onClickAway"];
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvSuggestionsClasses;
   /**
@@ -49,7 +50,7 @@ export interface HvSuggestionsProps extends HvBaseProps {
    * */
   enablePortal?: boolean;
   /** Props passed to the underlying MUI Popper component */
-  popperProps?: Partial<PopperProps>;
+  popperProps?: Partial<HvDropdownPanelProps>;
 }
 
 export const HvSuggestions = forwardRef<
@@ -88,36 +89,35 @@ export const HvSuggestions = forwardRef<
       className={cx(classes.root, className)}
       {...others}
     >
-      <ClickAwayListener onClickAway={onClose!}>
-        <Popper
-          style={{
-            // @ts-ignore
-            "--popper-width": enablePortal
-              ? `${anchorEl?.clientWidth}px`
-              : "100%",
-          }}
-          open={openProp}
-          disablePortal={!enablePortal}
-          container={enablePortal ? getContainerElement(rootId) : undefined}
-          anchorEl={anchorEl}
-          className={cx(classes.popper, {
-            [classes.portal]: enablePortal,
-          })}
-          {...popperProps}
+      <HvDropdownPanel
+        onClickAway={onClose!}
+        style={mergeStyles(undefined, {
+          "--popper-width": enablePortal && `${anchorEl?.clientWidth}px`,
+        })}
+        open={openProp}
+        disablePortal={!enablePortal}
+        container={enablePortal ? getContainerElement(rootId) : undefined}
+        anchorEl={anchorEl}
+        className={cx(classes.popper, {
+          [classes.portal]: enablePortal,
+        })}
+        classes={{ panel: classes.panel }}
+        {...popperProps}
+      >
+        <HvSelectionList
+          className={classes.list}
+          id={setId(id, "list")}
+          onChange={onSuggestionSelected}
+          onMouseDown={(evt) => evt.preventDefault()}
+          onPointerDown={(evt) => evt.preventDefault()}
         >
-          <HvSelectionList
-            className={classes.list}
-            id={setId(id, "list")}
-            onChange={onSuggestionSelected}
-          >
-            {suggestionValues?.map((item) => (
-              <HvListItem key={item.id} value={item} disabled={item.disabled}>
-                {item.label}
-              </HvListItem>
-            ))}
-          </HvSelectionList>
-        </Popper>
-      </ClickAwayListener>
+          {suggestionValues?.map((item) => (
+            <HvListItem key={item.id} value={item} disabled={item.disabled}>
+              {item.label}
+            </HvListItem>
+          ))}
+        </HvSelectionList>
+      </HvDropdownPanel>
     </div>
   );
 });

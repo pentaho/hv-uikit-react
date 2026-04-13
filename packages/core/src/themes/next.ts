@@ -22,6 +22,7 @@ import type {
   HvDialogTitleProps,
 } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
+import type { HvSuggestionsProps } from "../FormElement/Suggestions";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvSnackbarContentProps } from "../Snackbar";
 import type { HvStatusIconProps } from "../StatusIcon";
@@ -204,6 +205,16 @@ export const next = mergeTheme(nextBase, {
         },
       },
     } satisfies CSSClasses<HvMultiButtonProps>,
+    HvSuggestions: {
+      classes: {
+        panel: {
+          margin: theme.spacing("xxs", 0),
+          "&&": {
+            borderRadius: theme.radii.round,
+          },
+        },
+      },
+    } satisfies CSSClasses<HvSuggestionsProps>,
     HvSnackbarContent: {
       classes: {
         root: {

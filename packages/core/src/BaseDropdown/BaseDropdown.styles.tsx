@@ -77,5 +77,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     display: "block",
     color: theme.colors.textSubtle,
   },
-  panel: {},
+  panel: {
+    padding: 0, // TODO(major): re-add padding as most elements need it
+  },
 });

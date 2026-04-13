@@ -146,7 +146,7 @@ export const HvBaseDropdown = forwardRef<
     expanded,
 
     popperProps,
-    variableWidth,
+    variableWidth = false,
     placement: placementProp = "right",
 
     dropdownHeaderProps,

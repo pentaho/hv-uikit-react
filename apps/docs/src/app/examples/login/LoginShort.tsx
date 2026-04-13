@@ -117,7 +117,7 @@ function LoginMultiButton() {
         placement="bottom-end"
         className="z-popover"
         onClickAway={() => setAnchorEl(undefined)}
-        classes={{ panel: "grid gap-sm p-sm" }}
+        classes={{ panel: "p-xs" }}
       >
         <ListItem name="Administrator" iconId="i-ph-user-gear" />
         <ListItem name="Business User" iconId="i-ph-user" />

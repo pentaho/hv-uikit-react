@@ -26,7 +26,7 @@ const { useClasses } = createClasses(name, {
     width: "auto",
   },
   panel: {
-    padding: 0, // TODO(major): remove padding as most elements need it
+    padding: theme.space.xs,
     border: `1px solid ${theme.colors.text}`,
   },
 });
@@ -49,7 +49,7 @@ export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
     className,
     containerId,
     children,
-    variableWidth,
+    variableWidth = true,
     anchorEl,
     disablePortal,
     modifiers: modifiersProp,
