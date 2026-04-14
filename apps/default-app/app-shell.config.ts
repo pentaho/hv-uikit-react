@@ -213,7 +213,25 @@ export default {
             },
           ],
         },
+        // Menu entry that stays rendered if its submenus can render
+        {
+          label: "Disappearing Parent (10s)",
+          icon: {
+            iconType: "uikit",
+            name: "Disappear",
+          },
+          submenus: [
+            {
+              label: "Inverse Dynamic Child",
+              target: "/inverse-dynamic",
+            },
+          ],
+        },
       ],
+    },
+    // Invalid menu entry without target and submenus (should never render)
+    {
+      label: "Invalid Menu Entry",
     },
     { label: "Debug", target: "/debug" },
     {

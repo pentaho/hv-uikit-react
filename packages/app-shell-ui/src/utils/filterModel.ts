@@ -64,6 +64,16 @@ const filterViews = (
   return [hasChanged ? filteredViews : views, hasChanged];
 };
 
+/**
+ * Recursively filters menu entries based on condition results and structural validity.
+ *
+ * A menu is excluded when:
+ * 1. Its conditions evaluate to false (condition-based filtering), or
+ * 2. It has no `target` and no `submenus` (invalid config guard), or
+ * 3. It is a parent whose children were all filtered out, leaving it empty.
+ *
+ * Preserves object references when no changes occur to minimize re-renders.
+ */
 const filterMenus = (
   menus: HvAppShellMenuModel[],
   conditionResults: ConditionResultsList,
@@ -73,28 +83,33 @@ const filterMenus = (
 
   for (const menu of menus) {
     const include = shouldInclude(menu.conditions, conditionResults);
+    const hasSubmenus = menu.submenus && menu.submenus.length > 0;
 
-    if (!include) {
+    // Exclude when conditions failed or invalid leaf (no target and no submenus to render)
+    if (!include || (!menu.target && !hasSubmenus)) {
       hasChanged = true;
       continue;
     }
 
-    if (!menu.submenus) {
+    // Include when leaf menu has a valid target
+    if (!hasSubmenus) {
       filteredMenus.push(menu);
       continue;
     }
 
+    // Recurse into its submenus
     const [filteredSubmenus, submenusChanged] = filterMenus(
-      menu.submenus,
+      menu.submenus!,
       conditionResults,
     );
 
-    // Keep parent only if it has visible children
+    // Exclude menu if all its submenus were filtered out
     if (filteredSubmenus.length === 0) {
       hasChanged = true;
       continue;
     }
 
+    // Some submenus remain, update them only if they changed
     if (submenusChanged) {
       filteredMenus.push({
         ...menu,
