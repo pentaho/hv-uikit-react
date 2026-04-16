@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-cli@6.0.4...@hitachivantara/uikit-cli@6.0.5) (2026-04-16)
+
+### Bug Fixes
+
+- **cli:** provider i18n usage ([#5143](https://github.com/pentaho/hv-uikit-react/issues/5143)) ([34e3bec](https://github.com/pentaho/hv-uikit-react/commit/34e3bec600aa6d1077016b841c8b0e8acc23b86c)), closes [#5055](https://github.com/pentaho/hv-uikit-react/issues/5055)
+
 ## [6.0.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-cli@6.0.3...@hitachivantara/uikit-cli@6.0.4) (2026-03-15)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.6](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.2.5...@hitachivantara/app-shell-ui@2.2.6) (2026-04-16)
+
+### Bug Fixes
+
+- **AppShell:** invalid menus no target nor submenu are now filtered out ([#5142](https://github.com/pentaho/hv-uikit-react/issues/5142)) ([75ddd11](https://github.com/pentaho/hv-uikit-react/commit/75ddd11688d3859c9171a631253cde3e64ca0d5e))
+
 ## [2.2.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.2.4...@hitachivantara/app-shell-ui@2.2.5) (2026-04-13)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-ui
