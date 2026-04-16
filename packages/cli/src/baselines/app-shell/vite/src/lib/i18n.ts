@@ -4,25 +4,20 @@ import { createInstance, type i18n } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend, { type HttpBackendOptions } from "i18next-http-backend";
 
-const initAppI18n = (baseUrl: string) => {
-  const i18nInstance: i18n = createInstance();
+const initAppI18n = (baseUrl: string): i18n => {
+  const i18nInstance = createInstance();
 
   const loadPath = `${baseUrl}locales/{{lng}}/{{ns}}.json`;
 
+  // learn more: https://react.i18next.com/latest/using-with-hooks#configure-i18next
   i18nInstance
-    // load translation using xhr -> see /public/locales
-    // learn more: https://github.com/i18next/i18next-xhr-backend
     .use(Backend)
-    // detect user language
-    // learn more: https://github.com/i18next/i18next-browser-languageDetector
     .use(LanguageDetector)
-    // pass the i18n instance to react-i18next.
     .use(initReactI18next)
-    // init i18next
-    // for all options read: https://www.i18next.com/overview/configuration-options
     .init<HttpBackendOptions>({
       fallbackLng: "en",
-      supportedLngs: ["en"],
+      // enable explicit declaration to avoid fetching non-existing `lng`s
+      // supportedLngs: ["en"],
       backend: {
         loadPath,
       },
@@ -36,9 +31,8 @@ const initAppI18n = (baseUrl: string) => {
 };
 
 export const useI18nInstance = () => {
-  const moduleId = "@hv-apps/uikit-app";
-  return useMemo(
-    () => initAppI18n(import.meta.resolve?.(`${moduleId}/`) || ""),
-    [moduleId],
-  );
+  return useMemo(() => {
+    const moduleId = "@hv-apps/uikit-app";
+    return initAppI18n(import.meta.resolve?.(`${moduleId}/`) || "");
+  }, []);
 };

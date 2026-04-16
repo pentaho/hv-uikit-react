@@ -15,7 +15,9 @@ export function withProvider<
   const ComponentWithProvider: React.FC<P> = (props) => {
     return (
       <Suspense fallback={null}>
-        <WrappedComponent {...props} />
+        <Provider>
+          <WrappedComponent {...props} />
+        </Provider>
       </Suspense>
     );
   };
