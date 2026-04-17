@@ -130,7 +130,7 @@ const popperStyles = {
   backgroundColor: theme.colors.bgContainer,
   border: `1px solid ${theme.colors.borderSubtle}`,
   borderRadius: theme.radii.large,
-  boxShadow: `0px 0px 6px 0px rgba(65, 65, 65, 0.08)`,
+  boxShadow: theme.colors.shadow,
 };
 
 export const pentaho = mergeTheme(pentahoBase, {
@@ -672,6 +672,7 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         paper: {
           borderRadius: theme.radii.large,
+          boxShadow: `0 32px 32px 0 ${theme.alpha(slate[900], 0.1)}, 0 20px 20px 0 ${theme.alpha(slate[900], 0.08)}, 0 12px 12px 0 ${theme.alpha(slate[900], 0.06)}, 0 5px 5px 0 ${theme.alpha(slate[900], 0.04)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.02)}`,
         },
         statusBar: {
           border: "none",
@@ -851,6 +852,7 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         root: {
           outlineColor: theme.colors.borderSubtle,
+          boxShadow: theme.colors.shadow,
           "--rb": theme.radii.large,
           // default non-semantic card
           "&[data-color=sema0]": {
@@ -1058,6 +1060,7 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         tooltip: {
           padding: theme.spacing("xs", "sm"),
+          boxShadow: `0 16px 16px 0 ${theme.alpha(slate[900], 0.1)}, 0 10px 10px 0 ${theme.alpha(slate[900], 0.08)}, 0 6px 6px 0 ${theme.alpha(slate[900], 0.06)}, 0 3px 3px 0 ${theme.alpha(slate[900], 0.04)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.02)}`,
         },
       },
     } satisfies CSSClasses<HvTooltipProps>,
@@ -1230,6 +1233,7 @@ export const pentaho = mergeTheme(pentahoBase, {
         root: {
           width: 525,
           minHeight: "unset",
+          boxShadow: theme.colors.shadow,
         },
         messageText: {
           paddingLeft: 0,

@@ -30,8 +30,8 @@ const pentaho = makeTheme((theme) => ({
     warning_20: amber[100],
     positive_20: green[100],
     neutral_20: sky[100],
-    shadow: `0px 2px 4px -1px ${theme.alpha(slate[700], 0.08)}`,
-    shad1: theme.alpha(slate[700], 0.08),
+    shadow: `0 4px 4px 0 ${theme.alpha(slate[900], 0.02)}, 0 3px 3px 0 ${theme.alpha(slate[900], 0.04)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.06)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.08)}, 0 0 0 0 ${theme.alpha(slate[900], 0.1)}`,
+    shad1: theme.alpha(slate[900], 0.08),
 
     primary: [blue[600], blue[500]],
     primaryStrong: [blue[700], blue[600]],
