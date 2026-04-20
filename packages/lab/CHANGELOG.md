@@ -3,12 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [6.1.7](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-lab@6.1.6...@hitachivantara/uikit-react-lab@6.1.7) (2026-04-13)
-
-### Bug Fixes
-
-- **deps:** bump @mui/base version ([#5134](https://github.com/pentaho/hv-uikit-react/issues/5134)) ([9469499](https://github.com/pentaho/hv-uikit-react/commit/946949934cba1c562b42b6aecb639dcc8cd13fe2))
-
 ## [6.1.6](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-lab@6.1.5...@hitachivantara/uikit-react-lab@6.1.6) (2026-04-07)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-lab
