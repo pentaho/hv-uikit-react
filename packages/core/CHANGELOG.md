@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.7.0...@hitachivantara/uikit-react-core@6.8.0) (2026-04-21)
+
+### Bug Fixes
+
+- **DropdownPanel:** enable padding & variableWidth by default ([#5141](https://github.com/pentaho/hv-uikit-react/issues/5141)) ([612ee06](https://github.com/pentaho/hv-uikit-react/commit/612ee06ca0cc523c51f86aefcf4f7f971c34f760))
+
+### Features
+
+- **Theme:** update shadows on the Pentaho theme to the latest specs ([#5145](https://github.com/pentaho/hv-uikit-react/issues/5145)) ([6afc7a6](https://github.com/pentaho/hv-uikit-react/commit/6afc7a6051353f7df2e18a10600775a7d523fd93))
+
 # [6.7.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.6.1...@hitachivantara/uikit-react-core@6.7.0) (2026-04-13)
 
 ### Bug Fixes

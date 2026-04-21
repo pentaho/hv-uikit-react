@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.3...@hitachivantara/uikit-styles@6.1.0) (2026-04-21)
+
+### Features
+
+- **Theme:** update shadows on the Pentaho theme to the latest specs ([#5145](https://github.com/pentaho/hv-uikit-react/issues/5145)) ([6afc7a6](https://github.com/pentaho/hv-uikit-react/commit/6afc7a6051353f7df2e18a10600775a7d523fd93))
+
 ## [6.0.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.0.2...@hitachivantara/uikit-styles@6.0.3) (2026-03-19)
 
 ### Bug Fixes
