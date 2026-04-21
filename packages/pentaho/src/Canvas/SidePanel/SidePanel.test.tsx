@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from "vitest";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 
 import { HvCanvasProvider } from "../CanvasContext";
-import { HvCanvasSidePanel, HvCanvasSidePanelProps } from "./SidePanel";
+import { HvCanvasSidePanel, type HvCanvasSidePanelProps } from "./SidePanel";
 
 const label = "Test";
 

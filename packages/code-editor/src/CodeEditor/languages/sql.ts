@@ -1,7 +1,7 @@
 import type { Monaco } from "@monaco-editor/react";
-import { format, FormatOptionsWithLanguage } from "sql-formatter";
+import { format, type FormatOptionsWithLanguage } from "sql-formatter";
 
-import { LanguagePlugin } from "../types";
+import type { LanguagePlugin } from "../types";
 import { sqlKeywords } from "./sqlKeywords";
 
 // Helpful notes

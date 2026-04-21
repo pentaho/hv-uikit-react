@@ -13,7 +13,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useForkRef } from "../hooks/useForkRef";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./ListContainer.styles";
 import HvListContext from "./ListContext";
 

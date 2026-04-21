@@ -4,7 +4,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import {
   calculateOffset,
@@ -17,8 +17,10 @@ export { staticClasses as scrollToVerticalClasses };
 
 export type HvScrollToVerticalClasses = ExtractNames<typeof useClasses>;
 
-export interface HvScrollToVerticalProps
-  extends HvBaseProps<HTMLOListElement, "onChange" | "onClick"> {
+export interface HvScrollToVerticalProps extends HvBaseProps<
+  HTMLOListElement,
+  "onChange" | "onClick"
+> {
   /** An Array of Objects with Label and Value. Label is the displayed Element and Value is the local navigation location applied */
   options: HvScrollToOption[];
   /**

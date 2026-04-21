@@ -1,5 +1,5 @@
 import { LineChartAlt } from "@hitachivantara/uikit-react-icons";
-import { HvFlowNode, HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import { HvFlowNode, type HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
 
 export const LineChart: HvFlowNodeFC = (props) => {
   return (

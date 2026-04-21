@@ -1,12 +1,16 @@
 import {
-  ExtractNames,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormElement, HvFormElementProps } from "../FormElement";
+import { HvFormElement, type HvFormElementProps } from "../FormElement";
 import { useLabels } from "../hooks/useLabels";
-import { HvDropZone, HvDropZoneLabels, HvDropZoneProps } from "./DropZone";
-import { HvFileData, HvFileRemovedEvent, HvFilesAddedEvent } from "./File";
+import {
+  HvDropZone,
+  type HvDropZoneLabels,
+  type HvDropZoneProps,
+} from "./DropZone";
+import type { HvFileData, HvFileRemovedEvent, HvFilesAddedEvent } from "./File";
 import { HvFileList } from "./FileList";
 import { staticClasses, useClasses } from "./FileUploader.styles";
 

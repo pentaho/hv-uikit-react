@@ -10,7 +10,7 @@ import { HvActionBar } from "../../ActionBar";
 import { HvButton } from "../../Button";
 import { HvCheckBox } from "../../CheckBox";
 import { HvInput } from "../../Input";
-import { HvList, HvListProps, HvListValue } from "../../List";
+import { HvList, type HvListProps, type HvListValue } from "../../List";
 import { CounterLabel } from "../../utils/CounterLabel";
 import type { HvDropdownLabels } from "../Dropdown";
 import { getSelected } from "../utils";

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
   HvButton,
-  HvTagProps,
   HvTagsInput,
   HvTypography,
+  type HvTagProps,
 } from "@hitachivantara/uikit-react-core";
 
 export const ControlledTagArray = () => {

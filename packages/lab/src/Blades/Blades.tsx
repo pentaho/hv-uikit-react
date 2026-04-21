@@ -1,15 +1,15 @@
 import {
   Children,
   cloneElement,
-  SyntheticEvent,
   useCallback,
   useMemo,
+  type SyntheticEvent,
 } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   useControlled,
   useDefaultProps,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blades.styles";
@@ -18,8 +18,10 @@ export { staticClasses as bladesClasses };
 
 export type HvBladesClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBladesProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
+export interface HvBladesProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "children"
+> {
   /**
    * Array of indices representing the expanded state of each blade.
    *

@@ -5,15 +5,15 @@ import {
   useMemo,
   useState,
 } from "react";
-import { NodeToolbarProps } from "reactflow";
+import type { NodeToolbarProps } from "reactflow";
 import { uid } from "uid";
 import { useLabels } from "@hitachivantara/uikit-react-core";
 import { Delete, Duplicate } from "@hitachivantara/uikit-react-icons";
-import { getColor, HvColorAny, theme } from "@hitachivantara/uikit-styles";
+import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { useNodeMetaRegistry } from "../FlowContext/NodeMetaContext";
 import { identifyHandles } from "../Node/utils";
-import {
+import type {
   HvFlowNodeAction,
   HvFlowNodeInput,
   HvFlowNodeInputGroup,

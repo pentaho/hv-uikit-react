@@ -1,10 +1,10 @@
-import { PropsWithChildren, ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellConfig,
+  type HvAppShellConfig,
 } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 

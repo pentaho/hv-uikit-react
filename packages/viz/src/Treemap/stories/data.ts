@@ -1,4 +1,4 @@
-import { HvTreemapData } from "../Treemap";
+import type { HvTreemapData } from "../Treemap";
 
 export const data: HvTreemapData[] = [
   {

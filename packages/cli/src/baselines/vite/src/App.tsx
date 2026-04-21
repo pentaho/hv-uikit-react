@@ -3,8 +3,8 @@ import "virtual:uno.css";
 
 import {
   createBrowserRouter,
-  RouteObject,
   RouterProvider,
+  type RouteObject,
 } from "react-router-dom";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 

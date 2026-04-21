@@ -4,23 +4,25 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvDropDownMenuProps } from "../DropDownMenu";
+import type { HvDropDownMenuProps } from "../DropDownMenu";
 import { HvIconButton } from "../IconButton";
 import { SvgBase } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./BreadCrumb.styles";
 import { HvBreadCrumbPage } from "./Page";
 import { HvPathElement } from "./PathElement";
-import { HvBreadCrumbPathElement } from "./types";
+import type { HvBreadCrumbPathElement } from "./types";
 import { pathWithSubMenu, removeExtension } from "./utils";
 
 export { staticClasses as breadCrumbClasses };
 
 export type HvBreadCrumbClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBreadCrumbProps
-  extends HvBaseProps<HTMLDivElement, "onClick"> {
+export interface HvBreadCrumbProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick"
+> {
   /** List of breadcrumb. */
   listRoute?: HvBreadCrumbPathElement[];
   /** Home breadcrumb element. If passed, it will be displayed as the first breadcrumb item as a Home icon */

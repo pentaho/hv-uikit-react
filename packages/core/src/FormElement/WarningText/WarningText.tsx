@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvIcon } from "../../icons";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { setId } from "../../utils/setId";
 import { HvFormElementContext } from "../context";
 import { staticClasses, useClasses } from "./WarningText.styles";

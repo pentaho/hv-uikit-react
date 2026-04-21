@@ -1,9 +1,9 @@
 import {
   HvCard,
   HvCardContent,
-  HvColor,
   HvStatusIcon,
   HvTypography,
+  type HvColor,
 } from "@hitachivantara/uikit-react-core";
 
 const colors = ["positive", "warning", "negative", "info"] satisfies HvColor[];

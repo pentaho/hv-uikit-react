@@ -1,11 +1,10 @@
-import { ReactNode } from "react";
-import {
+import type {
   HvBaseProps,
   HvTheme,
   HvTypographyVariants,
 } from "@hitachivantara/uikit-react-core";
 
-import { HvStep, HvStepProps } from "./Step";
+import { HvStep, type HvStepProps } from "./Step";
 import { getColor, stepSizes } from "./utils";
 
 export type ComponentChildProps = {
@@ -24,8 +23,10 @@ export type ComponentChildProps = {
   };
 };
 
-export interface HvDefaultNavigationProps
-  extends Omit<HvBaseProps, "children"> {
+export interface HvDefaultNavigationProps extends Omit<
+  HvBaseProps,
+  "children"
+> {
   /** Number of steps to show on the component. */
   numSteps: number;
   /** Sets one of the standard sizes of the steps. */
@@ -42,7 +43,7 @@ export interface HvDefaultNavigationProps
       titleWidth?: number;
       titleDisabled?: boolean;
     },
-  ) => ReactNode;
+  ) => React.ReactNode;
   /** Returns dynamic width values of the component (width, titleWidth, separatorWidth). */
   getDynamicValues: (stepsWidth: number) => {
     width: number;

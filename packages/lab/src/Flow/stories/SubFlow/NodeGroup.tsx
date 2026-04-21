@@ -3,13 +3,13 @@ import { css, cx } from "@emotion/css";
 import {
   NodeResizeControl,
   NodeResizer,
-  NodeProps as ReactFlowNodeProps,
+  type NodeProps as ReactFlowNodeProps,
 } from "reactflow";
 import {
   HvDropDownMenu,
-  HvListValue,
   HvTypography,
   theme,
+  type HvListValue,
 } from "@hitachivantara/uikit-react-core";
 import { Fullscreen } from "@hitachivantara/uikit-react-icons";
 import { useHvNode } from "@hitachivantara/uikit-react-lab";

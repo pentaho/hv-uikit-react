@@ -5,7 +5,7 @@ import {
   type PropsWithChildren,
 } from "react";
 
-import { HvAppShellProvidersModel } from "./types/Model";
+import type { HvAppShellProvidersModel } from "./types/Model";
 
 export type HvAppShellProvidersComponent = Omit<
   HvAppShellProvidersModel,

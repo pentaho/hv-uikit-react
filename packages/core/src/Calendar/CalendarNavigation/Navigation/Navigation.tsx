@@ -2,7 +2,7 @@ import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
 import { HvButton } from "../../../Button";
 import { HvIcon } from "../../../icons";
-import { HvBaseProps } from "../../../types/generic";
+import type { HvBaseProps } from "../../../types/generic";
 import { staticClasses, useClasses } from "./Navigation.styles";
 
 export { staticClasses as navigationClasses };

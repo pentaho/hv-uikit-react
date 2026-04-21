@@ -18,7 +18,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { Ban } from "@hitachivantara/uikit-react-icons";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 const NoDataRow = ({
   message,

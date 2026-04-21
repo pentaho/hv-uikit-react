@@ -1,7 +1,7 @@
 import { useCallback, useRef } from "react";
 
-import { ServiceId } from "../types/config";
-import {
+import type { ServiceId } from "../types/config";
+import type {
   ServiceReference,
   UseServiceOptions,
   UseServiceReferenceOptions,

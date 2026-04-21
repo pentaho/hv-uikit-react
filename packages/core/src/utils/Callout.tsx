@@ -11,8 +11,11 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
-import { HvActionsGeneric, HvActionsGenericProps } from "../ActionsGeneric";
-import { HvButton, HvButtonProps } from "../Button";
+import {
+  HvActionsGeneric,
+  type HvActionsGenericProps,
+} from "../ActionsGeneric";
+import { HvButton, type HvButtonProps } from "../Button";
 import { HvIcon } from "../icons";
 import { HvStatusIcon } from "../StatusIcon";
 import { iconVariant } from "./iconVariant";
@@ -101,11 +104,10 @@ export type HvCalloutActionPosition = "auto" | "inline" | "bottom-right";
 
 export type HvCalloutClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCalloutProps
-  extends Omit<
-    MuiSnackbarContentProps,
-    "title" | "variant" | "classes" | "onClose"
-  > {
+export interface HvCalloutProps extends Omit<
+  MuiSnackbarContentProps,
+  "title" | "variant" | "classes" | "onClose"
+> {
   /** The title to display. */
   title?: React.ReactNode;
   /** The message to display. */

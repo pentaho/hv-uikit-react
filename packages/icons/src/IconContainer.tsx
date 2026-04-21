@@ -1,6 +1,10 @@
 import { forwardRef } from "react";
 import styled from "@emotion/styled";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
 import type { IconSize } from "./IconBase";
 import { getSizeStyles } from "./utils";
@@ -31,8 +35,7 @@ const StyledIconContainer = styled("div")({
   alignItems: "center",
 });
 
-export interface HvIconContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvIconContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * A color to override the default icon colors.
    * Accepts any valid CSS color or color from the UI Kit palette.

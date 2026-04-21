@@ -8,16 +8,18 @@ import {
 import { HvButtonBase } from "../ButtonBase";
 import { useExpandable } from "../hooks/useExpandable";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
-import { HvTypography, HvTypographyVariants } from "../Typography";
+import type { HvBaseProps } from "../types/generic";
+import { HvTypography, type HvTypographyVariants } from "../Typography";
 import { staticClasses, useClasses } from "./Accordion.styles";
 
 export { staticClasses as accordionClasses };
 
 export type HvAccordionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvAccordionProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
+export interface HvAccordionProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "children"
+> {
   /** Content to be rendered. */
   children: React.ReactNode;
   /** The accordion label button. */

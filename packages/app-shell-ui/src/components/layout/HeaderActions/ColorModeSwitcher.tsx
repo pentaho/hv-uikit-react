@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import {
-  HvAppShellEventTheme,
   HvAppShellEventThemeTrigger,
+  type HvAppShellEventTheme,
 } from "@hitachivantara/app-shell-events";
 import { HvIconButton, useTheme } from "@hitachivantara/uikit-react-core";
 

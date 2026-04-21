@@ -6,16 +6,16 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvActionBar } from "../ActionBar";
-import { HvBaseDropdown, HvBaseDropdownProps } from "../BaseDropdown";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import { HvButton } from "../Button";
-import { HvCalendar, HvCalendarProps } from "../Calendar";
+import { HvCalendar, type HvCalendarProps } from "../Calendar";
 import { DEFAULT_LOCALE, isDate } from "../Calendar/utils";
 import {
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
   isInvalid,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
@@ -44,7 +44,8 @@ const DEFAULT_LABELS = {
 };
 
 export interface HvDatePickerProps
-  extends Omit<HvFormElementProps, "onChange">,
+  extends
+    Omit<HvFormElementProps, "onChange">,
     Pick<
       HvBaseDropdownProps,
       | "disablePortal"

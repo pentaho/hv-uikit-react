@@ -3,7 +3,7 @@ import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
 import { HvAdornment } from "../FormElement";
 import { HvIcon } from "../icons";
-import { HvInput, HvInputProps } from "../Input";
+import { HvInput, type HvInputProps } from "../Input";
 import { useClasses } from "./SearchInput.styles";
 
 export interface HvSearchInputProps extends HvInputProps<HTMLInputElement> {}

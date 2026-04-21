@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
   useFlowInputNodes,
+  type HvFlowNodeFC,
 } from "@hitachivantara/uikit-react-lab";
 import { HvBarChart } from "@hitachivantara/uikit-react-viz";
 

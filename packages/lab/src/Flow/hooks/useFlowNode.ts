@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from "react";
 import {
-  CoordinateExtent,
-  Edge,
-  Node,
-  ReactFlowState,
   useEdges,
   useNodes,
   useStore,
-  XYPosition,
+  type CoordinateExtent,
+  type Edge,
+  type Node,
+  type ReactFlowState,
+  type XYPosition,
 } from "reactflow";
 import { shallow } from "zustand/shallow";
 

@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvFormElementDescriptorsContext } from "../../FormElement";
-import { HvInput, HvInputProps } from "../../Input";
+import { HvInput, type HvInputProps } from "../../Input";
 import { HvTypography } from "../../Typography";
 import { isKey } from "../../utils/keyboardUtils";
 import type { HvSingleCalendarProps } from "../SingleCalendar";
@@ -165,17 +165,16 @@ export const HvCalendarHeader = (props: HvCalendarHeaderProps) => {
 // TODO: refactor this out
 HvCalendarHeader.formElementType = "HvCalendarHeader";
 
-export interface HvCalendarHeaderProps
-  extends Pick<
-    HvSingleCalendarProps,
-    | "id"
-    | "value"
-    | "locale"
-    | "onChange"
-    | "showEndDate"
-    | "showDayOfWeek"
-    | "invalidDateLabel"
-  > {
+export interface HvCalendarHeaderProps extends Pick<
+  HvSingleCalendarProps,
+  | "id"
+  | "value"
+  | "locale"
+  | "onChange"
+  | "showEndDate"
+  | "showDayOfWeek"
+  | "invalidDateLabel"
+> {
   /**
    * A Jss Object used to override or extend the component styles.
    */

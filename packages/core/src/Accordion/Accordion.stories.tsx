@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAccordion,
-  HvAccordionProps,
   HvListContainer,
   HvListItem,
+  type HvAccordionProps,
 } from "@hitachivantara/uikit-react-core";
 
 const classes = {

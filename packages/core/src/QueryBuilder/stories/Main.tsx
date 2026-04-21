@@ -1,6 +1,6 @@
 import {
   HvQueryBuilder,
-  HvQueryBuilderProps,
+  type HvQueryBuilderProps,
 } from "@hitachivantara/uikit-react-core";
 
 const attributes = {

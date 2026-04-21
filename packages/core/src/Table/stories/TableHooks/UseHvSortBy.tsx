@@ -3,16 +3,16 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
   HvTableRow,
   useHvSortBy,
   useHvTable,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 const makeSortType =
   (items: string[]): HvTableColumnConfig<AssetEvent>["sortType"] =>

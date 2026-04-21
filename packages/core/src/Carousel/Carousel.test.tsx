@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
-import { HvCarousel, HvCarouselProps, HvCarouselSlide } from ".";
+import { HvCarousel, HvCarouselSlide, type HvCarouselProps } from ".";
 
 const setup = ({
   title = "TITLE",

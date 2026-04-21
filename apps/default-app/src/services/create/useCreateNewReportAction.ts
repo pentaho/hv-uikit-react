@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { UseCreateNewContentAction } from "../types";
+import type { UseCreateNewContentAction } from "../types";
 
 const useCreateNewReportAction: UseCreateNewContentAction = () => {
   const { t } = useTranslation();

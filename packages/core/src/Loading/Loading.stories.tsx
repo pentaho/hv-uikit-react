@@ -2,9 +2,9 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
-  HvButtonProps,
   HvLoading,
-  HvLoadingProps,
+  type HvButtonProps,
+  type HvLoadingProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvLoading> = {

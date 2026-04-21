@@ -8,21 +8,21 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { Add, Fail } from "@hitachivantara/uikit-react-icons";
 import {
-  HvDashboardProps,
   HvFlow,
   HvFlowControls,
   HvFlowEmpty,
-  HvFlowInstance,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvDashboardProps,
+  type HvFlowInstance,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 import { edges, nodes, nodeTypes, useNodeGroups } from "./config";
 import {
   DASHBOARDS_STORAGE_KEY,
-  DashboardSpecs,
-  DashboardsStorage,
   LAYOUT_COLS,
+  type DashboardSpecs,
+  type DashboardsStorage,
 } from "./types";
 import { buildLayout } from "./utils";
 

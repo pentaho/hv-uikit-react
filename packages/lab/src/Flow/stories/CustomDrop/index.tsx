@@ -21,9 +21,9 @@ import {
 import {
   HvFlow,
   HvFlowControls,
-  HvFlowInstance,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowInstance,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 // The code for these utils are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/Base

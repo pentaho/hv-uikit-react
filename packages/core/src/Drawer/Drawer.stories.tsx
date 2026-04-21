@@ -9,9 +9,9 @@ import {
   HvDialogContent,
   HvDialogTitle,
   HvDrawer,
-  HvDrawerProps,
   HvGlobalActions,
   HvTypography,
+  type HvDrawerProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvDrawer> = {

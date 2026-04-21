@@ -1,4 +1,4 @@
-import { LayoutConfig } from "./LayoutsContext";
+import type { LayoutConfig } from "./LayoutsContext";
 
 export const buildLayout = (
   items?: LayoutConfig["items"],

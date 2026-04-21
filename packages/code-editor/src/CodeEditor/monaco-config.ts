@@ -1,10 +1,5 @@
 import { loader, type Monaco } from "@monaco-editor/react";
-
-declare global {
-  interface Window {
-    MonacoEnvironment?: import("monaco-editor").Environment;
-  }
-}
+import type { Environment } from "monaco-editor";
 
 // Singleton state
 let monacoInstance: Monaco | null = null;
@@ -73,7 +68,7 @@ export const configureMonaco = async (): Promise<Monaco | null> => {
           const worker = workerMap[label as WorkerLabel] ?? workerMap.default;
           return new worker.default();
         },
-      };
+      } satisfies Environment;
 
       monacoInstance = monaco;
       return monaco;

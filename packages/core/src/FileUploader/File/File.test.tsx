@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvFile, HvFileData, HvFileProps } from "./File";
+import { HvFile, type HvFileData, type HvFileProps } from "./File";
 
 const dataFail: HvFileData = {
   name: "somefile.png",

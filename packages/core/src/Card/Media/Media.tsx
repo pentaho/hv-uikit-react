@@ -1,5 +1,5 @@
 import MuiCardMedia, {
-  CardMediaProps as MuiCardMediaProps,
+  type CardMediaProps as MuiCardMediaProps,
 } from "@mui/material/CardMedia";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
@@ -10,7 +10,8 @@ export { staticClasses as cardMediaClasses };
 export type HvCardMediaClasses = ExtractNames<typeof useClasses>;
 
 export interface HvCardMediaProps
-  extends Omit<MuiCardMediaProps, "classes">,
+  extends
+    Omit<MuiCardMediaProps, "classes">,
     React.ImgHTMLAttributes<HTMLDivElement> {
   /** The title of the media. */
   title?: string;

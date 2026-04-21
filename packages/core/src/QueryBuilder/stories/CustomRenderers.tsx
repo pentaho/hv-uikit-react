@@ -4,13 +4,13 @@ import {
   HvDropdown,
   HvQueryBuilder,
   hvQueryBuilderDefaultOperators,
-  HvQueryBuilderProps,
-  HvQueryBuilderRendererProps,
   HvSlider,
   HvTagsInput,
-  HvTagsInputProps,
   theme,
   useQueryBuilderContext,
+  type HvQueryBuilderProps,
+  type HvQueryBuilderRendererProps,
+  type HvTagsInputProps,
 } from "@hitachivantara/uikit-react-core";
 
 const attributes: HvQueryBuilderProps["attributes"] = {

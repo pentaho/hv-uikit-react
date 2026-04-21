@@ -1,4 +1,4 @@
-import { HvFlowNodeParam } from "../../types";
+import type { HvFlowNodeParam } from "../../types";
 import Select from "./Select";
 import Slider from "./Slider";
 import Text from "./Text";

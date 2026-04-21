@@ -7,7 +7,7 @@ import {
 import type { HvSize } from "@hitachivantara/uikit-styles";
 
 import { HvAvatar } from "../Avatar/Avatar";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./AvatarGroup.styles";
 import { HvAvatarGroupProvider } from "./AvatarGroupContext";
 

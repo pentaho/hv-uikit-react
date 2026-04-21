@@ -8,11 +8,10 @@ import {
 } from "echarts/components";
 import * as echarts from "echarts/core";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvVisualMapHookProps,
   useData,
   useGrid,
   useOption,
@@ -20,18 +19,19 @@ import {
   useVisualMap,
   useXAxis,
   useYAxis,
+  type HvVisualMapHookProps,
 } from "../hooks";
-import {
+import type {
   Arrayable,
   HvChartCommonProps,
   HvChartXAxis,
   HvChartYAxis,
 } from "../types/common";
-import { HvConfusionMatrixMeasure } from "../types/measures";
-import { HvChartTooltip } from "../types/tooltip";
+import type { HvConfusionMatrixMeasure } from "../types/measures";
+import type { HvChartTooltip } from "../types/tooltip";
 import { getGroupKey } from "../utils";
 import { useClasses } from "./ConfusionMatrix.styles";
-import {
+import type {
   HvConfusionMatrixColorScale,
   HvConfusionMatrixFormat,
   HvConfusionMatrixValuesProps,
@@ -48,8 +48,10 @@ echarts.use([
 
 export type HvConfusionMatrixClasses = ExtractNames<typeof useClasses>;
 
-export interface HvConfusionMatrixProps
-  extends Omit<HvChartCommonProps, "tooltip"> {
+export interface HvConfusionMatrixProps extends Omit<
+  HvChartCommonProps,
+  "tooltip"
+> {
   /** Column to measure. */
   measure: HvConfusionMatrixMeasure;
   /** Columns to use to split the measure. */

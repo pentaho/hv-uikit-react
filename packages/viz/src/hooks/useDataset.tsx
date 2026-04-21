@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { internal } from "arquero";
+import type { internal } from "arquero";
 
-import { HvEChartsOption } from "../types/common";
+import type { HvEChartsOption } from "../types/common";
 
 export const useDataset = (data: internal.ColumnTable) => {
   return useMemo<Pick<HvEChartsOption, "dataset">>(() => {

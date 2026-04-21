@@ -1,6 +1,6 @@
-import { Reducer } from "react";
+import type { Reducer } from "react";
 
-import { HvQueryBuilderQueryRule, Query, QueryAction } from "../types";
+import type { HvQueryBuilderQueryRule, Query, QueryAction } from "../types";
 import { emptyGroup, emptyRule, findNodeById, findParentById } from "./index";
 
 const reducer: Reducer<Query, QueryAction> = (state, action) => {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvRadio,
   HvRadioGroup,
-  HvRadioGroupProps,
+  type HvRadioGroupProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvRadioGroup> = {

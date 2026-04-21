@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { applyNodeChanges, ReactFlowInstance } from "reactflow";
+import { applyNodeChanges, type ReactFlowInstance } from "reactflow";
 import {
   HvButton,
   HvDialog,
@@ -24,20 +24,20 @@ import {
   HvFlowBackground,
   HvFlowControls,
   HvFlowEmpty,
-  HvFlowProps,
   StickyNode,
-  StickyNodeData,
+  type HvFlowProps,
+  type StickyNodeData,
 } from "@hitachivantara/uikit-react-lab";
 import {
   HvCanvasBottomPanel,
-  HvCanvasBottomPanelProps,
   HvCanvasProvider,
   HvCanvasToolbar,
+  type HvCanvasBottomPanelProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 import { CanvasProvider, useCanvasContext } from "./Context";
 import { ListView } from "./ListView";
-import { Node, NodeData } from "./Node";
+import { Node, type NodeData } from "./Node";
 import { CanvasSidebar } from "./Sidebar";
 import { StatusEdge } from "./StatusEdge";
 import { classes } from "./styles";

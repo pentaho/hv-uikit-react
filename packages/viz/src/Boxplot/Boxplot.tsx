@@ -14,8 +14,8 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvBoxplotMeasure, HvChartTooltip } from "../types";
-import {
+import type { HvBoxplotMeasure, HvChartTooltip } from "../types";
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,
@@ -29,7 +29,8 @@ echarts.use([BoxplotChart, TooltipComponent, VisualMapComponent]);
 export type HvBoxplotClasses = ExtractNames<typeof useClasses>;
 
 export interface HvBoxplotProps
-  extends Omit<
+  extends
+    Omit<
       HvAxisChartCommonProps,
       "splitBy" | "horizontalRangeSlider" | "seriesNameFormatter" | "stack"
     >,

@@ -1,10 +1,10 @@
 import { css } from "@emotion/css";
 import {
   HvGrid,
-  HvGridProps,
   HvLoadingContainer,
   HvPanel,
   theme,
+  type HvGridProps,
 } from "@hitachivantara/uikit-react-core";
 
 /** A `HvGrid` item + styled `HvPanel` container with a loading `Suspense` boundary */

@@ -1,7 +1,7 @@
 import {
   createClasses,
-  ExtractNames,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
@@ -20,8 +20,7 @@ const { useClasses } = createClasses("HvLabelContainer", {
   description: {},
 });
 
-export interface HvLabelContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvLabelContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   classes?: ExtractNames<typeof useClasses>;
   label?: React.ReactNode;
   description?: React.ReactNode;

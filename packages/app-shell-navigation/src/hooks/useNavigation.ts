@@ -1,12 +1,16 @@
 import { useCallback, useContext, useMemo, useRef } from "react";
-import { Path, useNavigate } from "react-router-dom";
+import { useNavigate, type Path } from "react-router-dom";
 import {
   HvAppShellViewContext,
-  HvAppShellViewsModel,
   useHvAppShellModel,
+  type HvAppShellViewsModel,
 } from "@hitachivantara/app-shell-shared";
 
-import { NavigationOptions, To, ViewDestination } from "../types/navigation";
+import type {
+  NavigationOptions,
+  To,
+  ViewDestination,
+} from "../types/navigation";
 import compileHref from "../utils/navigationUtil";
 import { useHvLocation } from "./useLocation";
 

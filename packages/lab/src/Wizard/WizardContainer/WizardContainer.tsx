@@ -1,9 +1,9 @@
 import {
-  ExtractNames,
-  HvBaseProps,
   HvDialog,
-  HvDialogProps,
   useDefaultProps,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./WizardContainer.styles";
@@ -13,7 +13,8 @@ export { staticClasses as wizardContainerClasses };
 export type HvWizardContainerClasses = ExtractNames<typeof useClasses>;
 
 export interface HvWizardContainerProps
-  extends Omit<HvBaseProps, "onClose">,
+  extends
+    Omit<HvBaseProps, "onClose">,
     Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
   /** Current state of the Wizard. */
   open: boolean;

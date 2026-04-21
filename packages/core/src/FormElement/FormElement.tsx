@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { useUniqueId } from "../hooks/useUniqueId";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import {
   HvFormElementContext,
   HvFormElementDescriptorsContext,
@@ -22,7 +22,8 @@ export type HvFormElementClasses = ExtractNames<typeof useClasses>;
 export type HvFormStatus = "standBy" | "valid" | "invalid" | "empty";
 
 export interface HvFormElementProps
-  extends HvFormElementContextValue,
+  extends
+    HvFormElementContextValue,
     HvBaseProps<HTMLDivElement, "onChange" | "onToggle"> {
   /**
    * Current value of the form element.

@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import {
   createClasses,
-  ExtractNames,
   mergeStyles,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny, theme } from "@hitachivantara/uikit-styles";
+import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { SvgBase } from "../icons";
 import type { HvBaseCheckBoxProps } from "./BaseCheckBox";
@@ -44,8 +44,10 @@ const { useClasses } = createClasses("HvCheckBoxIcon", {
 
 export type HvCheckBoxIconClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCheckBoxIconProps
-  extends Pick<HvBaseCheckBoxProps, "className" | "disabled" | "semantic"> {
+export interface HvCheckBoxIconProps extends Pick<
+  HvBaseCheckBoxProps,
+  "className" | "disabled" | "semantic"
+> {
   variant?: "default" | "checked" | "indeterminate";
   color?: HvColorAny;
   classes?: HvCheckBoxIconClasses;

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Breakpoint, useTheme } from "@mui/material/styles";
+import { useTheme, type Breakpoint } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "@hitachivantara/uikit-styles";
 

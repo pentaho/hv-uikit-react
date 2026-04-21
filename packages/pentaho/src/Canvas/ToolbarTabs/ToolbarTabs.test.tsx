@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, vi } from "vitest";
 
-import { HvCanvasToolbarTabs, HvCanvasToolbarTabsProps } from "./ToolbarTabs";
+import {
+  HvCanvasToolbarTabs,
+  type HvCanvasToolbarTabsProps,
+} from "./ToolbarTabs";
 
 const Sample = (props: Partial<HvCanvasToolbarTabsProps>) => (
   <HvCanvasToolbarTabs

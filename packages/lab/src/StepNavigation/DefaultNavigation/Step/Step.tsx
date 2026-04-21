@@ -1,16 +1,16 @@
 import {
-  ExtractNames,
   HvAvatar,
-  HvBaseProps,
   HvButtonBase,
-  HvButtonBaseProps,
-  HvSize,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvButtonBaseProps,
+  type HvSize,
 } from "@hitachivantara/uikit-react-core";
 import {
   HourGlass,
-  IconType,
   Level0Good,
   Level3Bad,
+  type IconType,
 } from "@hitachivantara/uikit-react-icons";
 
 import { getSemantic } from "../utils";
@@ -19,8 +19,7 @@ import { useClasses } from "./Step.styles";
 type HvStepClasses = ExtractNames<typeof useClasses>;
 
 export interface HvStepProps
-  extends Pick<HvButtonBaseProps, "onClick">,
-    Omit<HvBaseProps, "onClick"> {
+  extends Pick<HvButtonBaseProps, "onClick">, Omit<HvBaseProps, "onClick"> {
   /** A Jss Object used to override or extend the styles applied to the empty state StepNavigation. */
   classes?: HvStepClasses;
   /** State of the step. Values = {"Pending", "Failed", "Completed", "Current", "Disabled", "Enabled"} */

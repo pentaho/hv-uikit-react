@@ -1,5 +1,5 @@
-import { AsyncResult } from "./async";
-import { ServiceId } from "./config";
+import type { AsyncResult } from "./async";
+import type { ServiceId } from "./config";
 
 /**
  * Reference to a service, including metadata and a loader function.

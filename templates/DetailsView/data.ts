@@ -2,10 +2,10 @@ import useSWR from "swr";
 
 import {
   delay,
-  ServerPaginationProps,
   useServerPagination,
+  type ServerPaginationProps,
 } from "./usePaginationData";
-import { createEntry, DetailsViewEntry } from "./utils";
+import { createEntry, type DetailsViewEntry } from "./utils";
 
 // --- Data ---
 
@@ -42,8 +42,10 @@ const model = {
 export type ModelDetails = typeof model;
 
 // #region Endpoints
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<DetailsViewEntry>, "endpoint" | "db"> {
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<DetailsViewEntry>,
+  "endpoint" | "db"
+> {
   id: string;
 }
 

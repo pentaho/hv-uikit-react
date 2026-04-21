@@ -3,15 +3,15 @@ import {
   Handle,
   NodeToolbar,
   Position,
-  NodeProps as ReactFlowNodeProps,
+  type NodeProps as ReactFlowNodeProps,
 } from "reactflow";
 import { HvIconButton, HvTypography } from "@hitachivantara/uikit-react-core";
 import { Level0Good } from "@hitachivantara/uikit-react-icons";
 import {
-  HvFlowNodeInput,
-  HvFlowNodeOutput,
   useFlowNodeEdges,
   useHvNode,
+  type HvFlowNodeInput,
+  type HvFlowNodeOutput,
 } from "@hitachivantara/uikit-react-lab";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";

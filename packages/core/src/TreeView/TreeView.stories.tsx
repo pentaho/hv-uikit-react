@@ -5,7 +5,7 @@ import {
   HvPanel,
   HvTreeItem,
   HvTreeView,
-  HvTreeViewProps,
+  type HvTreeViewProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { DataObject as DataObjectStory } from "./stories/DataObject";

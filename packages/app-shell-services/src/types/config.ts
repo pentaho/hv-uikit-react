@@ -1,5 +1,7 @@
-export interface ServicesConfig
-  extends Record<ServiceId, ServiceProviderConfig[]> {}
+export interface ServicesConfig extends Record<
+  ServiceId,
+  ServiceProviderConfig[]
+> {}
 
 export type ServiceId = string; //NOSONAR
 

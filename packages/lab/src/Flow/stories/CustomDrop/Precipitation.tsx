@@ -1,4 +1,4 @@
-import { HvFlowNode, HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import { HvFlowNode, type HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
 
 import { data } from "./data";
 

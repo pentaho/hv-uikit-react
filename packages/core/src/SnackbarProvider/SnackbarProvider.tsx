@@ -1,11 +1,11 @@
 import { forwardRef, useCallback, useMemo } from "react";
-import { SnackbarOrigin } from "@mui/material/Snackbar";
+import type { SnackbarOrigin } from "@mui/material/Snackbar";
 import {
-  OptionsObject,
   SnackbarContent,
   SnackbarProvider,
-  SnackbarProviderProps,
   useSnackbar,
+  type OptionsObject,
+  type SnackbarProviderProps,
 } from "notistack";
 import {
   useDefaultProps,
@@ -14,8 +14,8 @@ import {
 
 import {
   HvSnackbarContent,
-  HvSnackbarContentProps,
-  HvSnackbarVariant,
+  type HvSnackbarContentProps,
+  type HvSnackbarVariant,
 } from "../Snackbar/SnackbarContent";
 import { staticClasses, useClasses } from "./SnackbarProvider.styles";
 
@@ -42,8 +42,10 @@ export interface HvSnackbarProviderProps {
   container?: SnackbarProviderProps["domRoot"];
 }
 
-export interface HvNotistackSnackMessageProps
-  extends Omit<OptionsObject, "variant"> {
+export interface HvNotistackSnackMessageProps extends Omit<
+  OptionsObject,
+  "variant"
+> {
   /** Id to be applied to the root node. */
   id?: string;
   /** class name to apply on the root node */

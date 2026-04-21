@@ -22,8 +22,7 @@ type SemanticKeys<Prefix extends string> =
 type VizKeys = `cat${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}`;
 
 export interface HvColorTokens
-  extends Record<SemanticKeys<SemanticTypes>, string>,
-    Record<VizKeys, string> {
+  extends Record<SemanticKeys<SemanticTypes>, string>, Record<VizKeys, string> {
   // #region semantic
   // 🔎: border tokens don't exist for "primary"
   accentBorder: string;

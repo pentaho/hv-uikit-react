@@ -1,23 +1,23 @@
 import styled from "@emotion/styled";
 import {
-  ExtractNames,
-  HvBaseProps,
-  HvBreakpoints,
   HvTooltip,
   HvTypography,
   useTheme,
   useWidth,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvBreakpoints,
 } from "@hitachivantara/uikit-react-core";
 import { theme } from "@hitachivantara/uikit-styles";
 
 import {
   HvDefaultNavigation,
-  HvDefaultNavigationProps,
-  HvStepProps,
+  type HvDefaultNavigationProps,
+  type HvStepProps,
 } from "./DefaultNavigation";
 import {
   HvSimpleNavigation,
-  HvSimpleNavigationProps,
+  type HvSimpleNavigationProps,
 } from "./SimpleNavigation";
 import { staticClasses, useClasses } from "./StepNavigation.styles";
 import { SEPARATOR_WIDTH, TITLE_MARGIN, TITLE_WIDTH } from "./utils";

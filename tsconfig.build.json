@@ -8,6 +8,8 @@
     "declaration": true,
     "declarationMap": true,
 
+    "verbatimModuleSyntax": true,
+
     /* Others */
     "types": ["@testing-library/jest-dom", "vite/client", "vitest/globals"]
   },

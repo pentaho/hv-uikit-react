@@ -3,15 +3,14 @@ import { useDraggable } from "@dnd-kit/core";
 import { useForkRef } from "@mui/material/utils";
 import { useUniqueId } from "@hitachivantara/uikit-react-core";
 
-import { HvFlowGroupItem } from "../../../types";
+import type { HvFlowGroupItem } from "../../../types";
 import {
   HvFlowSidebarGroupItem,
-  HvFlowSidebarGroupItemProps,
+  type HvFlowSidebarGroupItemProps,
 } from "./SidebarGroupItem";
 
 export interface HvFlowDraggableSidebarGroupItemProps
-  extends HvFlowSidebarGroupItemProps,
-    HvFlowGroupItem {}
+  extends HvFlowSidebarGroupItemProps, HvFlowGroupItem {}
 
 export const HvFlowDraggableSidebarGroupItem = ({
   id: idProp,

@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvBaseRadio } from "../BaseRadio";
-import { HvRadioGroup, HvRadioGroupProps } from "../RadioGroup";
+import { HvRadioGroup, type HvRadioGroupProps } from "../RadioGroup";
 import { range } from "../utils/helpers";
 import { staticClasses, useClasses } from "./DotPagination.styles";
 
@@ -25,8 +25,10 @@ export { staticClasses as dotPaginationClasses };
 
 export type HvDotPaginationClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDotPaginationProps
-  extends Omit<HvRadioGroupProps, "classes"> {
+export interface HvDotPaginationProps extends Omit<
+  HvRadioGroupProps,
+  "classes"
+> {
   /**
    * Icon to override the default one used for the unselected state.
    *

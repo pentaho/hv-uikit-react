@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import { HvThemeColorMode } from "@hitachivantara/uikit-styles";
+import type { HvThemeColorMode } from "@hitachivantara/uikit-styles";
 
-import { HvTheme } from "../types/theme";
+import type { HvTheme } from "../types/theme";
 
 export interface HvThemeContextValue {
   colorModes: HvThemeColorMode[];

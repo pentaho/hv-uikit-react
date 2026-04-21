@@ -1,25 +1,24 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
+import type {
   ExtractNames,
   HvBaseProps,
   HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
-import { HvStepNavigationProps } from "../StepNavigation";
+import type { HvStepNavigationProps } from "../StepNavigation";
 import { staticClasses, useClasses } from "./Wizard.styles";
-import { HvWizardActions, HvWizardActionsProps } from "./WizardActions";
+import { HvWizardActions, type HvWizardActionsProps } from "./WizardActions";
 import { HvWizardContainer } from "./WizardContainer";
 import { HvWizardContent } from "./WizardContent";
-import { HvWizardContext, HvWizardTabs } from "./WizardContext";
-import { HvWizardTitle, HvWizardTitleProps } from "./WizardTitle";
+import { HvWizardContext, type HvWizardTabs } from "./WizardContext";
+import { HvWizardTitle, type HvWizardTitleProps } from "./WizardTitle";
 
 export { staticClasses as wizardClasses };
 
 export type HvWizardClasses = ExtractNames<typeof useClasses>;
 
 export interface HvWizardProps
-  extends HvBaseProps,
-    Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
+  extends HvBaseProps, Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
   /** Current state of the Wizard. */
   open: boolean;
   /** Function executed on close. */

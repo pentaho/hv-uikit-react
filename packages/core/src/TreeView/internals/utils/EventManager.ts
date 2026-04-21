@@ -25,7 +25,7 @@ export class EventManager {
 
   warnOnce = false;
 
-  events: { [eventName: string]: EventListenerCollection } = {};
+  events: Record<string, EventListenerCollection> = {};
 
   on(
     eventName: string,

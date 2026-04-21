@@ -6,11 +6,11 @@ import {
   HvCardHeader,
   HvCardMedia,
   HvCarousel,
-  HvCarouselProps,
   HvCarouselSlide,
   HvDropDownMenu,
   HvTypography,
   theme,
+  type HvCarouselProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

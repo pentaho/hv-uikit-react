@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { HvFileData } from "../File";
+import type { HvFileData } from "../File";
 import { HvFileList } from "./FileList";
 
 const Main = () => (

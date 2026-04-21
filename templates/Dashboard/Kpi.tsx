@@ -2,9 +2,9 @@ import { css } from "@emotion/css";
 import {
   HvCard,
   HvCardContent,
-  HvCardProps,
   HvTypography,
   theme,
+  type HvCardProps,
 } from "@hitachivantara/uikit-react-core";
 import { Level0Good } from "@hitachivantara/uikit-react-icons";
 

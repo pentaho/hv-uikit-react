@@ -9,13 +9,13 @@ import {
 } from "react";
 import { useElementSize } from "usehooks-ts";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvDialogContent,
   HvLoadingContainer,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 
-import { HvWizardContext, HvWizardTabs } from "../WizardContext";
+import { HvWizardContext, type HvWizardTabs } from "../WizardContext";
 import { staticClasses, useClasses } from "./WizardContent.styles";
 
 export { staticClasses as wizardContentClasses };

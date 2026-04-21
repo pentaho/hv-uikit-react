@@ -1,6 +1,6 @@
-import { Reducer, useReducer } from "react";
+import { useReducer, type Reducer } from "react";
 
-import { VisibilitySelectorActions } from "../Calendar";
+import type { VisibilitySelectorActions } from "../Calendar";
 import { validateDate } from "./utils";
 
 function stateToLeftRight({

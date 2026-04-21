@@ -3,8 +3,8 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvFileData } from "./File";
-import { HvFileUploader, HvFileUploaderProps } from "./FileUploader";
+import type { HvFileData } from "./File";
+import { HvFileUploader, type HvFileUploaderProps } from "./FileUploader";
 
 const fileList = [
   { id: "1", name: "Screenshot1.png", size: 14100000, type: "image/png" },

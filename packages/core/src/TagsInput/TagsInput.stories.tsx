@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  HvFormStatus,
-  HvTagProps,
   HvTagsInput,
-  HvTagsInputProps,
   HvTypography,
+  type HvFormStatus,
+  type HvTagProps,
+  type HvTagsInputProps,
 } from "@hitachivantara/uikit-react-core";
 
 import countryNamesArray from "./countries";

@@ -2,16 +2,15 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { css, cx } from "@emotion/css";
 import Popover from "@mui/material/Popover";
 import {
-  NodeProps,
   NodeResizer,
   NodeToolbar,
   Position,
   useReactFlow,
+  type NodeProps,
 } from "reactflow";
 import {
   HvButton,
   HvCheckBox,
-  HvColorAny,
   HvColorPicker,
   HvDialogContent,
   HvDialogTitle,
@@ -20,6 +19,7 @@ import {
   HvMultiButton,
   HvSelectionList,
   theme,
+  type HvColorAny,
 } from "@hitachivantara/uikit-react-core";
 import {
   ActualSize,

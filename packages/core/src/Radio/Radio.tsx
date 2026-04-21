@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useState } from "react";
-import { RadioProps as MuiRadioProps } from "@mui/material/Radio";
+import type { RadioProps as MuiRadioProps } from "@mui/material/Radio";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -9,9 +9,9 @@ import { HvBaseRadio } from "../BaseRadio";
 import {
   HvFormElement,
   HvLabel,
-  HvLabelProps,
   HvWarningText,
   isInvalid,
+  type HvLabelProps,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
@@ -24,8 +24,10 @@ export type HvRadioClasses = ExtractNames<typeof useClasses>;
 
 export type HvRadioStatus = "standBy" | "valid" | "invalid";
 
-export interface HvRadioProps
-  extends Omit<MuiRadioProps, "onChange" | "classes"> {
+export interface HvRadioProps extends Omit<
+  MuiRadioProps,
+  "onChange" | "classes"
+> {
   /**
    * A Jss Object used to override or extend the styles applied to the radio button.
    */

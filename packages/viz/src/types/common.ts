@@ -1,13 +1,13 @@
 import type { EChartsType } from "echarts";
 
-import { HvChartAxis } from "./axis";
-import { HvChartFilter } from "./filter";
-import { HvChartData } from "./generic";
-import { HvChartGrid } from "./grid";
-import { HvChartLegend } from "./legend";
-import { HvChartHorizontalRangeSlider } from "./slider";
-import { HvChartSortBy } from "./sort";
-import { HvChartTooltip } from "./tooltip";
+import type { HvChartAxis } from "./axis";
+import type { HvChartFilter } from "./filter";
+import type { HvChartData } from "./generic";
+import type { HvChartGrid } from "./grid";
+import type { HvChartLegend } from "./legend";
+import type { HvChartHorizontalRangeSlider } from "./slider";
+import type { HvChartSortBy } from "./sort";
+import type { HvChartTooltip } from "./tooltip";
 
 // Note: These types should not be exported at the moment since they can change over time.
 

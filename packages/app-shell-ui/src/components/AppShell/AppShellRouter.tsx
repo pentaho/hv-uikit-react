@@ -4,8 +4,8 @@ import {
   createBrowserRouter,
   matchRoutes,
   Outlet,
-  RouteObject,
   RouterProvider,
+  type RouteObject,
 } from "react-router-dom";
 import {
   useHvAppShellModel,

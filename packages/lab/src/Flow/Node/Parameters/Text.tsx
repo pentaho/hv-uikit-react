@@ -1,7 +1,7 @@
 import { HvInput } from "@hitachivantara/uikit-react-core";
 
 import { useFlowNodeUtils } from "../../hooks";
-import { HvFlowNodeTextParam } from "../../types";
+import type { HvFlowNodeTextParam } from "../../types";
 
 interface TextProps {
   param: Omit<HvFlowNodeTextParam, "type">;

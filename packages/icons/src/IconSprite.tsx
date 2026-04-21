@@ -1,6 +1,6 @@
 import type { HvColor } from "@hitachivantara/uikit-styles";
 
-import { IconBase, IconBaseProps } from "./IconBase";
+import { IconBase, type IconBaseProps } from "./IconBase";
 import { isSelector, isSort } from "./utils";
 
 const getSecondaryColor = (iconName: string): HvColor => {
@@ -10,8 +10,10 @@ const getSecondaryColor = (iconName: string): HvColor => {
   return "bgPage"; // atmo2
 };
 
-export interface HvIconSpriteProps
-  extends Omit<IconBaseProps, "viewbox" | "inverted" | "semantic"> {
+export interface HvIconSpriteProps extends Omit<
+  IconBaseProps,
+  "viewbox" | "inverted" | "semantic"
+> {
   /**
    * The URL to the SVG icon sprite, served statically by the application.
    * @example "/public/icons.svg"

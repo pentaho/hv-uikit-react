@@ -1,24 +1,24 @@
 import useSWR from "swr";
 import {
-  HvBulkActionsProps,
-  HvColor,
-  HvTableColumnConfig,
   HvTooltip,
+  type HvBulkActionsProps,
+  type HvColor,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import {
-  IconType,
   Level0Good,
   Level1,
   Level2Average,
   Level3Bad,
   Refresh,
+  type IconType,
 } from "@hitachivantara/uikit-react-icons";
 
 import {
-  DataObject,
   delay,
-  ServerPaginationProps,
   useServerPagination,
+  type DataObject,
+  type ServerPaginationProps,
 } from "./usePaginationData";
 
 // --- Table data utils ---
@@ -162,8 +162,10 @@ const requestsSummary = {
   },
 };
 
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<ListViewEntry>, "endpoint" | "db"> {}
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<ListViewEntry>,
+  "endpoint" | "db"
+> {}
 
 export const usePaginationData = (props: PaginationDataProps) => {
   return useServerPagination({ endpoint: "/requests", db, ...props });

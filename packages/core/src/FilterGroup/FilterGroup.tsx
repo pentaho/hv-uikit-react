@@ -6,9 +6,9 @@ import {
 
 import {
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
@@ -17,11 +17,11 @@ import { useUniqueId } from "../hooks/useUniqueId";
 import { setId } from "../utils/setId";
 import {
   HvFilterGroupContent,
-  HvFilterGroupContentProps,
+  type HvFilterGroupContentProps,
 } from "./FilterContent";
 import { staticClasses, useClasses } from "./FilterGroup.styles";
 import { HvFilterGroupProvider } from "./FilterGroupContext";
-import {
+import type {
   HvFilterGroupFilters,
   HvFilterGroupHorizontalPlacement,
   HvFilterGroupValue,
@@ -31,11 +31,10 @@ export { staticClasses as filterGroupClasses };
 
 export type HvFilterGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFilterGroupProps
-  extends Omit<
-    HvFormElementProps,
-    "classes" | "onChange" | "defaultValue" | "statusMessage"
-  > {
+export interface HvFilterGroupProps extends Omit<
+  HvFormElementProps,
+  "classes" | "onChange" | "defaultValue" | "statusMessage"
+> {
   /** The initial value of the input when in single calendar mode. */
   filters: HvFilterGroupFilters;
   /** The form element name. */

@@ -3,18 +3,18 @@ import { useDraggable } from "@dnd-kit/core";
 import { css, cx } from "@emotion/css";
 import {
   HvInput,
-  HvInputProps,
   HvListContainer,
   HvListItem,
-  HvListItemProps,
   HvTypography,
   outlineStyles,
   theme,
   useForkRef,
+  type HvInputProps,
+  type HvListItemProps,
 } from "@hitachivantara/uikit-react-core";
 import { Drag } from "@hitachivantara/uikit-react-icons";
 
-import { NodeData } from "./Node";
+import type { NodeData } from "./Node";
 import { iconsMapping, iconsMappingKeys } from "./utils";
 
 const classes = {
@@ -61,8 +61,7 @@ interface ItemProps {
 }
 
 interface ItemCardProps
-  extends Omit<HvListItemProps, "title">,
-    Omit<ItemProps, "id"> {
+  extends Omit<HvListItemProps, "title">, Omit<ItemProps, "id"> {
   isDragging?: boolean;
 }
 

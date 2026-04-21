@@ -4,12 +4,12 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
-import { HvHeaderMenuBar, HvHeaderMenuBarProps } from "./MenuBar";
+import type { HvBaseProps } from "../../types/generic";
+import { HvHeaderMenuBar, type HvHeaderMenuBarProps } from "./MenuBar";
 import { staticClasses, useClasses } from "./Navigation.styles";
 import {
-  HvHeaderNavigationItemProp,
   useSelectionPath,
+  type HvHeaderNavigationItemProp,
 } from "./useSelectionPath";
 import { FocusProvider } from "./utils/FocusContext";
 import { SelectionContext } from "./utils/SelectionContext";
@@ -18,8 +18,10 @@ export { staticClasses as headerNavigationClasses };
 
 export type HvHeaderNavigationClasses = ExtractNames<typeof useClasses>;
 
-export interface HvHeaderNavigationProps
-  extends HvBaseProps<HTMLDivElement, "onClick"> {
+export interface HvHeaderNavigationProps extends HvBaseProps<
+  HTMLDivElement,
+  "onClick"
+> {
   data: HvHeaderNavigationItemProp[];
   selected?: string;
   onClick?: (

@@ -1,7 +1,7 @@
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StoryObj } from "@storybook/react-vite";
-import { HvButton, HvButtonProps } from "@hitachivantara/uikit-react-core";
+import type { StoryObj } from "@storybook/react-vite";
+import { HvButton, type HvButtonProps } from "@hitachivantara/uikit-react-core";
 import {
   Delete,
   Favorite,

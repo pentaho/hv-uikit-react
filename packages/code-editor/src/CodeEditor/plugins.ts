@@ -1,6 +1,6 @@
 import { sqlLanguagePlugin } from "./languages/sql";
 import { xmlLanguagePlugin } from "./languages/xml";
-import { LanguagePlugin } from "./types";
+import type { LanguagePlugin } from "./types";
 
 /**
  * Language plugins supported by the `CodeEditor`

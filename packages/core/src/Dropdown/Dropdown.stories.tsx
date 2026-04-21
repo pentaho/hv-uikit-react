@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import {
   HvBaseDropdown,
   HvDropdown,
-  HvDropdownProps,
+  type HvDropdownProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

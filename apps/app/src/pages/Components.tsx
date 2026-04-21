@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   HvAccordion,
   HvActionBar,
-  HvActionGeneric,
   HvAvatar,
   HvBannerContent,
   HvBreadCrumb,
@@ -53,11 +52,12 @@ import {
   useHvRowSelection,
   useHvTable,
   useHvTableSticky,
+  type HvActionGeneric,
 } from "@hitachivantara/uikit-react-core";
 // eslint-disable-next-line no-restricted-imports
 import {
-  AssetEvent,
   makeData,
+  type AssetEvent,
 } from "@hitachivantara/uikit-react-core/src/Table/stories/storiesUtils";
 import {
   Backwards,

@@ -8,11 +8,11 @@ import {
   HvCardHeader,
   HvPanel,
   HvStack,
-  HvStackProps,
   HvToggleButton,
   HvTypography,
   theme,
   useWidth,
+  type HvStackProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   Favorite,

@@ -7,11 +7,11 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseInput, HvBaseInputProps } from "../BaseInput";
+import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import { useLabels } from "../hooks/useLabels";
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Pagination.styles";
 import HvSelect, { Option } from "./Select";
 

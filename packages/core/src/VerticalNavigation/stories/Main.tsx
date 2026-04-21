@@ -3,8 +3,8 @@ import {
   HvVerticalNavigation,
   HvVerticalNavigationAction,
   HvVerticalNavigationActions,
-  HvVerticalNavigationProps,
   HvVerticalNavigationTree,
+  type HvVerticalNavigationProps,
 } from "@hitachivantara/uikit-react-core";
 import { LogOut, User } from "@hitachivantara/uikit-react-icons";
 

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
   HvButton,
-  HvButtonVariant,
   HvDialog,
   HvDialogActions,
   HvDialogContent,
-  HvDialogProps,
   HvDialogTitle,
   HvStatusIcon,
+  type HvButtonVariant,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
 type SimpleDialogProps = Pick<HvDialogProps, "classes" | "variant"> & {

@@ -1,21 +1,21 @@
 import {
-  HTMLAttributes,
-  SyntheticEvent,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
+  type HTMLAttributes,
+  type SyntheticEvent,
 } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvTypography,
-  HvTypographyVariants,
   setId,
   useControlled,
   useDefaultProps,
   useUniqueId,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvTypographyVariants,
 } from "@hitachivantara/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blade.styles";
@@ -24,8 +24,10 @@ export { staticClasses as bladeClasses };
 
 export type HvBladeClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBladeProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "children"> {
+export interface HvBladeProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "children"
+> {
   /**
    * The content that will be rendered within the blade.
    */

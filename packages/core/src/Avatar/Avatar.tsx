@@ -1,16 +1,22 @@
 import { forwardRef } from "react";
-import MuiAvatar, { AvatarProps as MuiAvatarProps } from "@mui/material/Avatar";
+import MuiAvatar, {
+  type AvatarProps as MuiAvatarProps,
+} from "@mui/material/Avatar";
 import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
 import { useAvatarGroupContext } from "../AvatarGroup/AvatarGroupContext";
 import { useImageLoaded } from "../hooks/useImageLoaded";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Avatar.styles";
 
 const decreaseSizeMap = {

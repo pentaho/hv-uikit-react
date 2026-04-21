@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvFormElement,
-  HvFormStatus,
   HvWarningText,
-  HvWarningTextProps,
+  type HvFormStatus,
+  type HvWarningTextProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvWarningText> = {

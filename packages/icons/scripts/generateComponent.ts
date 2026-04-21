@@ -1,4 +1,4 @@
-import { HvColor } from "@hitachivantara/uikit-styles";
+import type { HvColor } from "@hitachivantara/uikit-styles";
 
 const hexColorMap: Record<string, HvColor> = {
   "#414141": "text", // secondary

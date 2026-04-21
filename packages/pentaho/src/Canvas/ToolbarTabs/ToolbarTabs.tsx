@@ -1,10 +1,7 @@
 import { forwardRef, useMemo, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
-  HvButtonProps,
   HvDropDownMenu,
   HvOverflowTooltip,
   isKey,
@@ -13,6 +10,9 @@ import {
   useDefaultProps,
   useForkRef,
   useLabels,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   AddAlt,
@@ -22,7 +22,7 @@ import {
 import { clamp } from "@hitachivantara/uikit-react-utils";
 
 import { HvCanvasPanelTab } from "../PanelTab";
-import { HvCanvasPanelTabs, HvCanvasPanelTabsProps } from "../PanelTabs";
+import { HvCanvasPanelTabs, type HvCanvasPanelTabsProps } from "../PanelTabs";
 import { ToolbarTabEditor } from "./ToolbarTabEditor";
 import {
   DROPDOWN_MENU_WIDTH,
@@ -50,8 +50,10 @@ interface ToolbarTabsTab {
   fixed?: boolean;
 }
 
-export interface HvCanvasToolbarTabsProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvCanvasToolbarTabsProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /** When controlled, defines the tabs. */
   tabs?: ToolbarTabsTab[];
   /** When uncontrolled, defines the initial tabs. */

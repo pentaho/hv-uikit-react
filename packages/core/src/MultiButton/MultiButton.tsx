@@ -3,10 +3,10 @@ import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvSize } from "@hitachivantara/uikit-styles";
+import type { HvSize } from "@hitachivantara/uikit-styles";
 
-import { HvButtonVariant } from "../Button";
-import { HvBaseProps } from "../types/generic";
+import type { HvButtonVariant } from "../Button";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./MultiButton.styles";
 
 export { staticClasses as multiButtonClasses };

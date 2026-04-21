@@ -10,7 +10,7 @@ import { isKey } from "../../utils/keyboardUtils";
 import type { HvCalendarProps } from "../Calendar";
 import { HvCalendarHeader } from "../CalendarHeader/CalendarHeader";
 import { HvComposedNavigation, HvMonthSelector } from "../CalendarNavigation";
-import { ViewMode } from "../enums";
+import type { ViewMode } from "../enums";
 import { generateCalendarModel } from "../model";
 import type { DateRangeProp } from "../types";
 import { DEFAULT_LOCALE, getWeekdayNamesList, isDate, isRange } from "../utils";
@@ -185,8 +185,10 @@ export const HvSingleCalendar = (props: HvSingleCalendarProps) => {
   );
 };
 
-export interface HvSingleCalendarProps
-  extends Omit<HvCalendarProps, "classes"> {
+export interface HvSingleCalendarProps extends Omit<
+  HvCalendarProps,
+  "classes"
+> {
   /**
    * Styles applied from the theme.
    */

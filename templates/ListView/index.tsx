@@ -1,15 +1,12 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { css } from "@emotion/css";
 import {
-  HvActionsGenericProps,
   HvBulkActions,
   HvButton,
   HvControls,
   HvGlobalActions,
   HvGrid,
-  HvGridProps,
   HvLeftControl,
-  HvLeftControlProps,
   HvLoadingContainer,
   HvPagination,
   HvRightControl,
@@ -21,15 +18,18 @@ import {
   useHvPagination,
   useHvRowSelection,
   useHvSortBy,
+  type HvActionsGenericProps,
+  type HvGridProps,
+  type HvLeftControlProps,
 } from "@hitachivantara/uikit-react-core";
 
 import {
   actions,
   getColumns,
-  ListViewEntry,
-  PaginationDataProps,
   usePaginationData,
   useSummaryData,
+  type ListViewEntry,
+  type PaginationDataProps,
 } from "./data";
 import { Kpi } from "./Kpi";
 import { Table } from "./Table";

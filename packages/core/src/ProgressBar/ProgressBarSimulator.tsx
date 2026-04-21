@@ -1,7 +1,7 @@
-import { AriaAttributes, useEffect, useState } from "react";
+import { useEffect, useState, type AriaAttributes } from "react";
 
 import { HvButton } from "../Button";
-import { HvProgressBar, HvProgressBarStatus } from "./ProgressBar";
+import { HvProgressBar, type HvProgressBarStatus } from "./ProgressBar";
 
 export const ProgressBarSimulator = ({
   inc,

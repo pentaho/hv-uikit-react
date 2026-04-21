@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { typeToFlattenedError, z } from "zod";
+import { z, type typeToFlattenedError } from "zod";
 import {
   HvButton,
   HvCheckBox,

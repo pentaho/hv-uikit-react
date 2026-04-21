@@ -3,8 +3,8 @@ import { setupChromatic } from "@hitachivantara/internal";
 import {
   CheckboxCheck,
   HvIconSprite,
-  HvIconSpriteProps,
   icons,
+  type HvIconSpriteProps,
 } from "@hitachivantara/uikit-react-icons";
 
 export default {

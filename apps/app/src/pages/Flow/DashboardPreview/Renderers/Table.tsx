@@ -8,7 +8,6 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
@@ -18,6 +17,7 @@ import {
   useHvFilters,
   useHvPagination,
   useHvSortBy,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import { Ban } from "@hitachivantara/uikit-react-icons";
 

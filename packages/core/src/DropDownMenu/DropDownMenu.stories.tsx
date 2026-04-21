@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvDropDownMenu,
-  HvDropDownMenuProps,
+  type HvDropDownMenuProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

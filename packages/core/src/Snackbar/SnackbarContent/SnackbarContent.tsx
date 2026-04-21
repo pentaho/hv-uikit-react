@@ -6,11 +6,14 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionGeneric, HvActionsGenericProps } from "../../ActionsGeneric";
+import type {
+  HvActionGeneric,
+  HvActionsGenericProps,
+} from "../../ActionsGeneric";
 import {
   HvCallout,
-  HvCalloutProps,
-  HvCalloutVariant,
+  type HvCalloutProps,
+  type HvCalloutVariant,
 } from "../../utils/Callout";
 import { staticClasses, useClasses } from "./SnackbarContent.styles";
 
@@ -23,8 +26,10 @@ export type HvSnackbarVariant = HvCalloutVariant;
 const isActionGeneric = (action: any): action is HvActionGeneric =>
   action && typeof action === "object" && "id" in action && "label" in action;
 
-export interface HvSnackbarContentProps
-  extends Omit<MuiSnackbarContentProps, "variant" | "action" | "classes"> {
+export interface HvSnackbarContentProps extends Omit<
+  MuiSnackbarContentProps,
+  "variant" | "action" | "classes"
+> {
   /** The message to display. */
   label?: React.ReactNode;
   /** Variant of the snackbar. */

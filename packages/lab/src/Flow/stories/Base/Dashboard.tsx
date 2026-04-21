@@ -15,13 +15,13 @@ import { Info } from "@hitachivantara/uikit-react-icons";
 import {
   HvDashboard,
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeProps,
   useFlowInstance,
   useFlowNodeInputEdges,
+  type HvFlowNodeFC,
+  type HvFlowNodeProps,
 } from "@hitachivantara/uikit-react-lab";
 
-import { LayoutConfig, useLayoutsContext } from "./LayoutsContext";
+import { useLayoutsContext, type LayoutConfig } from "./LayoutsContext";
 import { buildLayout } from "./utils";
 
 interface DashboardData {

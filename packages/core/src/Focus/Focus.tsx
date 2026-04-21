@@ -1,7 +1,7 @@
 import { cloneElement, useRef, useState } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./Focus.styles";
 import { getFocusableChildren, isBrowser, setFocusTo } from "./utils";

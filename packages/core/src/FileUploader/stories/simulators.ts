@@ -1,4 +1,4 @@
-import { HvFileData } from "../File";
+import type { HvFileData } from "../File";
 
 const uploadHandlers = new Map();
 

@@ -1,11 +1,11 @@
 import {
-  HvBulkActionsProps,
-  HvColor,
-  HvControlsProps,
-  HvRightControlProps,
   HvSkeleton,
-  HvTableColumnConfig,
   HvTooltip,
+  type HvBulkActionsProps,
+  type HvColor,
+  type HvControlsProps,
+  type HvRightControlProps,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import {
   Add,
@@ -20,9 +20,9 @@ import {
 } from "@hitachivantara/uikit-react-icons";
 
 import {
-  DataObject,
-  ServerPaginationProps,
   useServerPagination,
+  type DataObject,
+  type ServerPaginationProps,
 } from "./usePaginationData";
 
 // --- Table data utils ---
@@ -247,8 +247,10 @@ export const createEntry = (i: number): AssetInventoryEntry => {
 // --- Data & Endpoint ---
 const db = [...Array(50).keys()].map(createEntry);
 
-export interface PaginationDataProps
-  extends Omit<ServerPaginationProps<AssetInventoryEntry>, "endpoint" | "db"> {}
+export interface PaginationDataProps extends Omit<
+  ServerPaginationProps<AssetInventoryEntry>,
+  "endpoint" | "db"
+> {}
 
 export const usePaginationData = (props: PaginationDataProps) => {
   return useServerPagination({ endpoint: "/events", db, ...props });

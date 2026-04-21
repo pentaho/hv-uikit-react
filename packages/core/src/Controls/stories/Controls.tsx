@@ -4,18 +4,18 @@ import {
   HvCardContent,
   HvCardHeader,
   HvControls,
-  HvControlsViewConfiguration,
   HvLeftControl,
   HvListContainer,
   HvListItem,
   HvPanel,
   HvRightControl,
-  HvRightListControls,
   HvSimpleGrid,
-  HvTableColumnConfig,
   useHvGlobalFilter,
   useHvSortBy,
   useHvTable,
+  type HvControlsViewConfiguration,
+  type HvRightListControls,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import { Cards, List } from "@hitachivantara/uikit-react-icons";
 

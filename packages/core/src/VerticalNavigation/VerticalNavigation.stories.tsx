@@ -6,11 +6,11 @@ import {
   HvVerticalNavigationAction,
   HvVerticalNavigationActions,
   HvVerticalNavigationHeader,
-  HvVerticalNavigationProps,
   HvVerticalNavigationSlider,
   HvVerticalNavigationTree,
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
+  type HvVerticalNavigationProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { CollapsibleIcons as CollapsibleIconsStory } from "./stories/CollapsibleIcons";

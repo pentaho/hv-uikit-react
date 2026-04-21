@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseDropdown, HvBaseDropdownProps } from "../BaseDropdown";
-import { HvListItem, HvListItemProps } from "../ListContainer";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
+import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { HvPanel } from "../Panel";
-import { HvSelectionList, HvSelectionListProps } from "../SelectionList";
+import { HvSelectionList, type HvSelectionListProps } from "../SelectionList";
 import { useClasses } from "./Select.styles";
 
 export const Option = ({ ...props }: Partial<HvListItemProps>) => (
   <HvListItem {...props} />
 );
 
-export interface HvPaginationSelectProps
-  extends Omit<HvBaseDropdownProps, "onChange"> {
+export interface HvPaginationSelectProps extends Omit<
+  HvBaseDropdownProps,
+  "onChange"
+> {
   onChange: (event: React.SyntheticEvent, val: number) => void;
   value: number;
 }

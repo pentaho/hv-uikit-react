@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 
-import { HvFlowNodeMeta } from "../types";
+import type { HvFlowNodeMeta } from "../types";
 
 interface HvFlowNodeMetaContextType {
   registerNode: (id: string, nodeInfo: HvFlowNodeMeta) => void;

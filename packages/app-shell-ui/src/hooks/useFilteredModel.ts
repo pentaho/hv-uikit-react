@@ -3,7 +3,7 @@ import type { HvAppShellModel } from "@hitachivantara/app-shell-shared";
 
 import filterModel from "../utils/filterModel";
 import { useConditionsEvaluator } from "./useConditionsEvaluator";
-import { ModelResult } from "./useModelFromConfig";
+import type { ModelResult } from "./useModelFromConfig";
 
 /**
  * Hook to evaluate conditions and filter configuration

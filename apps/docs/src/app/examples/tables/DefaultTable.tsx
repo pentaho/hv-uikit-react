@@ -1,12 +1,12 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
   HvIconButton,
-  HvRowInstance,
   HvSearchInput,
   HvTab,
-  HvTableColumnConfig,
-  HvTableInstance,
   HvTabs,
+  type HvRowInstance,
+  type HvTableColumnConfig,
+  type HvTableInstance,
 } from "@hitachivantara/uikit-react-core";
 import { Delete, Duplicate, Preview } from "@hitachivantara/uikit-react-icons";
 

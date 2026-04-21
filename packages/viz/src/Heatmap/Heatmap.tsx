@@ -4,7 +4,7 @@ import { HeatmapChart } from "echarts/charts";
 import { TooltipComponent, VisualMapComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { HvBaseChart } from "../BaseChart";
 import {
@@ -14,8 +14,8 @@ import {
   useXAxis,
   useYAxis,
 } from "../hooks";
-import { HvChartTooltip } from "../types";
-import { HvChartCommonProps, XAxis, YAxis } from "../types/common";
+import type { HvChartTooltip } from "../types";
+import type { HvChartCommonProps, XAxis, YAxis } from "../types/common";
 import { useClasses } from "./Heatmap.styles";
 
 // Register chart components
@@ -27,11 +27,10 @@ export type HvHeatmapItem = Array<number | string>;
 
 export type HvHeatmapData = Array<HvHeatmapItem>;
 
-export interface HvHeatmapProps
-  extends Omit<
-    HvChartCommonProps,
-    "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
-  > {
+export interface HvHeatmapProps extends Omit<
+  HvChartCommonProps,
+  "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
+> {
   /** The name of the heatmap */
   name?: string;
   /** The data to use on the heatmap */

@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef } from "react";
 import {
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeInput,
-  HvFlowNodeOutput,
   useFlowInstance,
   useFlowNodeUtils,
+  type HvFlowNodeFC,
+  type HvFlowNodeInput,
+  type HvFlowNodeOutput,
 } from "@hitachivantara/uikit-react-lab";
 
 // Inputs and outputs info

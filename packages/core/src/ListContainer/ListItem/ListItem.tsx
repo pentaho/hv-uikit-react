@@ -2,10 +2,10 @@ import {
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactElement,
   useCallback,
   useContext,
   useMemo,
+  type ReactElement,
 } from "react";
 import {
   useDefaultProps,
@@ -13,7 +13,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvFocus } from "../../Focus";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import HvListContext from "../ListContext";
 import { staticClasses, useClasses } from "./ListItem.styles";
 

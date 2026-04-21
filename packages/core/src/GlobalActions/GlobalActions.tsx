@@ -6,7 +6,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import {
   getBreakpointStyles,
@@ -21,8 +21,10 @@ export type HvGlobalActionsVariant = "global" | "section";
 export type HvGlobalActionsPosition = "sticky" | "fixed" | "relative";
 export type HvGlobalActionsHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-export interface HvGlobalActionsProps
-  extends HvBaseProps<HTMLDivElement, "title"> {
+export interface HvGlobalActionsProps extends HvBaseProps<
+  HTMLDivElement,
+  "title"
+> {
   /** Text to display in the component. */
   title?: React.ReactNode;
   /** Denotes if this is a global or section component. */

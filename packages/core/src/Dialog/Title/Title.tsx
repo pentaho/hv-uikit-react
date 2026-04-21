@@ -1,5 +1,5 @@
 import MuiDialogTitle, {
-  DialogTitleProps as MuiDialogTitleProps,
+  type DialogTitleProps as MuiDialogTitleProps,
 } from "@mui/material/DialogTitle";
 import {
   useDefaultProps,
@@ -22,8 +22,10 @@ export type HvDialogTitleVariant =
   | "info"
   | "default";
 
-export interface HvDialogTitleProps
-  extends Omit<MuiDialogTitleProps, "variant" | "classes"> {
+export interface HvDialogTitleProps extends Omit<
+  MuiDialogTitleProps,
+  "variant" | "classes"
+> {
   /** Variant of the dialog title. */
   variant?: HvDialogTitleVariant;
   /** Controls if the associated icon to the variant should be shown. */

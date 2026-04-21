@@ -2,7 +2,7 @@ import { theme } from "@hitachivantara/uikit-styles";
 
 import type { HvFormStatus } from "../FormElement";
 import { sliderStyles as styles } from "./Slider.styles";
-import { HvKnobProperty, HvMarkProperty } from "./types";
+import type { HvKnobProperty, HvMarkProperty } from "./types";
 
 /**
  * Transform the scaled values into knobs positions.

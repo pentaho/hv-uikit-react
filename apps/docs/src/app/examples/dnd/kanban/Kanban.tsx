@@ -1,19 +1,19 @@
 import { useMemo, useState } from "react";
 import {
   DndContext,
-  DragEndEvent,
-  DragOverEvent,
   DragOverlay,
-  DragStartEvent,
   PointerSensor,
   useSensor,
   useSensors,
+  type DragEndEvent,
+  type DragOverEvent,
+  type DragStartEvent,
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 
 import { ColumnContainer, TaskCard } from "./Components";
 import { defaultColumns, defaultTasks } from "./data";
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 export default function Demo() {
   const sensors = useSensors(

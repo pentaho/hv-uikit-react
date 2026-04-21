@@ -1,4 +1,4 @@
-import { MetaRecord } from "nextra";
+import type { MetaRecord } from "nextra";
 
 export default {
   index: {

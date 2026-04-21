@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { loadArrow } from "arquero";
-import { HvBoxplot, HvBoxplotProps } from "@hitachivantara/uikit-react-viz";
+import {
+  HvBoxplot,
+  type HvBoxplotProps,
+} from "@hitachivantara/uikit-react-viz";
 
 import { vizDecorator } from "../../BaseChart/stories/utils";
 

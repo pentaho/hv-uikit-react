@@ -6,8 +6,8 @@ import {
 
 import {
   fixedForwardRef,
-  PolymorphicComponentRef,
-  PolymorphicRef,
+  type PolymorphicComponentRef,
+  type PolymorphicRef,
 } from "../types/generic";
 import { staticClasses, useClasses } from "./Typography.styles";
 

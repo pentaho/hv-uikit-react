@@ -1,4 +1,9 @@
-import { createContext, PropsWithChildren, useMemo, useState } from "react";
+import {
+  createContext,
+  useMemo,
+  useState,
+  type PropsWithChildren,
+} from "react";
 import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 type DefaultAppContextValue = {

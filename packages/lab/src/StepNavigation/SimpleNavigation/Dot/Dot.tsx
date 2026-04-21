@@ -1,11 +1,11 @@
 import {
-  ExtractNames,
-  HvBaseProps,
   HvButton,
+  type ExtractNames,
+  type HvBaseProps,
 } from "@hitachivantara/uikit-react-core";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
 
-import { HvStepProps } from "../../DefaultNavigation";
+import type { HvStepProps } from "../../DefaultNavigation";
 import { dotSizes, getColor } from "../utils";
 import { staticClasses, useClasses } from "./Dot.styles";
 
@@ -14,10 +14,8 @@ export { staticClasses as dotClasses };
 export type HvDotClasses = ExtractNames<typeof useClasses>;
 
 export interface HvDotProps
-  extends Pick<
-      HvStepProps,
-      "size" | "title" | "state" | "onClick" | "disabled"
-    >,
+  extends
+    Pick<HvStepProps, "size" | "title" | "state" | "onClick" | "disabled">,
     Omit<HvBaseProps, "title" | "onClick"> {
   /** A Jss Object used to override or extend the styles applied to the empty state StepNavigation. */
   classes?: HvDotClasses;

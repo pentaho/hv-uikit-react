@@ -14,7 +14,6 @@ import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvChartTooltipClasses,
   useData,
   useDataset,
   useDataZoom,
@@ -25,9 +24,10 @@ import {
   useTooltip,
   useXAxis,
   useYAxis,
+  type HvChartTooltipClasses,
 } from "../hooks";
-import { HvBarChartMeasure } from "../types";
-import {
+import type { HvBarChartMeasure } from "../types";
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,
@@ -48,8 +48,7 @@ echarts.use([
 export interface HvBarChartClasses extends HvChartTooltipClasses {}
 
 export interface HvBarChartProps
-  extends HvAxisChartCommonProps,
-    HvChartCommonProps {
+  extends HvAxisChartCommonProps, HvChartCommonProps {
   /**  Columns to measure on the chart. */
   measures: Arrayable<HvBarChartMeasure>;
   /** Whether the bar chart should be horizontal. Defaults to `false`. */

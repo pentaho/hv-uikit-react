@@ -1,18 +1,18 @@
-import { ComponentType } from "react";
+import type { ComponentType } from "react";
 import { css } from "@emotion/css";
 import {
-  HvColor,
   HvDropdown,
-  HvGridProps,
   HvProgressBar,
   HvTag,
   HvTagsInput,
   HvTextArea,
   theme,
+  type HvColor,
+  type HvGridProps,
 } from "@hitachivantara/uikit-react-core";
 import { Caution, Level4Alt } from "@hitachivantara/uikit-react-icons";
 
-import { ModelDetails, useModelData } from "./data";
+import { useModelData, type ModelDetails } from "./data";
 import { MetadataItem } from "./MetadataItem";
 
 const ProgressBar = ({

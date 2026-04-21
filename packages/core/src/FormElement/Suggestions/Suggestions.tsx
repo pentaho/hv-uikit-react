@@ -1,8 +1,8 @@
 import { forwardRef, useContext, useRef } from "react";
 import ClickAwayListener, {
-  ClickAwayListenerProps,
+  type ClickAwayListenerProps,
 } from "@mui/material/ClickAwayListener";
-import Popper, { PopperProps } from "@mui/material/Popper";
+import Popper, { type PopperProps } from "@mui/material/Popper";
 import { useForkRef } from "@mui/material/utils";
 import {
   useDefaultProps,
@@ -12,7 +12,7 @@ import {
 
 import { HvListItem } from "../../ListContainer";
 import { HvSelectionList } from "../../SelectionList";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { getContainerElement } from "../../utils/document";
 import { setId } from "../../utils/setId";
 import { HvFormElementContext } from "../context";

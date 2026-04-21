@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../../Button";
+import { HvButton, type HvButtonProps } from "../../Button";
 import { EyeIcon } from "../../Input/icons";
 import { staticClasses, useClasses } from "./Preview.styles";
 
@@ -12,8 +12,10 @@ export { staticClasses as fileUploaderPreviewClasses };
 
 export type HvFileUploaderPreviewClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFileUploaderPreviewProps
-  extends Omit<HvButtonProps, "children" | "classes"> {
+export interface HvFileUploaderPreviewProps extends Omit<
+  HvButtonProps,
+  "children" | "classes"
+> {
   /**
    * Content that represents the preview of an uploaded file.
    */

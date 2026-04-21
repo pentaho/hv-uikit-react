@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvInlineEditor,
-  HvInlineEditorProps,
-  HvTypographyVariants,
+  type HvInlineEditorProps,
+  type HvTypographyVariants,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<HvInlineEditorProps> = {

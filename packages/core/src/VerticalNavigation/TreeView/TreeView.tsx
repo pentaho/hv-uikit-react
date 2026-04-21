@@ -8,12 +8,12 @@ import { useControlled } from "../../hooks/useControlled";
 import { useForkRef } from "../../hooks/useForkRef";
 import { useUniqueId } from "../../hooks/useUniqueId";
 import { DescendantProvider } from "../../TreeView/internals/DescendantProvider";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { staticClasses, useClasses } from "./TreeView.styles";
 import {
-  NavigationMode,
   TreeViewControlContext,
   TreeViewStateContext,
+  type NavigationMode,
 } from "./TreeViewContext";
 
 export { staticClasses as treeViewClasses };
@@ -22,8 +22,10 @@ export type HvVerticalNavigationTreeViewClasses = ExtractNames<
   typeof useClasses
 >;
 
-export interface HvVerticalNavigationTreeViewProps
-  extends HvBaseProps<HTMLUListElement, "onChange" | "onToggle"> {
+export interface HvVerticalNavigationTreeViewProps extends HvBaseProps<
+  HTMLUListElement,
+  "onChange" | "onToggle"
+> {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvVerticalNavigationTreeViewClasses;
   /** Modus operandi (role) of the widget instance. */

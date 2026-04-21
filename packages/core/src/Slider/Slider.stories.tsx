@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvSlider, HvSliderProps } from "@hitachivantara/uikit-react-core";
+import { HvSlider, type HvSliderProps } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvSlider> = {
   title: "Components/Slider",

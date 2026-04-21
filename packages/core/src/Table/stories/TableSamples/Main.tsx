@@ -5,8 +5,8 @@ import {
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
-  HvTableProps,
   HvTableRow,
+  type HvTableProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { getColumns, makeData } from "../storiesUtils";

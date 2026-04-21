@@ -15,15 +15,15 @@ import {
 
 import {
   HvFormElement,
-  HvFormStatus,
   HvInfoMessage,
   HvLabel,
   HvWarningText,
+  type HvFormStatus,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvListContainer } from "../ListContainer";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import { multiSelectionEventHandler } from "../utils/multiSelectionEventHandler";
 import { setId } from "../utils/setId";
@@ -33,8 +33,10 @@ export { staticClasses as selectionListClasses };
 
 export type HvSelectionListClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSelectionListProps
-  extends HvBaseProps<HTMLUListElement, "onChange"> {
+export interface HvSelectionListProps extends HvBaseProps<
+  HTMLUListElement,
+  "onChange"
+> {
   /** The form element name. */
   name?: string;
   /**

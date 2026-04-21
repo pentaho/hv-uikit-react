@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
 import { uid } from "uid";
-import { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
+import type { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
 import { HvBanner, theme, useTheme } from "@hitachivantara/uikit-react-core";
 
 import { useLayoutContext } from "./LayoutProvider";

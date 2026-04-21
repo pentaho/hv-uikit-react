@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import { HvOption } from "./Option";
 import { HvOptionGroup } from "./OptionGroup";
-import { HvSelect, HvSelectProps } from "./Select";
+import { HvSelect, type HvSelectProps } from "./Select";
 
 const name = "MySelect";
 

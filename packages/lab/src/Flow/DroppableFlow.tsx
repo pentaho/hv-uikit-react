@@ -1,27 +1,30 @@
 import { useCallback, useRef, useState } from "react";
-import { DragEndEvent, useDndMonitor, useDroppable } from "@dnd-kit/core";
+import { useDndMonitor, useDroppable, type DragEndEvent } from "@dnd-kit/core";
 import { Global } from "@emotion/react";
 import {
   addEdge,
   applyEdgeChanges,
   applyNodeChanges,
-  Connection,
-  Edge,
-  EdgeChange,
   MarkerType,
-  Node,
-  NodeChange,
   ReactFlow,
-  ReactFlowProps,
+  type Connection,
+  type Edge,
+  type EdgeChange,
+  type Node,
+  type NodeChange,
+  type ReactFlowProps,
 } from "reactflow";
 import { uid } from "uid";
-import { ExtractNames, useUniqueId } from "@hitachivantara/uikit-react-core";
+import {
+  useUniqueId,
+  type ExtractNames,
+} from "@hitachivantara/uikit-react-core";
 
 import { flowStyles } from "./base";
 import { staticClasses, useClasses } from "./Flow.styles";
 import { useNodeMetaRegistry } from "./FlowContext/NodeMetaContext";
 import { useFlowInstance } from "./hooks";
-import {
+import type {
   HvFlowNodeInputGroup,
   HvFlowNodeMetaRegistry,
   HvFlowNodeOutputGroup,

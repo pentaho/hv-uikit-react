@@ -1,10 +1,10 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  HvActionGeneric,
   HvBulkActions,
-  HvBulkActionsProps,
   HvCheckBox,
+  type HvActionGeneric,
+  type HvBulkActionsProps,
 } from "@hitachivantara/uikit-react-core";
 import { Add, Delete, Preview } from "@hitachivantara/uikit-react-icons";
 

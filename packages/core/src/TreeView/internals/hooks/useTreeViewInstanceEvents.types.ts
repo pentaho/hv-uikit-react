@@ -1,5 +1,5 @@
-import { TreeViewPluginSignature } from "../types";
-import { TreeViewEventListener } from "../types/events";
+import type { TreeViewPluginSignature } from "../types";
+import type { TreeViewEventListener } from "../types/events";
 
 export interface UseTreeViewInstanceEventsInstance {
   /**

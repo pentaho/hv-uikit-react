@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvSnackbar, HvSnackbarProps } from "./Snackbar";
+import { HvSnackbar, type HvSnackbarProps } from "./Snackbar";
 
 const snackbarLabel = "My snackbar";
 

@@ -6,24 +6,28 @@ import {
   useRef,
   useState,
 } from "react";
-import Slider, { SliderProps, SliderRef } from "rc-slider";
+import Slider, { type SliderProps, type SliderRef } from "rc-slider";
 import Tooltip from "rc-tooltip";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormElement, HvFormStatus, HvWarningText } from "../FormElement";
+import {
+  HvFormElement,
+  HvWarningText,
+  type HvFormStatus,
+} from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
-import { HvInputProps } from "../Input";
-import { HvBaseProps } from "../types/generic";
+import type { HvInputProps } from "../Input";
+import type { HvBaseProps } from "../types/generic";
 import { getElementById } from "../utils/document";
 import { setId } from "../utils/setId";
 import { sliderStyles, staticClasses, useClasses } from "./Slider.styles";
 import { HvSliderInput } from "./SliderInput/SliderInput";
-import { HvKnobProperty, HvMarkProperty } from "./types";
+import type { HvKnobProperty, HvMarkProperty } from "./types";
 import {
   calculateStepValue,
   convertStatusToArray,
@@ -44,8 +48,10 @@ export { staticClasses as sliderClasses };
 
 export type HvSliderClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSliderProps
-  extends HvBaseProps<HTMLDivElement, "onChange" | "onBlur"> {
+export interface HvSliderProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange" | "onBlur"
+> {
   /** The slider name. */
   name?: string;
   /** The label of the slider. If not provided, an aria-label or aria-labelledby must be inputted via sliderProps. */

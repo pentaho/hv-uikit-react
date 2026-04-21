@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCheckBox,
   HvCheckBoxGroup,
-  HvCheckBoxGroupProps,
+  type HvCheckBoxGroupProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvCheckBoxGroup> = {

@@ -1,5 +1,5 @@
 import { lazy, memo, Suspense } from "react";
-import {
+import type {
   HvAppShellAppSwitcherConfig,
   HvAppShellHelp,
 } from "@hitachivantara/app-shell-shared";

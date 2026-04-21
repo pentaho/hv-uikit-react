@@ -10,7 +10,7 @@ import {
   useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 const columns = getColumns();
 const data = makeData(6).map((d, i) => ({ ...d, selected: i < 3 }));

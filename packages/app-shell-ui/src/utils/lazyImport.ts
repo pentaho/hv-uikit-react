@@ -1,6 +1,6 @@
-import {
+import type {
   AsyncResult,
-  type PreloadedBundles,
+  PreloadedBundles,
 } from "@hitachivantara/app-shell-shared";
 
 export type LazyImportResult = AsyncResult<unknown, Error, "module">;

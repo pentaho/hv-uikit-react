@@ -1,12 +1,12 @@
 import { forwardRef } from "react";
 import {
-  ExtractNames,
-  HvBaseProps,
   HvIconButton,
-  HvIconButtonProps,
   HvTypography,
   useDefaultProps,
   useLabels,
+  type ExtractNames,
+  type HvBaseProps,
+  type HvIconButtonProps,
 } from "@hitachivantara/uikit-react-core";
 import { Previous } from "@hitachivantara/uikit-react-icons";
 import { mergeStyles } from "@hitachivantara/uikit-react-utils";
@@ -22,8 +22,10 @@ const DEFAULT_LABELS = {
   back: "Back",
 };
 
-export interface HvCanvasToolbarProps
-  extends HvBaseProps<HTMLDivElement, "title"> {
+export interface HvCanvasToolbarProps extends HvBaseProps<
+  HTMLDivElement,
+  "title"
+> {
   /** Text to display in the component. */
   title: React.ReactNode;
   /** Fully customized button or false for when the back button should not be rendered. */

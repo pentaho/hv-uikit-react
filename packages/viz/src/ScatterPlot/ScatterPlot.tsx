@@ -14,7 +14,6 @@ import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
 import {
-  HvChartTooltipClasses,
   useData,
   useDataset,
   useDataZoom,
@@ -25,13 +24,14 @@ import {
   useTooltip,
   useXAxis,
   useYAxis,
+  type HvChartTooltipClasses,
 } from "../hooks";
-import {
+import type {
   Arrayable,
   HvAxisChartCommonProps,
   HvChartCommonProps,
 } from "../types/common";
-import { HvScatterPlotMeasure } from "../types/measures";
+import type { HvScatterPlotMeasure } from "../types/measures";
 
 // Register chart components
 echarts.use([
@@ -48,8 +48,7 @@ echarts.use([
 export interface HvScatterPlotClasses extends HvChartTooltipClasses {}
 
 export interface HvScatterPlotProps
-  extends HvChartCommonProps,
-    Omit<HvAxisChartCommonProps, "stack"> {
+  extends HvChartCommonProps, Omit<HvAxisChartCommonProps, "stack"> {
   /** Columns to measure on the plot. */
   measures: Arrayable<HvScatterPlotMeasure>;
   /** A Jss Object used to override or extend the styles applied to the component. */

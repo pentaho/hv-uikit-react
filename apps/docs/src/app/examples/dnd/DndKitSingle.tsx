@@ -1,13 +1,13 @@
-import { HTMLAttributes, useMemo, useState } from "react";
+import { useMemo, useState, type HTMLAttributes } from "react";
 import {
   DndContext,
-  DragOverEvent,
   DragOverlay,
-  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  type DragOverEvent,
+  type DragStartEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -161,7 +161,9 @@ export default function Demo() {
     >
       <HvListContainer selectable className="w-250px">
         <SortableContext items={itemsIds}>
-          {items?.map((item) => <ItemCard key={item.id} item={item} />)}
+          {items?.map((item) => (
+            <ItemCard key={item.id} item={item} />
+          ))}
         </SortableContext>
       </HvListContainer>
 

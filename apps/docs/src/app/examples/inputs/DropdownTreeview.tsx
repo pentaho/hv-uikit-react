@@ -5,8 +5,8 @@ import {
   HvLabel,
   HvPanel,
   HvTreeItem,
-  HvTreeItemProps,
   HvTreeView,
+  type HvTreeItemProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default function Demo() {

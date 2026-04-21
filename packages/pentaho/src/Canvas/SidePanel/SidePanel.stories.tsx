@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCanvasSidePanel,
-  HvCanvasSidePanelProps,
+  type HvCanvasSidePanelProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasSidePanel> = {
@@ -23,6 +23,7 @@ export const Main: StoryObj<HvCanvasSidePanelProps> = {
   render: (args) => (
     <div className="w-full h-lg bg-bgPage relative">
       <HvCanvasSidePanel {...args}>
+        {/* oxlint-disable jsx-a11y/no-noninteractive-tabindex */}
         <div tabIndex={0}>Some content</div>
       </HvCanvasSidePanel>
       <p>Main content</p>

@@ -14,27 +14,27 @@ import {
 
 import {
   DEFAULT_ERROR_MESSAGES,
-  HvValidationMessages,
+  type HvValidationMessages,
 } from "../BaseInput/validations";
 import {
   HvCharCounter,
-  HvCharCounterProps,
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
+  type HvCharCounterProps,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import {
   HvSuggestions,
-  HvSuggestionsProps,
+  type HvSuggestionsProps,
 } from "../FormElement/Suggestions/Suggestions";
 import { useControlled } from "../hooks/useControlled";
 import { useFocus } from "../hooks/useFocus";
 import { useIsMounted } from "../hooks/useIsMounted";
 import { useUniqueId } from "../hooks/useUniqueId";
 import type { HvInputProps, HvInputSuggestion } from "../Input";
-import { HvTag, HvTagProps } from "../Tag";
+import { HvTag, type HvTagProps } from "../Tag";
 import { isKey } from "../utils/keyboardUtils";
 import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./TagsInput.styles";
@@ -45,11 +45,10 @@ export interface HvTagSuggestion extends HvInputSuggestion {}
 
 export type HvTagsInputClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTagsInputProps
-  extends Omit<
-    HvInputProps,
-    "onChange" | "onBlur" | "onFocus" | "onKeyDown" | "value" | "defaultValue"
-  > {
+export interface HvTagsInputProps extends Omit<
+  HvInputProps,
+  "onChange" | "onBlur" | "onFocus" | "onKeyDown" | "value" | "defaultValue"
+> {
   /** The value of the form element. */
   value?: string[] | HvTagProps[];
   /** When uncontrolled, defines the initial input value. */

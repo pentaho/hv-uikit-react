@@ -3,8 +3,10 @@ import {
   type HvIconSpriteProps,
 } from "@hitachivantara/uikit-react-icons";
 
-export interface IconUiKitProps
-  extends Omit<HvIconSpriteProps, "iconName" | "spriteUrl"> {
+export interface IconUiKitProps extends Omit<
+  HvIconSpriteProps,
+  "iconName" | "spriteUrl"
+> {
   name: string;
 }
 

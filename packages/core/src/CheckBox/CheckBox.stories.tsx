@@ -3,7 +3,7 @@ import { expect } from "storybook/test";
 import {
   HvBaseCheckBox,
   HvCheckBox,
-  HvCheckBoxProps,
+  type HvCheckBoxProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvCheckBox> = {

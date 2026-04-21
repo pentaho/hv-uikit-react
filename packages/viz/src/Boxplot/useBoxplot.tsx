@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
-import { HvBoxplotMeasure, HvChartData, HvChartFilter } from "../types";
-import { Arrayable } from "../types/common";
+import type { HvBoxplotMeasure, HvChartData, HvChartFilter } from "../types";
+import type { Arrayable } from "../types/common";
 import { useBoxplotData } from "./useBoxplotData";
 
 interface HvDataHookProps {

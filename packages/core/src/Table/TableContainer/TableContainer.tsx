@@ -4,15 +4,17 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { staticClasses, useClasses } from "./TableContainer.styles";
 
 export { staticClasses as tableContainerClasses };
 
 export type HvTableContainerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableContainerProps
-  extends HvBaseProps<HTMLDivElement, "children"> {
+export interface HvTableContainerProps extends HvBaseProps<
+  HTMLDivElement,
+  "children"
+> {
   /**
    * Content to be rendered
    */

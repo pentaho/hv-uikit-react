@@ -5,7 +5,7 @@ import {
 } from "@hitachivantara/uikit-react-utils";
 
 import { HvFilterGroupContext } from "../FilterGroupContext";
-import { HvFilterGroupFilters, HvFilterGroupValue } from "../types";
+import type { HvFilterGroupFilters, HvFilterGroupValue } from "../types";
 import { staticClasses, useClasses } from "./Counter.styles";
 
 export { staticClasses as filterGroupCounterClasses };

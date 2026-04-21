@@ -1,4 +1,4 @@
-import { Hooks, useGlobalFilter } from "react-table";
+import { useGlobalFilter, type Hooks } from "react-table";
 
 export type UseGlobalFilterProps = (<
   D extends object = Record<string, unknown>,

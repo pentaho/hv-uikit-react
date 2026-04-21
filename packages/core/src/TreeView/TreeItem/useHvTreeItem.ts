@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { DescendantContext } from "../internals/DescendantProvider";
-import { DefaultTreeViewPlugins } from "../internals/hooks/plugins";
+import type { DefaultTreeViewPlugins } from "../internals/hooks/plugins";
 import { useTreeViewContext } from "../internals/TreeViewProvider";
 
 export function useHvTreeItem(nodeId: string) {

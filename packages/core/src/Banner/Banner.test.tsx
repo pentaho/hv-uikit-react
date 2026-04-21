@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvBanner, HvBannerProps } from "./Banner";
+import { HvBanner, type HvBannerProps } from "./Banner";
 
 const bannerLabel = "This is a banner.";
 

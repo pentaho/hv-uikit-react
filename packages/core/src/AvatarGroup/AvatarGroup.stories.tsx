@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvAvatar,
   HvAvatarGroup,
-  HvAvatarGroupProps,
+  type HvAvatarGroupProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvAvatarGroup> = {

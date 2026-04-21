@@ -1,12 +1,12 @@
 import { forwardRef, useCallback, useState } from "react";
 import MuiCheckbox, {
-  CheckboxProps as MuiCheckboxProps,
+  type CheckboxProps as MuiCheckboxProps,
 } from "@mui/material/Checkbox";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { staticClasses, useClasses } from "./BaseCheckBox.styles";
 import { HvCheckBoxIcon } from "./CheckBoxIcon";
@@ -15,8 +15,10 @@ export { staticClasses as baseCheckBoxClasses };
 
 export type HvBaseCheckBoxClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseCheckBoxProps
-  extends Omit<MuiCheckboxProps, "onChange" | "classes" | "color"> {
+export interface HvBaseCheckBoxProps extends Omit<
+  MuiCheckboxProps,
+  "onChange" | "classes" | "color"
+> {
   /**
    * The input name.
    */

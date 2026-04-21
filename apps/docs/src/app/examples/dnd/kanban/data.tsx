@@ -1,4 +1,4 @@
-import { Column, Task } from "./types";
+import type { Column, Task } from "./types";
 
 export const defaultColumns: Column[] = [
   { id: "col1", title: "To Do", color: "info" },

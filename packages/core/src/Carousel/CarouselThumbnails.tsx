@@ -1,14 +1,15 @@
 import { forwardRef } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../Button";
-import { HvPaginationProps } from "../Pagination";
+import { HvButton, type HvButtonProps } from "../Button";
+import type { HvPaginationProps } from "../Pagination";
 import { HvStack } from "../Stack";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { useClasses } from "./Carousel.styles";
 
 interface HvCarouselThumbnailsProps
-  extends HvBaseProps<HTMLDivElement, "children">,
+  extends
+    HvBaseProps<HTMLDivElement, "children">,
     Pick<HvPaginationProps, "page" | "pages" | "canPrevious" | "canNext"> {
   width?: React.CSSProperties["width"];
   classes?: ExtractNames<typeof useClasses>;

@@ -1,11 +1,11 @@
 import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../Button";
-import { HvTooltip, HvTooltipProps } from "../Tooltip";
+import { HvButton, type HvButtonProps } from "../Button";
+import { HvTooltip, type HvTooltipProps } from "../Tooltip";
 import {
   fixedForwardRef,
-  PolymorphicComponentRef,
-  PolymorphicRef,
+  type PolymorphicComponentRef,
+  type PolymorphicRef,
 } from "../types/generic";
 
 export type HvIconButtonProps<C extends React.ElementType = "button"> =

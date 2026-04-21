@@ -6,32 +6,32 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseInput, HvBaseInputProps } from "../BaseInput";
+import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {
   computeValidationMessage,
   computeValidationState,
   DEFAULT_ERROR_MESSAGES,
   hasBuiltInValidations,
-  HvInputValidity,
-  HvValidationMessages,
   validateInput,
+  type HvInputValidity,
+  type HvValidationMessages,
 } from "../BaseInput/validations";
 import type { HvButtonBaseProps } from "../ButtonBase";
 import {
   HvAdornment,
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvInfoMessage,
   HvWarningText,
   isInvalid,
   isValid,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import {
-  HvSuggestion,
   HvSuggestions,
-  HvSuggestionsProps,
+  type HvSuggestion,
+  type HvSuggestionsProps,
 } from "../FormElement/Suggestions/Suggestions";
 import { useControlled } from "../hooks/useControlled";
 import { useIsMounted } from "../hooks/useIsMounted";
@@ -61,9 +61,9 @@ export interface HvInputSuggestion {
 export interface HvInputProps<
   InputElement extends HTMLElement = HTMLInputElement | HTMLTextAreaElement,
 > extends Omit<
-    HvBaseInputProps,
-    "onChange" | "onBlur" | "onFocus" | "onKeyDown"
-  > {
+  HvBaseInputProps,
+  "onChange" | "onBlur" | "onFocus" | "onKeyDown"
+> {
   /** @inheritdoc */
   name?: string;
   /** @inheritdoc */

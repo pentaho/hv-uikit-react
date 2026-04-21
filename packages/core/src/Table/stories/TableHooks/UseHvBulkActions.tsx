@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  HvActionGeneric,
   HvBulkActions,
   HvEmptyState,
   HvPagination,
@@ -16,6 +15,7 @@ import {
   useHvPagination,
   useHvRowSelection,
   useHvTable,
+  type HvActionGeneric,
 } from "@hitachivantara/uikit-react-core";
 import {
   Ban,
@@ -25,7 +25,7 @@ import {
   Preview,
 } from "@hitachivantara/uikit-react-icons";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 export const UseHvBulkActions = () => {
   const columns = useMemo(() => getColumns(), []);

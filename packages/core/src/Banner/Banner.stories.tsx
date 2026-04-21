@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBanner,
   HvBannerContent,
-  HvBannerProps,
   HvButton,
+  type HvBannerProps,
 } from "@hitachivantara/uikit-react-core";
 import { Deploy } from "@hitachivantara/uikit-react-icons";
 

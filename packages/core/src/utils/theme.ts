@@ -1,4 +1,4 @@
-import { HvThemeColorMode } from "@hitachivantara/uikit-styles";
+import type { HvThemeColorMode } from "@hitachivantara/uikit-styles";
 
 /**
  * Sets the element attributes and style for a theme and color mode.

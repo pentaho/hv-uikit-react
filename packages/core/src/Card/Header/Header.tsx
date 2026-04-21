@@ -1,5 +1,5 @@
 import MuiCardHeader, {
-  CardHeaderProps as MuiCardHeaderProps,
+  type CardHeaderProps as MuiCardHeaderProps,
 } from "@mui/material/CardHeader";
 import {
   useDefaultProps,

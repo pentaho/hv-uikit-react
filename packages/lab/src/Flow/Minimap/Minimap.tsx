@@ -1,6 +1,10 @@
-import { GetMiniMapNodeAttribute, MiniMap, MiniMapProps } from "reactflow";
-import { ExtractNames } from "@hitachivantara/uikit-react-core";
-import { getColor, HvColorAny } from "@hitachivantara/uikit-styles";
+import {
+  MiniMap,
+  type GetMiniMapNodeAttribute,
+  type MiniMapProps,
+} from "reactflow";
+import type { ExtractNames } from "@hitachivantara/uikit-react-core";
+import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { staticClasses, useClasses } from "./Minimap.styles";
 
@@ -8,11 +12,10 @@ export { staticClasses as flowMinimapClasses };
 
 export type HvFlowMinimapClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFlowMinimapProps<NodeData = any>
-  extends Omit<
-    MiniMapProps<NodeData>,
-    "nodeColor" | "nodeStrokeColor" | "maskColor" | "maskStrokeColor"
-  > {
+export interface HvFlowMinimapProps<NodeData = any> extends Omit<
+  MiniMapProps<NodeData>,
+  "nodeColor" | "nodeStrokeColor" | "maskColor" | "maskStrokeColor"
+> {
   /** Node color. */
   nodeColor?: HvColorAny | GetMiniMapNodeAttribute<NodeData>;
   /** Node stroke color. */

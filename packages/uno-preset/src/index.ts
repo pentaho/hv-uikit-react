@@ -1,6 +1,10 @@
-import { definePreset, mergeConfigs, UserConfig } from "@unocss/core";
+import { definePreset, mergeConfigs, type UserConfig } from "@unocss/core";
 import { presetRemToPx } from "@unocss/preset-rem-to-px";
-import { presetWind3, PresetWind3Options, Theme } from "@unocss/preset-wind3";
+import {
+  presetWind3,
+  type PresetWind3Options,
+  type Theme,
+} from "@unocss/preset-wind3";
 
 import { rules } from "./rules";
 import { extendTheme } from "./theme";

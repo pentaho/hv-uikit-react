@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvIconButton,
   HvPanel,
-  HvPanelProps,
   HvTypography,
   theme,
+  type HvPanelProps,
 } from "@hitachivantara/uikit-react-core";
 import { Close } from "@hitachivantara/uikit-react-icons";
 

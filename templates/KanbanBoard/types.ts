@@ -1,4 +1,4 @@
-import { HvColor } from "@hitachivantara/uikit-react-core";
+import type { HvColor } from "@hitachivantara/uikit-react-core";
 
 export type Column = {
   id: string;

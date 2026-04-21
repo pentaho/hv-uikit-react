@@ -5,7 +5,7 @@ import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
 import { staticClasses, useClasses } from "./CodeEditor.styles";
 import { configureMonaco } from "./monaco-config";
 import { hvLanguagePlugins } from "./plugins";
-import { Formatter, LanguagePlugin } from "./types";
+import type { Formatter, LanguagePlugin } from "./types";
 
 export { staticClasses as codeEditorClasses };
 

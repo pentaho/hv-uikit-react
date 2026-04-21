@@ -1,7 +1,7 @@
 import { escape, table } from "arquero";
 
 import { getHvArqueroCombinedFilters } from ".";
-import { HvChartFilter } from "../types";
+import type { HvChartFilter } from "../types";
 
 const data = {
   Country: ["Portugal", "USA", "India", "China", "France", "UK", "Japan"],

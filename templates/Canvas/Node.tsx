@@ -1,22 +1,22 @@
 import { isValidElement } from "react";
 import { css, cx } from "@emotion/css";
-import { Handle, NodeProps, NodeToolbar, Position } from "reactflow";
+import { Handle, NodeToolbar, Position, type NodeProps } from "reactflow";
 import {
   HvButton,
-  HvColorAny,
   HvIconButton,
   HvTooltip,
   HvTypography,
   theme,
+  type HvColorAny,
 } from "@hitachivantara/uikit-react-core";
 import {
-  HvFlowNodeInput,
-  HvFlowNodeOutput,
   useHvNode,
+  type HvFlowNodeInput,
+  type HvFlowNodeOutput,
 } from "@hitachivantara/uikit-react-lab";
 
 import { useCanvasContext } from "./Context";
-import { FlowStatus, flowStatusesSpecs, iconsMapping } from "./utils";
+import { flowStatusesSpecs, iconsMapping, type FlowStatus } from "./utils";
 
 const classes = {
   root: css({

@@ -1,6 +1,5 @@
 import {
   createContext,
-  ReactNode,
   useCallback,
   useContext,
   useEffect,
@@ -13,14 +12,14 @@ import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import useNavigationMenuItems from "../hooks/useNavigationMenuItems";
-import { NavigationMenuItem } from "../types";
+import type { NavigationMenuItem } from "../types";
 import {
   findItemById,
   removeHrefFromMenuItemsWithChildren,
 } from "../utils/navigationUtil";
 
 export type NavigationProviderProps = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export type VerticalNavigationMode = "EXPANDED" | "COLLAPSED" | "CLOSED";

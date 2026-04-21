@@ -7,15 +7,17 @@ import {
 import { HvFormElementValueContext } from "../FormElement";
 import { staticClasses, useClasses } from "./Calendar.styles";
 import { HvSingleCalendar } from "./SingleCalendar";
-import { DateRangeProp, VisibilitySelectorActions } from "./types";
+import type { DateRangeProp, VisibilitySelectorActions } from "./types";
 import { DEFAULT_LOCALE, isRange } from "./utils";
 
 export { staticClasses as calendarClasses };
 
 export type HvCalendarClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCalendarProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface HvCalendarProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /**
    * Styles applied from the theme.
    */

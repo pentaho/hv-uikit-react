@@ -1,24 +1,24 @@
 import { useMemo } from "react";
-import { internal } from "arquero";
-import {
+import type { internal } from "arquero";
+import type {
   BarSeriesOption,
   LineSeriesOption,
   PieSeriesOption,
   ScatterSeriesOption,
 } from "echarts/charts";
 
-import { HvChartEmptyCellMode } from "../types";
-import {
+import type { HvChartEmptyCellMode } from "../types";
+import type {
   HvAxisChartCommonProps,
   HvChartCommonProps,
   HvEChartsOption,
 } from "../types/common";
-import {
+import type {
   BarFullMeasure,
   LineFullMeasure,
   ScatterPlotMeasure,
 } from "../types/measures";
-import { getGroupKey, getMeasure, SingleMeasure } from "../utils";
+import { getGroupKey, getMeasure, type SingleMeasure } from "../utils";
 
 interface HvSeriesHookProps {
   type: "line" | "bar" | "pie" | "scatter" | "treemap";

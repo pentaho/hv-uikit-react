@@ -19,7 +19,7 @@ import {
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./BaseDropdown.styles";
@@ -29,8 +29,10 @@ export { staticClasses as baseDropdownClasses };
 
 export type HvBaseDropdownClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseDropdownProps
-  extends HvBaseProps<HTMLDivElement, "onToggle"> {
+export interface HvBaseDropdownProps extends HvBaseProps<
+  HTMLDivElement,
+  "onToggle"
+> {
   /**
    * The role of the element that triggers the popup.
    *

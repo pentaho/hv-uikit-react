@@ -3,8 +3,10 @@ import { useCallback, useId } from "react";
 import type { HvAccordionProps } from "../Accordion";
 import { useControlled } from "./useControlled";
 
-export interface UseExpandableParams
-  extends Pick<HvAccordionProps, "disabled" | "expanded" | "defaultExpanded"> {}
+export interface UseExpandableParams extends Pick<
+  HvAccordionProps,
+  "disabled" | "expanded" | "defaultExpanded"
+> {}
 
 /** expandable hook that handles a11y & open state for accordions, etc. */
 export function useExpandable({

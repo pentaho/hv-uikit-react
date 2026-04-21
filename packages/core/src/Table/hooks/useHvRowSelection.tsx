@@ -2,13 +2,13 @@ import { useCallback, useMemo } from "react";
 import {
   actions,
   ensurePluginOrder,
-  Hooks,
-  IdType,
   makePropGetter,
-  PropGetter,
-  Row,
   useGetLatest,
   useMountedLayoutEffect,
+  type Hooks,
+  type IdType,
+  type PropGetter,
+  type Row,
 } from "react-table";
 
 import { HvCheckBox } from "../../CheckBox";
@@ -209,7 +209,7 @@ const defaultGetToggleAllRowsSelectedProps = (
     checked: instance.isAllRowsSelected,
     indeterminate: Boolean(
       !instance.isAllRowsSelected &&
-        Object.keys(instance.state.selectedRowIds).length,
+      Object.keys(instance.state.selectedRowIds).length,
     ),
   },
 ];
@@ -226,7 +226,7 @@ const defaultGetToggleAllPageRowsSelectedProps = (
     checked: instance.isAllPageRowsSelected,
     indeterminate: Boolean(
       !instance.isAllPageRowsSelected &&
-        instance.page.some(({ id }: any) => instance.state.selectedRowIds[id]),
+      instance.page.some(({ id }: any) => instance.state.selectedRowIds[id]),
     ),
   },
 ];

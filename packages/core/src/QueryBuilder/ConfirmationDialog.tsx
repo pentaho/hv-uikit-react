@@ -1,10 +1,10 @@
-import { HvButton, HvButtonProps } from "../Button";
+import { HvButton, type HvButtonProps } from "../Button";
 import {
   HvDialog,
   HvDialogActions,
   HvDialogContent,
-  HvDialogProps,
   HvDialogTitle,
+  type HvDialogProps,
 } from "../Dialog";
 
 export interface ConfirmationDialogProps extends HvDialogProps {

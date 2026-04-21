@@ -5,7 +5,6 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
@@ -16,10 +15,11 @@ import {
   useHvPagination,
   useHvRowSelection,
   useHvTable,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import { Lock, Unlock } from "@hitachivantara/uikit-react-icons";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 export const LockedSelection = () => {
   const data = useMemo(() => makeData(64), []);

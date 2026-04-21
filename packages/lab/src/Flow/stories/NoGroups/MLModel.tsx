@@ -1,4 +1,4 @@
-import { HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import type { HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
 
 // The code for these components are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/NoGroups
 import { MLModelDetection } from "./MLModelDetection";

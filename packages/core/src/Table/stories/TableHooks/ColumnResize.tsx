@@ -4,16 +4,16 @@ import {
   HvTable,
   HvTableBody,
   HvTableCell,
-  HvTableColumnConfig,
   HvTableContainer,
   HvTableHead,
   HvTableHeader,
   HvTableRow,
   useHvResizeColumns,
   useHvTable,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, makeData } from "../storiesUtils";
+import { makeData, type AssetEvent } from "../storiesUtils";
 
 export const ColumnResize = () => {
   const columns = useMemo<HvTableColumnConfig<AssetEvent>[]>(

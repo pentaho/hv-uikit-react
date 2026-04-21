@@ -1,11 +1,15 @@
 import { forwardRef } from "react";
 import {
   createClasses,
-  ExtractNames,
   mergeStyles,
   useDefaultProps,
+  type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { getColor, HvColorAny, HvSize } from "@hitachivantara/uikit-styles";
+import {
+  getColor,
+  type HvColorAny,
+  type HvSize,
+} from "@hitachivantara/uikit-styles";
 
 type HvIconSize = "XS" | "S" | "M" | "L";
 
@@ -43,8 +47,7 @@ export { staticClasses as iconContainerClasses };
 
 export type HvIconContainerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvIconContainerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface HvIconContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   classes?: HvIconContainerClasses;
   /**
    * A color to override the default icon colors.

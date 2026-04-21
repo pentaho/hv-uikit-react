@@ -2,10 +2,10 @@ import { useState } from "react";
 import {
   HvEmptyState,
   HvFilterGroup,
-  HvFilterGroupProps,
   HvLoading,
   HvSwitch,
   HvTypography,
+  type HvFilterGroupProps,
 } from "@hitachivantara/uikit-react-core";
 import { Info } from "@hitachivantara/uikit-react-icons";
 

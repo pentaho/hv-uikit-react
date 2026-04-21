@@ -8,8 +8,10 @@ import type {
   HvThemeColorMode,
 } from "@hitachivantara/uikit-react-core";
 
-export interface ViewHvContainerProps
-  extends Omit<HvContainerProps, "children"> {
+export interface ViewHvContainerProps extends Omit<
+  HvContainerProps,
+  "children"
+> {
   disableContainer?: boolean;
 }
 
@@ -27,8 +29,10 @@ export type HvAppShellServiceProviderConfig = ServiceProviderConfig &
   HvAppShellConditionalConfig;
 
 // App Shell's version of ServicesConfig with condition support
-export interface HvAppShellServicesConfig
-  extends Record<ServiceId, HvAppShellServiceProviderConfig[]> {}
+export interface HvAppShellServicesConfig extends Record<
+  ServiceId,
+  HvAppShellServiceProviderConfig[]
+> {}
 
 export interface HvAppShellLogo {
   name?: "LUMADA" | "HITACHI" | "PENTAHO+" | "PENTAHO";
@@ -57,8 +61,7 @@ export interface HvAppShellViewsConfig extends HvAppShellConditionalConfig {
 }
 
 export interface HvAppShellTopViewConfig
-  extends HvAppShellViewsConfig,
-    ViewHvContainerProps {}
+  extends HvAppShellViewsConfig, ViewHvContainerProps {}
 
 export interface HvAppShellHelp {
   url: string;
@@ -74,12 +77,10 @@ export interface HvAppShellProvidersBaseConfig {
   config?: Record<string, unknown>;
 }
 
-export interface HvAppShellSystemProvidersConfig
-  extends HvAppShellProvidersBaseConfig {}
+export interface HvAppShellSystemProvidersConfig extends HvAppShellProvidersBaseConfig {}
 
 export interface HvAppShellProvidersConfig
-  extends HvAppShellProvidersBaseConfig,
-    HvAppShellConditionalConfig {}
+  extends HvAppShellProvidersBaseConfig, HvAppShellConditionalConfig {}
 
 export interface HvAppShellConfig {
   baseUrl?: string;

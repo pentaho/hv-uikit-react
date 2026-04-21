@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { HvRadio, HvRadioProps } from "./Radio";
+import { HvRadio, type HvRadioProps } from "./Radio";
 
 const RadioSample = () => {
   const [checkedValue, setCheckedValue] = useState(null);

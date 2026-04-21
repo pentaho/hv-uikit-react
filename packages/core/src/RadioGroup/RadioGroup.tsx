@@ -10,11 +10,15 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvFormElement, HvFormStatus, HvWarningText } from "../FormElement";
+import {
+  HvFormElement,
+  HvWarningText,
+  type HvFormStatus,
+} from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { setId } from "../utils/setId";
 import { staticClasses, useClasses } from "./RadioGroup.styles";
 
@@ -22,8 +26,10 @@ export { staticClasses as radioGroupClasses };
 
 export type HvRadioGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvRadioGroupProps
-  extends HvBaseProps<HTMLDivElement, "onChange"> {
+export interface HvRadioGroupProps extends HvBaseProps<
+  HTMLDivElement,
+  "onChange"
+> {
   /**
    * The form element name.
    *

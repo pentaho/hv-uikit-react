@@ -2,8 +2,8 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvDotPagination,
-  HvDotPaginationProps,
   HvTypography,
+  type HvDotPaginationProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   CurrentStep,

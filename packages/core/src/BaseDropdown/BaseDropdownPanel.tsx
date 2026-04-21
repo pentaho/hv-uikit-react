@@ -32,7 +32,8 @@ const { useClasses } = createClasses(name, {
 });
 
 export interface HvDropdownPanelProps
-  extends Omit<PopperProps, "children">,
+  extends
+    Omit<PopperProps, "children">,
     Pick<HvBaseDropdownProps, "disablePortal" | "children"> {
   variableWidth?: boolean;
   classes?: ExtractNames<typeof useClasses>;

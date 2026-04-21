@@ -4,8 +4,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../types/generic";
-import { HvTypography, HvTypographyProps } from "../Typography";
+import type { HvBaseProps } from "../types/generic";
+import { HvTypography, type HvTypographyProps } from "../Typography";
 import { staticClasses, useClasses } from "./ProgressBar.styles";
 
 export { staticClasses as progressBarClasses };

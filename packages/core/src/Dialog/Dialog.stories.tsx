@@ -6,8 +6,8 @@ import {
   HvDialog,
   HvDialogActions,
   HvDialogContent,
-  HvDialogProps,
   HvDialogTitle,
+  type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { FormStory } from "./stories/FormStory";

@@ -4,8 +4,8 @@ import {
   HvListContainer,
   HvListItem,
   HvLoadingContainer,
-  HvLoadingContainerProps,
   HvPanel,
+  type HvLoadingContainerProps,
 } from "@hitachivantara/uikit-react-core";
 
 export default {

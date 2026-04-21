@@ -5,21 +5,21 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../Button";
+import { HvButton, type HvButtonProps } from "../Button";
 import { useControlled } from "../hooks/useControlled";
 import { useEnhancedEffect } from "../hooks/useEnhancedEffect";
 import { HvIcon } from "../icons";
-import { HvInput, HvInputProps } from "../Input";
+import { HvInput, type HvInputProps } from "../Input";
 import { HvTooltip } from "../Tooltip";
 import {
   fixedForwardRef,
-  PolymorphicComponentRef,
-  PolymorphicRef,
+  type PolymorphicComponentRef,
+  type PolymorphicRef,
 } from "../types/generic";
 import {
   HvTypography,
-  HvTypographyProps,
-  HvTypographyVariants,
+  type HvTypographyProps,
+  type HvTypographyVariants,
 } from "../Typography";
 import { isKey } from "../utils/keyboardUtils";
 import { staticClasses, useClasses } from "./InlineEditor.styles";

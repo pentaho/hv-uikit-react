@@ -17,7 +17,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { Ban } from "@hitachivantara/uikit-react-icons";
 
-import { ComponentMeta } from "../../utils/component";
+import type { ComponentMeta } from "../../utils/component";
 
 type PropsTableProps = {
   title: string;

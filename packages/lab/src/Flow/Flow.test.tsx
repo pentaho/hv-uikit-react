@@ -7,12 +7,12 @@ import {
   HvFlow,
   HvFlowBackground,
   HvFlowBaseNode,
-  HvFlowBaseNodeProps,
   HvFlowControls,
-  HvFlowControlsProps,
   HvFlowMinimap,
-  HvFlowNodeGroups,
   HvFlowSidebar,
+  type HvFlowBaseNodeProps,
+  type HvFlowControlsProps,
+  type HvFlowNodeGroups,
 } from ".";
 
 const nodeGroups: HvFlowNodeGroups = {

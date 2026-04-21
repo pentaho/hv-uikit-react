@@ -1,19 +1,19 @@
 import { forwardRef, useCallback } from "react";
-import { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
+import type { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
-import { HvBaseSwitch, HvBaseSwitchProps } from "../BaseSwitch";
+import { HvBaseSwitch, type HvBaseSwitchProps } from "../BaseSwitch";
 import {
   HvFormElement,
-  HvFormStatus,
   HvLabel,
-  HvLabelProps,
   HvWarningText,
   isInvalid,
+  type HvFormStatus,
+  type HvLabelProps,
 } from "../FormElement";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
@@ -24,8 +24,10 @@ export { staticClasses as switchClasses };
 
 export type HvSwitchClasses = ExtractNames<typeof useClasses>;
 
-export interface HvSwitchProps
-  extends Omit<MuiSwitchProps, "color" | "onChange" | "classes" | "size"> {
+export interface HvSwitchProps extends Omit<
+  MuiSwitchProps,
+  "color" | "onChange" | "classes" | "size"
+> {
   /**
    * A Jss Object used to override or extend the styles applied to the switch.
    */

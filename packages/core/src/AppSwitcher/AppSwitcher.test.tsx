@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { HvAppSwitcher, HvAppSwitcherProps } from "./AppSwitcher";
+import { HvAppSwitcher, type HvAppSwitcherProps } from "./AppSwitcher";
 
 describe("<AppSwitcher /> with minimum configuration", () => {
   const mockAppSwitcherProps: HvAppSwitcherProps = {

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
 
-import { HvDropdown, HvDropdownProps } from "../../Dropdown";
-import { HvListValue } from "../../List";
-import { HvBaseProps } from "../../types/generic";
+import { HvDropdown, type HvDropdownProps } from "../../Dropdown";
+import type { HvListValue } from "../../List";
+import type { HvBaseProps } from "../../types/generic";
 import { HvControlsContext } from "../context/ControlsContext";
 import { staticClasses, useClasses } from "./RightControl.styles";
 

@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo } from "react";
-import { HvSize } from "@hitachivantara/uikit-styles";
+import type { HvSize } from "@hitachivantara/uikit-styles";
 
 type HvAvatarGroupContextProviderProps = {
   size: HvSize;

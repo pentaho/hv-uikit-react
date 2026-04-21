@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { css } from "@emotion/css";
-import { NodeProps } from "reactflow";
+import type { NodeProps } from "reactflow";
 import {
   HvButton,
   HvGlobalActions,
@@ -23,8 +23,8 @@ import {
   HvFlowBackground,
   HvFlowControls,
   HvFlowEmpty,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 import { restrictToSample } from "../Base";

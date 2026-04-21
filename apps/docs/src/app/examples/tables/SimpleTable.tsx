@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import {
   HvIconButton,
-  HvTableColumnConfig,
+  type HvTableColumnConfig,
 } from "@hitachivantara/uikit-react-core";
 import { Delete } from "@hitachivantara/uikit-react-icons";
 

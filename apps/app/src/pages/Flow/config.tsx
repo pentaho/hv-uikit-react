@@ -4,7 +4,10 @@ import {
   LineChartAlt,
   Storage,
 } from "@hitachivantara/uikit-react-icons";
-import { HvFlowNodeGroups, HvFlowProps } from "@hitachivantara/uikit-react-lab";
+import type {
+  HvFlowNodeGroups,
+  HvFlowProps,
+} from "@hitachivantara/uikit-react-lab";
 
 import { BarChart } from "./Nodes/BarChart";
 import { Dashboard } from "./Nodes/Dashboard";
@@ -13,7 +16,7 @@ import { DonutChart } from "./Nodes/DonutChart";
 import { Kpi } from "./Nodes/Kpi";
 import { LineChart } from "./Nodes/LineChart";
 import { Table } from "./Nodes/Table";
-import { NodeGroup } from "./types";
+import type { NodeGroup } from "./types";
 import { useDatasets } from "./utils";
 
 /** Node groups */

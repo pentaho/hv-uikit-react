@@ -14,11 +14,11 @@ import {
   Search,
 } from "@hitachivantara/uikit-react-icons";
 import {
-  HvFlowInstance,
   HvFlowNode,
-  HvFlowNodeFC,
-  HvFlowNodeProps,
   useFlowNode,
+  type HvFlowInstance,
+  type HvFlowNodeFC,
+  type HvFlowNodeProps,
 } from "@hitachivantara/uikit-react-lab";
 
 type Node = ReturnType<HvFlowInstance["getNode"]>;

@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
-import MuiDrawer, { DrawerProps as MuiDrawerProps } from "@mui/material/Drawer";
+import MuiDrawer, {
+  type DrawerProps as MuiDrawerProps,
+} from "@mui/material/Drawer";
 import {
   useDefaultProps,
   type ExtractNames,

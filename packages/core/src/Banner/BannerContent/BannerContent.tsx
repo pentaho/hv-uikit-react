@@ -1,16 +1,16 @@
 import { forwardRef } from "react";
-import { SnackbarContentProps as MuiSnackbarContentProps } from "@mui/material/SnackbarContent";
+import type { SnackbarContentProps as MuiSnackbarContentProps } from "@mui/material/SnackbarContent";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvActionsGenericProps } from "../../ActionsGeneric";
-import { HvButtonProps } from "../../Button";
+import type { HvActionsGenericProps } from "../../ActionsGeneric";
+import type { HvButtonProps } from "../../Button";
 import {
   HvCallout,
-  HvCalloutProps,
-  HvCalloutVariant,
+  type HvCalloutProps,
+  type HvCalloutVariant,
 } from "../../utils/Callout";
 import { staticClasses, useClasses } from "./BannerContent.styles";
 
@@ -22,8 +22,10 @@ export type HvBannerActionPosition = "auto" | "inline" | "bottom-right";
 
 export type HvBannerContentClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBannerContentProps
-  extends Omit<MuiSnackbarContentProps, "variant" | "classes" | "onClose"> {
+export interface HvBannerContentProps extends Omit<
+  MuiSnackbarContentProps,
+  "variant" | "classes" | "onClose"
+> {
   /** The message to display. @deprecated use `children` instead */
   content?: string;
   /** The message to display. */

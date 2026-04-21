@@ -1,9 +1,9 @@
 import {
   Controller,
-  ControllerProps,
-  FieldError,
   useController,
   useForm,
+  type ControllerProps,
+  type FieldError,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,14 +11,14 @@ import {
   HvButton,
   HvCheckBox,
   HvDatePicker,
-  HvFormElementProps,
   HvGrid,
   HvInput,
-  HvInputProps,
   HvRadio,
   HvRadioGroup,
   HvTextArea,
   HvTimePicker,
+  type HvFormElementProps,
+  type HvInputProps,
 } from "@hitachivantara/uikit-react-core";
 import { Map } from "@hitachivantara/uikit-react-icons";
 
@@ -85,7 +85,8 @@ const getStatusProps = (error?: FieldError) => {
 };
 
 interface InputControlProps
-  extends Pick<ControllerProps<FormSchema>, "name" | "control">,
+  extends
+    Pick<ControllerProps<FormSchema>, "name" | "control">,
     Omit<HvInputProps, "name">,
     Record<string, any> {
   component?: any;

@@ -4,11 +4,11 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButtonBase, HvButtonBaseProps } from "../../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../../ButtonBase";
 import { HvIcon } from "../../icons";
-import { HvTypography, HvTypographyProps } from "../../Typography";
+import { HvTypography, type HvTypographyProps } from "../../Typography";
 import { capitalize } from "../../utils/helpers";
-import {
+import type {
   HvTableCellAlign,
   HvTableCellType,
   HvTableCellVariant,
@@ -22,8 +22,10 @@ export { staticClasses as tableHeaderClasses };
 
 export type HvTableHeaderClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableHeaderProps
-  extends Omit<React.ThHTMLAttributes<HTMLTableCellElement>, "align"> {
+export interface HvTableHeaderProps extends Omit<
+  React.ThHTMLAttributes<HTMLTableCellElement>,
+  "align"
+> {
   /** The component used for the root node. Either a string to use a HTML element or a component. Defaults to th. */
   component?: React.ElementType;
   /** Content to be rendered */

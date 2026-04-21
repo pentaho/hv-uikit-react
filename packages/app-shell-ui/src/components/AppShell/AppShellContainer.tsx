@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
-import { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
 import { createI18Next } from "../../i18n";
@@ -16,8 +16,7 @@ import type { HvAppShellProps } from "./AppShell";
 const i18n = createI18Next();
 
 export interface HvAppShellContainerProps
-  extends React.PropsWithChildren,
-    HvAppShellProps {}
+  extends React.PropsWithChildren, HvAppShellProps {}
 
 export function HvAppShellContainer({
   config: configProp,

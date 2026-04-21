@@ -11,20 +11,20 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseDropdown, HvBaseDropdownProps } from "../BaseDropdown";
+import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import { DEFAULT_LOCALE } from "../Calendar/utils";
 import {
   HvFormElement,
-  HvFormElementProps,
-  HvFormStatus,
   HvWarningText,
+  type HvFormElementProps,
+  type HvFormStatus,
 } from "../FormElement";
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvIcon } from "../icons";
 import { setId } from "../utils/setId";
-import { Placeholder, PlaceholderProps } from "./Placeholder";
+import { Placeholder, type PlaceholderProps } from "./Placeholder";
 import { staticClasses, useClasses } from "./TimePicker.styles";
 import { Unit } from "./Unit";
 
@@ -64,11 +64,10 @@ export type HvTimePickerValue = {
   seconds: number;
 };
 
-export interface HvTimePickerProps
-  extends Omit<
-    HvFormElementProps,
-    "classes" | "value" | "defaultValue" | "onChange"
-  > {
+export interface HvTimePickerProps extends Omit<
+  HvFormElementProps,
+  "classes" | "value" | "defaultValue" | "onChange"
+> {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvTimePickerClasses;
   /** Current value of the element when _controlled_. Follows the 24-hour format. */

@@ -5,14 +5,16 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvTooltip, HvTooltipProps } from "../Tooltip";
+import { HvTooltip, type HvTooltipProps } from "../Tooltip";
 import { staticClasses, useClasses } from "./OverflowTooltip.styles";
 
 export { staticClasses as overflowTooltipClasses };
 export type HvOverflowTooltipClasses = ExtractNames<typeof useClasses>;
 
-export interface HvOverflowTooltipProps
-  extends Omit<Partial<HvTooltipProps>, "classes" | "children"> {
+export interface HvOverflowTooltipProps extends Omit<
+  Partial<HvTooltipProps>,
+  "classes" | "children"
+> {
   /** The node that will be rendered inside the tooltip. */
   data: React.ReactNode;
   /** If `true`, the overflow tooltip will always use the paragraph overflow style. */

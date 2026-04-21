@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { css } from "@emotion/css";
-import { Decorator, Meta, StoryObj } from "@storybook/react-vite";
+import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBaseSwitch,
   HvInfoMessage,
   HvLabel,
   HvSwitch,
-  HvSwitchProps,
+  type HvSwitchProps,
 } from "@hitachivantara/uikit-react-core";
 
 const decorator: Decorator = (Story) => (

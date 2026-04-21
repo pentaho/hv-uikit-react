@@ -1,24 +1,24 @@
-import { ConvertPluginsIntoSignatures } from "../../types";
+import type { ConvertPluginsIntoSignatures } from "../../types";
 import {
   useTreeViewContextValueBuilder,
-  UseTreeViewContextValueBuilderParameters,
+  type UseTreeViewContextValueBuilderParameters,
 } from "./useTreeViewContextValueBuilder";
 import {
   useTreeViewExpansion,
-  UseTreeViewExpansionParameters,
+  type UseTreeViewExpansionParameters,
 } from "./useTreeViewExpansion";
 import {
   useTreeViewFocus,
-  UseTreeViewFocusParameters,
+  type UseTreeViewFocusParameters,
 } from "./useTreeViewFocus";
 import { useTreeViewKeyboardNavigation } from "./useTreeViewKeyboardNavigation";
 import {
   useTreeViewNodes,
-  UseTreeViewNodesParameters,
+  type UseTreeViewNodesParameters,
 } from "./useTreeViewNodes";
 import {
   useTreeViewSelection,
-  UseTreeViewSelectionParameters,
+  type UseTreeViewSelectionParameters,
 } from "./useTreeViewSelection";
 
 export const DEFAULT_TREE_VIEW_PLUGINS = [
@@ -37,7 +37,9 @@ export type DefaultTreeViewPlugins = ConvertPluginsIntoSignatures<
 // We can't infer this type from the plugin, otherwise we would lose the generics.
 export interface DefaultTreeViewPluginParameters<
   Multiple extends boolean | undefined,
-> extends UseTreeViewNodesParameters,
+>
+  extends
+    UseTreeViewNodesParameters,
     UseTreeViewExpansionParameters,
     UseTreeViewFocusParameters,
     UseTreeViewSelectionParameters<Multiple>,

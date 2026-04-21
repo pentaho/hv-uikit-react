@@ -3,7 +3,7 @@ import { expect } from "storybook/test";
 import { Leaf } from "@hitachivantara/uikit-react-icons";
 import {
   HvCanvasToolbarTabs,
-  HvCanvasToolbarTabsProps,
+  type HvCanvasToolbarTabsProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 import { ControlledStory } from "./stories/Controlled";

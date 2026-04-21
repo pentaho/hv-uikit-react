@@ -1,10 +1,10 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useContext,
   useMemo,
   useState,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 
 interface SelectedTable {

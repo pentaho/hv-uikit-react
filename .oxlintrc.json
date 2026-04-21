@@ -2,13 +2,6 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./node_modules/@hitachivantara/uikit-config/oxlint/strict.json"],
   "rules": {
-    "react/function-component-definition": [
-      "error",
-      {
-        "namedComponents": ["arrow-function", "function-declaration"],
-        "unnamedComponents": "arrow-function"
-      }
-    ],
     "no-restricted-imports": [
       "error",
       {

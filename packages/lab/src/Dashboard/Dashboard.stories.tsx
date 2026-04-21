@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvSection, HvTypography } from "@hitachivantara/uikit-react-core";
-import { HvDashboard, HvDashboardProps } from "@hitachivantara/uikit-react-lab";
+import {
+  HvDashboard,
+  type HvDashboardProps,
+} from "@hitachivantara/uikit-react-lab";
 
 const meta: Meta<typeof HvDashboard> = {
   title: "Lab/Dashboard",

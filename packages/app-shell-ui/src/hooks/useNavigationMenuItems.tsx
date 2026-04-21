@@ -8,7 +8,7 @@ import {
   useHvMenuItems,
 } from "@hitachivantara/app-shell-shared";
 
-import { MenuItemsContext } from "../types";
+import type { MenuItemsContext } from "../types";
 import { createNavigationMenuItems } from "../utils/navigationUtil";
 
 const MAX_TOP_MENU_DEPTH = 2;

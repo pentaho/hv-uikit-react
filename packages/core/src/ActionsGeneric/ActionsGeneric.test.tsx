@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { HvActionsGeneric, HvActionsGenericProps } from "./ActionsGeneric";
+import { HvActionsGeneric, type HvActionsGenericProps } from "./ActionsGeneric";
 
 const actions: HvActionsGenericProps["actions"] = [
   { id: "post", label: "Add", icon: <div />, disabled: true },

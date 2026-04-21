@@ -4,15 +4,15 @@ import { css, cx } from "@emotion/css";
 import {
   HvOverflowTooltip,
   HvTreeItem,
-  HvTreeItemProps,
   HvTreeView,
   theme,
   useForkRef,
   useHvTreeItem,
+  type HvTreeItemProps,
 } from "@hitachivantara/uikit-react-core";
 import { DataSource, Drag, Table } from "@hitachivantara/uikit-react-icons";
 
-import { NodeData } from "./Node";
+import type { NodeData } from "./Node";
 
 const classes = {
   dragging: css({

@@ -1,11 +1,9 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { css } from "@emotion/css";
 import {
-  HvActionsGenericProps,
   HvBulkActions,
   HvControls,
   HvLeftControl,
-  HvLeftControlProps,
   HvPagination,
   HvRightControl,
   theme,
@@ -15,17 +13,19 @@ import {
   useHvPagination,
   useHvRowSelection,
   useHvSortBy,
+  type HvActionsGenericProps,
+  type HvLeftControlProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { CardView } from "./CardView";
 import {
   actions,
-  AssetInventoryEntry,
   getColumns,
-  PaginationDataProps,
   rightControlValues,
   usePaginationData,
   views,
+  type AssetInventoryEntry,
+  type PaginationDataProps,
 } from "./data";
 import { ListView } from "./ListView";
 

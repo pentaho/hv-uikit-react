@@ -4,10 +4,10 @@ import {
   HvDialog,
   HvDialogContent,
   HvDialogTitle,
-  HvFileData,
   HvFileUploader,
   HvFileUploaderPreview,
-  HvFileUploaderProps,
+  type HvFileData,
+  type HvFileUploaderProps,
 } from "@hitachivantara/uikit-react-core";
 import { Code, DocWord } from "@hitachivantara/uikit-react-icons";
 

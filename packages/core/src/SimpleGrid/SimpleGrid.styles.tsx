@@ -1,5 +1,5 @@
 import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { HvBreakpoints, theme } from "@hitachivantara/uikit-styles";
+import { theme, type HvBreakpoints } from "@hitachivantara/uikit-styles";
 
 import type { HvGridBreakpoint } from "./SimpleGrid";
 

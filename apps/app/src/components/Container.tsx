@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import {
   HvContainer,
-  HvContainerProps,
   theme,
+  type HvContainerProps,
 } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../context/navigation";
-import { Loading, LoadingProps } from "./common/Loading";
+import { Loading, type LoadingProps } from "./common/Loading";
 
 const useHeaderSpacing = () => {
   const { activePath, navigation } = useNavigationContext();

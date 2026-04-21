@@ -1,10 +1,12 @@
 import { forwardRef, useCallback, useState } from "react";
-import MuiRadio, { RadioProps as MuiRadioProps } from "@mui/material/Radio";
+import MuiRadio, {
+  type RadioProps as MuiRadioProps,
+} from "@mui/material/Radio";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
-import { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@hitachivantara/uikit-styles";
 
 import { staticClasses, useClasses } from "./BaseRadio.styles";
 import { HvRadioIcon } from "./RadioIcon";
@@ -13,8 +15,10 @@ export { staticClasses as baseRadioClasses };
 
 export type HvBaseRadioClasses = ExtractNames<typeof useClasses>;
 
-export interface HvBaseRadioProps
-  extends Omit<MuiRadioProps, "onChange" | "classes" | "color"> {
+export interface HvBaseRadioProps extends Omit<
+  MuiRadioProps,
+  "onChange" | "classes" | "color"
+> {
   /**
    * Class names to be applied.
    */

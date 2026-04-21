@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 
-import { HvIconButton, HvIconButtonProps } from "./IconButton";
+import { HvIconButton, type HvIconButtonProps } from "./IconButton";
 
 const title = "My tooltip button";
 

@@ -1,5 +1,5 @@
 import MuiDialogActions, {
-  DialogActionsProps as MuiDialogActionsProps,
+  type DialogActionsProps as MuiDialogActionsProps,
 } from "@mui/material/DialogActions";
 import {
   useDefaultProps,
@@ -13,8 +13,10 @@ export { staticClasses as dialogActionClasses };
 
 export type HvDialogActionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDialogActionsProps
-  extends Omit<MuiDialogActionsProps, "classes"> {
+export interface HvDialogActionsProps extends Omit<
+  MuiDialogActionsProps,
+  "classes"
+> {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvDialogActionClasses;
 }

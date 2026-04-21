@@ -3,11 +3,11 @@ import { css, cx } from "@emotion/css";
 import {
   HvButton,
   HvDropDownMenu,
-  HvListValue,
   HvOverflowTooltip,
   HvTypography,
   theme,
   useUniqueId,
+  type HvListValue,
 } from "@hitachivantara/uikit-react-core";
 import { DropDownXS, DropUpXS } from "@hitachivantara/uikit-react-icons";
 

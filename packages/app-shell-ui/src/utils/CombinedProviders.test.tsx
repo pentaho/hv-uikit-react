@@ -1,4 +1,4 @@
-import { ComponentType, PropsWithChildren } from "react";
+import type { ComponentType, PropsWithChildren } from "react";
 import { render, waitFor } from "@testing-library/react";
 
 import CombinedProviders from "./CombinedProviders";

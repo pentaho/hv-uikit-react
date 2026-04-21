@@ -6,8 +6,8 @@ import {
 import { DEFAULT_LOCALE } from "../Calendar/utils";
 import {
   fixedForwardRef,
-  PolymorphicComponentRef,
-  PolymorphicRef,
+  type PolymorphicComponentRef,
+  type PolymorphicRef,
 } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./TimeAgo.styles";

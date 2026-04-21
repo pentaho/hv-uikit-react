@@ -5,8 +5,8 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvLoading, HvLoadingProps } from "../Loading";
-import { HvBaseProps } from "../types/generic";
+import { HvLoading, type HvLoadingProps } from "../Loading";
+import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./LoadingContainer.styles";
 
 export { staticClasses as loadingContainerClasses };
@@ -14,7 +14,8 @@ export { staticClasses as loadingContainerClasses };
 export type HvLoadingContainerClasses = ExtractNames<typeof useClasses>;
 
 export interface HvLoadingContainerProps
-  extends HvBaseProps<HTMLDivElement>,
+  extends
+    HvBaseProps<HTMLDivElement>,
     Pick<HvLoadingProps, "label" | "small" | "hidden"> {
   opacity?: number;
   classes?: HvLoadingContainerClasses;

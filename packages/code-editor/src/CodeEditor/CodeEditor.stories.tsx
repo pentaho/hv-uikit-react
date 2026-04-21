@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvCodeEditor,
-  HvCodeEditorProps,
+  type HvCodeEditorProps,
 } from "@hitachivantara/uikit-react-code-editor";
 
 import { MainStory } from "./stories/Main";

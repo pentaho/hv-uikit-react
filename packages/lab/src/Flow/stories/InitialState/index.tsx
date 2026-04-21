@@ -16,17 +16,17 @@ import { Add, Backwards } from "@hitachivantara/uikit-react-icons";
 import {
   HvFlow,
   HvFlowControls,
-  HvFlowInstance,
-  HvFlowProps,
   HvFlowSidebar,
+  type HvFlowInstance,
+  type HvFlowProps,
 } from "@hitachivantara/uikit-react-lab";
 
 // The code for these values are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/Base/index.tsx
 import { nodeGroups, nodeTypes, restrictToSample } from "../Base";
 import {
-  Layouts,
   LayoutsProvider,
   useLayoutsContext,
+  type Layouts,
 } from "../Base/LayoutsContext";
 
 // Initial state

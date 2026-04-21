@@ -1,5 +1,7 @@
 import { forwardRef, useMemo } from "react";
-import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
+import MuiDialog, {
+  type DialogProps as MuiDialogProps,
+} from "@mui/material/Dialog";
 import {
   useDefaultProps,
   useTheme,
@@ -16,8 +18,10 @@ export { staticClasses as dialogClasses };
 
 export type HvDialogClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDialogProps
-  extends Omit<MuiDialogProps, "classes" | "open"> {
+export interface HvDialogProps extends Omit<
+  MuiDialogProps,
+  "classes" | "open"
+> {
   /** Current state of the Dialog. */
   open?: boolean;
   /** Callback fired when the component requests to be closed. */

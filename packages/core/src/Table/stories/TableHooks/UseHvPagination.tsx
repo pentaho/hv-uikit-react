@@ -13,7 +13,7 @@ import {
   useHvTable,
 } from "@hitachivantara/uikit-react-core";
 
-import { AssetEvent, getColumns, makeData } from "../storiesUtils";
+import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 
 const EmptyRow = () => (
   <HvTableRow>

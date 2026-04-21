@@ -1,5 +1,5 @@
 import { act, screen } from "@testing-library/react";
-import { HvAppShellAppSwitcherItemConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellAppSwitcherItemConfig } from "@hitachivantara/app-shell-shared";
 
 import renderTestProvider from "../../../../tests/testUtils";
 import AppSwitcherToggle from "./AppSwitcherToggle";

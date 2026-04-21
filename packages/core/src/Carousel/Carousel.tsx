@@ -16,9 +16,9 @@ import {
 import { HvButton } from "../Button";
 import { HvContainer } from "../Container";
 import { useLabels } from "../hooks/useLabels";
-import { HvIconButton, HvIconButtonProps } from "../IconButton";
+import { HvIconButton, type HvIconButtonProps } from "../IconButton";
 import { HvIcon } from "../icons";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./Carousel.styles";
 import { HvCarouselControls } from "./CarouselControls";
@@ -35,8 +35,10 @@ const DEFAULT_LABELS = {
   forwards: "Forwards",
 };
 
-export interface HvCarouselProps
-  extends HvBaseProps<HTMLDivElement, "title" | "onChange"> {
+export interface HvCarouselProps extends HvBaseProps<
+  HTMLDivElement,
+  "title" | "onChange"
+> {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvCarouselClasses;
   /** Height of the Slider container. If `undefined`, images will keep a 16/9 aspect-ratio */

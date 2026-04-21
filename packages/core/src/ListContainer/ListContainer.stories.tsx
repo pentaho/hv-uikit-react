@@ -2,10 +2,10 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvListContainer,
-  HvListContainerProps,
   HvListItem,
   HvPanel,
   HvTypography,
+  type HvListContainerProps,
 } from "@hitachivantara/uikit-react-core";
 import {
   Calendar,

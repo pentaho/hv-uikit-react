@@ -5,9 +5,9 @@ import { TooltipComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 
 import { HvBaseChart } from "../BaseChart";
-import { HvChartTooltipClasses, useOption, useTooltip } from "../hooks";
-import { HvChartTooltip } from "../types";
-import { HvChartCommonProps } from "../types/common";
+import { useOption, useTooltip, type HvChartTooltipClasses } from "../hooks";
+import type { HvChartTooltip } from "../types";
+import type { HvChartCommonProps } from "../types/common";
 
 // Register chart components
 echarts.use([TreemapChart, TooltipComponent]);
@@ -27,11 +27,10 @@ export type HvTreemapData = {
 
 export interface HvTreemapChartClasses extends HvChartTooltipClasses {}
 
-export interface HvTreemapChartProps
-  extends Omit<
-    HvChartCommonProps,
-    "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
-  > {
+export interface HvTreemapChartProps extends Omit<
+  HvChartCommonProps,
+  "data" | "groupBy" | "sortBy" | "grid" | "legend" | "tooltip" | "filters"
+> {
   /** The name of the treemap */
   name?: string;
   /** The data to use on the treemap */

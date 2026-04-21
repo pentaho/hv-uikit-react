@@ -1,6 +1,6 @@
 import type { StoryObj } from "@storybook/react-vite";
 
-import { HvTypography, HvTypographyProps } from "./Typography";
+import { HvTypography, type HvTypographyProps } from "./Typography";
 
 const typographyVariants = [
   "display",

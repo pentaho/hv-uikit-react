@@ -7,7 +7,7 @@ import {
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { useScrollTo, type HvScrollToOption } from "../hooks/useScrollTo";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { isKey } from "../utils/keyboardUtils";
 import { HvHorizontalScrollListItem } from "./HorizontalScrollListItem";
 import { staticClasses, useClasses } from "./ScrollToHorizontal.styles";
@@ -16,8 +16,10 @@ export { staticClasses as scrollToHorizontalClasses };
 
 export type HvScrollToHorizontalClasses = ExtractNames<typeof useClasses>;
 
-export interface HvScrollToHorizontalProps
-  extends HvBaseProps<HTMLOListElement, "onChange" | "onClick"> {
+export interface HvScrollToHorizontalProps extends HvBaseProps<
+  HTMLOListElement,
+  "onChange" | "onClick"
+> {
   /** An Array of Objects with Label and Value. Label is the displayed Element and Value is the local navigation location applied */
   options: HvScrollToOption[];
   /**

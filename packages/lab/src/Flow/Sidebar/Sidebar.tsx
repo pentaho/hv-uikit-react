@@ -1,25 +1,25 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  DndContextProps,
   DragOverlay,
-  DragOverlayProps,
   useDndMonitor,
   useDroppable,
+  type DndContextProps,
+  type DragOverlayProps,
 } from "@dnd-kit/core";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import {
-  ExtractNames,
   HvDrawer,
-  HvDrawerProps,
   HvInput,
   HvTypography,
   useLabels,
   useUniqueId,
+  type ExtractNames,
+  type HvDrawerProps,
 } from "@hitachivantara/uikit-react-core";
 import { Add } from "@hitachivantara/uikit-react-icons";
 
 import { useFlowContext } from "../hooks";
-import { HvFlowNodeGroups } from "../types";
+import type { HvFlowNodeGroups } from "../types";
 import { staticClasses, useClasses } from "./Sidebar.styles";
 import { HvFlowSidebarGroup } from "./SidebarGroup";
 import {
@@ -31,8 +31,10 @@ export { staticClasses as flowSidebarClasses };
 
 export type HvFlowSidebarClasses = ExtractNames<typeof useClasses>;
 
-export interface HvFlowSidebarProps
-  extends Omit<HvDrawerProps, "classes" | "title"> {
+export interface HvFlowSidebarProps extends Omit<
+  HvDrawerProps,
+  "classes" | "title"
+> {
   /** Sidebar title. */
   title?: string;
   /** Sidebar description. */

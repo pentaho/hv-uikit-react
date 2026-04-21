@@ -1,11 +1,14 @@
 import * as React from "react";
 
-import { TreeViewAnyPluginSignature, TreeViewUsedEvents } from "../types";
-import { TreeViewEventListener } from "../types/events";
-import { CleanupTracking, UnregisterToken } from "../utils/CleanupTracking";
+import type { TreeViewAnyPluginSignature, TreeViewUsedEvents } from "../types";
+import type { TreeViewEventListener } from "../types/events";
+import type {
+  CleanupTracking,
+  UnregisterToken,
+} from "../utils/CleanupTracking";
 import { FinalizationRegistryBasedCleanupTracking } from "../utils/FinalizationRegistryBasedCleanupTracking";
 import { TimerBasedCleanupTracking } from "../utils/TimerBasedCleanupTracking";
-import { UseTreeViewInstanceEventsInstance } from "./useTreeViewInstanceEvents.types";
+import type { UseTreeViewInstanceEventsInstance } from "./useTreeViewInstanceEvents.types";
 
 interface RegistryContainer {
   registry: CleanupTracking | null;

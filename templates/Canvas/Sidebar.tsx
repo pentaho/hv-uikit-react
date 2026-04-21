@@ -1,13 +1,13 @@
 import { useId, useState } from "react";
 import {
-  DndContextProps,
   DragOverlay,
   useDndMonitor,
   useDroppable,
+  type DndContextProps,
 } from "@dnd-kit/core";
 import {
   HvCanvasSidePanel,
-  HvCanvasSidePanelProps,
+  type HvCanvasSidePanelProps,
 } from "@hitachivantara/uikit-react-pentaho";
 
 export const CanvasSidebar = (props: HvCanvasSidePanelProps) => {

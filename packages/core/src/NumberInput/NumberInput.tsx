@@ -4,7 +4,7 @@ import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
 
 import { HvAdornment } from "../FormElement";
 import { HvIcon } from "../icons";
-import { HvInput, HvInputProps } from "../Input";
+import { HvInput, type HvInputProps } from "../Input";
 import { changeInputValue } from "../Input/utils";
 import { useClasses } from "./NumberInput.styles";
 

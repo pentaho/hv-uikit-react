@@ -6,8 +6,8 @@ import {
 import { HvButton } from "../Button";
 import { useLabels } from "../hooks/useLabels";
 import { HvIcon } from "../icons";
-import { HvPaginationProps } from "../Pagination";
-import { HvBaseProps } from "../types/generic";
+import type { HvPaginationProps } from "../Pagination";
+import type { HvBaseProps } from "../types/generic";
 import { useClasses } from "./Carousel.styles";
 
 const DEFAULT_LABELS = {
@@ -16,7 +16,8 @@ const DEFAULT_LABELS = {
 };
 
 interface HvCarouselControlsProps
-  extends HvBaseProps<HTMLDivElement>,
+  extends
+    HvBaseProps<HTMLDivElement>,
     Pick<HvPaginationProps, "page" | "pages" | "canPrevious" | "canNext"> {
   showDots?: boolean;
   classes?: ExtractNames<typeof useClasses>;

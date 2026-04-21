@@ -1,6 +1,6 @@
-import { createElement, FC, PropsWithChildren } from "react";
+import { createElement, type FC, type PropsWithChildren } from "react";
 
-import {
+import type {
   BundleConfig,
   ComponentServiceProviderConfig,
   FactoryServiceFunction,
@@ -10,7 +10,7 @@ import {
   ServiceId,
   ServiceProviderConfig,
 } from "../types/config";
-import { ServiceLoader, ServiceReference } from "../types/service";
+import type { ServiceLoader, ServiceReference } from "../types/service";
 
 function createServiceReferenceBase<TService>(
   serviceId: ServiceId,

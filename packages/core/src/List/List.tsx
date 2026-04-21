@@ -1,10 +1,10 @@
 import {
-  AriaRole,
   forwardRef,
   isValidElement,
   useEffect,
   useMemo,
   useRef,
+  type AriaRole,
 } from "react";
 import { FixedSizeList } from "react-window";
 import {
@@ -16,16 +16,16 @@ import { HvCheckBox } from "../CheckBox";
 import { HvIcon } from "../icons";
 import {
   HvListContainer,
-  HvListContainerProps,
   HvListItem,
+  type HvListContainerProps,
 } from "../ListContainer";
 import { HvOverflowTooltip } from "../OverflowTooltip";
 import { HvRadio } from "../Radio";
-import { HvBaseProps } from "../types/generic";
+import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { CounterLabel } from "../utils/CounterLabel";
 import { staticClasses, useClasses } from "./List.styles";
-import { HvListValue } from "./types";
+import type { HvListValue } from "./types";
 import { useSelectableList } from "./useSelectableList";
 import { parseList } from "./utils";
 
@@ -33,8 +33,10 @@ export { staticClasses as listClasses };
 
 export type HvListClasses = ExtractNames<typeof useClasses>;
 
-export interface HvListProps
-  extends HvBaseProps<HTMLUListElement, "onChange" | "onClick"> {
+export interface HvListProps extends HvBaseProps<
+  HTMLUListElement,
+  "onChange" | "onClick"
+> {
   /**
    * A list containing the elements to be rendered.
    *

@@ -5,9 +5,9 @@ import useForkRef from "@mui/utils/useForkRef";
 import { TREE_VIEW_CORE_PLUGINS } from "../corePlugins";
 import {
   DEFAULT_TREE_VIEW_CONTEXT_VALUE,
-  TreeViewContextValue,
+  type TreeViewContextValue,
 } from "../TreeViewProvider";
-import {
+import type {
   ConvertPluginsIntoSignatures,
   MergePluginsProperty,
   TreeViewAnyPluginSignature,
@@ -33,18 +33,17 @@ export type UseTreeViewDefaultizedParameters<
   "defaultizedParams"
 >;
 
-export interface UseTreeViewRootSlotProps
-  extends Pick<
-    React.HTMLAttributes<HTMLUListElement>,
-    | "onFocus"
-    | "onBlur"
-    | "onKeyDown"
-    | "id"
-    | "aria-activedescendant"
-    | "aria-multiselectable"
-    | "role"
-    | "tabIndex"
-  > {
+export interface UseTreeViewRootSlotProps extends Pick<
+  React.HTMLAttributes<HTMLUListElement>,
+  | "onFocus"
+  | "onBlur"
+  | "onKeyDown"
+  | "id"
+  | "aria-activedescendant"
+  | "aria-multiselectable"
+  | "role"
+  | "tabIndex"
+> {
   ref: React.Ref<HTMLUListElement>;
 }
 

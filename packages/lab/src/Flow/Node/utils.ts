@@ -1,8 +1,8 @@
 import { isValidElement } from "react";
-import { Edge } from "reactflow";
-import { HvActionGeneric } from "@hitachivantara/uikit-react-core";
+import type { Edge } from "reactflow";
+import type { HvActionGeneric } from "@hitachivantara/uikit-react-core";
 
-import {
+import type {
   HvFlowNodeInput,
   HvFlowNodeInputGroup,
   HvFlowNodeOutput,

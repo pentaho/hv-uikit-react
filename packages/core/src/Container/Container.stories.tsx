@@ -2,10 +2,10 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvContainer,
-  HvContainerProps,
   HvTypography,
   theme,
   useWidth,
+  type HvContainerProps,
 } from "@hitachivantara/uikit-react-core";
 
 const meta: Meta<typeof HvContainer> = {

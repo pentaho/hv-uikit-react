@@ -14,7 +14,7 @@ import {
 } from "@hitachivantara/uikit-styles";
 
 import { HvCheckBoxIcon } from "../BaseCheckBox/CheckBoxIcon";
-import { HvButtonBase, HvButtonBaseProps } from "../ButtonBase";
+import { HvButtonBase, type HvButtonBaseProps } from "../ButtonBase";
 import { useControlled } from "../hooks/useControlled";
 import { HvIcon } from "../icons";
 import { HvTypography } from "../Typography";
@@ -32,11 +32,10 @@ const colorMap: Partial<Record<HvColorAny, HvColor>> = {
   neutral_20: "info",
 };
 
-export interface HvTagProps
-  extends Omit<
-    HvButtonBaseProps,
-    "type" | "color" | "classes" | "onClick" | "onToggle"
-  > {
+export interface HvTagProps extends Omit<
+  HvButtonBaseProps,
+  "type" | "color" | "classes" | "onClick" | "onToggle"
+> {
   /** The label of the tag element. */
   label?: React.ReactNode;
   /** Indicates that the form element is disabled. */

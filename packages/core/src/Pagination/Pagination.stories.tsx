@@ -3,8 +3,8 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvPagination,
-  HvPaginationProps,
   theme,
+  type HvPaginationProps,
 } from "@hitachivantara/uikit-react-core";
 
 const classes = {

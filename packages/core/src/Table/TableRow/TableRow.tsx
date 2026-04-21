@@ -4,7 +4,7 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import TableContext from "../TableContext";
 import { TableSectionContext } from "../TableSectionContext";
 import { staticClasses, useClasses } from "./TableRow.styles";
@@ -13,8 +13,10 @@ export { staticClasses as tableRowClasses };
 
 export type HvTableRowClasses = ExtractNames<typeof useClasses>;
 
-export interface HvTableRowProps
-  extends HvBaseProps<HTMLTableRowElement, "children"> {
+export interface HvTableRowProps extends HvBaseProps<
+  HTMLTableRowElement,
+  "children"
+> {
   /** Content to be rendered */
   children: React.ReactNode;
   /** The component used for the root node. Either a string to use a HTML element or a component. Defaults to tbody. */

@@ -5,17 +5,18 @@ import {
 
 import {
   HvOverflowTooltip,
-  HvOverflowTooltipProps,
+  type HvOverflowTooltipProps,
 } from "../../OverflowTooltip";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { staticClasses, useClasses } from "./HorizontalScrollListItem.styles";
 
 export { staticClasses as horizontalScrollListItemClasses };
 
 export type HvHorizontalScrollListItemClasses = ExtractNames<typeof useClasses>;
 
-export interface HvHorizontalScrollListItemProps
-  extends HvBaseProps<HTMLDivElement | HTMLAnchorElement> {
+export interface HvHorizontalScrollListItemProps extends HvBaseProps<
+  HTMLDivElement | HTMLAnchorElement
+> {
   /** The text to render.  */
   label?: React.ReactNode;
   /** Whether the element is selected. */

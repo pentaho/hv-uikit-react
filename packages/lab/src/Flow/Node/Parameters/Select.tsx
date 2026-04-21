@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { HvDropdown, HvDropdownProps } from "@hitachivantara/uikit-react-core";
+import {
+  HvDropdown,
+  type HvDropdownProps,
+} from "@hitachivantara/uikit-react-core";
 
 import { useFlowNodeUtils } from "../../hooks";
-import { HvFlowNodeSelectParam } from "../../types";
+import type { HvFlowNodeSelectParam } from "../../types";
 
 interface SelectProps {
   param: Omit<HvFlowNodeSelectParam, "type">;

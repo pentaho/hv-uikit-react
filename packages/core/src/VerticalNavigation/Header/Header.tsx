@@ -4,9 +4,9 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvButton, HvButtonProps } from "../../Button";
+import { HvButton, type HvButtonProps } from "../../Button";
 import { HvIcon } from "../../icons";
-import { HvBaseProps } from "../../types/generic";
+import type { HvBaseProps } from "../../types/generic";
 import { HvTypography } from "../../Typography";
 import { VerticalNavigationContext } from "../VerticalNavigationContext";
 import { staticClasses, useClasses } from "./Header.styles";

@@ -3,7 +3,7 @@ import * as React from "react";
 import type { TreeViewPlugin } from "../types";
 import type { TreeViewEventListener } from "../types/events";
 import { EventManager } from "../utils/EventManager";
-import { UseTreeViewInstanceEventsSignature } from "./useTreeViewInstanceEvents.types";
+import type { UseTreeViewInstanceEventsSignature } from "./useTreeViewInstanceEvents.types";
 import { populateInstance } from "./utils";
 
 const isSyntheticEvent = (event: any): event is React.SyntheticEvent => {
