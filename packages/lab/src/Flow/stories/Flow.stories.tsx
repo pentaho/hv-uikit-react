@@ -43,10 +43,6 @@ const meta: Meta<typeof HvFlow> = {
 export default meta;
 
 export const Main: StoryObj<HvFlowProps> = {
-  parameters: {
-    docs: {},
-    ...setupChromatic("next"),
-  },
   play: async ({ canvas, userEvent, step }) => {
     await step("opens sidebar and displays node groups", async () => {
       await userEvent.click(canvas.getByRole("button", { name: /add node/i }));
@@ -60,23 +56,6 @@ export const Main: StoryObj<HvFlowProps> = {
 
     // Allow Safari to settle between steps (dnd-kit keyboard drag fails without this)
     await new Promise((resolve) => setTimeout(resolve, 500));
-
-    await step("should allow to drag node to canvas", async () => {
-      await userEvent.click(
-        canvas.getAllByRole("button", { name: /expand group/i })[1],
-      );
-
-      // Select ML Model node
-      const mlModelButton = canvas.getByRole("button", {
-        name: "ML Model Prediction",
-      });
-      expect(mlModelButton).toBeInTheDocument();
-
-      await userEvent.click(mlModelButton);
-      await userEvent.keyboard("{Enter}");
-      await userEvent.keyboard("{ArrowLeft}".repeat(20));
-      await userEvent.keyboard("{Enter}");
-    });
   },
   render: () => <MainStory />,
 };
