@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellAppSwitcherConfig,
-  HvAppShellAppSwitcherItemConfig,
   useHvAppShellModel,
+  type HvAppShellAppSwitcherConfig,
+  type HvAppShellAppSwitcherItemConfig,
+  type UseDynamicApps,
 } from "@hitachivantara/app-shell-shared";
 import {
   HvAppSwitcher,
@@ -21,9 +22,28 @@ import IconUiKit from "../../../IconUiKit";
 import { BrandLogo } from "../../BrandLogo/BrandLogo";
 import StyledAppShellPanelWrapper from "./styles";
 
+const useDynamicApps = (
+  dynamicAppsConfig: HvAppShellAppSwitcherConfig["dynamicApps"],
+): HvAppShellAppSwitcherItemConfig[] => {
+  const { preloadedBundles } = useHvAppShellModel();
+
+  const dynamicAppsHook = dynamicAppsConfig?.bundle
+    ? (preloadedBundles.get(dynamicAppsConfig.bundle) as
+        | UseDynamicApps
+        | undefined)
+    : undefined;
+
+  const hookResult = dynamicAppsHook?.(dynamicAppsConfig?.config);
+
+  if (!hookResult || hookResult.isPending || hookResult.error) return [];
+
+  return hookResult.result ?? [];
+};
+
 const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
   title,
-  apps,
+  apps: staticApps,
+  dynamicApps: dynamicAppsConfig,
   showLogo = false,
 }) => {
   const { t } = useTranslation(undefined, { keyPrefix: "header.appSwitcher" });
@@ -32,9 +52,16 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
   const appSwitcherPanelId = useId();
   const { logo } = useHvAppShellModel();
 
+  const dynamicApps = useDynamicApps(dynamicAppsConfig);
+
+  const apps = useMemo(
+    () => [...(staticApps ?? []), ...dynamicApps],
+    [staticApps, dynamicApps],
+  );
+
   /** Creates the apps list to be sent to the HvAppSwitcherPanel. */
   const appsList = useMemo<HvAppSwitcherActionApplication[]>(() => {
-    if (!apps) return [];
+    if (apps.length === 0) return [];
     return apps.map((app: HvAppShellAppSwitcherItemConfig) => ({
       name: tConfig(app.label),
       description: app.description
@@ -46,7 +73,7 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
     }));
   }, [apps, tConfig]);
 
-  if (!apps || apps.length === 0) return null;
+  if (apps.length === 0) return null;
 
   const finalTitle: string = title ? tConfig(title) : t("title");
 
