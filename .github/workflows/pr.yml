@@ -27,3 +27,38 @@ jobs:
     secrets: inherit
     with:
       publish-folder: pr-${{ github.event.number }}
+
+  test-stuff:
+    runs-on: ubuntu-latest
+
+    env:
+      RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+    steps:
+      - name: Message
+        id: example
+        run: |
+          echo "SLACK_MESSAGE={\"text\": \"Tests completed for PR #${{ github.event.number }}\"}" >> "$GITHUB_OUTPUT"
+
+      - name: Send Release Message
+        uses: slackapi/slack-github-action@v3.0.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_TOKEN }}
+          payload: |
+            channel: "ui-kit-internal"
+            blocks: ${{ steps.example.outputs.SLACK_MESSAGE }}
+
+      - name: Notify Failure
+        uses: slackapi/slack-github-action@v3.0.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_TOKEN }}
+          payload: |
+            channel: "ui-kit-internal"
+            attachments:
+              - mrkdwn_in:
+                  - text
+                color: "#C62828"
+                title: "${{ github.workflow }} finished: failure"
+                title_link: "${{ env.RUN_URL }}"
