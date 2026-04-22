@@ -58,31 +58,23 @@ jobs:
       - name: Check for package changes
         run: npx lerna changed
 
+      - name: Set CURRENT_VERSION
+        run: |
+          VERSION=v$(npm pkg get version --ws | sed -n 's/.*uikit-react-core": "\(.*\)".*/\1/p')
+          echo "CURRENT_VERSION=$VERSION" >> "$GITHUB_ENV"
+
       - name: Publish to NPM
         id: publish-npm
-        run: |
-          VERSION=v$(npm pkg get version -ws | sed -n 's/.*uikit-react-core": "\(.*\)".*/\1/p')
-          echo "CURRENT_VERSION=$VERSION" >> "$GITHUB_ENV"
-          npm run publish 2>&1 | tee publish_logs.txt
-
-      - name: Check if packages were updated
-        run: |
-          if grep -q "lerna success published" publish_logs.txt; then
-            echo "New packages were published successfully"
-          elif grep -q "lerna Command failed" publish_logs.txt; then
-            echo "lerna Command failed"
-            exit 1
-          else
-            echo "No packages were updated - skipping release"
-            exit 1
-          fi
+        run: npm run publish
+        env:
+          HUSKY: 0
 
       - name: Set NEW_VERSION
         id: version
         # Outputs the NEW_VERSION if there is one, or exits otherwise
         # We only tag+publish+notify if there a new core package version
         run: |
-          VERSION=v$(npm pkg get version -ws | sed -n 's/.*uikit-react-core": "\(.*\)".*/\1/p')
+          VERSION=v$(npm pkg get version --ws | sed -n 's/.*uikit-react-core": "\(.*\)".*/\1/p')
           if [ "$CURRENT_VERSION" = "$VERSION" ]; then
             echo "No new uikit-react-core version to release. Exiting"
             exit 1

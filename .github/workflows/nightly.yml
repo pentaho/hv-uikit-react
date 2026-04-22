@@ -33,24 +33,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: technote-space/workflow-conclusion-action@v1
-
-      - name: Notify Fail
-        uses: hbfernandes/slack-action@1.0
-        env:
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          CONCLUSION: ${{ env.WORKFLOW_CONCLUSION }}
-          COLOR: "#C62828"
+      - name: Notify Failure
+        uses: slackapi/slack-github-action@v3.0.1
         with:
-          args: |
-            {
-              "channel": "ui-kit-internal",
-              "attachments": [
-                {
-                  "mrkdwn_in": ["text"],
-                  "color": "${{env.COLOR}}",
-                  "title": "${{ github.workflow }} finished: ${{ env.CONCLUSION }}",
-                  "title_link": "${{ env.RUN_URL }}"
-                }
-              ]
-            }
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_TOKEN }}
+          payload: |
+            channel: "ui-kit-internal"
+            attachments:
+              - mrkdwn_in:
+                  - text
+                color: "#C62828"
+                title: "${{ github.workflow }} finished: failure"
+                title_link: "${{ env.RUN_URL }}"
