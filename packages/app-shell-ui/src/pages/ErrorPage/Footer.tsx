@@ -1,13 +1,17 @@
 import { useErrorBoundary } from "react-error-boundary";
 import { Trans, useTranslation } from "react-i18next";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
-import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
+import {
+  useHvAppShellModel,
+  useHvAppShellRuntimeContext,
+} from "@hitachivantara/app-shell-shared";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../providers/NavigationProvider";
 
 export const Footer = () => {
-  const { t } = useTranslation();
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t } = useTranslation(undefined, { i18n });
   const { navigate } = useHvNavigation();
   const { navigationMode } = useHvAppShellModel();
   const { resetBoundary } = useErrorBoundary();

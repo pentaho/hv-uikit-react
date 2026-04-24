@@ -29,6 +29,8 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
 describe("VerticalNavigation", () => {
   afterEach(() => {
     navigateSpy.mockReset();
+    // Always clean up localStorage so collapsed state never leaks between tests.
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
   });
   it("should have a navigation element on the page", async () => {
     await renderTestProvider(<VerticalNavigation />);
@@ -73,19 +75,53 @@ describe("VerticalNavigation", () => {
     });
 
     expect(collapseButton).toBeInTheDocument();
-    localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
+    // Cleanup handled by afterEach.
   });
 
-  it("should render a header with the correct props", async () => {
-    await renderTestProvider(<VerticalNavigation />);
+  describe("pentahoPlus theme", () => {
+    it("should render the collapse action label", async () => {
+      await renderTestProvider(<VerticalNavigation />, {
+        theming: { theme: "pentaho" },
+      });
 
-    const collapseText = await screen.findByText("Collapse Menu");
-    const collapseButton = screen.getByRole("button", {
-      name: "Collapse vertical navigation",
+      const collapseAction = await screen.findByText("Collapse Menu");
+      expect(collapseAction).toBeInTheDocument();
     });
 
-    expect(collapseText).toBeInTheDocument();
-    expect(collapseButton).toBeInTheDocument();
+    it("should not render the standard header with title", async () => {
+      await renderTestProvider(<VerticalNavigation />, {
+        theming: { theme: "pentaho" },
+      });
+
+      await screen.findByRole("navigation");
+      expect(screen.queryByText("Menu")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("non-pentaho theme", () => {
+    it("should render the standard header with title and collapse button", async () => {
+      await renderTestProvider(<VerticalNavigation />, {
+        theming: { theme: "next" },
+      });
+
+      const header = await screen.findByText("Menu");
+      expect(header).toBeInTheDocument();
+
+      const collapseButton = screen.getByRole("button", {
+        name: "Collapse vertical navigation",
+      });
+      expect(collapseButton).toBeInTheDocument();
+      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
+    });
+
+    it("should not render the pentaho collapse action", async () => {
+      await renderTestProvider(<VerticalNavigation />, {
+        theming: { theme: "next" },
+      });
+
+      await screen.findByRole("navigation");
+      expect(screen.queryByText("Collapse Menu")).not.toBeInTheDocument();
+    });
   });
 
   describe("actions", () => {

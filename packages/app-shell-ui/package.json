@@ -27,6 +27,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@hitachivantara/app-shell-events": "^2.0.4",
+    "@hitachivantara/app-shell-i18next": "^0.1.0",
     "@hitachivantara/app-shell-navigation": "^2.1.10",
     "@hitachivantara/app-shell-services": "^2.0.3",
     "@hitachivantara/app-shell-shared": "^2.2.5",
@@ -48,6 +49,11 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json",
+    "./locales/*": "./src/locales/*"
+  },
   "publishConfig": {
     "access": "public",
     "directory": "package",
@@ -58,7 +64,8 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
-      "./package.json": "./package.json"
+      "./package.json": "./package.json",
+      "./locales/*": "./dist/locales/*"
     }
   },
   "clean-publish": {
@@ -70,5 +77,8 @@
     "files": [
       "tsconfig.json"
     ]
+  },
+  "devDependencies": {
+    "vite-plugin-static-copy": "^3.1.2"
   }
 }

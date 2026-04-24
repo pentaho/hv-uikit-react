@@ -5,6 +5,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellModel,
+  useHvAppShellRuntimeContext,
   type HvAppShellAppSwitcherConfig,
   type HvAppShellAppSwitcherItemConfig,
 } from "@hitachivantara/app-shell-shared";
@@ -26,8 +27,14 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
   apps,
   showLogo = false,
 }) => {
-  const { t } = useTranslation(undefined, { keyPrefix: "header.appSwitcher" });
-  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t } = useTranslation(undefined, {
+    i18n,
+    keyPrefix: "header.appSwitcher",
+  });
+  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE, {
+    i18n,
+  });
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const appSwitcherPanelId = useId();
   const { logo } = useHvAppShellModel();

@@ -61,9 +61,11 @@ export default function Hello({ name, age }) {
 
 ## Internationalization
 
-Properties that receive text values can be internationalized by using a key that is present on the bundle of the [`translations` property](#translations).
+Properties that receive text values can be internationalized by using a key that is present in the `app` namespace translation bundle, provided either via [`translations`](#translations) (inline) or via locale files at `locales/{lng}/app.json`.
 
-If a value, used in any of the internationalizable properties, is not present on the translations bundle then it will be used as is.
+If a value, used in any of the internationalizable properties, is not present in the translation bundle then it will be used as is.
+
+For a comprehensive guide on the i18n system, locale file layout, and migration from inline translations, see the [Internationalization](./internationalization) guide.
 
 ## Configuration properties
 
@@ -507,8 +509,8 @@ const appShellConfig = {
 
 ### `translations`
 
-This property defines bundles of translations that need to be added in runtime to **App Shell** translation bundle.
-These are **NOT** available to the _Views_.
+This property defines inline translation bundles that are loaded immediately into the App Shell's `app` i18next namespace.
+These translations are used to internationalize App Shell configuration properties (app name, menu labels, logo description, etc.) and are **NOT** available to the embedded _Views_.
 
 Being an object, it is required to have as root the language (en, pt, etc.) of the bundle:
 
@@ -544,12 +546,38 @@ In the example above, the name of the application, that appears on the browser t
 defines a key that exists on the translations bundle and so will be translated by **App Shell** accordingly.
 The same happens with other localized properties (like the logo description or menu labels).
 
-_Application Bundles_ may use different localization libraries, but using i18next is the recommendation.
-The **App Shell does not** provide translations to the embedded _Views_ meaning that each _Application Bundle_ must handle its own translations.
+> [!TIP]
+> The recommended approach for providing translations is via **locale files** (`locales/{lng}/app.json`) instead of inline `translations`. See the [Internationalization](./internationalization) guide for details on the file-based layout and migration steps.
 
-A _View_ may accidentally access the **App Shell**'s i18next instance when using the `useTranslation` hook.
-Because of that, _Application Bundles_ must ensure they use its own i18next instance to avoid collision and incorrect information display.
+When both `translations` and locale files are present, inline translations are shown immediately and then refreshed when the HTTP backend loads the locale files.
+
+_Views_ and other modules may use different localization libraries, but using i18next is the recommendation.
+The **App Shell does not** provide translations to the embedded _Views_ — each must handle its own translations.
+
+To keep in sync with the App Shell's current language, _Views_ should use the [`useHvAppShellI18n`](./api-reference#usehvappshelli18n) hook.
+
+When _Views_ or _Providers_ are compiled together with the App Shell (i.e., in the `type: "app"` project), the i18next library is shared at the bundler level. In this case, a _View_ may accidentally access the **App Shell**'s i18next instance when using the `useTranslation` hook.
+Because of that, code compiled with the App Shell must ensure it uses its own i18next instance to avoid collision and incorrect information display.
 For more information check the documentation at [i18next.com/overview/api](https://www.i18next.com/overview/api#createinstance).
+
+### `translationsBaseUrl`
+
+Base URL for loading translation files via the i18next HTTP backend.
+
+The full path composed internally is: `{translationsBaseUrl}/locales/{lng}/{ns}.json`
+
+Defaults to `"./"`. When the default is used, apps compiled with the App Shell Vite Plugin will have their locale files served correctly from `locales/` in both production and development.
+
+The URL is resolved relative to:
+
+- `configUrl` (when the config was loaded from a URL), or
+- the configured [`baseUrl`](#baseurl) of the App Shell.
+
+Can coexist with [`translations`](#translations), which provides pre-loaded resources that are shown immediately and then refreshed when the HTTP backend responds.
+
+Set to `false` to disable HTTP-based translation loading entirely. This is useful when only inline [`translations`](#translations) are used and the extra network requests would cause 404 errors in legacy setups.
+
+See the [Internationalization](./internationalization) guide for more details.
 
 ### `theming`
 

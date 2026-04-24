@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
 import { uid } from "uid";
 import type { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
+import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
 import { HvBanner, theme, useTheme } from "@hitachivantara/uikit-react-core";
 
 import { useLayoutContext } from "./LayoutProvider";
@@ -31,7 +32,9 @@ export const BannerContext = createContext<BannerContextValue>({
 });
 
 export const BannerProvider = ({ children }: BannerProviderProps) => {
+  const { i18n } = useHvAppShellRuntimeContext();
   const { t } = useTranslation(undefined, {
+    i18n,
     keyPrefix: "notifications.banner",
   });
   const { activeTheme } = useTheme();

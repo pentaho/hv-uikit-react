@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
+  useHvAppShellRuntimeContext,
   type HvAppShellConfig,
 } from "@hitachivantara/app-shell-shared";
 
@@ -20,7 +21,10 @@ interface BrandLogoProps extends React.ComponentProps<typeof LogoContainer> {
 }
 
 export const BrandLogo = ({ logo, ...others }: BrandLogoProps) => {
-  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE, {
+    i18n,
+  });
 
   const LogoComponent = useMemo(() => {
     const logoName = logo && logo.name?.toUpperCase();

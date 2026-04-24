@@ -91,6 +91,44 @@ const customEvent = new CustomEvent<HvAppShellEventTheme>()(
 globalThis.dispatchEvent(customEvent);
 ```
 
+## Internationalization
+
+### `useHvAppShellI18n`
+
+Hook that provides access to the App Shell's i18n context, allowing modules to read and change the current language.
+
+**Package**: `@hitachivantara/app-shell-shared`
+
+**Returns**: `HvUseAppShellI18nContextValue`
+
+| Property         | Type                                 | Description                                                                                                     |
+| ---------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `language`       | `string`                             | The current language of the App Shell, as a BCP 47 language tag.                                                |
+| `changeLanguage` | `(newLng?: string) => Promise<void>` | Changes the App Shell's current language. Triggers re-rendering of all components using App Shell translations. |
+
+**Example**:
+
+```tsx
+import { useHvAppShellI18n } from "@hitachivantara/app-shell-shared";
+
+function LanguageSwitcher() {
+  const { language, changeLanguage } = useHvAppShellI18n();
+
+  return (
+    <div>
+      <p>Current language: {language}</p>
+      <button onClick={() => changeLanguage("pt")}>Português</button>
+      <button onClick={() => changeLanguage("en")}>English</button>
+    </div>
+  );
+}
+```
+
+> [!NOTE]
+> Changing the language via `changeLanguage` affects the App Shell chrome and configuration translations. _Views_ and other modules that manage their own translations should observe the `language` value from this hook to stay in sync with the App Shell's language, regardless of which i18n library they use internally.
+
+For more details on the i18n architecture and locale file layout, see the [Internationalization](./internationalization) guide.
+
 ## Notifications
 
 The **App Shell** supports notification features to capture user attention effectively.

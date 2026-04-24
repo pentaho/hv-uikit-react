@@ -1,10 +1,11 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
-  HvAppShellRuntimeContext,
   useHvAppShellModel,
+  useHvAppShellRuntimeContext,
   useHvMenuItems,
 } from "@hitachivantara/app-shell-shared";
 
@@ -19,14 +20,10 @@ const useNavigationMenuItems = (): MenuItemsContext => {
   const { pathname } = useLocation();
   const { navigationMode } = useHvAppShellModel();
   const { navigate } = useHvNavigation();
-  const { i18n } = useContext(HvAppShellRuntimeContext) ?? {};
-  const tConfig = useMemo(
-    () =>
-      i18n?.getFixedT(i18n.language, CONFIG_TRANSLATIONS_NAMESPACE) ??
-      // should not happen, but fallback if the i18n instance is not available
-      ((l: string) => l),
-    [i18n],
-  );
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE, {
+    i18n,
+  });
 
   const { items, selectedMenuItemId, rootMenuItemId } = useHvMenuItems();
   const navigationMenuItemsTmp = createNavigationMenuItems(

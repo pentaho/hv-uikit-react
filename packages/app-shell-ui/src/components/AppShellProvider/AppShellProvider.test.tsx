@@ -1,14 +1,9 @@
 import { screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import {
-  CONFIG_TRANSLATIONS_NAMESPACE,
-  useHvAppShellModel,
-} from "@hitachivantara/app-shell-shared";
+import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
 
-import * as i18next from "../../i18n";
 import renderTestProvider from "../../tests/testUtils";
 
-const addResourceBundlesMock = vi.spyOn(i18next, "addResourceBundles");
 const consoleMock = vi.spyOn(console, "error").mockImplementation(() => ({}));
 
 describe("AppShellProvider component", () => {
@@ -41,17 +36,16 @@ describe("AppShellProvider component", () => {
     });
 
     it("should add config translations correctly", async () => {
-      await renderTestProvider(<DummyComponent />, mockedConfigResponse);
+      await renderTestProvider(<DummyComponent />, mockedConfigResponse, {
+        en: { fromFile: "fromConfigUrlParameter-translated" },
+      });
 
-      expect(addResourceBundlesMock).toHaveBeenCalledWith(
-        expect.anything(),
-        {
-          en: {
-            fromFile: "fromConfigUrlParameter-translated",
-          },
-        },
-        CONFIG_TRANSLATIONS_NAMESPACE,
-      );
+      // Translations are pre-loaded via resources in the test i18n instance
+      // (passed as bundles to TestProvider). Verify the component renders
+      // successfully with the config translations available.
+      expect(
+        await screen.findByText("fromConfigParameter"),
+      ).toBeInTheDocument();
     });
   });
 

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
@@ -7,16 +8,17 @@ import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import { setupChromatic } from "@hitachivantara/internal";
 import { HvButton } from "@hitachivantara/uikit-react-core";
 
-import { createI18Next } from "../../i18n";
+import { createI18NextInstance, useI18nInit } from "../../i18n";
 import GenericError from "../../pages/GenericError";
 import NotFound from "../../pages/NotFound";
 import { LayoutProvider } from "../../providers/LayoutProvider";
 import { NavigationProvider } from "../../providers/NavigationProvider";
+import { HvAppShellI18nProvider } from "../AppShellI18nProvider/AppShellI18nProvider";
 import { HvAppShellProvider } from "../AppShellProvider/AppShellProvider";
 import { HvAppShellLayout } from "./AppShellLayout";
 import { BrandLogo } from "./BrandLogo/BrandLogo";
 
-const i18n = createI18Next();
+const i18n = createI18NextInstance();
 
 const ProviderDecorator: Decorator = (Story, context) => {
   return (
@@ -169,16 +171,22 @@ function TestProvider({
   config: HvAppShellConfig;
   children: React.ReactNode;
 }) {
+  useI18nInit(i18n, { ...config, translationsBaseUrl: false });
+
   return (
     <HelmetProvider>
       <I18nextProvider i18n={i18n}>
-        <LayoutProvider>
-          <MemoryRouter>
-            <HvAppShellProvider config={config}>
-              <NavigationProvider>{children}</NavigationProvider>
-            </HvAppShellProvider>
-          </MemoryRouter>
-        </LayoutProvider>
+        <HvAppShellI18nProvider>
+          <Suspense fallback={null}>
+            <LayoutProvider>
+              <MemoryRouter>
+                <HvAppShellProvider config={config}>
+                  <NavigationProvider>{children}</NavigationProvider>
+                </HvAppShellProvider>
+              </MemoryRouter>
+            </LayoutProvider>
+          </Suspense>
+        </HvAppShellI18nProvider>
       </I18nextProvider>
     </HelmetProvider>
   );

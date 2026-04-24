@@ -4,6 +4,7 @@ import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellModel,
+  useHvAppShellRuntimeContext,
 } from "@hitachivantara/app-shell-shared";
 import {
   HvButton,
@@ -20,8 +21,14 @@ import { BrandLogo } from "../BrandLogo/BrandLogo";
 import HeaderActions from "../HeaderActions/HeaderActions";
 
 export const Header = () => {
-  const { t } = useTranslation(undefined, { keyPrefix: "header.navigation" });
-  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE);
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t } = useTranslation(undefined, {
+    i18n,
+    keyPrefix: "header.navigation",
+  });
+  const { t: tConfig } = useTranslation(CONFIG_TRANSLATIONS_NAMESPACE, {
+    i18n,
+  });
   const { navigationMode, name, logo } = useHvAppShellModel();
   const { activeTheme } = useTheme();
   const { navigate } = useHvNavigation();

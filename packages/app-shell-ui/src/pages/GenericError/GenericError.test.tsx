@@ -13,7 +13,7 @@ describe("`GenericError", () => {
       "Shoot! We have a problem! Be back soon.",
     );
     expect(
-      screen.getByRole("img", {
+      await screen.findByRole("img", {
         name: "500 Generic error",
       }),
     ).toBeDefined();

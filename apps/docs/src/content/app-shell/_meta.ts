@@ -12,6 +12,7 @@ export default {
     type: "separator",
   },
   configuration: "Configuration",
+  internationalization: "Internationalization",
   routing: "Routing",
   navigation: "Navigation",
   "header-actions": "Header Actions",

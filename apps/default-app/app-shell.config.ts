@@ -248,13 +248,6 @@ export default {
     },
     { label: "Simple App Home", target: "/simple-app/home" },
   ],
-  translations: {
-    en: {
-      list: "List View from config",
-      asset: "Asset from config",
-      intro: "Intro from ASh",
-    },
-  },
   header: {
     actions: [
       {

@@ -89,6 +89,27 @@ export interface HvAppShellConfig {
   apps?: Record<string, string>;
   menu?: HvAppShellMenuConfig[];
   translations?: Record<string, object>;
+  /**
+   * Base URL for loading translation files via HTTP.
+   *
+   * Resolved relative to:
+   * - `configUrl` (when the config was loaded from a URL), or
+   * - the configured `baseUrl` of the App Shell (including its default).
+   *
+   * The full path composed internally is:
+   *   `{translationsBaseUrl}/locales/{{lng}}/{{ns}}.json`
+   *
+   * Defaults to `"./"`.
+   *
+   * Can coexist with `translations`, which provides pre-loaded resources.
+   * When both are provided, `translations` are shown immediately and then
+   * refreshed when the HTTP backend responds.
+   *
+   * Set to `false` to disable HTTP-based translation loading entirely.
+   * Useful when only inline `translations` are used and the extra network
+   * requests would cause 404 errors in legacy setups.
+   */
+  translationsBaseUrl?: string | false;
   navigationMode?: "TOP_AND_LEFT" | "ONLY_TOP" | "ONLY_LEFT";
   mainPanel?: HvAppShellMainPanelConfig;
   theming?: HvAppShellThemingConfig;

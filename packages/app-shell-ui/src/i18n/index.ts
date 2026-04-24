@@ -1,42 +1,45 @@
-import { initReactI18next } from "react-i18next";
-import { createInstance, type i18n } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import {
+  createI18n,
+  type I18nInstance,
+} from "@hitachivantara/app-shell-i18next";
 
 // @ts-ignore
-import en from "./localization/en.json";
-// @ts-ignore
-import pt from "./localization/pt.json";
+import en from "../locales/en/appShell.json";
+import {
+  APP_SHELL_NAMESPACE,
+  CONFIG_TRANSLATIONS_NAMESPACE,
+} from "./constants";
 
-export const APP_SHELL_NAMESPACE = "appShell";
-export const addResourceBundles = (
-  i18nInstance: i18n,
-  bundles: Record<string, object>,
-  namespace?: string,
-) => {
-  Object.entries(bundles).forEach((entry) => {
-    const [key, value] = entry;
-    i18nInstance.addResourceBundle(
-      key,
-      namespace ?? APP_SHELL_NAMESPACE,
-      value,
-    );
+export {
+  APP_SHELL_NAMESPACE,
+  CONFIG_TRANSLATIONS_NAMESPACE,
+} from "./constants";
+export { default as useI18nInit } from "./useI18nInit";
+
+/**
+ * Creates the i18next instance and registers the language detector, but does
+ * NOT register the HTTP backend or call init().
+ *
+ * The HTTP backend is conditionally registered by `useI18nInit` only when
+ * `translationsBaseUrl` is not `false` — this avoids the backend's `init()`
+ * being called without a `baseUrl` when HTTP loading is disabled.
+ *
+ * The instance must be created at module level so the same reference is
+ * provided to `I18nextProvider` across renders.
+ */
+export const createI18NextInstance = (): I18nInstance => {
+  const instance = createI18n({
+    ns: [APP_SHELL_NAMESPACE, CONFIG_TRANSLATIONS_NAMESPACE],
+    fallbackLng: "en",
+    detection: { order: ["navigator"] },
+    partialBundledLanguages: true,
+    resources: {
+      en: { [APP_SHELL_NAMESPACE]: en },
+    },
   });
-};
 
-export const createI18Next = (): i18n => {
-  const newInstance = createInstance();
-  newInstance
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      defaultNS: APP_SHELL_NAMESPACE,
-      fallbackLng: "en",
-      detection: { order: ["navigator"] },
-      resources: {},
-    });
+  instance.use(LanguageDetector);
 
-  newInstance.addResourceBundle("en", APP_SHELL_NAMESPACE, en);
-  newInstance.addResourceBundle("pt", APP_SHELL_NAMESPACE, pt);
-
-  return newInstance;
+  return instance as I18nInstance;
 };

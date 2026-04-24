@@ -25,6 +25,7 @@ import generateBashScript from "./vite-generate-bash-script-plugin.js";
 import generateImportmap, {
   extraDependencies,
 } from "./vite-importmap-plugin.js";
+import copyAppShellLocales from "./vite-locales-plugin.js";
 import injectMetadata from "./vite-metadata-plugin.js";
 import serveAppShellConfig from "./vite-watch-config-plugin.js";
 
@@ -313,5 +314,8 @@ export async function HvAppShellVitePlugin(
 
     // generate the shell script to replace the placeholders in the index.html
     generateEmptyShell && generateBashScript(externalImportMap, inlineConfig),
+
+    // copy/merge app-shell-ui locales into dist (build) or serve via middleware (dev)
+    (buildEntryPoint || devMode) && copyAppShellLocales(),
   ];
 }

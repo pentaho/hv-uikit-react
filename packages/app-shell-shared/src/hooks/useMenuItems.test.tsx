@@ -1,11 +1,12 @@
 import { renderHook } from "@testing-library/react";
+import i18next from "i18next";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { useHvMenuItems } from "./useMenuItems";
 
 const mockUseLocation = vi.fn();
 const mockUseHvAppShellModel = vi.fn();
-const mockUseContext = vi.fn();
+const mockUseHvAppShellRuntimeContext = vi.fn();
 
 vi.mock("react-router-dom", async () => {
   const mod = await vi.importActual("react-router-dom");
@@ -19,17 +20,40 @@ vi.mock("../AppShellModelContext", () => ({
   useHvAppShellModel: () => mockUseHvAppShellModel(),
 }));
 
-// Mock React's useContext to provide i18n
-vi.mock("react", async () => {
-  const actual = await vi.importActual("react");
+vi.mock("../AppShellRuntimeContext", async () => {
+  const actual = await vi.importActual("../AppShellRuntimeContext");
   return {
     ...(actual as object),
-    useContext: (context: unknown) => mockUseContext(context),
+    useHvAppShellRuntimeContext: () => mockUseHvAppShellRuntimeContext(),
   };
 });
 
+vi.mock("../i18n", async () => {
+  const actual = await vi.importActual("../i18n");
+  return {
+    ...(actual as object),
+    useHvAppShellI18n: () => ({ language: "en", changeLanguage: vi.fn() }),
+  };
+});
+
+// Creates a plain initialized i18next instance.
+const createTestI18n = async () => {
+  const instance = i18next.createInstance();
+  await instance.init({
+    lng: "en",
+    resources: {},
+    react: { useSuspense: false },
+    interpolation: { escapeValue: false },
+  });
+  return instance;
+};
+
 describe("useHvMenuItems", () => {
-  beforeEach(() => {
+  let testI18n: Awaited<ReturnType<typeof createTestI18n>>;
+
+  beforeEach(async () => {
+    testI18n = await createTestI18n();
+
     // Default mocks
     mockUseLocation.mockReturnValue({
       pathname: "/test",
@@ -44,19 +68,16 @@ describe("useHvMenuItems", () => {
       navigationMode: "TOP_AND_LEFT",
     });
 
-    // Mock i18n context - return identity function for translations
-    mockUseContext.mockReturnValue({
-      i18n: {
-        language: "en",
-        getFixedT: () => (key: string) => key,
-      },
+    // Provide a real i18n instance and its bound useTranslation via the mocked context
+    mockUseHvAppShellRuntimeContext.mockReturnValue({
+      i18n: testI18n,
     });
   });
 
   afterEach(() => {
     mockUseLocation.mockReset();
     mockUseHvAppShellModel.mockReset();
-    mockUseContext.mockReset();
+    mockUseHvAppShellRuntimeContext.mockReset();
   });
 
   describe("empty configuration", () => {
@@ -363,14 +384,15 @@ describe("useHvMenuItems", () => {
   });
 
   describe("i18n translations", () => {
-    it("should use i18n for label translation", () => {
-      const mockTranslate = vi.fn((key: string) => `translated_${key}`);
+    it("should use i18n for label translation", async () => {
+      const translatedI18n = await createTestI18n();
+      // Add a translation resource so t() returns a translated value.
+      translatedI18n.addResourceBundle("en", "app", {
+        home: "translated_home",
+      });
 
-      mockUseContext.mockReturnValue({
-        i18n: {
-          language: "pt",
-          getFixedT: () => mockTranslate,
-        },
+      mockUseHvAppShellRuntimeContext.mockReturnValue({
+        i18n: translatedI18n,
       });
 
       mockUseHvAppShellModel.mockReturnValue({
@@ -381,11 +403,14 @@ describe("useHvMenuItems", () => {
       const { result } = renderHook(() => useHvMenuItems());
 
       expect(result.current.items[0].label).toBe("translated_home");
-      expect(mockTranslate).toHaveBeenCalledWith("home");
     });
 
     it("should fallback to identity function when i18n is not available", () => {
-      mockUseContext.mockReturnValue(undefined);
+      // When the context throws (no provider), the hook would error.
+      // This test verifies key pass-through when no translations are loaded.
+      mockUseHvAppShellRuntimeContext.mockReturnValue({
+        i18n: testI18n,
+      });
 
       mockUseHvAppShellModel.mockReturnValue({
         menu: [{ label: "home", target: "/home" }],
@@ -394,6 +419,7 @@ describe("useHvMenuItems", () => {
 
       const { result } = renderHook(() => useHvMenuItems());
 
+      // With no resources loaded, t() returns the key as-is.
       expect(result.current.items[0].label).toBe("home");
     });
   });

@@ -1,9 +1,9 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useHvAppShellModel } from "../AppShellModelContext";
-import { HvAppShellRuntimeContext } from "../AppShellRuntimeContext";
-import { CONFIG_TRANSLATIONS_NAMESPACE } from "../i18n";
+import { useHvAppShellRuntimeContext } from "../AppShellRuntimeContext";
+import { CONFIG_TRANSLATIONS_NAMESPACE, useHvAppShellI18n } from "../i18n";
 import type { MenuItemsContext } from "../types/menu";
 import {
   addPrefixToHref,
@@ -20,15 +20,20 @@ export const useHvMenuItems = (): MenuItemsContext => {
   const { pathname, search, state: locationState } = useLocation();
   const { navigationMode, menu } = useHvAppShellModel();
 
-  // use the i18n instance from the app shell runtime context to ensure we're using
-  // the app shell instance of i18n and not the one from the embedded app
-  const { i18n } = useContext(HvAppShellRuntimeContext) ?? {};
+  // Register for any language changes.
+  useHvAppShellI18n();
+
+  // Get the internal i18next instance
+  const { i18n } = useHvAppShellRuntimeContext();
+
+  // Extracted so the linter recognizes it as an independent reactive dependency
+  // (i18n is a stable reference; resolvedLanguage is what actually changes).
+  const resolvedLanguage = i18n.resolvedLanguage;
+
   const tConfig = useMemo(
     () =>
-      i18n?.getFixedT(i18n.language, CONFIG_TRANSLATIONS_NAMESPACE) ??
-      // should not happen, but fallback if the i18n instance is not available
-      ((l: string) => l),
-    [i18n],
+      i18n.getFixedT(resolvedLanguage ?? null, CONFIG_TRANSLATIONS_NAMESPACE),
+    [i18n, resolvedLanguage],
   );
 
   const items = useMemo(() => {

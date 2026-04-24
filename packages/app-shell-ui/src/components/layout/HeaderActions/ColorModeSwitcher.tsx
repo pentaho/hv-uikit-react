@@ -3,12 +3,15 @@ import {
   HvAppShellEventThemeTrigger,
   type HvAppShellEventTheme,
 } from "@hitachivantara/app-shell-events";
+import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
 import { HvIconButton, useTheme } from "@hitachivantara/uikit-react-core";
 
 import IconUiKit from "../../IconUiKit";
 
 const ColorModeSwitcher: React.FC = () => {
+  const { i18n } = useHvAppShellRuntimeContext();
   const { t } = useTranslation(undefined, {
+    i18n,
     keyPrefix: "header.colorModeSwitcher",
   });
   const { colorModes } = useTheme();

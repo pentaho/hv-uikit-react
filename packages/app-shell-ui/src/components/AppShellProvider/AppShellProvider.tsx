@@ -1,7 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { I18nContext } from "react-i18next";
 import {
-  CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellCombinedProvidersContext,
   HvAppShellContext,
   HvAppShellModelContext,
@@ -22,7 +21,6 @@ import type {
 import { useFilteredModel } from "../../hooks/useFilteredModel";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useModelFromConfig } from "../../hooks/useModelFromConfig";
-import { addResourceBundles } from "../../i18n";
 import CombinedProviders from "../../utils/CombinedProviders";
 
 interface AppShellProviderInnerProps extends React.PropsWithChildren {
@@ -36,18 +34,9 @@ const AppShellProviderInner = ({
   children,
 }: AppShellProviderInnerProps) => {
   const { value: storedColorModeValue } = useLocalStorage("COLOR_MODE");
-  const { i18n } = useContext(I18nContext);
 
   const { isPending: isModelPending, model: filteredModel } =
     useFilteredModel(model);
-
-  if (filteredModel?.translations) {
-    addResourceBundles(
-      i18n,
-      filteredModel.translations,
-      CONFIG_TRANSLATIONS_NAMESPACE,
-    );
-  }
 
   const [theme, setTheme] = useState<HvThemeStructure>();
 
@@ -91,13 +80,6 @@ const AppShellProviderInner = ({
     return providersComponents;
   }, [filteredModel?.providers, model.preloadedBundles]);
 
-  const runtimeContext = useMemo(
-    () => ({
-      i18n,
-    }),
-    [i18n],
-  );
-
   const providersContext = useMemo(
     () => ({
       providers,
@@ -123,21 +105,17 @@ const AppShellProviderInner = ({
   return (
     <HvAppShellContext.Provider value={appShellConfigContextValue}>
       <HvAppShellModelContext.Provider value={appShellModelContextValue}>
-        <HvAppShellRuntimeContext.Provider value={runtimeContext}>
-          <HvProvider
-            theme={theme}
-            colorMode={
-              (storedColorModeValue as HvThemeColorMode) ??
-              filteredModel.theming?.colorMode
-            }
-          >
-            <HvAppShellCombinedProvidersContext.Provider
-              value={providersContext}
-            >
-              {children}
-            </HvAppShellCombinedProvidersContext.Provider>
-          </HvProvider>
-        </HvAppShellRuntimeContext.Provider>
+        <HvProvider
+          theme={theme}
+          colorMode={
+            (storedColorModeValue as HvThemeColorMode) ??
+            filteredModel.theming?.colorMode
+          }
+        >
+          <HvAppShellCombinedProvidersContext.Provider value={providersContext}>
+            {children}
+          </HvAppShellCombinedProvidersContext.Provider>
+        </HvProvider>
       </HvAppShellModelContext.Provider>
     </HvAppShellContext.Provider>
   );
@@ -152,6 +130,10 @@ export function HvAppShellProvider({
   children,
   config: configProp,
 }: AppShellProviderProps) {
+  const { i18n } = useContext(I18nContext);
+
+  const runtimeContext = useMemo(() => ({ i18n }), [i18n]);
+
   const { model, isPending: areBundlesLoading } =
     useModelFromConfig(configProp);
 
@@ -171,10 +153,12 @@ export function HvAppShellProvider({
   }
 
   return (
-    <CombinedProviders providers={systemProviders}>
-      <AppShellProviderInner config={configProp} model={model}>
-        {children}
-      </AppShellProviderInner>
-    </CombinedProviders>
+    <HvAppShellRuntimeContext.Provider value={runtimeContext}>
+      <CombinedProviders providers={systemProviders}>
+        <AppShellProviderInner config={configProp} model={model}>
+          {children}
+        </AppShellProviderInner>
+      </CombinedProviders>
+    </HvAppShellRuntimeContext.Provider>
   );
 }

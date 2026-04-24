@@ -11,7 +11,7 @@ export * from "./types/Model";
 
 export { type AsyncResult, useAsync } from "@hitachivantara/app-shell-services";
 
-export { CONFIG_TRANSLATIONS_NAMESPACE } from "./i18n";
+export * from "./i18n";
 
 export { useHvMenuItems } from "./hooks/useMenuItems";
 

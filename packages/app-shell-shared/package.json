@@ -24,6 +24,9 @@
   "dependencies": {
     "@hitachivantara/app-shell-services": "^2.0.3"
   },
+  "devDependencies": {
+    "i18next": "^24.2.2"
+  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-router-dom": "^6.9.0"

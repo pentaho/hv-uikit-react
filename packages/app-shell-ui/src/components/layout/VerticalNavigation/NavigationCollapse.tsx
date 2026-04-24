@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
+import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
 import { HvVerticalNavigationAction } from "@hitachivantara/uikit-react-core";
 import { End, Start } from "@hitachivantara/uikit-react-icons";
 
@@ -20,7 +21,11 @@ type CollapseProps = {
 };
 
 export const NavigationCollapse = ({ onClick, isOpen }: CollapseProps) => {
-  const { t } = useTranslation(undefined, { keyPrefix: "verticalNavigation" });
+  const { i18n } = useHvAppShellRuntimeContext();
+  const { t } = useTranslation(undefined, {
+    i18n,
+    keyPrefix: "verticalNavigation",
+  });
   return (
     <div className={classes.root}>
       {isOpen && <Start className={classes.icon} />}
