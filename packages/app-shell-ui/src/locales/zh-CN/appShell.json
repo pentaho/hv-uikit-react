@@ -1,0 +1,48 @@
+{
+  "errors": {
+    "missing": {
+      "configuration": "配置缺失或不完整。"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "糟糕！页面似乎迷失在太空中了。",
+      "image_description": "404 页面未找到"
+    },
+    "genericError": {
+      "code": "500",
+      "title": "糟糕！我们遇到了问题！很快就会恢复。",
+      "image_description": "500 一般错误"
+    },
+    "footer": "点击<navigate>此处</navigate>返回{{label}}页面。"
+  },
+  "header": {
+    "helpUrl": {
+      "documentationLink": "文档链接"
+    },
+    "appSwitcher": {
+      "title": "应用程序",
+      "ariaLabel": "应用切换面板"
+    },
+    "navigation": {
+      "openNavigationPanel": "打开导航面板",
+      "closeNavigationPanel": "关闭导航面板"
+    },
+    "colorModeSwitcher": {
+      "ariaLabel": "切换颜色模式"
+    }
+  },
+  "verticalNavigation": {
+    "ariaLabelNavigationTree": "垂直导航",
+    "ariaLabelCollapse": "折叠垂直导航",
+    "ariaLabelExpand": "展开垂直导航",
+    "title": "菜单",
+    "ariaLabelSliderForwardButton": "导航到子菜单",
+    "ariaLabelHeaderBackButton": "返回",
+    "collapseAction": "折叠菜单"
+  },
+  "notifications": {
+    "banner": {
+      "close": "关闭横幅"
+    }
+  }
+}

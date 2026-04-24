@@ -1,0 +1,48 @@
+{
+  "errors": {
+    "missing": {
+      "configuration": "Configuration manquante ou incomplète."
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Oops ! La page semble perdue dans l'espace.",
+      "image_description": "404 Page non trouvée"
+    },
+    "genericError": {
+      "code": "500",
+      "title": "Zut ! Nous avons un problème ! Nous revenons bientôt.",
+      "image_description": "500 Erreur générique"
+    },
+    "footer": "Cliquez <navigate>ici</navigate> pour revenir à la page {{label}}."
+  },
+  "header": {
+    "helpUrl": {
+      "documentationLink": "Lien de documentation"
+    },
+    "appSwitcher": {
+      "title": "Applications",
+      "ariaLabel": "Panneau de sélection d'applications"
+    },
+    "navigation": {
+      "openNavigationPanel": "Ouvrir le panneau de navigation",
+      "closeNavigationPanel": "Fermer le panneau de navigation"
+    },
+    "colorModeSwitcher": {
+      "ariaLabel": "Changer le mode de couleur"
+    }
+  },
+  "verticalNavigation": {
+    "ariaLabelNavigationTree": "Navigation verticale",
+    "ariaLabelCollapse": "Réduire la navigation verticale",
+    "ariaLabelExpand": "Développer la navigation verticale",
+    "title": "Menu",
+    "ariaLabelSliderForwardButton": "Naviguer vers le sous-menu",
+    "ariaLabelHeaderBackButton": "Retour",
+    "collapseAction": "Réduire le menu"
+  },
+  "notifications": {
+    "banner": {
+      "close": "Fermer la bannière"
+    }
+  }
+}

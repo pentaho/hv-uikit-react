@@ -1,0 +1,48 @@
+{
+  "errors": {
+    "missing": {
+      "configuration": "設定遺失或不完整。"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "糟糕！頁面似乎迷失在太空中了。",
+      "image_description": "404 找不到頁面"
+    },
+    "genericError": {
+      "code": "500",
+      "title": "糟糕！我們遇到了問題！很快就會恢復。",
+      "image_description": "500 一般錯誤"
+    },
+    "footer": "點擊<navigate>此處</navigate>返回{{label}}頁面。"
+  },
+  "header": {
+    "helpUrl": {
+      "documentationLink": "文件連結"
+    },
+    "appSwitcher": {
+      "title": "應用程式",
+      "ariaLabel": "應用程式切換面板"
+    },
+    "navigation": {
+      "openNavigationPanel": "開啟導覽面板",
+      "closeNavigationPanel": "關閉導覽面板"
+    },
+    "colorModeSwitcher": {
+      "ariaLabel": "切換色彩模式"
+    }
+  },
+  "verticalNavigation": {
+    "ariaLabelNavigationTree": "垂直導覽",
+    "ariaLabelCollapse": "摺疊垂直導覽",
+    "ariaLabelExpand": "展開垂直導覽",
+    "title": "選單",
+    "ariaLabelSliderForwardButton": "導覽至子選單",
+    "ariaLabelHeaderBackButton": "返回",
+    "collapseAction": "摺疊選單"
+  },
+  "notifications": {
+    "banner": {
+      "close": "關閉橫幅"
+    }
+  }
+}

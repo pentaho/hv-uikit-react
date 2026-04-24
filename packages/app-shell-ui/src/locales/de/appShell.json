@@ -1,0 +1,48 @@
+{
+  "errors": {
+    "missing": {
+      "configuration": "Fehlende oder unvollständige Konfiguration."
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Hoppla! Die Seite scheint im Weltraum verloren gegangen zu sein.",
+      "image_description": "404 Seite nicht gefunden"
+    },
+    "genericError": {
+      "code": "500",
+      "title": "Hoppla! Wir haben ein Problem! Wir sind bald zurück.",
+      "image_description": "500 Allgemeiner Fehler"
+    },
+    "footer": "Klicken Sie <navigate>hier</navigate>, um zur Seite {{label}} zurückzukehren."
+  },
+  "header": {
+    "helpUrl": {
+      "documentationLink": "Dokumentationslink"
+    },
+    "appSwitcher": {
+      "title": "Anwendungen",
+      "ariaLabel": "Anwendungsauswahl-Panel"
+    },
+    "navigation": {
+      "openNavigationPanel": "Navigationspanel öffnen",
+      "closeNavigationPanel": "Navigationspanel schließen"
+    },
+    "colorModeSwitcher": {
+      "ariaLabel": "Farbmodus wechseln"
+    }
+  },
+  "verticalNavigation": {
+    "ariaLabelNavigationTree": "Vertikale Navigation",
+    "ariaLabelCollapse": "Vertikale Navigation einklappen",
+    "ariaLabelExpand": "Vertikale Navigation ausklappen",
+    "title": "Menü",
+    "ariaLabelSliderForwardButton": "Zum Untermenü navigieren",
+    "ariaLabelHeaderBackButton": "Zurück",
+    "collapseAction": "Menü einklappen"
+  },
+  "notifications": {
+    "banner": {
+      "close": "Banner schließen"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "errors": {
+    "missing": {
+      "configuration": "設定が見つからないか、不完全です。"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "おっと！ページが宇宙で迷子になったようです。",
+      "image_description": "404 ページが見つかりません"
+    },
+    "genericError": {
+      "code": "500",
+      "title": "問題が発生しました！まもなく復旧します。",
+      "image_description": "500 一般エラー"
+    },
+    "footer": "<navigate>こちら</navigate>をクリックして{{label}}ページに戻ります。"
+  },
+  "header": {
+    "helpUrl": {
+      "documentationLink": "ドキュメントリンク"
+    },
+    "appSwitcher": {
+      "title": "アプリケーション",
+      "ariaLabel": "アプリ切替パネル"
+    },
+    "navigation": {
+      "openNavigationPanel": "ナビゲーションパネルを開く",
+      "closeNavigationPanel": "ナビゲーションパネルを閉じる"
+    },
+    "colorModeSwitcher": {
+      "ariaLabel": "カラーモードを切り替える"
+    }
+  },
+  "verticalNavigation": {
+    "ariaLabelNavigationTree": "垂直ナビゲーション",
+    "ariaLabelCollapse": "垂直ナビゲーションを折りたたむ",
+    "ariaLabelExpand": "垂直ナビゲーションを展開する",
+    "title": "メニュー",
+    "ariaLabelSliderForwardButton": "サブメニューへ移動",
+    "ariaLabelHeaderBackButton": "戻る",
+    "collapseAction": "メニューを折りたたむ"
+  },
+  "notifications": {
+    "banner": {
+      "close": "バナーを閉じる"
+    }
+  }
+}
