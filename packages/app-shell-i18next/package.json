@@ -1,0 +1,63 @@
+{
+  "name": "@hitachivantara/app-shell-i18next",
+  "version": "1.0.0",
+  "type": "module",
+  "private": false,
+  "author": "Hitachi Vantara UI Kit Team",
+  "description": "AppShell i18next integration",
+  "homepage": "https://github.com/pentaho/hv-uikit-react",
+  "sideEffects": false,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pentaho/hv-uikit-react.git",
+    "directory": "packages/app-shell-i18next"
+  },
+  "bugs": "https://github.com/pentaho/hv-uikit-react/issues",
+  "scripts": {
+    "build": "npm run clean && vite build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "clean": "npx rimraf dist package",
+    "prepublishOnly": "npm run build && npx clean-publish"
+  },
+  "peerDependencies": {
+    "i18next": "^24.2.2 || ^25.0.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "i18next-browser-languagedetector": "^8.0.3",
+    "msw": "^2.7.5",
+    "react-i18next": "^15.7.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "package",
+    "module": "dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "package",
+    "fields": [
+      "main"
+    ],
+    "files": [
+      "tsconfig.json"
+    ]
+  }
+}
