@@ -2,16 +2,7 @@ import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
 
 export default (): HvAppShellConfig => ({
   name: "{{appName}}",
-
-  baseUrl: "/",
-
-  logo: {
-    name: "PENTAHO",
-  },
-  theming: {
-    theme: "pentaho",
-    colorMode: "light",
-  },
+  logo: { name: "PENTAHO" },
 
   {{#if feats}}
   header: {

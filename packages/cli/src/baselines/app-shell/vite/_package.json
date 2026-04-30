@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@hitachivantara/app-shell-vite-plugin": "^2.0.0",
-    "@hitachivantara/uikit-config": "^0.5.1",
+    "@hitachivantara/uikit-config": "^0.6.1",
     "@hitachivantara/uikit-uno-preset": "^1.0.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.0.0",
