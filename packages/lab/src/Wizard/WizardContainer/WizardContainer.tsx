@@ -2,7 +2,6 @@ import {
   HvDialog,
   useDefaultProps,
   type ExtractNames,
-  type HvBaseProps,
   type HvDialogProps,
 } from "@hitachivantara/uikit-react-core";
 
@@ -12,14 +11,11 @@ export { staticClasses as wizardContainerClasses };
 
 export type HvWizardContainerClasses = ExtractNames<typeof useClasses>;
 
-export interface HvWizardContainerProps
-  extends
-    Omit<HvBaseProps, "onClose">,
-    Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
+export interface HvWizardContainerProps extends Omit<HvDialogProps, "classes"> {
   /** Current state of the Wizard. */
   open: boolean;
-  /** Function executed on close. */
-  handleClose: HvDialogProps["onClose"];
+  /** Function executed on close. @deprecated use `onClose` instead */
+  handleClose?: HvDialogProps["onClose"];
   /** A Jss Object used to override or extend the styles applied to the empty state Wizard. */
   classes?: HvWizardContainerClasses;
 }
@@ -27,7 +23,6 @@ export interface HvWizardContainerProps
 export const HvWizardContainer = (props: HvWizardContainerProps) => {
   const {
     classes: classesProp,
-    children,
     handleClose,
     ...others
   } = useDefaultProps("HvWizardContainer", props);
@@ -44,8 +39,6 @@ export const HvWizardContainer = (props: HvWizardContainerProps) => {
       fullWidth
       maxWidth="lg"
       {...others}
-    >
-      {children}
-    </HvDialog>
+    />
   );
 };

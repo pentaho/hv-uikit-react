@@ -82,7 +82,7 @@
     "husky": "^8.0.3",
     "lerna": "^9.0.0",
     "license-compliance": "^3.0.0",
-    "oxlint": "^1.59.0",
+    "oxlint": "^1.63.0",
     "prettier": "^3.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -97,11 +97,8 @@
   },
   "overrides": {
     "storybook": "$storybook",
-    "chevrotain": {
-      "lodash-es": "^4.18.1"
-    },
-    "sucrase": {
-      "glob": "^11.1.0"
+    "lerna": {
+      "@npmcli/package-json": "^7.0.2"
     }
   },
   "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
