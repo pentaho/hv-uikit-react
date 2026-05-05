@@ -1,11 +1,11 @@
 import { forwardRef, useMemo, useRef, useState } from "react";
-import { Time } from "@internationalized/date";
-import { useForkRef } from "@mui/material/utils";
-import { useTimeField } from "@react-aria/datepicker";
+import { useTimeField } from "react-aria/useTimeField";
 import {
   useTimeFieldState,
   type TimeFieldStateOptions,
-} from "@react-stately/datepicker";
+} from "react-stately/useTimeFieldState";
+import { Time } from "@internationalized/date";
+import useForkRef from "@mui/utils/useForkRef";
 import {
   useDefaultProps,
   type ExtractNames,
@@ -164,8 +164,10 @@ export const HvTimePicker = forwardRef<HTMLDivElement, HvTimePickerProps>(
     const { ref: refProp, ...otherDropdownProps } = dropdownProps;
     const dropdownForkedRef = useForkRef(ref, refProp);
 
+    const valueState = useMemo(() => toTime(valueProp), [valueProp]);
+
     const stateProps: TimeFieldStateOptions = {
-      value: toTime(valueProp),
+      value: valueState,
       defaultValue: toTime(defaultValueProp),
       label,
       locale,

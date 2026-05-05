@@ -1,10 +1,10 @@
 import { forwardRef, useRef } from "react";
-import { useDateSegment } from "@react-aria/datepicker";
+import { useDateSegment } from "react-aria/useDateField";
 import type {
   DateFieldState,
   DateSegment,
   SegmentType,
-} from "@react-stately/datepicker";
+} from "react-stately/useDateFieldState";
 
 import type { HvBaseProps } from "../types/generic";
 
@@ -21,22 +21,21 @@ const getDateValue = (date: any) => {
 const PlaceholderSegment = ({
   segment,
   state,
-  placeholder,
+  value,
 }: {
   segment: DateSegment;
   state: DateFieldState;
-  placeholder?: string;
+  value?: string;
 }) => {
   const ref = useRef(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
 
+  // don't render special text-direction character
+  if (segment.type === "literal" && segment.text === "\u{2066}") return;
+
   return (
     <div ref={ref} {...segmentProps}>
-      {(() => {
-        if (segment.type === "literal") return segment.text;
-        if (segment.isPlaceholder) return placeholder ?? segment.text;
-        return segment.text.padStart(2, "0");
-      })()}
+      {value}
     </div>
   );
 };
@@ -53,30 +52,34 @@ export const Placeholder = forwardRef<HTMLDivElement, PlaceholderProps>(
     const { value, segments } = state;
 
     return (
-      <>
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-        <div
-          ref={ref}
-          onKeyDown={(event) => {
-            // stop ArrowDown from opening dropdown
-            event.stopPropagation();
-            onKeyDown?.(event);
-          }}
-          {...others}
-        >
-          {name && (
-            <input type="hidden" name={name} value={getDateValue(value)} />
-          )}
-          {segments.map((segment) => (
-            <PlaceholderSegment
-              key={segment.type}
-              segment={segment}
-              state={state}
-              placeholder={placeholders[segment.type]}
-            />
-          ))}
-        </div>
-      </>
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div
+        ref={ref}
+        onKeyDown={(event) => {
+          // stop ArrowDown from opening dropdown
+          event.stopPropagation();
+          onKeyDown?.(event);
+        }}
+        {...others}
+      >
+        {name && (
+          <input type="hidden" name={name} value={getDateValue(value)} />
+        )}
+        {segments.map((segment, i) => (
+          <PlaceholderSegment
+            key={segment.type === "literal" ? `literal-${i}` : segment.type}
+            segment={segment}
+            state={state}
+            value={renderSegment(segment, placeholders[segment.type])}
+          />
+        ))}
+      </div>
     );
   },
 );
+
+function renderSegment(segment: DateSegment, placeholder?: string) {
+  if (segment.type === "literal") return segment.text;
+  if (segment.isPlaceholder) return placeholder ?? segment.text;
+  return segment.text.padStart(2, "0");
+}

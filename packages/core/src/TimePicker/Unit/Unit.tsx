@@ -1,4 +1,7 @@
-import type { DateFieldState, DateSegment } from "@react-stately/datepicker";
+import type {
+  DateFieldState,
+  DateSegment,
+} from "react-stately/useDateFieldState";
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { HvBaseInput, type HvBaseInputProps } from "../../BaseInput";
