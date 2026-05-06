@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import ClickAwayListener, {
   type ClickAwayListenerProps,
 } from "@mui/material/ClickAwayListener";
@@ -53,7 +53,7 @@ export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
     anchorEl,
     disablePortal,
     modifiers: modifiersProp,
-    popperOptions,
+    popperOptions: popperOptionsProp,
     onToggle,
     onClickAway,
     onFirstUpdate,
@@ -69,6 +69,11 @@ export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
     modifiers: modifiersProp,
     onPlacementChange: setPlacement,
   });
+
+  const popperOptions = useMemo(() => {
+    // memo popperOptions to ensure `onFirstUpdate` isn't re-created
+    return { ...popperOptionsProp, onFirstUpdate };
+  }, [onFirstUpdate, popperOptionsProp]);
 
   /** Handle keyboard inside children container. */
   const handleKeyDown: React.KeyboardEventHandler = (event) => {
@@ -95,10 +100,7 @@ export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
       className={cx(classes.container, className)}
       modifiers={modifiers}
       onKeyDown={handleKeyDown}
-      popperOptions={{
-        onFirstUpdate,
-        ...popperOptions,
-      }}
+      popperOptions={popperOptions}
       {...others}
     >
       <ClickAwayListener onClickAway={onClickAway}>

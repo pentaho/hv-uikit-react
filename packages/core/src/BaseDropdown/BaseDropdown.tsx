@@ -9,6 +9,7 @@ import {
 } from "react";
 import type { ClickAwayListenerProps } from "@mui/material/ClickAwayListener";
 import type { PopperProps } from "@mui/material/Popper";
+import useEventCallback from "@mui/utils/useEventCallback";
 import useForkRef from "@mui/utils/useForkRef";
 import type { Placement, State } from "@popperjs/core";
 import {
@@ -303,6 +304,11 @@ export const HvBaseDropdown = forwardRef<
   const HeaderComponent = HeaderComponentProp || "div";
   const RootComponent = HeaderComponentProp ? Fragment : "div";
 
+  const onFirstUpdate = useEventCallback((state: Partial<State>) => {
+    setComputedPlacement(state.placement);
+    onContainerCreation?.(state.elements?.popper ?? null, state);
+  });
+
   return (
     <RootComponent {...(!hasCustomHeader && { className: classes.root })}>
       <HeaderComponent
@@ -338,10 +344,7 @@ export const HvBaseDropdown = forwardRef<
         disablePortal={disablePortal}
         anchorEl={referenceElement}
         onToggle={handleToggle}
-        onFirstUpdate={(state) => {
-          setComputedPlacement(state.placement);
-          onContainerCreation?.(state.elements?.popper ?? null, state);
-        }}
+        onFirstUpdate={onFirstUpdate}
         popperOptions={popperProps}
       >
         {children}

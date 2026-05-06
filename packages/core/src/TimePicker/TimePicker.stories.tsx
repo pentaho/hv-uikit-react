@@ -128,6 +128,8 @@ export const Format12Hours: StoryObj<HvTimePickerProps> = {
     await expect(
       canvas.getByRole("button", { name: /pm/i }),
     ).toBeInTheDocument();
+    const numberInputs = canvas.getAllByRole("spinbutton");
+    await userEvent.type(numberInputs[2], "16");
   },
   render: () => {
     return (

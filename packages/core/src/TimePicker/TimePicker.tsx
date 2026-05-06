@@ -193,6 +193,12 @@ export const HvTimePicker = forwardRef<HTMLDivElement, HvTimePickerProps>(
       timeFieldRef,
     );
 
+    const popperProps = useMemo(() => {
+      return {
+        modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
+      };
+    }, [escapeWithReference]);
+
     const [open, setOpen] = useState(false);
 
     const [validationMessage] = useControlled(statusMessage, "Required");
@@ -290,17 +296,13 @@ export const HvTimePicker = forwardRef<HTMLDivElement, HvTimePickerProps>(
           aria-invalid={isStateInvalid ? true : undefined}
           aria-errormessage={errorMessageId}
           disablePortal={disablePortal}
-          popperProps={{
-            modifiers: [
-              { name: "preventOverflow", enabled: escapeWithReference },
-            ],
-          }}
+          popperProps={popperProps}
           {...otherDropdownProps}
         >
           <div ref={timeFieldRef} className={classes.timePopperContainer}>
-            {state.segments.map((segment) => (
+            {state.segments.map((segment, i) => (
               <Unit
-                key={segment.type}
+                key={segment.type === "literal" ? `literal-${i}` : segment.type}
                 state={state}
                 segment={segment}
                 placeholder={placeholders[segment.type]}

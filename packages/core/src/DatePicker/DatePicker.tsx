@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useEffect, useMemo, useRef } from "react";
 import { useForkRef } from "@mui/material/utils";
 import {
   useDefaultProps,
@@ -215,6 +215,12 @@ export const HvDatePicker = forwardRef<HTMLDivElement, HvDatePickerProps>(
 
     const { ref: refProp, ...otherDropdownProps } = dropdownProps;
     const dropdownForkedRef = useForkRef(ref, refProp);
+
+    const popperProps = useMemo(() => {
+      return {
+        modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
+      };
+    }, [escapeWithReference]);
 
     useEffect(() => {
       setStartDate(rangeMode ? startValue : value, true);
@@ -474,11 +480,7 @@ export const HvDatePicker = forwardRef<HTMLDivElement, HvDatePickerProps>(
           onContainerCreation={focusOnContainer}
           placeholder={dateString || placeholder || ""}
           adornment={<HvIcon name="Calendar" className={classes.icon} />}
-          popperProps={{
-            modifiers: [
-              { name: "preventOverflow", enabled: escapeWithReference },
-            ],
-          }}
+          popperProps={popperProps}
           aria-haspopup="dialog"
           aria-label={ariaLabel}
           aria-labelledby={
