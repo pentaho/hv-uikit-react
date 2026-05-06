@@ -40,7 +40,7 @@ const formSchema = z
         errorMap: (issue) => ({
           message:
             issue.code === "invalid_enum_value"
-              ? `Invalid country. Must be: ${issue.options}`
+              ? `Invalid country. Must be: ${String(issue.options)}`
               : "Invalid country.",
         }),
       })

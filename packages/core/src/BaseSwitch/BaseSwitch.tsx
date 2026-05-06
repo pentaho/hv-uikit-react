@@ -134,7 +134,7 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
     const [focusVisible, setFocusVisible] = useState(false);
 
     const onFocusVisibleCallback = useCallback(
-      (evt: React.FocusEvent<any, Element>) => {
+      (evt: React.FocusEvent<any>) => {
         setFocusVisible(true);
         onFocusVisible?.(evt);
       },
@@ -142,7 +142,7 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
     );
 
     const onBlurCallback = useCallback(
-      (evt: React.FocusEvent<any, Element>) => {
+      (evt: React.FocusEvent<any>) => {
         setFocusVisible(false);
         onBlur?.(evt);
       },

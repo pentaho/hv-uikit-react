@@ -32,7 +32,7 @@ async function convertSvgFiles(inputDir: string, outputFile: string) {
 
   const data = await Promise.all(
     svgFiles.map(async (f) => ({
-      name: `${parse(f.name).name}`.replace(/[-.]g/, ""),
+      name: parse(f.name).name.replace(/[-.]g/, ""),
       data: await fs.readFile(resolve(inputDir, f.name), "utf-8"),
     })),
   );

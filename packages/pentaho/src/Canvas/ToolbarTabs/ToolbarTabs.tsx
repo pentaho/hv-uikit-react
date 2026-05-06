@@ -156,11 +156,7 @@ export const HvCanvasToolbarTabs = forwardRef<
     handleChangeTabs?.(event, newTabs);
   };
 
-  const handleEdit = (
-    event: React.FormEvent<Element>,
-    value: string,
-    tabId: string,
-  ) =>
+  const handleEdit = (event: React.FormEvent, value: string, tabId: string) =>
     handleChangeTabs(
       event,
       tabs.map((tab) => (tab.id === tabId ? { ...tab, label: value } : tab)),
@@ -265,7 +261,7 @@ export const HvCanvasToolbarTabs = forwardRef<
                     width: tabWidth,
                   }}
                   key={tab.id}
-                  id={String(tab.id)}
+                  id={tab.id}
                   classes={{ root: classes.tab, tab: classes.tabContent }}
                   value={tab.id}
                   onKeyDown={(event) =>

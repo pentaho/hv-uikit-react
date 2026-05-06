@@ -15,7 +15,7 @@ export type HvLoadingContainerClasses = ExtractNames<typeof useClasses>;
 
 export interface HvLoadingContainerProps
   extends
-    HvBaseProps<HTMLDivElement>,
+    HvBaseProps,
     Pick<HvLoadingProps, "label" | "small" | "hidden"> {
   opacity?: number;
   classes?: HvLoadingContainerClasses;

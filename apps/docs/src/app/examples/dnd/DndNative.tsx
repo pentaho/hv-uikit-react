@@ -87,7 +87,7 @@ export default function Demo() {
     const updatedDroppedIndex =
       droppedIndex > draggedIndex ? droppedIndex - 1 : droppedIndex;
 
-    updatedItems.splice(updatedDroppedIndex + 1, 0, draggedItem as Item);
+    updatedItems.splice(updatedDroppedIndex + 1, 0, draggedItem!);
 
     setItems(updatedItems);
   };

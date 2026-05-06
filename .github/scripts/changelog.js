@@ -52,4 +52,4 @@ async function main() {
   console.info(JSON.stringify(output));
 }
 
-main();
+await main();

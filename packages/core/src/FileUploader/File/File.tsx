@@ -103,7 +103,7 @@ const getProgressText = (data: HvFileData, classes?: HvFileClasses) => {
       )}
 
       {!hasFailed && data.size && (
-        <HvTypography>{`${convertUnits(data.size)}`}</HvTypography>
+        <HvTypography>{convertUnits(data.size)}</HvTypography>
       )}
 
       {hasFailed && data.errorMessage && (

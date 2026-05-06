@@ -12,7 +12,7 @@ export type HvFocusClasses = ExtractNames<typeof useClasses>;
 export type HvFocusStrategies = "listbox" | "menu" | "card" | "grid";
 
 export interface HvFocusProps extends HvBaseProps<HTMLElement, "children"> {
-  children: React.ReactElement<any>;
+  children: React.ReactElement;
   /** Extra configuration for the child element. */
   configuration?: {
     tabIndex?: number;
@@ -471,7 +471,7 @@ export const HvFocus = ({
     const focusesList = getFocuses().filter(
       (el) =>
         isDisabledFocusable ||
-        !el.classList.contains(classes?.disabled as string),
+        !el.classList.contains(classes?.disabled),
     );
 
     const currentFocus = focusesList.indexOf(evt.currentTarget);

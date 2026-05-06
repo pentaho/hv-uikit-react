@@ -47,7 +47,7 @@ function isSameBundle(
   appId: string | undefined,
 ) {
   return (
-    v.bundle === `${bundle}` ||
+    v.bundle === bundle ||
     v.bundle === `${bundle}.js` ||
     v.bundle === `${appId}/${bundle}.js` ||
     v.bundle === `${appId}/${bundle}`

@@ -36,7 +36,7 @@ export interface HvSnackbarProps extends Omit<
    * The reason parameter can optionally be used to control the response to onClose, for example ignoring click away.
    * */
   onClose?: (
-    event: Event | React.SyntheticEvent<any, Event>,
+    event: Event | React.SyntheticEvent<any>,
     reason: SnackbarCloseReason,
   ) => void;
   /** The message to display. */

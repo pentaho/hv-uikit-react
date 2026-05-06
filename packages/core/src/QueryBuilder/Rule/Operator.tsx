@@ -53,7 +53,7 @@ export const Operator = ({
           dispatchAction({
             type: "set-operator",
             id,
-            operator: selected.id.toString(),
+            operator: selected.id,
             value:
               value === "range" || selected.id === "range" ? null : undefined,
           });

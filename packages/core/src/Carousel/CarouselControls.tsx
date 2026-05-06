@@ -17,7 +17,7 @@ const DEFAULT_LABELS = {
 
 interface HvCarouselControlsProps
   extends
-    HvBaseProps<HTMLDivElement>,
+    HvBaseProps,
     Pick<HvPaginationProps, "page" | "pages" | "canPrevious" | "canNext"> {
   showDots?: boolean;
   classes?: ExtractNames<typeof useClasses>;

@@ -229,7 +229,7 @@ export const useData = ({
         if (found) {
           const [key, value] = found;
           // replace partially with the original name (not normalized)
-          reversedMapping[column] = column.replace(key, value as string);
+          reversedMapping[column] = column.replace(key, value);
         } else {
           // keep the current name
           reversedMapping[column] = column;

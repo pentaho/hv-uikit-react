@@ -82,7 +82,7 @@ export const HvDropdownPanel = (props: HvDropdownPanelProps) => {
     }
     if (isKey(event, "Tab") && !event.shiftKey) {
       const focusList = getFirstAndLastFocus(
-        popperRef.current?.state?.elements.popper as HTMLElement,
+        popperRef.current?.state?.elements.popper!,
       );
       if (document.activeElement === focusList?.last) {
         event.preventDefault();

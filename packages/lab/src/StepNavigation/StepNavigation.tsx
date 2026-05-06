@@ -146,7 +146,7 @@ export const HvStepNavigation = ({
             {hasTitles ? (
               <StepComponent
                 key={`step-${title}`}
-                aria-label={`${title}`}
+                aria-label={title}
                 {...stepProps}
               />
             ) : (
@@ -156,7 +156,7 @@ export const HvStepNavigation = ({
               >
                 <div>
                   <Step className={classes.li}>
-                    <StepComponent aria-label={`${title}`} {...stepProps} />
+                    <StepComponent aria-label={title} {...stepProps} />
                   </Step>
                 </div>
               </HvTooltip>

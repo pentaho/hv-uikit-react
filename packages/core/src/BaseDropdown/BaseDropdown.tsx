@@ -185,7 +185,7 @@ export const HvBaseDropdown = forwardRef<
 
   const ariaRole = role || (component == null ? "combobox" : undefined);
 
-  const ariaExpanded = ariaExpandedProp ?? (ariaRole ? !!isOpen : undefined);
+  const ariaExpanded = ariaExpandedProp ?? (ariaRole ? isOpen : undefined);
 
   const id = useUniqueId(idProp);
   const containerId = useId();

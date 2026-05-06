@@ -122,7 +122,7 @@ const AssetInventory = () => {
         instance.state.pageIndex === pages - 1
       ) {
         // Go back
-        instance.gotoPage?.((instance.state.pageIndex as number) - 1);
+        instance.gotoPage?.((instance.state.pageIndex) - 1);
         setParams((prev) => ({
           ...prev,
           skip: prev.skip - prev.limit,

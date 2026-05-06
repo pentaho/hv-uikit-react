@@ -47,9 +47,9 @@ export interface HvSelectionListProps extends HvBaseProps<
    *
    * When defined the selection list state becomes controlled.
    */
-  value?: any | any[];
+  value?: any;
   /** When uncontrolled, defines the initial value. */
-  defaultValue?: any | any[];
+  defaultValue?: any;
   /**
    * The label of the form element.
    *

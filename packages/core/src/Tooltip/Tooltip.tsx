@@ -48,7 +48,7 @@ export interface HvTooltipProps extends Omit<MuiTooltipProps, "classes"> {
   /**
    * Node to apply the tooltip.
    */
-  children: React.ReactElement<any>;
+  children: React.ReactElement;
   /**
    * Id attribute value of an HTML Element to have the tooltip appended to it.
    */

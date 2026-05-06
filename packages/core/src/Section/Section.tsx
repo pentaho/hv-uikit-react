@@ -15,7 +15,7 @@ export { staticClasses as sectionClasses };
 export type HvSectionClasses = ExtractNames<typeof useClasses>;
 
 export interface HvSectionProps extends Omit<
-  HvBaseProps<HTMLDivElement>,
+  HvBaseProps,
   "title" | "onToggle"
 > {
   /** The title of the section */

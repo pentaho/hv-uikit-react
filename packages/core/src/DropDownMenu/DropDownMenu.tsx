@@ -35,7 +35,7 @@ export interface HvDropDownMenuProps extends HvBaseProps<
   "onClick" | "onToggle"
 > {
   /** Icon. */
-  icon?: React.ReactElement<any>;
+  icon?: React.ReactElement;
   /**
    * A list containing the elements to be rendered.
    *
@@ -135,7 +135,7 @@ export const HvDropDownMenu = forwardRef<
 
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
   const [computedPlacement, setComputedPlacement] = useState<Placement>();
-  const [open, setOpen] = useControlled(expanded, Boolean(defaultExpanded));
+  const [open, setOpen] = useControlled(expanded, defaultExpanded);
   const id = useUniqueId(idProp);
 
   const handleClose = (

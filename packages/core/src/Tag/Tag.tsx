@@ -53,7 +53,7 @@ export interface HvTagProps extends Omit<
   /** The color variant of the tag */
   color?: HvColorAny;
   /** Icon used to customize the delete icon */
-  deleteIcon?: React.ReactElement<any>;
+  deleteIcon?: React.ReactElement;
   /**
    * The callback fired when the delete icon is pressed.
    * This function has to be provided to the component, in order to render the delete icon
@@ -110,10 +110,7 @@ export const HvTag = forwardRef<
   const { classes, cx } = useClasses(classesProp);
   const { activeTheme } = useTheme();
 
-  const [isSelected, setIsSelected] = useControlled(
-    selected,
-    Boolean(defaultSelected),
-  );
+  const [isSelected, setIsSelected] = useControlled(selected, defaultSelected);
 
   const handleDeleteClick = (event: React.MouseEvent) => {
     // Stop the event from bubbling up to the tag

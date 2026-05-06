@@ -139,7 +139,7 @@ export function useFlowNodeUtils<NodeData = any>(id?: string) {
   );
 
   const setNodeParent = useCallback(
-    (node?: Node<any>, extent?: "parent" | CoordinateExtent) => {
+    (node?: Node, extent?: "parent" | CoordinateExtent) => {
       if (!nodeId) return;
 
       reactFlowInstance.setNodes((nodes) => {

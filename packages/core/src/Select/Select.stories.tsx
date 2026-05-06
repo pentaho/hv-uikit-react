@@ -14,7 +14,7 @@ export default {
   subcomponents: { HvOption, HvOptionGroup },
 } satisfies Meta<typeof HvSelect>;
 
-export const Main: StoryObj<HvSelectProps<{}, false>> = {
+export const Main: StoryObj<HvSelectProps<{}>> = {
   args: {
     multiple: false,
     size: "md",
@@ -67,7 +67,7 @@ export const Main: StoryObj<HvSelectProps<{}, false>> = {
   },
 };
 
-export const Variants: StoryObj<HvSelectProps<{}, false>> = {
+export const Variants: StoryObj<HvSelectProps<{}>> = {
   parameters: {
     docs: {
       description: {
@@ -112,7 +112,7 @@ export const Variants: StoryObj<HvSelectProps<{}, false>> = {
   },
 };
 
-export const Test: StoryObj<HvSelectProps<{}, false>> = {
+export const Test: StoryObj<HvSelectProps<{}>> = {
   parameters: {
     a11y: {
       config: {

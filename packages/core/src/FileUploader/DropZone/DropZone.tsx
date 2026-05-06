@@ -217,7 +217,7 @@ export const HvDropZone = (props: HvDropZoneProps) => {
             if (disabled) return;
 
             const { files } = event.dataTransfer;
-            if (multiple === true || files.length === 1) {
+            if (multiple || files.length === 1) {
               event.stopPropagation();
               event.preventDefault();
               onChangeHandler(files);

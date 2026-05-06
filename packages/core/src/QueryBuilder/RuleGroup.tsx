@@ -202,11 +202,11 @@ export const RuleGroup = ({
                 disabled={readOnly}
                 aria-disabled={readOnly}
               >
-                {`${labels.empty?.createCondition}`}
+                {labels.empty?.createCondition}
               </HvTypography>
               {level <= normalizedMaxDepth && (
                 <>
-                  {`${labels.empty?.spacer}`}
+                  {labels.empty?.spacer}
                   <HvTypography
                     link
                     component="button"
@@ -217,7 +217,7 @@ export const RuleGroup = ({
                     disabled={readOnly}
                     aria-disabled={readOnly}
                   >
-                    {`${labels.empty?.createGroup}`}
+                    {labels.empty?.createGroup}
                   </HvTypography>
                 </>
               )}

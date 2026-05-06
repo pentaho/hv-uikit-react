@@ -66,7 +66,7 @@ export function useService<TService>(
   serviceIdOrRef: ServiceId | ServiceReference<TService>,
   options?: UseServiceOptions,
 ): UseServiceResult<TService> {
-  const { getService } = useServicesContext();
+  const manager = useServicesContext();
 
   // Deep comparison to stabilize the options object, preventing unnecessary re-renders
   const opts = useDeepMemo(options || {});
@@ -75,8 +75,8 @@ export function useService<TService>(
     () =>
       isServiceReference<TService>(serviceIdOrRef)
         ? serviceIdOrRef.getService()
-        : getService<TService>(serviceIdOrRef, opts),
-    [serviceIdOrRef, getService, opts],
+        : manager.getService<TService>(serviceIdOrRef, opts),
+    [serviceIdOrRef, manager, opts],
   );
 
   return useAsync(promiseFactory, { dataProp: "service" });
@@ -93,14 +93,14 @@ export function useServices<TService>(
   serviceId: ServiceId,
   options?: UseServicesOptions,
 ): UseServicesResult<TService> {
-  const { getServices } = useServicesContext();
+  const manager = useServicesContext();
 
   // Deep comparison to stabilize the options object, preventing unnecessary re-renders
   const opts = useDeepMemo(options || {});
 
   const promiseFactory = useCallback(
-    () => getServices<TService>(serviceId, opts),
-    [getServices, serviceId, opts],
+    () => manager.getServices<TService>(serviceId, opts),
+    [manager, serviceId, opts],
   );
 
   return useAsync(promiseFactory, { dataProp: "services", pendingData: [] });
@@ -117,8 +117,8 @@ export function useServiceReference<TService>(
   serviceId: ServiceId,
   options: UseServiceReferenceOptions = {},
 ): ServiceReference<TService> {
-  const { getServiceReference } = useServicesContext();
-  return getServiceReference<TService>(serviceId, options);
+  const manager = useServicesContext();
+  return manager.getServiceReference<TService>(serviceId, options);
 }
 
 /**
@@ -132,8 +132,8 @@ export function useServiceReferences<TService>(
   serviceId: ServiceId,
   options: UseServiceReferencesOptions = {},
 ): ServiceReference<TService>[] {
-  const { getServiceReferences } = useServicesContext();
-  return getServiceReferences<TService>(serviceId, options);
+  const manager = useServicesContext();
+  return manager.getServiceReferences<TService>(serviceId, options);
 }
 
 // Type guard to detect a ServiceReference relying on the presence of getService method.

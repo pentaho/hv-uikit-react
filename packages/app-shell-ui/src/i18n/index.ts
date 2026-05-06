@@ -41,5 +41,5 @@ export const createI18NextInstance = (): I18nInstance => {
 
   instance.use(LanguageDetector);
 
-  return instance as I18nInstance;
+  return instance;
 };

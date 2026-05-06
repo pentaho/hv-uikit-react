@@ -16,7 +16,7 @@ export const { staticClasses, useClasses } = createClasses("HvSelectionList", {
   horizontal: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginLeft: -theme.space.sm,
+    marginLeft: theme.spacing(-2),
     "&>*": {
       marginLeft: theme.space.sm,
     },

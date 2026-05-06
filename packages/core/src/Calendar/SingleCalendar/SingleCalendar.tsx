@@ -86,7 +86,7 @@ export const HvSingleCalendar = (props: HvSingleCalendarProps) => {
     const siblings =
       parent != null
         ? Array.from(
-            parent.getElementsByClassName(classes.cellContainer as string),
+            parent.getElementsByClassName(classes.cellContainer),
           )
         : [];
     const elIndex = el ? siblings.indexOf(el) : 0;

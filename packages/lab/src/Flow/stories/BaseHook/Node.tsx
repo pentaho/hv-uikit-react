@@ -68,7 +68,7 @@ interface NodeProps extends ReactFlowNodeProps {
   output?: HvFlowNodeOutput;
 }
 
-export const Node = ({ id, groupId = "teapot", input, output }: NodeProps) => {
+export const Node = ({ id, groupId, input, output }: NodeProps) => {
   const {
     toggleShowActions,
     getNodeToolbarProps,

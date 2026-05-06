@@ -23,7 +23,7 @@ import {
 
 type Node = ReturnType<HvFlowInstance["getNode"]>;
 
-interface AssetData {
+export interface AssetData {
   asset?: string;
 }
 

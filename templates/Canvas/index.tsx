@@ -109,7 +109,7 @@ const Page = () => {
     const newOpenedTables = openedTables?.filter((x) => x.id !== value) ?? [];
     if (newOpenedTables.length !== 0) {
       setOpenedTables?.(newOpenedTables);
-      setSelectedTable?.(newOpenedTables[0].id as string);
+      setSelectedTable?.(newOpenedTables[0].id);
     } else {
       setOpenedTables?.(undefined);
     }

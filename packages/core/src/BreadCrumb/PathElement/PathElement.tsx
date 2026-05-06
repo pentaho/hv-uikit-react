@@ -11,7 +11,7 @@ export interface HvPathElementProps {
   last?: boolean;
   classes?: HvPathElementClasses;
   separator?: React.ReactNode;
-  children: React.ReactElement<any>;
+  children: React.ReactElement;
 }
 
 export const HvPathElement = ({

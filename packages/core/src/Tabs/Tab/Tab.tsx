@@ -16,7 +16,7 @@ export interface HvTabProps extends Omit<MuiTabProps, "children"> {
   /** If `true`, the tab will be disabled. */
   disabled?: boolean;
   /** The icon element. */
-  icon?: React.ReactElement<any> | string;
+  icon?: React.ReactElement | string;
   /** The label element. */
   label?: React.ReactNode;
   /** The position of the icon relative to the label. */

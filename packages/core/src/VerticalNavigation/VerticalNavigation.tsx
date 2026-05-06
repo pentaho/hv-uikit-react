@@ -28,7 +28,7 @@ export type HvVerticalNavigationPosition =
   | "fixed"
   | "absolute";
 
-export interface HvVerticalNavigationProps extends HvBaseProps<HTMLDivElement> {
+export interface HvVerticalNavigationProps extends HvBaseProps {
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvVerticalNavigationClasses;
   /** Current State of the Vertical Navigation Collapse */

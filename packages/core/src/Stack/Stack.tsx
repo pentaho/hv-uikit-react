@@ -30,7 +30,7 @@ export interface HvStackProps extends HvBaseProps {
    * - If `true` the Material-UI Divider component will be used.
    * - If a React node is passed then the custom divider will be used.
    */
-  divider?: boolean | React.ReactNode;
+  divider?: React.ReactNode;
   /** The properties to pass on to the Material-UI component. */
   dividerProps?: MuiDividerProps;
   /** Sets whether or not there should be arrow navigation between the stack elements. */

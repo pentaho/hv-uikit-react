@@ -533,8 +533,8 @@ export const HvSlider = forwardRef<
       <div
         key={index}
         className={cx({
-          [classes.handleContainer]: !!(!disabled && !isEmpty),
-          [classes.handleContainerDisabled]: !!(disabled && !isEmpty),
+          [classes.handleContainer]: !disabled && !isEmpty,
+          [classes.handleContainerDisabled]: disabled && !isEmpty,
           [classes.handleHiddenContainer]: isEmpty || readOnly,
         })}
       >

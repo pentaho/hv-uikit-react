@@ -256,7 +256,7 @@ export const StickyNode = ({
             {colorsToConfig.map((c) => (
               <HvColorPicker
                 key={c}
-                label={`${c.charAt(0).toUpperCase() + c.slice(1).replace("Color", " Color")}`}
+                label={c.charAt(0).toUpperCase() + c.slice(1).replace("Color", " Color")}
                 value={mergedData[c as keyof StickyNodeData] ?? ""}
                 onChange={(color) => {
                   setNodes((nds) =>

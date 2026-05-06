@@ -26,7 +26,7 @@ export interface RendererProps<T extends string = string> {
 }
 
 export const Renderer = (props: RendererProps) => {
-  const { type, data: nodeData = {} } = props;
+  const { type, data: nodeData } = props;
   const {
     endpoint,
     measure,

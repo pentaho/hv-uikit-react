@@ -22,9 +22,6 @@ export const HvAppShellCombinedProvidersContext = createContext<
   HvAppShellCombinedProvidersContextValue | undefined
 >(undefined);
 
-export const useHvAppShellCombinedProviders =
-  (): HvAppShellCombinedProvidersContextValue => {
-    return useContext(
-      HvAppShellCombinedProvidersContext,
-    ) as HvAppShellCombinedProvidersContextValue;
-  };
+export const useHvAppShellCombinedProviders = () => {
+  return useContext(HvAppShellCombinedProvidersContext)!;
+};

@@ -10,7 +10,7 @@ const name = "MySelect";
 
 const getSelect = () => screen.getByRole("combobox", { name });
 
-const setup = (props?: HvSelectProps<string, false>) =>
+const setup = (props?: HvSelectProps<string>) =>
   render(
     <HvSelect name="options" label={name} {...props}>
       <HvOption value="opt1">Option1</HvOption>

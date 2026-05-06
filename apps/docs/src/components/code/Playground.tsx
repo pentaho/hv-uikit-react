@@ -161,7 +161,7 @@ const generateCode = (
   // Generate and return the final code
   if (childrenString) {
     return `<${componentName} ${componentPropsString}>
-  ${String(childrenString).replaceAll("\n", "\n  ")}
+  ${childrenString.replaceAll("\n", "\n  ")}
 </${componentName}>`;
   }
 
@@ -173,7 +173,7 @@ export const Playground = ({
   componentName,
   meta,
   componentProps,
-  controls = {},
+  controls,
   children,
   decoratorClassName,
 }: PlaygroundProps) => {

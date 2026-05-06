@@ -121,7 +121,7 @@ export type QueryAction =
   | {
       type: "set-value";
       id: React.Key;
-      value: HvQueryBuilderQueryRuleValue | null | any;
+      value: any; // HvQueryBuilderQueryRuleValue | null
     }
   | {
       type: "set-query";

@@ -119,7 +119,7 @@ export const HvWizardTitle = ({
           onClick={toggleSummary}
           startIcon={<Report />}
         >
-          {`${labels.summary ?? "Summary"}`}
+          {labels.summary ?? "Summary"}
         </HvButton>
       )}
     </HvDialogTitle>

@@ -82,10 +82,10 @@ describe("HeaderActions", () => {
     expect(dummyAction2Element).toBeInTheDocument();
     expect(dummyAction3Element).toBeInTheDocument();
     expect(
-      dummyAction1Element!.compareDocumentPosition(dummyAction2Element!),
+      dummyAction1Element.compareDocumentPosition(dummyAction2Element),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     expect(
-      dummyAction2Element!.compareDocumentPosition(dummyAction3Element!),
+      dummyAction2Element.compareDocumentPosition(dummyAction3Element),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
@@ -213,22 +213,22 @@ describe("HeaderActions", () => {
     });
 
     expect(lazy).toHaveBeenCalledTimes(6);
+    expect(dummyAction3Element.compareDocumentPosition(helpButtonElement)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+    expect(helpButtonElement.compareDocumentPosition(dummyAction1Element)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
     expect(
-      dummyAction3Element!.compareDocumentPosition(helpButtonElement!),
+      dummyAction1Element.compareDocumentPosition(appSwitcherToggleElement),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     expect(
-      helpButtonElement!.compareDocumentPosition(dummyAction1Element!),
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(
-      dummyAction1Element!.compareDocumentPosition(appSwitcherToggleElement!),
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(
-      appSwitcherToggleElement!.compareDocumentPosition(
-        colorModeSwitcherElement!,
+      appSwitcherToggleElement.compareDocumentPosition(
+        colorModeSwitcherElement,
       ),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     expect(
-      colorModeSwitcherElement!.compareDocumentPosition(dummyAction2Element!),
+      colorModeSwitcherElement.compareDocumentPosition(dummyAction2Element),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 });

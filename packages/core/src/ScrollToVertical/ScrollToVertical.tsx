@@ -132,7 +132,7 @@ export const HvScrollToVertical = (props: HvScrollToVerticalProps) => {
         onClick?.(event, index);
       }}
       onKeyDown={(event) => {
-        if (isKey(event, "Enter") !== true) return;
+        if (!isKey(event, "Enter")) return;
         event.preventDefault();
 
         setScrollTo(event, option.value, index, () => onChange?.(event, index));

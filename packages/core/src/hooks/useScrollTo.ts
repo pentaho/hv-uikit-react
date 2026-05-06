@@ -21,20 +21,18 @@ interface HvScrollToOptionWithLink extends HvScrollToOption {
 
 export const useScrollTo = (
   selectedIndexProp = 0,
-  scrollElementId: string | undefined = undefined,
+  scrollElementId: string | undefined,
   navigationMode: "push" | "replace" | "none" = "push",
   relativeLinks = false,
   offset = 0,
   options: HvScrollToOption[] = [],
-  onChange:
-    | ((
-        event:
-          | Event
-          | React.MouseEvent<HTMLDivElement | HTMLAnchorElement>
-          | React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement>,
-        index: number,
-      ) => void)
-    | undefined = undefined,
+  onChange?: (
+    event:
+      | Event
+      | React.MouseEvent<HTMLDivElement | HTMLAnchorElement>
+      | React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement>,
+    index: number,
+  ) => void,
   direction: "column" | "row" = "column",
 ): [
   number,

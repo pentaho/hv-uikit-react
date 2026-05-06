@@ -67,7 +67,7 @@ export const Attribute = ({
           dispatchAction({
             type: "set-attribute",
             id,
-            attribute: attributeId?.toString(),
+            attribute: attributeId,
             operator,
             value,
           });

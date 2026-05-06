@@ -142,7 +142,7 @@ export const HvHeaderMenuItem = (props: HvHeaderMenuItemProps) => {
         {
           [classes.menu]: isMenu,
           [classes.menubar]: !isMenu,
-          [classes.selected]: !!isSelected,
+          [classes.selected]: isSelected,
         },
         className,
       )}

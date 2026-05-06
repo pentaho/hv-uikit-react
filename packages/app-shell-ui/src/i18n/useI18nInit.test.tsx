@@ -39,7 +39,7 @@ const createNoBackendInstance = (): I18nInstance =>
     ns: [APP_SHELL_NAMESPACE, CONFIG_TRANSLATIONS_NAMESPACE],
     fallbackLng: "en",
     partialBundledLanguages: true,
-  }) as I18nInstance;
+  });
 
 /**
  * Test wrapper that mirrors the production AppShellContainer structure:

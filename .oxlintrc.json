@@ -1,7 +1,23 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./node_modules/@hitachivantara/uikit-config/oxlint/strict.json"],
+  "options": {
+    "typeAware": true
+  },
   "rules": {
+    "typescript/await-thenable": "off",
+    "typescript/no-base-to-string": "off",
+    "typescript/consistent-return": "off",
+    "typescript/promise-function-async": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/restrict-template-expressions": "off",
+    // TODO: review
+    "typescript/unbound-method": "off", // warn?
+    "typescript/no-floating-promises": "off", // warn?
+    "typescript/no-useless-default-assignment": "off",
+    "typescript/no-unnecessary-type-parameters": "off",
+    "typescript/use-unknown-in-catch-callback-variable": "off",
+
     "no-restricted-imports": [
       "error",
       {

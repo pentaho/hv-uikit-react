@@ -112,6 +112,7 @@ export const HvBoxplot = forwardRef<ReactECharts, HvBoxplotProps>(
     const chartYAxis = useYAxis({
       axes: Array.isArray(yAxis) || yAxis == null ? yAxis : [yAxis],
       defaultType: "continuous",
+      // oxlint-disable-next-line typescript/no-misused-spread, REVIEW
       ...yAxis,
     });
 

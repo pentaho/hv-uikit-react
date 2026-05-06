@@ -12,7 +12,6 @@ import {
   HvInput,
   HvTypography,
   type HvBannerVariant,
-  type HvSnackbarVariant,
 } from "@hitachivantara/uikit-react-core";
 
 const Notifications = () => {
@@ -21,7 +20,7 @@ const Notifications = () => {
 
   const renderTriggerNotificationButton = (
     type: HvAppShellEventNotificationType,
-    variant: HvBannerVariant | HvSnackbarVariant,
+    variant: HvBannerVariant,
   ) => {
     const actionsProps: Partial<HvAppShellEventNotification> = includeActions
       ? {

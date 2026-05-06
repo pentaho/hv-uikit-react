@@ -138,7 +138,7 @@ export const nodeGroups = {
 
 export type NodeGroup = keyof typeof nodeGroups;
 
-export const nodeTypes: HvFlowProps["nodeTypes"] = {
+export const nodeTypes = {
   asset: Asset,
   model: MLModel,
   kpi: KPI,

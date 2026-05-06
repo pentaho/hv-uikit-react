@@ -2,7 +2,7 @@ import {
   HvSkeleton,
   HvTooltip,
   type HvBulkActionsProps,
-  type HvColor,
+  type HvColorAny,
   type HvControlsProps,
   type HvRightControlProps,
   type HvTableColumnConfig,
@@ -36,7 +36,7 @@ export interface AssetInventoryEntry extends DataObject {
   priority?: string;
   time?: string;
   temperature?: string;
-  statusColor?: HvColor;
+  statusColor?: HvColorAny;
   image?: string;
 }
 
@@ -53,9 +53,7 @@ const images = [
   "https://images.unsplash.com/photo-1600715502630-c9300abe78a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
 ];
 
-export const getStatusIcon = (
-  color?: AssetInventoryEntry["statusColor"] | string,
-) => {
+export const getStatusIcon = (color?: AssetInventoryEntry["statusColor"]) => {
   switch (color) {
     case "positive":
       return <Level0Good color="positive" />;

@@ -24,7 +24,7 @@ import {
 import { useLayoutsContext, type LayoutConfig } from "./LayoutsContext";
 import { buildLayout } from "./utils";
 
-interface DashboardData {
+export interface DashboardData {
   config: LayoutConfig;
 }
 

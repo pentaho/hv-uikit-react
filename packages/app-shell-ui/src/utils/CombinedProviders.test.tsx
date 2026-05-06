@@ -1,26 +1,25 @@
-import type { ComponentType, PropsWithChildren } from "react";
 import { render, waitFor } from "@testing-library/react";
 
 import CombinedProviders from "./CombinedProviders";
 
-const DummyActionComponent1: ComponentType<PropsWithChildren> = ({
-  children,
-}) => <div aria-label="dummyProviderComponent1">{children}</div>;
-const DummyActionComponent2: ComponentType<PropsWithChildren> = ({
-  children,
-}) => <div aria-label="dummyProviderComponent2">{children}</div>;
-const DummyActionComponent3: ComponentType<PropsWithChildren> = ({
-  children,
-}) => <div aria-label="dummyProviderComponent3">{children}</div>;
+const DummyActionComponent1 = ({ children }: React.PropsWithChildren) => (
+  <div aria-label="dummyProviderComponent1">{children}</div>
+);
+const DummyActionComponent2 = ({ children }: React.PropsWithChildren) => (
+  <div aria-label="dummyProviderComponent2">{children}</div>
+);
+const DummyActionComponent3 = ({ children }: React.PropsWithChildren) => (
+  <div aria-label="dummyProviderComponent3">{children}</div>
+);
 
-interface DummyProviderWithConfigProps extends PropsWithChildren {
+interface DummyProviderWithConfigProps extends React.PropsWithChildren {
   testProp?: string;
 }
 
-const DummyProviderWithConfig: ComponentType<DummyProviderWithConfigProps> = ({
+const DummyProviderWithConfig = ({
   children,
   testProp,
-}) => (
+}: DummyProviderWithConfigProps) => (
   <div aria-label="dummyProviderWithConfig" data-test-prop={testProp}>
     {children}
   </div>
@@ -58,15 +57,9 @@ describe("CombinedProviders", () => {
       expect(dummyProvider3Element).toBeInTheDocument();
       expect(dummyProviderWithConfigElement).toBeInTheDocument();
       expect(getByLabelText("dummy")).toBeInTheDocument();
-      expect(dummyProvider1Element!.contains(dummyProvider2Element!)).toBe(
-        true,
-      );
-      expect(dummyProvider2Element!.contains(dummyProvider3Element!)).toBe(
-        true,
-      );
-      expect(dummyProvider1Element!.contains(dummyProvider3Element!)).toBe(
-        true,
-      );
+      expect(dummyProvider1Element.contains(dummyProvider2Element)).toBe(true);
+      expect(dummyProvider2Element.contains(dummyProvider3Element)).toBe(true);
+      expect(dummyProvider1Element.contains(dummyProvider3Element)).toBe(true);
       expect(
         dummyProviderWithConfigElement.getAttribute("data-test-prop"),
       ).toBe("test-value");

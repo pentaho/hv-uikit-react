@@ -45,10 +45,8 @@ const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
     if (!apps) return [];
     return apps.map((app: HvAppShellAppSwitcherItemConfig) => ({
       name: tConfig(app.label),
-      description: app.description
-        ? tConfig(app.description).toString()
-        : undefined,
-      url: app.url?.includes(":") ? app.url : tConfig(app.url).toString(),
+      description: app.description ? tConfig(app.description) : undefined,
+      url: app.url?.includes(":") ? app.url : tConfig(app.url),
       target: app.target === "NEW" ? "_blank" : "_top",
       iconElement: app.icon && <ConfigIcon icon={app.icon} />,
     }));

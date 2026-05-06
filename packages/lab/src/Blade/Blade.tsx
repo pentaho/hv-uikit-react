@@ -130,10 +130,7 @@ export const HvBlade = (props: HvBladeProps) => {
 
   const { classes, cx } = useClasses(classesProp);
 
-  const [isExpanded, setIsExpanded] = useControlled(
-    expanded,
-    Boolean(defaultExpanded),
-  );
+  const [isExpanded, setIsExpanded] = useControlled(expanded, defaultExpanded);
 
   const handleAction = useCallback(
     (event: SyntheticEvent) => {

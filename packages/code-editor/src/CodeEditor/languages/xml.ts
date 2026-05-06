@@ -140,7 +140,7 @@ export const hvXmlCompletionProvider = (monaco: Monaco, schema?: string) => {
         {
           label: "Insert root element",
           kind: monaco.languages.CompletionItemKind.Snippet,
-          // eslint-disable-next-line no-template-curly-in-string
+          // oxlint-disable-next-line typescript/no-unnecessary-template-expression
           insertText: `<${root}>\n\t${"${0:}"}\n</${root}>`, // ${0:} used to position the cursor
           insertTextRules:
             monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
@@ -214,18 +214,18 @@ export const hvXmlCompletionProvider = (monaco: Monaco, schema?: string) => {
         lastOpenedTag &&
         elements?.[lastOpenedTag] &&
         elements[lastOpenedTag].attributes &&
-        elements[lastOpenedTag].attributes!.length > 0
+        elements[lastOpenedTag].attributes.length > 0
       ) {
         const attributes = lastWordWritten.word
-          ? elements[lastOpenedTag].attributes!.filter((attr) =>
+          ? elements[lastOpenedTag].attributes.filter((attr) =>
               attr.startsWith(lastWordWritten.word),
             )
-          : elements[lastOpenedTag].attributes!;
+          : elements[lastOpenedTag].attributes;
         for (const attribute of attributes) {
           suggestions.push({
             label: attribute,
             kind: monaco.languages.CompletionItemKind.Field,
-            // eslint-disable-next-line no-template-curly-in-string
+            // oxlint-disable-next-line typescript/no-unnecessary-template-expression
             insertText: `${attribute}="${"${0:}"}"`, // ${0:} used to position the cursor
             insertTextRules:
               monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,

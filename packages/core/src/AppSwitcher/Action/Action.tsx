@@ -24,7 +24,7 @@ export interface HvAppSwitcherActionApplication {
   /** URL with the icon location to be used to represent the application. iconUrl will only be used if no iconElement is provided. */
   iconUrl?: string;
   /** Element to be added as the icon representing the application. The iconElement will be the primary option to be displayed. */
-  iconElement?: React.ReactElement<any>;
+  iconElement?: React.ReactElement;
   /** Small description of the application. */
   description?: string;
   /**  URL where the application is accessible. */

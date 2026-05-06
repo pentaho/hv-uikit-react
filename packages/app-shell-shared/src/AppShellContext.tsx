@@ -8,5 +8,5 @@ export const HvAppShellContext = createContext<
 >(undefined);
 
 export const useHvAppShellConfig = (): HvAppShellContextValue => {
-  return useContext(HvAppShellContext) as HvAppShellContextValue;
+  return useContext(HvAppShellContext)!;
 };

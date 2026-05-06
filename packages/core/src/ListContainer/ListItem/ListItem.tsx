@@ -192,7 +192,7 @@ export const HvListItem = forwardRef<
     return (
       <>
         {item}
-        <li role="separator" className={classes.separator} aria-hidden="true" />
+        <li className={classes.separator} aria-hidden />
       </>
     );
   }

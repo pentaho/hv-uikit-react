@@ -70,21 +70,21 @@ export interface HvGridProps extends Omit<MuiGridProps, "classes" | "columns"> {
    * Based in the 8x factor defined in the theme, it allows the definition of this factor based on the factor
    * (number between 0 and 10), breakpoint or auto.
    */
-  spacing?: HvGridSpacing | number;
+  spacing?: HvGridSpacing | (number & {});
   /**
    * Defines the vertical space between the type item component. It can only be used on a type container component.
    * Based in the 8x factor defined in the theme, it allows the definition of this factor based on the factor
    * (number between 0 and 10), breakpoint or auto.
    * It overrides the value of the spacing prop.
    */
-  rowSpacing?: HvGridSpacing | number;
+  rowSpacing?: HvGridSpacing | (number & {});
   /**
    * Defines the horizontal space between the type item component. It can only be used on a type container component.
    * Based in the 8x factor defined in the theme, it allows the definition of this factor based on the factor
    * (number between 0 and 10), breakpoint or auto.
    * It overrides the value of the spacing prop.
    */
-  columnSpacing?: HvGridSpacing | number;
+  columnSpacing?: HvGridSpacing | (number & {});
   /**
    * The number of columns.
    * Defaults to a 12-column grid.

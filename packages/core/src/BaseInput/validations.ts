@@ -94,6 +94,7 @@ export const validateInput = (
 ): HvInputValidity => {
   // bootstrap validity object using browser's built-in validation
   const inputValidity: HvInputValidity = {
+    // oxlint-disable-next-line typescript/no-misused-spread
     ...input?.validity,
     valid: input?.validity?.valid ?? true,
   };

@@ -81,12 +81,12 @@ interface ToolbarTabEditorProps extends Omit<
   classes?: ToolbarTabEditorClasses;
   /** Called the field is blurred. */
   onBlur?: (
-    event: React.FocusEvent<Element> | React.KeyboardEvent<Element>,
+    event: React.FocusEvent | React.KeyboardEvent,
     value: string,
   ) => void;
   /** Called the value changes. */
   onChange?: (
-    event: React.FormEvent<Element> | React.KeyboardEvent<Element>,
+    event: React.FormEvent | React.KeyboardEvent,
     value: string,
   ) => void;
   /** Called the `edit` prop changes. */
@@ -171,7 +171,7 @@ export const ToolbarTabEditor = ({
   };
 
   const handleBlur = (
-    event: React.FocusEvent<Element> | React.KeyboardEvent<Element>,
+    event: React.FocusEvent | React.KeyboardEvent,
   ) => {
     changeEdit(false);
     scrollContentToStart();

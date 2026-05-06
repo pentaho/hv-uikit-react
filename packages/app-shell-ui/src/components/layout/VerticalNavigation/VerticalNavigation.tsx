@@ -67,7 +67,7 @@ export const VerticalNavigation = () => {
   const isPentahoTheme = activeTheme?.name === "pentahoPlus";
 
   const changeHandler = (
-    event: React.SyntheticEvent<Element, Event>,
+    event: React.SyntheticEvent,
     selectedItem: NavigationMenuItem,
   ) => {
     // Due to the change from buttons to links on the navigation tree, we need to prevent the default behaviour of

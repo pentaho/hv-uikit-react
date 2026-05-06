@@ -40,7 +40,7 @@ const PlaceholderSegment = ({
   );
 };
 
-export interface PlaceholderProps extends HvBaseProps<HTMLDivElement> {
+export interface PlaceholderProps extends HvBaseProps {
   name?: string;
   state: DateFieldState;
   placeholders: Partial<Record<SegmentType, string>>;

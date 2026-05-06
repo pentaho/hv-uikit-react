@@ -15,7 +15,7 @@ const useHeaderSpacing = () => {
     !activePath || navigation?.some((item) => item.id === activePath?.id);
 
   const headerSpacing = isFirstLevel
-    ? `${theme.header.height}`
+    ? theme.header.height
     : `${theme.header.height} + ${theme.header.secondLevelHeight}`;
 
   return `calc(${theme.space.sm} + ${headerSpacing})`;

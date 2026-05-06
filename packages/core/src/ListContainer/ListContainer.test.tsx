@@ -17,7 +17,7 @@ describe("ListContainer", () => {
   });
 
   it("should render separators when separator prop is true", () => {
-    const { container } = render(
+    render(
       <HvListContainer>
         <HvListItem role="option" separator>
           Item with separator
@@ -29,22 +29,14 @@ describe("ListContainer", () => {
       </HvListContainer>,
     );
 
-    // Should render 3 list items
     expect(screen.getAllByRole("option")).toHaveLength(3);
 
-    // Should render 2 separators with proper role and ARIA attributes
-    // Use querySelectorAll since aria-hidden="true" elements are not accessible via role queries
-    const separators = container.querySelectorAll('[role="separator"]');
-    expect(separators).toHaveLength(2);
-
-    separators.forEach((separator) => {
-      expect(separator).toHaveAttribute("aria-hidden", "true");
-      expect(separator.tagName.toLowerCase()).toBe("li");
-    });
+    const fistItem = screen.getByText(/Item with separator/);
+    expect(fistItem.nextElementSibling).toHaveAttribute("aria-hidden");
   });
 
   it("should not show separator for the last item even if separator is true", () => {
-    const { container } = render(
+    render(
       <HvListContainer>
         <HvListItem role="option" separator>
           First item
@@ -55,17 +47,9 @@ describe("ListContainer", () => {
       </HvListContainer>,
     );
 
-    // Should render 2 list items
     expect(screen.getAllByRole("option")).toHaveLength(2);
 
-    // Should render 2 separators in DOM, but the last one should be hidden via CSS
-    const separators = container.querySelectorAll('[role="separator"]');
-    expect(separators).toHaveLength(2);
-
-    // First separator should be visible
-    expect(separators[0]).not.toHaveStyle("display: none");
-
-    // Last separator should be hidden via :last-child CSS
-    expect(separators[1]).toHaveStyle("display: none");
+    const lastItem = screen.getByText(/Last item with separator/);
+    expect(lastItem.nextElementSibling).toHaveStyle("display: none");
   });
 });

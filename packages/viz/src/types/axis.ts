@@ -40,7 +40,7 @@ export interface HvChartAxis {
   };
   /** Maximum value on the axis. Set this property to `max` to use the maximum data value. */
   maxValue?:
-    | string
+    | (string & {})
     | number
     | "max"
     | ((obj: {
@@ -49,7 +49,7 @@ export interface HvChartAxis {
       }) => string | number);
   /** Minimum value on the axis. Set this property to `min` to use the maximum data value. */
   minValue?:
-    | string
+    | (string & {})
     | number
     | "min"
     | ((obj: {
