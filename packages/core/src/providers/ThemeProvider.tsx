@@ -50,7 +50,7 @@ function HvThemeProviderInner({
   useEffect(() => {
     setColorModeValue(colorModeProp);
     setMode(colorModeProp);
-    // eslint-disable-next-line react-hooks/exhaustive-deps setMode isn't stable
+    // eslint-disable-next-line react-hooks/exhaustive-deps, setMode isn't stable
   }, [colorModeProp]);
 
   useEffect(() => {

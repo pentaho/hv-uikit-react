@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type {
-  ExtractNames,
-  HvBaseProps,
-  HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
+import type { ExtractNames } from "@hitachivantara/uikit-react-core";
 
 import type { HvStepNavigationProps } from "../StepNavigation";
 import { staticClasses, useClasses } from "./Wizard.styles";
 import { HvWizardActions, type HvWizardActionsProps } from "./WizardActions";
-import { HvWizardContainer } from "./WizardContainer";
+import {
+  HvWizardContainer,
+  type HvWizardContainerProps,
+} from "./WizardContainer";
 import { HvWizardContent } from "./WizardContent";
 import { HvWizardContext, type HvWizardTabs } from "./WizardContext";
 import { HvWizardTitle, type HvWizardTitleProps } from "./WizardTitle";
@@ -17,8 +16,7 @@ export { staticClasses as wizardClasses };
 
 export type HvWizardClasses = ExtractNames<typeof useClasses>;
 
-export interface HvWizardProps
-  extends HvBaseProps, Pick<HvDialogProps, "maxWidth" | "fullWidth"> {
+export interface HvWizardProps extends Omit<HvWizardContainerProps, "classes"> {
   /** Current state of the Wizard. */
   open: boolean;
   /** Function executed on close. */
@@ -117,7 +115,7 @@ export const HvWizard = ({
     <HvWizardContext.Provider value={value}>
       <HvWizardContainer
         className={cx(classes.root, className)}
-        handleClose={handleClose}
+        onClose={handleClose}
         open={open}
         {...others}
       >

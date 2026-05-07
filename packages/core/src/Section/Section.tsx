@@ -85,7 +85,7 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
         {...others}
       >
         {hasHeader && (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events jsx-a11y/no-static-element-interactions
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
           <div
             className={cx(classes.header, {
               [classes.headerExpandable]: expandable && expandableHeader,
@@ -112,7 +112,7 @@ export const HvSection = forwardRef<HTMLDivElement, HvSectionProps>(
               </HvButton>
             )}
             {title}
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events jsx-a11y/no-static-element-interactions */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
             <div
               className={classes.actions}
               onClick={(evt) => {
