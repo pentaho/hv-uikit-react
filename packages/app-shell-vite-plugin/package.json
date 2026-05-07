@@ -69,10 +69,6 @@
   },
   "clean-publish": {
     "withoutPublish": true,
-    "tempDir": "package",
-    "fields": [],
-    "files": [
-      "tsconfig.json"
-    ]
+    "tempDir": "package"
   }
 }
