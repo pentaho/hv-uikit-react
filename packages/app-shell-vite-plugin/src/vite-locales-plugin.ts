@@ -42,8 +42,19 @@ function resolveAppShellUiLocales(): string | undefined {
  * If the app provides a `supported-locales.json`, it acts as a filter:
  * only listed locales are included from upstream. If no local file is
  * provided, all upstream locales are merged in.
+ *
+ * When `mergeUpstream` is false (e.g. `type: "bundle"`), the build skips
+ * upstream merging entirely but still generates `supported-locales.json`
+ * from the local locale directories, filtering by the local manifest when
+ * present. In dev mode, upstream locales are always served regardless of
+ * this flag, since the full app runs locally and needs the shell translations.
+ *
+ * @param mergeUpstream - Whether to merge upstream app-shell-ui locales.
+ *   Defaults to `true` (for `type: "app"`).
  */
-export default function copyAppShellLocales(): PluginOption {
+export default function copyAppShellLocales(
+  mergeUpstream = true,
+): PluginOption {
   let resolvedOutDir: string | undefined;
   let isBuild = false;
 
@@ -57,6 +68,9 @@ export default function copyAppShellLocales(): PluginOption {
     },
 
     // --- DEV MODE: serve merged locales via middleware ---
+    // In dev, always resolve upstream locales regardless of `mergeUpstream`,
+    // because the full app runs locally and needs the shell translations.
+    // The `mergeUpstream` flag only affects the build output.
     configureServer(server) {
       const appShellUiLocalesDir = resolveAppShellUiLocales();
 
@@ -168,27 +182,30 @@ export default function copyAppShellLocales(): PluginOption {
       // guard, locale files would be written to that folder on disk.
       if (!isBuild || !resolvedOutDir) return;
 
-      const appShellUiLocales = resolveAppShellUiLocales();
-      if (!appShellUiLocales) return;
-
       const targetLocales = path.resolve(resolvedOutDir, "locales");
+      const appShellUiLocales = mergeUpstream
+        ? resolveAppShellUiLocales()
+        : undefined;
 
-      // Compute supported locales first — if the app provides a
-      // supported-locales.json it acts as a filter over upstream dirs.
-      const supportedLocales = computeSupportedLocales(
-        appShellUiLocales,
-        targetLocales,
-      );
-      const allowedLocales =
-        supportedLocales.length > 0 ? new Set(supportedLocales) : undefined;
+      if (appShellUiLocales) {
+        // Compute supported locales first — if the app provides a
+        // supported-locales.json it acts as a filter over upstream dirs.
+        const supportedLocales = computeSupportedLocales(
+          appShellUiLocales,
+          targetLocales,
+        );
+        const allowedLocales =
+          supportedLocales.length > 0 ? new Set(supportedLocales) : undefined;
 
-      // Recursive merge: app-shell-ui files are merged into target,
-      // with existing (local) keys taking priority in JSON files.
-      // supported-locales.json is skipped during this step.
-      // Only locale dirs in the allowed set are merged (if filtering).
-      mergeDirs(appShellUiLocales, targetLocales, allowedLocales);
+        // Recursive merge: app-shell-ui files are merged into target,
+        // with existing (local) keys taking priority in JSON files.
+        // supported-locales.json is skipped during this step.
+        // Only locale dirs in the allowed set are merged (if filtering).
+        mergeDirs(appShellUiLocales, targetLocales, allowedLocales);
+      }
 
-      // Re-compute after merge so newly created dirs are included
+      // Generate supported-locales.json from the (possibly merged) output.
+      // When no upstream is involved, this is purely based on local dirs.
       const finalLocales = computeSupportedLocales(
         appShellUiLocales,
         targetLocales,

@@ -46,12 +46,18 @@ Each JSON file contains a flat or nested object with translation keys and their 
 At runtime, these files are resolved relative to the [`translationsBaseUrl`](./configuration#translationsbaseurl) (which
 defaults to `"./"`).
 
-When using the **App Shell Vite Plugin**, locale files are placed in the application's `public/locales/` directory. The
-plugin automatically merges the App Shell's stock resource bundles (for the `appShell` namespace) with the application's
-locale files, in both development and production. Local keys always take priority over the stock translations.
+When using the **App Shell Vite Plugin** with `type: "app"`, locale files are placed in the application's
+`public/locales/` directory. The plugin automatically merges the App Shell's stock resource bundles (for the `appShell`
+namespace) with the application's locale files, in both development and production. Local keys always take priority over
+the stock translations.
 
 This means that applications only need to provide locale files for the `app` namespace — the `appShell` namespace is
 handled automatically by the plugin.
+
+When `type` is `"bundle"`, no upstream merging occurs — the `appShell` namespace translations are **not** copied into
+the output. The hosting App Shell (i.e., the `type: "app"` project that loads the bundle at runtime) is responsible for
+providing the `appShell` translations. However, the `supported-locales.json` manifest is still generated from the local
+locale directories (see [below](#supported-locales-manifest)).
 
 > [!NOTE]
 > The `appShell` namespace for English is pre-bundled directly in the App Shell code, so the App Shell chrome works even

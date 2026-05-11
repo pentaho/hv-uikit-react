@@ -348,4 +348,58 @@ describe("vite-locales-plugin helpers", () => {
       expect(fs.existsSync(path.join(targetLocales, "ja"))).toBe(false);
     });
   });
+
+  describe("bundle build flow (no upstream merge)", () => {
+    it("should generate supported-locales.json from local dirs when no manifest", () => {
+      const targetLocales = path.join(tmpDir, "dist/locales");
+
+      mkLocalesDir(targetLocales, {
+        "en/app.json": JSON.stringify({ hello: "Hello" }),
+        "pt/app.json": JSON.stringify({ hello: "Olá" }),
+        "fr/app.json": JSON.stringify({ hello: "Bonjour" }),
+      });
+
+      // No upstream, no manifest → all local dirs
+      const finalLocales = computeSupportedLocales(undefined, targetLocales);
+
+      expect(finalLocales).toEqual(["en", "fr", "pt"]);
+    });
+
+    it("should filter local dirs by manifest when present", () => {
+      const targetLocales = path.join(tmpDir, "dist/locales");
+
+      mkLocalesDir(targetLocales, {
+        "supported-locales.json": JSON.stringify(["en", "pt"]),
+        "en/app.json": JSON.stringify({ hello: "Hello" }),
+        "pt/app.json": JSON.stringify({ hello: "Olá" }),
+        "fr/app.json": JSON.stringify({ hello: "Bonjour" }),
+      });
+
+      // No upstream, manifest filters to en and pt only
+      const finalLocales = computeSupportedLocales(undefined, targetLocales);
+
+      expect(finalLocales).toEqual(["en", "pt"]);
+    });
+
+    it("should warn and drop manifest entries without a directory", () => {
+      const targetLocales = path.join(tmpDir, "dist/locales");
+
+      mkLocalesDir(targetLocales, {
+        "supported-locales.json": JSON.stringify(["en", "de", "ja"]),
+        "en/app.json": JSON.stringify({ hello: "Hello" }),
+        // de and ja have no directories
+      });
+
+      const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+      const finalLocales = computeSupportedLocales(undefined, targetLocales);
+
+      expect(finalLocales).toEqual(["en"]);
+      expect(warnSpy).toHaveBeenCalledTimes(2);
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"de"'));
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"ja"'));
+
+      warnSpy.mockRestore();
+    });
+  });
 });
