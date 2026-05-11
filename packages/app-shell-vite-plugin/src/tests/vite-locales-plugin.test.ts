@@ -39,7 +39,7 @@ afterEach(() => {
 
 describe("vite-locales-plugin helpers", () => {
   describe("computeSupportedLocales", () => {
-    it("should use app order first, then shell additions", () => {
+    it("should use app manifest as a filter over upstream locales", () => {
       const shellDir = path.join(tmpDir, "shell");
       const appDir = path.join(tmpDir, "app");
 
@@ -55,9 +55,9 @@ describe("vite-locales-plugin helpers", () => {
         "en/app.json": JSON.stringify({}),
       });
 
-      // App order: pt, en — then shell additions: fr, de
+      // App manifest acts as filter: only pt and en are included (sorted)
       const result = computeSupportedLocales(shellDir, appDir);
-      expect(result).toEqual(["pt", "en", "fr", "de"]);
+      expect(result).toEqual(["en", "pt"]);
     });
 
     it("should use shell order when app has no manifest", () => {
@@ -73,7 +73,7 @@ describe("vite-locales-plugin helpers", () => {
       fs.mkdirSync(appDir, { recursive: true });
 
       const result = computeSupportedLocales(shellDir, appDir);
-      expect(result).toEqual(["fr", "en", "de"]);
+      expect(result).toEqual(["de", "en", "fr"]);
     });
 
     it("should append discovered dirs alphabetically after manifest entries", () => {
@@ -103,9 +103,9 @@ describe("vite-locales-plugin helpers", () => {
         "de/common.json": JSON.stringify({}),
       });
 
-      // en from shell manifest, then discovered: de, fr, zh-CN (alphabetical)
+      // No app manifest → all discovered dirs, sorted alphabetically
       const result = computeSupportedLocales(shellDir, appDir);
-      expect(result).toEqual(["en", "de", "fr", "zh-CN"]);
+      expect(result).toEqual(["de", "en", "fr", "zh-CN"]);
     });
 
     it("should handle missing manifests gracefully", () => {
@@ -166,12 +166,10 @@ describe("vite-locales-plugin helpers", () => {
 
       const result = computeSupportedLocales(shellDir, appDir);
 
-      // pt, fr, de should be dropped — only en has a directory
+      // pt has no directory — only en passes the filter
       expect(result).toEqual(["en"]);
-      expect(warnSpy).toHaveBeenCalledTimes(3);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
       expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"pt"'));
-      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"fr"'));
-      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"de"'));
 
       warnSpy.mockRestore();
     });
@@ -245,7 +243,7 @@ describe("vite-locales-plugin helpers", () => {
   });
 
   describe("full build flow", () => {
-    it("should produce correct supported-locales.json after merge", () => {
+    it("should produce correct supported-locales.json after merge (with filter)", () => {
       const shellLocales = path.join(tmpDir, "shell-locales");
       const targetLocales = path.join(tmpDir, "dist/locales");
 
@@ -257,39 +255,48 @@ describe("vite-locales-plugin helpers", () => {
         "de/appShell.json": JSON.stringify({ title: "Schale" }),
       });
 
-      // App has pt, en (in that order — app controls priority)
+      // App has pt, en (in that order — app controls the filter)
       mkLocalesDir(targetLocales, {
         "supported-locales.json": JSON.stringify(["pt", "en"]),
         "en/common.json": JSON.stringify({ hello: "Hello" }),
         "pt/common.json": JSON.stringify({ hello: "Olá" }),
       });
 
-      // Simulate closeBundle logic
-      mergeDirs(shellLocales, targetLocales);
-      const merged = computeSupportedLocales(shellLocales, targetLocales);
+      // Simulate closeBundle logic: compute filter, merge, re-compute
+      const supportedLocales = computeSupportedLocales(
+        shellLocales,
+        targetLocales,
+      );
+      const allowedLocales = new Set(supportedLocales);
+      mergeDirs(shellLocales, targetLocales, allowedLocales);
+      const finalLocales = computeSupportedLocales(shellLocales, targetLocales);
       fs.writeFileSync(
         path.join(targetLocales, SUPPORTED_LOCALES_FILE),
-        `${JSON.stringify(merged)}\n`,
+        `${JSON.stringify(finalLocales)}\n`,
       );
 
-      // Verify the manifest: app order (pt, en), then shell additions (fr, de)
+      // Verify the manifest: only the locales listed in the app's filter (sorted)
       const result = JSON.parse(
         fs.readFileSync(
           path.join(targetLocales, SUPPORTED_LOCALES_FILE),
           "utf-8",
         ),
       );
-      expect(result).toEqual(["pt", "en", "fr", "de"]);
+      expect(result).toEqual(["en", "pt"]);
 
-      // Verify bundles were merged correctly
+      // Verify only filtered locale bundles were merged
       expect(fs.existsSync(path.join(targetLocales, "en/appShell.json"))).toBe(
-        true,
-      );
-      expect(fs.existsSync(path.join(targetLocales, "fr/appShell.json"))).toBe(
         true,
       );
       expect(fs.existsSync(path.join(targetLocales, "en/common.json"))).toBe(
         true,
+      );
+      // fr and de should NOT be merged (filtered out)
+      expect(fs.existsSync(path.join(targetLocales, "fr/appShell.json"))).toBe(
+        false,
+      );
+      expect(fs.existsSync(path.join(targetLocales, "de/appShell.json"))).toBe(
+        false,
       );
     });
 
@@ -312,7 +319,7 @@ describe("vite-locales-plugin helpers", () => {
       expect(merged).toEqual(["en", "pt"]);
     });
 
-    it("should append new language dirs after manifest entries", () => {
+    it("should filter upstream dirs when app has manifest", () => {
       const shellLocales = path.join(tmpDir, "shell-locales");
       const targetLocales = path.join(tmpDir, "dist/locales");
 
@@ -327,12 +334,18 @@ describe("vite-locales-plugin helpers", () => {
         "en/common.json": JSON.stringify({}),
       });
 
-      mergeDirs(shellLocales, targetLocales);
-      const merged = computeSupportedLocales(shellLocales, targetLocales);
+      // App manifest filters to pt and en — ja is not included
+      const supportedLocales = computeSupportedLocales(
+        shellLocales,
+        targetLocales,
+      );
+      const allowedLocales = new Set(supportedLocales);
+      mergeDirs(shellLocales, targetLocales, allowedLocales);
+      const finalLocales = computeSupportedLocales(shellLocales, targetLocales);
 
-      // App order (pt, en), no new shell manifest entries,
-      // then discovered ja (alphabetical)
-      expect(merged).toEqual(["pt", "en", "ja"]);
+      expect(finalLocales).toEqual(["en", "pt"]);
+      // ja should NOT have been merged
+      expect(fs.existsSync(path.join(targetLocales, "ja"))).toBe(false);
     });
   });
 });

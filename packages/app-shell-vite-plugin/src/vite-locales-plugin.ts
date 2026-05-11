@@ -8,6 +8,7 @@ import {
   deepMerge,
   mergeDirs,
   readJsonFile,
+  readSupportedLocales,
   SUPPORTED_LOCALES_FILE,
 } from "./locales-utils.js";
 
@@ -38,8 +39,9 @@ function resolveAppShellUiLocales(): string | undefined {
  *
  * Local locale files (from the app's public/locales/) always take priority.
  *
- * `supported-locales.json` is merged by taking the union of both arrays and
- * adding any language directories discovered during the merge.
+ * If the app provides a `supported-locales.json`, it acts as a filter:
+ * only listed locales are included from upstream. If no local file is
+ * provided, all upstream locales are merged in.
  */
 export default function copyAppShellLocales(): PluginOption {
   let resolvedOutDir: string | undefined;
@@ -110,6 +112,16 @@ export default function copyAppShellLocales(): PluginOption {
           server.config.root,
           "public/locales",
         );
+
+        // If the app provides a supported-locales.json, use it as a filter:
+        // only serve locale bundles for listed languages.
+        const localManifest = readSupportedLocales(
+          path.join(localLocalesBase, SUPPORTED_LOCALES_FILE),
+        );
+        if (localManifest.length > 0 && !localManifest.includes(lng)) {
+          return next();
+        }
+
         const localPath = path.join(localLocalesBase, lng, nsFile);
         if (!localPath.startsWith(localLocalesBase + path.sep)) return next();
 
@@ -161,18 +173,30 @@ export default function copyAppShellLocales(): PluginOption {
 
       const targetLocales = path.resolve(resolvedOutDir, "locales");
 
+      // Compute supported locales first — if the app provides a
+      // supported-locales.json it acts as a filter over upstream dirs.
+      const supportedLocales = computeSupportedLocales(
+        appShellUiLocales,
+        targetLocales,
+      );
+      const allowedLocales =
+        supportedLocales.length > 0 ? new Set(supportedLocales) : undefined;
+
       // Recursive merge: app-shell-ui files are merged into target,
       // with existing (local) keys taking priority in JSON files.
       // supported-locales.json is skipped during this step.
-      mergeDirs(appShellUiLocales, targetLocales);
+      // Only locale dirs in the allowed set are merged (if filtering).
+      mergeDirs(appShellUiLocales, targetLocales, allowedLocales);
 
-      // Compute the union of supported locales from both sources and from
-      // the language directories that now exist in the merged output.
-      const merged = computeSupportedLocales(appShellUiLocales, targetLocales);
-      if (merged.length > 0) {
+      // Re-compute after merge so newly created dirs are included
+      const finalLocales = computeSupportedLocales(
+        appShellUiLocales,
+        targetLocales,
+      );
+      if (finalLocales.length > 0) {
         fs.writeFileSync(
           path.join(targetLocales, SUPPORTED_LOCALES_FILE),
-          `${JSON.stringify(merged)}\n`,
+          `${JSON.stringify(finalLocales)}\n`,
         );
       }
     },

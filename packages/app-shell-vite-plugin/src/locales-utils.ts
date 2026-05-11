@@ -63,64 +63,26 @@ export function discoverLanguageDirs(localesDir: string): string[] {
 }
 
 /**
- * Computes the merged supported-locales list respecting ordering:
+ * Computes the effective supported-locales list.
  *
- * 1. Entries from the **app's** `supported-locales.json` (in their original order).
- * 2. Entries from the **shell's** `supported-locales.json` not already listed
- *    (in their original order).
- * 3. Any language directories discovered on disk that are not in either
- *    manifest (alphabetical order).
+ * Discovers all language directories from both sources (upstream shell and
+ * local app). If the app provides a `supported-locales.json`, it acts as a
+ * **filter**: only locales listed there are kept. Otherwise all discovered
+ * locales are included.
  *
- * @param shellLocalesDir - The app-shell-ui locales directory (lower priority).
- * @param appLocalesDir   - The app's locales directory (higher priority).
+ * The result is always sorted alphabetically.
+ *
+ * Locales listed in the local manifest but without a matching language
+ * directory are warned about and dropped.
+ *
+ * @param shellLocalesDir - The app-shell-ui locales directory (upstream).
+ * @param appLocalesDir   - The app's locales directory (downstream / local).
  */
 export function computeSupportedLocales(
   shellLocalesDir: string | undefined,
   appLocalesDir: string | undefined,
 ): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-
-  const addUnique = (lng: string) => {
-    if (!seen.has(lng)) {
-      seen.add(lng);
-      result.push(lng);
-    }
-  };
-
-  // 1. App manifest entries first (highest priority order)
-  if (appLocalesDir) {
-    for (const lng of readSupportedLocales(
-      path.join(appLocalesDir, SUPPORTED_LOCALES_FILE),
-    )) {
-      addUnique(lng);
-    }
-  }
-
-  // 2. Shell manifest entries that weren't already listed
-  if (shellLocalesDir) {
-    for (const lng of readSupportedLocales(
-      path.join(shellLocalesDir, SUPPORTED_LOCALES_FILE),
-    )) {
-      addUnique(lng);
-    }
-  }
-
-  // 3. Discovered language directories not in either manifest (alphabetical)
-  const discoveredDirs: string[] = [];
-  for (const dir of [shellLocalesDir, appLocalesDir]) {
-    if (dir) {
-      for (const lng of discoverLanguageDirs(dir)) {
-        if (!seen.has(lng)) discoveredDirs.push(lng);
-      }
-    }
-  }
-  // deduplicate and sort before appending
-  for (const lng of [...new Set(discoveredDirs)].toSorted()) {
-    addUnique(lng);
-  }
-
-  // Validate: warn and drop manifest entries without a matching language directory
+  // Collect all language directories that actually exist on disk
   const allDirs = new Set<string>();
   for (const dir of [shellLocalesDir, appLocalesDir]) {
     if (dir) {
@@ -130,13 +92,30 @@ export function computeSupportedLocales(
     }
   }
 
-  return result.filter((lng) => {
-    if (allDirs.has(lng)) return true;
-    console.warn(
-      `[app-shell-locales] Locale "${lng}" is listed in ${SUPPORTED_LOCALES_FILE} but has no corresponding language directory — ignoring.`,
-    );
-    return false;
-  });
+  // Read the local (app) manifest — if it exists it acts as a filter
+  const localManifest = appLocalesDir
+    ? readSupportedLocales(path.join(appLocalesDir, SUPPORTED_LOCALES_FILE))
+    : [];
+  const hasLocalManifest = localManifest.length > 0;
+
+  // Determine the effective set of locales
+  let result: string[];
+
+  if (hasLocalManifest) {
+    // Filter: only keep locales from the manifest that have a directory
+    result = localManifest.filter((lng) => {
+      if (allDirs.has(lng)) return true;
+      console.warn(
+        `[app-shell-locales] Locale "${lng}" is listed in ${SUPPORTED_LOCALES_FILE} but has no corresponding language directory — ignoring.`,
+      );
+      return false;
+    });
+  } else {
+    // No local manifest → include everything discovered
+    result = [...allDirs];
+  }
+
+  return result.toSorted();
 }
 
 /**
@@ -161,10 +140,18 @@ export function readJsonFile(filePath: string): unknown {
  * Non-JSON files are skipped (locale bundles are always JSON).
  *
  * `supported-locales.json` is skipped — it is handled separately after the
- * merge so it can reflect the union of both sources plus any discovered
- * language directories.
+ * merge so it can reflect the computed list.
+ *
+ * When `allowedLocales` is provided, only top-level directories whose name
+ * is in the set are merged; all others are skipped. This allows the app's
+ * `supported-locales.json` to act as a filter over upstream locale dirs.
+ * Sub-directories (namespace folders) are always merged recursively.
  */
-export function mergeDirs(src: string, dest: string) {
+export function mergeDirs(
+  src: string,
+  dest: string,
+  allowedLocales?: Set<string>,
+) {
   fs.mkdirSync(dest, { recursive: true });
 
   for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
@@ -172,6 +159,9 @@ export function mergeDirs(src: string, dest: string) {
     const destPath = path.join(dest, entry.name);
 
     if (entry.isDirectory()) {
+      // At the top level, skip locale dirs not in the allowed set
+      if (allowedLocales && !allowedLocales.has(entry.name)) continue;
+      // Sub-directories are always merged (no further filtering)
       mergeDirs(srcPath, destPath);
     } else if (entry.name === SUPPORTED_LOCALES_FILE) {
       // Handled after the full merge — skip here.
