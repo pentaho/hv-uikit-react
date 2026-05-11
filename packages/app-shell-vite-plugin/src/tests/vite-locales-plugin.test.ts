@@ -60,7 +60,7 @@ describe("vite-locales-plugin helpers", () => {
       expect(result).toEqual(["en", "pt"]);
     });
 
-    it("should use shell order when app has no manifest", () => {
+    it("should include all upstream locales sorted alphabetically when app has no manifest", () => {
       const shellDir = path.join(tmpDir, "shell");
       const appDir = path.join(tmpDir, "app");
 
@@ -172,6 +172,60 @@ describe("vite-locales-plugin helpers", () => {
       expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"pt"'));
 
       warnSpy.mockRestore();
+    });
+
+    it("should deduplicate manifest entries", () => {
+      const shellDir = path.join(tmpDir, "shell");
+      const appDir = path.join(tmpDir, "app");
+
+      mkLocalesDir(shellDir, {
+        "en/appShell.json": JSON.stringify({}),
+        "pt/appShell.json": JSON.stringify({}),
+      });
+      mkLocalesDir(appDir, {
+        "supported-locales.json": JSON.stringify(["en", "pt", "en", "pt"]),
+        "en/app.json": JSON.stringify({}),
+        "pt/app.json": JSON.stringify({}),
+      });
+
+      const result = computeSupportedLocales(shellDir, appDir);
+      expect(result).toEqual(["en", "pt"]);
+    });
+
+    it("should treat an empty-array manifest as a filter (returning nothing)", () => {
+      const shellDir = path.join(tmpDir, "shell");
+      const appDir = path.join(tmpDir, "app");
+
+      mkLocalesDir(shellDir, {
+        "en/appShell.json": JSON.stringify({}),
+        "fr/appShell.json": JSON.stringify({}),
+      });
+      mkLocalesDir(appDir, {
+        "supported-locales.json": JSON.stringify([]),
+        "en/app.json": JSON.stringify({}),
+      });
+
+      // File exists with empty array → acts as filter, nothing passes
+      const result = computeSupportedLocales(shellDir, appDir);
+      expect(result).toEqual([]);
+    });
+
+    it("should treat a malformed local manifest as a filter (returning nothing)", () => {
+      const shellDir = path.join(tmpDir, "shell");
+      const appDir = path.join(tmpDir, "app");
+
+      mkLocalesDir(shellDir, {
+        "en/appShell.json": JSON.stringify({}),
+        "fr/appShell.json": JSON.stringify({}),
+      });
+      mkLocalesDir(appDir, {
+        "supported-locales.json": "not valid json{",
+        "en/app.json": JSON.stringify({}),
+      });
+
+      // File exists but is malformed → acts as filter with no entries
+      const result = computeSupportedLocales(shellDir, appDir);
+      expect(result).toEqual([]);
     });
   });
 
@@ -346,6 +400,56 @@ describe("vite-locales-plugin helpers", () => {
       expect(finalLocales).toEqual(["en", "pt"]);
       // ja should NOT have been merged
       expect(fs.existsSync(path.join(targetLocales, "ja"))).toBe(false);
+    });
+
+    it("should not merge upstream dirs when manifest exists but all entries are invalid", () => {
+      const shellLocales = path.join(tmpDir, "shell-locales");
+      const targetLocales = path.join(tmpDir, "dist/locales");
+
+      mkLocalesDir(shellLocales, {
+        "supported-locales.json": JSON.stringify(["en", "fr"]),
+        "en/appShell.json": JSON.stringify({ title: "Shell" }),
+        "fr/appShell.json": JSON.stringify({ title: "Coquille" }),
+      });
+      mkLocalesDir(targetLocales, {
+        // Manifest lists locales that have no directories
+        "supported-locales.json": JSON.stringify(["xx", "yy"]),
+      });
+
+      const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+      // Simulate closeBundle logic: manifest exists → always filter
+      const hasLocalManifest = fs.existsSync(
+        path.join(targetLocales, SUPPORTED_LOCALES_FILE),
+      );
+      const supportedLocales = computeSupportedLocales(
+        shellLocales,
+        targetLocales,
+      );
+      const allowedLocales = hasLocalManifest
+        ? new Set(supportedLocales)
+        : undefined;
+      mergeDirs(shellLocales, targetLocales, allowedLocales);
+
+      // Nothing should have been merged — empty filter means nothing passes
+      expect(fs.existsSync(path.join(targetLocales, "en"))).toBe(false);
+      expect(fs.existsSync(path.join(targetLocales, "fr"))).toBe(false);
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"xx"'));
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('"yy"'));
+
+      // Simulate manifest cleanup: stale file should be removed
+      const finalLocales = computeSupportedLocales(shellLocales, targetLocales);
+      const manifestPath = path.join(targetLocales, SUPPORTED_LOCALES_FILE);
+      if (finalLocales.length > 0) {
+        fs.writeFileSync(manifestPath, `${JSON.stringify(finalLocales)}\n`);
+      } else if (fs.existsSync(manifestPath)) {
+        fs.unlinkSync(manifestPath);
+      }
+
+      // The stale manifest with ["xx","yy"] should have been removed
+      expect(fs.existsSync(manifestPath)).toBe(false);
+
+      warnSpy.mockRestore();
     });
   });
 

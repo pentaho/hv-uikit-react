@@ -8,7 +8,6 @@ import {
   deepMerge,
   mergeDirs,
   readJsonFile,
-  readSupportedLocales,
   SUPPORTED_LOCALES_FILE,
 } from "./locales-utils.js";
 
@@ -30,6 +29,33 @@ function resolveAppShellUiLocales(): string | undefined {
     // app-shell-ui not installed or locales not available
   }
   return undefined;
+}
+
+/**
+ * Computes the effective set of allowed locales for a given locales directory.
+ *
+ * When a local `supported-locales.json` exists, it acts as a filter — even if
+ * it resolves to an empty list (all entries invalid), so that an invalid
+ * manifest doesn't accidentally allow everything.
+ *
+ * @returns The effective locale list (sorted, deduplicated) and the
+ *   corresponding `Set` to use as a filter (or `undefined` when no local
+ *   manifest exists — meaning "allow all").
+ */
+function resolveEffectiveLocales(
+  shellLocalesDir: string | undefined,
+  appLocalesDir: string,
+): { locales: string[]; allowedSet: Set<string> | undefined } {
+  const hasLocalManifest = fs.existsSync(
+    path.join(appLocalesDir, SUPPORTED_LOCALES_FILE),
+  );
+
+  const locales = computeSupportedLocales(shellLocalesDir, appLocalesDir);
+
+  // When a local manifest exists, always filter — even with an empty set.
+  const allowedSet = hasLocalManifest ? new Set(locales) : undefined;
+
+  return { locales, allowedSet };
 }
 
 /**
@@ -74,6 +100,19 @@ export default function copyAppShellLocales(
     configureServer(server) {
       const appShellUiLocalesDir = resolveAppShellUiLocales();
 
+      const localLocalesDir = path.resolve(
+        server.config.root,
+        "public/locales",
+      );
+
+      // Compute the effective locale set once at server start, using the
+      // same logic as the build path. A server restart is needed when the
+      // locale directory structure or supported-locales.json changes.
+      const { locales: effectiveLocales, allowedSet } = resolveEffectiveLocales(
+        appShellUiLocalesDir,
+        localLocalesDir,
+      );
+
       server.middlewares.use((req, res, next) => {
         // Parse the pathname, stripping the Vite base and any query string
         // so locale requests work under non-root base paths (e.g. /myapp/).
@@ -89,28 +128,16 @@ export default function copyAppShellLocales(
 
         const relativePath = pathname.slice(base.length);
 
-        // Handle supported-locales.json separately — it's an array, not a
-        // key/value bundle, and must reflect the union of both sources plus
-        // any language directories that exist on disk.
+        // Serve the computed supported-locales.json
         if (relativePath === `locales/${SUPPORTED_LOCALES_FILE}`) {
-          const localLocalesDir = path.resolve(
-            server.config.root,
-            "public/locales",
-          );
-
-          const merged = computeSupportedLocales(
-            appShellUiLocalesDir,
-            localLocalesDir,
-          );
-
-          if (merged.length === 0) {
+          if (effectiveLocales.length === 0) {
             res.statusCode = 404;
             res.end();
             return;
           }
 
           res.setHeader("Content-Type", "application/json");
-          res.end(JSON.stringify(merged));
+          res.end(JSON.stringify(effectiveLocales));
           return;
         }
 
@@ -122,22 +149,11 @@ export default function copyAppShellLocales(
         // Guard against path traversal (e.g. `..` segments)
         if (lng.includes("..") || nsFile.includes("..")) return next();
 
-        const localLocalesBase = path.resolve(
-          server.config.root,
-          "public/locales",
-        );
+        // Filter by the effective locale set (same logic as build)
+        if (allowedSet && !allowedSet.has(lng)) return next();
 
-        // If the app provides a supported-locales.json, use it as a filter:
-        // only serve locale bundles for listed languages.
-        const localManifest = readSupportedLocales(
-          path.join(localLocalesBase, SUPPORTED_LOCALES_FILE),
-        );
-        if (localManifest.length > 0 && !localManifest.includes(lng)) {
-          return next();
-        }
-
-        const localPath = path.join(localLocalesBase, lng, nsFile);
-        if (!localPath.startsWith(localLocalesBase + path.sep)) return next();
+        const localPath = path.join(localLocalesDir, lng, nsFile);
+        if (!localPath.startsWith(localLocalesDir + path.sep)) return next();
 
         const shellPath = appShellUiLocalesDir
           ? path.join(appShellUiLocalesDir, lng, nsFile)
@@ -188,33 +204,33 @@ export default function copyAppShellLocales(
         : undefined;
 
       if (appShellUiLocales) {
-        // Compute supported locales first — if the app provides a
-        // supported-locales.json it acts as a filter over upstream dirs.
-        const supportedLocales = computeSupportedLocales(
+        const { allowedSet } = resolveEffectiveLocales(
           appShellUiLocales,
           targetLocales,
         );
-        const allowedLocales =
-          supportedLocales.length > 0 ? new Set(supportedLocales) : undefined;
 
         // Recursive merge: app-shell-ui files are merged into target,
         // with existing (local) keys taking priority in JSON files.
         // supported-locales.json is skipped during this step.
         // Only locale dirs in the allowed set are merged (if filtering).
-        mergeDirs(appShellUiLocales, targetLocales, allowedLocales);
+        mergeDirs(appShellUiLocales, targetLocales, allowedSet);
       }
 
       // Generate supported-locales.json from the (possibly merged) output.
       // When no upstream is involved, this is purely based on local dirs.
-      const finalLocales = computeSupportedLocales(
+      const { locales: finalLocales } = resolveEffectiveLocales(
         appShellUiLocales,
         targetLocales,
       );
+      // Always write/normalize the output supported-locales.json so that any
+      // stale copy from public/ (already placed into dist/ by Vite) is
+      // overwritten with the computed result. If the effective list is empty,
+      // remove the file entirely so the output doesn't ship invalid entries.
+      const manifestPath = path.join(targetLocales, SUPPORTED_LOCALES_FILE);
       if (finalLocales.length > 0) {
-        fs.writeFileSync(
-          path.join(targetLocales, SUPPORTED_LOCALES_FILE),
-          `${JSON.stringify(finalLocales)}\n`,
-        );
+        fs.writeFileSync(manifestPath, `${JSON.stringify(finalLocales)}\n`);
+      } else if (fs.existsSync(manifestPath)) {
+        fs.unlinkSync(manifestPath);
       }
     },
   };

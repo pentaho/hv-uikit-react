@@ -92,18 +92,25 @@ export function computeSupportedLocales(
     }
   }
 
-  // Read the local (app) manifest — if it exists it acts as a filter
-  const localManifest = appLocalesDir
-    ? readSupportedLocales(path.join(appLocalesDir, SUPPORTED_LOCALES_FILE))
-    : [];
-  const hasLocalManifest = localManifest.length > 0;
+  // Determine if the app provides a supported-locales.json file.
+  // Physical existence of the file is what matters — even if it's empty,
+  // malformed, or contains no valid entries, it still acts as a filter
+  // (resulting in an empty effective locale list).
+  const manifestPath = appLocalesDir
+    ? path.join(appLocalesDir, SUPPORTED_LOCALES_FILE)
+    : undefined;
+  const hasLocalManifest = manifestPath ? fs.existsSync(manifestPath) : false;
+
+  // Read the manifest entries (empty if file is missing/invalid)
+  const localManifest = manifestPath ? readSupportedLocales(manifestPath) : [];
 
   // Determine the effective set of locales
   let result: string[];
 
   if (hasLocalManifest) {
-    // Filter: only keep locales from the manifest that have a directory
-    result = localManifest.filter((lng) => {
+    // Filter: only keep unique locales from the manifest that have a directory.
+    // If the manifest is empty/malformed, this correctly yields an empty list.
+    result = [...new Set(localManifest)].filter((lng) => {
       if (allDirs.has(lng)) return true;
       console.warn(
         `[app-shell-locales] Locale "${lng}" is listed in ${SUPPORTED_LOCALES_FILE} but has no corresponding language directory — ignoring.`,
