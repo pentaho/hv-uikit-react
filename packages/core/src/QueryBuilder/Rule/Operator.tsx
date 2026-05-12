@@ -45,6 +45,7 @@ export const Operator = ({
       label={labels.rule.operator.label}
       placeholder={labels.rule.operator.placeholder}
       values={values}
+      style={{ gridArea: "operator" }}
       disabled={values.length === 0}
       readOnly={readOnly}
       onChange={(selected) => {

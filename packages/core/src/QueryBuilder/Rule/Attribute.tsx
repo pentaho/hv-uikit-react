@@ -42,6 +42,7 @@ export const Attribute = ({
       disabled={disabled}
       readOnly={readOnly}
       status={isInvalid ? "invalid" : "valid"}
+      style={{ gridArea: "attribute" }}
       statusMessage={labels.rule.attribute.exists}
       onChange={(selected) => {
         if (selected) {

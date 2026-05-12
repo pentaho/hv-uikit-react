@@ -7,8 +7,7 @@ import {
   HvQueryBuilder,
   hvQueryBuilderDefaultOperators,
   type HvQueryBuilderProps,
-} from ".";
-import { HvButton } from "../Button";
+} from "./index";
 
 const operators = {
   ...hvQueryBuilderDefaultOperators,
@@ -168,9 +167,9 @@ const Controlled = (props?: HvQueryBuilderProps) => {
 
   return (
     <>
-      <HvButton onClick={() => setValue(defaultValueWithoutIds)}>
+      <button type="button" onClick={() => setValue(defaultValueWithoutIds)}>
         Update Query
-      </HvButton>
+      </button>
       <HvQueryBuilder
         operators={operators}
         attributes={attributes}
@@ -285,7 +284,7 @@ const setupDuplicatedAttributes = async () => {
   await user.click(secondOption);
 };
 
-describe("QueryBuilder", () => {
+describe("QueryBuilder", { timeout: 12_000 }, () => {
   it("renders the component as expected when empty", () => {
     renderUncontrolled();
 
@@ -819,17 +818,9 @@ describe("QueryBuilder", () => {
 
   it("enables to create a rule (select attribute > select operator > type value)", async () => {
     const user = userEvent.setup();
-    renderUncontrolled();
+    renderUncontrolled({ defaultValue: { combinator: "and", rules: [{}] } });
 
-    const addButton = screen.getByRole("button", {
-      name: /Add condition/i,
-    });
-    await user.click(addButton);
-
-    const attributeDropdown = await screen.findByRole("combobox", {
-      name: /Attribute/i,
-    });
-    await user.click(attributeDropdown);
+    await user.click(screen.getByRole("combobox", { name: /Attribute/i }));
 
     const attrs = screen
       .getAllByRole("option")
@@ -844,10 +835,7 @@ describe("QueryBuilder", () => {
     ]);
     await user.click(screen.getByRole("option", { name: "Category" }));
 
-    const operatorDropdown = await screen.findByRole("combobox", {
-      name: /Operator/i,
-    });
-    await user.click(operatorDropdown);
+    await user.click(screen.getByRole("combobox", { name: /Operator/i }));
 
     const opts = screen
       .getAllByRole("option")

@@ -9,8 +9,13 @@ export const { useClasses } = createClasses("HvQueryBuilderRule", {
     marginTop: theme.space.xs,
     minHeight: 94,
 
-    "&>div:not(:last-child)": {
-      paddingRight: theme.space.md,
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 2fr 32px",
+    gridTemplateAreas: '"attribute operator value actions"',
+    gap: theme.space.md,
+
+    "&:>*": {
+      minWidth: 0,
     },
 
     // hide required * as all fields are required
@@ -48,19 +53,17 @@ export const { useClasses } = createClasses("HvQueryBuilderRule", {
     },
   },
   actionsContainer: {
-    marginLeft: "auto",
+    gridArea: "actions",
+    justifySelf: "end",
     marginTop: "24px",
-
-    "&>:not(:last-child)": {
-      marginRight: theme.space.xs,
-    },
   },
   isMdDown: {
-    "&>div:not(:last-child)": {
-      paddingRight: 0,
-    },
-    "&>div:not(:first-of-type)": {
-      marginTop: theme.space.xs,
+    gridTemplateColumns: "1fr",
+    gridTemplateAreas: '"attribute" "operator" "value" "actions"',
+    gap: theme.space.xs,
+
+    "& $actionsContainer": {
+      marginTop: 0,
     },
   },
 });

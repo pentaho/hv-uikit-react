@@ -6,7 +6,6 @@ import {
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
-import { HvGrid } from "../../Grid";
 import { HvIconButton } from "../../IconButton";
 import { HvIcon } from "../../icons";
 import { useQueryBuilderContext } from "../Context";
@@ -72,56 +71,47 @@ export const Rule = (props: RuleProps) => {
   }, [attribute, attributes, combinator, operators]);
 
   return (
-    <HvGrid
-      container
-      className={cx(classes.root, { [classes.isMdDown]: isMdDown })}
-      spacing={0}
-    >
-      <HvGrid item xs={12} md={3}>
-        <Attribute
-          attribute={attribute}
-          id={id}
-          disabled={disabled}
-          isInvalid={isInvalid}
-        />
-      </HvGrid>
+    <div className={cx(classes.root, { [classes.isMdDown]: isMdDown })}>
+      <Attribute
+        attribute={attribute}
+        id={id}
+        disabled={disabled}
+        isInvalid={isInvalid}
+      />
       {attribute != null && availableOperators > 0 && (
-        <HvGrid item xs={12} md={3}>
-          <Operator
-            id={id}
-            combinator={combinator}
-            attribute={attribute}
-            operator={operator}
-          />
-        </HvGrid>
+        <Operator
+          id={id}
+          combinator={combinator}
+          attribute={attribute}
+          operator={operator}
+        />
       )}
       {attribute != null && (operator != null || availableOperators === 0) && (
-        <HvGrid item xs={12} md>
+        <div style={{ gridArea: "value" }}>
           <Value
             attribute={attribute}
             id={id}
             operator={operator}
             value={value}
           />
-        </HvGrid>
+        </div>
       )}
-      <HvGrid item className={classes.actionsContainer}>
-        <HvIconButton
-          placement="bottom"
-          title={labels.rule.delete.tooltip}
-          onClick={() =>
-            disableConfirmation
-              ? dispatchAction({ type: "remove-node", id })
-              : askAction({
-                  actions: [{ type: "remove-node", id }],
-                  dialog: labels.rule.delete,
-                })
-          }
-          disabled={readOnly}
-        >
-          <HvIcon name="Delete" />
-        </HvIconButton>
-      </HvGrid>
-    </HvGrid>
+      <HvIconButton
+        placement="bottom"
+        className={classes.actionsContainer}
+        title={labels.rule.delete.tooltip}
+        onClick={() =>
+          disableConfirmation
+            ? dispatchAction({ type: "remove-node", id })
+            : askAction({
+                actions: [{ type: "remove-node", id }],
+                dialog: labels.rule.delete,
+              })
+        }
+        disabled={readOnly}
+      >
+        <HvIcon name="Delete" />
+      </HvIconButton>
+    </div>
   );
 };

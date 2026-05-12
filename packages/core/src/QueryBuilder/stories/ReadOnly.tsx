@@ -1,4 +1,7 @@
-import { HvQueryBuilder } from "@hitachivantara/uikit-react-core";
+import {
+  HvQueryBuilder,
+  type HvQueryBuilderQueryGroup,
+} from "@hitachivantara/uikit-react-core";
 
 const attributes = {
   price: {
@@ -45,8 +48,12 @@ const initialQuery = {
         },
       ],
     },
+    {
+      attribute: "category",
+      operator: "IsNotEmpty",
+    },
   ],
-};
+} satisfies HvQueryBuilderQueryGroup;
 
 export const ReadOnly = () => (
   <HvQueryBuilder
