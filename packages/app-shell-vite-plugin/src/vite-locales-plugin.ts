@@ -32,16 +32,55 @@ function resolveAppShellUiLocales(): string | undefined {
 }
 
 /**
+ * Computes the effective set of allowed locales for a given locales directory.
+ *
+ * When a local `supported-locales.json` exists, it acts as a filter — even if
+ * it resolves to an empty list (all entries invalid), so that an invalid
+ * manifest doesn't accidentally allow everything.
+ *
+ * @returns The effective locale list (sorted, deduplicated) and the
+ *   corresponding `Set` to use as a filter (or `undefined` when no local
+ *   manifest exists — meaning "allow all").
+ */
+function resolveEffectiveLocales(
+  shellLocalesDir: string | undefined,
+  appLocalesDir: string,
+): { locales: string[]; allowedSet: Set<string> | undefined } {
+  const hasLocalManifest = fs.existsSync(
+    path.join(appLocalesDir, SUPPORTED_LOCALES_FILE),
+  );
+
+  const locales = computeSupportedLocales(shellLocalesDir, appLocalesDir);
+
+  // When a local manifest exists, always filter — even with an empty set.
+  const allowedSet = hasLocalManifest ? new Set(locales) : undefined;
+
+  return { locales, allowedSet };
+}
+
+/**
  * Vite plugin that handles app-shell locale files:
  * - In dev mode: serves merged locale files via middleware
  * - In build mode: deep-merges app-shell-ui locales into the output dist/locales
  *
  * Local locale files (from the app's public/locales/) always take priority.
  *
- * `supported-locales.json` is merged by taking the union of both arrays and
- * adding any language directories discovered during the merge.
+ * If the app provides a `supported-locales.json`, it acts as a filter:
+ * only listed locales are included from upstream. If no local file is
+ * provided, all upstream locales are merged in.
+ *
+ * When `mergeUpstream` is false (e.g. `type: "bundle"`), the build skips
+ * upstream merging entirely but still generates `supported-locales.json`
+ * from the local locale directories, filtering by the local manifest when
+ * present. In dev mode, upstream locales are always served regardless of
+ * this flag, since the full app runs locally and needs the shell translations.
+ *
+ * @param mergeUpstream - Whether to merge upstream app-shell-ui locales.
+ *   Defaults to `true` (for `type: "app"`).
  */
-export default function copyAppShellLocales(): PluginOption {
+export default function copyAppShellLocales(
+  mergeUpstream = true,
+): PluginOption {
   let resolvedOutDir: string | undefined;
   let isBuild = false;
 
@@ -55,8 +94,24 @@ export default function copyAppShellLocales(): PluginOption {
     },
 
     // --- DEV MODE: serve merged locales via middleware ---
+    // In dev, always resolve upstream locales regardless of `mergeUpstream`,
+    // because the full app runs locally and needs the shell translations.
+    // The `mergeUpstream` flag only affects the build output.
     configureServer(server) {
       const appShellUiLocalesDir = resolveAppShellUiLocales();
+
+      const localLocalesDir = path.resolve(
+        server.config.root,
+        "public/locales",
+      );
+
+      // Compute the effective locale set once at server start, using the
+      // same logic as the build path. A server restart is needed when the
+      // locale directory structure or supported-locales.json changes.
+      const { locales: effectiveLocales, allowedSet } = resolveEffectiveLocales(
+        appShellUiLocalesDir,
+        localLocalesDir,
+      );
 
       server.middlewares.use((req, res, next) => {
         // Parse the pathname, stripping the Vite base and any query string
@@ -73,28 +128,16 @@ export default function copyAppShellLocales(): PluginOption {
 
         const relativePath = pathname.slice(base.length);
 
-        // Handle supported-locales.json separately — it's an array, not a
-        // key/value bundle, and must reflect the union of both sources plus
-        // any language directories that exist on disk.
+        // Serve the computed supported-locales.json
         if (relativePath === `locales/${SUPPORTED_LOCALES_FILE}`) {
-          const localLocalesDir = path.resolve(
-            server.config.root,
-            "public/locales",
-          );
-
-          const merged = computeSupportedLocales(
-            appShellUiLocalesDir,
-            localLocalesDir,
-          );
-
-          if (merged.length === 0) {
+          if (effectiveLocales.length === 0) {
             res.statusCode = 404;
             res.end();
             return;
           }
 
           res.setHeader("Content-Type", "application/json");
-          res.end(JSON.stringify(merged));
+          res.end(JSON.stringify(effectiveLocales));
           return;
         }
 
@@ -106,12 +149,11 @@ export default function copyAppShellLocales(): PluginOption {
         // Guard against path traversal (e.g. `..` segments)
         if (lng.includes("..") || nsFile.includes("..")) return next();
 
-        const localLocalesBase = path.resolve(
-          server.config.root,
-          "public/locales",
-        );
-        const localPath = path.join(localLocalesBase, lng, nsFile);
-        if (!localPath.startsWith(localLocalesBase + path.sep)) return next();
+        // Filter by the effective locale set (same logic as build)
+        if (allowedSet && !allowedSet.has(lng)) return next();
+
+        const localPath = path.join(localLocalesDir, lng, nsFile);
+        if (!localPath.startsWith(localLocalesDir + path.sep)) return next();
 
         const shellPath = appShellUiLocalesDir
           ? path.join(appShellUiLocalesDir, lng, nsFile)
@@ -156,24 +198,39 @@ export default function copyAppShellLocales(): PluginOption {
       // guard, locale files would be written to that folder on disk.
       if (!isBuild || !resolvedOutDir) return;
 
-      const appShellUiLocales = resolveAppShellUiLocales();
-      if (!appShellUiLocales) return;
-
       const targetLocales = path.resolve(resolvedOutDir, "locales");
+      const appShellUiLocales = mergeUpstream
+        ? resolveAppShellUiLocales()
+        : undefined;
 
-      // Recursive merge: app-shell-ui files are merged into target,
-      // with existing (local) keys taking priority in JSON files.
-      // supported-locales.json is skipped during this step.
-      mergeDirs(appShellUiLocales, targetLocales);
-
-      // Compute the union of supported locales from both sources and from
-      // the language directories that now exist in the merged output.
-      const merged = computeSupportedLocales(appShellUiLocales, targetLocales);
-      if (merged.length > 0) {
-        fs.writeFileSync(
-          path.join(targetLocales, SUPPORTED_LOCALES_FILE),
-          `${JSON.stringify(merged)}\n`,
+      if (appShellUiLocales) {
+        const { allowedSet } = resolveEffectiveLocales(
+          appShellUiLocales,
+          targetLocales,
         );
+
+        // Recursive merge: app-shell-ui files are merged into target,
+        // with existing (local) keys taking priority in JSON files.
+        // supported-locales.json is skipped during this step.
+        // Only locale dirs in the allowed set are merged (if filtering).
+        mergeDirs(appShellUiLocales, targetLocales, allowedSet);
+      }
+
+      // Generate supported-locales.json from the (possibly merged) output.
+      // When no upstream is involved, this is purely based on local dirs.
+      const { locales: finalLocales } = resolveEffectiveLocales(
+        appShellUiLocales,
+        targetLocales,
+      );
+      // Always write/normalize the output supported-locales.json so that any
+      // stale copy from public/ (already placed into dist/ by Vite) is
+      // overwritten with the computed result. If the effective list is empty,
+      // remove the file entirely so the output doesn't ship invalid entries.
+      const manifestPath = path.join(targetLocales, SUPPORTED_LOCALES_FILE);
+      if (finalLocales.length > 0) {
+        fs.writeFileSync(manifestPath, `${JSON.stringify(finalLocales)}\n`);
+      } else if (fs.existsSync(manifestPath)) {
+        fs.unlinkSync(manifestPath);
       }
     },
   };

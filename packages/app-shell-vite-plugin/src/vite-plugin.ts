@@ -316,6 +316,6 @@ export async function HvAppShellVitePlugin(
     generateEmptyShell && generateBashScript(externalImportMap, inlineConfig),
 
     // copy/merge app-shell-ui locales into dist (build) or serve via middleware (dev)
-    (buildEntryPoint || devMode) && copyAppShellLocales(),
+    copyAppShellLocales(buildEntryPoint),
   ];
 }

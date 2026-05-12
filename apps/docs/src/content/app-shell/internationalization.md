@@ -46,12 +46,18 @@ Each JSON file contains a flat or nested object with translation keys and their 
 At runtime, these files are resolved relative to the [`translationsBaseUrl`](./configuration#translationsbaseurl) (which
 defaults to `"./"`).
 
-When using the **App Shell Vite Plugin**, locale files are placed in the application's `public/locales/` directory. The
-plugin automatically merges the App Shell's stock resource bundles (for the `appShell` namespace) with the application's
-locale files, in both development and production. Local keys always take priority over the stock translations.
+When using the **App Shell Vite Plugin** with `type: "app"`, locale files are placed in the application's
+`public/locales/` directory. The plugin automatically merges the App Shell's stock resource bundles (for the `appShell`
+namespace) with the application's locale files, in both development and production. Local keys always take priority over
+the stock translations.
 
 This means that applications only need to provide locale files for the `app` namespace — the `appShell` namespace is
 handled automatically by the plugin.
+
+When `type` is `"bundle"`, no upstream merging occurs — the `appShell` namespace translations are **not** copied into
+the output. The hosting App Shell (i.e., the `type: "app"` project that loads the bundle at runtime) is responsible for
+providing the `appShell` translations. However, the `supported-locales.json` manifest is still generated from the local
+locale directories (see [below](#supported-locales-manifest)).
 
 > [!NOTE]
 > The `appShell` namespace for English is pre-bundled directly in the App Shell code, so the App Shell chrome works even
@@ -70,10 +76,19 @@ When present, translation backends (such as `HttpResourcesBackend` from `@hitach
 manifest to skip network requests for unsupported languages, letting i18next follow the `fallbackLng` chain instead.
 If the file is missing or malformed, all languages are allowed.
 
-When building with the **App Shell Vite Plugin**, the plugin automatically generates a `supported-locales.json` manifest,
-with the list of locales discovered on disk based on the locale directories found in `public/locales/`, plus the stock
-ones provided by the App Shell's base code (from the `app-shell-ui` package). Any `supported-locales.json` file provided
-by the application is ignored and overwritten by the plugin.
+When building with the **App Shell Vite Plugin**, the plugin generates the final `supported-locales.json` manifest
+(always sorted alphabetically) based on the following logic:
+
+- **If the application provides a `supported-locales.json`** in `public/locales/`, it acts as a **filter**: only the
+  locales listed there will be included in the output. Upstream locale directories from the `app-shell-ui` package that
+  are not in this list are excluded from the build. This gives the application full control over which languages are
+  shipped, while still inheriting the upstream translations for the selected locales.
+- **If no `supported-locales.json` is provided**, all upstream locales from `app-shell-ui` are included alongside any
+  local locale directories. This is the default behavior when the application does not need to restrict the set of
+  available languages.
+
+In both cases, locales listed in the manifest but without a corresponding language directory (in either the app's
+`public/locales/` or the upstream `app-shell-ui` package) are warned about and ignored.
 
 ### Overriding App Shell translations
 
