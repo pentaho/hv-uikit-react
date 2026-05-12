@@ -47,7 +47,9 @@ export const HvDropdownButton = forwardRef<
 
   const { classes, cx } = useClasses(classesProp, false);
 
-  const endIcon = !icon && <HvIcon name="CaretDown" size="xs" rotate={open} />;
+  const endIcon = !icon && (
+    <HvIcon compact name="CaretDown" size="xs" rotate={open} />
+  );
 
   const children =
     childrenProp && typeof childrenProp === "string" ? (

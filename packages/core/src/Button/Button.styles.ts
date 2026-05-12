@@ -36,6 +36,14 @@ export const { staticClasses, useClasses } = createClasses("HvButton", {
     // remove icon container spacing
     "--icsize": "auto",
 
+    ":where(:has($startIcon))": {
+      paddingLeft: 8,
+    },
+    ":where(:has($endIcon))": {
+      paddingRight: 8,
+    },
+
+    // higher specificity, ensure icon doesn't shrink
     "& $startIcon, & $endIcon": {
       flexShrink: 0,
       lineHeight: 0,

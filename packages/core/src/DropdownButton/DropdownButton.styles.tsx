@@ -43,7 +43,5 @@ export const { staticClasses, useClasses } = createClasses("HvDropdownButton", {
     whiteSpace: "nowrap",
   },
   placeholder: {},
-  arrowContainer: {
-    marginRight: theme.spacing(-2),
-  },
+  arrowContainer: {},
 });
