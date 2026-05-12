@@ -2,7 +2,6 @@
 import { createRequire } from "node:module";
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
-import type { OutputOptions } from "rollup";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
@@ -16,16 +15,6 @@ const external = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.peerDependencies || {}),
 ].map((ext) => new RegExp(`^${ext.split("/")[0]}`));
-
-const esmOutput: OutputOptions = {
-  format: "esm",
-  preserveModules: true,
-  preserveModulesRoot: "src",
-  dir: "dist",
-  entryFileNames: "[name].js",
-  exports: "named",
-  interop: "auto",
-};
 
 export default defineConfig({
   plugins: [
@@ -42,10 +31,19 @@ export default defineConfig({
     lib: {
       name: pkg.name,
       entry: resolve("src/index.ts"),
+      formats: ["es"],
     },
     rollupOptions: {
-      output: [esmOutput],
       external,
+      output: {
+        format: "esm",
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        dir: "dist",
+        entryFileNames: "[name].js",
+        exports: "named",
+        interop: "auto",
+      },
     },
   },
   test: {
