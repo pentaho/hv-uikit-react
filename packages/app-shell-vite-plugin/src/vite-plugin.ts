@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
 import { loadEnv, type PluginOption } from "vite";
-import { viteStaticCopy } from "vite-plugin-static-copy";
+import { viteStaticCopy, type Target } from "vite-plugin-static-copy";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import {
@@ -210,6 +210,7 @@ export async function HvAppShellVitePlugin(
           {
             src: resolveModule("es-module-shims"),
             dest: "bundles",
+            rename: { stripBase: true },
           },
           ...(!devMode && buildEntryPoint
             ? [
@@ -223,7 +224,8 @@ export async function HvAppShellVitePlugin(
                     }
                   }),
                   dest: "bundles",
-                },
+                  rename: { stripBase: true },
+                } satisfies Target,
               ]
             : []),
         ],
