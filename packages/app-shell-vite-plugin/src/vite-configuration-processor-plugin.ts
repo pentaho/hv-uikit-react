@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { NormalizedOutputOptions } from "rollup";
-import type { PluginOption, UserConfig } from "vite";
+import type { PluginOption } from "vite";
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
 import { getAppModules, getBasePath } from "./config-utils.js";
@@ -35,7 +34,7 @@ export default function processConfiguration(
   return {
     name: "vite-plugin-appShell-configuration-processor",
 
-    config(config: UserConfig, { command }) {
+    config(config, { command }) {
       const projectRoot = root ?? config.root;
 
       let appModules: Record<string, string> = {};
@@ -82,7 +81,7 @@ export default function processConfiguration(
      *  - bundles replace with the final location (e.g. -> "bundle": "src/pages/Main" transformed to "bundle": "pages/Main.js",
      * @param options build options
      */
-    async generateBundle(options: NormalizedOutputOptions) {
+    async generateBundle(options) {
       if (generateEmptyShell || !buildEntryPoint) {
         return;
       }

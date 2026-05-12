@@ -1,17 +1,14 @@
 /// <reference types="vitest/config" />
 import { createRequire } from "node:module";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
-import type { OutputOptions } from "rollup";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 const require = createRequire(import.meta.url);
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // eslint-disable-next-line import/no-dynamic-require
-const pkg = require(resolve(process.cwd(), "package.json"));
+const pkg = require(resolve("package.json"));
 
 // dependencies that should not be bundled.
 const external = [
@@ -19,22 +16,11 @@ const external = [
   ...Object.keys(pkg.peerDependencies || {}),
 ].map((ext) => new RegExp(`^${ext.split("/")[0]}`));
 
-const esmOutput: OutputOptions = {
-  format: "esm",
-  preserveModules: true,
-  preserveModulesRoot: "src",
-  dir: "dist",
-  entryFileNames: "[name].js",
-  exports: "named",
-  interop: "auto",
-};
-
 export default defineConfig({
   plugins: [
     dts({
-      outDir: "dist",
       rollupTypes: true,
-      tsconfigPath: resolve(__dirname, "../tsconfig.build.json"),
+      tsconfigPath: resolve(import.meta.dirname, "../tsconfig.build.json"),
     }),
     react(),
   ],
@@ -44,11 +30,20 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       name: pkg.name,
-      entry: resolve(process.cwd(), "src/index.ts"),
+      entry: resolve("src/index.ts"),
+      formats: ["es"],
     },
     rollupOptions: {
-      output: [esmOutput],
       external,
+      output: {
+        format: "esm",
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        dir: "dist",
+        entryFileNames: "[name].js",
+        exports: "named",
+        interop: "auto",
+      },
     },
   },
   test: {
@@ -71,7 +66,7 @@ export default defineConfig({
         test: {
           name: { label: "dom", color: "yellow" },
           environment: "happy-dom",
-          setupFiles: resolve(__dirname, "test.setup.tsx"),
+          setupFiles: resolve(import.meta.dirname, "test.setup.tsx"),
           include: ["**/*.test.tsx"],
         },
       },

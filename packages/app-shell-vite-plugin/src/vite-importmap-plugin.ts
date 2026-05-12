@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
-import type { NormalizedOutputOptions } from "rollup";
 import type { PluginOption } from "vite";
 
 const ID_PREFIX = `/@id/`;
@@ -208,7 +207,7 @@ document.currentScript.after(im);
        *  - bundles replace with the final location (e.g. -> "bundle": "src/pages/Main" transformed to "bundle": "pages/Main.js",
        * @param options build options
        */
-      async generateBundle(options: NormalizedOutputOptions) {
+      async generateBundle(options) {
         if (!externalImportMap || placeholderEntryPoint) {
           return;
         }

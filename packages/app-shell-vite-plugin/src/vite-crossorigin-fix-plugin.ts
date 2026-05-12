@@ -1,5 +1,4 @@
-import type { OutputBundle } from "rollup";
-import type { PluginOption } from "vite";
+import type { IndexHtmlTransformContext, PluginOption } from "vite";
 
 const replacer = (match: string) =>
   match.replace(
@@ -33,14 +32,14 @@ export function addUseCredentials(scriptSrc: string, html: string) {
 }
 
 function processScript(
-  bundle: OutputBundle,
+  bundle: IndexHtmlTransformContext["bundle"],
   scriptSrc: string,
   html: string,
   seen: Set<string> = new Set(),
 ) {
   seen.add(scriptSrc);
 
-  const script = bundle[scriptSrc];
+  const script = bundle?.[scriptSrc];
   if (!script || script.type !== "chunk") {
     return html;
   }
