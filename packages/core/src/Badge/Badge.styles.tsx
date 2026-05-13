@@ -31,6 +31,11 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
     wordBreak: "keep-all",
     textAlign: "center",
 
+    "&$badgeIcon": {
+      top: "1px",
+      left: "calc(100% - 7px)",
+    },
+
     ":empty": {
       height: 8,
       width: 8,
@@ -41,6 +46,6 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
   badgeHidden: {
     display: "none",
   },
-  badgeIcon: { top: "1px", left: "calc(100% - 7px)" },
+  badgeIcon: {},
   badgeOneDigit: { padding: 0, width: "16px" },
 });
