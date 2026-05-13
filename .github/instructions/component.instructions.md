@@ -24,6 +24,8 @@ HvComp/
 - Name event handler props using the `on<Action>` convention (e.g., `onClick`, `onChange`).
 - Ensure no API breaking changes are introduced on `Hv<MyComp>Props` or other public types.
 - Avoid usage of `useEffect`, `useReducer`, `let`, and `for` loops in components.
+- Components MUST include a JSDoc comment block describing the component's intent and usage.
+- Avoid unnecessary file nesting. Internal components with no public API should NOT have their own folder with stories/tests/index files.
 
 ## Styles
 
