@@ -76,11 +76,11 @@ export const HvBadge = forwardRef<
         style={mergeStyles(style, {
           "--bg-color": color && getColor(color),
         })}
+        data-badge-inline={!hasContent ? "" : undefined}
         className={cx(classes.badge, {
           [classes.badgeHidden]: label == null,
           [classes.badgeIcon]: icon,
           [classes.badgeOneDigit]: String(label).length === 1,
-          [classes.badgeInline]: !hasContent,
         })}
       >
         {label}
