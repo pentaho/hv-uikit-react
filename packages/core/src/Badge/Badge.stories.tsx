@@ -44,9 +44,7 @@ export const Multiple: StoryObj<HvBadgeProps> = {
 
 export const WithIcon: StoryObj<HvBadgeProps> = {
   parameters: {
-    docs: {
-      description: { story: "Badge sample that uses a custom icon." },
-    },
+    docs: { description: { story: "Badge sample that uses a custom icon." } },
   },
   render: () => {
     return (
@@ -64,9 +62,7 @@ export const WithIcon: StoryObj<HvBadgeProps> = {
 
 export const WithText: StoryObj<HvBadgeProps> = {
   parameters: {
-    docs: {
-      description: { story: "Badge sample using only text." },
-    },
+    docs: { description: { story: "Badge sample using only text." } },
   },
   render: () => {
     return (
@@ -112,6 +108,10 @@ export const Test: StoryObj = {
       <HvBadge color="primary" label={8} icon={<Alert />} />
       <HvBadge color="textSubtle" showCount label={8} icon={<Alert />} />
       <HvBadge color="textSubtle" label={8} icon={<Alert />} />
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <HvTypography>Events</HvTypography>
+        <HvBadge label={10} showCount />
+      </div>
     </div>
   ),
 };

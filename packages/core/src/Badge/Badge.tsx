@@ -55,6 +55,8 @@ export const HvBadge = forwardRef<
 
   const { classes, cx } = useClasses(classesProp);
 
+  const hasContent = !!(children || icon);
+
   const label = useMemo(() => {
     if (typeof labelProp !== "number") return labelProp;
 
@@ -78,6 +80,7 @@ export const HvBadge = forwardRef<
           [classes.badgeHidden]: label == null,
           [classes.badgeIcon]: icon,
           [classes.badgeOneDigit]: String(label).length === 1,
+          [classes.badgeInline]: !hasContent,
         })}
       >
         {label}

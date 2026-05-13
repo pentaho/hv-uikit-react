@@ -41,4 +41,9 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
   },
   badgeIcon: { top: "1px", left: "calc(100% - 7px)" },
   badgeOneDigit: { padding: 0, width: "16px" },
+  badgeInline: {
+    position: "relative",
+    top: "auto",
+    left: "auto",
+  },
 });
