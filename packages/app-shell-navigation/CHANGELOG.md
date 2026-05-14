@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.12](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@2.1.11...@hitachivantara/app-shell-navigation@2.1.12) (2026-05-14)
+
+**Note:** Version bump only for package @hitachivantara/app-shell-navigation
+
 ## [2.1.11](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@2.1.10...@hitachivantara/app-shell-navigation@2.1.11) (2026-05-07)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-navigation

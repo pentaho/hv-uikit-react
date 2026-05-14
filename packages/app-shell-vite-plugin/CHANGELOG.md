@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.2.1...@hitachivantara/app-shell-vite-plugin@2.3.0) (2026-05-14)
+
+### Features
+
+- explicit supported-locales.json file filters translations [PPUC-512] ([#5163](https://github.com/pentaho/hv-uikit-react/issues/5163)) ([eb34327](https://github.com/pentaho/hv-uikit-react/commit/eb343275a144a3684001b08609529e315d0c280a))
+
 ## [2.2.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.2.0...@hitachivantara/app-shell-vite-plugin@2.2.1) (2026-05-07)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-vite-plugin

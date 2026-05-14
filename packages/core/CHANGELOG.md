@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.8.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.8.1...@hitachivantara/uikit-react-core@6.8.2) (2026-05-14)
+
+### Bug Fixes
+
+- **Badge:** support inline position with other content ([#5170](https://github.com/pentaho/hv-uikit-react/issues/5170)) ([0b5cdee](https://github.com/pentaho/hv-uikit-react/commit/0b5cdeeeb405b439cb2feec1bd73e2a0fb8aa6ab))
+
+### Performance Improvements
+
+- **QueryBuilder:** use css grid & test performance ([#5168](https://github.com/pentaho/hv-uikit-react/issues/5168)) ([60e9286](https://github.com/pentaho/hv-uikit-react/commit/60e92863f383270c7cfad385c22e6350d46d0e3c))
+
 ## [6.8.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.8.0...@hitachivantara/uikit-react-core@6.8.1) (2026-05-07)
 
 ### Bug Fixes
