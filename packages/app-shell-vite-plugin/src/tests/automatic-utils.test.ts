@@ -86,35 +86,35 @@ describe.skip("test automatic utils", () => {
         ).toEqual([
           {
             viewConfig: {
-              bundle: "@self/pages/Page1.js",
+              bundle: "$app/pages/Page1.js",
               route: "/page1",
             },
             module: "src/pages/Page1",
           },
           {
             viewConfig: {
-              bundle: "@self/pages/Page3.js",
+              bundle: "$app/pages/Page3.js",
               route: "/page3",
             },
             module: "src/pages/Page3",
           },
           {
             viewConfig: {
-              bundle: "@self/pages/Page5/_id/Page5_1/_name/Page5_2.js",
+              bundle: "$app/pages/Page5/_id/Page5_1/_name/Page5_2.js",
               route: "/page5/:id/page5_1/:name/page5_2",
             },
             module: "src/pages/Page5/$id/Page5_1/$name/Page5_2",
           },
           {
             viewConfig: {
-              bundle: "@self/pages/Page5/_id/Page5_1.js",
+              bundle: "$app/pages/Page5/_id/Page5_1.js",
               route: "/page5/:id/page5_1",
             },
             module: "src/pages/Page5/$id/Page5_1",
           },
           {
             viewConfig: {
-              bundle: "@self/pages/Page5/_id.js",
+              bundle: "$app/pages/Page5/_id.js",
               route: "/page5/:id",
             },
             module: "src/pages/Page5/$id",
@@ -129,9 +129,9 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Page1.js", route: "/page1" },
-            { bundle: "@self/pages/Page2.js", route: "/page2" },
-            { bundle: "@self/pages/helloToWorld.js", route: "/hello" },
+            { bundle: "$app/pages/Page1.js", route: "/page1" },
+            { bundle: "$app/pages/Page2.js", route: "/page2" },
+            { bundle: "$app/pages/helloToWorld.js", route: "/hello" },
           ],
         },
       };
@@ -151,22 +151,22 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Section/Page1.js", route: "/section/page1" },
-            { bundle: "@self/pages/Section/Page2.js", route: "/section/page2" },
+            { bundle: "$app/pages/Section/Page1.js", route: "/section/page1" },
+            { bundle: "$app/pages/Section/Page2.js", route: "/section/page2" },
             {
-              bundle: "@self/pages/Planets/helloToEarth.js",
+              bundle: "$app/pages/Planets/helloToEarth.js",
               route: "/planets/earth",
             },
             {
-              bundle: "@self/pages/Planets/HelloToMars.js",
+              bundle: "$app/pages/Planets/HelloToMars.js",
               route: "/planets/mars",
             },
             {
-              bundle: "@self/pages/someOtherFolder/ToImportantStuff.js",
+              bundle: "$app/pages/someOtherFolder/ToImportantStuff.js",
               route: "/other/important",
             },
             {
-              bundle: "@self/pages/SomeOtherFolder/thisIsOnTheSameMenu.js",
+              bundle: "$app/pages/SomeOtherFolder/thisIsOnTheSameMenu.js",
               route: "/other/same",
             },
           ],
@@ -206,9 +206,9 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Page1.js", route: "/page1" },
-            { bundle: "@self/pages/Page2/:id.js", route: "/page2/:id" },
-            { bundle: "@self/pages/Page3.js", route: "/page3" },
+            { bundle: "$app/pages/Page1.js", route: "/page1" },
+            { bundle: "$app/pages/Page2/:id.js", route: "/page2/:id" },
+            { bundle: "$app/pages/Page3.js", route: "/page3" },
           ],
         },
       };
@@ -229,8 +229,7 @@ describe.skip("test automatic utils", () => {
         mainPanel: {
           views: [
             {
-              bundle:
-                "@self/pages/lowerUpper/Look🙄ingAbóve/SomeSpÉcialPage.js",
+              bundle: "$app/pages/lowerUpper/Look🙄ingAbóve/SomeSpÉcialPage.js",
               route: "/l1/l2/someSpecialPage",
             },
           ],
@@ -304,9 +303,9 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Home.js", route: "/" },
+            { bundle: "$app/pages/Home.js", route: "/" },
             { bundle: "@hv-tests/some-app/pages/Page0.js", route: "/page0" },
-            { bundle: "@self/pages/Other.js", route: "/some-path" },
+            { bundle: "$app/pages/Other.js", route: "/some-path" },
             {
               bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
               route: "/other",
@@ -327,9 +326,9 @@ describe.skip("test automatic utils", () => {
       expect(config.mainPanel?.views?.length).toEqual(4);
       expect(config.mainPanel?.views).toEqual(
         expect.arrayContaining([
-          { bundle: "@self/pages/Home.js", route: "/" },
+          { bundle: "$app/pages/Home.js", route: "/" },
           { bundle: "@hv-tests/some-app/pages/Page0.js", route: "/page0" },
-          { bundle: "@self/pages/Other.js", route: "/some-path" },
+          { bundle: "$app/pages/Other.js", route: "/some-path" },
           {
             bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
             route: "/other",
@@ -364,18 +363,18 @@ describe.skip("test automatic utils", () => {
       expect(config.mainPanel?.views?.length).toEqual(5);
       expect(config.mainPanel?.views).toEqual(
         expect.arrayContaining([
-          { bundle: "@self/pages/Page1.js", route: "/page1" },
-          { bundle: "@self/pages/Page3.js", route: "/page3" },
+          { bundle: "$app/pages/Page1.js", route: "/page1" },
+          { bundle: "$app/pages/Page3.js", route: "/page3" },
           {
-            bundle: "@self/pages/Page5/_id.js",
+            bundle: "$app/pages/Page5/_id.js",
             route: "/page5/:id",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1.js",
+            bundle: "$app/pages/Page5/_id/Page5_1.js",
             route: "/page5/:id/page5_1",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1/_name/Page5_2.js",
+            bundle: "$app/pages/Page5/_id/Page5_1/_name/Page5_2.js",
             route: "/page5/:id/page5_1/:name/page5_2",
           },
         ]),
@@ -388,9 +387,9 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Home.js", route: "/" },
+            { bundle: "$app/pages/Home.js", route: "/" },
             { bundle: "@hv-tests/some-app/pages/Page0.js", route: "/page0" },
-            { bundle: "@self/pages/Other.js", route: "/some-path" },
+            { bundle: "$app/pages/Other.js", route: "/some-path" },
             {
               bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
               route: "/other",
@@ -420,26 +419,26 @@ describe.skip("test automatic utils", () => {
       expect(config.mainPanel?.views?.length).toEqual(9);
       expect(config.mainPanel?.views).toEqual(
         expect.arrayContaining([
-          { bundle: "@self/pages/Home.js", route: "/" },
+          { bundle: "$app/pages/Home.js", route: "/" },
           { bundle: "@hv-tests/some-app/pages/Page0.js", route: "/page0" },
-          { bundle: "@self/pages/Other.js", route: "/some-path" },
+          { bundle: "$app/pages/Other.js", route: "/some-path" },
           {
             bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
             route: "/other",
           },
 
-          { bundle: "@self/pages/Page1.js", route: "/page1" },
-          { bundle: "@self/pages/Page3.js", route: "/page3" },
+          { bundle: "$app/pages/Page1.js", route: "/page1" },
+          { bundle: "$app/pages/Page3.js", route: "/page3" },
           {
-            bundle: "@self/pages/Page5/_id.js",
+            bundle: "$app/pages/Page5/_id.js",
             route: "/page5/:id",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1.js",
+            bundle: "$app/pages/Page5/_id/Page5_1.js",
             route: "/page5/:id/page5_1",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1/_name/Page5_2.js",
+            bundle: "$app/pages/Page5/_id/Page5_1/_name/Page5_2.js",
             route: "/page5/:id/page5_1/:name/page5_2",
           },
         ]),
@@ -452,9 +451,9 @@ describe.skip("test automatic utils", () => {
       const config: HvAppShellConfig = {
         mainPanel: {
           views: [
-            { bundle: "@self/pages/Page1.js", route: "/other-path" },
+            { bundle: "$app/pages/Page1.js", route: "/other-path" },
             { bundle: "@hv-tests/some-app/pages/Page3.js", route: "/page3" },
-            { bundle: "@self/pages/Other.js", route: "/page5/:id" },
+            { bundle: "$app/pages/Other.js", route: "/page5/:id" },
             {
               bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
               route: "/other",
@@ -489,15 +488,15 @@ describe.skip("test automatic utils", () => {
             route: "/other",
           },
 
-          { bundle: "@self/pages/Page1.js", route: "/other-path" },
+          { bundle: "$app/pages/Page1.js", route: "/other-path" },
           { bundle: "@hv-tests/some-app/pages/Page3.js", route: "/page3" },
-          { bundle: "@self/pages/Other.js", route: "/page5/:id" },
+          { bundle: "$app/pages/Other.js", route: "/page5/:id" },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1.js",
+            bundle: "$app/pages/Page5/_id/Page5_1.js",
             route: "/page5/:id/page5_1",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1/_name/Page5_2.js",
+            bundle: "$app/pages/Page5/_id/Page5_1/_name/Page5_2.js",
             route: "/page5/:id/page5_1/:name/page5_2",
           },
         ]),
@@ -511,11 +510,11 @@ describe.skip("test automatic utils", () => {
         mainPanel: {
           views: [
             {
-              bundle: "@self/pages/Page1.js",
+              bundle: "$app/pages/Page1.js",
               route: "/other-path",
-              views: [{ bundle: "@self/pages/Page3.js", route: "/subpage3" }],
+              views: [{ bundle: "$app/pages/Page3.js", route: "/subpage3" }],
             },
-            { bundle: "@self/pages/Other.js", route: "/page5/:id" },
+            { bundle: "$app/pages/Other.js", route: "/page5/:id" },
             {
               bundle: "@hv-tests/other-app/pages/HelloFromOther.js",
               route: "/other",
@@ -551,18 +550,18 @@ describe.skip("test automatic utils", () => {
           },
 
           {
-            bundle: "@self/pages/Page1.js",
+            bundle: "$app/pages/Page1.js",
             route: "/other-path",
-            views: [{ bundle: "@self/pages/Page3.js", route: "/subpage3" }],
+            views: [{ bundle: "$app/pages/Page3.js", route: "/subpage3" }],
           },
 
-          { bundle: "@self/pages/Other.js", route: "/page5/:id" },
+          { bundle: "$app/pages/Other.js", route: "/page5/:id" },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1.js",
+            bundle: "$app/pages/Page5/_id/Page5_1.js",
             route: "/page5/:id/page5_1",
           },
           {
-            bundle: "@self/pages/Page5/_id/Page5_1/_name/Page5_2.js",
+            bundle: "$app/pages/Page5/_id/Page5_1/_name/Page5_2.js",
             route: "/page5/:id/page5_1/:name/page5_2",
           },
         ]),

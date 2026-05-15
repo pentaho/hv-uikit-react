@@ -29,8 +29,9 @@ Properties that reference modules' locations can be:
 
 1. A **bare-specifier**, such as `@hv-apps/my-app/pages/Hello.js`. The bare-specifier prefix must be mapped to a URL ([`baseUrl`](#baseurl)) in the [`apps` property](#apps).
 2. A fully qualified URL, like `http://localhost:3001/pages/Hello.js`, which directly points to the module's location.
+3. The `$app/` prefix (e.g. `$app/pages/Hello.js`), referring to a module within the current Application Bundle.
 
-Note: During development, the bare-specifier with a `@self` prefix (eg. `@self/pages/Hello.js`) can also be used, referring to the module within the current Application Bundle.
+> **Note:** The `@self/` prefix (e.g. `@self/pages/Hello.js`) is **deprecated** in favour of `$app/`. It is still supported for backwards compatibility but will be removed in a future major release.
 
 ### Module structure
 

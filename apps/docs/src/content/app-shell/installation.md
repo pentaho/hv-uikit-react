@@ -64,7 +64,7 @@ export default {
     views: [
       {
         route: "/",
-        bundle: "@self/App.js",
+        bundle: "$app/App.js",
       },
     ],
   },

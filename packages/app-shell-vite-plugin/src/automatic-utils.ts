@@ -91,7 +91,7 @@ export function mapFolderIndexFilesToRoutes(
       .toLowerCase() as HvAppShellViewsConfig["route"];
 
     const viewConfig = {
-      bundle: `@self/${getFinalModuleName(bundle)}.js`,
+      bundle: `$app/${getFinalModuleName(bundle)}.js`,
       route,
     };
     routes.push({ viewConfig, module: bundle });
@@ -142,10 +142,13 @@ export function applyAutomaticViewsAndRoutes(
 
     const existingRoutes = flattenedViews.map((view) => view.route);
     const existingBundles = flattenedViews.reduce((bundles, view) => {
-      if (view.bundle.startsWith("@self/")) {
+      if (view.bundle.startsWith("$app/")) {
         bundles.push(view.bundle);
+      } else if (view.bundle.startsWith("@self/")) {
+        // TODO(major): remove @self/ support in favour of $app/
+        bundles.push(view.bundle.replace("@self/", "$app/"));
       } else if (view.bundle.startsWith(selfAppName)) {
-        bundles.push(view.bundle.replace(selfAppName, "@self"));
+        bundles.push(view.bundle.replace(selfAppName, "$app"));
       }
       return bundles;
     }, [] as string[]);

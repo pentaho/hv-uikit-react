@@ -20,6 +20,7 @@ import SHARED_DEPENDENCIES from "./shared-dependencies.js";
 import getVirtualEntrypoints from "./virtual-entrypoints.js";
 import processConfiguration from "./vite-configuration-processor-plugin.js";
 import fixCrossOrigin from "./vite-crossorigin-fix-plugin.js";
+import distPackageJsonPlugin from "./vite-dist-package-json-plugin.js";
 import generateBaseTag from "./vite-generate-base-plugin.js";
 import generateBashScript from "./vite-generate-bash-script-plugin.js";
 import generateImportmap, {
@@ -136,6 +137,43 @@ export interface AppShellVitePluginOptions {
    * @default false
    */
   disableAppsKeyNormalization?: boolean;
+  /**
+   * Enables the experimental new package layout feature set.
+   *
+   * When `true`, the plugin activates behaviors that are part of the
+   * new app bundle distribution/publishing package layout. Currently, this gates:
+   *
+   * - **`dist/package.json` generation** — a cleaned-up `package.json` is
+   *   written to the Vite output directory after each build. The source
+   *   `package.json` contains dev-time fields and conditions that do not apply
+   *   to published/distributed packages; the generated manifest only includes
+   *   the fields relevant to consumers.
+   * - **`dist/app-shell.config.json`** — the resolved App Shell configuration
+   *   is written to the output directory so that app bundles are self-contained
+   *   and can be consumed both as standalone App Shells or as bundles for
+   *   another App Shell.
+   *
+   * Additional behaviors may be added under this flag in future PRs before
+   * the feature set is stabilized and the flag is removed.
+   *
+   * @default false
+   * @experimental
+   */
+  experimentalNewPackageLayout?: boolean;
+
+  /**
+   * The custom exports condition used to resolve TypeScript source files during
+   * development. Only applies when `experimentalNewPackageLayout` is `true`.
+   *
+   * Workspace packages declare a scoped condition (e.g. `"@pentaho-apps:source"`)
+   * in their `exports` map that points directly at the TypeScript source. This
+   * lets consumers import the live source during development without a prior
+   * build step. The condition is stripped from `dist/package.json` so it never
+   * leaks to consumers that don't have the TypeScript sources available.
+   *
+   * @default "@pentaho-apps:source"
+   */
+  sourceCondition?: string;
 }
 
 /**
@@ -158,6 +196,8 @@ export async function HvAppShellVitePlugin(
     generateEmptyShell = false,
     modules = [],
     disableAppsKeyNormalization = false,
+    experimentalNewPackageLayout = false,
+    sourceCondition,
   } = opts;
 
   const globalEnv = loadEnv(mode, process.cwd(), "");
@@ -292,15 +332,16 @@ export async function HvAppShellVitePlugin(
       generateBaseTag(appShellConfiguration, generateEmptyShell),
 
     // configure the build process based on the config file
-    processConfiguration(
+    processConfiguration({
       root,
-      appShellConfiguration,
-      packageJson.name,
+      appShellConfig: appShellConfiguration,
+      selfAppName: packageJson.name,
+      modules: modules.concat(autoViewsBundles),
       buildEntryPoint,
       inlineConfig,
       generateEmptyShell,
-      modules.concat(autoViewsBundles),
-    ),
+      experimentalNewPackageLayout,
+    }),
 
     // allow crossorigin="use-credentials" in the index.html
     fixCrossOrigin(),
@@ -319,5 +360,9 @@ export async function HvAppShellVitePlugin(
 
     // copy/merge app-shell-ui locales into dist (build) or serve via middleware (dev)
     copyAppShellLocales(buildEntryPoint),
+
+    // generate dist/package.json for the build output directory
+    experimentalNewPackageLayout &&
+      distPackageJsonPlugin(root, sourceCondition),
   ];
 }

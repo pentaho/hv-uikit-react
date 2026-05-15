@@ -7,27 +7,46 @@ import { getAppModules, getBasePath } from "./config-utils.js";
 import sharedDependencies from "./shared-dependencies.js";
 
 /**
+ * Options for the configuration processor plugin.
+ */
+export interface ProcessConfigurationOptions {
+  /** Project root directory. */
+  root: string;
+  /** The original App Shell configuration json. */
+  appShellConfig: HvAppShellConfig;
+  /** The name of the application bundle being built. */
+  selfAppName: string;
+  /** The set of modules to be created by the rollup. */
+  modules: string[];
+  /** If true, the index.html entry point will be added to the bundle. */
+  buildEntryPoint: boolean;
+  /** Flag to control if config is included at index.html. */
+  inlineConfig: boolean;
+  /** Flag to control if we are creating an empty AppShell instance. */
+  generateEmptyShell: boolean;
+  /** If true, always writes app-shell.config.json to dist for dual-use packages. */
+  experimentalNewPackageLayout: boolean;
+}
+
+/**
  * Process configuration, executing several tasks:
  *  - Create rollup configuration to support module creation
  *  - Generates final transformed configuration json
  *  - "base" value is always "./" for build, and main app baseUrl for preview or dev
- * @param root Project root directory.
- * @param appShellConfig The original App Shell configuration json.
- * @param selfAppName The name of the application bundle being built.
- * @param buildEntryPoint If true, the index.html entry point will be added to the bundle.
- * @param inlineConfig flag to control if config is included at index.html
- * @param generateEmptyShell flag to control if we are creating an empty AppShell instance
- * @param modules the set of modules to be created by the rollup
  */
 export default function processConfiguration(
-  root: string,
-  appShellConfig: HvAppShellConfig,
-  selfAppName: string,
-  buildEntryPoint: boolean,
-  inlineConfig: boolean,
-  generateEmptyShell: boolean,
-  modules: string[] = [],
+  options: ProcessConfigurationOptions,
 ): PluginOption {
+  const {
+    root,
+    appShellConfig,
+    selfAppName,
+    modules,
+    buildEntryPoint,
+    inlineConfig,
+    generateEmptyShell,
+    experimentalNewPackageLayout,
+  } = options;
   let finalAppShellConfig: HvAppShellConfig;
   let basePath: string;
 
@@ -82,7 +101,7 @@ export default function processConfiguration(
      * @param options build options
      */
     async generateBundle(options) {
-      if (generateEmptyShell || !buildEntryPoint) {
+      if (generateEmptyShell) {
         return;
       }
 
@@ -114,14 +133,19 @@ export default function processConfiguration(
 
       finalAppShellConfig.apps = undefined;
 
-      // Replace all @self references using simple string replacement
+      // Replace all $app and @self (deprecated) references using simple string replacement.
       let configString = JSON.stringify(finalAppShellConfig);
 
+      configString = configString.replaceAll(`"$app/`, `"${selfAppName}/`);
+      // TODO(major): remove @self/ support in favour of $app/
       configString = configString.replaceAll(`"@self/`, `"${selfAppName}/`);
 
       finalAppShellConfig = JSON.parse(configString);
 
-      if (!inlineConfig) {
+      // Write app-shell.config.json to dist when:
+      // - inlineConfig is false (standard flow), OR
+      // - experimentalNewPackageLayout is true (ensures dual-use: app shell or app bundle)
+      if (!inlineConfig || experimentalNewPackageLayout) {
         fs.writeFileSync(
           path.resolve(targetDir, "app-shell.config.json"),
           JSON.stringify(finalAppShellConfig),

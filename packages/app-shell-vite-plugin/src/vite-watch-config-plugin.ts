@@ -8,6 +8,8 @@ const prepareConfigForDevMode = (
 ) => {
   let configString = JSON.stringify(config);
 
+  configString = configString.replaceAll(`"$app/`, `"${selfAppName}/`);
+  // TODO(major): remove @self/ support in favour of $app/
   configString = configString.replaceAll(`"@self/`, `"${selfAppName}/`);
 
   return JSON.parse(configString) as HvAppShellConfig;

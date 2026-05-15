@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     HvAppShellVitePlugin({
       mode,
       type: "app",
+      experimentalNewPackageLayout: true,
       autoViewsAndRoutes: true,
       disableAppsKeyNormalization: true,
       modules: [
