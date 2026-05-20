@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@hitachivantara/uikit-config": "latest",
     "@hitachivantara/uikit-uno-preset": "latest",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",

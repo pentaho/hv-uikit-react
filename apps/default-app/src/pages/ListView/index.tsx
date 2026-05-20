@@ -2,7 +2,7 @@ import { lazy } from "react";
 
 import { MainContainer } from "../../components/MainContainer";
 
-const ListView = lazy(() => import("../../../../../templates/ListView"));
+const ListView = lazy(() => import("@hv/templates/ListView"));
 
 const ListViewWithContainer = () => (
   <MainContainer>

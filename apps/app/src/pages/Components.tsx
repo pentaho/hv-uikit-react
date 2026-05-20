@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { makeData, type AssetEvent } from "@hitachivantara/internal";
 import {
   HvAccordion,
   HvActionBar,
@@ -54,11 +55,6 @@ import {
   useHvTableSticky,
   type HvActionGeneric,
 } from "@hitachivantara/uikit-react-core";
-// eslint-disable-next-line no-restricted-imports
-import {
-  makeData,
-  type AssetEvent,
-} from "@hitachivantara/uikit-react-core/src/Table/stories/storiesUtils";
 import {
   Backwards,
   Ban,
