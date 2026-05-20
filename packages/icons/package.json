@@ -29,7 +29,6 @@
     "convert": "tsx scripts/svgToReact.ts && tsx scripts/svgToSprite.ts",
     "prebuild": "npm run clean && npm run convert",
     "build": "vite build",
-    "postbuild": "npx cpy \"sprites\" \"dist\"",
     "clean": "npx rimraf dist sprites package",
     "prepare": "npm run convert",
     "prepublishOnly": "npm run build && npx clean-publish"
@@ -49,10 +48,10 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/recursive-readdir": "^2.2.4",
-    "cpy-cli": "^5.0.0",
     "recursive-readdir": "^2.2.3",
     "svgo": "^3.1.0",
-    "tsx": "^4.6.2"
+    "tsx": "^4.6.2",
+    "vite-plugin-static-copy": "^4.1.0"
   },
   "files": [
     "dist"
