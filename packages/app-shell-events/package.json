@@ -24,6 +24,11 @@
     "@hitachivantara/uikit-react-core": "^6.0.0",
     "react": "^18.2.0"
   },
+  "peerDependenciesMeta": {
+    "@hitachivantara/uikit-react-core": {
+      "optional": true
+    }
+  },
   "files": [
     "dist"
   ],

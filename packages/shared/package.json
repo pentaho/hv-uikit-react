@@ -29,17 +29,22 @@
     "clean": "npx rimraf dist package",
     "prepublishOnly": "npm run build && npx clean-publish"
   },
-  "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
-  },
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@hitachivantara/uikit-styles": "^6.1.0"
+    "@emotion/cache": "^11.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17"
+  },
+  "peerDependencies": {
+    "@hitachivantara/uikit-styles": "^6.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@hitachivantara/uikit-styles": {
+      "optional": true
+    }
   },
   "files": [
     "dist"
