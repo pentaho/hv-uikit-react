@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   icons,
   type HvIconSpriteProps,
@@ -18,4 +19,4 @@ const IconUiKit = ({ name, ...others }: IconUiKitProps) => {
   return <Icon {...others} />;
 };
 
-export default IconUiKit;
+export default memo(IconUiKit);

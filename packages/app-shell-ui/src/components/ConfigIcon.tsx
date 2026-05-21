@@ -1,7 +1,7 @@
 import type { HvAppShellIcon } from "@hitachivantara/app-shell-shared";
 import { HvIconContainer } from "@hitachivantara/uikit-react-core";
 
-import IconUiKit from "./IconUiKit";
+import IconUiKit from "./IconUiKit/IconUiKit";
 
 export interface ConfigIconProps {
   icon?: HvAppShellIcon;

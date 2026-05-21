@@ -6,7 +6,7 @@ import {
 } from "@hitachivantara/app-shell-shared";
 import { HvIconButton } from "@hitachivantara/uikit-react-core";
 
-import IconUiKit from "../../../IconUiKit";
+import IconUiKit from "../../../IconUiKit/IconUiKit";
 
 const HelpButton: React.FC<HvAppShellHelp> = ({ url, description }) => {
   const { i18n } = useHvAppShellRuntimeContext();

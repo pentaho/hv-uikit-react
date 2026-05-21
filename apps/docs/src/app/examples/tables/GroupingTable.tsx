@@ -21,7 +21,7 @@ import {
 
 import { makeData, type AssetEvent } from "./makeData";
 
-const columns: HvTableColumnConfig<AssetEvent>[] = [
+const defaultColumns: HvTableColumnConfig<AssetEvent>[] = [
   { Header: "Title", accessor: "name", style: { minWidth: 120 } },
   { Header: "Time", accessor: "createdDate", style: { minWidth: 100 } },
   { Header: "Type", accessor: "eventType", style: { minWidth: 100 } },
@@ -50,7 +50,7 @@ export default function Demo() {
   return (
     <Table<AssetEvent>
       data={data}
-      columns={columns}
+      columns={defaultColumns}
       initialState={{
         groupBy: ["status"],
         expanded: {

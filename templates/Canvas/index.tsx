@@ -147,8 +147,8 @@ const Page = () => {
 
   // Simulating an execution of the flow and updating the statuses of nodes and edges
   const handleExecute = () => {
-    flowInstance?.setNodes((nodes) =>
-      nodes.map((node) => {
+    flowInstance?.setNodes((nds) =>
+      nds.map((node) => {
         if (node.type === "sticky") return node;
 
         const random = Math.floor(Math.random() * flowStatuses.length);

@@ -36,8 +36,8 @@ export default ({
   const initialMode = getInitialMode();
   const [mode, setMode] = useState(initialMode);
 
-  const switchMode = (mode: HvThemeColorMode) => {
-    setMode(mode);
+  const switchMode = (newMode: HvThemeColorMode) => {
+    setMode(newMode);
   };
 
   useEffect(() => {

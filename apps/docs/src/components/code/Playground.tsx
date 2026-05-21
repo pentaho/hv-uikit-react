@@ -152,7 +152,7 @@ const generateCode = (
     .join("");
   const componentPropsString = parsedPropsString && `\n${parsedPropsString}`;
 
-  // Handle children content
+  // oxlint-disable-next-line react/no-react-children Handle children content
   const childrenString = Children.toArray(children)
     .map(parseChildren)
     .filter(Boolean)

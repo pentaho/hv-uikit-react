@@ -86,9 +86,9 @@ export const Fields = (props: FieldsProps) => {
     }
   }, [rgb]);
 
-  const handleChange = (hex: string) => {
-    if (!validHex(hex)) return;
-    onChange?.(hex);
+  const handleChange = (newHex: string) => {
+    if (!validHex(newHex)) return;
+    onChange?.(newHex);
   };
 
   const onChangeRbg = ({ r, g, b }: { r?: string; g?: string; b?: string }) => {

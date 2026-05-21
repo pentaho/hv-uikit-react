@@ -180,7 +180,7 @@ const InstanceBundleServiceDemo: FC = () => {
               if (!action) return null;
 
               return (
-                <HvGrid item key={action.id || `action-${index}`}>
+                <HvGrid item key={action.id}>
                   <HvButton onClick={action.onAction}>
                     {action.label || `Action ${index + 1}`}
                   </HvButton>

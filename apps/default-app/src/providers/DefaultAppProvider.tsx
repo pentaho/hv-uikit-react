@@ -29,9 +29,9 @@ const DefaultAppProvider = ({ children }: DefaultAppProviderProps) => {
   const value = useMemo(
     () => ({
       text,
-      setText: (value: string) => {
+      setText: (newValue: string) => {
         clickNumber += 1;
-        const prefixedText = `[${clickNumber}] ${value}`;
+        const prefixedText = `[${clickNumber}] ${newValue}`;
         setText(prefixedText);
 
         console.info("From App Shell context:", JSON.stringify(menu));

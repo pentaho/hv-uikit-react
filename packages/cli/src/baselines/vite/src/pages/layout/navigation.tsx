@@ -34,11 +34,11 @@ export function Component() {
 
 function Header() {
   const navigate = useNavigate();
-  const theme = useTheme();
+  const { breakpoints } = useTheme();
   const { activePath, navigation } = useNavigationContext();
 
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-  const isXs = useMediaQuery(theme.breakpoints.only("xs"));
+  const isMdUp = useMediaQuery(breakpoints.up("md"));
+  const isXs = useMediaQuery(breakpoints.only("xs"));
 
   return (
     <HvHeader>

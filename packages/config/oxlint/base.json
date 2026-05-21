@@ -30,7 +30,7 @@
     ],
     "jsx_a11y/no-autofocus": "off",
     "jsx-a11y/prefer-tag-over-role": "off",
-    "jsx-a11y/interactive-supports-focus": "warn",
+    "jsx-a11y/interactive-supports-focus": "off",
     "jsx_a11y/role-supports-aria-props": "off",
     "jsx_a11y/role-has-required-aria-props": "off"
   },

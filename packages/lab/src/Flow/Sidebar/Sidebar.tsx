@@ -170,7 +170,7 @@ export const HvFlowSidebar = ({
           <ul id={groupsElementId} className={classes.groupsContainer}>
             {Object.entries(filteredGroups).map(([groupId, group]) => {
               if (flatten) {
-                return (group.items || []).map((item, i) => (
+                return group.items?.map((item, i) => (
                   <HvFlowDraggableSidebarGroupItem
                     key={`${item.nodeType}-${i}`}
                     aria-roledescription={labels?.itemAriaRoleDescription}

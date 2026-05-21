@@ -45,8 +45,8 @@ export const PopupLayout = ({ id, scope, code, title }: PopupLayoutProps) => {
       await navigator.clipboard.writeText(editorCode);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
-    } catch (error) {
-      console.error("Failed to copy code:", error);
+    } catch (err) {
+      console.error("Failed to copy code:", err);
     }
   };
 

@@ -523,19 +523,16 @@ export const HvTagsInput = forwardRef<HTMLElement, HvTagsInputProps>(
           {value?.map((t, i) => {
             const tag: HvTagProps =
               typeof t === "string" ? { label: t, type: "semantic" } : t;
-            const { label, type, ...otherProps } = tag;
             return (
               <HvTag
                 key={`${label}-${i}`}
-                type={type}
-                label={label}
                 disabled={disabled}
                 tabIndex={-1}
                 className={classes.tag}
-                {...(!(readOnly || disabled || type === "categorical") && {
+                {...(!(readOnly || disabled || tag.type === "categorical") && {
                   onDelete: (event) => onDeleteTagHandler(event, i),
                 })}
-                {...otherProps}
+                {...tag}
               />
             );
           })}

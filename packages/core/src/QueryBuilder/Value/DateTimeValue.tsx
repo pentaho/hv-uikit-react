@@ -86,8 +86,8 @@ export const DateTimeValue = ({
 }: DateTimeValueProps) => {
   const { classes, cx } = useClasses();
 
-  const theme = useTheme();
-  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const { breakpoints } = useTheme();
+  const isMdDown = useMediaQuery(breakpoints.down("md"));
   const isRange = operator === "range";
 
   const { labels, dispatchAction, readOnly } = useQueryBuilderContext();

@@ -83,14 +83,14 @@ const compatMap: Partial<Record<keyof HvThemeColors, string>> = {
 };
 
 /** Adds the NEXT compatibility colors for a given palette. @example `bgPage` => `bgPage` => `atmo2` */
-const extendCompatColors = (colors: Partial<HvThemeColors>) => {
-  return Object.entries(colors).reduce((acc, [key, color]) => {
+const extendCompatColors = (baseColors: Partial<HvThemeColors>) => {
+  return Object.entries(baseColors).reduce((acc, [key, color]) => {
     const compatKey = compatMap[key as keyof typeof compatMap];
     if (compatKey) {
       acc[compatKey as keyof typeof acc] = color;
     }
     return acc;
-  }, colors);
+  }, baseColors);
 };
 
 /**

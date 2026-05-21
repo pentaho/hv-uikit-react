@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -76,15 +76,17 @@ const TestProvider = ({
   bundles = {},
   config = {},
 }: TestProviderProps) => {
-  const i18n = createTestI18nInstance(bundles);
+  const i18n = useMemo(() => createTestI18nInstance(bundles), [bundles]);
 
-  const runtimeValue = { i18n };
-  const i18nContextValue = {
-    language: i18n.language,
-    changeLanguage: async (lng?: string) => {
-      await i18n.changeLanguage(lng);
-    },
-  };
+  const runtimeValue = useMemo(() => ({ i18n }), [i18n]);
+  const i18nContextValue = useMemo(() => {
+    return {
+      language: i18n.language,
+      changeLanguage: async (lng?: string) => {
+        await i18n.changeLanguage(lng);
+      },
+    };
+  }, [i18n]);
 
   return (
     <HvProvider>

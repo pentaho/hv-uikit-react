@@ -53,9 +53,9 @@ export const NumericValue = ({
   const isRange = operator === "range";
   const { labels, dispatchAction, readOnly } = useQueryBuilderContext();
 
-  const theme = useTheme();
+  const { breakpoints } = useTheme();
 
-  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const isMdDown = useMediaQuery(breakpoints.down("md"));
 
   const onSingleValueChange = useCallback(
     (

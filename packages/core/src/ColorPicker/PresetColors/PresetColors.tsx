@@ -34,9 +34,9 @@ export const PresetColors = (props: PresetColorsProps) => {
         </HvTypography>
       )}
       <div className={classes.colors}>
-        {colors.map((color, index) => (
+        {colors.map((color) => (
           <Swatch
-            key={`recommended-color-${color}-${index}`}
+            key={color}
             color={color}
             style={{ backgroundColor: getColor(color) }}
             onClick={() => onClick(color)}

@@ -125,10 +125,10 @@ const PropsTable = ({ title, propsObj }: PropsTableProps) => {
                   part.startsWith("`") && part.endsWith("`") ? (
                     <code className="nextra-code">{part.slice(1, -1)}</code>
                   ) : (
-                    part.split("@deprecated").map((part, index) => (
+                    part.split("@deprecated").map((p, index) => (
                       <Fragment>
                         {index > 0 && <br />}
-                        {index === 0 ? part : `@deprecated${part}`}
+                        {index === 0 ? p : `@deprecated${p}`}
                       </Fragment>
                     ))
                   ),

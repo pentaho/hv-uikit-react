@@ -15,9 +15,7 @@ export default function Demo() {
     <HvInput
       label="Dropdown prefix"
       className="w-300px"
-      onChange={(_, value) => {
-        setPhoneNumber(value);
-      }}
+      onChange={(_, val) => setPhoneNumber(val)}
       placeholder="Type phone number..."
       value={phoneNumber}
       startAdornment={

@@ -29,7 +29,7 @@ interface AppShellProviderInnerProps extends React.PropsWithChildren {
 }
 
 const AppShellProviderInner = ({
-  config,
+  config: configProp,
   model,
   children,
 }: AppShellProviderInnerProps) => {
@@ -41,20 +41,20 @@ const AppShellProviderInner = ({
   const [theme, setTheme] = useState<HvThemeStructure>();
 
   useEffect(() => {
-    const theme = filteredModel?.theming?.theme;
-    if (!theme) return;
+    const newTheme = filteredModel?.theming?.theme as keyof typeof baseThemes;
+    if (!newTheme) return;
 
-    if (baseThemes[theme as keyof typeof baseThemes]) {
-      setTheme(baseThemes[theme as keyof typeof baseThemes]);
+    if (baseThemes[newTheme]) {
+      setTheme(baseThemes[newTheme]);
       return;
     }
 
-    import(/* @vite-ignore */ theme)
+    import(/* @vite-ignore */ newTheme)
       .then((module) => {
         setTheme(module.default);
       })
       .catch((e) => {
-        console.error(`Import of theme bundle ${theme} failed! ${e}`);
+        console.error(`Import of theme bundle ${newTheme} failed! ${e}`);
       });
   }, [filteredModel?.theming?.theme]);
 
@@ -87,7 +87,7 @@ const AppShellProviderInner = ({
     [providers],
   );
 
-  const appShellConfigContextValue = useMemo(() => config, [config]);
+  const appShellConfigContextValue = useMemo(() => configProp, [configProp]);
 
   const appShellModelContextValue = useMemo(
     () => filteredModel,

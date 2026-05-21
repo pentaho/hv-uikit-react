@@ -17,7 +17,7 @@ export default function Demo() {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const filteredGroups = useMemo(
-    () => filterGroups(searchValue, groups),
+    () => filterGroups(searchValue),
     [searchValue],
   );
 
@@ -133,7 +133,7 @@ const groups: Group[] = [
   },
 ];
 
-const filterGroups = (search: string, groups: Group[]) => {
+const filterGroups = (search: string) => {
   if (!search) return groups;
 
   return groups.map((group) => ({

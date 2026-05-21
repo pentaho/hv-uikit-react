@@ -101,11 +101,7 @@ export const Card: StoryObj<HvSkeletonProps> = {
         </div>
         <div className="flex gap-xs">
           {Array.from({ length: 3 }).map((_, i) => (
-            <HvCard
-              bgcolor="bgContainer"
-              key={`card-${i}`}
-              style={{ width: "100%" }}
-            >
+            <HvCard bgcolor="bgContainer" key={i} className="w-full">
               <HvCardHeader
                 title={
                   <HvSkeleton hidden={!loading} animation={mode} width={150}>

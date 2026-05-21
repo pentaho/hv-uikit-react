@@ -6,7 +6,7 @@ import {
 import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
 import { HvIconButton, useTheme } from "@hitachivantara/uikit-react-core";
 
-import IconUiKit from "../../IconUiKit";
+import IconUiKit from "../../IconUiKit/IconUiKit";
 
 const ColorModeSwitcher: React.FC = () => {
   const { i18n } = useHvAppShellRuntimeContext();

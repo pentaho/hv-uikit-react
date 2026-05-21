@@ -84,7 +84,7 @@ function HvThemeProviderInner({
       },
       themes: [theme],
       selectedTheme: theme.name,
-      changeTheme(theme: string, mode: HvThemeColorMode) {
+      changeTheme(_theme: string, mode: HvThemeColorMode) {
         setColorModeValue(mode);
         setMode(mode);
       },

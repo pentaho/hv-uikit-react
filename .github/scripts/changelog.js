@@ -28,7 +28,7 @@ async function main() {
     emoji: true,
   });
 
-  const text = cleanupMd(md)
+  const markdownText = cleanupMd(md)
     // cleanup commit links
     .replace(/ - by .+$/gm, ".")
     // convert markdown to slack format
@@ -42,7 +42,7 @@ async function main() {
   const releaseUrl = `https://github.com/pentaho/hv-uikit-react/releases/tag/${newVersion}`;
   const mdSections = [
     `*<${releaseUrl}|UI-Kit \`${newVersion}\` released>*`,
-    text,
+    markdownText,
   ];
   const output = mdSections.map((text) => ({
     type: "section",

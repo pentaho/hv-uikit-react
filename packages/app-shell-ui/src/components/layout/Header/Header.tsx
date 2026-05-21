@@ -16,7 +16,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { useNavigationContext } from "../../../providers/NavigationProvider";
-import IconUiKit from "../../IconUiKit";
+import IconUiKit from "../../IconUiKit/IconUiKit";
 import { BrandLogo } from "../BrandLogo/BrandLogo";
 import HeaderActions from "../HeaderActions/HeaderActions";
 
