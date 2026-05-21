@@ -3,8 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import recursive from "recursive-readdir";
 
-import { generateSymbol } from "./generateSymbol";
-import { extractColors, replaceFill } from "./utils";
+import { generateSymbol } from "./generateSymbol.ts";
+import { extractColors, replaceFill } from "./utils.ts";
 
 // Resolve arguments
 const inputPath = "assets";

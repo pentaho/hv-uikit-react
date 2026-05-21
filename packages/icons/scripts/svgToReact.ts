@@ -3,8 +3,8 @@ import fs from "node:fs/promises";
 import { parse, resolve } from "node:path";
 import { transform } from "@svgr/core";
 
-import { generateComponent } from "./generateComponent";
-import { extractColors, extractSize, replaceFill } from "./utils";
+import { generateComponent } from "./generateComponent.ts";
+import { extractColors, extractSize, replaceFill } from "./utils.ts";
 
 const transformToJsx = (fileData: string, iconName: string) => {
   const svgJsx = transform.sync(fileData, {
