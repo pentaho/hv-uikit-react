@@ -1,3 +1,5 @@
+"use client";
+
 import { useId } from "react";
 import { useTheme } from "nextra-theme-docs";
 import { HvProvider, themes } from "@hitachivantara/uikit-react-core";
