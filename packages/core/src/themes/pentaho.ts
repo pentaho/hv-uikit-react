@@ -214,22 +214,17 @@ export const pentaho = mergeTheme(pentahoBase, {
             color: theme.colors.textSubtle,
             backgroundColor: theme.colors.bgPageSecondary,
           },
-          "&[data-color='primary']:not(:empty)": {
-            color: theme.colors.primary,
-            backgroundColor: theme.colors.primaryDimmed,
-          },
-          "&[data-color='positive']:not(:empty)": {
-            color: theme.colors.positive,
-            backgroundColor: theme.colors.positiveDimmed,
-          },
-          "&[data-color='warning']:not(:empty)": {
-            color: theme.colors.warning,
-            backgroundColor: theme.colors.warningDimmed,
-          },
-          "&[data-color='negative']:not(:empty)": {
-            color: theme.colors.negative,
-            backgroundColor: theme.colors.negativeDimmed,
-          },
+          ...Object.fromEntries(
+            (["primary", "positive", "warning", "negative"] as const).map(
+              (color) => [
+                `&[data-color='${color}']:not(:empty)`,
+                {
+                  color: theme.colors[color],
+                  backgroundColor: theme.colors[`${color}Dimmed`],
+                },
+              ],
+            ),
+          ),
         },
       },
     } satisfies CSSClasses<HvBadgeProps>,
