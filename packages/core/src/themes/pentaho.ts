@@ -218,6 +218,18 @@ export const pentaho = mergeTheme(pentahoBase, {
             color: theme.colors.primary,
             backgroundColor: theme.colors.primaryDimmed,
           },
+          "&[data-color='positive']:not(:empty)": {
+            color: theme.colors.positive,
+            backgroundColor: theme.colors.positiveDimmed,
+          },
+          "&[data-color='warning']:not(:empty)": {
+            color: theme.colors.warning,
+            backgroundColor: theme.colors.warningDimmed,
+          },
+          "&[data-color='negative']:not(:empty)": {
+            color: theme.colors.negative,
+            backgroundColor: theme.colors.negativeDimmed,
+          },
         },
       },
     } satisfies CSSClasses<HvBadgeProps>,

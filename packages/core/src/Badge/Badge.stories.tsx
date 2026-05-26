@@ -108,6 +108,12 @@ export const Test: StoryObj = {
       <HvBadge color="primary" label={8} icon={<Alert />} />
       <HvBadge color="textSubtle" showCount label={8} icon={<Alert />} />
       <HvBadge color="textSubtle" label={8} icon={<Alert />} />
+      <HvBadge color="positive" showCount label={8} icon={<Alert />} />
+      <HvBadge color="positive" label={8} icon={<Alert />} />
+      <HvBadge color="warning" showCount label={8} icon={<Alert />} />
+      <HvBadge color="warning" label={8} icon={<Alert />} />
+      <HvBadge color="negative" showCount label={8} icon={<Alert />} />
+      <HvBadge color="negative" label={8} icon={<Alert />} />
       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
         <HvTypography>Events</HvTypography>
         <HvBadge label={10} showCount />
