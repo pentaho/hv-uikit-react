@@ -12,6 +12,5 @@
 
     /* Others */
     "types": ["@testing-library/jest-dom", "vite/client", "vitest/globals"]
-  },
-  "include": ["packages/**/src"]
+  }
 }

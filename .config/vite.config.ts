@@ -19,7 +19,7 @@ const external = [
 export default defineConfig({
   plugins: [
     dts({
-      rollupTypes: true,
+      bundleTypes: true,
       tsconfigPath: resolve(import.meta.dirname, "../tsconfig.build.json"),
     }),
     react(),
@@ -33,16 +33,12 @@ export default defineConfig({
       entry: resolve("src/index.ts"),
       formats: ["es"],
     },
-    rollupOptions: {
+    rolldownOptions: {
       external,
       output: {
-        format: "esm",
         preserveModules: true,
         preserveModulesRoot: "src",
-        dir: "dist",
         entryFileNames: "[name].js",
-        exports: "named",
-        interop: "auto",
       },
     },
   },

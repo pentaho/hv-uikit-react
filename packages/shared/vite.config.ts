@@ -4,7 +4,7 @@ import viteConfig from "../../.config/vite.config";
 
 export default mergeConfig(viteConfig, {
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: [
         {
           format: "esm",

@@ -12,7 +12,7 @@ export default mergeConfig(viteConfig, {
     }),
   ],
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       // Exclude locale JSON files from the module graph.
       // They are copied to dist/locales/ by viteStaticCopy and
       // only imported statically for the pre-bundled en fallback.
