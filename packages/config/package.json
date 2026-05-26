@@ -32,10 +32,6 @@
     "./oxlint/*.json": "./oxlint/*.json",
     "./tsconfig": "./tsconfig.json"
   },
-  "peerDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
-    "prettier": "^3.0.0"
-  },
   "publishConfig": {
     "access": "public",
     "directory": "package"

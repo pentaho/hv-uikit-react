@@ -1,3 +1,6 @@
+// ⚠️ This package should ONLY export **context** and **related types**.
+// Shared utilities should go to `utils` package.
+
 export * from "./AppShellContext";
 export * from "./AppShellModelContext";
 export * from "./AppShellViewContext";
