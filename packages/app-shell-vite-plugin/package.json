@@ -19,8 +19,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "clean": "rimraf dist",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",

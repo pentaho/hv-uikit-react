@@ -25,6 +25,9 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
 
+      - name: Build dependent packages
+        run: npm run build -w packages/uno-preset -w packages/styles
+
       - name: Publish to Chromatic
         id: publish
         uses: chromaui/action@latest

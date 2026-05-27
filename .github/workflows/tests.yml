@@ -76,11 +76,12 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps --only-shell chromium
 
+      - name: Build dependent packages
+        run: npm run build -w packages/uno-preset -w packages/styles
+
       - name: Run Tests
         run: npm run test:storybook -- --no-file-parallelism --retry 1 --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   build:
     name: Build
     uses: ./.github/workflows/build.yml
-    with:
-      build-all: false

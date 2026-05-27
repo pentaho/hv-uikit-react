@@ -12,7 +12,7 @@ import type { NavigationMenuItem } from "../types";
  *
  * @returns An array of {@link MenuItem}.
  */
-const createNavigationMenuItems = (
+export const createNavigationMenuItems = (
   // eslint-disable-next-line only-used-in-recursion
   t: (key: string) => string,
   menuItems?: MenuItem[],
@@ -45,7 +45,7 @@ const createNavigationMenuItems = (
  * @param {string} itemId - The item id.
  * @returns The item with matching id.
  */
-const findItemById = (
+export const findItemById = (
   data: NavigationMenuItem[],
   itemId: string,
 ): NavigationMenuItem | null => {
@@ -65,8 +65,7 @@ const findItemById = (
   return foundItem;
 };
 
-//
-const getAppIdFromBundle = (bundle: string): string => {
+export const getAppIdFromBundle = (bundle: string): string => {
   const bundleTokens = bundle.split("/");
   let appId: string;
 
@@ -85,7 +84,7 @@ const getAppIdFromBundle = (bundle: string): string => {
  * @param items - The array of items.
  * @returns The new array with the href property removed from items with children.
  */
-const removeHrefFromMenuItemsWithChildren = (
+export const removeHrefFromMenuItemsWithChildren = (
   items: NavigationMenuItem[],
 ): NavigationMenuItem[] => {
   return items.map((item: NavigationMenuItem) => {
@@ -95,11 +94,4 @@ const removeHrefFromMenuItemsWithChildren = (
     }
     return item;
   });
-};
-
-export {
-  createNavigationMenuItems,
-  findItemById,
-  removeHrefFromMenuItemsWithChildren,
-  getAppIdFromBundle,
 };

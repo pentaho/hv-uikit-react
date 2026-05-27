@@ -26,6 +26,9 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
 
+      - name: Build dependent packages
+        run: npm run build -w packages/uno-preset -w packages/styles
+
       # Bypassing Jekyll processing on GitHub Pages by adding .nojekyll to read folders that start with an underscore
       - name: Build Nextra Docs
         if: ${{ env.PUBLISH_DOCS == 'true' }}
