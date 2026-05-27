@@ -5,6 +5,9 @@ import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
 
 export default defineConfig(({ mode }) => ({
+  resolve: {
+    conditions: ["@uikit/source"],
+  },
   plugins: [
     react(),
     unoCSS(),

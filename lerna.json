@@ -10,8 +10,7 @@
     "version": {
       "preid": "next",
       "message": "chore(release): publish",
-      "conventionalCommits": true,
-      "contents": "package"
+      "conventionalCommits": true
     }
   }
 }

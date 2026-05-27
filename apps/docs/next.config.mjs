@@ -72,6 +72,12 @@ export default withNextra({
     if (!config.resolve.fallback) config.resolve.fallback = {};
     config.resolve.fallback.fs = false;
 
+    // Activate source condition for workspace packages
+    config.resolve.conditionNames = [
+      "@uikit/source",
+      ...(config.resolve.conditionNames ?? ["import", "default"]),
+    ];
+
     return config;
   },
 });
