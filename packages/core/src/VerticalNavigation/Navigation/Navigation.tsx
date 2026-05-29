@@ -1,10 +1,23 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { HvIconContainer } from "@hitachivantara/uikit-react-icons";
 import {
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
+import { HvButton } from "../../Button";
 import { useControlled } from "../../hooks/useControlled";
+import { useLabels } from "../../hooks/useLabels";
+import { HvIcon } from "../../icons";
+import { HvSearchInput } from "../../SearchInput";
+import { HvTooltip } from "../../Tooltip";
 import type { HvBaseProps } from "../../types/generic";
 import { uniqueId } from "../../utils/helpers";
 import { NavigationPopupContainer } from "../NavigationPopup/NavigationPopupContainer";
@@ -27,6 +40,15 @@ import { staticClasses, useClasses } from "./Navigation.styles";
 export { staticClasses as verticalNavigationTreeClasses };
 
 export type HvVerticalNavigationTreeClasses = ExtractNames<typeof useClasses>;
+
+const DEFAULT_LABELS = {
+  /** Placeholder text for the search input. */
+  searchPlaceholder: "Search",
+  /** Tooltip label for the collapsed search icon button. */
+  searchTooltip: "Search",
+};
+
+export type HvVerticalNavigationTreeLabels = Partial<typeof DEFAULT_LABELS>;
 
 export interface HvVerticalNavigationTreeProps extends HvBaseProps<
   HTMLDivElement,
@@ -77,6 +99,10 @@ export interface HvVerticalNavigationTreeProps extends HvBaseProps<
   data?: NavigationData[];
   /** Aria label to apply to the navigate to submenu button on the navigation slider list items. */
   sliderForwardButtonAriaLabel?: string;
+  /** When true, renders a search input that filters leaf items. */
+  search?: boolean;
+  /** Labels for the component's interactive elements. */
+  labels?: HvVerticalNavigationTreeLabels;
 }
 
 const createListHierarchy = (
@@ -128,6 +154,11 @@ const createListHierarchy = (
     );
   });
 
+const getLeafItems = (items: NavigationData[]): NavigationData[] =>
+  items.flatMap((item) =>
+    item.data?.length ? getLeafItems(item.data) : [item],
+  );
+
 const getAllParents = (items: any) => {
   const parents = items.filter(
     (item: any) => item.data != null && item.data.length > 0,
@@ -177,12 +208,47 @@ export const HvVerticalNavigationTree = (
     defaultSelected,
     onChange,
     sliderForwardButtonAriaLabel = "Navigate to submenu",
+    search = false,
+    labels: labelsProp,
     ...others
   } = useDefaultProps("HvVerticalNavigationTree", props);
 
   const { classes, cx } = useClasses(classesProp);
 
-  const [selected, setSelected] = useControlled(selectedProp, defaultSelected);
+  const labels = useLabels(DEFAULT_LABELS, labelsProp);
+
+  const [searchValue, setSearchValue] = useState("");
+  const [focusSearchOnOpen, setFocusSearchOnOpen] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [localSelected, setLocalSelected] = useControlled(
+    selectedProp,
+    defaultSelected,
+  );
+
+  const {
+    isOpen,
+    useIcons,
+    slider,
+    setOpen,
+
+    parentItem,
+    setParentItem,
+    withParentData,
+    navigateToChildHandler,
+
+    setParentData,
+    setParentSelected,
+
+    selected: contextSelected,
+    setSelected: contextSetSelected,
+  } = useContext(VerticalNavigationContext);
+
+  // Use context selection when no prop is provided by the consumer
+  const selected =
+    selectedProp === undefined && contextSelected !== undefined
+      ? contextSelected
+      : localSelected;
+
   const [expanded, setExpanded] = useControlled(expandedProp, () => {
     if (defaultExpanded === true) {
       // all parent nodes will be expanded by default
@@ -207,20 +273,6 @@ export const HvVerticalNavigationTree = (
 
     return defaultExpanded;
   });
-
-  const {
-    isOpen,
-    useIcons,
-    slider,
-
-    parentItem,
-    setParentItem,
-    withParentData,
-    navigateToChildHandler,
-
-    setParentData,
-    setParentSelected,
-  } = useContext(VerticalNavigationContext);
 
   const [navigationPopup, setNavigationPopup] = useState<{
     // This value is needed to guarantee that the NavigationPopup is fully re-rendered with keeping any previous values
@@ -255,7 +307,8 @@ export const HvVerticalNavigationTree = (
         // We need this stopPropagation or else the Popup will close due to the clickaway being triggered
         event.stopPropagation();
       } else {
-        setSelected(selectedId as string);
+        setLocalSelected(selectedId as string);
+        contextSetSelected?.(selectedId as string);
         setExpanded((prevState) => {
           if (!isOpen) {
             return [...prevState, ...pathToElement(data, selectedId)];
@@ -266,7 +319,15 @@ export const HvVerticalNavigationTree = (
         onChange?.(event, selectedItem);
       }
     },
-    [onChange, setSelected, setExpanded, isOpen, useIcons, data],
+    [
+      onChange,
+      setLocalSelected,
+      contextSetSelected,
+      setExpanded,
+      isOpen,
+      useIcons,
+      data,
+    ],
   );
 
   const treeViewItemMouseEnterHandler = useCallback(
@@ -297,6 +358,14 @@ export const HvVerticalNavigationTree = (
     [onToggle, setExpanded],
   );
 
+  const filteredLeaves = useMemo(() => {
+    if (!search || !searchValue.trim()) return null;
+    const q = searchValue.trim().toLowerCase();
+    return getLeafItems(data ?? []).filter((item) =>
+      item.label?.toString().toLowerCase().includes(q),
+    );
+  }, [search, searchValue, data]);
+
   const children = useMemo(
     () =>
       data &&
@@ -316,8 +385,15 @@ export const HvVerticalNavigationTree = (
   }, [isOpen]);
 
   useEffect(() => {
+    if (isOpen && focusSearchOnOpen) {
+      searchInputRef.current?.focus();
+      setFocusSearchOnOpen(false);
+    }
+  }, [isOpen, focusSearchOnOpen]);
+
+  useEffect(() => {
     if (setParentSelected) setParentSelected(selected);
-  }, [selected, setSelected, setParentSelected]);
+  }, [selected, setParentSelected]);
 
   useEffect(() => {
     if (setParentData) setParentData(data);
@@ -376,36 +452,95 @@ export const HvVerticalNavigationTree = (
           forwardButtonAriaLabel={sliderForwardButtonAriaLabel}
         />
       ) : (
-        <HvVerticalNavigationTreeView
-          className={classes.list}
-          selectable
-          mode={mode}
-          collapsible={collapsible}
-          selected={selected}
-          onChange={handleChange}
-          expanded={expanded}
-          onToggle={handleToggle}
-        >
-          {useIcons && !isOpen && navigationPopup && (
-            <NavigationPopupContainer
-              anchorEl={navigationPopup.anchorEl}
-              onClose={handleNavigationPopupClose}
-              key={navigationPopup.uniqueKey}
-              className={classes.navigationPopup}
+        <>
+          {search &&
+            (isOpen ? (
+              <div className={classes.searchContainer}>
+                <HvSearchInput
+                  ref={searchInputRef}
+                  placeholder={labels.searchPlaceholder}
+                  value={searchValue}
+                  onChange={(_e, val) => setSearchValue(val)}
+                />
+              </div>
+            ) : (
+              <HvTooltip title={labels.searchTooltip} placement="right">
+                <HvButton
+                  className={classes.searchIcon}
+                  variant="ghost"
+                  aria-label={labels.searchTooltip}
+                  onClick={() => {
+                    setOpen?.(true);
+                    setFocusSearchOnOpen(true);
+                  }}
+                >
+                  <HvIconContainer>
+                    <HvIcon name="Search" />
+                  </HvIconContainer>
+                </HvButton>
+              </HvTooltip>
+            ))}
+          {filteredLeaves != null ? (
+            <HvVerticalNavigationTreeView
+              className={classes.list}
+              selectable
+              mode={mode}
+              selected={selected}
+              onChange={handleChange}
             >
-              <HvVerticalNavigationTree
-                className={classes.popup}
-                collapsible
-                defaultExpanded
-                selected={selected}
-                data={navigationPopup.data}
-                onChange={handleNavigationPopupChange}
-                onMouseLeave={handleNavigationPopupMouseLeave}
-              />
-            </NavigationPopupContainer>
+              {filteredLeaves.length > 0 ? (
+                filteredLeaves.map((item) => (
+                  <HvVerticalNavigationTreeViewItem
+                    className={classes.listItem}
+                    key={item.id}
+                    nodeId={item.id}
+                    label={item.label}
+                    icon={item.icon}
+                    payload={item}
+                    href={item.href}
+                    target={item.target}
+                    selectable={item.selectable}
+                    disabled={item.disabled}
+                  />
+                ))
+              ) : (
+                <div className={classes.noResults} role="status">
+                  No results
+                </div>
+              )}
+            </HvVerticalNavigationTreeView>
+          ) : (
+            <HvVerticalNavigationTreeView
+              className={classes.list}
+              selectable
+              mode={mode}
+              collapsible={collapsible}
+              selected={selected}
+              onChange={handleChange}
+              expanded={expanded}
+              onToggle={handleToggle}
+            >
+              {useIcons && !isOpen && navigationPopup && (
+                <NavigationPopupContainer
+                  anchorEl={navigationPopup.anchorEl}
+                  onClose={handleNavigationPopupClose}
+                  key={navigationPopup.uniqueKey}
+                  className={classes.navigationPopup}
+                >
+                  <HvVerticalNavigationTree
+                    className={classes.popup}
+                    collapsible
+                    selected={selected}
+                    data={navigationPopup.data}
+                    onChange={handleNavigationPopupChange}
+                    onMouseLeave={handleNavigationPopupMouseLeave}
+                  />
+                </NavigationPopupContainer>
+              )}
+              {children}
+            </HvVerticalNavigationTreeView>
           )}
-          {children}
-        </HvVerticalNavigationTreeView>
+        </>
       )}
     </nav>
   );
