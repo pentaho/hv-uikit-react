@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { HvIconContainer } from "@hitachivantara/uikit-react-icons";
 import {
   mergeStyles,
   useDefaultProps,
@@ -198,7 +199,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
 
     const { index, parentId, level } = useDescendant(descendant);
 
-    const expandable = collapsible && Array.isArray(children);
+    const expandable = collapsible && !!children;
     const expanded = isExpanded ? isExpanded(nodeId) : false;
     const focused = isFocused ? isFocused(nodeId) : false;
     const selected = isSelected ? isSelected(nodeId) : false;
@@ -435,6 +436,9 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
       [expandable, handleExpansion, handleSelection, selectable, isOpen],
     );
 
+    const levelPadding =
+      (useIcons || !isOpen ? 0 : 10) + level * (collapsible ? 16 : 10);
+
     const renderedContent = useMemo(() => {
       const buttonLinkProps = {
         href,
@@ -463,9 +467,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
             onClick={handleClick}
             onMouseDown={handleMouseDown}
             style={{
-              paddingLeft:
-                (useIcons || !isOpen ? 0 : 10) +
-                level * (collapsible ? 16 : 10),
+              paddingLeft: `var(--hv-content-padding, ${levelPadding}px)`,
             }}
             role={isLink ? undefined : "button"}
             {...(treeviewMode
@@ -485,7 +487,8 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
                       : undefined,
                   "aria-expanded": expandable ? expanded : undefined,
                   "aria-controls": isOpen && expandable ? groupId : undefined,
-                  "aria-label": payload?.label,
+                  "aria-label": !isOpen ? payload?.label : undefined,
+                  "aria-disabled": disabled || undefined,
                 })}
           >
             <div
@@ -503,12 +506,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
                   {payload?.label?.slice(0, 1)}
                 </HvAvatar>
               ) : (
-                useIcons && icon
-              )}
-              {hasChildren && !isOpen ? (
-                <HvIcon name="Forwards" size="xs" compact />
-              ) : (
-                hasAnyChildWithData && !isOpen && <div />
+                useIcons && <HvIconContainer>{icon}</HvIconContainer>
               )}
             </div>
 
@@ -524,7 +522,12 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
             )}
 
             {isOpen && expandable && (
-              <HvIcon name="CaretDown" size="xs" rotate={expanded} />
+              <HvIcon
+                name="CaretDown"
+                size="xs"
+                rotate={expanded}
+                style={{ marginLeft: "auto" }}
+              />
             )}
           </HvTypography>
         </HvTooltip>
@@ -549,8 +552,7 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
       handleClick,
       handleMouseDown,
       useIcons,
-      level,
-      collapsible,
+      levelPadding,
       treeviewMode,
       handleFocus,
       selectable,
@@ -568,15 +570,17 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
     const renderedChildren = useMemo(
       () =>
         children && (
-          <ul
-            id={groupId}
-            className={classes.group}
-            role={treeviewMode ? "group" : undefined}
-          >
-            {children}
-          </ul>
+          <div className={classes.groupWrapper}>
+            <ul
+              id={groupId}
+              className={classes.group}
+              role={treeviewMode ? "group" : undefined}
+            >
+              {children}
+            </ul>
+          </div>
         ),
-      [children, classes?.group, groupId, treeviewMode],
+      [children, classes?.group, classes?.groupWrapper, groupId, treeviewMode],
     );
 
     return (
@@ -612,6 +616,11 @@ export const HvVerticalNavigationTreeViewItem = forwardRef(
           "aria-disabled": disabled ? true : undefined,
         })}
         {...others}
+        style={
+          {
+            "--hv-nav-item-padding": `var(--hv-content-padding, ${levelPadding}px)`,
+          } as React.CSSProperties
+        }
       >
         {renderedContent}
         {isOpen && (
