@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { css, cx } from "@emotion/css";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -14,7 +14,6 @@ import {
   verticalNavigationTreeClasses,
 } from "@hitachivantara/uikit-react-core";
 
-import { useResizeObserver } from "../../../hooks/useResizeObserver";
 import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import type { NavigationMenuItem } from "../../../types";
@@ -23,9 +22,19 @@ import { NavigationCollapse } from "./NavigationCollapse";
 const classes = {
   root: css({
     gridArea: "vnav",
-    overflowY: "auto",
+    overflow: "hidden",
     position: "relative",
     zIndex: theme.zIndices.overlay,
+  }),
+  content: css({
+    flex: 1,
+    minHeight: 0,
+    overflowY: "auto",
+    "& > nav + nav": {
+      marginTop: theme.space.sm,
+      paddingTop: theme.space.sm,
+      borderTop: `1px solid ${theme.colors.border}`,
+    },
   }),
   pentaho: css({
     maxHeight: "100vh",
@@ -41,7 +50,16 @@ const classes = {
     boxShadow: theme.colors.shadow,
     [`& .${verticalNavigationTreeClasses.popup}`]: { boxShadow: "none" },
   }),
+  treeRoot: css({
+    // Keep each group at its intrinsic height so expanding one group does not
+    // force sibling groups to shrink in the flex column container.
+    flexShrink: 0,
+    overflowY: "visible",
+  }),
 };
+
+const EXPANDED_VERTICAL_NAVIGATION_WIDTH = 280;
+const COLLAPSED_VERTICAL_NAVIGATION_WIDTH = 64;
 
 export const VerticalNavigation = () => {
   const { i18n } = useHvAppShellRuntimeContext();
@@ -51,8 +69,8 @@ export const VerticalNavigation = () => {
   });
   const {
     selectedMenuItemId,
-    rootMenuItemId,
     verticalNavigationItems,
+    verticalNavigationSearch,
     isCompactMode,
     verticalNavigationMode,
     switchVerticalNavigationMode,
@@ -69,8 +87,7 @@ export const VerticalNavigation = () => {
     event: React.SyntheticEvent<Element, Event>,
     selectedItem: NavigationMenuItem,
   ) => {
-    // Due to the change from buttons to links on the navigation tree, we need to prevent the default behaviour of
-    // the event to avoid full refreshes when clicking on the links.
+    // Keep navigation controlled by the app shell router.
     event.preventDefault();
 
     if (selectedItem.href) {
@@ -84,9 +101,18 @@ export const VerticalNavigation = () => {
     }
   };
 
-  useResizeObserver(ref, (width) => {
-    setVerticalNavigationWidth(isCompactMode ? 0 : width);
-  });
+  useEffect(() => {
+    if (isCompactMode) {
+      setVerticalNavigationWidth(0);
+      return;
+    }
+
+    setVerticalNavigationWidth(
+      open
+        ? EXPANDED_VERTICAL_NAVIGATION_WIDTH
+        : COLLAPSED_VERTICAL_NAVIGATION_WIDTH,
+    );
+  }, [isCompactMode, open, setVerticalNavigationWidth]);
 
   return (
     <ClickAwayListener
@@ -102,6 +128,11 @@ export const VerticalNavigation = () => {
           [classes.floating]: open && isCompactMode,
         })}
         open={open}
+        onOpenChange={(nextOpen) => {
+          if (nextOpen !== open) {
+            switchVerticalNavigationMode();
+          }
+        }}
         useIcons
         slider={isCompactMode}
       >
@@ -121,17 +152,25 @@ export const VerticalNavigation = () => {
           />
         )}
 
-        <HvVerticalNavigationTree
-          key={rootMenuItemId}
-          mode="navigation"
-          collapsible
-          aria-label={t("ariaLabelNavigationTree")}
-          selected={selectedMenuItemId}
-          onChange={changeHandler}
-          data={verticalNavigationItems}
-          classes={{ navigationPopup: classes.popup }}
-          sliderForwardButtonAriaLabel={t("ariaLabelSliderForwardButton")}
-        />
+        <div className={classes.content}>
+          {verticalNavigationItems.map((menuGroup, index) => (
+            <HvVerticalNavigationTree
+              key={menuGroup[0]?.id ?? index}
+              mode="navigation"
+              collapsible
+              search={verticalNavigationSearch[index] ?? false}
+              aria-label={t("ariaLabelNavigationTree")}
+              selected={selectedMenuItemId}
+              onChange={changeHandler}
+              data={menuGroup}
+              classes={{
+                root: classes.treeRoot,
+                navigationPopup: classes.popup,
+              }}
+              sliderForwardButtonAriaLabel={t("ariaLabelSliderForwardButton")}
+            />
+          ))}
+        </div>
 
         <HvVerticalNavigationActions>
           {isPentahoTheme && (

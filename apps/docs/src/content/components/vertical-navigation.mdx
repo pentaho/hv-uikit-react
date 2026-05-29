@@ -21,77 +21,229 @@ The example below demonstrates a typical use of the `VerticalNavigation` compone
 
 ```tsx live
 import { useState } from "react";
+import { css } from "@emotion/css";
 
 export default function Demo() {
-  const [value, setValue] = useState("00");
+  const [selected, setSelected] = useState("home");
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <HvVerticalNavigation>
-      <HvVerticalNavigationTree
-        aria-label="Example 1 navigation"
-        selected={value}
-        onChange={(event, data) => {
-          if (data.id === "02-01-01") {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          setValue(data.id);
-        }}
-        data={navigationData}
-      />
-      <HvVerticalNavigationActions>
-        <HvVerticalNavigationAction label="Profile" icon={<User />} />
-        <HvVerticalNavigationAction label="Logout" icon={<LogOut />} />
-      </HvVerticalNavigationActions>
-    </HvVerticalNavigation>
+    <div className="flex" style={{ height: "600px" }}>
+      <HvVerticalNavigation
+        open={!collapsed}
+        onOpenChange={(isOpen) => setCollapsed(!isOpen)}
+        selected={selected}
+        onSelectedChange={setSelected}
+        useIcons
+        className="h-full"
+      >
+        <HvVerticalNavigationTree
+          search
+          collapsible
+          aria-label="Example 1 navigation"
+          data={navigationData}
+        />
+        <HvVerticalNavigationActions>
+          <div className="relative">
+            {!collapsed && (
+              <Backwards className="absolute pointer-events-none top-0 right-0" />
+            )}
+            <HvVerticalNavigationAction
+              label={collapsed ? "Expand menu" : "Collapse menu"}
+              icon={collapsed ? <Forwards /> : undefined}
+              onClick={() => setCollapsed((prev) => !prev)}
+            />
+          </div>
+        </HvVerticalNavigationActions>
+      </HvVerticalNavigation>
+      <div className="flex flex-1 items-center justify-center border-1 border-dashed border-borderStrong ml-xs rounded-sm">
+        <HvTypography>Page content area</HvTypography>
+      </div>
+    </div>
   );
 }
 
-const navigationData = [
-  { id: "00", label: "Overview" },
-  { id: "01", label: "Analytics" },
+const headerData = [
   {
-    id: "02",
-    label: "Storage",
+    id: "home",
+    label: "Home",
+    icon: <div className="i-ph-house" />,
+  },
+  {
+    id: "marketplace",
+    label: "Data Marketplace",
+    icon: <div className="i-ph-storefront" />,
+  },
+  {
+    id: "fav",
+    label: "Favorites",
+    icon: <div className="i-ph-star" />,
     data: [
       {
-        id: "02-01",
-        label: "Cloud",
+        id: "fav-1",
+        label: "Customers",
+        icon: <div className="i-ph-table" />,
+      },
+      {
+        id: "fav-2",
+        label: "Transformations",
+        icon: <div className="i-ph-folder" />,
+      },
+      {
+        id: "fav-3",
+        label: "sales_report.rep",
+        icon: <div className="i-ph-file" />,
+      },
+      {
+        id: "fav-4",
+        label: "Sales Analysis",
+        icon: <div className="i-ph-package" />,
+      },
+      {
+        id: "fav-5",
+        label: "clean_gdpr",
+        icon: <div className="i-ph-file-csv" />,
+      },
+      {
+        id: "fav-6",
+        label: "Report",
+        icon: <div className="i-ph-file-pdf" />,
+      },
+      {
+        id: "fav-7",
+        label: "User List",
+        icon: <div className="i-ph-user-list" />,
+      },
+    ],
+  },
+];
+
+const navigationData = [
+  {
+    id: "menu1",
+    label: "Explore",
+    path: "",
+    icon: <div className="i-ph-map-trifold" />,
+    data: [
+      {
+        id: "menu1-1",
+        label: "Browse Files",
+        path: "",
+        icon: <div className="i-ph-folders" />,
+        parent: null,
         data: [
           {
-            id: "02-01-01",
-            label: "Servers",
-            href: "https://example.com/servers.html",
+            id: "menu1-1-1",
+            label: "File 1",
+            path: "",
+            icon: <div className="i-ph-file" />,
           },
           {
-            id: "02-01-02",
-            label: "HCP Anywhere",
+            id: "menu1-1-2",
+            label: "File 2",
+            path: "",
+            icon: <div className="i-ph-file" />,
           },
           {
-            id: "02-01-03",
-            label: "This Computer",
-            disabled: true,
+            id: "menu1-1-3",
+            label: "File 3",
+            path: "",
+            icon: <div className="i-ph-file" />,
           },
         ],
+      },
+      {
+        id: "menu1-2",
+        label: "Galaxy",
+        path: "",
+        icon: <div className="i-ph-graph" />,
+        parent: null,
+      },
+      {
+        id: "menu1-3",
+        label: "Lineage",
+        path: "",
+        icon: <div className="i-ph-tree-structure" />,
+        parent: null,
+      },
+      {
+        id: "menu1-5",
+        label: "Data Canvas",
+        path: "",
+        icon: <div className="i-ph-tree-view" />,
+        parent: null,
+      },
+      {
+        id: "menu1-6",
+        label: "API Catalog",
+        path: "",
+        icon: <div className="i-ph-webhooks-logo" />,
+        parent: null,
+      },
+      {
+        id: "menu1-7",
+        label: "Projects",
+        path: "",
+        icon: <div className="i-ph-suitcase-simple" />,
+        parent: null,
+      },
+    ],
+    parent: null,
+  },
+  {
+    id: "menu2",
+    label: "Transform",
+    path: "",
+    icon: <div className="i-ph-intersect-three" />,
+    parent: null,
+  },
+  {
+    id: "menu3",
+    label: "Management",
+    path: "",
+    icon: <div className="i-ph-gear" />,
+    parent: null,
+    data: [
+      {
+        id: "menu3-1",
+        label: "Connections",
+        icon: <div className="i-ph-plugs" />,
+      },
+      {
+        id: "menu3-2",
+        label: "Users",
+        icon: <div className="i-ph-users" />,
+      },
+      {
+        id: "menu3-3",
+        label: "Roles & Permissions",
+        icon: <div className="i-ph-user-circle-gear" />,
+      },
+      {
+        id: "menu3-4",
+        label: "Plugins",
+        icon: <div className="i-ph-puzzle-piece" />,
       },
     ],
   },
   {
-    id: "03",
-    label: "Administration",
-    href: "#admin",
+    id: "menu4",
+    label: "Schedules",
+    path: "",
+    icon: <div className="i-ph-calendar" />,
+    parent: null,
+  },
+  {
+    id: "menu5",
+    label: "Monitoring",
+    path: "",
+    icon: <div className="i-ph-pulse" />,
+    parent: null,
     data: [
       {
-        id: "03-01",
-        label: "Rest API",
-        href: "#admin-rest",
-        data: [
-          {
-            id: "03-01-01",
-            label: "Log Bundle",
-            href: "#admin-rest-logs",
-          },
-        ],
+        id: "menu5-1",
+        label: "Processes",
+        icon: <div className="i-ph-gear-fine" />,
       },
     ],
   },

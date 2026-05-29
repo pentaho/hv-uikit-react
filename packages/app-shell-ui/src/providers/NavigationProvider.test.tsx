@@ -22,6 +22,7 @@ const TestComponent = () => {
     rootMenuItemId,
     items,
     verticalNavigationItems,
+    verticalNavigationSearch,
     hasVerticalNavigation,
     showHeaderSubMenu,
     isCompactMode,
@@ -35,6 +36,9 @@ const TestComponent = () => {
       <span>rootMenuItemId: {rootMenuItemId}</span>
       <span>items: {items.length}</span>
       <span>verticalNavigationItems: {verticalNavigationItems.length}</span>
+      <span>
+        verticalNavigationSearch: {verticalNavigationSearch.join(",")}
+      </span>
       <span>hasVerticalNavigation: {hasVerticalNavigation.toString()}</span>
       <span>showHeaderSubMenu: {showHeaderSubMenu.toString()}</span>
       <span>isCompactMode: {isCompactMode.toString()}</span>
@@ -80,11 +84,14 @@ describe("NavigationProvider", () => {
     });
 
     expect(
-      await screen.findByText("selectedMenuItemId: 0-0"),
+      await screen.findByText("selectedMenuItemId: 0-0-0"),
     ).toBeInTheDocument();
-    expect(screen.getByText("rootMenuItemId: 0")).toBeInTheDocument();
+    expect(screen.getByText("rootMenuItemId: 0-0")).toBeInTheDocument();
     expect(screen.getByText("items: 3")).toBeInTheDocument();
-    expect(screen.getByText("verticalNavigationItems: 3")).toBeInTheDocument();
+    expect(screen.getByText("verticalNavigationItems: 1")).toBeInTheDocument();
+    expect(
+      screen.getByText("verticalNavigationSearch: false"),
+    ).toBeInTheDocument();
     expect(screen.getByText("hasVerticalNavigation: true")).toBeInTheDocument();
     expect(screen.getByText("showHeaderSubMenu: false")).toBeInTheDocument();
     expect(screen.getByText("isCompactMode: false")).toBeInTheDocument();
@@ -100,6 +107,24 @@ describe("NavigationProvider", () => {
 
     expect(
       screen.getByText("verticalNavigationMode: COLLAPSED"),
+    ).toBeInTheDocument();
+  });
+
+  it("maps per-group search from menuGroups to vertical navigation groups", async () => {
+    renderTestProvider(<TestComponent />, {
+      menu: [
+        [{ label: "Group 1", target: "/group-1" }],
+        [{ label: "Group 2", target: "/group-2" }],
+      ],
+      menuGroups: [{ search: true }, { search: false }],
+      navigationMode: "TOP_AND_LEFT",
+    });
+
+    expect(
+      await screen.findByText("verticalNavigationItems: 2"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("verticalNavigationSearch: true,false"),
     ).toBeInTheDocument();
   });
 

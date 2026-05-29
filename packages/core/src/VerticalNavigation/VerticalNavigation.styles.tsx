@@ -10,6 +10,8 @@ export const { staticClasses, useClasses } = createClasses(
       justifyContent: "flex-start",
 
       width: "220px",
+      overflow: "hidden",
+      transition: "width 300ms ease",
 
       backgroundColor: theme.colors.bgContainer,
       boxShadow: theme.colors.shadow,
@@ -18,24 +20,22 @@ export const { staticClasses, useClasses } = createClasses(
       "& > :only-child": {
         padding: theme.space.sm,
       },
-      "& > :not(nav:first-of-type)": {
-        borderTop: `3px solid ${theme.colors.borderSubtle}`,
-        padding: theme.spacing("xs", "sm", "sm", "sm"),
+      "& > :first-child": {
+        padding: theme.space.sm,
       },
-
-      "& > :first-of-type:not(:last-child)": {
-        borderTop: "none",
-        padding: theme.spacing("sm", "sm", "xs", "sm"),
+      "& > * + *": {
+        borderTop: `3px solid ${theme.colors.borderSubtle}`,
+        padding: theme.space.sm,
       },
     },
     collapsed: {
-      width: "fit-content",
-      "& > :first-of-type:not(:last-child)": {
-        padding: theme.spacing("sm", "xs", "xs", "xs"),
+      // calc: (padding-left + padding-right) + icon width
+      width: `calc(${theme.space.sm} * 2 + 32px)`,
+      "& > :first-child": {
+        padding: theme.spacing("sm", "sm"),
       },
-
-      "& > :not(nav:first-of-type)": {
-        padding: theme.spacing("xs", "xs", "sm", "xs"),
+      "& > * + *": {
+        padding: theme.spacing("sm", "sm"),
       },
     },
 

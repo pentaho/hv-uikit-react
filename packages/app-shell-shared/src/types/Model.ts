@@ -85,7 +85,7 @@ export interface HvAppShellModel extends Omit<
   HvAppShellConfig,
   "menu" | "mainPanel" | "header" | "systemProviders" | "providers" | "services"
 > {
-  menu?: HvAppShellMenuModel[];
+  menu?: HvAppShellMenuModel[] | HvAppShellMenuModel[][];
   mainPanel?: HvAppShellMainPanelModel;
   header?: HvAppShellHeaderModel;
   systemProviders?: HvAppShellSystemProvidersModel[];

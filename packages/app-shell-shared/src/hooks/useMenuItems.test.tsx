@@ -120,10 +120,10 @@ describe("useHvMenuItems", () => {
       expect(result.current.items).toHaveLength(3);
       expect(result.current.items[0].label).toBe("Home");
       expect(result.current.items[0].href).toBe("./home");
-      expect(result.current.items[0].id).toBe("0");
+      expect(result.current.items[0].id).toBe("0-0");
       expect(result.current.items[1].label).toBe("About");
       expect(result.current.items[1].href).toBe("./about");
-      expect(result.current.items[1].id).toBe("1");
+      expect(result.current.items[1].id).toBe("0-1");
     });
 
     it("should select menu item based on pathname", () => {
@@ -137,8 +137,8 @@ describe("useHvMenuItems", () => {
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("1");
-      expect(result.current.rootMenuItemId).toBe("1");
+      expect(result.current.selectedMenuItemId).toBe("0-1");
+      expect(result.current.rootMenuItemId).toBe("0-1");
     });
 
     it("should not select any item when pathname doesn't match", () => {
@@ -167,8 +167,8 @@ describe("useHvMenuItems", () => {
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("2");
-      expect(result.current.rootMenuItemId).toBe("2");
+      expect(result.current.selectedMenuItemId).toBe("0-2");
+      expect(result.current.rootMenuItemId).toBe("0-2");
     });
   });
 
@@ -197,7 +197,7 @@ describe("useHvMenuItems", () => {
       expect(result.current.items[0].label).toBe("Products");
       expect(result.current.items[0].data).toHaveLength(3);
       expect(result.current.items[0].data?.[0].label).toBe("Hardware");
-      expect(result.current.items[0].data?.[0].id).toBe("0-0");
+      expect(result.current.items[0].data?.[0].id).toBe("0-0-0");
     });
 
     it("should select submenu item and set correct root", () => {
@@ -211,8 +211,8 @@ describe("useHvMenuItems", () => {
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("0-1");
-      expect(result.current.rootMenuItemId).toBe("0");
+      expect(result.current.selectedMenuItemId).toBe("0-0-1");
+      expect(result.current.rootMenuItemId).toBe("0-0");
     });
   });
 
@@ -284,7 +284,7 @@ describe("useHvMenuItems", () => {
       const { result } = renderHook(() => useHvMenuItems());
 
       expect(result.current.selectedMenuItemId).toBe("0-1");
-      expect(result.current.rootMenuItemId).toBe("0");
+      expect(result.current.rootMenuItemId).toBe("0-1");
     });
 
     it("should select first leaf item when selectedItemId has children", () => {
@@ -292,15 +292,15 @@ describe("useHvMenuItems", () => {
         pathname: "/some/path",
         search: "",
         hash: "",
-        state: { selectedItemId: "0" },
+        state: { selectedItemId: "0-0" },
         key: "default",
       });
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      // Should select first child (0-0) instead of parent (0)
-      expect(result.current.selectedMenuItemId).toBe("0-0");
-      expect(result.current.rootMenuItemId).toBe("0");
+      // Should select first child (0-0-0) instead of parent (0-0)
+      expect(result.current.selectedMenuItemId).toBe("0-0-0");
+      expect(result.current.rootMenuItemId).toBe("0-0");
     });
 
     it("should handle leaf item selection from state", () => {
@@ -308,14 +308,14 @@ describe("useHvMenuItems", () => {
         pathname: "/some/path",
         search: "",
         hash: "",
-        state: { selectedItemId: "1" },
+        state: { selectedItemId: "0-1" },
         key: "default",
       });
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("1");
-      expect(result.current.rootMenuItemId).toBe("1");
+      expect(result.current.selectedMenuItemId).toBe("0-1");
+      expect(result.current.rootMenuItemId).toBe("0-1");
     });
   });
 
@@ -341,7 +341,7 @@ describe("useHvMenuItems", () => {
 
       const { result } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("1");
+      expect(result.current.selectedMenuItemId).toBe("0-1");
     });
   });
 
@@ -367,7 +367,7 @@ describe("useHvMenuItems", () => {
 
       const { result, rerender } = renderHook(() => useHvMenuItems());
 
-      expect(result.current.selectedMenuItemId).toBe("0");
+      expect(result.current.selectedMenuItemId).toBe("0-0");
 
       mockUseLocation.mockReturnValue({
         pathname: "/about",
@@ -379,7 +379,7 @@ describe("useHvMenuItems", () => {
 
       rerender();
 
-      expect(result.current.selectedMenuItemId).toBe("1");
+      expect(result.current.selectedMenuItemId).toBe("0-1");
     });
   });
 

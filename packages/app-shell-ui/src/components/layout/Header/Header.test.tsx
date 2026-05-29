@@ -83,9 +83,7 @@ describe("Header", () => {
     it("should call `onClick` method on menu navigation", async () => {
       const dummySelectedItem = {
         href: "./subDummyTarget2",
-        // TODO: should be 1-0, but not should be fixed when using the `route` property
-        // and by relying on the HvHeader built-in fallback functionality
-        id: "1",
+        id: "0-1",
       };
 
       const headerNavigationElement = await screen.findByRole("navigation");
@@ -95,7 +93,7 @@ describe("Header", () => {
 
       await userEvent.click(secondMenuItem);
 
-      expect(navigateSpy).toHaveBeenCalledWith(dummySelectedItem.href, {
+      expect(navigateSpy).toHaveBeenLastCalledWith(dummySelectedItem.href, {
         state: { selectedItemId: dummySelectedItem.id },
       });
     });
@@ -173,11 +171,13 @@ describe("Header", () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
         verticalNavigationItems: [
-          {
-            id: "1",
-            label: "dummyMenu1",
-            path: "/dummyTarget1",
-          },
+          [
+            {
+              id: "1",
+              label: "dummyMenu1",
+              path: "/dummyTarget1",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         isCompactMode: true,
@@ -212,11 +212,13 @@ describe("Header", () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
         verticalNavigationItems: [
-          {
-            id: "1",
-            label: "dummyMenu1",
-            path: "/dummyTarget1",
-          },
+          [
+            {
+              id: "1",
+              label: "dummyMenu1",
+              path: "/dummyTarget1",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         isCompactMode: true,
@@ -235,11 +237,13 @@ describe("Header", () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
         verticalNavigationItems: [
-          {
-            id: "1",
-            label: "dummyMenu1",
-            path: "/dummyTarget1",
-          },
+          [
+            {
+              id: "1",
+              label: "dummyMenu1",
+              path: "/dummyTarget1",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         isCompactMode: true,
@@ -269,11 +273,13 @@ describe("Header", () => {
           },
         ],
         verticalNavigationItems: [
-          {
-            id: "1",
-            label: "dummyMenu1",
-            path: "/dummyTarget1",
-          },
+          [
+            {
+              id: "1",
+              label: "dummyMenu1",
+              path: "/dummyTarget1",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         isCompactMode: true,

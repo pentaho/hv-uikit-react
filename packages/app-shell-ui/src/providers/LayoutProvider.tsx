@@ -11,16 +11,20 @@ export interface LayoutContextValue {
   setVerticalNavigationWidth: (height: number) => void;
 }
 
+const DEFAULT_VERTICAL_NAVIGATION_WIDTH = 280;
+
 export const LayoutContext = createContext<LayoutContextValue>({
   bannerMaxHeight: 0,
   setBannerMaxHeight: () => {},
-  verticalNavigationWidth: 0,
+  verticalNavigationWidth: DEFAULT_VERTICAL_NAVIGATION_WIDTH,
   setVerticalNavigationWidth: () => {},
 });
 
 export const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const [bannerMaxHeight, setBannerMaxHeight] = useState(0);
-  const [verticalNavigationWidth, setVerticalNavigationWidth] = useState(0);
+  const [verticalNavigationWidth, setVerticalNavigationWidth] = useState(
+    DEFAULT_VERTICAL_NAVIGATION_WIDTH,
+  );
 
   const value = useMemo(
     () => ({

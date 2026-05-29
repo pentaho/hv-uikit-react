@@ -23,6 +23,8 @@ interface VerticalNavigationContextValue {
   slider?: boolean;
   headerTitle?: string;
 
+  setOpen?: (open: boolean) => void;
+
   parentItem?: any;
   setParentItem?: React.Dispatch<React.SetStateAction<any>>;
   withParentData?: any;

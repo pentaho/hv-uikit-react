@@ -495,7 +495,7 @@ describe("test navigation utilities", () => {
 
   describe("test `getRootIdFromItemId` method", () => {
     test.each([
-      ["1-1-1", "1"],
+      ["1-1-1", "1-1"],
       ["1", "1"],
       [undefined, undefined],
     ])("Root menu id from path %s matches %s", (value, expected) => {

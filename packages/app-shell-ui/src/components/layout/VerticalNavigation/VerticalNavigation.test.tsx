@@ -27,13 +27,19 @@ vi.mock("@hitachivantara/app-shell-navigation", async () => {
 });
 
 describe("VerticalNavigation", () => {
+  const navigationConfig: Partial<HvAppShellConfig> = {
+    menu: [{ label: "Menu 1", target: "/menu1" }],
+    navigationMode: "ONLY_LEFT",
+  };
+
   afterEach(() => {
     navigateSpy.mockReset();
     // Always clean up localStorage so collapsed state never leaks between tests.
     localStorage.removeItem(LOCAL_STORAGE_KEYS.NAV_EXPANDED);
   });
+
   it("should have a navigation element on the page", async () => {
-    await renderTestProvider(<VerticalNavigation />);
+    await renderTestProvider(<VerticalNavigation />, navigationConfig);
 
     expect(await screen.findByRole("navigation")).toBeInTheDocument();
 
@@ -90,6 +96,7 @@ describe("VerticalNavigation", () => {
 
     it("should not render the standard header with title", async () => {
       await renderTestProvider(<VerticalNavigation />, {
+        ...navigationConfig,
         theming: { theme: "pentaho" },
       });
 
@@ -116,6 +123,7 @@ describe("VerticalNavigation", () => {
 
     it("should not render the pentaho collapse action", async () => {
       await renderTestProvider(<VerticalNavigation />, {
+        ...navigationConfig,
         theming: { theme: "next" },
       });
 
@@ -126,10 +134,7 @@ describe("VerticalNavigation", () => {
 
   describe("actions", () => {
     const switchVerticalNavigationModeMock = vi.fn();
-    const mockedConfigResponse: Partial<HvAppShellConfig> = {
-      menu: [{ label: "Menu 1", target: "/menu1" }],
-      navigationMode: "ONLY_LEFT",
-    };
+    const mockedConfigResponse = navigationConfig;
 
     it("should have a navigation item inside the panel", async () => {
       await renderTestProvider(<VerticalNavigation />, mockedConfigResponse);
@@ -147,12 +152,14 @@ describe("VerticalNavigation", () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
         verticalNavigationItems: [
-          { id: "0", label: "Menu 1", href: "/menu1" },
-          {
-            id: "1",
-            label: "Menu 2",
-            href: "/menu2",
-          },
+          [
+            { id: "0", label: "Menu 1", href: "/menu1" },
+            {
+              id: "1",
+              label: "Menu 2",
+              href: "/menu2",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         switchVerticalNavigationMode: switchVerticalNavigationModeMock,
@@ -178,7 +185,9 @@ describe("VerticalNavigation", () => {
     it("should navigate to target and close the panel when in compact mode", async () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
-        verticalNavigationItems: [{ id: "0", label: "Menu 1", href: "/menu1" }],
+        verticalNavigationItems: [
+          [{ id: "0", label: "Menu 1", href: "/menu1" }],
+        ],
         hasVerticalNavigation: true,
         isCompactMode: true,
         switchVerticalNavigationMode: switchVerticalNavigationModeMock,

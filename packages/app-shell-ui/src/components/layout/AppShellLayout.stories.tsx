@@ -44,10 +44,17 @@ export const Main: StoryObj = {
   },
   globals: { viewport: { value: "split" } },
   play: async ({ canvas, userEvent }) => {
+    // Navigate to the "About" section from the header navigation
     await userEvent.click(await canvas.findByRole("link", { name: /about/i }));
+
+    // Expand the "About" section in the vertical navigation to reveal its submenus
+    await userEvent.click(await canvas.findByRole("button", { name: /about/i }));
+
+    // The "Submenu 2" item is now visible in the vertical navigation
     await userEvent.click(
       await canvas.findByRole("button", { name: /submenu 2/i }),
     );
+
     await userEvent.click(await canvas.findByRole("button", { name: /apps/i }));
   },
   render: (args, context) => {

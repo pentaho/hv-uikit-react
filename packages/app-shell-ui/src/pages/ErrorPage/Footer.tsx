@@ -23,8 +23,9 @@ export const Footer = () => {
       return items.length > 0 ? items[0] : null;
     }
 
-    return verticalNavigationItems.length > 0
-      ? verticalNavigationItems[0]
+    return verticalNavigationItems.length > 0 &&
+      verticalNavigationItems[0].length > 0
+      ? verticalNavigationItems[0][0]
       : null;
   };
 

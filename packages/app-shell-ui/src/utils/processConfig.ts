@@ -142,7 +142,7 @@ export default function processConfig(
     });
   };
 
-  const processMenus = (
+  const processMenuGroup = (
     menusConfig?: HvAppShellMenuConfig[],
   ): HvAppShellMenuModel[] => {
     if (!menusConfig) {
@@ -156,11 +156,25 @@ export default function processConfig(
       if (menuConfig.submenus) {
         return {
           ...menuModel,
-          submenus: processMenus(menuConfig.submenus),
+          submenus: processMenuGroup(menuConfig.submenus),
         };
       }
       return menuModel;
     });
+  };
+
+  const processMenus = (
+    menusConfig?: HvAppShellMenuConfig[] | HvAppShellMenuConfig[][],
+  ): HvAppShellMenuModel[][] => {
+    if (!menusConfig) {
+      return [];
+    }
+
+    const menuGroups = Array.isArray(menusConfig[0])
+      ? (menusConfig as HvAppShellMenuConfig[][])
+      : [menusConfig as HvAppShellMenuConfig[]];
+
+    return menuGroups.map((menuGroup) => processMenuGroup(menuGroup));
   };
 
   const config = { ...appShellConfig };
@@ -182,7 +196,9 @@ export default function processConfig(
     // Apply inheritance if we have views
     if (viewsModel) {
       const routeConditionsMap = createRouteConditionsMap(viewsModel);
-      menusModel = applyViewConditionsToMenus(menusModel, routeConditionsMap);
+      menusModel = menusModel.map((menuGroup) =>
+        applyViewConditionsToMenus(menuGroup, routeConditionsMap),
+      );
     }
 
     config.menu = menusModel;

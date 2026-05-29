@@ -24,9 +24,10 @@ describe("filterModel", () => {
       ]);
 
       const result = filterModel(model, []);
+      const menu = result.menu as HvAppShellMenuModel[];
 
-      expect(result.menu).toHaveLength(1);
-      expect(result.menu![0].key).toBe("menu-1");
+      expect(menu).toHaveLength(1);
+      expect(menu[0].key).toBe("menu-1");
     });
 
     it("filters out menus that have no target and an empty submenus array", () => {
@@ -36,9 +37,10 @@ describe("filterModel", () => {
       ]);
 
       const result = filterModel(model, []);
+      const menu = result.menu as HvAppShellMenuModel[];
 
-      expect(result.menu).toHaveLength(1);
-      expect(result.menu![0].key).toBe("menu-1");
+      expect(menu).toHaveLength(1);
+      expect(menu[0].key).toBe("menu-1");
     });
   });
 
@@ -94,10 +96,11 @@ describe("filterModel", () => {
       ]);
 
       const result = filterModel(model, [false]);
+      const menu = result.menu as HvAppShellMenuModel[];
 
-      expect(result.menu).toHaveLength(1);
-      expect(result.menu![0].submenus).toHaveLength(1);
-      expect(result.menu![0].submenus![0].key).toBe("child-1");
+      expect(menu).toHaveLength(1);
+      expect(menu[0].submenus).toHaveLength(1);
+      expect(menu[0].submenus![0].key).toBe("child-1");
     });
 
     it("hides parent after its only submenu condition flips from true to false", () => {
@@ -118,8 +121,9 @@ describe("filterModel", () => {
 
       // Menu and submenu are visible
       const resultBefore = filterModel(model, [true]);
-      expect(resultBefore.menu).toHaveLength(1);
-      expect(resultBefore.menu![0].submenus).toHaveLength(1);
+      const menuBefore = resultBefore.menu as HvAppShellMenuModel[];
+      expect(menuBefore).toHaveLength(1);
+      expect(menuBefore[0].submenus).toHaveLength(1);
 
       // Condition flips to false
       const resultAfter = filterModel(model, [false]);
@@ -134,9 +138,10 @@ describe("filterModel", () => {
       ]);
 
       const result = filterModel(model, []);
+      const menu = result.menu as HvAppShellMenuModel[];
 
-      expect(result.menu).toHaveLength(1);
-      expect(result.menu![0].target).toBe("/route");
+      expect(menu).toHaveLength(1);
+      expect(menu[0].target).toBe("/route");
     });
 
     it("preserves object reference when nothing changes", () => {

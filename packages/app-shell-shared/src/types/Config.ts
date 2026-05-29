@@ -51,6 +51,11 @@ export interface HvAppShellMenuConfig extends HvAppShellConditionalConfig {
   submenus?: HvAppShellMenuConfig[];
 }
 
+export interface HvAppShellMenuGroupConfig {
+  /** When true, enables the search field for this menu group. */
+  search?: boolean;
+}
+
 type RouteString = `/${string}`;
 
 export interface HvAppShellViewsConfig extends HvAppShellConditionalConfig {
@@ -87,7 +92,8 @@ export interface HvAppShellConfig {
   name?: string;
   logo?: HvAppShellLogo | null;
   apps?: Record<string, string>;
-  menu?: HvAppShellMenuConfig[];
+  menu?: HvAppShellMenuConfig[] | HvAppShellMenuConfig[][];
+  menuGroups?: HvAppShellMenuGroupConfig[];
   translations?: Record<string, object>;
   /**
    * Base URL for loading translation files via HTTP.

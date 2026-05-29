@@ -229,5 +229,5 @@ export function applyAutomaticMenu(config: HvAppShellConfig) {
     menuitem.target = view.route;
   });
 
-  appShellConfiguration.menu = menu;
+  appShellConfiguration.menu = [menu];
 }

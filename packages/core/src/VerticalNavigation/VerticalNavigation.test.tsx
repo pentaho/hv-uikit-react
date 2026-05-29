@@ -237,14 +237,14 @@ describe("VerticalNavigation", () => {
     expect(nav).toHaveStyle(`display : block`);
   });
 
-  it("should render links when `href` is passed", async () => {
+  it("should render button semantics when `href` is passed", async () => {
     render(<Sample />);
 
     const button1 = screen.getByRole("button", { name: /Analytics/i });
     expect(button1).toBeInTheDocument();
 
-    const link = screen.getByRole("link", { name: /Administration/i });
-    expect(link).toBeInTheDocument();
+    const button2 = screen.getByRole("button", { name: /Administration/i });
+    expect(button2).toBeInTheDocument();
   });
 
   it("should select elements when clicked", async () => {
@@ -257,9 +257,9 @@ describe("VerticalNavigation", () => {
     await userEvent.click(button);
     expect(button).toHaveAttribute("aria-current", "true");
 
-    const link = screen.getByRole("link", { name: /Administration/i });
-    expect(link).toBeInTheDocument();
-    expect(link).not.toHaveAttribute("aria-current");
+    const button2 = screen.getByRole("button", { name: /Administration/i });
+    expect(button2).toBeInTheDocument();
+    expect(button2).not.toHaveAttribute("aria-current");
   });
 
   describe("Slider Navigation", () => {

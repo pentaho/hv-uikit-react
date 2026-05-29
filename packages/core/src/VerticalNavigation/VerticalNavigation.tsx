@@ -1,9 +1,11 @@
 import { forwardRef, useCallback, useMemo, useState } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
+import { useControlled } from "../hooks/useControlled";
 import type { HvBaseProps } from "../types/generic";
 import {
   fillDataWithParentId,
@@ -33,6 +35,10 @@ export interface HvVerticalNavigationProps extends HvBaseProps<HTMLDivElement> {
   classes?: HvVerticalNavigationClasses;
   /** Current State of the Vertical Navigation Collapse */
   open?: boolean;
+  /** When uncontrolled, defines the initial open state. @default true */
+  defaultOpen?: boolean;
+  /** Callback fired when the open state changes internally (e.g. via the search icon). */
+  onOpenChange?: (open: boolean) => void;
   /**
    * Collapsed Mode for the Vertical Navigation, the default value is "simple".
    *
@@ -62,12 +68,26 @@ export const HvVerticalNavigation = forwardRef<
     className,
     classes: classesProp,
     children,
-    open = true,
+    open: openProp,
+    defaultOpen = true,
     slider = false,
     useIcons = false,
+    onOpenChange,
     ...others
   } = useDefaultProps("HvVerticalNavigation", props);
   const { classes, cx } = useClasses(classesProp);
+  const { activeTheme } = useTheme();
+  const isPentaho = activeTheme?.name === "pentahoPlus";
+
+  const [open, setOpenState] = useControlled(openProp, defaultOpen);
+
+  const setOpen = useCallback(
+    (nextOpen: boolean) => {
+      setOpenState(nextOpen);
+      onOpenChange?.(nextOpen);
+    },
+    [onOpenChange, setOpenState],
+  );
 
   const [parentData, setParentData] = useState<NavigationData[]>([]);
 
@@ -113,6 +133,8 @@ export const HvVerticalNavigation = forwardRef<
       slider,
       headerTitle,
 
+      setOpen,
+
       parentItem,
       setParentItem,
       withParentData,
@@ -138,6 +160,7 @@ export const HvVerticalNavigation = forwardRef<
       hasAnyChildWithData,
       parentData,
       parentSelected,
+      setOpen,
     ],
   );
 
@@ -146,6 +169,8 @@ export const HvVerticalNavigation = forwardRef<
       <div
         id={id}
         ref={ref}
+        data-theme={isPentaho ? activeTheme?.name : undefined}
+        data-color-mode={isPentaho ? "dark" : undefined}
         className={cx(
           classes.root,
           {

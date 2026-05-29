@@ -74,7 +74,7 @@ const filterViews = (
  *
  * Preserves object references when no changes occur to minimize re-renders.
  */
-const filterMenus = (
+const filterMenuGroup = (
   menus: HvAppShellMenuModel[],
   conditionResults: ConditionResultsList,
 ): [HvAppShellMenuModel[], boolean] => {
@@ -98,7 +98,7 @@ const filterMenus = (
     }
 
     // Recurse into its submenus
-    const [filteredSubmenus, submenusChanged] = filterMenus(
+    const [filteredSubmenus, submenusChanged] = filterMenuGroup(
       menu.submenus!,
       conditionResults,
     );
@@ -122,6 +122,31 @@ const filterMenus = (
   }
 
   return [hasChanged ? filteredMenus : menus, hasChanged];
+};
+
+const filterMenus = (
+  menus: HvAppShellMenuModel[] | HvAppShellMenuModel[][],
+  conditionResults: ConditionResultsList,
+): [HvAppShellMenuModel[] | HvAppShellMenuModel[][], boolean] => {
+  if (menus.length === 0) {
+    return [menus, false];
+  }
+
+  if (Array.isArray(menus[0])) {
+    let hasChanged = false;
+    const filteredGroups = (menus as HvAppShellMenuModel[][]).map((group) => {
+      const [filteredGroup, groupChanged] = filterMenuGroup(
+        group,
+        conditionResults,
+      );
+      hasChanged ||= groupChanged;
+      return filteredGroup;
+    });
+
+    return [hasChanged ? filteredGroups : menus, hasChanged];
+  }
+
+  return filterMenuGroup(menus as HvAppShellMenuModel[], conditionResults);
 };
 
 const filterActions = (
