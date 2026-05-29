@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { css, cx } from "@emotion/css";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -14,7 +14,6 @@ import {
   verticalNavigationTreeClasses,
 } from "@hitachivantara/uikit-react-core";
 
-import { useResizeObserver } from "../../../hooks/useResizeObserver";
 import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import type { NavigationMenuItem } from "../../../types";
@@ -42,6 +41,10 @@ const classes = {
     [`& .${verticalNavigationTreeClasses.popup}`]: { boxShadow: "none" },
   }),
 };
+
+const PENTAHO_EXPANDED_VERTICAL_NAVIGATION_WIDTH = 280;
+const DEFAULT_EXPANDED_VERTICAL_NAVIGATION_WIDTH = 220;
+const COLLAPSED_VERTICAL_NAVIGATION_WIDTH = 64;
 
 export const VerticalNavigation = () => {
   const { i18n } = useHvAppShellRuntimeContext();
@@ -84,9 +87,20 @@ export const VerticalNavigation = () => {
     }
   };
 
-  useResizeObserver(ref, (width) => {
-    setVerticalNavigationWidth(isCompactMode ? 0 : width);
-  });
+  useEffect(() => {
+    if (isCompactMode) {
+      setVerticalNavigationWidth(0);
+      return;
+    }
+
+    setVerticalNavigationWidth(
+      open
+        ? isPentahoTheme
+          ? PENTAHO_EXPANDED_VERTICAL_NAVIGATION_WIDTH
+          : DEFAULT_EXPANDED_VERTICAL_NAVIGATION_WIDTH
+        : COLLAPSED_VERTICAL_NAVIGATION_WIDTH,
+    );
+  }, [isCompactMode, open, isPentahoTheme, setVerticalNavigationWidth]);
 
   return (
     <ClickAwayListener
