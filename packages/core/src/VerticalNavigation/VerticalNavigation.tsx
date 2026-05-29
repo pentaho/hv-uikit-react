@@ -1,6 +1,7 @@
 import { forwardRef, useCallback, useMemo, useState } from "react";
 import {
   useDefaultProps,
+  useTheme,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
 
@@ -68,6 +69,8 @@ export const HvVerticalNavigation = forwardRef<
     ...others
   } = useDefaultProps("HvVerticalNavigation", props);
   const { classes, cx } = useClasses(classesProp);
+  const { activeTheme } = useTheme();
+  const isPentaho = activeTheme?.name === "pentahoPlus";
 
   const [parentData, setParentData] = useState<NavigationData[]>([]);
 
@@ -146,6 +149,8 @@ export const HvVerticalNavigation = forwardRef<
       <div
         id={id}
         ref={ref}
+        data-theme={isPentaho ? activeTheme?.name : undefined}
+        data-color-mode={isPentaho ? "dark" : undefined}
         className={cx(
           classes.root,
           {

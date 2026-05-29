@@ -20,16 +20,20 @@ export const { staticClasses, useClasses } = createClasses(
       listStyle: "none",
       minHeight: "32px",
       "&:not(:last-child)": {
-        marginBottom: "8px",
+        marginBottom: theme.space.xs,
       },
       "&$collapsed": {
-        "&>$group": {
-          display: "none",
+        "&>$groupWrapper": {
+          gridTemplateRows: "0fr",
+          paddingTop: 0,
+          visibility: "hidden",
+          transition:
+            "grid-template-rows 250ms ease, padding-top 250ms ease, visibility 0s 250ms",
         },
       },
       "&$expanded": {
-        "&>$group": {
-          display: "block",
+        "&>$groupWrapper": {
+          gridTemplateRows: "1fr",
         },
       },
       "&$link": {
@@ -50,6 +54,10 @@ export const { staticClasses, useClasses } = createClasses(
       "&$minimized": {
         justifyContent: "center",
         paddingRight: 0,
+        "& $icon": {
+          marginRight: 0,
+          width: 32,
+        },
       },
       "$expandable>&": {
         fontWeight: 600,
@@ -104,9 +112,19 @@ export const { staticClasses, useClasses } = createClasses(
       },
     },
     link: {},
+    groupWrapper: {
+      display: "grid",
+      gridTemplateRows: "1fr",
+      overflow: "hidden",
+      paddingTop: theme.space.xs,
+      transition:
+        "grid-template-rows 250ms ease, padding-top 250ms ease, visibility 0s",
+      visibility: "visible",
+    },
     group: {
-      margin: "8px 0 0 0",
       padding: 0,
+      minHeight: 0,
+      overflow: "hidden",
     },
     disabled: {},
     expandable: {
@@ -125,19 +143,13 @@ export const { staticClasses, useClasses } = createClasses(
       display: "flex",
       flexGrow: 1,
       maxWidth: "100%",
+      gap: theme.space.xs,
     },
-    labelIcon: {
-      maxWidth: "calc(100% - 32px)",
-    },
-    labelExpandable: {
-      maxWidth: "calc(100% - 32px)",
-
-      "&$labelIcon": {
-        maxWidth: "calc(100% - 64px)",
-      },
-    },
+    labelIcon: {},
+    labelExpandable: {},
     icon: {
       display: "flex",
+      marginRight: theme.space.xs,
       alignItems: "center",
       "> div:first-of-type": {
         marginLeft: "var(--icon-margin-left)",
