@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.8.2...@hitachivantara/uikit-react-core@6.9.0) (2026-06-01)
+
+### Features
+
+- **Badge:** add new color variants ([#5178](https://github.com/pentaho/hv-uikit-react/issues/5178)) ([2ca6cd8](https://github.com/pentaho/hv-uikit-react/commit/2ca6cd8163a080d25a495d0866ba57c3399ab5c3))
+
 ## [6.8.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.8.1...@hitachivantara/uikit-react-core@6.8.2) (2026-05-14)
 
 ### Bug Fixes

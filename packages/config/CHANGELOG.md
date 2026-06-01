@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.6.2...@hitachivantara/uikit-config@0.6.3) (2026-06-01)
+
+### Bug Fixes
+
+- **deps:** reduce direct dependencies ([#5173](https://github.com/pentaho/hv-uikit-react/issues/5173)) ([186a11b](https://github.com/pentaho/hv-uikit-react/commit/186a11bd5024bdec89fd5edcc8f3382cbdc4f904))
+
 ## [0.6.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.6.1...@hitachivantara/uikit-config@0.6.2) (2026-05-07)
 
 **Note:** Version bump only for package @hitachivantara/uikit-config

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@2.3.1...@hitachivantara/app-shell-shared@2.3.2) (2026-06-01)
+
+### Bug Fixes
+
+- **deps:** reduce direct dependencies ([#5173](https://github.com/pentaho/hv-uikit-react/issues/5173)) ([186a11b](https://github.com/pentaho/hv-uikit-react/commit/186a11bd5024bdec89fd5edcc8f3382cbdc4f904))
+
 ## [2.3.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-shared@2.3.0...@hitachivantara/app-shell-shared@2.3.1) (2026-05-14)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-shared
