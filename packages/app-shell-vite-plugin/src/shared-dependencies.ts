@@ -89,7 +89,8 @@ export default [
     bundle: "app-shell-services.esm.js",
     bundleSrc:
       "@hitachivantara/app-shell-services/bundles/app-shell-services.esm.js",
-    virtualSrc: `export * from "@hitachivantara/app-shell-services";`,
+    virtualSrc: `export { default } from "@hitachivantara/app-shell-services";
+    export * from "@hitachivantara/app-shell-services";`,
   },
   {
     moduleId: "@hitachivantara/uikit-react-shared",
