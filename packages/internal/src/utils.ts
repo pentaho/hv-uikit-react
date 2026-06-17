@@ -1,16 +1,14 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 export const allModes = {
-  "Pentaho dawn": {
+  "Pentaho light": {
     theme: "pentaho light",
   },
-  "Pentaho wicked": {
+  "Pentaho dark": {
     theme: "pentaho dark",
   },
-  "DS5 dawn": {
+  "NEXT light": {
     theme: "next light",
   },
-  "DS5 wicked": {
+  "NEXT dark": {
     theme: "next dark",
   },
 };
@@ -18,12 +16,12 @@ export const allModes = {
 type Mode = keyof typeof allModes;
 
 const customModes = {
-  light: ["DS5 dawn", "Pentaho dawn"],
-  dark: ["DS5 wicked", "Pentaho wicked"],
-  next: ["DS5 dawn", "DS5 wicked"],
-  pentaho: ["Pentaho dawn", "Pentaho wicked"],
-  default: ["DS5 dawn"],
-  all: ["DS5 dawn", "DS5 wicked", "Pentaho dawn", "Pentaho wicked"],
+  light: ["NEXT light", "Pentaho light"],
+  dark: ["NEXT dark", "Pentaho dark"],
+  next: ["NEXT light", "NEXT dark"],
+  pentaho: ["Pentaho light", "Pentaho dark"],
+  default: ["NEXT light"],
+  all: ["NEXT light", "NEXT dark", "Pentaho light", "Pentaho dark"],
 } satisfies Record<string, Mode[]>;
 
 type Values = keyof typeof customModes | Mode | Mode[];
