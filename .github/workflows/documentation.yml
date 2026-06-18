@@ -31,7 +31,7 @@ jobs:
         if: ${{ env.PUBLISH_DOCS == 'true' }}
         env:
           NEXTRA_BASE_PATH: /uikit-docs/${{ env.PUBLISH_FOLDER }}
-        run: npm run build:nextra && touch ${{ github.workspace }}/apps/docs/dist/.nojekyll
+        run: npm run build -w apps/docs && touch ${{ github.workspace }}/apps/docs/dist/.nojekyll
 
       - name: Archive Nextra Docs
         if: ${{ env.PUBLISH_DOCS == 'true' }}
