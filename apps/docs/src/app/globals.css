@@ -1,5 +1,7 @@
 @unocss all;
 
+@layer base, theme, components, hv-uikit-baseline, utilities;
+
 html,
 body {
   height: auto;
