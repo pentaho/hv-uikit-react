@@ -64,11 +64,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4]
+        shard: [1, 2, 3]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
@@ -80,7 +82,7 @@ jobs:
         run: npm run build -w packages/uno-preset -w packages/styles
 
       - name: Run Tests
-        run: npm run test:storybook -- --no-file-parallelism --retry 1 --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: npm run test:storybook -- --no-file-parallelism ${{ github.head_ref && '--changed=origin/master' || '' }} --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   build:
     name: Build
