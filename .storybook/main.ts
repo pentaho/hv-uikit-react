@@ -42,6 +42,9 @@ export default {
       optimizeDeps: {
         exclude: ["xmllint-wasm"],
       },
+      resolve: {
+        conditions: ["@uikit/source"],
+      },
       plugins: [react(), unoCSS()],
     });
   },

@@ -6,7 +6,6 @@
   "author": "Hitachi Vantara UI Kit Team",
   "description": "Contributed React components for the NEXT UI Kit.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "main": "src/index.ts",
   "sideEffects": false,
   "keywords": [
     "hitachi-vantara",
@@ -25,11 +24,11 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "build": "npm run clean && vite build",
+    "build": "vite build",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "clean": "npx rimraf dist package",
-    "prepublishOnly": "npm run build && npx clean-publish"
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.1",
@@ -60,27 +59,17 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "directory": "package",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "@uikit/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package",
-    "fields": [
-      "main"
-    ],
-    "files": [
-      "tsconfig.json"
-    ]
+  "publishConfig": {
+    "access": "public"
   }
 }

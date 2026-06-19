@@ -6,7 +6,6 @@
   "author": "Hitachi Vantara UI Kit Team",
   "description": "NEXT Design System icons packaged as a set of React components.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "main": "src/index.ts",
   "sideEffects": false,
   "keywords": [
     "hitachi-vantara",
@@ -29,9 +28,9 @@
     "convert": "node scripts/svgToReact.ts && node scripts/svgToSprite.ts",
     "prebuild": "npm run clean && npm run convert",
     "build": "vite build",
-    "clean": "npx rimraf dist sprites package",
+    "clean": "rimraf dist sprites",
     "prepare": "npm run convert",
-    "prepublishOnly": "npm run build && npx clean-publish"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.1",
@@ -55,27 +54,17 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "directory": "package",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "@uikit/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package",
-    "fields": [
-      "main"
-    ],
-    "files": [
-      "tsconfig.json"
-    ]
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -21,10 +21,7 @@
   "bugs": {
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
-  "scripts": {
-    "clean": "npx rimraf package",
-    "prepublishOnly": "npm run clean && npx clean-publish"
-  },
+  "scripts": {},
   "exports": {
     "./package.json": "./package.json",
     "./prettier": "./prettier.config.json",
@@ -33,11 +30,6 @@
     "./tsconfig": "./tsconfig.json"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "package"
-  },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package"
+    "access": "public"
   }
 }

@@ -25,12 +25,10 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "clean": "npx rimraf package",
-    "prepare": "npx cpy ../../templates src",
+    "prepare": "cpy ../../templates src",
     "pretest": "node src/index.js create uikit-app -t Form,ListView",
     "test": "cd uikit-app",
-    "posttest": "npx rimraf uikit-app",
-    "prepublishOnly": "npm run clean && npx clean-publish"
+    "posttest": "rimraf uikit-app"
   },
   "dependencies": {
     "chalk": "^5.6.2",
@@ -56,11 +54,6 @@
     "src"
   ],
   "publishConfig": {
-    "access": "public",
-    "directory": "package"
-  },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package"
+    "access": "public"
   }
 }

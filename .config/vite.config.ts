@@ -17,6 +17,9 @@ const external = [
 ].map((ext) => new RegExp(`^${ext.split("/")[0]}`));
 
 export default defineConfig({
+  resolve: {
+    conditions: ["@uikit/source"],
+  },
   plugins: [
     dts({
       bundleTypes: true,

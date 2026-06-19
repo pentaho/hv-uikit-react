@@ -18,9 +18,8 @@
     "build": "npm run clean && tsc -p tsconfig.json && rollup --config",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "clean": "npx rimraf dist package",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run build && npx clean-publish"
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -52,10 +51,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "directory": "package"
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -66,8 +61,7 @@
     },
     "./package.json": "./package.json"
   },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package"
+  "publishConfig": {
+    "access": "public"
   }
 }

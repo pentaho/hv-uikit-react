@@ -15,9 +15,9 @@
   },
   "bugs": "https://github.com/pentaho/hv-uikit-react/issues",
   "scripts": {
-    "build": "npm run clean && vite build",
-    "clean": "npx rimraf dist package",
-    "prepublishOnly": "npm run build && npx clean-publish",
+    "build": "vite build",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
@@ -27,33 +27,18 @@
   "files": [
     "dist"
   ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "@uikit/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./package.json": "./package.json",
     "./bundles/*": "./dist/bundles/*"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "package",
-    "module": "dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./package.json": "./package.json",
-      "./bundles/*": "./dist/bundles/*"
-    }
-  },
-  "clean-publish": {
-    "withoutPublish": true,
-    "tempDir": "package",
-    "fields": [
-      "main"
-    ],
-    "files": [
-      "tsconfig.json"
-    ]
+    "access": "public"
   }
 }

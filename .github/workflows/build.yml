@@ -3,20 +3,12 @@ name: Build
 on:
   workflow_dispatch:
     inputs:
-      build-all:
-        type: boolean
-        description: "Build all packages"
-        default: true
       publish-packages:
         type: boolean
         description: "Publish all packages"
         default: false
   workflow_call:
     inputs:
-      build-all:
-        type: boolean
-        description: "Build all packages"
-        default: true
       publish-packages:
         type: boolean
         description: "Publish all packages"
@@ -37,16 +29,14 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/install-dependencies
 
+      - name: Build Packages
+        run: npm run build
+
       - name: Build App
         run: npm run build -w apps/app
 
-      - name: Build Packages
-        run: npm run build
-        if: ${{ inputs.build-all || inputs.publish-packages }}
-
       - name: Build App Shell App
         run: npm run build -w apps/default-app
-        if: ${{ inputs.build-all || inputs.publish-packages }}
 
       - name: Publish Packages
         # only publish on Linux to avoid duplicate publishes
