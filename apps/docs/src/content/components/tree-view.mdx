@@ -312,8 +312,8 @@ export default function Demo() {
   const [checkedItems, setCheckedItems] = useState<
     { id: string; label: string }[]
   >([]);
-  const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
   const treeViewRef = useRef<HTMLUListElement>(null);
+  const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
 
   const handleCheckChange = useCallback(
     (id: string, label: string, isChecked: boolean) => {
@@ -354,32 +354,43 @@ export default function Demo() {
   );
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent): void => {
-      if (e.key !== " " || !focusedNodeId) return;
+    const treeEl = treeViewRef.current;
+    if (!treeEl) return;
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== " ") return;
       e.preventDefault();
+      if (!focusedNodeId) return;
       const node = findNodeById(treeData, focusedNodeId);
       if (!node) return;
-
-      const isCurrentlyChecked = checked.has(focusedNodeId);
+      const allIds = getAllDescendantIds(node);
+      const checkedCount = allIds.filter((id) => checked.has(id)).length;
+      const isCurrentlyChecked =
+        checkedCount === allIds.length && allIds.length > 0;
       handleCheckChange(focusedNodeId, node.label, !isCurrentlyChecked);
     };
 
-    const treeViewElement = treeViewRef.current;
-    if (treeViewElement) {
-      treeViewElement.addEventListener("keydown", handleKeyDown);
-      return () => {
-        treeViewElement.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-
-    return undefined;
+    treeEl.addEventListener("keydown", handleKeyDown);
+    return () => treeEl.removeEventListener("keydown", handleKeyDown);
   }, [focusedNodeId, checked, handleCheckChange]);
 
   return (
-    <div className="flex flex-col gap-md p-md">
-      <HvPanel>
-        <div className="flex flex-col gap-sm">
+    <div className="flex gap-md p-md">
+      <HvPanel className="min-w-400px">
+        <HvTreeView
+          ref={treeViewRef}
+          aria-label="financial tree navigator"
+          disableSelection
+          onNodeFocus={(_, nodeId) => setFocusedNodeId(nodeId)}
+        >
+          {treeData.map((node) =>
+            renderTreeItem(node, checked, handleCheckChange),
+          )}
+        </HvTreeView>
+      </HvPanel>
+
+      <HvPanel classes={{ root: "bg-transparent" }}>
+        <div className="flex flex-col flex-1 gap-sm">
           <HvTypography variant="title4">Selected Items:</HvTypography>
           {checkedItems.length > 0 ? (
             <div className="flex flex-wrap gap-xs">
@@ -391,20 +402,6 @@ export default function Demo() {
             <p className="text-gray-500">No items selected</p>
           )}
         </div>
-      </HvPanel>
-
-      <HvPanel className="w-400px">
-        <HvTreeView
-          ref={treeViewRef}
-          aria-label="financial tree navigator"
-          onNodeFocus={(event, nodeId) => {
-            setFocusedNodeId(nodeId as string);
-          }}
-        >
-          {treeData.map((node) =>
-            renderTreeItem(node, checked, handleCheckChange),
-          )}
-        </HvTreeView>
       </HvPanel>
     </div>
   );
@@ -508,6 +505,11 @@ const getAllDescendantIds = (node: TreeNodeData): string[] => {
   return ids;
 };
 
+const getLeafIds = (node: TreeNodeData): string[] => {
+  if (!node.children || node.children.length === 0) return [node.id];
+  return node.children.flatMap((child) => getLeafIds(child));
+};
+
 const findNodeById = (
   nodes: TreeNodeData[],
   id: string,
@@ -527,17 +529,33 @@ const renderTreeItem = (
   checked: Set<string>,
   onCheckChange: (id: string, label: string, isChecked: boolean) => void,
 ) => {
-  const isChecked = checked.has(node.id);
+  const leafIds = getLeafIds(node);
+  const checkedCount = leafIds.filter((id) => checked.has(id)).length;
+  const isChecked = checkedCount === leafIds.length && leafIds.length > 0;
+  const isIndeterminate = !isChecked && checkedCount > 0;
 
   return (
     <HvTreeItem
       key={node.id}
       nodeId={node.id}
       label={
-        <div className="flex items-center gap-xs w-full">
+        <div
+          className="flex items-center gap-xs w-full"
+          role="button"
+          tabIndex={-1}
+          onClick={(e) => {
+            e.stopPropagation();
+            onCheckChange(node.id, node.label, !isChecked);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter")
+              onCheckChange(node.id, node.label, !isChecked);
+          }}
+        >
           <HvCheckBox
             aria-label={`Select ${node.label}`}
             checked={isChecked}
+            indeterminate={isIndeterminate}
             tabIndex={-1}
             inputProps={{ tabIndex: -1 }}
             onMouseDown={(e) => e.preventDefault()}
