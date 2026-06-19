@@ -79,10 +79,6 @@ jobs:
       - name: Build dependent packages
         run: npm run build -w packages/uno-preset -w packages/styles
 
-      - name: Cleanup runner
-        # cleanup large unused directories to free up disk space for tests
-        run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /usr/share/swift
-
       - name: Run Tests
         run: npm run test:storybook -- --no-file-parallelism --retry 1 --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
