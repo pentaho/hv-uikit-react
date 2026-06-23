@@ -26,6 +26,8 @@ export const { staticClasses, useClasses } = createClasses(
     searchIcon: {
       display: "flex",
       padding: 0,
+      paddingBottom: theme.space.xs,
+      paddingTop: theme.space.xs,
       color: "currentColor",
       justifyContent: "center",
       marginBottom: theme.space.sm,
