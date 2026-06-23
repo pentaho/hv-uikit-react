@@ -26,6 +26,9 @@ export const { staticClasses, useClasses } = createClasses(
         "&>$groupWrapper": {
           gridTemplateRows: "0fr",
           paddingTop: 0,
+          visibility: "hidden",
+          transition:
+            "grid-template-rows 250ms ease, padding-top 250ms ease, visibility 0s 250ms",
         },
       },
       "&$expanded": {
@@ -114,7 +117,9 @@ export const { staticClasses, useClasses } = createClasses(
       gridTemplateRows: "1fr",
       overflow: "hidden",
       paddingTop: theme.space.xs,
-      transition: "grid-template-rows 250ms ease, padding-top 250ms ease",
+      transition:
+        "grid-template-rows 250ms ease, padding-top 250ms ease, visibility 0s",
+      visibility: "visible",
     },
     group: {
       padding: 0,

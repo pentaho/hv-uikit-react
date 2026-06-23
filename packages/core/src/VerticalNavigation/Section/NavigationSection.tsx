@@ -143,7 +143,10 @@ const NavigationItemChildren = ({
         <>
           <div
             className={classes?.extraItemsWrapper}
-            style={{ gridTemplateRows: showAll ? "1fr" : "0fr" }}
+            style={{
+              gridTemplateRows: showAll ? "1fr" : "0fr",
+              visibility: showAll ? "visible" : "hidden",
+            }}
             aria-hidden={!showAll || undefined}
           >
             <div className={classes?.extraItems}>
