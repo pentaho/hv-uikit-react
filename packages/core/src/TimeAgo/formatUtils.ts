@@ -51,29 +51,20 @@ export const formatTimeAgo = (
   const secsInWeek = date.getDay() * 86400 + secsInDay;
 
   switch (true) {
+    // #region short relative time thresholds (now/seconds/minutes)
+    case Math.abs(secsAgo) < 20:
+      return relFormatter.format(0, "seconds");
+    case Math.abs(secsAgo) < 120:
+      return relFormatter.format(-secsAgo, "seconds");
+    case Math.abs(minsAgo) < 60:
+      return relFormatter.format(-minsAgo, "minutes");
+    // #endregion
+
     case date >= startOfDayAfterTomorrow:
       return fullFormatter.format(date);
 
     case date >= startOfTomorrow:
       return `${relFormatter.format(1, "days")}, ${dayFormatter.format(date)}`;
-
-    case minsAgo < -60:
-      return `${relFormatter.format(0, "days")}, ${dayFormatter.format(date)}`;
-
-    case minsAgo < -2:
-      return relFormatter.format(-minsAgo, "minutes");
-
-    case secsAgo < 0:
-      return relFormatter.format(Math.abs(secsAgo), "seconds");
-
-    case secsAgo < 20:
-      return relFormatter.format(0, "seconds");
-
-    case minsAgo < 2:
-      return relFormatter.format(-secsAgo, "seconds");
-
-    case minsAgo < 60:
-      return relFormatter.format(-minsAgo, "minutes");
 
     case date >= startOfToday:
       return `${relFormatter.format(0, "days")}, ${dayFormatter.format(date)}`;

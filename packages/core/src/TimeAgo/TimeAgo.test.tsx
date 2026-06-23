@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
 
 import { HvTimeAgo } from "./TimeAgo";
 
@@ -22,35 +21,63 @@ describe("TimeAgo without timestamp", () => {
   });
 });
 
-describe("TimeAgo with timestamp", () => {
-  it("should contain the relative time", () => {
+describe("TimeAgo with relative timestamp", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("contains the time", () => {
     const timestamp = Date.now();
     render(<HvTimeAgo timestamp={timestamp} />);
 
     expect(screen.getByText("now")).toBeVisible();
   });
 
-  it("should contain the relative time when the day is yesterday", () => {
-    const timestamp = new Date().setDate(new Date().getDate() - 1);
-    render(<HvTimeAgo timestamp={timestamp} />);
+  it("contains the time when the day is yesterday", () => {
+    const startOfDay = new Date("2024-01-15T04:00:00Z");
+    vi.setSystemTime(startOfDay);
+
+    const yesterday = new Date(startOfDay);
+    yesterday.setDate(startOfDay.getDate() - 1);
+    render(<HvTimeAgo timestamp={yesterday.getTime()} />);
 
     expect(screen.getByText(/^yesterday/)).toBeVisible();
   });
 
-  it("should show yesterday for timestamp less than a day ago from previous day", () => {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday.setHours(23, 58, 0, 0); // Late night timestamp
-    const timestamp = yesterday.getTime();
+  it("contains the time when the day is few minutes into previous day", () => {
+    const startOfDay = new Date("2024-01-15T00:04:00Z");
+    vi.setSystemTime(startOfDay);
 
-    render(<HvTimeAgo timestamp={timestamp} locale="en" />);
+    const yesterday = new Date(startOfDay);
+    yesterday.setMinutes(yesterday.getMinutes() - 10);
 
-    expect(screen.getByText(/^yesterday/i)).toBeVisible();
+    render(<HvTimeAgo timestamp={yesterday.getTime()} locale="en" />);
+
+    expect(screen.getByText(/10 minutes ago/i)).toBeVisible();
   });
 
-  it("should contain the relative time when the day is tomorrow", () => {
-    const timestamp = new Date().setDate(new Date().getDate() + 1);
-    render(<HvTimeAgo timestamp={timestamp} />);
+  it("contains the time when the day is few minutes into next day", () => {
+    const endOfDay = new Date("2024-01-15T23:58:00Z");
+    vi.setSystemTime(endOfDay);
+
+    const tomorrow = new Date(endOfDay);
+    tomorrow.setMinutes(tomorrow.getMinutes() + 10);
+    render(<HvTimeAgo timestamp={tomorrow.getTime()} />);
+
+    expect(screen.getByText(/^in 10 minutes/)).toBeVisible();
+  });
+
+  it("contains the time when the day is following day", () => {
+    const endOfDay = new Date("2024-01-15T23:58:00Z");
+    vi.setSystemTime(endOfDay);
+
+    const tomorrow = new Date(endOfDay);
+    tomorrow.setMinutes(tomorrow.getMinutes() + 100);
+    render(<HvTimeAgo timestamp={tomorrow.getTime()} />);
 
     expect(screen.getByText(/^tomorrow/)).toBeVisible();
   });
