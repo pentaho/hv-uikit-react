@@ -21,6 +21,12 @@ jobs:
     name: Tests
     uses: ./.github/workflows/tests.yml
 
+  pr-lint:
+    name: PR Lint
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event.pull_request.title }}" | npx -y commitlint --default-config
+
   artifacts:
     name: Artifacts
     uses: ./.github/workflows/documentation.yml

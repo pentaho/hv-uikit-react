@@ -34,8 +34,7 @@
     "publish": "lerna publish"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/cli": "^21.1.0",
     "@emotion/css": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -115,11 +114,6 @@
   "prettier": "@hitachivantara/uikit-config/prettier",
   "license-compliance": {
     "extends": "@hitachivantara/uikit-config/licenses"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "workspaces": [
     "packages/*",
