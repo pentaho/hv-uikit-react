@@ -289,7 +289,7 @@ export default function distPackageJsonPlugin(
   let config: ResolvedConfig;
 
   return {
-    name: "app-shell:vite-dist-package-json-plugin",
+    name: "vite-plugin-dist-package-json",
 
     apply: "build",
 

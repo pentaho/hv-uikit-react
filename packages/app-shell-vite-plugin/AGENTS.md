@@ -1,0 +1,3 @@
+- The main App Shell [`vite-plugin`](./src/vite-plugin.ts) is comprised of other sub-Plugins that are responsible for distinct aspects of the App Shell.
+- Plugins follow the Vite plugin interface and best-practices.
+- Plugins are `vite` plugins (not `rollup` or `rolldown`), and are prefixed with `vite-plugin-`.

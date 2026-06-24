@@ -51,7 +51,7 @@ export default function processConfiguration(
   let basePath: string;
 
   return {
-    name: "vite-plugin-appShell-configuration-processor",
+    name: "vite-plugin-appShell-config-processor",
 
     config(config, { command }) {
       const projectRoot = root ?? config.root;

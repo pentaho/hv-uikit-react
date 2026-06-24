@@ -84,7 +84,7 @@ export default function copyAppShellLocales(
   let isBuild = false;
 
   return {
-    name: "vite-plugin-appshell-copy-locales",
+    name: "vite-plugin-copy-appShell-locales",
 
     // Capture the resolved output directory from Vite's config
     configResolved(config) {

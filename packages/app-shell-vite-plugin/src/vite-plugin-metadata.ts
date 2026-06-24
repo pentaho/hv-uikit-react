@@ -12,7 +12,7 @@ const extractVersion = (packageJsonFile: string): string => {
  * The metadata is used to help any troubleshoot activity by referencing
  * the version of the app-shell-vite-plugin and app-shell-ui packages used by the app.
  */
-const injectMetadata = (): PluginOption => {
+export default function injectMetadata(): PluginOption {
   const appShellUIVersion = extractVersion(
     resolveModule("@hitachivantara/app-shell-ui/package.json"),
   );
@@ -22,7 +22,7 @@ const injectMetadata = (): PluginOption => {
   );
 
   return {
-    name: "vite-metadata-plugin",
+    name: "vite-plugin-metadata",
     transformIndexHtml() {
       return [
         {
@@ -42,6 +42,4 @@ const injectMetadata = (): PluginOption => {
       ];
     },
   };
-};
-
-export default injectMetadata;
+}
