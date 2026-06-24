@@ -4,8 +4,7 @@ import { compile } from "path-to-regexp";
  * Utility that replaces the href placeholders with the href options provided.
  * The href parameter must not contain 'search' nor 'hash' parts.
  * @example
- * // returns '/home/2'
- * // href: '/home/:id', hrefOptions: '{id: 2}'
+ * compileHref('/home/:id', {id: 2}); // -> '/home/2'
  *
  * @param href The string to be compiled.
  * @param hrefOptions The options to replace the placeholders on the href.

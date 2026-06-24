@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
 import { loadEnv, type PluginOption } from "vite";
@@ -17,6 +16,7 @@ import {
 } from "./config-utils.js";
 import { resolveModule } from "./nodeModule.js";
 import SHARED_DEPENDENCIES from "./shared-dependencies.js";
+import { readJsonFile } from "./utils.js";
 import getVirtualEntrypoints from "./virtual-entrypoints.js";
 import processConfiguration from "./vite-configuration-processor-plugin.js";
 import fixCrossOrigin from "./vite-crossorigin-fix-plugin.js";
@@ -210,11 +210,7 @@ export async function HvAppShellVitePlugin(
   const devMode = mode === ViteBuildMode.DEVELOPMENT;
   const buildEntryPoint = type !== "bundle";
 
-  const packageJsonRaw = fs.readFileSync(
-    path.resolve(root, "package.json"),
-    "utf-8",
-  );
-  const packageJson = JSON.parse(packageJsonRaw);
+  const packageJson = readJsonFile(path.resolve(root, "package.json"));
 
   const appShellConfigFile = !generateEmptyShell
     ? findAppShellConfigFile(root)

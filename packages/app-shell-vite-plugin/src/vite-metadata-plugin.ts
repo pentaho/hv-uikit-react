@@ -1,12 +1,10 @@
-import fs from "node:fs";
 import type { PluginOption } from "vite";
 
 import { resolveModule } from "./nodeModule.js";
+import { readJsonFile } from "./utils.js";
 
 const extractVersion = (packageJsonFile: string): string => {
-  const packageJson = fs.readFileSync(packageJsonFile, "utf8");
-  const packageObject = JSON.parse(packageJson);
-  return packageObject.version;
+  return readJsonFile(packageJsonFile).version;
 };
 
 /**

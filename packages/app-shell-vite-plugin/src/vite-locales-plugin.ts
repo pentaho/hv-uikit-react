@@ -5,11 +5,10 @@ import type { PluginOption } from "vite";
 
 import {
   computeSupportedLocales,
-  deepMerge,
   mergeDirs,
-  readJsonFile,
   SUPPORTED_LOCALES_FILE,
 } from "./locales-utils.js";
+import { deepMerge, readJsonFile } from "./utils.js";
 
 /**
  * Resolves the app-shell-ui's locales directory path via its `./locales/*` export.
