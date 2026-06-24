@@ -30,15 +30,15 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@unocss/core": "^66.4.2",
-    "@unocss/preset-wind3": "^66.4.2"
+    "@unocss/core": "^66.6.8",
+    "@unocss/preset-wind3": "^66.6.8"
   },
   "dependencies": {
     "@hitachivantara/uikit-styles": "^6.1.1",
-    "@unocss/preset-rem-to-px": "^66.4.2"
+    "@unocss/preset-rem-to-px": "^66.6.8"
   },
   "devDependencies": {
-    "@unocss/preset-wind3": "^66.4.2"
+    "@unocss/preset-wind3": "^66.6.8"
   },
   "files": [
     "dist"
