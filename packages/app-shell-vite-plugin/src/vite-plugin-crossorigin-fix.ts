@@ -93,12 +93,12 @@ export function checkCrossOrigin(html: string) {
   return withCredentials;
 }
 
-const fixCrossOrigin = (): PluginOption => {
+export default function fixCrossOrigin(): PluginOption {
   const withCredentials: Record<string, string[]> = {};
 
   return [
     {
-      name: "vite-crossorigin-fix-collect-info-plugin",
+      name: "vite-plugin-crossorigin-fix-collect-info",
 
       transformIndexHtml: {
         order: "pre",
@@ -108,7 +108,7 @@ const fixCrossOrigin = (): PluginOption => {
       },
     },
     {
-      name: "vite-crossorigin-fix-replace-plugin",
+      name: "vite-plugin-crossorigin-fix-replace",
 
       transformIndexHtml: {
         order: "post",
@@ -130,6 +130,4 @@ const fixCrossOrigin = (): PluginOption => {
       },
     },
   ];
-};
-
-export default fixCrossOrigin;
+}

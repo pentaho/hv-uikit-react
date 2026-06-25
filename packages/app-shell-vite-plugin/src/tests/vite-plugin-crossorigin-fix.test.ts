@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   addUseCredentials,
   checkCrossOrigin,
-} from "../vite-crossorigin-fix-plugin";
+} from "../vite-plugin-crossorigin-fix";
 
 describe("vite-crossorigin-fix", () => {
   describe("checkCrossOrigin", () => {

@@ -27,7 +27,7 @@ vi.mock("node:path", () => ({
 
 // Must import after vi.mock calls
 const { default: distPackageJsonPlugin } =
-  await import("../vite-dist-package-json-plugin");
+  await import("../vite-plugin-dist-package-json");
 
 const consoleInfoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
 
@@ -118,7 +118,7 @@ const APP_PKG = {
 
 // ─── Tests ───────────────────────────────────────────────────────────────────
 
-describe("vite-dist-package-json-plugin", () => {
+describe("vite-plugin-dist-package-json", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -128,7 +128,7 @@ describe("vite-dist-package-json-plugin", () => {
     it("should have correct plugin name", () => {
       const plugin = distPackageJsonPlugin();
 
-      expect(plugin.name).toBe("app-shell:vite-dist-package-json-plugin");
+      expect(plugin.name).toBe("vite-plugin-dist-package-json");
     });
 
     it("should only apply to build", () => {

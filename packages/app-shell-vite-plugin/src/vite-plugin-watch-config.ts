@@ -23,7 +23,7 @@ export default function serveAppShellConfig(
   automaticViewsFolder?: string,
 ): PluginOption {
   return {
-    name: "vite-plugin-watch-app-shell-config",
+    name: "vite-plugin-watch-appShell-config",
     apply: "serve",
 
     configureServer(server) {

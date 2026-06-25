@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
 import { loadEnv, type PluginOption } from "vite";
@@ -17,18 +16,19 @@ import {
 } from "./config-utils.js";
 import { resolveModule } from "./nodeModule.js";
 import SHARED_DEPENDENCIES from "./shared-dependencies.js";
+import { readJsonFile } from "./utils.js";
 import getVirtualEntrypoints from "./virtual-entrypoints.js";
-import processConfiguration from "./vite-configuration-processor-plugin.js";
-import fixCrossOrigin from "./vite-crossorigin-fix-plugin.js";
-import distPackageJsonPlugin from "./vite-dist-package-json-plugin.js";
-import generateBaseTag from "./vite-generate-base-plugin.js";
-import generateBashScript from "./vite-generate-bash-script-plugin.js";
+import processConfiguration from "./vite-plugin-configuration-processor.js";
+import fixCrossOrigin from "./vite-plugin-crossorigin-fix.js";
+import distPackageJsonPlugin from "./vite-plugin-dist-package-json.js";
+import generateBaseTag from "./vite-plugin-generate-base.js";
+import generateBashScript from "./vite-plugin-generate-bash-script.js";
 import generateImportmap, {
   extraDependencies,
-} from "./vite-importmap-plugin.js";
-import copyAppShellLocales from "./vite-locales-plugin.js";
-import injectMetadata from "./vite-metadata-plugin.js";
-import serveAppShellConfig from "./vite-watch-config-plugin.js";
+} from "./vite-plugin-importmap.js";
+import copyAppShellLocales from "./vite-plugin-locales.js";
+import injectMetadata from "./vite-plugin-metadata.js";
+import serveAppShellConfig from "./vite-plugin-watch-config.js";
 
 const ViteBuildMode = {
   PRODUCTION: "production",
@@ -210,11 +210,7 @@ export async function HvAppShellVitePlugin(
   const devMode = mode === ViteBuildMode.DEVELOPMENT;
   const buildEntryPoint = type !== "bundle";
 
-  const packageJsonRaw = fs.readFileSync(
-    path.resolve(root, "package.json"),
-    "utf-8",
-  );
-  const packageJson = JSON.parse(packageJsonRaw);
+  const packageJson = readJsonFile(path.resolve(root, "package.json"));
 
   const appShellConfigFile = !generateEmptyShell
     ? findAppShellConfigFile(root)

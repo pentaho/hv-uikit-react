@@ -22,31 +22,31 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.1",
     "@hitachivantara/app-shell-services": "^2.0.4",
     "@hitachivantara/app-shell-shared": "^2.3.2",
     "@hitachivantara/app-shell-ui": "^2.3.3",
     "@hitachivantara/uikit-react-shared": "^6.0.5",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-virtual": "^3.0.1",
     "es-module-shims": "^1.6.3",
     "jiti": "^2.6.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0",
-    "rollup": "^4.57.1",
     "vite-plugin-static-copy": "^4.1.0"
   },
   "peerDependencies": {
     "vite": "^4.1.4 || ^5.0.4 || ^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
-    "mock-fs": "^5.2.0"
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.1",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "mock-fs": "^5.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "rollup": "^4.57.1"
   },
   "files": [
     "dist"

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import type { Plugin, PluginOption } from "vite";
 import { vi } from "vitest";
 
-import injectMetadata from "../vite-metadata-plugin";
+import injectMetadata from "../vite-plugin-metadata";
 
 describe("test vite-metadata plugin", () => {
   it.skip("returns the injectMetadata information", () => {

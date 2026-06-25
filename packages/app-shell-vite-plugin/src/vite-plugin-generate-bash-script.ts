@@ -3,7 +3,7 @@ import path from "node:path";
 import type { PluginOption, ResolvedConfig } from "vite";
 
 import SHARED_DEPENDENCIES from "./shared-dependencies.js";
-import { getExtraDependenciesString } from "./vite-importmap-plugin.js";
+import { getExtraDependenciesString } from "./vite-plugin-importmap.js";
 
 export default function generateBashScript(
   externalImportMap: boolean,

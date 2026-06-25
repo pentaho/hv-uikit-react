@@ -1,12 +1,10 @@
-import fs from "node:fs";
 import type { PluginOption } from "vite";
 
 import { resolveModule } from "./nodeModule.js";
+import { readJsonFile } from "./utils.js";
 
 const extractVersion = (packageJsonFile: string): string => {
-  const packageJson = fs.readFileSync(packageJsonFile, "utf8");
-  const packageObject = JSON.parse(packageJson);
-  return packageObject.version;
+  return readJsonFile(packageJsonFile).version;
 };
 
 /**
@@ -14,7 +12,7 @@ const extractVersion = (packageJsonFile: string): string => {
  * The metadata is used to help any troubleshoot activity by referencing
  * the version of the app-shell-vite-plugin and app-shell-ui packages used by the app.
  */
-const injectMetadata = (): PluginOption => {
+export default function injectMetadata(): PluginOption {
   const appShellUIVersion = extractVersion(
     resolveModule("@hitachivantara/app-shell-ui/package.json"),
   );
@@ -24,7 +22,7 @@ const injectMetadata = (): PluginOption => {
   );
 
   return {
-    name: "vite-metadata-plugin",
+    name: "vite-plugin-metadata",
     transformIndexHtml() {
       return [
         {
@@ -44,6 +42,4 @@ const injectMetadata = (): PluginOption => {
       ];
     },
   };
-};
-
-export default injectMetadata;
+}

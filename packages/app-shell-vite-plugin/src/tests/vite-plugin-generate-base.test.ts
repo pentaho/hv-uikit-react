@@ -1,6 +1,6 @@
 import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
 
-import { getAppTitle } from "../vite-generate-base-plugin";
+import { getAppTitle } from "../vite-plugin-generate-base";
 
 describe("test vite-generate-base plugin", () => {
   describe("test `getAppTitle` method", () => {
