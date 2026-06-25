@@ -3,18 +3,20 @@ title: "Switches"
 ---
 
 import { CodeBlock } from "../../../components/code/CodeBlock";
+import settingsPanel from "./SettingsPanel?raw";
 import SwitchWithIcon from "./SwitchWithIcon?raw";
 
 ### Switch Components
 
-Explore different switch types and features.
+Explore different switch patterns—from styled custom toggles to real-world settings panels.
 
 <div className="overflow-hidden mt-20">
   <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
     <CodeBlock
       code={{ main: SwitchWithIcon }}
       layout="popup"
-      title="Switch With Icon"
+      title="Custom Icon Toggle"
     />
+    <CodeBlock code={settingsPanel} layout="popup" title="Settings Panel" />
   </div>
 </div>

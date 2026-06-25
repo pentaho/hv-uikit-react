@@ -4,18 +4,50 @@ title: "Menus"
 
 import { CodeBlock } from "../../../components/code/CodeBlock";
 
+import assigneePicker from "./AssigneePicker?raw";
+import cascadingLocationPicker from "./CascadingLocationPicker?raw";
 import checkboxDropdownMenu from "./CheckboxDropdownMenu?raw";
+import columnFilterTable from "./ColumnFilterTable?raw";
+import databasePicker from "./DatabasePicker?raw";
+import folderPicker from "./FolderPicker?raw";
+import statusChanger from "./StatusChanger?raw";
 
-### Menus Components
+### Menus
 
-Explore different menu types and features—like dropdown menus and more.
+Explore different custom dropdown patterns built with `HvBaseDropdown`.
 
 <div className="mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
+  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(520px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
     <CodeBlock
       code={checkboxDropdownMenu}
       layout="popup"
-      title="Dropdown menu with checkboxes"
+      title="Grouped checkbox filter"
+    />
+    <CodeBlock
+      code={columnFilterTable}
+      layout="popup"
+      title="Column header filters"
+    />
+    <CodeBlock code={assigneePicker} layout="popup" title="Assignee picker" />
+    <CodeBlock
+      code={statusChanger}
+      layout="popup"
+      title="Inline status changer"
+    />
+    <CodeBlock
+      code={cascadingLocationPicker}
+      layout="popup"
+      title="Cascading location picker"
+    />
+    <CodeBlock
+      code={folderPicker}
+      layout="popup"
+      title="Output folder picker"
+    />
+    <CodeBlock
+      code={databasePicker}
+      layout="popup"
+      title="Database field picker"
     />
   </div>
 </div>
