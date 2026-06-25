@@ -50,6 +50,29 @@ function callCloseBundle(plugin: ReturnType<typeof distPackageJsonPlugin>) {
   (plugin as any).closeBundle();
 }
 
+function callBuildStart(plugin: ReturnType<typeof distPackageJsonPlugin>) {
+  (plugin as any).buildStart();
+}
+
+/**
+ * Simulates Rollup's `generateBundle` hook, declaring the given module
+ * specifiers as externalized imports (i.e. not emitted as chunk files).
+ */
+function callGenerateBundle(
+  plugin: ReturnType<typeof distPackageJsonPlugin>,
+  externalImports: string[] = [],
+) {
+  const bundle = {
+    "index.js": {
+      type: "chunk",
+      imports: externalImports,
+      dynamicImports: [],
+    },
+  };
+
+  (plugin as any).generateBundle({}, bundle);
+}
+
 function writtenPackageJson(): Record<string, unknown> {
   const [, content] = writeFileSyncMock.mock.calls[0];
   return JSON.parse(content as string);
@@ -716,12 +739,13 @@ describe("vite-plugin-dist-package-json", () => {
 
   // region Dependency fields
   describe("dependency fields", () => {
-    it("should include dependencies and peerDependencies", () => {
+    it("should publish only externalized dependencies", () => {
       existsSyncMock.mockReturnValue(true);
       readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
 
       const plugin = createPlugin();
 
+      callGenerateBundle(plugin, ["@acme/services", "react"]);
       callCloseBundle(plugin);
 
       const result = writtenPackageJson();
@@ -730,7 +754,45 @@ describe("vite-plugin-dist-package-json", () => {
       expect(result.peerDependencies).toEqual(SHARED_PKG.peerDependencies);
     });
 
-    it("should include optionalDependencies when present", () => {
+    it("should narrow dependencies to the modules actually externalized", () => {
+      existsSyncMock.mockReturnValue(true);
+      readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
+
+      const plugin = createPlugin();
+
+      // Only react is externalized; @acme/services was bundled in.
+      callGenerateBundle(plugin, ["react/jsx-runtime"]);
+      callCloseBundle(plugin);
+
+      const result = writtenPackageJson();
+
+      expect(result.dependencies).toEqual({ react: "^18.2.0" });
+    });
+
+    it("should reset externalized packages between builds (watch mode)", () => {
+      existsSyncMock.mockReturnValue(true);
+      readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
+
+      const plugin = createPlugin();
+
+      // First build externalizes @acme/services + react.
+      callBuildStart(plugin);
+      callGenerateBundle(plugin, ["@acme/services", "react"]);
+      callCloseBundle(plugin);
+
+      // Second build reuses the same plugin instance and externalizes only react.
+      callBuildStart(plugin);
+      callGenerateBundle(plugin, ["react/jsx-runtime"]);
+      callCloseBundle(plugin);
+
+      const [, secondContent] = writeFileSyncMock.mock.calls[1];
+      const second = JSON.parse(secondContent as string);
+
+      // @acme/services must not leak from the previous build.
+      expect(second.dependencies).toEqual({ react: "^18.2.0" });
+    });
+
+    it("should omit dependencies when nothing is externalized", () => {
       existsSyncMock.mockReturnValue(true);
       readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
 
@@ -740,9 +802,36 @@ describe("vite-plugin-dist-package-json", () => {
 
       const result = writtenPackageJson();
 
+      expect(result).not.toHaveProperty("dependencies");
+    });
+
+    it("should publish only externalized optionalDependencies", () => {
+      existsSyncMock.mockReturnValue(true);
+      readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
+
+      const plugin = createPlugin();
+
+      callGenerateBundle(plugin, ["@acme/core-shared"]);
+      callCloseBundle(plugin);
+
+      const result = writtenPackageJson();
+
       expect(result.optionalDependencies).toEqual(
         SHARED_PKG.optionalDependencies,
       );
+    });
+
+    it("should omit optionalDependencies when nothing is externalized", () => {
+      existsSyncMock.mockReturnValue(true);
+      readFileSyncMock.mockReturnValue(JSON.stringify(SHARED_PKG));
+
+      const plugin = createPlugin();
+
+      callCloseBundle(plugin);
+
+      const result = writtenPackageJson();
+
+      expect(result).not.toHaveProperty("optionalDependencies");
     });
 
     it("should omit dependency fields when absent in source", () => {
@@ -797,7 +886,7 @@ describe("vite-plugin-dist-package-json", () => {
 
       const [, content] = writeFileSyncMock.mock.calls[0];
 
-      expect(content).toMatch(/^\{[\s\S]*\}\n$/);
+      expect(content).toMatch(/^\{[\s\S]*}\n$/);
       expect(content).toContain('  "name"');
     });
 

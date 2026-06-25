@@ -64,6 +64,22 @@ function readJsonFile(filePath: string): Record<string, unknown> | undefined {
 }
 
 /**
+ * Extracts the package name from a module specifier.
+ *
+ * Examples:
+ *   react-dom/client       → react-dom
+ *   @emotion/react/jsx-dev → @emotion/react
+ */
+function toPackageName(specifier: string): string {
+  if (specifier.startsWith("@")) {
+    const segments = specifier.split("/");
+    return segments.length >= 2 ? `${segments[0]}/${segments[1]}` : segments[0];
+  }
+
+  return specifier.split("/")[0];
+}
+
+/**
  * Removes the build output prefix from an export path.
  *
  * Example:
@@ -223,6 +239,7 @@ function generateDistPackageJson(
   outDir: string,
   buildOutDir: string,
   sourceCondition: string,
+  externalizedPackages: ReadonlySet<string>,
 ): boolean {
   const pkgPath = path.join(root, "package.json");
 
@@ -256,11 +273,29 @@ function generateDistPackageJson(
 
   const distPkg: Record<string, unknown> = {};
 
-  // Copy runtime-relevant fields
+  // Copy runtime-relevant fields. The "dependencies" and "optionalDependencies"
+  // fields are narrowed to only the modules that Rollup actually externalized,
+  // so the published package declares exactly the runtime modules it expects the
+  // host to provide.
   for (const field of INCLUDED_FIELDS) {
-    if (pkg[field] != null) {
-      distPkg[field] = pkg[field];
+    if (pkg[field] == null) {
+      continue;
     }
+
+    if (field === "dependencies" || field === "optionalDependencies") {
+      const filtered = filterExternalizedDependencies(
+        pkg[field] as Record<string, string>,
+        externalizedPackages,
+      );
+
+      if (Object.keys(filtered).length > 0) {
+        distPkg[field] = filtered;
+      }
+
+      continue;
+    }
+
+    distPkg[field] = pkg[field];
   }
 
   distPkg.exports = transformedExports;
@@ -277,6 +312,25 @@ function generateDistPackageJson(
   return true;
 }
 
+/**
+ * Keeps only the declared dependencies whose package was externalized by the
+ * bundle (i.e. expected to be resolved by the host at runtime).
+ */
+function filterExternalizedDependencies(
+  dependencies: Record<string, string>,
+  externalizedPackages: ReadonlySet<string>,
+): Record<string, string> {
+  const filtered: Record<string, string> = {};
+
+  for (const [name, range] of Object.entries(dependencies)) {
+    if (externalizedPackages.has(name)) {
+      filtered[name] = range;
+    }
+  }
+
+  return filtered;
+}
+
 // ─── Plugin ──────────────────────────────────────────────────────────────────
 
 /**
@@ -288,6 +342,8 @@ export default function distPackageJsonPlugin(
 ): Plugin {
   let config: ResolvedConfig;
 
+  const externalizedPackages = new Set<string>();
+
   return {
     name: "vite-plugin-dist-package-json",
 
@@ -295,6 +351,31 @@ export default function distPackageJsonPlugin(
 
     configResolved(resolved) {
       config = resolved;
+    },
+
+    buildStart() {
+      // Reset per build so stale externalized packages from a previous build
+      // (e.g. in watch mode, where the plugin instance is reused) don't leak
+      // into the next dist/package.json.
+      externalizedPackages.clear();
+    },
+
+    generateBundle(_options, bundle) {
+      const emittedFiles = new Set(Object.keys(bundle));
+
+      for (const file of Object.values(bundle)) {
+        if (file.type !== "chunk") {
+          continue;
+        }
+
+        // Imports that do not point to an emitted file are external modules
+        // that Rollup left for the host runtime to resolve.
+        for (const imported of [...file.imports, ...file.dynamicImports]) {
+          if (!emittedFiles.has(imported)) {
+            externalizedPackages.add(toPackageName(imported));
+          }
+        }
+      }
     },
 
     closeBundle() {
@@ -307,6 +388,7 @@ export default function distPackageJsonPlugin(
         outDir,
         config.build.outDir,
         sourceCondition,
+        externalizedPackages,
       );
     },
   };
