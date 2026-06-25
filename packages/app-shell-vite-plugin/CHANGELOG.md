@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.4.0...@hitachivantara/app-shell-vite-plugin@2.5.0) (2026-06-25)
+
+### Bug Fixes
+
+- **app-shell-vite-plugin:** missing default export on app-shell-services ([#5183](https://github.com/pentaho/hv-uikit-react/issues/5183)) ([cd0c8cf](https://github.com/pentaho/hv-uikit-react/commit/cd0c8cf1c0c7471bb4bc229fe82024bc100559e0))
+- **AppShell:** vite plugin dependencies ([#5197](https://github.com/pentaho/hv-uikit-react/issues/5197)) ([b9d4653](https://github.com/pentaho/hv-uikit-react/commit/b9d4653221c57bda94d4267f29cedd577acf59e1))
+
+### Features
+
+- **AppShell:** enhance dependency handling for externalized packages [PPUC-727] ([#5199](https://github.com/pentaho/hv-uikit-react/issues/5199)) ([aa457b9](https://github.com/pentaho/hv-uikit-react/commit/aa457b9cf41bb97030a9ee56bef5f9fae19f7cbd))
+
 # [2.4.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.3.0...@hitachivantara/app-shell-vite-plugin@2.4.0) (2026-06-01)
 
 ### Bug Fixes

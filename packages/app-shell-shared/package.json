@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-shared",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "type": "module",
   "private": false,
   "author": "Hitachi Vantara UI Kit Team",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-services": "^2.0.4"
+    "@hitachivantara/app-shell-services": "^2.0.5"
   },
   "devDependencies": {
     "i18next": "^24.2.2"

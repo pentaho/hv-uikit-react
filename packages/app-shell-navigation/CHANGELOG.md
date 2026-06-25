@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.14](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@2.1.13...@hitachivantara/app-shell-navigation@2.1.14) (2026-06-25)
+
+### Bug Fixes
+
+- **AppShell:** vite plugin dependencies ([#5197](https://github.com/pentaho/hv-uikit-react/issues/5197)) ([b9d4653](https://github.com/pentaho/hv-uikit-react/commit/b9d4653221c57bda94d4267f29cedd577acf59e1))
+
 ## [2.1.13](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-navigation@2.1.12...@hitachivantara/app-shell-navigation@2.1.13) (2026-06-01)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-navigation
