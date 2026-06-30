@@ -185,7 +185,7 @@ const pentaho = makeTheme((theme) => ({
     large: "16px",
   },
   header: {
-    height: "64px",
+    height: "48px",
     secondLevelHeight: "56px",
   },
   form: {
