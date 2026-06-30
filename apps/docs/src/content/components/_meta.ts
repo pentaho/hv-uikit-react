@@ -1,3 +1,5 @@
+import type { MetaRecord } from "nextra";
+
 /* eslint sort-keys: error */
 export default {
   "-- Components": {
@@ -87,13 +89,10 @@ export default {
   "step-navigation": "Step Navigation",
   wizard: "Wizard",
   // eslint-disable-next-line sort-keys
-  "-- Canvas": {
-    title: "Canvas",
+  "-- Pentaho": {
+    title: "Pentaho",
     type: "separator",
   },
-  canvas: "Get Started",
-  "canvas-bottom-panel": "Bottom Panel",
-  "canvas-side-panel": "Side Panel",
-  "canvas-toolbar": "Toolbar",
-  "canvas-toolbar-tabs": "Toolbar Tabs",
-};
+  pentaho: "Get started",
+  canvas: { title: "Canvas" },
+} satisfies MetaRecord;
