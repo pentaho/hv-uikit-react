@@ -61,15 +61,12 @@ Note that while spacing classes, such as `gap-*` or `p-*`, use the spacing units
 
 Follow these rules:
 
-- Use `HvTypography` for all text; pick the correct `variant` (`title1`–`title4`, `body`, `label`, `caption1`).
-- Use `HvButton` variants (`primary`, `subtle`, `ghost`, `secondarySubtle`, `secondaryGhost`) — do **not** use `<button>`.
-- Use `HvContainer` / `HvGrid` for page-level structure when a full Design System grid is needed.
-- For data display, prefer `HvTable` + `HvTableContainer` + `HvTableHead` / `HvTableBody` / `HvTableRow` / `HvTableCell`.
-- For actions on rows or selections, use `HvBulkActions` + `HvActionBar`.
-- For empty/loading states, use `HvEmptyState` and `HvLoading`.
+- Use `HvTypography` for all non default/`body` text, using the correct `variant`.
+- Use `HvButton` with the correct `variant`, or `HvButtonBase` for unstyled buttons.
+- For data display, use the [`HvTable`](https://pentaho.github.io/uikit-docs/master/components/table) component.
 - For user feedback, use `HvSnackbar` / `HvBanner` (not custom toasts).
-- For dialogs, use `HvDialog` + `HvDialogTitle` + `HvDialogContent` + `HvDialogActions`.
-- For forms, use `HvInput`, `HvSelect`, `HvDatePicker`, `HvCheckBox`, `HvRadioGroup`, `HvFormElement` with `HvLabel` and `HvInfoMessage`.
+- For dialogs, use `HvDialog`.
+- For forms, use the correct [form components](https://pentaho.github.io/uikit-docs/master/components/form-element#related-components).
 
 ### 4. Apply theme tokens in rare custom styles
 
@@ -124,7 +121,5 @@ style={{ color: theme.colors[dynamicThemeColor] }}
 ## Resources
 
 - [Component catalog](https://pentaho.github.io/uikit-docs/master/components)
-- [Design examples / templates](https://pentaho.github.io/uikit-docs/master/examples)
-- [Get started guide](https://pentaho.github.io/uikit-docs/master/docs/get-started)
+- [Design examples](https://pentaho.github.io/uikit-docs/master/examples)
 - [UnoCSS preset docs](https://pentaho.github.io/uikit-docs/master/docs/guides/unocss)
-- Source stories for real usage: `packages/core/src/**/*.stories.tsx`
