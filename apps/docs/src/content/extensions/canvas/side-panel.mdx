@@ -1,0 +1,74 @@
+import {
+  canvasSidePanelClasses as classes,
+  HvCanvasSidePanel,
+} from "@hitachivantara/uikit-react-pentaho";
+
+import { Header } from "../../../components/Header";
+
+<Header
+  params={{
+    name: "SidePanel",
+    packageName: "pentaho",
+    classes,
+    componentPath: "Canvas/SidePanel",
+  }}
+/>
+
+## Usage
+
+```tsx live
+import { useState } from "react";
+
+export default function Demo() {
+  const [tab, setTab] = useState("1");
+
+  return (
+    <div className="w-full h-500px bg-bgPage relative">
+      <HvCanvasSidePanel
+        className="relative"
+        defaultOpen
+        tabs={tabs}
+        tab={tab}
+        onTabChange={(_, newTab) => {
+          setTab(newTab);
+        }}
+        minWidth={200}
+        maxWidth={500}
+        initialWidth={320}
+        labels={{
+          open: "Open side panel",
+          close: "Close side panel",
+        }}
+      >
+        {tab === "1" && (
+          <>
+            This is the content of the side panel.
+            <br />
+            <br />
+            Use the tabs 👆 to switch between the different content.
+            <br />
+            <br />
+            Use the handle 👉 to close and open the panel.
+            <br />
+            <br />
+            You can also drag the panel to resize it between a minimum and
+            maximum widths.
+          </>
+        )}
+        {tab === "2" && <>This is the content for the second tab.</>}
+      </HvCanvasSidePanel>
+    </div>
+  );
+}
+
+const tabs = [
+  {
+    id: "1",
+    content: "Add Data",
+  },
+  {
+    id: "2",
+    content: "Model Structure",
+  },
+];
+```

@@ -18,9 +18,9 @@ export default {
     title: "Components",
     theme: { layout: "full", toc: false },
   },
-  charts: {
+  extensions: {
     type: "page",
-    title: "Charts",
+    title: "Extensions",
     theme: { layout: "full", toc: false },
   },
   "app-shell": {

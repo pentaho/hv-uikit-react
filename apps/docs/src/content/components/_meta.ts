@@ -22,7 +22,6 @@ export default {
   carousel: "Carousel",
   checkbox: "Checkbox",
   "checkbox-group": "Checkbox Group",
-  "code-editor": "Code Editor",
   "color-picker": "Color Picker",
   container: "Container",
   "date-picker": "Date Picker",
@@ -78,21 +77,4 @@ export default {
   "tree-view": "Tree View",
   typography: "Typography",
   "vertical-navigation": "Vertical Navigation",
-  // eslint-disable-next-line sort-keys
-  "-- Lab": {
-    title: "Lab",
-    type: "separator",
-  },
-  lab: "Get started",
-  // eslint-disable-next-line sort-keys
-  dashboard: "Dashboard",
-  "step-navigation": "Step Navigation",
-  wizard: "Wizard",
-  // eslint-disable-next-line sort-keys
-  "-- Pentaho": {
-    title: "Pentaho",
-    type: "separator",
-  },
-  pentaho: "Get started",
-  canvas: { title: "Canvas" },
 } satisfies MetaRecord;

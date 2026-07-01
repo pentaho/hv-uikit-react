@@ -1,0 +1,32 @@
+import {
+  canvasBottomPanelClasses as classes,
+  HvCanvasBottomPanel,
+} from "@hitachivantara/uikit-react-pentaho";
+
+import { Header } from "../../../components/Header";
+
+<Header
+  params={{
+    name: "BottomPanel",
+    packageName: "pentaho",
+    classes,
+    componentPath: "Canvas/BottomPanel",
+  }}
+/>
+
+## Usage
+
+```tsx live
+export default function Demo() {
+  return (
+    <HvCanvasBottomPanel className="relative" open tabs={tabs}>
+      Content
+    </HvCanvasBottomPanel>
+  );
+}
+
+const tabs = [
+  { id: 0, title: "Tab 1" },
+  { id: 1, title: "Tab 2" },
+];
+```
