@@ -5,16 +5,8 @@ title: "Notifications"
 import { CodeBlock } from "../../../components/code/CodeBlock";
 import progressBar from "./ProgressBar?raw";
 
-### Notification Components
+### Progress bar on snackbar notification
 
-A set of examples demonstrating the usage of notification components.
+A snackbar notification with an embedded progress bar to indicate ongoing operation status.
 
-<div className="overflow-hidden mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(480px,1fr))] -mt-px -mb-px [&>*]:min-h-[200px]">
-    <CodeBlock
-      code={progressBar}
-      layout="popup"
-      title="Progress bar on snackbar notification"
-    />
-  </div>
-</div>
+<CodeBlock code={progressBar} />

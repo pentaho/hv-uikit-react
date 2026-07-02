@@ -18,7 +18,6 @@ import kpis from "./kpis/page.mdx?raw";
 import login from "./login/page.mdx?raw";
 import menus from "./menus/page.mdx?raw";
 import notifications from "./notifications/page.mdx?raw";
-import stepNavigation from "./step-navigation/page.mdx?raw";
 import switches from "./switches/page.mdx?raw";
 import tables from "./tables/page.mdx?raw";
 
@@ -34,14 +33,14 @@ const countCodeBlocks = (fileContent: string): number => {
 const sections = [
   { slug: "accordion", title: "Accordion", total: countCodeBlocks(accordion) },
   { slug: "canvas", title: "Canvas", total: countCodeBlocks(canvas) },
+  { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
   { slug: "carousel", title: "Carousel", total: countCodeBlocks(carousel) },
+  { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
   {
     slug: "code-editor",
     title: "Code Editor",
     total: countCodeBlocks(codeEditor),
   },
-  { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
-  { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
   { slug: "dialogs", title: "Dialogs", total: countCodeBlocks(dialogs) },
   { slug: "dnd", title: "Drag and Drop", total: countCodeBlocks(dnd) },
   { slug: "inputs", title: "Inputs", total: countCodeBlocks(inputs) },
@@ -55,11 +54,6 @@ const sections = [
   },
   { slug: "switches", title: "Switches", total: countCodeBlocks(switches) },
   { slug: "tables", title: "Tables", total: countCodeBlocks(tables) },
-  {
-    slug: "step-navigation",
-    title: "Step Navigation",
-    total: countCodeBlocks(stepNavigation),
-  },
 ] as const;
 
 type Slug = (typeof sections)[number]["slug"];
@@ -96,8 +90,6 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-images" />;
     case "code-editor":
       return <div className="i-ph-code" />;
-    case "step-navigation":
-      return <div className="i-ph-steps" />;
     default:
       return null;
   }

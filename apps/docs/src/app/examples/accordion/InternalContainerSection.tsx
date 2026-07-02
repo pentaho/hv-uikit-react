@@ -25,7 +25,7 @@ export default function Demo() {
         </>
       }
       actions={<HvButton variant="primaryGhost">Action</HvButton>}
-      classes={{ root: "w-320px", content: "p-0!" }}
+      classes={{ root: "w-320px mx-auto", content: "p-0!" }}
     >
       <HvSection
         expandable

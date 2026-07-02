@@ -12,42 +12,44 @@ import databasePicker from "./DatabasePicker?raw";
 import folderPicker from "./FolderPicker?raw";
 import statusChanger from "./StatusChanger?raw";
 
-### Menus
+### Grouped checkbox filter
 
-Explore different custom dropdown patterns built with `HvBaseDropdown`.
+Dropdown with grouped checkboxes for filtering a list by multiple criteria.
 
-<div className="mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(520px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
-    <CodeBlock
-      code={checkboxDropdownMenu}
-      layout="popup"
-      title="Grouped checkbox filter"
-    />
-    <CodeBlock
-      code={columnFilterTable}
-      layout="popup"
-      title="Column header filters"
-    />
-    <CodeBlock code={assigneePicker} layout="popup" title="Assignee picker" />
-    <CodeBlock
-      code={statusChanger}
-      layout="popup"
-      title="Inline status changer"
-    />
-    <CodeBlock
-      code={cascadingLocationPicker}
-      layout="popup"
-      title="Cascading location picker"
-    />
-    <CodeBlock
-      code={folderPicker}
-      layout="popup"
-      title="Output folder picker"
-    />
-    <CodeBlock
-      code={databasePicker}
-      layout="popup"
-      title="Database field picker"
-    />
-  </div>
-</div>
+<CodeBlock code={checkboxDropdownMenu} />
+
+### Column header filters
+
+Table with per-column filter dropdowns attached to each column header.
+
+<CodeBlock code={columnFilterTable} />
+
+### Assignee picker
+
+Dropdown for selecting a user from a list, with avatar and name display.
+
+<CodeBlock code={assigneePicker} />
+
+### Inline status changer
+
+Compact inline dropdown for changing an item's status without leaving the current view.
+
+<CodeBlock code={statusChanger} />
+
+### Cascading location picker
+
+Multi-level dropdown for hierarchical location selection, where each level filters the next.
+
+<CodeBlock code={cascadingLocationPicker} />
+
+### Output folder picker
+
+Tree-based dropdown for selecting a destination folder from a file system structure.
+
+<CodeBlock code={folderPicker} />
+
+### Database field picker
+
+Tree picker with cascading checkbox selection for choosing fields from a database schema.
+
+<CodeBlock code={databasePicker} />

@@ -7,26 +7,20 @@ import donutChartTotal from "./DonutChartTotal?raw";
 import gaugeChart from "./GaugeChart?raw";
 import lineChartStreamingCode from "./LineChartStreaming?raw";
 
-### Charts
+### Sales by Country
 
-Explore chart component usage and variations, ideal for dashboards and data visualization needs.
+Donut chart showing sales distribution across countries, with a center total value.
 
-<div className="overflow-hidden mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(480px,1fr))] -mt-px -mb-px [&>*]:min-h-[200px]">
-    <CodeBlock
-      code={{ main: donutChartTotal }}
-      layout="popup"
-      title="Sales by Country"
-    />
-    <CodeBlock
-      code={{ main: gaugeChart }}
-      layout="popup"
-      title="Risk Assessment"
-    />
-    <CodeBlock
-      code={{ main: lineChartStreamingCode }}
-      layout="popup"
-      title="Data Streaming"
-    />
-  </div>
-</div>
+<CodeBlock code={{ main: donutChartTotal }} />
+
+### Risk Assessment
+
+Gauge chart visualizing a risk score within a defined range.
+
+<CodeBlock code={{ main: gaugeChart }} />
+
+### Data Streaming
+
+Line chart with live data updates, demonstrating real-time visualization.
+
+<CodeBlock code={{ main: lineChartStreamingCode }} />
