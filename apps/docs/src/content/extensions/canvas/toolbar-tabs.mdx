@@ -1,0 +1,38 @@
+import {
+  canvasToolbarTabsClasses as classes,
+  HvCanvasToolbarTabs,
+} from "@hitachivantara/uikit-react-pentaho";
+
+import { Header } from "../../../components/Header";
+
+<Header
+  params={{
+    name: "ToolbarTabs",
+    packageName: "pentaho",
+    classes,
+    componentPath: "Canvas/ToolbarTabs",
+  }}
+/>
+
+## Usage
+
+```tsx live
+export default function Demo() {
+  return (
+    <HvCanvasToolbarTabs
+      defaultTabs={[
+        {
+          id: "tab1",
+          label: "My first tab",
+          icon: <Leaf />,
+        },
+        {
+          id: "tab2",
+          label: "My tab with a very long label",
+          icon: <Leaf />,
+        },
+      ]}
+    />
+  );
+}
+```

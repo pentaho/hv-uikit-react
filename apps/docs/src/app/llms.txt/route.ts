@@ -1,12 +1,12 @@
 import appShellMeta from "../../content/app-shell/_meta";
-import chartsMeta from "../../content/charts/_meta";
 import componentsMeta from "../../content/components/_meta";
 import docsMeta from "../../content/docs/_meta";
+import extensionsMeta from "../../content/extensions/_meta";
 
 const entries = [
   ["docs", docsMeta],
   ["components", componentsMeta],
-  ["charts", chartsMeta],
+  ["extensions", extensionsMeta],
   ["app-shell", appShellMeta],
 ].map(([path, meta]) => {
   const metaKeys = Object.keys(meta as any).filter((k) => !k.startsWith("-- "));

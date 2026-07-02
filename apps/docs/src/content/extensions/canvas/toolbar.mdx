@@ -1,0 +1,74 @@
+import {
+  canvasToolbarClasses as classes,
+  HvCanvasToolbar,
+} from "@hitachivantara/uikit-react-pentaho";
+
+import { Header } from "../../../components/Header";
+
+<Header
+  params={{
+    name: "Toolbar",
+    packageName: "pentaho",
+    classes,
+    componentPath: "Canvas/Toolbar",
+  }}
+/>
+
+## Usage
+
+```tsx live
+export default function Demo() {
+  return (
+    <HvCanvasToolbar title="Toolbar Title" className="relative">
+      <HvButton variant="primary">Save</HvButton>
+      <HvButton variant="primaryGhost">Cancel</HvButton>
+    </HvCanvasToolbar>
+  );
+}
+```
+
+## Custom content
+
+You can pass any content to the toolbar's back button or title. The children of the toolbar component will be rendered within the toolbar.
+
+```tsx live
+export default function Demo() {
+  return (
+    <HvCanvasToolbar
+      className="relative"
+      backButton={
+        <HvButton aria-label="Back" icon>
+          <Backwards />
+        </HvButton>
+      }
+      title={<HvInlineEditor defaultValue="Toolbar Title" variant="title4" />}
+    >
+      <HvIconButton title="Undo">
+        <Undo />
+      </HvIconButton>
+      <HvIconButton title="Redo">
+        <Redo />
+      </HvIconButton>
+      <Separator />
+      <HvIconButton title="Add">
+        <Pod />
+      </HvIconButton>
+      <Separator />
+      <HvButton variant="primary">Save</HvButton>
+      <HvButton variant="primaryGhost">Cancel</HvButton>
+      <Separator />
+      <HvDropDownMenu
+        placement="right"
+        onClick={(e, item) => console.log(item.label)}
+        dataList={[
+          { label: "Label 1", icon: <User /> },
+          { label: "Label 2", icon: <Calendar />, disabled: true },
+          { label: "Label 3", icon: <Plane /> },
+        ]}
+      />
+    </HvCanvasToolbar>
+  );
+}
+
+const Separator = () => <div className="h-30px w-1px bg-border my-0 mx-xs" />;
+```

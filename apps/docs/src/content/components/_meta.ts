@@ -1,3 +1,5 @@
+import type { MetaRecord } from "nextra";
+
 /* eslint sort-keys: error */
 export default {
   "-- Components": {
@@ -20,7 +22,6 @@ export default {
   carousel: "Carousel",
   checkbox: "Checkbox",
   "checkbox-group": "Checkbox Group",
-  "code-editor": "Code Editor",
   "color-picker": "Color Picker",
   container: "Container",
   "date-picker": "Date Picker",
@@ -76,24 +77,4 @@ export default {
   "tree-view": "Tree View",
   typography: "Typography",
   "vertical-navigation": "Vertical Navigation",
-  // eslint-disable-next-line sort-keys
-  "-- Lab": {
-    title: "Lab",
-    type: "separator",
-  },
-  lab: "Get started",
-  // eslint-disable-next-line sort-keys
-  dashboard: "Dashboard",
-  "step-navigation": "Step Navigation",
-  wizard: "Wizard",
-  // eslint-disable-next-line sort-keys
-  "-- Canvas": {
-    title: "Canvas",
-    type: "separator",
-  },
-  canvas: "Get Started",
-  "canvas-bottom-panel": "Bottom Panel",
-  "canvas-side-panel": "Side Panel",
-  "canvas-toolbar": "Toolbar",
-  "canvas-toolbar-tabs": "Toolbar Tabs",
-};
+} satisfies MetaRecord;
