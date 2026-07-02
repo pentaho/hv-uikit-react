@@ -3,8 +3,8 @@
   "version": "6.0.7",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
-  "description": "Shared React contexts for the NEXT UI Kit.",
+  "author": "UI Kit Team",
+  "description": "Shared React contexts for UI Kit.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [

@@ -3,7 +3,7 @@
   "version": "0.6.4",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
+  "author": "UI Kit Team",
   "description": "UI Kit Sharable projects configurations",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,

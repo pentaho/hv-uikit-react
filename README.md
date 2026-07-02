@@ -37,7 +37,7 @@ Check the [project status](https://pentaho.github.io/uikit-docs/master/docs/proj
 
 ## Installation 🚀
 
-The fastest way to setup a new **NEXT UI Kit** project is by using [`uikit-cli`](./packages/cli). Follow the link for usage documentation. If you're migrating from an older UI Kit version, please follow the [Migration Guides](https://github.com/pentaho/hv-uikit-react/tree/master/docs/overview/migration).
+The fastest way to setup a new **UI Kit** project is by using [`uikit-cli`](./packages/cli). Follow the link for usage documentation. If you're migrating from an older UI Kit version, please follow the [Migration Guides](https://github.com/pentaho/hv-uikit-react/tree/master/docs/overview/migration).
 
 ```sh
 npx @hitachivantara/uikit-cli@latest create

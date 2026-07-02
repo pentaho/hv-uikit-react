@@ -1,4 +1,4 @@
-# Hitachi Vantara UI Kit example with Vite.js, React, and TypeScript
+# UI Kit example with Vite.js, React, and TypeScript
 
 This is a working example project that uses Vite.js, React, and TypeScript. In this project, `@hitachivantara/uikit-react-core` and
 `@hitachivantara/uikit-react-icons` were installed as well as their peer dependencies, namely `@mui/material`, `@emotion/react`, and

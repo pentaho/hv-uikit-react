@@ -1,6 +1,6 @@
 # @hitachivantara/app-shell-services
 
-Hitachi Vantara App Shell Services. Support package to manage services at the App Shell ecosystem.
+App Shell Services. Support package to manage services at the App Shell ecosystem.
 
 ## Overview
 

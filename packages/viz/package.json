@@ -3,8 +3,8 @@
   "version": "6.1.9",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
-  "description": "Contributed React visualization components for the NEXT UI Kit.",
+  "author": "UI Kit Team",
+  "description": "Contributed React visualization components for UI Kit.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [

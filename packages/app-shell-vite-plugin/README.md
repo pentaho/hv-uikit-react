@@ -1,6 +1,6 @@
 # @hitachivantara/app-shell-vite-plugin
 
-Hitachi Vantara App Shell Vite Plugin: Streamlines development and build processes for App Shell.
+App Shell Vite Plugin: Streamlines development and build processes for App Shell.
 
 ## Overview
 

@@ -89,7 +89,7 @@ CONFIG=$(cat "\${CONFIG_FILE}")
 # Getting the title from the config "name" property:
 TITLE=$(echo "\${CONFIG}" | jq -r '.name')
 if [ -z "\${TITLE}" ] || [ "\${TITLE}" = "null" ] || [ "\${TITLE}" = "undefined" ]; then
-  TITLE="Hitachi Vantara"
+  TITLE="App Shell"
 fi
 
 # Replacing the title placeholder in the index.html file:

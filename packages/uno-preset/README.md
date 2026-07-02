@@ -1,6 +1,6 @@
 # @hitachivantara/uikit-uno-preset
 
-UI Kit UnoCSS preset with the NEXT theme.
+UI Kit UnoCSS preset.
 
 ## Installation
 
@@ -39,6 +39,6 @@ export default defineConfig({
 
 ## Usage
 
-Use any of [Tailwind-like default utility](https://tailwindcomponents.com/cheatsheet/) classes along with the NEXT UI Kit theme utilities:
+Use any of [Tailwind-like default utility](https://tailwindcomponents.com/cheatsheet/) classes along with the UI Kit theme utilities:
 
 <img src="https://i.imgur.com/bKY5ZUG.png" alt="VSCode completions" width=400>

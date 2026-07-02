@@ -34,15 +34,13 @@ const Welcome = () => {
         <HvGrid item xs={6}>
           <HvGrid container>
             <HvGrid item xs={8}>
-              <HvTypography variant="title1">
-                Welcome to the NEXT UI Kit
-              </HvTypography>
+              <HvTypography variant="title1">Welcome to UI Kit</HvTypography>
             </HvGrid>
             <HvGrid item xs={8}>
               <HvTypography variant="label">
-                The NEXT UI Kit is a composable and accessible component library
-                that gives you the foundation to build your NEXT application
-                faster and consistently.
+                UI Kit is a composable and accessible component library that
+                gives you the foundation to build your application faster and
+                consistently.
               </HvTypography>
             </HvGrid>
             <HvGrid item xs={8}>

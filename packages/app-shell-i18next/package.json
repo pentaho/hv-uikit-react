@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
+  "author": "UI Kit Team",
   "description": "AppShell i18next integration",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
