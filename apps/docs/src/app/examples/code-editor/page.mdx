@@ -1,0 +1,23 @@
+---
+title: "Code Editor"
+---
+
+import { CodeBlock } from "../../../components/code/CodeBlock";
+import sqlEditor from "./SqlEditor?raw";
+import yamlEditor from "./YamlEditor?raw";
+
+### SQL editor with schema autocomplete
+
+Uses the built-in SQL language plugin with a DDL `schema` prop to enable table and column
+autocomplete. Includes a **Format** button (powered by `hvSqlFormatter`) and a simulated
+**Run** action that displays a result table below the editor.
+
+<CodeBlock code={sqlEditor} layout="expandable" />
+
+### YAML editor
+
+A minimal editor for authoring YAML. Demonstrates custom token coloring via `beforeMount`
+and `onMount` — keys before `:` are rendered in red by targeting the `type.yaml` token
+in a custom Monaco theme.
+
+<CodeBlock code={yamlEditor} layout="expandable" />

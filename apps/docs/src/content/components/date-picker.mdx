@@ -178,6 +178,92 @@ export default function Demo() {
 }
 ```
 
+### Range selection list
+
+The same `startAdornment` pattern works in `rangeMode`. Here it renders a preset list that sets common date ranges.
+
+```tsx live
+import { useState } from "react";
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const daysAgo = (n) => {
+  const d = new Date(today);
+  d.setDate(d.getDate() - n);
+  return d;
+};
+
+const q = Math.floor(today.getMonth() / 3);
+
+const PRESETS = [
+  { label: "Custom Range", start: null, end: null },
+  { label: "Last 7 Days", start: daysAgo(7), end: new Date(today) },
+  { label: "Last 30 Days", start: daysAgo(30), end: new Date(today) },
+  { label: "Last 90 Days", start: daysAgo(90), end: new Date(today) },
+  {
+    label: "Last Quarter",
+    start: new Date(today.getFullYear(), (q - 1) * 3, 1),
+    end: new Date(today.getFullYear(), q * 3, 0),
+  },
+  {
+    label: "Last Year",
+    start: new Date(today.getFullYear() - 1, 0, 1),
+    end: new Date(today.getFullYear() - 1, 11, 31),
+  },
+];
+
+export default function Demo() {
+  const [active, setActive] = useState("Custom Range");
+  const [startDate, setStartDate] = useState(new Date(today));
+  const [endDate, setEndDate] = useState(new Date(today));
+
+  const handlePreset = (preset) => {
+    setActive(preset.label);
+    if (preset.start && preset.end) {
+      setStartDate(preset.start);
+      setEndDate(preset.end);
+    }
+  };
+
+  return (
+    <HvDatePicker
+      label="Date range"
+      rangeMode
+      showActions
+      startValue={startDate}
+      endValue={endDate}
+      onChange={(start, end) => {
+        if (start && end) {
+          setStartDate(start);
+          setEndDate(end);
+          setActive("Custom Range");
+        }
+      }}
+      startAdornment={
+        <HvPanel className="border-r-1 border-r-atmo3">
+          <HvTypography variant="label" className="px-sm pt-sm pb-xs block">
+            Presets
+          </HvTypography>
+          <HvListContainer interactive role="menu">
+            {PRESETS.map((preset) => (
+              <HvListItem
+                key={preset.label}
+                role="menuitem"
+                selected={active === preset.label}
+                onClick={() => handlePreset(preset)}
+              >
+                {preset.label}
+              </HvListItem>
+            ))}
+          </HvListContainer>
+        </HvPanel>
+      }
+    />
+  );
+}
+```
+
 ### Related components
 
 - [`HvFormElement`](/components/form-element)

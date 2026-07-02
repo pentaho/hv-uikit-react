@@ -10,37 +10,38 @@ import selectableCheckCentered from "./SelectableCheckCentered?raw";
 import selectableRadio from "./SelectableRadio?raw";
 import selectableRadioCentered from "./SelectableRadioCentered?raw";
 
-### Card Components
+### Selectable card
 
-Explore different card types and features—like image cards, text cards, and more
+A card that can be clicked to toggle a selected state.
 
-<div className="overflow-hidden mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[240px]">
-    <CodeBlock code={selectable} layout="popup" title="Selectable card" />
-    <CodeBlock
-      code={selectableCentered}
-      layout="popup"
-      title="Selectable centered card"
-    />
-    <CodeBlock
-      code={selectableRadio}
-      layout="popup"
-      title="Selectable radio card"
-    />
-    <CodeBlock
-      code={selectableRadioCentered}
-      layout="popup"
-      title="Selectable radio centered card"
-    />
-    <CodeBlock
-      code={selectableCheck}
-      layout="popup"
-      title="Selectable checkbox card"
-    />
-    <CodeBlock
-      code={selectableCheckCentered}
-      layout="popup"
-      title="Selectable checkbox centered card"
-    />
-  </div>
-</div>
+<CodeBlock code={selectable} />
+
+### Selectable card centered
+
+A selectable card with the content centered inside.
+
+<CodeBlock code={selectableCentered} />
+
+### Selectable radio card
+
+A card using radio-style selection—only one card in the group can be selected at a time.
+
+<CodeBlock code={selectableRadio} />
+
+### Selectable radio card centered
+
+A selectable radio card with centered content layout.
+
+<CodeBlock code={selectableRadioCentered} />
+
+### Selectable checkbox card
+
+A card with a checkbox to support multi-selection within a group.
+
+<CodeBlock code={selectableCheck} />
+
+### Selectable checkbox card centered
+
+A selectable checkbox card with centered content layout.
+
+<CodeBlock code={selectableCheckCentered} />

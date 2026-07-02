@@ -13,24 +13,56 @@ import leadingIcon from "./LeadingIcon?raw";
 import tagsDropdown from "./TagsDropdown?raw";
 import tagsInputDropdown from "./TagsInputDropdown?raw";
 
-### Input Components
+### Leading icon
 
-Explore different input types and features—like dropdowns, tags, editable text, and more
+Input field with a leading icon adornment to visually hint at the expected input type.
 
-<div className="overflow-hidden mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
-    <CodeBlock code={leadingIcon} layout="popup" />
-    <CodeBlock code={copyButton} layout="popup" />
-    <CodeBlock code={labelSide} layout="popup" title="Label left side" />
-    <CodeBlock code={dropdownPrefix} layout="popup" />
-    <CodeBlock code={dropdownSuffix} layout="popup" />
-    <CodeBlock code={dropdownTreeview} layout="popup" />
-    <CodeBlock code={tagsDropdown} layout="popup" />
-    <CodeBlock code={tagsInputDropdown} layout="popup" />
-    <CodeBlock
-      code={editableValue}
-      layout="popup"
-      title="Inline Editable Text"
-    />
-  </div>
-</div>
+<CodeBlock code={leadingIcon} />
+
+### Copy button
+
+Input field with a trailing copy-to-clipboard button adornment.
+
+<CodeBlock code={copyButton} />
+
+### Label left side
+
+Input field with the label positioned to the left rather than above the input.
+
+<CodeBlock code={labelSide} />
+
+### Dropdown prefix
+
+Input field with a dropdown selector as a prefix, useful for type or category selection.
+
+<CodeBlock code={dropdownPrefix} />
+
+### Dropdown suffix
+
+Input field with a dropdown selector as a suffix, useful for unit or format selection.
+
+<CodeBlock code={dropdownSuffix} />
+
+### Dropdown with treeview
+
+Input field combined with a treeview dropdown panel for hierarchical value selection.
+
+<CodeBlock code={dropdownTreeview} />
+
+### Tags dropdown
+
+Multi-select input where chosen values appear as removable tags, with a dropdown for selection.
+
+<CodeBlock code={tagsDropdown} />
+
+### Tags input dropdown
+
+Combined free-text input and dropdown panel that produces a list of tag values.
+
+<CodeBlock code={tagsInputDropdown} />
+
+### Inline editable text
+
+A read-only text value that switches to an editable input on click.
+
+<CodeBlock code={editableValue} />

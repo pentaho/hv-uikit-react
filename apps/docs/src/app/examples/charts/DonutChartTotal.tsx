@@ -9,7 +9,7 @@ export default function Demo() {
   };
 
   return (
-    <div className="relative size-full">
+    <div className="relative size-full flex justify-center">
       <HvDonutChart
         height={300}
         width={400}
