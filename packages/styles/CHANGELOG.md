@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **Header:** update to PD 0.12 specs ([#5202](https://github.com/pentaho/hv-uikit-react/issues/5202)) ([06bda09](https://github.com/pentaho/hv-uikit-react/commit/06bda09036bc65c082e6dcec68a598826d979e2a))
+- **Header:** update to PD 0.12 specs ([#5202](https://github.com/pentaho/hv-uikit-react/issues/5202)) ([06bda09](https://github.com/pentaho/hv-uikit-react/commit/06bda09036bc65c082e6dcec68a598826d979e2a))
 
 ## [6.1.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.1.1...@hitachivantara/uikit-styles@6.1.2) (2026-06-25)
 
