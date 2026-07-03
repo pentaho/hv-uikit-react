@@ -22,6 +22,7 @@ import type {
   HvDialogTitleProps,
 } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
+import type { HvFooterProps } from "../Footer";
 import type { HvSuggestionsProps } from "../FormElement/Suggestions";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvSnackbarContentProps } from "../Snackbar";
@@ -176,6 +177,10 @@ export const next = mergeTheme(nextBase, {
         },
       },
     } satisfies CSSClasses<HvDropdownButtonProps>,
+    HvFooter: {
+      name: "Hitachi Vantara",
+      copyright: `© Hitachi Vantara LLC ${new Date().getFullYear()}. All Rights Reserved.`,
+    } satisfies HvFooterProps,
     HvMultiButton: {
       classes: {
         multiple: {
