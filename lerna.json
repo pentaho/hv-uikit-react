@@ -6,10 +6,18 @@
   "private": false,
   "distTag": "latest",
   "preDistTag": "next",
+  "ignoreChanges": [
+    "**/*.md",
+    "**/tests/**",
+    "**/*.test.*",
+    "**/stories/**",
+    "**/*.stories.tsx"
+  ],
   "command": {
     "version": {
       "preid": "next",
       "message": "chore(release): publish",
+      "syncWorkspaceLock": true,
       "conventionalCommits": true
     }
   }
