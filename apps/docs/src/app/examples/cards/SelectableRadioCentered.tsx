@@ -15,7 +15,7 @@ export default function Demo() {
   return (
     <HvCard
       bgcolor="bgContainer"
-      className="w-full rounded-round hover:cursor-pointer"
+      className="w-320px rounded-round hover:cursor-pointer"
       selectable
       selected={selected}
       onClick={() => radioRef.current?.click()}

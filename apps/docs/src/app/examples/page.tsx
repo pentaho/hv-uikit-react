@@ -8,7 +8,9 @@ import {
 import accordion from "./accordion/page.mdx?raw";
 import canvas from "./canvas/page.mdx?raw";
 import cards from "./cards/page.mdx?raw";
+import carousel from "./carousel/page.mdx?raw";
 import charts from "./charts/page.mdx?raw";
+import codeEditor from "./code-editor/page.mdx?raw";
 import dialogs from "./dialogs/page.mdx?raw";
 import dnd from "./dnd/page.mdx?raw";
 import inputs from "./inputs/page.mdx?raw";
@@ -18,8 +20,6 @@ import menus from "./menus/page.mdx?raw";
 import notifications from "./notifications/page.mdx?raw";
 import switches from "./switches/page.mdx?raw";
 import tables from "./tables/page.mdx?raw";
-import tabs from "./tabs/page.mdx?raw";
-import tags from "./tags/page.mdx?raw";
 
 /**
  * Extracts the number of CodeBlock components in the given file content.
@@ -34,7 +34,13 @@ const sections = [
   { slug: "accordion", title: "Accordion", total: countCodeBlocks(accordion) },
   { slug: "canvas", title: "Canvas", total: countCodeBlocks(canvas) },
   { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
+  { slug: "carousel", title: "Carousel", total: countCodeBlocks(carousel) },
   { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
+  {
+    slug: "code-editor",
+    title: "Code Editor",
+    total: countCodeBlocks(codeEditor),
+  },
   { slug: "dialogs", title: "Dialogs", total: countCodeBlocks(dialogs) },
   { slug: "dnd", title: "Drag and Drop", total: countCodeBlocks(dnd) },
   { slug: "inputs", title: "Inputs", total: countCodeBlocks(inputs) },
@@ -48,8 +54,6 @@ const sections = [
   },
   { slug: "switches", title: "Switches", total: countCodeBlocks(switches) },
   { slug: "tables", title: "Tables", total: countCodeBlocks(tables) },
-  { slug: "tabs", title: "Tabs", total: countCodeBlocks(tabs) },
-  { slug: "tags", title: "Tags", total: countCodeBlocks(tags) },
 ] as const;
 
 type Slug = (typeof sections)[number]["slug"];
@@ -74,18 +78,18 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-list" />;
     case "switches":
       return <div className="i-ph-toggle-left" />;
-    case "tags":
-      return <div className="i-ph-tag-simple" />;
     case "cards":
       return <div className="i-ph-squares-four" />;
     case "dialogs":
       return <div className="i-ph-browser" />;
-    case "tabs":
-      return <div className="i-ph-tabs" />;
     case "notifications":
       return <div className="i-ph-bell-ringing" />;
     case "accordion":
       return <div className="i-ph-caret-up-down" />;
+    case "carousel":
+      return <div className="i-ph-images" />;
+    case "code-editor":
+      return <div className="i-ph-code" />;
     default:
       return null;
   }

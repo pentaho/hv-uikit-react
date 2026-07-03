@@ -53,12 +53,14 @@ export default function Demo() {
   });
 
   return (
-    <HvLineChart
-      height={400}
-      width={600}
-      data={data}
-      groupBy="Date"
-      measures={{ field: "Sales Target", hideSymbol: true }}
-    />
+    <div className="flex justify-center size-full">
+      <HvLineChart
+        height={400}
+        width={600}
+        data={data}
+        groupBy="Date"
+        measures={{ field: "Sales Target", hideSymbol: true }}
+      />
+    </div>
   );
 }

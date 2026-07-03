@@ -1,0 +1,30 @@
+---
+title: "Carousel"
+---
+
+import { CodeBlock } from "../../../components/code/CodeBlock";
+import metricThumbnails from "./MetricThumbnails?raw";
+import releaseNotes from "./ReleaseNotes?raw";
+import spotlight from "./Spotlight?raw";
+
+### Spotlight
+
+One slide at a time with permanently visible side arrows. Uses `classes.main` to carve
+out gutters and `classes.slideControls` with `!opacity-100` to keep the arrows always visible.
+
+<CodeBlock code={spotlight} layout="expandable" />
+
+### Metric thumbnails
+
+Uses `renderThumbnail` with custom stat tiles — metric name, current value, and trend — instead
+of images. `onChange` keeps the carousel title in sync with the active slide.
+
+<CodeBlock code={metricThumbnails} layout="expandable" />
+
+### Release notes
+
+Uses the `actions` prop together with `onChange` to track which slides have been viewed.
+The actions area shows a live unread count and a "Mark all as read" shortcut — making it
+clear the slot is intended for persistent controls that coordinate with carousel state.
+
+<CodeBlock code={releaseNotes} layout="expandable" />

@@ -8,7 +8,7 @@ export default function Demo() {
   );
 
   return (
-    <HvSection classes={{ root: "w-320px", content: "p-0" }}>
+    <HvSection classes={{ root: "w-320px mx-auto", content: "p-0" }}>
       <HvSection
         expandable
         expandableHeader

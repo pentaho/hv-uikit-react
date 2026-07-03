@@ -12,7 +12,7 @@ export default function Demo() {
   );
 
   return (
-    <div className="flex flex-col gap-sm w-320px">
+    <div className="flex flex-col gap-sm w-320px mx-auto">
       <HvSection
         expandable
         expandableHeader

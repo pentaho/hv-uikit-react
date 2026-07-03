@@ -15,7 +15,7 @@ export default function Demo() {
     <div className="flex">
       <HvCard
         bgcolor="bgContainer"
-        className="w-full rounded-round"
+        className="w-320px rounded-round"
         selectable
         selected={selected}
       >

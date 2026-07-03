@@ -7,26 +7,20 @@ import externalContainerCode from "./ExternalContainer?raw";
 import internalContainerCode from "./InternalContainer?raw";
 import internalContainerSectionCode from "./InternalContainerSection?raw";
 
-### Tabs Components
+### External container
 
-Explore different implementations of the Accordion pattern using the [`HvSection`](/components/section) component.
+Accordion sections managed outside the container. Only one section can be expanded at a time using externally controlled state, with optional header actions.
 
-<div className="mt-20">
-  <div className="w-101% grid divide-border [grid-template-columns:repeat(auto-fit,minmax(360px,1fr))] -mt-px -mb-px auto-rows-min [&>*]:min-h-[200px]">
-    <CodeBlock
-      code={externalContainerCode}
-      layout="popup"
-      title="External Container"
-    />
-    <CodeBlock
-      code={internalContainerCode}
-      layout="popup"
-      title="Internal Container"
-    />
-    <CodeBlock
-      code={internalContainerSectionCode}
-      layout="popup"
-      title="Internal Container in a Section"
-    />
-  </div>
-</div>
+<CodeBlock code={externalContainerCode} />
+
+### Internal container
+
+Accordion sections nested inside an `HvSection` container. Collapsed sections are stacked inside the parent, forming a compact grouped layout.
+
+<CodeBlock code={internalContainerCode} />
+
+### Internal container with status
+
+Accordion sections inside a parent `HvSection`, each with a status indicator and header actions to convey contextual information alongside the collapsible content.
+
+<CodeBlock code={internalContainerSectionCode} />
