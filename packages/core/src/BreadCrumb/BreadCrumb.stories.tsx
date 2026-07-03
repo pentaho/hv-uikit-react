@@ -60,7 +60,7 @@ export const WithURL: StoryObj<HvBreadCrumbProps> = {
   render: (args) => {
     return (
       <HvBreadCrumb
-        url="https://hitachivantara.sharepoint.com/sites/DesignSystem/Pattern%20Library/Home.aspx"
+        url="https://pentaho.github.io/uikit-docs/master/components/button"
         aria-label="Breadcrumb"
         {...args}
       />

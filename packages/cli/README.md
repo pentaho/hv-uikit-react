@@ -1,6 +1,4 @@
-# Hitachi Vantara UI Kit CLI
-
-The Hitachi Vantara CLI for UI Kit apps.
+# UI Kit CLI
 
 This CLI provides a way to automate tasks you regularly perform as part of your development workflow.
 

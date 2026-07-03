@@ -1,6 +1,6 @@
 # @hitachivantara/app-shell-ui
 
-Hitachi Vantara App Shell. Effortless UI integration with top-notch user experience, empowering composability.
+App Shell. Effortless UI integration with top-notch user experience, empowering composability.
 
 ## Overview
 

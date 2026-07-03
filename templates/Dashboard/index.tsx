@@ -143,7 +143,7 @@ const Dashboard = () => {
           zoom={18}
           style={{ height: "100%" }}
           markers={[
-            { position: [38.7356, -9.2997], label: "HV Office", level: 0 },
+            { position: [38.7356, -9.2997], label: "Office", level: 0 },
             { position: [38.735, -9.299], label: "Bus Stop", level: 3 },
             { position: [38.735, -9.2993], label: "Fire", level: 4 },
           ]}

@@ -4,7 +4,7 @@
   "private": true,
   "description": "UI Kit React components library.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
-  "author": "Hitachi Vantara UI Kit Team",
+  "author": "UI Kit Team",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pentaho/hv-uikit-react.git"

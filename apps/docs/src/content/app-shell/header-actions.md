@@ -102,8 +102,8 @@ Example:
 const headerAction = {
   bundle: "@hv/help-client/button.js",
   config: {
-    url: "https://www.hitachivantara.com/",
-    description: "Hitachi Vantara Help Link",
+    url: "https://example.com",
+    description: "Help Link",
   },
 };
 ```

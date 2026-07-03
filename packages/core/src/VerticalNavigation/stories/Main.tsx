@@ -22,7 +22,7 @@ const navigationData = [
           {
             id: "02-01-01",
             label: "Servers",
-            href: "https://www.hitachivantara.com/en-us/news.html",
+            href: "https://example.com/servers.html",
           },
           {
             id: "02-01-02",

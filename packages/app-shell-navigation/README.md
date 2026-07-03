@@ -1,6 +1,6 @@
 # @hitachivantara/app-shell-navigation
 
-Hitachi Vantara App Shell Navigation. Support navigation at the App Shell ecosystem.
+App Shell Navigation. Support navigation at the App Shell ecosystem.
 
 ## Overview
 

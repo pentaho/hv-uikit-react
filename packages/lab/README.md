@@ -1,6 +1,6 @@
 # @hitachivantara/uikit-react-lab
 
-Contributed React components for the NEXT UI Kit.
+Contributed React components to UI Kit by the community.
 
 ## Installation
 

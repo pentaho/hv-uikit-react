@@ -258,7 +258,7 @@ export const CustomRootComponent: StoryObj<HvButtonProps> = {
       <HvButton
         variant="secondaryGhost"
         component="a"
-        href="https://lumada-design.github.io/uikit/master"
+        href="https://pentaho.github.io/uikit-docs/master/components/button"
         startIcon={<LinkIcon />}
       >
         Link
@@ -266,7 +266,7 @@ export const CustomRootComponent: StoryObj<HvButtonProps> = {
       <HvButton
         variant="secondarySubtle"
         component={CustomLink}
-        to="https://lumada-design.github.io/uikit/master"
+        to="https://pentaho.github.io/uikit-docs/master/components/button"
         startIcon={<LinkIcon />}
       >
         Custom link

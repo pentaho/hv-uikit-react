@@ -245,7 +245,7 @@ const Card1 = () => (
       component="img"
       alt="madeira island"
       height={240}
-      image="https://lumada-design.github.io/assets/madeira.webp"
+      image="https://pentaho.github.io/assets/madeira.webp"
     />
     <HvCardContent>
       <HvTypography variant="body" className="mt-xs">
@@ -406,7 +406,7 @@ export const Component = () => {
       <HvGrid item xs={12}>
         <HvBreadCrumb
           aria-label="Navigation"
-          url="https://lumada-design.github.io/uikit-app/master/templates/welcome"
+          url="https://pentaho.github.io/uikit-docs/master/components/button"
         />
       </HvGrid>
       <HvGrid item xs={12} sm={6} lg={4}>

@@ -1,6 +1,6 @@
 # @hitachivantara/uikit-react-viz
 
-Contributed React visualization components for the NEXT UI Kit.
+Contributed React visualization components for UI Kit.
 
 ## Installation
 

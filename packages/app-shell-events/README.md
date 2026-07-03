@@ -1,6 +1,6 @@
 # @hitachivantara/app-shell-events
 
-Hitachi Vantara App Shell Events. Type definitions for App Shell events ecosystem.
+App Shell Events. Type definitions for App Shell events ecosystem.
 
 ## Overview
 

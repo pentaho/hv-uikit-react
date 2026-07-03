@@ -27,10 +27,10 @@ body:
           required: true
   - type: checkboxes
     attributes:
-      label: No Hitachi confidential content
-      description: Keep in mind this is a public repository. Do not share any information that you might even think is Hitachi confidential. Logos, references to work in progress projects, and of course, credentials. We will delete the issue immediately.
+      label: No confidential content
+      description: Keep in mind this is a public repository. Do not share any information that you might even think is confidential. Logos, references to work in progress projects, and of course, credentials. We will delete the issue immediately.
       options:
-        - label: I'm not including any Hitachi confidential content
+        - label: I'm not including any confidential content
           required: true
   - type: textarea
     attributes:

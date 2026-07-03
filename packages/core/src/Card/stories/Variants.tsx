@@ -34,7 +34,7 @@ export const Variants = () => {
           component="img"
           alt="Nature"
           height={140}
-          image="https://lumada-design.github.io/assets/madeira.webp"
+          image="https://pentaho.github.io/assets/madeira.webp"
         />
         <HvCardContent>
           <HvTypography>
@@ -62,7 +62,7 @@ export const Variants = () => {
           component="img"
           alt="Nature"
           height={140}
-          image="https://lumada-design.github.io/assets/madeira.webp"
+          image="https://pentaho.github.io/assets/madeira.webp"
         />
       </HvCard>
 

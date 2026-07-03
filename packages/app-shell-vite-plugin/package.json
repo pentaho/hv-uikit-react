@@ -3,7 +3,7 @@
   "version": "2.5.1",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
+  "author": "UI Kit Team",
   "description": "AppShell Vite Plugin",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,

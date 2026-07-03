@@ -29,7 +29,7 @@ export const Container = ({ children }: React.PropsWithChildren) => {
           <HvIconButton
             title="UI Kit documentation"
             component="a"
-            href="https://lumada-design.github.io/uikit/master"
+            href="https://pentaho.github.io/uikit-docs/master/"
             target="_blank"
           >
             <Help />

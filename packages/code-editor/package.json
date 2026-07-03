@@ -3,8 +3,8 @@
   "version": "6.0.8",
   "type": "module",
   "private": false,
-  "author": "Hitachi Vantara UI Kit Team",
-  "description": "A wrapper to the React Monaco editor (https://github.com/react-monaco-editor/react-monaco-editor) using the Hitachi Vantara's Design System styles.",
+  "author": "UI Kit Team",
+  "description": "A wrapper to the React Monaco editor (https://github.com/react-monaco-editor/react-monaco-editor) using the Design System styles.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [

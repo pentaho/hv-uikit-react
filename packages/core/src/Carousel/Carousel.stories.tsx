@@ -43,7 +43,7 @@ export const Main: StoryObj<HvCarouselProps> = {
   render: (args: Partial<HvCarouselProps>) => {
     const images = [
       "https://images.theconversation.com/files/125391/original/image-20160606-13080-s7o3qu.jpg",
-      "https://lumada-design.github.io/assets/madeira.webp",
+      "https://pentaho.github.io/assets/madeira.webp",
       "https://images.squarespace-cdn.com/content/v1/59ef2d3c9f8dce981401a30d/1592002341643-UCT10ZFLQ5GCJU8L1OVY/colorful+landscapes.jpg?format=1000w",
       "https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg",
       "https://clean-energy-islands.ec.europa.eu/sites/default/files/styles/node_image/public/2019-03/Azores_Pixabay_Comanche0.jpg",

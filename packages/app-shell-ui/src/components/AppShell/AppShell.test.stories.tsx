@@ -23,7 +23,7 @@ const importMap = {
   imports: {
     ...Object.fromEntries(externalsEntries),
     "@hv/uikit-icons/": "/assets/",
-    "@hv/sample-app/": "https://lumada-design.github.io/modules/sample-app/",
+    "@hv/sample-app/": "https://pentaho.github.io/uikit-templates/",
   },
 };
 

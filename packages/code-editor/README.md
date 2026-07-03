@@ -1,6 +1,6 @@
 # @hitachivantara/uikit-react-code-editor
 
-React Monaco editor wrapper with Hitachi Vantara Design System styles.
+React Monaco editor wrapper with our Design System styles.
 
 ## Installation
 

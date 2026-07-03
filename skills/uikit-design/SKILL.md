@@ -1,6 +1,6 @@
 ---
 name: uikit-design
-description: "Guidelines for building UI pages and components with the HV UI Kit React library. Use when creating pages, layouts, or components; choosing which UI Kit component to use; applying layout with UnoCSS utilities; or following design system conventions. Trigger phrases: ui kit, uikit, HvButton, HvTable, hv component, build a page, create a component."
+description: "Guidelines for building UI pages and components with the UI Kit React library. Use when creating pages, layouts, or components; choosing which UI Kit component to use; applying layout with UnoCSS utilities; or following design system conventions. Trigger phrases: ui kit, uikit, HvButton, HvTable, build a page, create a component."
 argument-hint: "Describe the page or paste an image or URL of the design"
 ---
 

@@ -23,8 +23,8 @@ import { Header } from "../../components/Header";
   {[...Array(7).keys()].map((i) => (
     <HvCarouselSlide
       key={i}
-      src={`https://lumada-design.github.io/assets/landscape${i + 1}.jpg`}
-      alt={`landscape ${i + 1}`}
+      src={`https://pentaho.github.io/assets/landscape${i}.jpg`}
+      alt={`landscape ${i}`}
     />
   ))}
 </Header>
@@ -48,7 +48,7 @@ export default function Demo() {
 }
 
 const images = [...Array(7).keys()].map(
-  (i) => `https://lumada-design.github.io/assets/landscape${i + 1}.jpg`,
+  (i) => `https://pentaho.github.io/assets/landscape${i}.jpg`,
 );
 ```
 
@@ -99,7 +99,7 @@ You can control the `HvCarousel`'s configuration via the `carouselOptions` prop.
   }}
   renderThumbnail={(i) => (
     <img
-      src={`https://lumada-design.github.io/assets/landscape${i + 1}.jpg`}
+      src={`https://pentaho.github.io/assets/landscape${i}.jpg`}
       alt={`thumbnail-${i}`}
     />
   )}
@@ -107,7 +107,7 @@ You can control the `HvCarousel`'s configuration via the `carouselOptions` prop.
   {[...Array(7).keys()].map((i) => (
     <HvCarouselSlide
       key={i}
-      src={`https://lumada-design.github.io/assets/landscape${i + 1}.jpg`}
+      src={`https://pentaho.github.io/assets/landscape${i}.jpg`}
       alt={`image ${i}`}
     />
   ))}
@@ -121,13 +121,13 @@ A Carousel supports any kind of content, not just images.
 ```tsx live
 <HvCarousel title="Travel Suggestions" carouselOptions={{ loop: false }}>
   {[...Array(7).keys()]
-    .map((i) => `https://lumada-design.github.io/assets/landscape${i + 1}.jpg`)
+    .map((i) => `https://pentaho.github.io/assets/landscape${i}.jpg`)
     .map((src, i) => (
       <HvCarouselSlide key={src} size="50%">
         <div style={{ position: "relative" }}>
           <div className="absolute w-70% m-md p-xs bg-textDark text-textLight bg-opacity-40">
             <HvTypography className="text-inherit" variant="title3">
-              Travel destination {i + 1}
+              Travel destination {i}
             </HvTypography>
             <HvTypography className="text-inherit">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -136,7 +136,7 @@ A Carousel supports any kind of content, not just images.
           </div>
           <img
             src={src}
-            alt={`travel destination ${i + 1}`}
+            alt={`travel destination ${i}`}
             className="w-600px aspect-video"
           />
         </div>
