@@ -732,8 +732,6 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         separator: {
           backgroundColor: theme.colors.border,
-          margin: theme.spacing(0, "md"),
-          height: 32,
         },
       },
     } satisfies CSSClasses<HvHeaderBrandProps>,
