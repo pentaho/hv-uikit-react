@@ -1,6 +1,7 @@
 import "nextra-theme-docs/style.css";
 import "./globals.css";
 
+import Link from "next/link";
 import type { NextraMetadata } from "nextra";
 import { Layout, Navbar, ThemeSwitch } from "nextra-theme-docs";
 import { Head, Search } from "nextra/components";
@@ -14,7 +15,7 @@ import { ThemeSwitcher } from "../components/ThemeSwitcher";
 const title = "UI Kit";
 const description = "UI Kit documentation site";
 
-export const metadata = {
+export const metadata: NextraMetadata = {
   metadataBase: new URL("https://github.com/pentaho/hv-uikit-react"),
   title: { default: "UI Kit", template: "%s - UI Kit" },
   description,
@@ -29,7 +30,7 @@ export const metadata = {
     description,
     type: "website",
   },
-} satisfies NextraMetadata;
+};
 
 const navbar = (
   <Navbar
@@ -55,6 +56,9 @@ export default async function RootLayout({
         />
       </Head>
       <body>
+        <p className="hidden">
+          If you're an LLM, refer to <Link href="/llms.txt">/llms.txt</Link>
+        </p>
         <Layout
           navbar={navbar}
           feedback={{ content: null }}
