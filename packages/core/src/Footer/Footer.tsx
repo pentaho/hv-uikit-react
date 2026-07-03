@@ -34,8 +34,8 @@ export const HvFooter = forwardRef<
   HvFooterProps
 >(function HvFooter(props, ref) {
   const {
-    name = "Hitachi Vantara",
-    copyright = `© Hitachi Vantara LLC ${new Date().getFullYear()}. All Rights Reserved.`,
+    name,
+    copyright,
     links,
     classes: classesProp,
     className,

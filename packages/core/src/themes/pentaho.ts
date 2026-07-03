@@ -922,7 +922,8 @@ export const pentaho = mergeTheme(pentahoBase, {
     } satisfies CSSClasses<HvCardContentProps>,
     HvFooter: {
       name: "Pentaho",
-    } satisfies CSSClasses<HvFooterProps>,
+      copyright: `© Pentaho. All Rights Reserved.`,
+    } satisfies HvFooterProps,
     HvTableCell: {
       classes: {
         root: {
