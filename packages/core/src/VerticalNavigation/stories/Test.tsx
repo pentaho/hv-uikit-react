@@ -21,8 +21,8 @@ const navigationData = [
         data: [
           {
             id: "02-01-01",
-            label: "Very long hitachivantara.com hyperlink",
-            href: "https://www.hitachivantara.com/en-us/news.html",
+            label: "Very long example.com about hyperlink",
+            href: "https://example.com/about.html",
           },
           { id: "02-01-02", label: "HCP Anywhere" },
           { id: "02-01-03", label: "This Computer", disabled: true },

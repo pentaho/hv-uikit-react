@@ -31,8 +31,8 @@ const formSchema = z
       .string({ required_error: "Email is required" })
       .email("Invalid email")
       .refine(
-        (email) => email.endsWith("@hitachivantara.com"),
-        "Email must be from @hitachivantara.com",
+        (email) => email.endsWith("@example.com"),
+        "Email must be from @example.com",
       ),
     address: z.string().optional(),
     country: z

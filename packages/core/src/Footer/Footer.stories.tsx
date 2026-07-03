@@ -23,7 +23,7 @@ export const Main: StoryObj<HvFooterProps> = {
             link
             variant="label"
             component="a"
-            href="https://www.hitachivantara.com"
+            href="https://example.com/license.html"
             target="_blank"
             rel="noreferrer"
           >
