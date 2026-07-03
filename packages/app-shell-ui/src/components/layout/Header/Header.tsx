@@ -11,7 +11,6 @@ import {
   HvHeader,
   HvHeaderBrand,
   HvHeaderNavigation,
-  useTheme,
   type HvHeaderNavigationProps,
 } from "@hitachivantara/uikit-react-core";
 
@@ -30,7 +29,6 @@ export const Header = () => {
     i18n,
   });
   const { navigationMode, name, logo } = useHvAppShellModel();
-  const { activeTheme } = useTheme();
   const { navigate } = useHvNavigation();
 
   const {
@@ -61,7 +59,6 @@ export const Header = () => {
     }
   };
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
   const appName = name ? tConfig(name) : "";
 
   return (
@@ -85,10 +82,7 @@ export const Header = () => {
         </HvButton>
       )}
 
-      <HvHeaderBrand
-        logo={isPentahoTheme ? undefined : <BrandLogo logo={logo} />}
-        name={appName}
-      />
+      <HvHeaderBrand logo={<BrandLogo logo={logo} />} name={appName} />
       {showNavigation && (
         <HvHeaderNavigation
           data={items}

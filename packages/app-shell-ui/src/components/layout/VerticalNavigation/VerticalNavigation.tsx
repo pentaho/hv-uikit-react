@@ -19,7 +19,6 @@ import { useLayoutContext } from "../../../providers/LayoutProvider";
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import type { NavigationMenuItem } from "../../../types";
 import { NavigationCollapse } from "./NavigationCollapse";
-import { NavigationHeader } from "./NavigationHeader";
 
 const classes = {
   root: css({
@@ -106,25 +105,21 @@ export const VerticalNavigation = () => {
         useIcons
         slider={isCompactMode}
       >
-        <div>
-          {isPentahoTheme && <NavigationHeader isOpen={open} />}
-
-          {(!isPentahoTheme || isCompactMode) && (
-            <HvVerticalNavigationHeader
-              title={t("title")}
-              onCollapseButtonClick={
-                !isCompactMode ? switchVerticalNavigationMode : undefined
-              }
-              collapseButtonProps={{
-                "aria-label": t(open ? "ariaLabelCollapse" : "ariaLabelExpand"),
-                "aria-expanded": open,
-              }}
-              backButtonProps={{
-                "aria-label": t("ariaLabelHeaderBackButton"),
-              }}
-            />
-          )}
-        </div>
+        {(!isPentahoTheme || isCompactMode) && (
+          <HvVerticalNavigationHeader
+            title={t("title")}
+            onCollapseButtonClick={
+              !isCompactMode ? switchVerticalNavigationMode : undefined
+            }
+            collapseButtonProps={{
+              "aria-label": t(open ? "ariaLabelCollapse" : "ariaLabelExpand"),
+              "aria-expanded": open,
+            }}
+            backButtonProps={{
+              "aria-label": t("ariaLabelHeaderBackButton"),
+            }}
+          />
+        )}
 
         <HvVerticalNavigationTree
           key={rootMenuItemId}
