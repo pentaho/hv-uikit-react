@@ -74,7 +74,7 @@ export const Test: StoryObj = {
         link
         variant="display"
         component="a"
-        href="https://lumada-design.github.io/uikit/master"
+        href="https://pentaho.github.io/uikit-docs/master/"
       >
         Welcome to UI-Kit!
       </HvTypography>

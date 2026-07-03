@@ -6,12 +6,12 @@ import { LAYOUT_COLS, type DashboardSpecs } from "./types";
 export const datasets = [
   {
     id: "steelwheels1",
-    url: "https://lumada-design.github.io/assets/steelwheels.arrow",
+    url: "https://pentaho.github.io/assets/steelwheels.arrow",
     label: "Steelwheels 1",
   },
   {
     id: "steelwheels2",
-    url: "https://lumada-design.github.io/assets/steelwheels.arrow",
+    url: "https://pentaho.github.io/assets/steelwheels.arrow",
     label: "Steelwheels 2",
   },
 ];

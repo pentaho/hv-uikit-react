@@ -29,7 +29,7 @@ export const Main: StoryObj<HvLoginProps> = {
   },
   render: () => {
     return (
-      <HvLogin background="https://lumada-design.github.io/assets/login-bg1.png">
+      <HvLogin background="https://pentaho.github.io/assets/login-bg.png">
         <form
           className="grid gap-sm w-300px m-auto pt-150px"
           onSubmit={(event) => {

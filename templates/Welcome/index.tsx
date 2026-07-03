@@ -76,7 +76,7 @@ const Welcome = () => {
           <div className={classes.imageContainer}>
             <img
               alt="Monitor showing a dashboard built with UI Kit components"
-              src="https://lumada-design.github.io/assets/template-preview.webp"
+              src="https://pentaho.github.io/assets/template-preview.webp"
             />
           </div>
         </HvGrid>

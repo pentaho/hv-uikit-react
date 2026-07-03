@@ -18,7 +18,7 @@ export const metadata = {
   metadataBase: new URL("https://github.com/pentaho/hv-uikit-react"),
   title: { default: "UI Kit", template: "%s - UI Kit" },
   description,
-  icons: "https://lumada-design.github.io/assets/uikit-icon.svg",
+  icons: "https://pentaho.github.io/assets/uikit-icon.svg",
   creator: "UI Kit Team",
   applicationName: title,
   appleWebApp: { title },

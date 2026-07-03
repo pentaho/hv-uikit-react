@@ -32,7 +32,7 @@ export const Main: StoryObj<HvBoxplotProps> = {
     async () => ({
       // @ts-ignore
       data: await loadArrow(
-        "https://lumada-design.github.io/assets/steelwheels.arrow",
+        "https://pentaho.github.io/assets/steelwheels.arrow",
       ),
     }),
   ],
