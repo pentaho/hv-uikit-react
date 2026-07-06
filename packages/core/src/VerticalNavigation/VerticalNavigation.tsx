@@ -54,12 +54,6 @@ export interface HvVerticalNavigationProps extends HvBaseProps<HTMLDivElement> {
    * When `false` no icons will be shown, even if an icon is provided.
    */
   useIcons?: boolean;
-  /** The ID of the currently selected navigation item (shared across all children). */
-  selected?: string;
-  /** When uncontrolled, the initially selected item ID. */
-  defaultSelected?: string;
-  /** Callback fired when any child selects a navigation item. */
-  onSelectedChange?: (id: string) => void;
 }
 
 /**
@@ -79,9 +73,6 @@ export const HvVerticalNavigation = forwardRef<
     slider = false,
     useIcons = false,
     onOpenChange,
-    selected: selectedProp,
-    defaultSelected,
-    onSelectedChange,
     ...others
   } = useDefaultProps("HvVerticalNavigation", props);
   const { classes, cx } = useClasses(classesProp);
@@ -96,19 +87,6 @@ export const HvVerticalNavigation = forwardRef<
       onOpenChange?.(nextOpen);
     },
     [onOpenChange, setOpenState],
-  );
-
-  const [selected, setSelectedState] = useControlled(
-    selectedProp,
-    defaultSelected,
-  );
-
-  const setSelected = useCallback(
-    (id: string) => {
-      setSelectedState(id);
-      onSelectedChange?.(id);
-    },
-    [onSelectedChange, setSelectedState],
   );
 
   const [parentData, setParentData] = useState<NavigationData[]>([]);
@@ -157,9 +135,6 @@ export const HvVerticalNavigation = forwardRef<
 
       setOpen,
 
-      selected,
-      setSelected,
-
       parentItem,
       setParentItem,
       withParentData,
@@ -177,8 +152,6 @@ export const HvVerticalNavigation = forwardRef<
       useIcons,
       slider,
       headerTitle,
-      selected,
-      setSelected,
       parentItem,
       setParentItem,
       withParentData,

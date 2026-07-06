@@ -25,9 +25,6 @@ interface VerticalNavigationContextValue {
 
   setOpen?: (open: boolean) => void;
 
-  selected?: string;
-  setSelected?: (id: string) => void;
-
   parentItem?: any;
   setParentItem?: React.Dispatch<React.SetStateAction<any>>;
   withParentData?: any;

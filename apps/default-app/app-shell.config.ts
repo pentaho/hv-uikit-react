@@ -1,5 +1,9 @@
 import { loadEnv } from "vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+
+type HvAppShellConfigWithMenuGroups = HvAppShellConfig & {
+  menuGroups?: { search?: boolean }[];
+};
 
 const {
   VITE_SAMPLE_APP_URL = "https://lumada-design.github.io/modules/sample-app/",
@@ -26,225 +30,248 @@ export default {
   },
 
   menu: [
-    {
-      label: "Default App",
-      submenus: [
-        {
-          label: "asset",
-          icon: {
-            iconType: "uikit",
-            name: "Desktop",
-          },
-          submenus: [
-            {
-              label: "asset",
-              target: "/asset-inventory",
-              icon: {
-                iconType: "uikit",
-                name: "Cards",
-              },
-            },
-            {
-              label: "list",
-              target: "/list-view",
-              icon: {
-                iconType: "uikit",
-                name: "List",
-              },
-            },
-          ],
-        },
-        {
-          label: "asset",
-          target: "/asset-inventory",
-          icon: {
-            iconType: "uikit",
-            name: "Cards",
-          },
-        },
-        {
-          label: "list",
-          target: "/list-view",
-          icon: {
-            iconType: "uikit",
-            name: "List",
-          },
-        },
-        {
-          label: "notifications",
-          target: "/notifications",
-          icon: { iconType: "unocss", name: "i-ph-bell" },
-        },
-        {
-          label: "Multi-level Breadcrumb",
-          target: "/breadcrumb",
-        },
-        {
-          label: "Theming",
-          target: "/theming",
-          icon: {
-            iconType: "uikit",
-            name: "ColorPicker",
-          },
-        },
-        ...Array.from(Array(16).keys()).map((i) => ({
-          label: `Nested Views ${i + 1}`,
-          target: `/nested-${i + 1}`,
-        })),
-        {
-          label: "Services Demo",
-          target: "/services-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Settings",
-          },
-        },
-      ],
-    },
-    {
-      label: "Providers Demo",
-      target: "/providers-demo",
-      icon: {
-        iconType: "uikit",
-        name: "Package",
+    [
+      {
+        label: "Home",
+        target: "/asset-inventory",
+        icon: { iconType: "unocss", name: "i-ph-house" },
       },
-    },
-    // ========================================
-    // CONDITIONS EXAMPLES
-    // Menus inherit conditions from matching views!
-    // ========================================
-    {
-      label: "Conditions Demo",
-      icon: {
-        iconType: "uikit",
-        name: "Eye",
+      {
+        label: "Data Marketplace",
+        target: "/list-view",
+        icon: { iconType: "unocss", name: "i-ph-storefront" },
       },
-      submenus: [
-        {
-          label: "Sync True (Always Visible)",
-          target: "/sync-true-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Check",
+      {
+        label: "Favorites",
+        icon: { iconType: "unocss", name: "i-ph-star" },
+        submenus: [
+          {
+            label: "Customers",
+            target: "/notifications",
+            icon: { iconType: "unocss", name: "i-ph-table" },
           },
-        },
-        {
-          label: "Sync False (Always Hidden)",
-          target: "/sync-false-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Close",
+          {
+            label: "Transformations",
+            target: "/theming",
+            icon: { iconType: "unocss", name: "i-ph-folder" },
           },
-        },
-        {
-          label: "Async True (0.5s delay)",
-          target: "/async-true-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Clock",
+          {
+            label: "sales_report.rep",
+            target: "/services-demo",
+            icon: { iconType: "unocss", name: "i-ph-file-text" },
           },
-        },
-        {
-          label: "Async False (0.5s delay)",
-          target: "/async-false-demo",
-          icon: {
-            iconType: "uikit",
-            name: "ClockStop",
+          {
+            label: "Sales Analysis",
+            target: "/providers-demo",
+            icon: { iconType: "unocss", name: "i-ph-cube" },
           },
-        },
-        {
-          label: "Dynamic (Appears after 10s)",
-          target: "/dynamic-condition-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Refresh",
+          {
+            label: "clean_gdpr",
+            target: "/navigation",
+            icon: { iconType: "unocss", name: "i-ph-columns" },
           },
-        },
-        {
-          label: "Sync True + Async True",
-          target: "/multiple-conditions-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Hierarchy",
-          },
-        },
-        {
-          label: "Sync True + Sync False",
-          target: "/multiple-fail-demo",
-          icon: {
-            iconType: "uikit",
-            name: "Ban",
-          },
-        },
-        {
-          label: "Inverse Dynamic (view) + Async True",
-          target: "/inverse-dynamic",
-          icon: {
-            iconType: "uikit",
-            name: "Ban",
-          },
-          conditions: [
-            {
-              bundle: "$app/conditions/useAsyncTrue.js",
+        ],
+      },
+    ],
+    [
+      {
+        label: "Default App",
+        submenus: [
+          {
+            label: "asset",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-desktop",
             },
-          ],
-        },
-        {
-          label: "Nested Submenus",
-          icon: {
-            iconType: "uikit",
-            name: "Tree",
+            submenus: [
+              {
+                label: "asset",
+                target: "/asset-inventory",
+                icon: {
+                  iconType: "unocss",
+                  name: "i-ph-cards",
+                },
+              },
+              {
+                label: "list",
+                target: "/list-view",
+                icon: {
+                  iconType: "unocss",
+                  name: "i-ph-list",
+                },
+              },
+            ],
           },
-          submenus: [
-            {
-              label: "Sync True",
-              target: "/nested-visible",
+          {
+            label: "asset",
+            target: "/asset-inventory",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-cards",
             },
-            {
-              label: "Sync False",
-              target: "/nested-hidden",
-            },
-            {
-              label: "Async True",
-              target: "/nested-async",
-            },
-          ],
-        },
-        // Menu entry that stays rendered if its submenus can render
-        {
-          label: "Disappearing Parent (10s)",
-          icon: {
-            iconType: "uikit",
-            name: "Disappear",
           },
-          submenus: [
-            {
-              label: "Inverse Dynamic Child",
-              target: "/inverse-dynamic",
+          {
+            label: "list",
+            target: "/list-view",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-list",
             },
-          ],
+          },
+          {
+            label: "notifications",
+            target: "/notifications",
+            icon: { iconType: "unocss", name: "i-ph-bell" },
+          },
+          {
+            label: "Multi-level Breadcrumb",
+            target: "/breadcrumb",
+          },
+          {
+            label: "Theming",
+            target: "/theming",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-eyedropper",
+            },
+          },
+          ...Array.from(Array(16).keys()).map((i) => ({
+            label: `Nested Views ${i + 1}`,
+            target: `/nested-${i + 1}`,
+          })),
+          {
+            label: "Services Demo",
+            target: "/services-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-gear",
+            },
+          },
+        ],
+      },
+      {
+        label: "Providers Demo",
+        target: "/providers-demo",
+        icon: {
+          iconType: "unocss",
+          name: "i-ph-cards",
         },
-      ],
-    },
-    // Invalid menu entry without target and submenus (should never render)
-    {
-      label: "Invalid Menu Entry",
-    },
-    { label: "Debug", target: "/debug" },
-    {
-      label: "Not found",
-      target: "/not-found",
-    },
-    {
-      label: "Menu breadcrumb",
-      target: "/breadcrumb",
-    },
-    {
-      label: "Navigation",
-      target: "/navigation",
-    },
-    { label: "Simple App Home", target: "/simple-app/home" },
-  ],
+      },
+      {
+        label: "Conditions Demo",
+        icon: {
+          iconType: "unocss",
+          name: "i-ph-graph",
+        },
+        submenus: [
+          {
+            label: "Sync True (Always Visible)",
+            target: "/sync-true-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-check",
+            },
+          },
+          {
+            label: "Sync False (Always Hidden)",
+            target: "/sync-false-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-x",
+            },
+          },
+          {
+            label: "Async True (0.5s delay)",
+            target: "/async-true-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-clock",
+            },
+          },
+          {
+            label: "Async False (0.5s delay)",
+            target: "/async-false-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-clock-countdown",
+            },
+          },
+          {
+            label: "Dynamic (Appears after 10s)",
+            target: "/dynamic-condition-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-arrow-clockwise",
+            },
+          },
+          {
+            label: "Sync True + Async True",
+            target: "/multiple-conditions-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-tree-structure",
+            },
+          },
+          {
+            label: "Sync True + Sync False",
+            target: "/multiple-fail-demo",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-prohibit",
+            },
+          },
+          {
+            label: "Inverse Dynamic (view) + Async True",
+            target: "/inverse-dynamic",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-prohibit",
+            },
+            conditions: [
+              {
+                bundle: "$app/conditions/useAsyncTrue.js",
+              },
+            ],
+          },
+          {
+            label: "Nested Submenus",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-tree",
+            },
+            submenus: [
+              {
+                label: "Sync True",
+                target: "/nested-visible",
+              },
+              {
+                label: "Sync False",
+                target: "/nested-hidden",
+              },
+              {
+                label: "Async True",
+                target: "/nested-async",
+              },
+            ],
+          },
+          {
+            label: "Disappearing Parent (10s)",
+            icon: {
+              iconType: "unocss",
+              name: "i-ph-eye-slash",
+            },
+            submenus: [
+              {
+                label: "Visible Child",
+                target: "/visible-child",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  ] as unknown as HvAppShellConfig["menu"],
+  menuGroups: [{ search: false }, { search: true }],
   header: {
     actions: [
       {
@@ -580,4 +607,4 @@ export default {
       },
     ],
   },
-} satisfies HvAppShellConfig;
+} satisfies HvAppShellConfigWithMenuGroups;

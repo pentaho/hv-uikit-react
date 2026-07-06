@@ -8,6 +8,7 @@ const useNavigationContextDefaultMock: NavigationContextValue = {
   rootMenuItemId: undefined,
   items: [],
   verticalNavigationItems: [],
+  verticalNavigationSearch: [],
   hasVerticalNavigation: false,
   showHeaderSubMenu: false,
   isCompactMode: false,

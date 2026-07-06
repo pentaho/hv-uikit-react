@@ -238,16 +238,9 @@ export const HvVerticalNavigationTree = (
 
     setParentData,
     setParentSelected,
-
-    selected: contextSelected,
-    setSelected: contextSetSelected,
   } = useContext(VerticalNavigationContext);
 
-  // Use context selection when no prop is provided by the consumer
-  const selected =
-    selectedProp === undefined && contextSelected !== undefined
-      ? contextSelected
-      : localSelected;
+  const selected = localSelected;
 
   const [expanded, setExpanded] = useControlled(expandedProp, () => {
     if (defaultExpanded === true) {
@@ -308,7 +301,6 @@ export const HvVerticalNavigationTree = (
         event.stopPropagation();
       } else {
         setLocalSelected(selectedId as string);
-        contextSetSelected?.(selectedId as string);
         setExpanded((prevState) => {
           if (!isOpen) {
             return [...prevState, ...pathToElement(data, selectedId)];
@@ -319,15 +311,7 @@ export const HvVerticalNavigationTree = (
         onChange?.(event, selectedItem);
       }
     },
-    [
-      onChange,
-      setLocalSelected,
-      contextSetSelected,
-      setExpanded,
-      isOpen,
-      useIcons,
-      data,
-    ],
+    [onChange, setLocalSelected, setExpanded, isOpen, useIcons, data],
   );
 
   const treeViewItemMouseEnterHandler = useCallback(

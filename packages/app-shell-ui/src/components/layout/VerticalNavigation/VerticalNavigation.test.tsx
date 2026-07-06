@@ -147,12 +147,14 @@ describe("VerticalNavigation", () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
         verticalNavigationItems: [
-          { id: "0", label: "Menu 1", href: "/menu1" },
-          {
-            id: "1",
-            label: "Menu 2",
-            href: "/menu2",
-          },
+          [
+            { id: "0", label: "Menu 1", href: "/menu1" },
+            {
+              id: "1",
+              label: "Menu 2",
+              href: "/menu2",
+            },
+          ],
         ],
         hasVerticalNavigation: true,
         switchVerticalNavigationMode: switchVerticalNavigationModeMock,
@@ -178,7 +180,9 @@ describe("VerticalNavigation", () => {
     it("should navigate to target and close the panel when in compact mode", async () => {
       navigationContextSpy.mockImplementation(() => ({
         ...useNavigationContextDefaultMock,
-        verticalNavigationItems: [{ id: "0", label: "Menu 1", href: "/menu1" }],
+        verticalNavigationItems: [
+          [{ id: "0", label: "Menu 1", href: "/menu1" }],
+        ],
         hasVerticalNavigation: true,
         isCompactMode: true,
         switchVerticalNavigationMode: switchVerticalNavigationModeMock,

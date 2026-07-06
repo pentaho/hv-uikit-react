@@ -247,7 +247,9 @@ const getRootIdFromItemId = (
   if (!menuItemId) {
     return undefined;
   }
-  return menuItemId.split("-")[0];
+
+  const pathParts = menuItemId.split("-");
+  return pathParts.length > 1 ? pathParts.slice(0, 2).join("-") : pathParts[0];
 };
 
 /**

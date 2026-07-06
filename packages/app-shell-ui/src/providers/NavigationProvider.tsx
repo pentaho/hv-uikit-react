@@ -13,10 +13,7 @@ import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useNavigationMenuItems from "../hooks/useNavigationMenuItems";
 import type { NavigationMenuItem } from "../types";
-import {
-  findItemById,
-  removeHrefFromMenuItemsWithChildren,
-} from "../utils/navigationUtil";
+import { removeHrefFromMenuItemsWithChildren } from "../utils/navigationUtil";
 
 export type NavigationProviderProps = {
   children: React.ReactNode;
@@ -30,7 +27,9 @@ export interface NavigationContextValue {
   /** Items visible in the header */
   items: NavigationMenuItem[];
   /** Items visible in the vertical navigation */
-  verticalNavigationItems: NavigationMenuItem[];
+  verticalNavigationItems: NavigationMenuItem[][];
+  /** Per-group search toggle for the vertical navigation trees. */
+  verticalNavigationSearch: boolean[];
   hasVerticalNavigation: boolean;
   showHeaderSubMenu: boolean;
   isCompactMode: boolean;
@@ -43,6 +42,7 @@ export const NavigationContext = createContext<NavigationContextValue>({
   rootMenuItemId: undefined,
   items: [],
   verticalNavigationItems: [],
+  verticalNavigationSearch: [],
   hasVerticalNavigation: false,
   showHeaderSubMenu: false,
   isCompactMode: false,
@@ -53,7 +53,7 @@ export const NavigationContext = createContext<NavigationContextValue>({
 });
 
 export const NavigationProvider = ({ children }: NavigationProviderProps) => {
-  const { navigationMode } = useHvAppShellConfig();
+  const { navigationMode, menuGroups } = useHvAppShellConfig();
   const { items, selectedMenuItemId, rootMenuItemId } =
     useNavigationMenuItems();
   const muiTheme = useTheme();
@@ -75,19 +75,37 @@ export const NavigationProvider = ({ children }: NavigationProviderProps) => {
   }, [isClosed, isCompactMode, isExpanded]);
 
   const verticalNavigationItems = useMemo(() => {
-    if (isCompactMode) {
-      return items;
-    }
+    const groupItems = (menuItems: NavigationMenuItem[]) => {
+      const groups: NavigationMenuItem[][] = [];
+      const groupsByRootId = new Map<string, NavigationMenuItem[]>();
 
-    if (navigationMode === "ONLY_LEFT") {
-      return removeHrefFromMenuItemsWithChildren(items);
-    }
+      menuItems.forEach((item) => {
+        const rootId = item.id.split("-")[0];
+        let group = groupsByRootId.get(rootId);
+        if (!group) {
+          group = [];
+          groupsByRootId.set(rootId, group);
+          groups.push(group);
+        }
+        group.push(item);
+      });
 
-    const itemsToReturn =
-      (rootMenuItemId && findItemById(items, rootMenuItemId)?.data) || [];
+      return groups;
+    };
 
-    return removeHrefFromMenuItemsWithChildren(itemsToReturn);
-  }, [items, navigationMode, rootMenuItemId, isCompactMode]);
+    return groupItems(removeHrefFromMenuItemsWithChildren(items));
+  }, [items]);
+
+  const verticalNavigationSearch = useMemo(() => {
+    const groupSearch = new Map(
+      (menuGroups ?? []).map((group, index) => [String(index), !!group.search]),
+    );
+
+    return verticalNavigationItems.map((group) => {
+      const rootId = group[0]?.id.split("-")[0];
+      return rootId ? (groupSearch.get(rootId) ?? false) : false;
+    });
+  }, [menuGroups, verticalNavigationItems]);
 
   const hasVerticalNavigation = useMemo(() => {
     if (isCompactMode) {
@@ -132,6 +150,7 @@ export const NavigationProvider = ({ children }: NavigationProviderProps) => {
       rootMenuItemId,
       items,
       verticalNavigationItems,
+      verticalNavigationSearch,
       hasVerticalNavigation,
       showHeaderSubMenu,
       isCompactMode,
@@ -143,6 +162,7 @@ export const NavigationProvider = ({ children }: NavigationProviderProps) => {
       rootMenuItemId,
       items,
       verticalNavigationItems,
+      verticalNavigationSearch,
       hasVerticalNavigation,
       showHeaderSubMenu,
       isCompactMode,

@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 import { useHvAppShellModel } from "../AppShellModelContext";
 import { useHvAppShellRuntimeContext } from "../AppShellRuntimeContext";
 import { CONFIG_TRANSLATIONS_NAMESPACE, useHvAppShellI18n } from "../i18n";
-import type { MenuItemsContext } from "../types/menu";
+import type { HvAppShellMenuConfig } from "../types/Config";
+import type { MenuItem, MenuItemsContext } from "../types/menu";
 import {
   addPrefixToHref,
   createMenuItems,
@@ -15,6 +16,16 @@ import {
 } from "../utils/navigationUtils";
 
 const MAX_TOP_MENU_DEPTH = 2;
+
+const normalizeMenuGroups = (
+  menu?: HvAppShellMenuConfig[] | HvAppShellMenuConfig[][],
+): HvAppShellMenuConfig[][] => {
+  if (!menu) {
+    return [];
+  }
+
+  return Array.isArray(menu[0]) ? menu : [menu];
+};
 
 export const useHvMenuItems = (): MenuItemsContext => {
   const { pathname, search, state: locationState } = useLocation();
@@ -40,7 +51,13 @@ export const useHvMenuItems = (): MenuItemsContext => {
     const menuItemsDepth =
       navigationMode === "ONLY_TOP" ? MAX_TOP_MENU_DEPTH : undefined;
 
-    return createMenuItems(tConfig, menu, menuItemsDepth);
+    return normalizeMenuGroups(menu).flatMap((menuGroup, groupIndex) =>
+      // Prefix each group with its own synthetic root id so the UI can keep group boundaries.
+      createMenuItems(tConfig, menuGroup, menuItemsDepth, {
+        id: String(groupIndex),
+        label: "",
+      } as MenuItem),
+    );
   }, [navigationMode, menu, tConfig]);
 
   const [selectedMenuItemId, setSelectedMenuItemId] = useState<
