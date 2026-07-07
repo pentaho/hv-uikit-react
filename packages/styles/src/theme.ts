@@ -22,22 +22,6 @@ const componentsSpec: DeepString<HvThemeComponents> = {
   snackbar: {
     actionButtonVariant: "string",
   },
-
-  bulkActions: {
-    actionButtonVariant: "string",
-  },
-  stepNavigation: {
-    separatorMargin: "string",
-    defaultSeparatorHeight: "string",
-    simpleSeparatorHeight: "string",
-  },
-  filterGroup: {
-    applyButtonVariant: "string",
-    cancelButtonVariant: "string",
-  },
-  colorPicker: {
-    hueDirection: "string",
-  },
 };
 
 const typographyProps: DeepString<HvThemeTypographyProps> = {

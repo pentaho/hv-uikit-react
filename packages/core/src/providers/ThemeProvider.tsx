@@ -62,32 +62,13 @@ function HvThemeProviderInner({
   const value = useMemo<HvThemeContextValue>(
     () => ({
       colorModes: ["light", "dark"],
-      // activeTheme: theme as HvTheme,
+      activeTheme: theme as HvTheme,
       selectedMode: colorMode,
       changeMode(newMode = colorMode) {
         setColorModeValue(newMode);
         setMode(newMode);
       },
       rootId,
-
-      // TODO: remove once backwards-compatibility is not needed anymore
-      activeTheme: {
-        ...(theme as HvTheme),
-        colors: {
-          ...theme.colors,
-          modes: {
-            ...theme.colors,
-            light: { ...theme.colors.light, type: "light" },
-            dark: { ...theme.colors.dark, type: "dark" },
-          },
-        },
-      },
-      themes: [theme],
-      selectedTheme: theme.name,
-      changeTheme(_theme: string, mode: HvThemeColorMode) {
-        setColorModeValue(mode);
-        setMode(mode);
-      },
     }),
     [theme, colorMode, setMode, rootId],
   );

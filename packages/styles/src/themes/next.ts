@@ -85,22 +85,6 @@ const next = makeTheme((theme) => ({
   snackbar: {
     actionButtonVariant: "semantic",
   },
-
-  bulkActions: {
-    actionButtonVariant: "primaryGhost",
-  },
-  stepNavigation: {
-    separatorMargin: "4px",
-    defaultSeparatorHeight: 1,
-    simpleSeparatorHeight: 1,
-  },
-  filterGroup: {
-    applyButtonVariant: "primary",
-    cancelButtonVariant: "secondarySubtle",
-  },
-  colorPicker: {
-    hueDirection: "horizontal",
-  },
 }));
 
 export default next;
