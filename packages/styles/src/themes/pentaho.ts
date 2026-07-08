@@ -21,7 +21,7 @@ import {
 } from "../palette";
 
 const pentaho = makeTheme((theme) => ({
-  name: "pentahoPlus",
+  name: "pentaho",
   colors: makeColors({
     brand: blue[600],
     catastrophic: [rose[800], pink[600]],
@@ -186,7 +186,7 @@ const pentaho = makeTheme((theme) => ({
   },
   header: {
     height: "48px",
-    secondLevelHeight: "56px",
+    secondLevelHeight: "42px",
   },
   form: {
     errorColor: theme.colors.negative,

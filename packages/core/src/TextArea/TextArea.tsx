@@ -213,7 +213,7 @@ export const HvTextArea = forwardRef<
   const forkedRef = useForkRef(ref, inputRefProp, inputRef);
 
   const [description, infoMessage] =
-    activeTheme?.name === "pentahoPlus"
+    activeTheme?.name === "pentaho"
       ? [infoMessageProp, descriptionProp]
       : [descriptionProp, infoMessageProp];
 

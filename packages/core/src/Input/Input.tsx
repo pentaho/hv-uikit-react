@@ -257,7 +257,7 @@ export const HvInput = fixedForwardRef(function HvInput<
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
   const [description, infoMessage] =
-    activeTheme?.name === "pentahoPlus"
+    activeTheme?.name === "pentaho"
       ? [infoMessageProp, descriptionProp]
       : [descriptionProp, infoMessageProp];
 

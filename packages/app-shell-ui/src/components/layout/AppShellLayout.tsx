@@ -61,7 +61,7 @@ export function HvAppShellLayout({
   } = useNavigationContext();
   const { verticalNavigationWidth } = useLayoutContext();
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
+  const isPentahoTheme = activeTheme?.name === "pentaho";
   const showVerticalNavigation =
     hasVerticalNavigation && verticalNavigationMode !== "CLOSED";
 

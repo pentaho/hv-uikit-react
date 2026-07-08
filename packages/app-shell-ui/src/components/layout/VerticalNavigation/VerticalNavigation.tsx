@@ -63,7 +63,7 @@ export const VerticalNavigation = () => {
   const ref = useRef<HTMLDivElement>(null);
   const open = verticalNavigationMode === "EXPANDED";
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
+  const isPentahoTheme = activeTheme?.name === "pentaho";
 
   const changeHandler = (
     event: React.SyntheticEvent<Element, Event>,

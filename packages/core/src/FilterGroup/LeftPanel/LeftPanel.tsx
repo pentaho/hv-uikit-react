@@ -43,7 +43,7 @@ export const HvFilterGroupLeftPanel = ({
               onClick={() => setActiveGroup(index)}
               selected={filterOptions[activeGroup].id === group.id}
               endAdornment={
-                activeTheme?.name === "pentahoPlus" ? (
+                activeTheme?.name === "pentaho" ? (
                   <HvIcon name="CaretRight" />
                 ) : (
                   <HvFilterGroupCounter groupId={group.id} />
