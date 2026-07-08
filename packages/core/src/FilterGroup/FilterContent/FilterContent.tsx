@@ -159,11 +159,9 @@ export const HvFilterGroupContent = forwardRef<
       onToggle={handleToggle}
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}
-      placeholder={activeTheme?.name === "pentahoPlus" ? undefined : Header}
+      placeholder={activeTheme?.name === "pentaho" ? undefined : Header}
       adornment={
-        activeTheme?.name === "pentahoPlus" ? undefined : (
-          <HvFilterGroupCounter />
-        )
+        activeTheme?.name === "pentaho" ? undefined : <HvFilterGroupCounter />
       }
       popperProps={{
         modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
@@ -178,7 +176,7 @@ export const HvFilterGroupContent = forwardRef<
           .join(" ")
           .trim() || undefined
       }
-      {...(activeTheme?.name === "pentahoPlus" && {
+      {...(activeTheme?.name === "pentaho" && {
         headerComponent: HvHeaderButton,
         iconOnly,
         title: labels?.placeholder,

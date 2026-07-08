@@ -78,7 +78,7 @@ describe("VerticalNavigation", () => {
     // Cleanup handled by afterEach.
   });
 
-  describe("pentahoPlus theme", () => {
+  describe("pentaho theme", () => {
     it("should render the collapse action label", async () => {
       await renderTestProvider(<VerticalNavigation />, {
         theming: { theme: "pentaho" },

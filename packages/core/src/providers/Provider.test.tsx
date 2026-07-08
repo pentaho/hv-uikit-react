@@ -33,7 +33,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=pentahoPlus]");
+    const theme = container.querySelector("[data-theme=pentaho]");
     const mode = container.querySelector("[data-color-mode=light]");
 
     expect(theme).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=pentahoPlus]");
+    const theme = container.querySelector("[data-theme=pentaho]");
     const mode = container.querySelector("[data-color-mode=dark]");
 
     expect(theme).toBeInTheDocument();

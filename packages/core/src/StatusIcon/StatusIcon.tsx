@@ -149,7 +149,7 @@ export const HvStatusIcon = forwardRef<
       data-size={size}
       className={cx(classes.root, className)}
     >
-      {activeTheme?.name === "pentahoPlus" && !customIcon ? (
+      {activeTheme?.name === "pentaho" && !customIcon ? (
         <HvIconContainer size={size}>
           <SvgBase viewBox="0 0 256 256" className={classes.icon}>
             {pentahoIconsMap[variant as keyof typeof pentahoIconsMap]?.[weight]}
