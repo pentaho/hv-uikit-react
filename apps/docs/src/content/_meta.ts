@@ -18,11 +18,6 @@ export default {
     title: "Components",
     theme: { layout: "full", toc: false },
   },
-  extensions: {
-    type: "page",
-    title: "Extensions",
-    theme: { layout: "full", toc: false },
-  },
   "app-shell": {
     type: "page",
     title: "App Shell",
