@@ -4,5 +4,4 @@ export * from "./Actions";
 export * from "./Navigation";
 export * from "./NavigationSlider";
 export * from "./TreeView";
-export * from "./NavigationPopup";
 export * from "./VerticalNavigationContext";

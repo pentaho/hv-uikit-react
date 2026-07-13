@@ -69,7 +69,6 @@ import type { HvTooltipProps } from "../Tooltip";
 import type { HvCalloutProps } from "../utils/Callout";
 import type {
   HvVerticalNavigationActionProps,
-  HvVerticalNavigationPopupProps,
   HvVerticalNavigationProps,
   HvVerticalNavigationSliderProps,
   HvVerticalNavigationTreeViewItemProps,
@@ -755,9 +754,11 @@ export const pentaho = mergeTheme(pentahoBase, {
       },
     } satisfies CSSClasses<BarProps>,
     HvVerticalNavigation: {
+      "data-theme": "pentahoPlus",
+      "data-color-mode": "light",
       classes: {
         root: {
-          colorScheme: "dark",
+          colorScheme: "light",
           padding: theme.space.sm,
           paddingTop: 32,
           width: 280,
@@ -780,6 +781,17 @@ export const pentaho = mergeTheme(pentahoBase, {
             padding: 0,
             paddingBottom: theme.space.sm,
           },
+          ".HvVerticalNavigationPopup-wrapper:has(&)": {
+            "--hv-popup-nav-bg": slate[800],
+          },
+          ".HvVerticalNavigationPopup-container:has(> &)": {
+            borderRadius: theme.radii.round,
+            overflow: "hidden",
+          },
+          ".HvVerticalNavigationPopup-container &": {
+            padding: theme.space.sm,
+            paddingBottom: 0,
+          },
         },
         slider: {
           "& > div:first-of-type": {
@@ -797,7 +809,8 @@ export const pentaho = mergeTheme(pentahoBase, {
           },
         },
       },
-    } satisfies CSSClasses<HvVerticalNavigationProps>,
+    } satisfies CSSClasses<HvVerticalNavigationProps> &
+      Record<`data-${string}`, string>,
     HvVerticalNavigationAction: {
       classes: {
         action: {
@@ -886,21 +899,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvVerticalNavigationTreeViewItemProps>,
-    HvVerticalNavigationPopup: {
-      classes: {
-        popup: {
-          "--hv-popup-nav-bg": slate[800],
-        },
-        container: {
-          borderRadius: theme.radii.round,
-          overflow: "hidden",
-          "& .HvVerticalNavigation-root": {
-            padding: theme.space.sm,
-            paddingBottom: 0,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvVerticalNavigationPopupProps>,
     HvCard: {
       classes: {
         root: {

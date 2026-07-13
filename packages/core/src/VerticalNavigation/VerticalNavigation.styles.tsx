@@ -12,6 +12,9 @@ export const { staticClasses, useClasses } = createClasses(
       width: "220px",
       overflow: "hidden",
       transition: "width 300ms ease",
+      "@media (prefers-reduced-motion: reduce)": {
+        transition: "none",
+      },
 
       backgroundColor: theme.colors.bgContainer,
       boxShadow: theme.colors.shadow,
