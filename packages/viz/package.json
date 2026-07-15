@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/uikit-react-viz",
-  "version": "6.1.9",
+  "version": "6.1.10",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -41,8 +41,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^6.2.5",
-    "@hitachivantara/uikit-styles": "^6.2.0"
+    "@hitachivantara/uikit-react-utils": "^6.2.6",
+    "@hitachivantara/uikit-styles": "^6.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.7...@hitachivantara/uikit-uno-preset@1.0.8) (2026-07-15)
+
+**Note:** Version bump only for package @hitachivantara/uikit-uno-preset
+
 ## [1.0.7](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.6...@hitachivantara/uikit-uno-preset@1.0.7) (2026-07-01)
 
 **Note:** Version bump only for package @hitachivantara/uikit-uno-preset

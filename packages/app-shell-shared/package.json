@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-shared",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-services": "^2.0.5"
+    "@hitachivantara/app-shell-services": "^2.0.6"
   },
   "devDependencies": {
     "i18next": "^24.2.2"
