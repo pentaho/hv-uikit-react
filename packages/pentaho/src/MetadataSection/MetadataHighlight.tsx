@@ -26,8 +26,6 @@ export interface MetadataHighlightProps extends HvButtonBaseProps {
   classes?: ExtractNames<typeof useClasses>;
   icon: React.ReactNode;
   label?: string;
-  /** @deprecated use `label` instead */
-  title?: string;
   value: string;
 }
 
@@ -40,7 +38,6 @@ export const MetadataHighlight = forwardRef<
     classes: classesProp,
     icon,
     label,
-    title,
     value,
     ...others
   } = props;
@@ -49,7 +46,7 @@ export const MetadataHighlight = forwardRef<
     <HvButtonBase ref={ref} className={cx(classes.root, className)} {...others}>
       <HvStatusIcon size="sm" type="simple" customIcon={icon} />
       <div className={classes.content}>
-        <HvTypography variant="label">{label ?? title}</HvTypography>
+        <HvTypography variant="label">{label}</HvTypography>
         <HvTypography variant="body">{value}</HvTypography>
       </div>
     </HvButtonBase>

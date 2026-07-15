@@ -1,49 +1,19 @@
-import { useState } from "react";
-import {
-  DialogForm,
-  LineageStatus,
-  MetadataContainer,
-  MetadataHighlight,
-  MetadataSection,
-  QualityScore,
-  Sensitivity,
-  TrustScore,
-  useDialogForm,
-  type MetadataHighlightProps,
-  type SensitivityLevel,
-} from "@pentaho/common-ui";
 import {
   HvButton,
   HvIconButton,
   HvIconContainer,
   HvStatusIcon,
   HvTag,
-  HvTagsInput,
   HvTypography,
 } from "@hitachivantara/uikit-react-core";
+import {
+  MetadataContainer,
+  MetadataHighlight,
+  MetadataSection,
+  type MetadataHighlightProps,
+} from "@hitachivantara/uikit-react-pentaho";
 
 export default function MetadataDemo() {
-  const [sensitivity, setSensitivity] = useState<SensitivityLevel | null>(
-    "HIGH",
-  );
-  const [trustScore, setTrustScore] = useState<number | null>(75);
-  const [verified, setVerified] = useState(false);
-  const [dialogProps, openDialog] = useDialogForm({
-    customIcon: (
-      <HvStatusIcon size="md" customIcon={<div className="i-ph-file" />} />
-    ),
-    title: "Business Term Details",
-    subtitle: "Edit your business terms here",
-    content: (
-      <HvTagsInput
-        multiline
-        label="Business terms"
-        classes={{ tagsList: "max-h-200px" }}
-        value={range(134).map((i) => `Term ${i + 1}`)}
-      />
-    ),
-  });
-
   return (
     <MetadataContainer>
       <MetadataSection>
@@ -58,30 +28,25 @@ export default function MetadataDemo() {
         </div>
       </MetadataSection>
       <MetadataSection variant="grid">
-        <QualityScore
-          score={60}
-          threshold={70}
-          computedAt={new Date("2025-06-23T14:12:26Z")}
+        <MetadataHighlight
+          icon={<div className="i-ph-warning-octagon-duotone text-negative" />}
+          label="Low"
+          value="Quality"
         />
-        <Sensitivity
-          value={sensitivity}
-          updatedAt={new Date("2025-06-23T14:12:26Z")}
-          onChange={(next) => setSensitivity(next as SensitivityLevel | null)}
+        <MetadataHighlight
+          icon={<div className="i-ph-warning-diamond-duotone text-negative" />}
+          label="High"
+          value="Sensitivity"
         />
-        <LineageStatus
-          verified={verified}
-          verifiedAt={verified ? new Date() : null}
-          verifiedBy={verified ? "Anne Claire" : null}
-          onChange={setVerified}
+        <MetadataHighlight
+          icon={<div className="i-ph-seal-check-duotone text-accent" />}
+          label="Verified"
+          value="Lineage"
         />
-        <TrustScore
-          score={trustScore}
-          threshold={50}
-          computedAt={new Date("2025-11-24T14:12:26Z")}
-          onChange={setTrustScore}
-          modifiedBy="Anne Claire"
-          type="manual"
-          systemScore={98}
+        <MetadataHighlight
+          icon={<div className="i-ph-shield-check-duotone text-positive" />}
+          label="Trusted"
+          value="Data"
         />
       </MetadataSection>
       <MetadataSection>⭐️⭐️⭐️</MetadataSection>
@@ -153,11 +118,7 @@ export default function MetadataDemo() {
         storageId="sb-demo-terms"
         title="Business Terms"
         actions={
-          <HvIconButton
-            title="Edit"
-            variant="secondarySubtle"
-            onClick={() => openDialog()}
-          >
+          <HvIconButton title="Edit" variant="secondarySubtle">
             <HvIconContainer>
               <div className="i-ph-plus" />
             </HvIconContainer>
@@ -168,9 +129,8 @@ export default function MetadataDemo() {
           {range(11).map((i) => (
             <HvTag onDelete={() => {}} key={i} label={`Term ${i + 1}`} />
           ))}
-          <HvTag label="+123" onClick={() => openDialog()} />
+          <HvTag label="+123" />
         </div>
-        <DialogForm {...dialogProps} />
       </MetadataSection>
     </MetadataContainer>
   );
