@@ -1,5 +1,3 @@
-import { faAdd } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { StoryObj } from "@storybook/react-vite";
 import { HvButton, type HvButtonProps } from "@hitachivantara/uikit-react-core";
 import {
@@ -405,10 +403,6 @@ export const Test: StoryObj = {
         lightcyan
       </HvButton>
 
-      <HvButton icon variant="primary" aria-label="Add">
-        <FontAwesomeIcon icon={faAdd} />
-      </HvButton>
-      <HvButton startIcon={<FontAwesomeIcon icon={faAdd} />}>Add</HvButton>
       <HvButton icon variant="primary" aria-label="Add">
         <div className="i-ph-plus-bold" />
       </HvButton>
