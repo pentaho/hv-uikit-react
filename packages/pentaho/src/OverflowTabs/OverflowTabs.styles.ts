@@ -17,27 +17,20 @@ export const { useClasses, staticClasses } = createClasses("HvOverflowTabs", {
     borderRadius: theme.radii.full,
   },
   dropdownButton: {
-    marginTop: 3,
     height: "auto",
-    "&:hover": { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 },
-  },
-  dropdownButtonFloating: {
-    marginTop: 0,
-    "&:hover": {
-      borderBottomLeftRadius: "var(--radius)",
-      borderBottomRightRadius: "var(--radius)",
+    ":not($dropdownButtonFloating)": {
+      marginTop: 3,
+      ":hover": { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 },
     },
   },
+  dropdownButtonFloating: {},
   dropdownWrapper: {
     display: "flex",
     alignItems: "center",
   },
-  badgeRoot: {
-    marginLeft: -8,
-    marginRight: theme.space.sm,
-  },
-  badgeContainer: {
-    position: "relative",
+  badge: {
+    display: "flex",
+    alignItems: "center",
   },
   measurementContainer: {
     position: "absolute",

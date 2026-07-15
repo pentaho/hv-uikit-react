@@ -3,6 +3,7 @@ import { CaretLeftIcon } from "@phosphor-icons/react/CaretLeft";
 import { GearIcon } from "@phosphor-icons/react/Gear";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
+import { setupChromatic } from "@hitachivantara/internal";
 import {
   HvBreadCrumb,
   HvButton,
@@ -34,12 +35,8 @@ const createTabs = (labels: string[]): OverflowTab[] =>
   labels.map((label) => ({ label, icon }));
 
 const meta: Meta<typeof PageTitle> = {
-  title: "Components/Page Title",
+  title: "Pentaho/Page Title",
   component: PageTitle,
-  parameters: {
-    layout: "padded",
-  },
-  tags: ["autodocs"],
 };
 
 export default meta;
@@ -47,7 +44,7 @@ export default meta;
 /** Full-featured page header with all elements. Resize the window to see tabs overflow into a dropdown. */
 export const Default: StoryObj<typeof PageTitle> = {
   parameters: {
-    chromatic: { disableSnapshot: false },
+    ...setupChromatic("pentaho"),
   },
   render: () => {
     const [activeTab, setActiveTab] = useState(0);

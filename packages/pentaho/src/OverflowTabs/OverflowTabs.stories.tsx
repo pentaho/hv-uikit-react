@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GearIcon } from "@phosphor-icons/react/Gear";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { setupChromatic } from "@hitachivantara/internal";
 
 import { OverflowTabs, type OverflowTab } from "./OverflowTabs";
 
@@ -14,11 +15,8 @@ const tabs: OverflowTab[] = [
 ];
 
 const meta: Meta<typeof OverflowTabs> = {
-  title: "Components/Overflow Tabs",
+  title: "Pentaho/Overflow Tabs",
   component: OverflowTabs,
-  parameters: {
-    layout: "padded",
-  },
   decorators: [
     (Story) => (
       <div className="w-400px resize-x overflow-auto p-sm border-px border-border">
@@ -32,7 +30,6 @@ const meta: Meta<typeof OverflowTabs> = {
     iconPosition: { control: "select", options: ["start", "end"] },
     dropdownWidth: { control: "number" },
   },
-  tags: ["autodocs"],
 };
 
 export default meta;
@@ -58,7 +55,7 @@ export const Default: StoryObj<typeof OverflowTabs> = {
 /** Tabs with icons. Use `iconPosition` to control placement. */
 export const WithIcons: StoryObj<typeof OverflowTabs> = {
   parameters: {
-    chromatic: { disableSnapshot: false },
+    ...setupChromatic("pentaho"),
   },
   args: {
     iconPosition: "start",

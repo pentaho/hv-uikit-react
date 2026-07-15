@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
-import { CaretDownIcon } from "@phosphor-icons/react";
 import {
   HvBadge,
   HvBaseDropdown,
   HvButton,
+  HvIcon,
   HvIconContainer,
   HvListContainer,
   HvListItem,
@@ -79,10 +79,17 @@ function renderTab(
   );
 }
 
-export const OverflowDropdownButton = forwardRef<
+const OverflowDropdownButton = forwardRef<
   HTMLButtonElement,
   OverflowDropdownButtonProps
->(({ count, floating, className, ...props }, ref) => {
+>((props, ref) => {
+  const {
+    count,
+    floating,
+    className,
+    "aria-expanded": ariaExpanded,
+    ...others
+  } = props;
   const { classes, cx } = useClasses();
 
   if (count === 0) return null;
@@ -90,22 +97,23 @@ export const OverflowDropdownButton = forwardRef<
   return (
     <HvButton
       ref={ref}
-      className={cx(
-        classes.dropdownButton,
-        floating && classes.dropdownButtonFloating,
-        className,
-      )}
+      className={cx(classes.dropdownButton, className, {
+        [classes.dropdownButtonFloating]: floating,
+      })}
       variant="secondaryGhost"
       radius={floating ? undefined : "base"}
-      endIcon={<CaretDownIcon />}
-      {...props}
+      aria-expanded={ariaExpanded}
+      endIcon={
+        <HvIcon compact name="CaretDown" size="xs" rotate={!!ariaExpanded} />
+      }
+      {...others}
     >
       More
       <HvBadge
         color={floating ? "text" : "textSubtle"}
         showCount
         label={count}
-        classes={{ root: classes.badgeRoot, badge: classes.badgeContainer }}
+        className={classes.badge}
       />
     </HvButton>
   );
