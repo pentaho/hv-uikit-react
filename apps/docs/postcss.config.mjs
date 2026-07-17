@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-commonjs,unicorn/prefer-module
-module.exports = {
+/** @type {import('postcss').Postcss} */
+export default {
   plugins: {
     "@unocss/postcss": {},
   },

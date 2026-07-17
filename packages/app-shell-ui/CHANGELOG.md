@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **Navigation:** review brand logo in Pentaho theme ([#5205](https://github.com/pentaho/hv-uikit-react/issues/5205)) ([dc60b1f](https://github.com/pentaho/hv-uikit-react/commit/dc60b1f96ae89b2e0cda3d0a697631fb5490c6c8))
+- **Navigation:** review brand logo in Pentaho theme ([#5205](https://github.com/pentaho/hv-uikit-react/issues/5205)) ([dc60b1f](https://github.com/pentaho/hv-uikit-react/commit/dc60b1f96ae89b2e0cda3d0a697631fb5490c6c8))
 
 ## [2.3.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.3.4...@hitachivantara/app-shell-ui@2.3.5) (2026-07-01)
 

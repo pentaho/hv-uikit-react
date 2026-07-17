@@ -7,11 +7,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **Footer:** review default name & copyright ([#5208](https://github.com/pentaho/hv-uikit-react/issues/5208)) ([5a3e800](https://github.com/pentaho/hv-uikit-react/commit/5a3e800fea2c35701fc51baa03b0106dc75d0f7b))
+- **Footer:** review default name & copyright ([#5208](https://github.com/pentaho/hv-uikit-react/issues/5208)) ([5a3e800](https://github.com/pentaho/hv-uikit-react/commit/5a3e800fea2c35701fc51baa03b0106dc75d0f7b))
 
 ### Features
 
-* **Navigation:** review brand logo in Pentaho theme ([#5205](https://github.com/pentaho/hv-uikit-react/issues/5205)) ([dc60b1f](https://github.com/pentaho/hv-uikit-react/commit/dc60b1f96ae89b2e0cda3d0a697631fb5490c6c8))
+- **Navigation:** review brand logo in Pentaho theme ([#5205](https://github.com/pentaho/hv-uikit-react/issues/5205)) ([dc60b1f](https://github.com/pentaho/hv-uikit-react/commit/dc60b1f96ae89b2e0cda3d0a697631fb5490c6c8))
 
 ## [6.9.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.9.1...@hitachivantara/uikit-react-core@6.9.2) (2026-07-01)
 
