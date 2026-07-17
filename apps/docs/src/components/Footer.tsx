@@ -47,39 +47,33 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-lg border-t border-borderSubtle">
-      <div className="max-w-1400px mx-auto px-md">
-        <div className="flex flex-col md:flex-row md:justify-between space-y-md md:space-y-0">
-          {/* Logo Section with More Space */}
-          <div className="flex flex-col">
-            <Link
-              aria-label="UIKit"
-              href="/"
-              className="flex items-center space-x-sm"
-            >
-              <UIKitLogo />
-            </Link>
-            <p className="text-sm mt-sm">by Pentaho © {year}</p>
-          </div>
+    <footer className="py-lg px-md border-t border-borderSubtle">
+      <div className="flex flex-col gap-md max-w-1400px mx-auto md:flex-row md:justify-between ">
+        {/* Logo Section with More Space */}
+        <div className="flex flex-col">
+          <Link aria-label="UIKit" href="/">
+            <UIKitLogo />
+          </Link>
+          <p className="text-sm mt-sm">by Pentaho © {year}</p>
+        </div>
 
-          {/* Link Groups Right-Aligned */}
-          <div className="grid grid-cols-3 text-md gap-lg md:gap-xl">
-            {footerLinks.map((group) => (
-              <div key={group.title} className="flex flex-col gap-xs">
-                <p className="font-semibold text-primary">{group.title}</p>
-                {group.links.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="hover:text-primary"
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
+        {/* Link Groups Right-Aligned */}
+        <div className="grid grid-cols-3 text-md gap-lg md:gap-xl">
+          {footerLinks.map((group) => (
+            <div key={group.title} className="flex flex-col gap-xs">
+              <p className="font-semibold text-primary">{group.title}</p>
+              {group.links.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="hover:text-primary"
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </footer>

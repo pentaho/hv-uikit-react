@@ -1,7 +1,9 @@
+import type { MetaRecord } from "nextra";
+
 /* eslint sort-keys: error */
 export default {
-  "-- Components": {
-    title: "Components",
+  "-- Core Components": {
+    title: "Core Components",
     type: "separator",
   },
   index: "Get started",
@@ -76,24 +78,29 @@ export default {
   "tree-view": "Tree View",
   typography: "Typography",
   "vertical-navigation": "Vertical Navigation",
+
   // eslint-disable-next-line sort-keys
-  "-- Lab": {
-    title: "Lab",
-    type: "separator",
-  },
+  "-- Pentaho Components": { title: "Pentaho Components", type: "separator" },
+  pentaho: "Get started",
+  canvas: { title: "Canvas" },
+
+  // eslint-disable-next-line sort-keys
+  "-- Charts": { type: "separator", title: "Charts" },
+  charts: "Get started",
+  "base-chart": "Base Chart",
+  "bar-chart": "Bar Chart",
+  "line-chart": "Line Chart",
+  "donut-chart": "Donut Chart",
+  "scatter-plot": "Scatter Plot",
+  treemap: "Treemap",
+  heatmap: "Heatmap",
+  "confusion-matrix": "Confusion Matrix",
+
+  // eslint-disable-next-line sort-keys
+  "-- Lab Components": { title: "Lab Components", type: "separator" },
   lab: "Get started",
   // eslint-disable-next-line sort-keys
   dashboard: "Dashboard",
   "step-navigation": "Step Navigation",
   wizard: "Wizard",
-  // eslint-disable-next-line sort-keys
-  "-- Canvas": {
-    title: "Canvas",
-    type: "separator",
-  },
-  canvas: "Get Started",
-  "canvas-bottom-panel": "Bottom Panel",
-  "canvas-side-panel": "Side Panel",
-  "canvas-toolbar": "Toolbar",
-  "canvas-toolbar-tabs": "Toolbar Tabs",
-};
+} satisfies MetaRecord;

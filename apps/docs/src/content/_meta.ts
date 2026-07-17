@@ -18,11 +18,6 @@ export default {
     title: "Components",
     theme: { layout: "full", toc: false },
   },
-  charts: {
-    type: "page",
-    title: "Charts",
-    theme: { layout: "full", toc: false },
-  },
   "app-shell": {
     type: "page",
     title: "App Shell",

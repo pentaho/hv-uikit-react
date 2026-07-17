@@ -1,11 +1,19 @@
-# Components
+# Core Components
 
-**UI Kit** Components are the building blocks of your application.  
-They are designed to be reusable and customizable, allowing you to create a consistent look and feel across your app.
+**UI Kit** Core Components are the building blocks of your application.
 
-Most components are available in the [core package](https://npm.im/@hitachivantara/uikit-react-core), available in the public npm repository:
+The components in this package are designed to be:
 
-```sh
+- **Mature and Consistent**, following the Design System specification.
+- **Lightweight**, optimized for performance with limited external dependencies.
+- **Reusable and customizable**, with a focus on composition.
+- **Accessible**, addressing specific usability scenarios.
+
+## Usage
+
+These components are available at the [`@hitachivantara/uikit-react-core`](https://npm.im/@hitachivantara/uikit-react-core) package, in the public npm repository.
+
+```sh npm2yarn
 npm i @hitachivantara/uikit-react-core
 ```
 
@@ -16,15 +24,24 @@ import { HvButton, HvTypography } from "@hitachivantara/uikit-react-core";
 ```
 
 ```tsx live
-<div className="flex gap-sm">
-  <HvButton variant="primary">Button</HvButton>
-  <HvTypography variant="title3">Typography</HvTypography>
-</div>
+import { HvButton, HvTypography } from "@hitachivantara/uikit-react-core";
+
+export default function Demo() {
+  return (
+    <div className="flex gap-sm">
+      <HvButton variant="primary">Button</HvButton>
+      <HvTypography variant="title3">Typography</HvTypography>
+    </div>
+  );
+}
 ```
 
-Besides the _main_ core package, we also provide the following packages for more specific use-cases:
+## Other components
 
-- [`@hitachivantara/uikit-react-icons`](https://npm.im/@hitachivantara/uikit-react-icons) ([Docs](/docs/icon-library)): A collection of React icons for the NEXT Design System.
+Besides the `core` package, we also provide the following component packages that address more specific use-cases:
+
+- [`@hitachivantara/uikit-react-pentaho`](https://npm.im/@hitachivantara/uikit-react-pentaho) ([Docs](/components/pentaho)): React components for tailored for Pentaho products.
+- [`@hitachivantara/uikit-react-viz`](https://npm.im/@hitachivantara/uikit-react-viz) ([Docs](/components/charts)): A collection of chart components for use in your application.
 - [`@hitachivantara/uikit-react-lab`](https://npm.im/@hitachivantara/uikit-react-lab) ([Docs](/components/lab)): A collection of experimental React components.
-- [`@hitachivantara/uikit-react-viz`](https://npm.im/@hitachivantara/uikit-react-viz) ([Docs](/charts)): A collection of chart components for use in your application.
 - [`@hitachivantara/uikit-react-code-editor`](https://npm.im/@hitachivantara/uikit-react-code-editor) ([Docs](/components/code-editor)): A specialized wrapper around the [Monaco Editor](https://microsoft.github.io/monaco-editor).
+- [`@hitachivantara/uikit-react-icons`](https://npm.im/@hitachivantara/uikit-react-icons) ([Docs](/docs/icon-library)): A collection of React icons for the NEXT Design System.
