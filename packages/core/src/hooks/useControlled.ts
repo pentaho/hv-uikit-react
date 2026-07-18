@@ -1,3 +1,14 @@
+/*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
 // based in https://raw.githubusercontent.com/mui-org/material-ui/next/packages/material-ui/src/utils/useControlled.js
 // modifications:
 // 1. renamed default to initialState, to convey the same meaning of the useState hook.
