@@ -15,9 +15,18 @@ export { staticClasses as footerClasses };
 export type HvFooterClasses = ExtractNames<typeof useClasses>;
 
 export interface HvFooterProps extends HvBaseProps {
-  /** Footer name. */
-  name?: React.ReactNode;
-  /** Footer copyright. */
+  /*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
+
   copyright?: React.ReactNode;
   /** Footer links. */
   links?: React.ReactNode;

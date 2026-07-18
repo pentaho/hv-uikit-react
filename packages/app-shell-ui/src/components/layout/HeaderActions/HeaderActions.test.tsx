@@ -1,3 +1,14 @@
+/*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
 import { screen } from "@testing-library/dom";
 import { vi } from "vitest";
 import type { HvAppShellAppSwitcherConfig } from "@hitachivantara/app-shell-shared";

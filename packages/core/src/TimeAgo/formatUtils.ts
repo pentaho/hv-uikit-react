@@ -1,3 +1,14 @@
+/*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
 /**
  * Relative time thresholds defined by
  * {@link https://xd.adobe.com/view/1b7df235-5cf8-4b51-a2f0-0be1bb591c55-4e2e/ Design System}

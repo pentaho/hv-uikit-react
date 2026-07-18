@@ -1,3 +1,14 @@
+/*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
 const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in justo erat. In
 vestibulum ultricies libero, non ornare lacus. Vivamus dictum erat justo, maximus
 fringilla dolor feugiat vel. Nunc sit amet suscipit sem. Nullam eu erat consequat, commodo

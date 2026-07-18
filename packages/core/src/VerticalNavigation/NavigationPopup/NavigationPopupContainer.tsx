@@ -1,3 +1,14 @@
+/*! ******************************************************************************
+ *
+ * Pentaho
+ *
+ * Copyright (C) 2026 by Pentaho Canada Inc. : http://www.pentaho.com
+ *
+ * Use of this software is governed by the Business Source License included
+ * in the LICENSE.TXT file.
+ *
+ * Change Date: 2030-06-15
+ ******************************************************************************/
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Popper from "@mui/material/Popper";
 import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
