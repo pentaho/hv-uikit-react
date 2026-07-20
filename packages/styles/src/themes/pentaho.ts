@@ -186,7 +186,7 @@ const pentaho = makeTheme((theme) => ({
   },
   header: {
     height: "48px",
-    secondLevelHeight: "56px",
+    secondLevelHeight: "42px",
   },
   form: {
     errorColor: theme.colors.negative,
