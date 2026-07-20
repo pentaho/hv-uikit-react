@@ -18,7 +18,12 @@ export const DataConfig = () => {
   return (
     <Card title="Data Management Configuration">
       <div className="grid gap-sm">
-        <HvBannerContent showIcon variant="info" action={null}>
+        <HvBannerContent
+          showIcon
+          variant="info"
+          action={null}
+          className="min-w-unset w-full"
+        >
           Backup impacts storage.
         </HvBannerContent>
         <HvInput
@@ -37,7 +42,11 @@ export const DataConfig = () => {
           placeholder="Select backup frequency"
           aria-label="backup-frequency"
         />
-        <HvCheckBox label="Enable Automatic Data Cleanup" />
+        <HvCheckBox
+          label="Enable Automatic Data Cleanup"
+          labelProps={{ className: "text-wrap" }}
+          className="overflow-auto"
+        />
         <div className="flex justify-end gap-xs">
           <HvButton variant="primary" aria-label="save-config-button">
             Save

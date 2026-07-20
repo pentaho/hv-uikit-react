@@ -33,4 +33,15 @@ export default {
       timestamp: false,
     },
   },
+  editor: {
+    type: "page",
+    title: "Theme Editor",
+    theme: {
+      layout: "full",
+      toc: false,
+      breadcrumb: false,
+      sidebar: false,
+      timestamp: false,
+    },
+  },
 } satisfies MetaRecord;
