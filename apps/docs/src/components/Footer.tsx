@@ -44,8 +44,6 @@ const footerLinks = [
 ];
 
 export const Footer = () => {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="py-lg px-md border-t border-borderSubtle">
       <div className="flex flex-col gap-md max-w-1400px mx-auto md:flex-row md:justify-between ">
@@ -54,7 +52,7 @@ export const Footer = () => {
           <Link aria-label="UIKit" href="/">
             <UIKitLogo />
           </Link>
-          <p className="text-sm mt-sm">by Pentaho © {year}</p>
+          <p className="text-sm mt-sm">© Pentaho.</p>
         </div>
 
         {/* Link Groups Right-Aligned */}
