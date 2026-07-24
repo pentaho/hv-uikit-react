@@ -117,4 +117,11 @@ function HvIconInternal(
   );
 }
 
+/**
+ * UI Kit core built-in internal icon enum utility.
+ * Includes only the most commonly used icons (eg. `Close`, `CaretDown`).
+ *
+ * @private internal use only
+ * @example <HvIcon name="Close" />
+ */
 export const HvIcon = memo(forwardRef(HvIconInternal));
