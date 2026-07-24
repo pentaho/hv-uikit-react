@@ -311,9 +311,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         root: {
           padding: theme.space.xxs,
           borderRadius: theme.radii.full,
-          "&:hover": {
-            backgroundColor: theme.colors.bgHover,
-          },
           "& .HvBaseSwitch-switchBase": {
             "& .HvBaseSwitch-thumb": {
               borderColor: "transparent",
@@ -365,9 +362,6 @@ export const pentaho = mergeTheme(pentahoBase, {
           },
         },
         readOnly: {
-          ":hover": {
-            backgroundColor: "transparent",
-          },
           "& .HvBaseSwitch-switchBase + .HvBaseSwitch-track": {
             backgroundColor: theme.colors.border,
           },
@@ -382,11 +376,9 @@ export const pentaho = mergeTheme(pentahoBase, {
       classes: {
         container: {
           borderRadius: theme.radii.full,
-          "&:hover": {
+          "&:hover:not(:has(.HvBaseSwitch-disabled,.HvBaseSwitch-readOnly))": {
             backgroundColor: theme.colors.bgHover,
-          },
-          "& .HvBaseSwitch-root": {
-            "&:hover": {
+            "& .HvBaseSwitch-root:hover": {
               backgroundColor: "transparent",
             },
           },

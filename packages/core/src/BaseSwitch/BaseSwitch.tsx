@@ -3,6 +3,7 @@ import MuiSwitch, {
   type SwitchProps as MuiSwitchProps,
 } from "@mui/material/Switch";
 import {
+  mergeStyles,
   useDefaultProps,
   type ExtractNames,
 } from "@hitachivantara/uikit-react-utils";
@@ -129,12 +130,12 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
       ...others
     } = useDefaultProps("HvBaseSwitch", props);
 
-    const { classes, cx, css } = useClasses(classesProp);
+    const { classes, cx } = useClasses(classesProp);
 
     const [focusVisible, setFocusVisible] = useState(false);
 
     const onFocusVisibleCallback = useCallback(
-      (evt: React.FocusEvent<any, Element>) => {
+      (evt: React.FocusEvent) => {
         setFocusVisible(true);
         onFocusVisible?.(evt);
       },
@@ -142,7 +143,7 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
     );
 
     const onBlurCallback = useCallback(
-      (evt: React.FocusEvent<any, Element>) => {
+      (evt: React.FocusEvent) => {
         setFocusVisible(false);
         onBlur?.(evt);
       },
@@ -151,13 +152,9 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
 
     const onLocalChange = useCallback(
       (evt: React.ChangeEvent<HTMLInputElement>) => {
-        if (readOnly) {
-          return;
-        }
-
-        onChange?.(evt, evt.target.checked, value);
+        onChange?.(evt, evt.target.checked, evt.target.value);
       },
-      [onChange, readOnly, value],
+      [onChange],
     );
 
     return (
@@ -181,36 +178,27 @@ export const HvBaseSwitch = forwardRef<HTMLButtonElement, HvBaseSwitchProps>(
         value={value}
         checked={checked}
         defaultChecked={defaultChecked}
+        data-color={color}
+        data-size={size}
         classes={{
           root: classes.switch,
           switchBase: classes.switchBase,
           checked: classes.checked,
-          track: cx(
-            classes.track,
-            color
-              ? css({
-                  backgroundColor: `${getColor(color, "transparent")}!important`,
-                  border: "none",
-                })
-              : undefined,
-          ),
-          thumb: cx(
-            classes.thumb,
-            color
-              ? css({
-                  border: "none",
-                })
-              : undefined,
-          ),
+          track: classes.track,
+          thumb: classes.thumb,
           disabled: classes.disabled,
         }}
         slotProps={{
+          root: {
+            style: mergeStyles(undefined, {
+              "--custom-color": getColor(color),
+            }),
+          },
           // keep switch squashed by `slotProps.input` https://github.com/mui/material-ui/pull/46482
           input: { role: "switch", ...inputProps },
         }}
         onFocusVisible={onFocusVisibleCallback}
         onBlur={onBlurCallback}
-        data-size={size}
         {...others}
       />
     );
