@@ -13,7 +13,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { Menu } from "@hitachivantara/uikit-react-icons";
 
-import { HitachiLogo } from "../../assets/HitachiLogo";
+import * as logos from "../../assets/logos";
 import { Loading } from "../../components/common/Loading";
 import {
   NavigationProvider,
@@ -51,8 +51,8 @@ function Header() {
       )}
 
       <HvHeaderBrand
-        logo={<HitachiLogo />}
-        name={!isXs ? "Lumada App" : undefined}
+        logo={<logos.Pentaho />}
+        name={!isXs ? "MyApp" : undefined}
       />
 
       {isMdUp && (

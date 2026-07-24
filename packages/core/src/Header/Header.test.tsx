@@ -16,10 +16,10 @@ describe("Header", () => {
   it("should render correctly the brand data", () => {
     const { getByText, getByTestId } = render(
       <HvHeader>
-        <HvHeaderBrand logo={<div data-testid="logo" />} name="Lumada App" />
+        <HvHeaderBrand logo={<div data-testid="logo" />} name="Pentaho App" />
       </HvHeader>,
     );
-    expect(getByText("Lumada App")).toBeInTheDocument();
+    expect(getByText("Pentaho App")).toBeInTheDocument();
     expect(getByTestId("logo")).toBeInTheDocument();
   });
 
