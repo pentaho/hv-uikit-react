@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@hitachivantara/uikit-react-core": "^6.0.0",
     "react": "^18.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^7.18.1"
   },
   "peerDependenciesMeta": {
     "@hitachivantara/uikit-react-core": {
