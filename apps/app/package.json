@@ -29,7 +29,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-grid-layout": "^1.4.4",
-    "react-router": "^7.1.5",
+    "react-router": "^8.3.0",
     "reactflow": "^11.10.1",
     "swr": "^2.2.4",
     "usehooks-ts": "^2.16.0",
