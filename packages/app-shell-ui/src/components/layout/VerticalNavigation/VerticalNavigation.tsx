@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { css, cx } from "@emotion/css";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -84,9 +84,17 @@ export const VerticalNavigation = () => {
     }
   };
 
-  useResizeObserver(ref, (width) => {
-    setVerticalNavigationWidth(isCompactMode ? 0 : width);
-  });
+  useResizeObserver(
+    ref,
+    useCallback(
+      (width) => {
+        // In compact mode the navigation floats/overlays, so it shouldn't
+        // reserve any space in the layout grid.
+        setVerticalNavigationWidth(isCompactMode ? 0 : width);
+      },
+      [isCompactMode, setVerticalNavigationWidth],
+    ),
+  );
 
   return (
     <ClickAwayListener

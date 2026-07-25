@@ -32,24 +32,24 @@ export default {
         {
           label: "asset",
           icon: {
-            iconType: "uikit",
-            name: "Desktop",
+            iconType: "unocss",
+            name: "i-ph-desktop",
           },
           submenus: [
             {
               label: "asset",
               target: "/asset-inventory",
               icon: {
-                iconType: "uikit",
-                name: "Cards",
+                iconType: "unocss",
+                name: "i-ph-cards",
               },
             },
             {
               label: "list",
               target: "/list-view",
               icon: {
-                iconType: "uikit",
-                name: "List",
+                iconType: "unocss",
+                name: "i-ph-list",
               },
             },
           ],
@@ -58,16 +58,16 @@ export default {
           label: "asset",
           target: "/asset-inventory",
           icon: {
-            iconType: "uikit",
-            name: "Cards",
+            iconType: "unocss",
+            name: "i-ph-cards",
           },
         },
         {
           label: "list",
           target: "/list-view",
           icon: {
-            iconType: "uikit",
-            name: "List",
+            iconType: "unocss",
+            name: "i-ph-list",
           },
         },
         {
@@ -83,8 +83,8 @@ export default {
           label: "Theming",
           target: "/theming",
           icon: {
-            iconType: "uikit",
-            name: "ColorPicker",
+            iconType: "unocss",
+            name: "i-ph-eyedropper",
           },
         },
         ...Array.from(Array(16).keys()).map((i) => ({
@@ -95,8 +95,8 @@ export default {
           label: "Services Demo",
           target: "/services-demo",
           icon: {
-            iconType: "uikit",
-            name: "Settings",
+            iconType: "unocss",
+            name: "i-ph-gear",
           },
         },
       ],
@@ -105,8 +105,8 @@ export default {
       label: "Providers Demo",
       target: "/providers-demo",
       icon: {
-        iconType: "uikit",
-        name: "Package",
+        iconType: "unocss",
+        name: "i-ph-package",
       },
     },
     // ========================================
@@ -116,72 +116,72 @@ export default {
     {
       label: "Conditions Demo",
       icon: {
-        iconType: "uikit",
-        name: "Eye",
+        iconType: "unocss",
+        name: "i-ph-eye",
       },
       submenus: [
         {
           label: "Sync True (Always Visible)",
           target: "/sync-true-demo",
           icon: {
-            iconType: "uikit",
-            name: "Check",
+            iconType: "unocss",
+            name: "i-ph-check",
           },
         },
         {
           label: "Sync False (Always Hidden)",
           target: "/sync-false-demo",
           icon: {
-            iconType: "uikit",
-            name: "Close",
+            iconType: "unocss",
+            name: "i-ph-x",
           },
         },
         {
           label: "Async True (0.5s delay)",
           target: "/async-true-demo",
           icon: {
-            iconType: "uikit",
-            name: "Clock",
+            iconType: "unocss",
+            name: "i-ph-clock",
           },
         },
         {
           label: "Async False (0.5s delay)",
           target: "/async-false-demo",
           icon: {
-            iconType: "uikit",
-            name: "ClockStop",
+            iconType: "unocss",
+            name: "i-ph-clock-countdown",
           },
         },
         {
           label: "Dynamic (Appears after 10s)",
           target: "/dynamic-condition-demo",
           icon: {
-            iconType: "uikit",
-            name: "Refresh",
+            iconType: "unocss",
+            name: "i-ph-arrows-clockwise",
           },
         },
         {
           label: "Sync True + Async True",
           target: "/multiple-conditions-demo",
           icon: {
-            iconType: "uikit",
-            name: "Hierarchy",
+            iconType: "unocss",
+            name: "i-ph-tree-structure",
           },
         },
         {
           label: "Sync True + Sync False",
           target: "/multiple-fail-demo",
           icon: {
-            iconType: "uikit",
-            name: "Ban",
+            iconType: "unocss",
+            name: "i-ph-prohibit",
           },
         },
         {
           label: "Inverse Dynamic (view) + Async True",
           target: "/inverse-dynamic",
           icon: {
-            iconType: "uikit",
-            name: "Ban",
+            iconType: "unocss",
+            name: "i-ph-prohibit",
           },
           conditions: [
             {
@@ -192,8 +192,8 @@ export default {
         {
           label: "Nested Submenus",
           icon: {
-            iconType: "uikit",
-            name: "Tree",
+            iconType: "unocss",
+            name: "i-ph-tree-view",
           },
           submenus: [
             {
@@ -214,8 +214,8 @@ export default {
         {
           label: "Disappearing Parent (10s)",
           icon: {
-            iconType: "uikit",
-            name: "Disappear",
+            iconType: "unocss",
+            name: "i-ph-eye-slash",
           },
           submenus: [
             {

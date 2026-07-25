@@ -754,18 +754,43 @@ export const pentaho = mergeTheme(pentahoBase, {
       },
     } satisfies CSSClasses<BarProps>,
     HvVerticalNavigation: {
+      "data-theme": "pentahoPlus",
+      "data-color-mode": "light",
       classes: {
         root: {
+          colorScheme: "light",
+          padding: theme.space.sm,
+          paddingTop: 32,
           width: 280,
           color: theme.colors.textLight,
-          backgroundColor: slate[900],
+          backgroundColor: `var(--hv-popup-nav-bg, ${slate[900]})`,
           boxShadow: `inset -1px 0 0 0 ${slate[500]}`,
-          "& > :not(nav:first-of-type)": {
+          "& > * + *": {
+            padding: 0,
+            paddingTop: theme.space.sm,
+            borderTop: `1px solid ${theme.alpha(slate[300], 0.3)}`,
+          },
+          "& > * + div": {
             borderTop: `1px solid ${slate[500]}`,
           },
           "& > :only-child": {
             padding: theme.space.sm,
             "& .HvVerticalNavigationSlider-listContainer": { padding: 0 },
+          },
+          "& > :first-child": {
+            padding: 0,
+            paddingBottom: theme.space.sm,
+          },
+          ".HvVerticalNavigationPopup-wrapper:has(&)": {
+            "--hv-popup-nav-bg": slate[800],
+          },
+          ".HvVerticalNavigationPopup-container:has(> &)": {
+            borderRadius: theme.radii.round,
+            overflow: "hidden",
+          },
+          ".HvVerticalNavigationPopup-container &": {
+            padding: theme.space.sm,
+            paddingBottom: 0,
           },
         },
         slider: {
@@ -773,8 +798,19 @@ export const pentaho = mergeTheme(pentahoBase, {
             borderBottom: `1px solid ${slate[500]}`,
           },
         },
+        collapsed: {
+          "& > :first-child": {
+            padding: 0,
+            paddingBottom: theme.space.sm,
+          },
+          "& > * + *": {
+            padding: 0,
+            paddingTop: theme.space.sm,
+          },
+        },
       },
-    } satisfies CSSClasses<HvVerticalNavigationProps>,
+    } satisfies CSSClasses<HvVerticalNavigationProps> &
+      Record<`data-${string}`, string>,
     HvVerticalNavigationAction: {
       classes: {
         action: {
@@ -822,6 +858,9 @@ export const pentaho = mergeTheme(pentahoBase, {
         content: {
           borderLeft: "unset",
           borderRadius: theme.radii.round,
+          ".HvVerticalNavigationTreeViewItem-expandable>&": {
+            fontWeight: theme.fontWeights.normal,
+          },
           ".HvVerticalNavigationTreeViewItem-selected>&": {
             background: blue[800],
             borderLeft: "unset",
@@ -844,10 +883,19 @@ export const pentaho = mergeTheme(pentahoBase, {
             background: neutral[800],
           },
         },
+        expandable: {
+          fontWeight: theme.fontWeights.normal,
+        },
         icon: {
           "& .HvAvatar-root": {
             borderRadius: theme.radii.round,
           },
+        },
+        group: {
+          "--hv-content-padding": "0px",
+          borderLeft: `1px solid ${theme.colors.border}`,
+          marginLeft: "calc(var(--hv-nav-item-padding, 0px) + 16px)",
+          paddingLeft: theme.space.sm,
         },
       },
     } satisfies CSSClasses<HvVerticalNavigationTreeViewItemProps>,
