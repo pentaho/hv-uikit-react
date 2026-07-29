@@ -28,10 +28,6 @@ const footerLinks = [
         href: "https://github.com/pentaho/hv-uikit-react?tab=readme-ov-file#team-",
       },
       {
-        label: "Slack",
-        href: "https://hitachivantara-eng.slack.com/archives/CFY74GK6G",
-      },
-      {
         label: "GitHub",
         href: "https://github.com/pentaho/hv-uikit-react",
       },
