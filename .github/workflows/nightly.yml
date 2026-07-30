@@ -23,24 +23,3 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/build.yml
-
-  notify-fail:
-    name: Notify Fail
-    needs: [tests, build, visual-tests]
-    if: failure()
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Notify Failure
-        uses: slackapi/slack-github-action@v3.0.1
-        with:
-          method: chat.postMessage
-          token: ${{ secrets.SLACK_TOKEN }}
-          payload: |
-            channel: "ui-kit-internal"
-            attachments:
-              - mrkdwn_in:
-                  - text
-                color: "#C62828"
-                title: "${{ github.workflow }} finished: failure"
-                title_link: "${{ env.RUN_URL }}"
