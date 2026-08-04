@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/app-shell-i18next",
+  "name": "@pentaho/app-shell-i18next",
   "version": "0.2.3",
   "type": "module",
   "private": false,

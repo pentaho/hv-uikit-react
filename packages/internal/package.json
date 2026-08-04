@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/internal",
+  "name": "@pentaho/internal",
   "version": "0.0.3",
   "description": "Internal utilities for docs & other stuff",
   "private": true,

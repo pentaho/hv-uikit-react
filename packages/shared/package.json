@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-react-shared",
+  "name": "@pentaho/uikit-react-shared",
   "version": "6.0.8",
   "type": "module",
   "private": false,
@@ -36,12 +36,12 @@
     "@types/react-dom": "^18.2.17"
   },
   "peerDependencies": {
-    "@hitachivantara/uikit-styles": "^6.0.0",
+    "@pentaho/uikit-styles": "^6.0.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
   "peerDependenciesMeta": {
-    "@hitachivantara/uikit-styles": {
+    "@pentaho/uikit-styles": {
       "optional": true
     }
   },

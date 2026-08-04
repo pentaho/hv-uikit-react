@@ -22,7 +22,7 @@ export default withNextra({
   distDir: process.env.NODE_ENV === "development" ? ".next" : "dist",
   images: { unoptimized: true },
   basePath: process.env.NEXTRA_BASE_PATH || "",
-  transpilePackages: ["@hitachivantara/uikit-react-viz"],
+  transpilePackages: ["@pentaho/uikit-react-viz"],
   webpack: (config) => {
     config.cache = false; // Disable cache for debugging
 

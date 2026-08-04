@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-react-icons",
+  "name": "@pentaho/uikit-react-icons",
   "version": "6.0.8",
   "type": "module",
   "private": false,
@@ -39,7 +39,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-styles": "^6.2.1"
+    "@pentaho/uikit-styles": "^6.2.1"
   },
   "devDependencies": {
     "@svgr/core": "^8.1.0",

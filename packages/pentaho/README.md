@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-react-pentaho
+# @pentaho/uikit-react-pentaho
 
 UI Kit Pentaho React components.
 
@@ -7,5 +7,5 @@ UI Kit Pentaho React components.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-react-pentaho
+npm install @pentaho/uikit-react-pentaho
 ```

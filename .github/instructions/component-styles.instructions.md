@@ -7,8 +7,8 @@ name: Component Styling Instructions
 
 ```ts
 // HvComp.styles.ts
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvComp", {
   /** Applied to the root element */

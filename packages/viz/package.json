@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-react-viz",
+  "name": "@pentaho/uikit-react-viz",
   "version": "6.1.10",
   "type": "module",
   "private": false,
@@ -41,8 +41,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^6.2.6",
-    "@hitachivantara/uikit-styles": "^6.2.1"
+    "@pentaho/uikit-react-utils": "^6.2.6",
+    "@pentaho/uikit-styles": "^6.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

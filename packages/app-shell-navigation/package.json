@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/app-shell-navigation",
+  "name": "@pentaho/app-shell-navigation",
   "version": "2.1.16",
   "type": "module",
   "private": false,
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-shared": "^2.3.5",
+    "@pentaho/app-shell-shared": "^2.3.5",
     "path-to-regexp": "^8.1.0"
   },
   "peerDependencies": {

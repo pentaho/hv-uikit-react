@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-uno-preset",
+  "name": "@pentaho/uikit-uno-preset",
   "version": "1.0.8",
   "type": "module",
   "private": false,
@@ -34,7 +34,7 @@
     "@unocss/preset-wind3": "^66.4.2"
   },
   "dependencies": {
-    "@hitachivantara/uikit-styles": "^6.2.1",
+    "@pentaho/uikit-styles": "^6.2.1",
     "@unocss/preset-rem-to-px": "^66.4.2"
   },
   "devDependencies": {

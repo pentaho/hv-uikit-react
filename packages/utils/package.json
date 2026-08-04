@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-react-utils",
+  "name": "@pentaho/uikit-react-utils",
   "version": "6.2.6",
   "type": "module",
   "private": false,
@@ -35,7 +35,7 @@
   "dependencies": {
     "@emotion/serialize": "^1.1.2",
     "@emotion/utils": "^1.4.0",
-    "@hitachivantara/uikit-react-shared": "^6.0.8",
+    "@pentaho/uikit-react-shared": "^6.0.8",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

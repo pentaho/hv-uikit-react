@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/app-shell-shared",
+  "name": "@pentaho/app-shell-shared",
   "version": "2.3.5",
   "type": "module",
   "private": false,
@@ -22,18 +22,18 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-services": "^2.0.6"
+    "@pentaho/app-shell-services": "^2.0.6"
   },
   "devDependencies": {
     "i18next": "^24.2.2"
   },
   "peerDependencies": {
-    "@hitachivantara/uikit-react-core": "^6.0.0",
+    "@pentaho/uikit-react-core": "^6.0.0",
     "react": "^18.2.0",
     "react-router-dom": "^6.9.0"
   },
   "peerDependenciesMeta": {
-    "@hitachivantara/uikit-react-core": {
+    "@pentaho/uikit-react-core": {
       "optional": true
     }
   },

@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-react-viz
+# @pentaho/uikit-react-viz
 
 Contributed React visualization components for UI Kit.
 
@@ -7,5 +7,5 @@ Contributed React visualization components for UI Kit.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-react-viz
+npm install @pentaho/uikit-react-viz
 ```

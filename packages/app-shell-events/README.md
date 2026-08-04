@@ -1,4 +1,4 @@
-# @hitachivantara/app-shell-events
+# @pentaho/app-shell-events
 
 App Shell Events. Type definitions for App Shell events ecosystem.
 
@@ -12,7 +12,7 @@ This package defines the set of possible `type` values and `options.detail` type
 The App Shell Events is available as an NPM package, and can be installed with:
 
 ```bash
-npm install @hitachivantara/app-shell-events
+npm install @pentaho/app-shell-events
 ```
 
 More info about App Shell events is available in https://github.com/lumada-design/hv-app-shell/blob/main/docs/notifications.md#notifications and https://github.com/lumada-design/hv-app-shell/blob/main/docs/theming.md#triggering-color-mode-change.

@@ -1,4 +1,4 @@
-# @hitachivantara/app-shell-ui
+# @pentaho/app-shell-ui
 
 App Shell. Effortless UI integration with top-notch user experience, empowering composability.
 
@@ -15,7 +15,7 @@ The App Shell also provides services that support the integration and communicat
 The App Shell is available as an NPM package, and can be installed with:
 
 ```bash
-npm install @hitachivantara/app-shell-ui
+npm install @pentaho/app-shell-ui
 ```
 
 Setup instructions for the App Shell are available in https://github.com/lumada-design/hv-app-shell.

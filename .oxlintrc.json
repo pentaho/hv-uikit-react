@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./node_modules/@hitachivantara/uikit-config/oxlint/strict.json"],
+  "extends": ["./node_modules/@pentaho/uikit-config/oxlint/strict.json"],
   "rules": {
     "no-restricted-imports": [
       "error",
       {
         "patterns": [
-          "@hitachivantara/*/*",
+          "@pentaho/*/*",
           "@mui/material",
           "@mui/base/*",
           "@phosphor-icons/react"

@@ -1,10 +1,10 @@
-# @hitachivantara/app-shell-vite-plugin
+# @pentaho/app-shell-vite-plugin
 
 App Shell Vite Plugin: Streamlines development and build processes for App Shell.
 
 ## Overview
 
-The `@hitachivantara/app-shell-vite-plugin` enhances the App Shell experience by automating essential development and build tasks, such as processing configurations, creating virtual endpoints, and managing importmaps and base paths.
+The `@pentaho/app-shell-vite-plugin` enhances the App Shell experience by automating essential development and build tasks, such as processing configurations, creating virtual endpoints, and managing importmaps and base paths.
 
 This plugin is responsible for the hard lifting during development time and build time. It performs the following actions:
 
@@ -20,13 +20,13 @@ This plugin is responsible for the hard lifting during development time and buil
 Install the plugin:
 
 ```sh
-npm install -D @hitachivantara/app-shell-vite-plugin
+npm install -D @pentaho/app-shell-vite-plugin
 ```
 
 Add the plugin to the vite plugin list in `vite.config.ts`.
 
 ```ts
-import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
+import { HvAppShellVitePlugin } from "@pentaho/app-shell-vite-plugin";
 
 export default defineConfig(({ mode }) => {
   return {
