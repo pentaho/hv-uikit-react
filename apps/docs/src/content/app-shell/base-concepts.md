@@ -21,14 +21,14 @@ That means that, despite the version of the library used by the _Application Bun
 
 These are the current shared dependencies and their versions:
 
-| Library                              | Version    |
-| ------------------------------------ | ---------- |
-| `react`, `react-dom`                 | `^18.2.0`  |
-| `react-router-dom`                   | `^6.9.0`   |
-| `@emotion/cache`, `@emotion/react`   | `^11.11.0` |
-| `@hitachivantara/uikit-react-shared` | `latest`   |
-| `@hitachivantara/app-shell-shared`   | `latest`   |
-| `@hitachivantara/app-shell-services` | `latest`   |
+| Library                            | Version    |
+| ---------------------------------- | ---------- |
+| `react`, `react-dom`               | `^18.2.0`  |
+| `react-router-dom`                 | `^6.9.0`   |
+| `@emotion/cache`, `@emotion/react` | `^11.11.0` |
+| `@pentaho/uikit-react-shared`      | `latest`   |
+| `@pentaho/app-shell-shared`        | `latest`   |
+| `@pentaho/app-shell-services`      | `latest`   |
 
 ## Shared Modules
 

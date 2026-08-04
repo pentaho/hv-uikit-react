@@ -72,7 +72,7 @@ tags that declares which locales the application supports:
 ["en", "pt", "de"]
 ```
 
-When present, translation backends (such as `HttpResourcesBackend` from `@hitachivantara/app-shell-i18next`) use this
+When present, translation backends (such as `HttpResourcesBackend` from `@pentaho/app-shell-i18next`) use this
 manifest to skip network requests for unsupported languages, letting i18next follow the `fallbackLng` chain instead.
 If the file is missing or malformed, all languages are allowed.
 

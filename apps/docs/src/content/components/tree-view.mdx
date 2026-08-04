@@ -3,7 +3,7 @@ import {
   HvPanel,
   HvTreeItem,
   HvTreeView,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { Header } from "../../components/Header";
 
@@ -191,7 +191,7 @@ This approach allows dynamic expansion as new data becomes available.
 
 ```tsx live
 import { forwardRef, useState } from "react";
-import { useHvTreeItem } from "@hitachivantara/uikit-react-core";
+import { useHvTreeItem } from "@pentaho/uikit-react-core";
 
 const delay = (ms: number) =>
   new Promise((resolve) => {
@@ -306,7 +306,7 @@ The following example demonstrates a custom tree view that implements a common v
 
 ```tsx live
 import { forwardRef, useMemo, useState } from "react";
-import { useHvTreeItem } from "@hitachivantara/uikit-react-core";
+import { useHvTreeItem } from "@pentaho/uikit-react-core";
 
 interface CustomTreeItemProps extends HvTreeItemProps {
   /** Triggered when the tree item is expanded */

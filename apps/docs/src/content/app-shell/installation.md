@@ -2,10 +2,10 @@
 
 ## Automatic setup
 
-We recommend using the `@hitachivantara/uikit-cli` to create a new app, which sets up everything automatically:
+We recommend using the `@pentaho/uikit-cli` to create a new app, which sets up everything automatically:
 
 ```sh
-npx @hitachivantara/uikit-cli@latest create my-app
+npx @pentaho/uikit-cli@latest create my-app
 ```
 
 Once the installation is complete, you can:
@@ -28,13 +28,13 @@ After having a Vite project setup, you can:
 1. Install the App Shell Vite plugin:
 
 ```sh
-npm install -D @hitachivantara/app-shell-vite-plugin
+npm install -D @pentaho/app-shell-vite-plugin
 ```
 
 2. Add the `HvAppShellVitePlugin` to the vite `plugins` section:
 
 ```ts
-import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
+import { HvAppShellVitePlugin } from "@pentaho/app-shell-vite-plugin";
 
 export default defineConfig({
   plugins: [
@@ -50,7 +50,7 @@ export default defineConfig({
 3. Create the `app-shell.config.ts` in the root directory. For now, add the following configuration:
 
 ```ts
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type { HvAppShellConfig } from "@pentaho/app-shell-vite-plugin";
 
 export default {
   logo: { name: "HITACHI" },
@@ -77,7 +77,7 @@ For more information about the **App Shell** configuration check the [configurat
    However, if you still see the need to have it in your app, then replace its content with the code below:
 
 ```tsx
-import HvAppShell from "@hitachivantara/app-shell-ui";
+import HvAppShell from "@pentaho/app-shell-ui";
 
 export default function App() {
   return <HvAppShell configUrl={`${document.baseURI}app-shell.config.json`} />;
