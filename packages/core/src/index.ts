@@ -115,6 +115,8 @@ export * from "./IconButton";
 export * from "./IconContainer";
 export * from "./Skeleton";
 
+export * from "./icons";
+
 export * from "./hooks/useClickOutside";
 export * from "./hooks/useComputation";
 export * from "./hooks/useControlled";
