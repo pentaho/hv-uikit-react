@@ -6,8 +6,8 @@ import * as BannerProvider from "../providers/BannerProvider";
 import useNotificationsEventListenerHook from "./useNotificationsEventListener";
 
 const mockedEnqueueSnackbar = vi.fn();
-vi.mock("@hitachivantara/uikit-react-core", async () => {
-  const mod = await vi.importActual("@hitachivantara/uikit-react-core");
+vi.mock("@pentaho/uikit-react-core", async () => {
+  const mod = await vi.importActual("@pentaho/uikit-react-core");
   return {
     ...(mod as object),
     useHvSnackbar: () => {

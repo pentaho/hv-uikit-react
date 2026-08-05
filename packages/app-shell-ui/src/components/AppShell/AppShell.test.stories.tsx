@@ -11,8 +11,8 @@ const externalsEntries = [
   "react-router-dom@6",
   "@emotion/react@11",
   "@emotion/cache@11",
-  "@hitachivantara/app-shell-shared@1",
-  "@hitachivantara/uikit-react-shared@5",
+  "@pentaho/app-shell-shared@2",
+  "@pentaho/uikit-react-shared@6",
 ].map((mod) => {
   const pkg = mod.slice(0, mod.lastIndexOf("@"));
   const version = mod.slice(mod.lastIndexOf("@") + 1);

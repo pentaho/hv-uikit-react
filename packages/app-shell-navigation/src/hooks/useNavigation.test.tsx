@@ -10,7 +10,7 @@ const mockUseNavigate = vi.fn();
 const mockUseLocation = vi.fn();
 let mockViewContext = { id: "testApp" };
 
-vi.mock("@hitachivantara/app-shell-shared", () => ({
+vi.mock("@pentaho/app-shell-shared", () => ({
   useHvAppShellModel: () => mockUseHvAppShellModel(),
   HvAppShellViewContext: {
     Provider: ({ children }: { children: React.ReactNode }) => children,

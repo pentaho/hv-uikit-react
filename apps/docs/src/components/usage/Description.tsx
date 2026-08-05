@@ -18,7 +18,7 @@ export function Description({ meta }: { meta: ComponentMeta }) {
     {
       logo: <NpmLogo />,
       label: `uikit-react-${meta.package}`,
-      href: `https://npm.im/@hitachivantara/uikit-react-${meta.package}`,
+      href: `https://npm.im/@pentaho/uikit-react-${meta.package}`,
     },
   ];
 
