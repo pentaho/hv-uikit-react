@@ -5,7 +5,7 @@ import {
   HvLabel,
   HvPanel,
   HvTag,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const colors = [
   "Blue",

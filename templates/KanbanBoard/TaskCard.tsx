@@ -10,7 +10,7 @@ import {
   HvCardHeader,
   HvOverflowTooltip,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Delete,
   Level0Good,
@@ -18,7 +18,7 @@ import {
   Level3Bad,
   Level4,
   Level5,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import classes from "./styles";
 import type { Column, Task } from "./types";

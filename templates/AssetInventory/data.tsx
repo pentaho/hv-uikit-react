@@ -6,7 +6,7 @@ import {
   type HvControlsProps,
   type HvRightControlProps,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Add,
   Cards,
@@ -17,7 +17,7 @@ import {
   Level3Bad,
   List,
   Preview,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import {
   useServerPagination,

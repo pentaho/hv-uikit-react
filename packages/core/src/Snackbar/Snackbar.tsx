@@ -5,10 +5,7 @@ import MuiSnackbar, {
   type SnackbarCloseReason,
   type SnackbarOrigin,
 } from "@mui/material/Snackbar";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvActionGeneric, HvActionsGenericProps } from "../ActionsGeneric";
 import type { HvCalloutProps } from "../utils/Callout";

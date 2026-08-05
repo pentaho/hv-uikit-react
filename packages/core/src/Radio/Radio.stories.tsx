@@ -3,7 +3,7 @@ import {
   HvBaseRadio,
   HvRadio,
   type HvRadioProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvRadio> = {
   title: "Components/Radio",

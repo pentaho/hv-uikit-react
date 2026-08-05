@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { renderStory, setupChromatic } from "@hitachivantara/internal";
-import { HvSimpleGrid } from "@hitachivantara/uikit-react-core";
+import { renderStory, setupChromatic } from "@pentaho/internal";
+import { HvSimpleGrid } from "@pentaho/uikit-react-core";
 
 import { Test as BottomPanelTestStory } from "../Canvas/BottomPanel/BottomPanel.stories";
 import { Main as SidePanelMainStory } from "../Canvas/SidePanel/SidePanel.stories";

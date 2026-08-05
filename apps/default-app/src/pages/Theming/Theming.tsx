@@ -1,7 +1,7 @@
 import {
   HvAppShellEventThemeTrigger,
   type HvAppShellEventTheme,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 import {
   HvButton,
   HvGlobalActions,
@@ -9,7 +9,7 @@ import {
   HvTypography,
   useTheme,
   type HvThemeColorMode,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 function Button({ colorMode }: { colorMode: HvThemeColorMode }) {
   const handleColorModeClick = () => {

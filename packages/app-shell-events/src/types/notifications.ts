@@ -1,4 +1,4 @@
-import type { HvBannerProps } from "@hitachivantara/uikit-react-core";
+import type { HvBannerProps } from "@pentaho/uikit-react-core";
 
 export const HvAppShellEventNotificationTrigger =
   "@hv/app-shell:notifications:trigger";

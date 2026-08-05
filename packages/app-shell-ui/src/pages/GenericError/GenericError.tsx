@@ -1,7 +1,7 @@
 import { lazy, Suspense, useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
-import { HvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
+import { HvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
 
 import { ErrorPage } from "../ErrorPage/ErrorPage";
 

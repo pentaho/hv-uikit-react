@@ -11,7 +11,7 @@ import {
   HvTableSection,
   useHvPagination,
   useHvTable,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 

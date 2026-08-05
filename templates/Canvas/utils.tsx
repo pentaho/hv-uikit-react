@@ -1,4 +1,4 @@
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 import {
   Battery,
   Cloud,
@@ -12,7 +12,7 @@ import {
   Level3Bad,
   Palette,
   Table,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 export const delay = (ms: number) =>
   new Promise((resolve) => {

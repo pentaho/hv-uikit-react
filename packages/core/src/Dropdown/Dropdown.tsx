@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useForkRef } from "@mui/material/utils";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import {

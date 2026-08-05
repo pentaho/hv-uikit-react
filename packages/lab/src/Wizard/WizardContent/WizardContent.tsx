@@ -13,7 +13,7 @@ import {
   HvLoadingContainer,
   type ExtractNames,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { HvWizardContext, type HvWizardTabs } from "../WizardContext";
 import { staticClasses, useClasses } from "./WizardContent.styles";

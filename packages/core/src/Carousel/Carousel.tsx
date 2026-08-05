@@ -11,7 +11,7 @@ import {
   clamp,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvButton } from "../Button";
 import { HvContainer } from "../Container";

@@ -1,10 +1,7 @@
 import { forwardRef, useCallback } from "react";
 import type { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import { HvBaseSwitch, type HvBaseSwitchProps } from "../BaseSwitch";
 import {

@@ -9,8 +9,8 @@ import {
   theme,
   type HvColor,
   type HvGridProps,
-} from "@hitachivantara/uikit-react-core";
-import { Caution, Level4Alt } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Caution, Level4Alt } from "@pentaho/uikit-react-icons";
 
 import { useModelData, type ModelDetails } from "./data";
 import { MetadataItem } from "./MetadataItem";

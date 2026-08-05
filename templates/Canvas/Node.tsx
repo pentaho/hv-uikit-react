@@ -8,12 +8,12 @@ import {
   HvTypography,
   theme,
   type HvColorAny,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   useHvNode,
   type HvFlowNodeInput,
   type HvFlowNodeOutput,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import { useCanvasContext } from "./Context";
 import { flowStatusesSpecs, iconsMapping, type FlowStatus } from "./utils";

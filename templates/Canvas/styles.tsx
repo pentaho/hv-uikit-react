@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { actionsGenericClasses, theme } from "@hitachivantara/uikit-react-core";
+import { actionsGenericClasses, theme } from "@pentaho/uikit-react-core";
 
 export const classes = {
   flow: css({

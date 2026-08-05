@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { HvAdornment, HvInput } from "@hitachivantara/uikit-react-core";
-import { Copy, Success } from "@hitachivantara/uikit-react-icons";
+import { HvAdornment, HvInput } from "@pentaho/uikit-react-core";
+import { Copy, Success } from "@pentaho/uikit-react-icons";
 
 export default function Demo() {
   const [copied, setCopied] = useState(false);

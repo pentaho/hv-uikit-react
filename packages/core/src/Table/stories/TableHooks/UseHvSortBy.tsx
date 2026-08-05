@@ -10,7 +10,7 @@ import {
   useHvSortBy,
   useHvTable,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 

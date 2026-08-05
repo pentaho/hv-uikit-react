@@ -1,8 +1,5 @@
 import { useRef } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvButtonBase, type HvButtonBaseProps } from "../../ButtonBase";
 import { HvTypography } from "../../Typography";

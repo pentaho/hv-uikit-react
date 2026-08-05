@@ -9,8 +9,8 @@ import {
   type HvInputProps,
   type HvInputSuggestion,
   type HvValidationMessages,
-} from "@hitachivantara/uikit-react-core";
-import { Calendar, Map, Time } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Calendar, Map, Time } from "@pentaho/uikit-react-icons";
 
 import { allCountries } from "./stories/countries";
 

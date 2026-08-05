@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvTextArea,
-  type HvTextAreaProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvTextArea, type HvTextAreaProps } from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvTextArea> = {
   title: "Components/Text Area",

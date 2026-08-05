@@ -8,8 +8,8 @@ import {
   HvFileUploaderPreview,
   type HvFileData,
   type HvFileUploaderProps,
-} from "@hitachivantara/uikit-react-core";
-import { Code, DocWord } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Code, DocWord } from "@pentaho/uikit-react-icons";
 
 import { cancelUpload, simulateUpload } from "./stories/simulators";
 

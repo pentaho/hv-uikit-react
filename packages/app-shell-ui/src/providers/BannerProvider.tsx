@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
 import { uid } from "uid";
-import type { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
-import { HvBanner, theme, useTheme } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellEventNotification } from "@pentaho/app-shell-events";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
+import { HvBanner, theme, useTheme } from "@pentaho/uikit-react-core";
 
 import { useLayoutContext } from "./LayoutProvider";
 import { useNavigationContext } from "./NavigationProvider";

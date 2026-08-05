@@ -2,7 +2,7 @@ import path from "node:path";
 import virtual from "@rollup/plugin-virtual";
 import { loadEnv, type PluginOption } from "vite";
 import { viteStaticCopy, type Target } from "vite-plugin-static-copy";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import {
   applyAutomaticMenu,

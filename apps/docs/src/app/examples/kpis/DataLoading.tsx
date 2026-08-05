@@ -8,7 +8,7 @@ import {
   HvRadioGroup,
   HvStatusIcon,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [endpoint, setEndpoint] = useState("1");

@@ -3,7 +3,7 @@ import {
   HvListItem,
   HvSelectionList,
   type HvSelectionListProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvSelectionList> = {
   title: "Components/Selection List",

@@ -4,12 +4,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import {
-  getColor,
-  type HvColorAny,
-  type HvSize,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny, type HvSize } from "@pentaho/uikit-styles";
 
 type HvIconSize = "XS" | "S" | "M" | "L";
 

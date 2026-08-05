@@ -3,8 +3,8 @@ import {
   HvAvatar,
   HvButtonBase,
   type HvAvatarProps,
-} from "@hitachivantara/uikit-react-core";
-import { Bookmark, Link as LinkIcon } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Bookmark, Link as LinkIcon } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvAvatar> = {
   title: "Components/Avatar",

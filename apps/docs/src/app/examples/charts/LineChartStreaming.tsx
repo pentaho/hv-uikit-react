@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { HvLineChart } from "@hitachivantara/uikit-react-viz";
+import { HvLineChart } from "@pentaho/uikit-react-viz";
 
 const rand = (diff: number) => Math.random() * diff - diff / 2;
 

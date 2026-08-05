@@ -11,7 +11,7 @@ import {
   theme,
   violet,
   yellow,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-styles";
 
 import type { HvAvatarProps } from "../Avatar";
 import type { HvAvatarGroupProps } from "../AvatarGroup";

@@ -1,6 +1,6 @@
 import type { CSSInterpolation } from "@emotion/serialize";
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvGlobalActions", {
   root: {

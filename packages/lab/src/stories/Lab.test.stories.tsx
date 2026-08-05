@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { renderStory, setupChromatic } from "@hitachivantara/internal";
-import { HvSimpleGrid } from "@hitachivantara/uikit-react-core";
+import { renderStory, setupChromatic } from "@pentaho/internal";
+import { HvSimpleGrid } from "@pentaho/uikit-react-core";
 
 import { Variants as BladeVariantsStory } from "../Blade/Blade.stories";
 import { Main as BladesMainStory } from "../Blades/Blades.stories";

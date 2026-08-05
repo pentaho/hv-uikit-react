@@ -4,12 +4,9 @@ import {
   HvContainer,
   HvGlobalActions,
   HvLoading,
-} from "@hitachivantara/uikit-react-core";
-import {
-  HvDashboard,
-  type HvDashboardProps,
-} from "@hitachivantara/uikit-react-lab";
-import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-core";
+import { HvDashboard, type HvDashboardProps } from "@pentaho/uikit-react-lab";
+import { HvVizProvider } from "@pentaho/uikit-react-viz";
 
 import {
   DASHBOARDS_STORAGE_KEY,

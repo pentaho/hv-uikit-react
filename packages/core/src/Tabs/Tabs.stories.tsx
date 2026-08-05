@@ -8,14 +8,14 @@ import {
   HvTabs,
   type HvTabProps,
   type HvTabsProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Alert,
   Calendar,
   DataStore,
   Helicopter,
   Reload,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvTabs> = {
   title: "Components/Tabs",

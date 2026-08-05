@@ -5,7 +5,7 @@ import {
   HvCardHeader,
   HvCardMedia,
   type HvCardProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { Expandable as ExpandableStory } from "./stories/Expandable";
 import { KPICards as KPICardsStory } from "./stories/KPICards";

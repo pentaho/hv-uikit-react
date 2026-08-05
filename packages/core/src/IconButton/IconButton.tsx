@@ -1,4 +1,4 @@
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { HvButton, type HvButtonProps } from "../Button";
 import { HvTooltip, type HvTooltipProps } from "../Tooltip";

@@ -1,5 +1,5 @@
 import { create, type ThemeVarsPartial } from "storybook/theming";
-import { pentaho } from "@hitachivantara/uikit-styles";
+import { pentaho } from "@pentaho/uikit-styles";
 
 const { colors } = pentaho;
 

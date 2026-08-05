@@ -6,7 +6,7 @@ import {
   type HvFlowNodeFC,
   type HvFlowNodeInput,
   type HvFlowNodeOutput,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 // Inputs and outputs info
 export const types = {

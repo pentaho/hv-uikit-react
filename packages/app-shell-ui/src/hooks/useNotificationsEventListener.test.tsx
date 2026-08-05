@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { vi } from "vitest";
-import { HvAppShellEventNotificationTrigger } from "@hitachivantara/app-shell-events";
+import { HvAppShellEventNotificationTrigger } from "@pentaho/app-shell-events";
 
 import * as BannerProvider from "../providers/BannerProvider";
 import useNotificationsEventListenerHook from "./useNotificationsEventListener";

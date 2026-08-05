@@ -5,8 +5,8 @@ import {
   HvLoading,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Add, Fail } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Fail } from "@pentaho/uikit-react-icons";
 import {
   HvFlow,
   HvFlowControls,
@@ -15,7 +15,7 @@ import {
   type HvDashboardProps,
   type HvFlowInstance,
   type HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import { edges, nodes, nodeTypes, useNodeGroups } from "./config";
 import {

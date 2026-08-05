@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellModel } from "@pentaho/app-shell-shared";
 
 import renderTestProvider from "../../tests/testUtils";
 

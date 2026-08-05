@@ -6,7 +6,7 @@ import {
   theme,
   useWidth,
   type HvContainerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvContainer> = {
   title: "Components/Container",

@@ -9,7 +9,7 @@ import {
   HvTreeItem,
   HvTreeView,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type NodeType = "server" | "schema" | "table" | "column" | "folder" | "cloud";
 

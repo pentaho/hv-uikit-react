@@ -4,7 +4,7 @@ import {
   type HvBulkActionsProps,
   type HvColor,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Level0Good,
   Level1,
@@ -12,7 +12,7 @@ import {
   Level3Bad,
   Refresh,
   type IconType,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import {
   delay,

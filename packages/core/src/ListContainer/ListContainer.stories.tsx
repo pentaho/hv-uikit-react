@@ -6,7 +6,7 @@ import {
   HvPanel,
   HvTypography,
   type HvListContainerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Calendar,
   DropRightXS,
@@ -14,7 +14,7 @@ import {
   Machine,
   Plane,
   User,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvListContainer> = {
   title: "Components/List",

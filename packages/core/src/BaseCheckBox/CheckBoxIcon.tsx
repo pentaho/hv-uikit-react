@@ -4,8 +4,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, theme, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { SvgBase } from "../icons";
 import type { HvBaseCheckBoxProps } from "./BaseCheckBox";

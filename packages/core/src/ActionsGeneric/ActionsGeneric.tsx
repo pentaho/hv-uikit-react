@@ -1,8 +1,5 @@
 import { forwardRef, isValidElement } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvButton, type HvButtonProps, type HvButtonVariant } from "../Button";
 import { HvDropDownMenu, type HvDropDownMenuProps } from "../DropDownMenu";

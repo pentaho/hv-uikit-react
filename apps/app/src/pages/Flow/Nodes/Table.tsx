@@ -3,7 +3,7 @@ import {
   HvFlowNode,
   type HvFlowNodeFC,
   type HvFlowNodeProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 export const Table: HvFlowNodeFC = (props) => {
   const params: HvFlowNodeProps["params"] = useMemo(() => {

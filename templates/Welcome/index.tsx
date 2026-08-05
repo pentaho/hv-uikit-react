@@ -4,8 +4,8 @@ import {
   HvInput,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Heart, Palette } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Heart, Palette } from "@pentaho/uikit-react-icons";
 
 const classes = {
   root: css({

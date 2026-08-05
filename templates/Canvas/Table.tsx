@@ -16,7 +16,7 @@ import {
   useHvPagination,
   useHvSortBy,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { delay } from "./utils";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { HvTab, HvTabs } from "@hitachivantara/uikit-react-core";
+import { HvTab, HvTabs } from "@pentaho/uikit-react-core";
 
 import type { ComponentMeta } from "../../utils/component";
 import { Playground, type PlaygroundProps } from "../code/Playground";

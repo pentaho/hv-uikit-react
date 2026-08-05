@@ -1,9 +1,6 @@
 import type { Node, NodeProps, ReactFlowInstance } from "reactflow";
-import type {
-  HvActionGeneric,
-  HvSliderProps,
-} from "@hitachivantara/uikit-react-core";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvActionGeneric, HvSliderProps } from "@pentaho/uikit-react-core";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import type { HvFlowNodeProps } from "./Node";
 

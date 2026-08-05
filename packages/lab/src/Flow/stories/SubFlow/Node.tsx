@@ -1,11 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { css, cx } from "@emotion/css";
 import type { NodeProps as ReactFlowNodeProps } from "reactflow";
-import { theme } from "@hitachivantara/uikit-react-core";
-import {
-  useFlowNodeIntersections,
-  useHvNode,
-} from "@hitachivantara/uikit-react-lab";
+import { theme } from "@pentaho/uikit-react-core";
+import { useFlowNodeIntersections, useHvNode } from "@pentaho/uikit-react-lab";
 
 import { FactTable } from "./FactTable";
 import { Level, type HierarchyData } from "./Level";

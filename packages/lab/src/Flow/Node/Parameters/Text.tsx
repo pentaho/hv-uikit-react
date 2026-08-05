@@ -1,4 +1,4 @@
-import { HvInput } from "@hitachivantara/uikit-react-core";
+import { HvInput } from "@pentaho/uikit-react-core";
 
 import { useFlowNodeUtils } from "../../hooks";
 import type { HvFlowNodeTextParam } from "../../types";

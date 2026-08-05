@@ -6,14 +6,14 @@ import {
   css as cssReact,
   Global,
 } from "@emotion/react";
-import type { HvTheme } from "@hitachivantara/uikit-react-shared";
+import type { HvTheme } from "@pentaho/uikit-react-shared";
 import {
   CssBaseline,
   CssScopedBaseline,
   getThemeVars,
   type HvThemeColorMode,
   type HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-styles";
 
 import { pentaho } from "../themes";
 import { getElementById } from "../utils/document";

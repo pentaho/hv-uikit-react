@@ -3,7 +3,7 @@ import {
   HvOverflowTooltip,
   HvSnackbarProvider,
   useHvSnackbar,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const SnackbarButtons = () => {
   const { enqueueSnackbar, closeSnackbar } = useHvSnackbar();

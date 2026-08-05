@@ -4,14 +4,14 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 import {
   getColor,
   theme,
   type HvColor,
   type HvColorAny,
   type HvSize,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-styles";
 
 import { HvCheckBoxIcon } from "../BaseCheckBox/CheckBoxIcon";
 import { HvButtonBase, type HvButtonBaseProps } from "../ButtonBase";

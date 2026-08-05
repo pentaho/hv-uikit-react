@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CodeEditor, useLiveRunner, type Scope } from "react-live-runner";
 import { clsx } from "clsx";
-import { HvTab, HvTabs, HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTab, HvTabs, HvTypography } from "@pentaho/uikit-react-core";
 
 import { DocsContainer } from "./DocsProvider";
 import { ToggableControls } from "./ToggableControls";

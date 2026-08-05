@@ -5,7 +5,7 @@ import {
   createClasses,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { fixedForwardRef } from "../types/generic";

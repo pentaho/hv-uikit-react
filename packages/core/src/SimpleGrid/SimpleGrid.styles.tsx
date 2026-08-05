@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme, type HvBreakpoints } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme, type HvBreakpoints } from "@pentaho/uikit-styles";
 
 import type { HvGridBreakpoint } from "./SimpleGrid";
 

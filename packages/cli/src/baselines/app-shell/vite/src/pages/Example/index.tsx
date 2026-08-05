@@ -3,7 +3,7 @@ import {
   HvGlobalActions,
   HvGrid,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { withProvider } from "../../providers/Provider";
 

@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import useNavigationMenuItems from "../hooks/useNavigationMenuItems";

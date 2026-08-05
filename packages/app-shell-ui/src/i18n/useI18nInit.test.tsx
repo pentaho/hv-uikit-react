@@ -3,12 +3,9 @@ import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { render, screen, waitFor } from "@testing-library/react";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import {
-  createI18n,
-  type I18nInstance,
-} from "@hitachivantara/app-shell-i18next";
-import { CONFIG_TRANSLATIONS_NAMESPACE } from "@hitachivantara/app-shell-shared";
-import { HvProvider } from "@hitachivantara/uikit-react-core";
+import { createI18n, type I18nInstance } from "@pentaho/app-shell-i18next";
+import { CONFIG_TRANSLATIONS_NAMESPACE } from "@pentaho/app-shell-shared";
+import { HvProvider } from "@pentaho/uikit-react-core";
 
 import InitErrorFallback from "../components/InitErrorFallback/InitErrorFallback";
 import { APP_SHELL_NAMESPACE, useI18nInit } from "../i18n";

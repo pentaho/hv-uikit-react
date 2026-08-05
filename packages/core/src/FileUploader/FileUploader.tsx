@@ -1,7 +1,4 @@
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvFormElement, type HvFormElementProps } from "../FormElement";
 import { useLabels } from "../hooks/useLabels";

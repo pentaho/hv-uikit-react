@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvQueryBuilder,
   type HvQueryBuilderProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { CustomRenderers as CustomRenderersStory } from "./stories/CustomRenderers";
 import { Main as MainStory } from "./stories/Main";

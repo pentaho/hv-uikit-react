@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { HvButton, HvEmptyState } from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+import { HvButton, HvEmptyState } from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 
 export const Component = () => {
   return (

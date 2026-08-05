@@ -7,14 +7,14 @@ import {
   HvIconButton,
   theme,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
-import { Add, Backwards } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Backwards } from "@pentaho/uikit-react-icons";
 import {
   HvFlow,
   HvFlowControls,
   HvFlowSidebar,
   type HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 // The code for these utils are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/Base
 import { restrictToSample } from "../Base";

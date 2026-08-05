@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import {
   HvBreadCrumb,
   type HvBreadCrumbProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const data = [
   { label: "Label 1", path: "route1" },

@@ -1,9 +1,6 @@
 import { Suspense, useCallback, useEffect, useState } from "react";
-import {
-  useHvLocation,
-  useHvNavigation,
-} from "@hitachivantara/app-shell-navigation";
-import { HvLoading, HvTab, HvTabs } from "@hitachivantara/uikit-react-core";
+import { useHvLocation, useHvNavigation } from "@pentaho/app-shell-navigation";
+import { HvLoading, HvTab, HvTabs } from "@pentaho/uikit-react-core";
 
 import { MainContainer } from "../../components/MainContainer";
 

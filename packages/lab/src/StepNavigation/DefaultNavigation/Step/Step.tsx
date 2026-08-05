@@ -5,13 +5,13 @@ import {
   type HvBaseProps,
   type HvButtonBaseProps,
   type HvSize,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   HourGlass,
   Level0Good,
   Level3Bad,
   type IconType,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import { getSemantic } from "../utils";
 import { useClasses } from "./Step.styles";

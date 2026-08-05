@@ -5,16 +5,16 @@ import {
   Position,
   type NodeProps as ReactFlowNodeProps,
 } from "reactflow";
-import { HvIconButton, HvTypography } from "@hitachivantara/uikit-react-core";
-import { Level0Good } from "@hitachivantara/uikit-react-icons";
+import { HvIconButton, HvTypography } from "@pentaho/uikit-react-core";
+import { Level0Good } from "@pentaho/uikit-react-icons";
 import {
   useFlowNodeEdges,
   useHvNode,
   type HvFlowNodeInput,
   type HvFlowNodeOutput,
-} from "@hitachivantara/uikit-react-lab";
-import { mergeStyles } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-lab";
+import { mergeStyles } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 const classes = {
   root: css({

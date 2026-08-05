@@ -1,4 +1,4 @@
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useClasses } from "./CarouselSlide.styles";
 

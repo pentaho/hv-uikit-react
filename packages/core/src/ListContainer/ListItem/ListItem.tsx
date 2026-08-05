@@ -7,10 +7,7 @@ import {
   useMemo,
   type ReactElement,
 } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvFocus } from "../../Focus";
 import type { HvBaseProps } from "../../types/generic";

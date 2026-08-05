@@ -8,8 +8,8 @@ import {
   useUniqueId,
   type ExtractNames,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
-import { End } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { End } from "@pentaho/uikit-react-icons";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";

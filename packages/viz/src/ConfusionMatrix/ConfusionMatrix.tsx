@@ -7,8 +7,8 @@ import {
   VisualMapComponent,
 } from "echarts/components";
 import * as echarts from "echarts/core";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import { HvBaseChart } from "../BaseChart";
 import {

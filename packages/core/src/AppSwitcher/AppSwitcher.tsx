@@ -1,8 +1,5 @@
 import { forwardRef, useMemo } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvListContainer } from "../ListContainer";
 import { HvOverflowTooltip } from "../OverflowTooltip";

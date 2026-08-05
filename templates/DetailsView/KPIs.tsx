@@ -4,8 +4,8 @@ import {
   HvGrid,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Bottom, Top } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Bottom, Top } from "@pentaho/uikit-react-icons";
 
 import { useModelData } from "./data";
 import { MetadataItem } from "./MetadataItem";

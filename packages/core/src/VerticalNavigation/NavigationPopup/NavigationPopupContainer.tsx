@@ -1,6 +1,6 @@
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Popper from "@mui/material/Popper";
-import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
+import { useTheme, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../../types/generic";
 import { getContainerElement } from "../../utils/document";

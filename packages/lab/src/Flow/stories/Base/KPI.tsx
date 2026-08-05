@@ -1,4 +1,4 @@
-import { HvFlowNode, type HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import { HvFlowNode, type HvFlowNodeFC } from "@pentaho/uikit-react-lab";
 
 export const KPI: HvFlowNodeFC = (props) => {
   return (

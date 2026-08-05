@@ -8,7 +8,7 @@ import {
   HvTableHeader,
   HvTableRow,
   type HvTableInstance,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { getColumns, type ListViewEntry } from "./data";
 

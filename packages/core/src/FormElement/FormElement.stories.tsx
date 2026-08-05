@@ -10,8 +10,8 @@ import {
   type HvBaseInputProps,
   type HvFormElementProps,
   type HvFormStatus,
-} from "@hitachivantara/uikit-react-core";
-import { CloseXS, Success } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { CloseXS, Success } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvFormElement> = {
   title: "Components/Form Element",

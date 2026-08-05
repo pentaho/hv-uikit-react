@@ -2,7 +2,7 @@ import type {
   HvBaseProps,
   HvTheme,
   HvTypographyVariants,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { HvStep, type HvStepProps } from "./Step";
 import { getColor, stepSizes } from "./utils";

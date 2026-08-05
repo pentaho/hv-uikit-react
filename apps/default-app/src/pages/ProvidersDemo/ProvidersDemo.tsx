@@ -1,9 +1,5 @@
 import { useContext } from "react";
-import {
-  HvContainer,
-  HvPanel,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvContainer, HvPanel, HvTypography } from "@pentaho/uikit-react-core";
 
 import { DefaultAppContext } from "../../providers/DefaultAppProvider";
 import { useAsyncContext } from "../../providers/shared/useAsyncContext";

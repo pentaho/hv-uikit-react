@@ -11,7 +11,7 @@ import {
   HvTypography,
   theme,
   type HvCarouselProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default {
   title: "Components/Carousel",

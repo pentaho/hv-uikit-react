@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
 import { expect, within } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvDialog,
   HvDialogActions,
   HvDialogContent,
   HvDialogTitle,
   type HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { FormStory } from "./stories/FormStory";
 import { LongContentStory } from "./stories/LongContentStory";

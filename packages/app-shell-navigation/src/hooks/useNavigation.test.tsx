@@ -1,7 +1,7 @@
 import type { Path } from "react-router-dom";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import { useHvNavigation } from "./useNavigation";
 

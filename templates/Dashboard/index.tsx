@@ -9,14 +9,14 @@ import {
   HvTypography,
   theme,
   type HvMultiButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { Add, User } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, User } from "@pentaho/uikit-react-icons";
 import {
   HvBarChart,
   HvDonutChart,
   HvLineChart,
   HvVizProvider,
-} from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-viz";
 
 import { useServerData } from "./data";
 import { GridPanel } from "./GridPanel";

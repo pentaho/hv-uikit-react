@@ -9,7 +9,7 @@ import {
   HvSelect,
   HvSlider,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import type { ComponentMeta } from "../../utils/component";
 

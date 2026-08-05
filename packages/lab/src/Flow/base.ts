@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 
 // synced from node_modules/reactflow/dist/style.css
 export const flowStyles = css`

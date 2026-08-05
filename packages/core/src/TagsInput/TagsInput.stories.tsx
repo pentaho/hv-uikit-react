@@ -6,7 +6,7 @@ import {
   type HvFormStatus,
   type HvTagProps,
   type HvTagsInputProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import countryNamesArray from "./countries";
 import { ControlledTagArray as ControlledTagArrayStory } from "./stories/ControlledTagArray";

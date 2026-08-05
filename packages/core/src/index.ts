@@ -1,4 +1,4 @@
-export { theme } from "@hitachivantara/uikit-styles";
+export { theme } from "@pentaho/uikit-styles";
 export type {
   HvThemeBreakpoint,
   HvThemeColorMode,
@@ -10,15 +10,15 @@ export type {
   HvColorAny,
   HvRadius,
   HvSize,
-} from "@hitachivantara/uikit-styles";
-export type { HvTheme } from "@hitachivantara/uikit-react-shared";
+} from "@pentaho/uikit-styles";
+export type { HvTheme } from "@pentaho/uikit-react-shared";
 export {
   createClasses,
   useCss,
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 export * from "./themes";
 

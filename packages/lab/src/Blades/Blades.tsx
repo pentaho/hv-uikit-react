@@ -10,7 +10,7 @@ import {
   useDefaultProps,
   type ExtractNames,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blades.styles";
 

@@ -1,13 +1,6 @@
 import { useMemo } from "react";
-import {
-  Cards,
-  LineChartAlt,
-  Storage,
-} from "@hitachivantara/uikit-react-icons";
-import type {
-  HvFlowNodeGroups,
-  HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
+import { Cards, LineChartAlt, Storage } from "@pentaho/uikit-react-icons";
+import type { HvFlowNodeGroups, HvFlowProps } from "@pentaho/uikit-react-lab";
 
 import { BarChart } from "./Nodes/BarChart";
 import { Dashboard } from "./Nodes/Dashboard";

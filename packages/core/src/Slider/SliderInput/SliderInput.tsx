@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvFormStatus } from "../../FormElement";
 import { HvInput, type HvInputProps } from "../../Input";

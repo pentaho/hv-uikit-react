@@ -1,8 +1,5 @@
 import { Children } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvButton } from "../Button";
 import { useControlled } from "../hooks/useControlled";

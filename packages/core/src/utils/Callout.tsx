@@ -8,8 +8,8 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import {
   HvActionsGeneric,

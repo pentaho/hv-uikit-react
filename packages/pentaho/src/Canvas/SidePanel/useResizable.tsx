@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useForkRef } from "@hitachivantara/uikit-react-core";
+import { useForkRef } from "@pentaho/uikit-react-core";
 
 interface ContainerProps {
   ref: any;

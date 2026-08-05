@@ -2,7 +2,7 @@ import {
   clamp,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../types/generic";
 import { HvTypography, type HvTypographyProps } from "../Typography";

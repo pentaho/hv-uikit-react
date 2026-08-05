@@ -3,7 +3,7 @@ import {
   HvProgressBar,
   HvTypography,
   type HvProgressBarProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { ProgressBarSimulator } from "./ProgressBarSimulator";
 

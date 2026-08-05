@@ -1,7 +1,7 @@
 import createCache from "@emotion/cache";
 import { DecoratorHelpers } from "@storybook/addon-themes";
 import type { Decorator } from "@storybook/react-vite";
-import { HvProvider, themes } from "@hitachivantara/uikit-react-core";
+import { HvProvider, themes } from "@pentaho/uikit-react-core";
 
 import { getThemesList, useDarkClass } from "./utils";
 

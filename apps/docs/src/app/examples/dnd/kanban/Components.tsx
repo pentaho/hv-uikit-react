@@ -13,7 +13,7 @@ import {
   HvOverflowTooltip,
   HvStack,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Add,
   Delete,
@@ -22,7 +22,7 @@ import {
   Level3Bad,
   Level4,
   Level5,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import type { Column, Task } from "./types";
 

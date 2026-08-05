@@ -6,12 +6,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import {
-  getColor,
-  type HvColorAny,
-  type HvSize,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny, type HvSize } from "@pentaho/uikit-styles";
 
 import { useAvatarGroupContext } from "../AvatarGroup/AvatarGroupContext";
 import { useImageLoaded } from "../hooks/useImageLoaded";

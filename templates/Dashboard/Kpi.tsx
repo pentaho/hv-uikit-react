@@ -5,8 +5,8 @@ import {
   HvTypography,
   theme,
   type HvCardProps,
-} from "@hitachivantara/uikit-react-core";
-import { Level0Good } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Level0Good } from "@pentaho/uikit-react-icons";
 
 const styles = {
   title: css({

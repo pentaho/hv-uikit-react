@@ -1,9 +1,9 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Global } from "@emotion/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
-import HvAppShell from "@hitachivantara/app-shell-ui";
-import { setupChromatic } from "@hitachivantara/internal";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
+import HvAppShell from "@pentaho/app-shell-ui";
+import { setupChromatic } from "@pentaho/internal";
 
 const externalsEntries = [
   "react@18",

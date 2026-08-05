@@ -7,7 +7,7 @@ import {
 import {
   useHvAppShellModel,
   type HvAppShellViewsModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 interface IndexedView {
   path: string;

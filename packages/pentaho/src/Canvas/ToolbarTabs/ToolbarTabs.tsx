@@ -13,13 +13,13 @@ import {
   type ExtractNames,
   type HvBaseProps,
   type HvButtonProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   AddAlt,
   CloseXS,
   MoreOptionsHorizontal,
-} from "@hitachivantara/uikit-react-icons";
-import { clamp } from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-icons";
+import { clamp } from "@pentaho/uikit-react-utils";
 
 import { HvCanvasPanelTab } from "../PanelTab";
 import { HvCanvasPanelTabs, type HvCanvasPanelTabsProps } from "../PanelTabs";

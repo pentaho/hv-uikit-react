@@ -1,9 +1,5 @@
-import {
-  createClasses,
-  theme,
-  useTheme,
-} from "@hitachivantara/uikit-react-core";
-import { mergeStyles } from "@hitachivantara/uikit-react-utils";
+import { createClasses, theme, useTheme } from "@pentaho/uikit-react-core";
+import { mergeStyles } from "@pentaho/uikit-react-utils";
 
 import { useLayoutContext } from "../../providers/LayoutProvider";
 import { useNavigationContext } from "../../providers/NavigationProvider";

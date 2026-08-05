@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { GaugeChart } from "echarts/charts";
 import * as echarts from "echarts/core";
-import { useTheme } from "@hitachivantara/uikit-react-core";
-import { HvBaseChart } from "@hitachivantara/uikit-react-viz";
+import { useTheme } from "@pentaho/uikit-react-core";
+import { HvBaseChart } from "@pentaho/uikit-react-viz";
 
 echarts.use([GaugeChart]);
 

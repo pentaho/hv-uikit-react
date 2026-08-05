@@ -18,13 +18,13 @@ import * as echartsCore from "echarts/core";
 import * as reactflow from "reactflow";
 import useSWR from "swr";
 import * as zod from "zod";
-import * as HvCodeEditor from "@hitachivantara/uikit-react-code-editor";
-import * as HvCore from "@hitachivantara/uikit-react-core";
-import * as HvIcons from "@hitachivantara/uikit-react-icons";
-import * as HvLab from "@hitachivantara/uikit-react-lab";
-import * as HvPentaho from "@hitachivantara/uikit-react-pentaho";
-import * as HvViz from "@hitachivantara/uikit-react-viz";
-import * as HvStyles from "@hitachivantara/uikit-styles";
+import * as HvCodeEditor from "@pentaho/uikit-react-code-editor";
+import * as HvCore from "@pentaho/uikit-react-core";
+import * as HvIcons from "@pentaho/uikit-react-icons";
+import * as HvLab from "@pentaho/uikit-react-lab";
+import * as HvPentaho from "@pentaho/uikit-react-pentaho";
+import * as HvViz from "@pentaho/uikit-react-viz";
+import * as HvStyles from "@pentaho/uikit-styles";
 
 type ResolveContext = {
   files: Record<string, string>;

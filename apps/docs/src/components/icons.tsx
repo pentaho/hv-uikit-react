@@ -1,7 +1,7 @@
 "use client";
 
-import { HvPanel } from "@hitachivantara/uikit-react-core";
-import { Alert, icons } from "@hitachivantara/uikit-react-icons";
+import { HvPanel } from "@pentaho/uikit-react-core";
+import { Alert, icons } from "@pentaho/uikit-react-icons";
 
 import { Playground } from "./code/Playground";
 

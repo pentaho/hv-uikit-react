@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvSearchInput,
-  type HvInputProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvSearchInput, type HvInputProps } from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvSearchInput> = {
   title: "Components/Search Input",

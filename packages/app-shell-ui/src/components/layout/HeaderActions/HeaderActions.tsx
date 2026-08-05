@@ -1,5 +1,5 @@
-import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
-import { HvHeaderActions } from "@hitachivantara/uikit-react-core";
+import { useHvAppShellModel } from "@pentaho/app-shell-shared";
+import { HvHeaderActions } from "@pentaho/uikit-react-core";
 
 import DynamicAction from "./DynamicAction";
 import InternalAction, {

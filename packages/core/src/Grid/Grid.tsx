@@ -2,10 +2,7 @@ import { forwardRef } from "react";
 import MuiGrid, {
   type GridLegacyProps as MuiGridProps,
 } from "@mui/material/GridLegacy";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useWidth } from "../hooks/useWidth";
 import { staticClasses, useClasses } from "./Grid.styles";

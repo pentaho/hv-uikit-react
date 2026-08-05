@@ -7,8 +7,8 @@ import {
   type ExtractNames,
   type HvBaseProps,
   type HvBreakpoints,
-} from "@hitachivantara/uikit-react-core";
-import { theme } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-core";
+import { theme } from "@pentaho/uikit-styles";
 
 import {
   HvDefaultNavigation,

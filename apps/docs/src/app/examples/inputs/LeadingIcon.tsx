@@ -1,4 +1,4 @@
-import { HvIconContainer, HvInput } from "@hitachivantara/uikit-react-core";
+import { HvIconContainer, HvInput } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   return (

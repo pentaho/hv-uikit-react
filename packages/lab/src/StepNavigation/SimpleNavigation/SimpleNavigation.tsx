@@ -2,7 +2,7 @@ import type {
   HvBaseProps,
   HvTheme,
   HvTypographyVariants,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { HvDot, type HvDotProps } from "./Dot";
 import { dotSizes, getColor } from "./utils";

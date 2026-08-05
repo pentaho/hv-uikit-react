@@ -15,8 +15,8 @@ import {
   useUniqueId,
   type ExtractNames,
   type HvDrawerProps,
-} from "@hitachivantara/uikit-react-core";
-import { Add } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add } from "@pentaho/uikit-react-icons";
 
 import { useFlowContext } from "../hooks";
 import type { HvFlowNodeGroups } from "../types";

@@ -1,9 +1,5 @@
 import { tabClasses } from "@mui/base";
-import {
-  createClasses,
-  outlineStyles,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { createClasses, outlineStyles, theme } from "@pentaho/uikit-react-core";
 
 export const { staticClasses, useClasses } = createClasses("HvCanvasPanelTab", {
   root: {

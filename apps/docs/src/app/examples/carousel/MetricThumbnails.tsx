@@ -4,8 +4,8 @@ import {
   HvCarouselSlide,
   HvTag,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { HvBarChart } from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-core";
+import { HvBarChart } from "@pentaho/uikit-react-viz";
 
 type Status = "positive" | "negative" | "warning";
 

@@ -7,18 +7,14 @@ import {
   type ReactFlowState,
 } from "reactflow";
 import { shallow } from "zustand/shallow";
-import {
-  HvButton,
-  HvMultiButton,
-  useLabels,
-} from "@hitachivantara/uikit-react-core";
+import { HvButton, HvMultiButton, useLabels } from "@pentaho/uikit-react-core";
 import {
   Focus,
   Lock,
   Unlock,
   ZoomIn,
   ZoomOut,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 import { useFlowInstance } from "../hooks";
 

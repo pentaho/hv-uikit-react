@@ -5,8 +5,8 @@ import {
   HvCardMedia,
   HvTypography,
   type HvCardProps,
-} from "@hitachivantara/uikit-react-core";
-import { Level2Average } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Level2Average } from "@pentaho/uikit-react-icons";
 
 export const Main = (props: HvCardProps) => (
   <HvCard style={{ width: 360 }} {...props}>

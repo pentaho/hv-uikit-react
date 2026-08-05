@@ -7,8 +7,8 @@ import {
 import {
   HvDropDownMenu,
   type HvDropDownMenuProps,
-} from "@hitachivantara/uikit-react-core";
-import { useFlowInstance } from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-core";
+import { useFlowInstance } from "@pentaho/uikit-react-lab";
 
 import { flowStatusesSpecs, type FlowStatus } from "./utils";
 

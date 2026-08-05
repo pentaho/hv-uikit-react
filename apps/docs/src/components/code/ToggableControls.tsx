@@ -1,12 +1,6 @@
 import { useState } from "react";
-import { HvButton, HvTooltip } from "@hitachivantara/uikit-react-core";
-import {
-  Check,
-  Code,
-  Copy,
-  Preview,
-  Reload,
-} from "@hitachivantara/uikit-react-icons";
+import { HvButton, HvTooltip } from "@pentaho/uikit-react-core";
+import { Check, Code, Copy, Preview, Reload } from "@pentaho/uikit-react-icons";
 
 type ToggableControlsProps = {
   code: Record<string, string>;

@@ -7,8 +7,8 @@ import {
   HvTableHeader,
   HvTableRow,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import type { HvTableColumnConfig } from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
+import type { HvTableColumnConfig } from "@pentaho/uikit-react-core";
 
 import type { ComponentMeta } from "../../utils/component";
 

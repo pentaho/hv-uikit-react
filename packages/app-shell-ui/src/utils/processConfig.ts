@@ -12,7 +12,7 @@ import type {
   HvAppShellServicesModel,
   HvAppShellViewsConfig,
   HvAppShellViewsModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 // Generate a unique key for internal tracking
 const generateKey = (): string => {

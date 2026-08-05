@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SortingRule } from "react-table";
-import type { HvTableState } from "@hitachivantara/uikit-react-core";
+import type { HvTableState } from "@pentaho/uikit-react-core";
 
 import { makeData, type AssetEvent } from "./storiesUtils";
 

@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router-dom";
-import type { NavigationData } from "@hitachivantara/uikit-react-core";
+import type { NavigationData } from "@pentaho/uikit-react-core";
 
 export const appRoutes: RouteObject[] = [
   { index: true, path: "/", lazy: () => import("./pages/Home") },

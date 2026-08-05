@@ -1,5 +1,5 @@
 import type { StoryObj } from "@storybook/react-vite";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvTable,
   HvTableBody,
@@ -9,7 +9,7 @@ import {
   HvTableHeader,
   HvTableRow,
   type HvTableProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { AllColumnRenderers } from "./AllColumnRenderers";
 import { ColumnResize } from "./TableHooks/ColumnResize";

@@ -1,5 +1,5 @@
-import { makeData, type AssetEvent } from "@hitachivantara/internal";
-import type { HvTableColumnConfig } from "@hitachivantara/uikit-react-core";
+import { makeData, type AssetEvent } from "@pentaho/internal";
+import type { HvTableColumnConfig } from "@pentaho/uikit-react-core";
 
 export { makeData, type AssetEvent };
 

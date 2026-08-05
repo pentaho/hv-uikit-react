@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  HvSection,
-  HvSwitch,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvSection, HvSwitch, HvTypography } from "@pentaho/uikit-react-core";
 
 const settings = [
   {

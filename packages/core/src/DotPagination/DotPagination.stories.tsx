@@ -4,11 +4,8 @@ import {
   HvDotPagination,
   HvTypography,
   type HvDotPaginationProps,
-} from "@hitachivantara/uikit-react-core";
-import {
-  CurrentStep,
-  RadioButtonUnselected,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { CurrentStep, RadioButtonUnselected } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvDotPagination> = {
   title: "Components/Dot Pagination",

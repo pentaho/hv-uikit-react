@@ -9,7 +9,7 @@ import {
   HvTypography,
   theme,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Add,
   Backwards,
@@ -19,7 +19,7 @@ import {
   Fail,
   Leaf,
   Table,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 import {
   HvFlow,
   HvFlowBackground,
@@ -27,7 +27,7 @@ import {
   HvFlowEmpty,
   HvFlowSidebar,
   type HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import { restrictToSample } from "../Base";
 import type { HierarchyData } from "./Level";

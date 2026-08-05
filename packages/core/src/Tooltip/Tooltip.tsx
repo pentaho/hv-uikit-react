@@ -7,7 +7,7 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { getElementById } from "../utils/document";
 import { staticClasses, useClasses } from "./Tooltip.styles";

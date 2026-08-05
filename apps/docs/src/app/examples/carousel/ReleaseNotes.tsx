@@ -9,7 +9,7 @@ import {
   HvIconContainer,
   HvTag,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const RELEASES = [
   {

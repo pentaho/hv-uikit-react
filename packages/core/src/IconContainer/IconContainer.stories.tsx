@@ -1,11 +1,8 @@
 import { UserIcon as User } from "@phosphor-icons/react/User";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { setupChromatic } from "@hitachivantara/internal";
-import {
-  HvIconContainer,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { User as HvUser } from "@hitachivantara/uikit-react-icons";
+import { setupChromatic } from "@pentaho/internal";
+import { HvIconContainer, HvTypography } from "@pentaho/uikit-react-core";
+import { User as HvUser } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvIconContainer> = {
   title: "Components/Icon Container",

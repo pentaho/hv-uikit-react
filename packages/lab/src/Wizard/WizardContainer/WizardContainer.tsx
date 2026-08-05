@@ -3,7 +3,7 @@ import {
   useDefaultProps,
   type ExtractNames,
   type HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { staticClasses, useClasses } from "./WizardContainer.styles";
 

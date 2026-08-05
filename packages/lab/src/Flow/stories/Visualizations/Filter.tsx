@@ -4,13 +4,13 @@ import {
   HvCheckBoxGroup,
   theme,
   type HvCheckBoxGroupProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   HvFlowNode,
   useFlowInputNodes,
   useFlowNodeUtils,
   type HvFlowNodeFC,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import type { NodeData } from "./data";
 

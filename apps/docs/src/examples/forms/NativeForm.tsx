@@ -8,8 +8,8 @@ import {
   HvRadioGroup,
   HvTextArea,
   HvTimePicker,
-} from "@hitachivantara/uikit-react-core";
-import { Map, Phone } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Map, Phone } from "@pentaho/uikit-react-icons";
 
 const countries = [
   { id: "pt", label: "Portugal" },

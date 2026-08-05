@@ -1,5 +1,5 @@
-import type { HvAppShellEventNotification } from "@hitachivantara/app-shell-events";
-import { useHvSnackbar } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellEventNotification } from "@pentaho/app-shell-events";
+import { useHvSnackbar } from "@pentaho/uikit-react-core";
 
 import { useBannerContext } from "../providers/BannerProvider";
 

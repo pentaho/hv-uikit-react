@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import { HvListItem, type HvListItemProps } from "../ListContainer";

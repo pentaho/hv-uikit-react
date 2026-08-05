@@ -11,8 +11,8 @@ import {
   type HvActionGeneric,
   type HvActionsGenericProps,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
-import { mergeStyles } from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-core";
+import { mergeStyles } from "@pentaho/uikit-react-utils";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";

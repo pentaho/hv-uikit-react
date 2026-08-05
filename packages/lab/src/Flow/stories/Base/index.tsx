@@ -4,8 +4,8 @@ import {
   Cluster,
   LineChartAlt,
   MachineLearning,
-} from "@hitachivantara/uikit-react-icons";
-import type { HvFlowProps } from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-icons";
+import type { HvFlowProps } from "@pentaho/uikit-react-lab";
 
 import { Asset } from "./Asset";
 // The code for these components are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/Base

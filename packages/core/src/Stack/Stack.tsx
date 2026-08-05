@@ -3,11 +3,8 @@ import MuiDivider, {
   type DividerProps as MuiDividerProps,
 } from "@mui/material/Divider";
 import { useTheme } from "@mui/material/styles";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvBreakpoints } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvBreakpoints } from "@pentaho/uikit-styles";
 
 import { HvFocus } from "../Focus";
 import { useWidth } from "../hooks/useWidth";

@@ -11,7 +11,7 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { gridStyles, staticClasses, useClasses } from "./Dashboard.styles";
 

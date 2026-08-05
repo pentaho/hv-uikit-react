@@ -16,8 +16,8 @@ import {
   type HvControlsViewConfiguration,
   type HvRightListControls,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Cards, List } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Cards, List } from "@pentaho/uikit-react-icons";
 
 const getOption = (opts: string[], i: number) => opts[i % opts.length];
 

@@ -1,8 +1,4 @@
-import {
-  HvAvatar,
-  HvButton,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvAvatar, HvButton, HvTypography } from "@pentaho/uikit-react-core";
 
 import { Card } from "./Card";
 

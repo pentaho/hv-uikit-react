@@ -3,10 +3,7 @@ import { useResizeDetector } from "react-resize-detector";
 import MuiDialogContent, {
   type DialogContentProps as MuiDialogContentProps,
 } from "@mui/material/DialogContent";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvTypography } from "../../Typography";
 import { staticClasses, useClasses } from "./Content.styles";

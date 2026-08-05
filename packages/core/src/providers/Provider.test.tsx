@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useTheme } from "@hitachivantara/uikit-react-utils";
-import { mergeTheme } from "@hitachivantara/uikit-styles";
+import { useTheme } from "@pentaho/uikit-react-utils";
+import { mergeTheme } from "@pentaho/uikit-styles";
 
 import { pentaho } from "../themes/pentaho";
 import { HvProvider } from "./Provider";

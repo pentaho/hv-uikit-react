@@ -10,8 +10,8 @@ import {
   HvCheckBox,
   HvToggleButton,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { Favorite, FavoriteSelected } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Favorite, FavoriteSelected } from "@pentaho/uikit-react-icons";
 
 const SingleContent = () => (
   <HvCardContent>

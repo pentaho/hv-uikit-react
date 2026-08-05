@@ -5,8 +5,8 @@ import {
   HvTag,
   HvTagsInput,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS } from "@pentaho/uikit-react-icons";
 
 const colors = [
   "Blue",

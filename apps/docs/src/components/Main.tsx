@@ -3,8 +3,8 @@
 // TODO: 👆 remove this, make HvProvider SSR-friendly
 import createCache from "@emotion/cache";
 import { useTheme } from "nextra-theme-docs";
-import { HvProvider, pentaho } from "@hitachivantara/uikit-react-core";
-import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
+import { HvProvider, pentaho } from "@pentaho/uikit-react-core";
+import { HvVizProvider } from "@pentaho/uikit-react-viz";
 
 const emotionCache = createCache({
   key: "hv-docs",

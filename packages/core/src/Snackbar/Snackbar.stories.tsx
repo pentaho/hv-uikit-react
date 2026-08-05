@@ -4,8 +4,8 @@ import {
   HvSnackbar,
   HvSnackbarContent,
   type HvSnackbarProps,
-} from "@hitachivantara/uikit-react-core";
-import { Deploy, Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Deploy, Info } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvSnackbar> = {
   title: "Components/Snackbar",

@@ -5,7 +5,7 @@ import {
   HvDialogActions,
   HvDialogContent,
   HvDialogTitle,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export const LongContentStory = () => {
   const [open, setOpen] = useState(false);

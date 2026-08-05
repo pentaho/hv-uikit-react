@@ -1,6 +1,6 @@
 import type { ThemeExtender } from "@unocss/core";
 import type { Theme } from "@unocss/preset-wind3";
-import { pentaho as hvTheme, theme } from "@hitachivantara/uikit-styles";
+import { pentaho as hvTheme, theme } from "@pentaho/uikit-styles";
 
 // #region theme conversion utils
 const { light: defaultColors } = hvTheme.colors;

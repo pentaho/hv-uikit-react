@@ -2,10 +2,7 @@ import { useMemo } from "react";
 import { hexToHsva, hsvaToHex } from "@uiw/color-convert";
 import Hue from "@uiw/react-color-hue";
 import Saturation from "@uiw/react-color-saturation";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvTypography } from "../../Typography";
 import { Fields } from "./Fields";

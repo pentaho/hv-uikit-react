@@ -21,7 +21,7 @@ import {
   type HvActionsGenericProps,
   type HvGridProps,
   type HvLeftControlProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import {
   actions,

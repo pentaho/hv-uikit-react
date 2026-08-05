@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvVerticalNavigation,
   HvVerticalNavigationAction,
@@ -11,7 +11,7 @@ import {
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
   type HvVerticalNavigationProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { CollapsibleIcons as CollapsibleIconsStory } from "./stories/CollapsibleIcons";
 import { Main as MainStory } from "./stories/Main";
