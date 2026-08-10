@@ -1,4 +1,3 @@
-import next from "./themes/next";
 import pentaho from "./themes/pentaho";
 
 export * from "./CssBaseline";
@@ -15,5 +14,5 @@ export * from "./types";
 export * from "./utils";
 
 // Export each theme individually and a bundle of themes
-export { next, pentaho };
-export const themes = { next, pentaho };
+export { pentaho };
+export const themes = { pentaho };
