@@ -5,10 +5,7 @@ import { HvSelect } from "@hitachivantara/uikit-react-core";
 
 import { useDocsTheme } from "../hooks/useDocsTheme";
 
-const themes = [
-  { value: "pentaho", label: "Pentaho" },
-  { value: "next", label: "NEXT" },
-];
+const themes = [{ value: "pentaho", label: "Pentaho" }];
 
 const allowedPaths = [
   "/components",
