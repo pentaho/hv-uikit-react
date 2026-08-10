@@ -98,32 +98,6 @@ describe("VerticalNavigation", () => {
     });
   });
 
-  describe("non-pentaho theme", () => {
-    it("should render the standard header with title and collapse button", async () => {
-      await renderTestProvider(<VerticalNavigation />, {
-        theming: { theme: "next" },
-      });
-
-      const header = await screen.findByText("Menu");
-      expect(header).toBeInTheDocument();
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-      expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
-    });
-
-    it("should not render the pentaho collapse action", async () => {
-      await renderTestProvider(<VerticalNavigation />, {
-        theming: { theme: "next" },
-      });
-
-      await screen.findByRole("navigation");
-      expect(screen.queryByText("Collapse Menu")).not.toBeInTheDocument();
-    });
-  });
-
   describe("actions", () => {
     const switchVerticalNavigationModeMock = vi.fn();
     const mockedConfigResponse: Partial<HvAppShellConfig> = {

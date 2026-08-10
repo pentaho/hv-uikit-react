@@ -3,10 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { useTheme } from "@hitachivantara/uikit-react-utils";
 import { mergeTheme } from "@hitachivantara/uikit-styles";
 
-import { next } from "../themes/next";
+import { pentaho } from "../themes/pentaho";
 import { HvProvider } from "./Provider";
 
-const customTheme = mergeTheme(next, {
+const customTheme = mergeTheme(pentaho, {
   name: "custom-theme",
 });
 
