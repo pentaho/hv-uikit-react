@@ -152,12 +152,12 @@ npm i -D unocss @pentaho/uikit-uno-preset
 // vite.config.ts
 import unoCSS from "unocss/vite";
 import { defineConfig } from "vite";
-import { presetHv } from "@pentaho/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
   plugins: [
     unoCSS({
-      presets: [presetHv()],
+      presets: [presetUikit()],
     }),
   ],
 });
@@ -177,7 +177,7 @@ and add [`vite-plugin-css-injected-by-js`](https://www.npmjs.com/package/vite-pl
 + cssInjectedByJsPlugin({ relativeCSSInjection: true }),
   unoCSS({
 +   mode: "per-module",
-    presets: [presetHv()],
+    presets: [presetUikit()],
   }),
 ```
 

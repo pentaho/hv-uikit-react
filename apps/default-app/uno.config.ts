@@ -1,8 +1,8 @@
 import { defineConfig, presetIcons } from "unocss";
-import { presetHv } from "@pentaho/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
-  presets: [presetHv(), presetIcons()],
+  presets: [presetUikit(), presetIcons()],
   content: {
     pipeline: {
       include: [/\.(tsx?|mdx?|html)($|\?)/],
