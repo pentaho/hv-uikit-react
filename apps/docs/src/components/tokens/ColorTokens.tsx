@@ -63,7 +63,7 @@ export const ColorTokensInternal = () => {
                     />
 
                     <div className="grid text-center gap-xs">
-                      {compatToken && activeTheme?.name !== "pentahoPlus" && (
+                      {compatToken && activeTheme?.name !== "pentaho" && (
                         <code className="text-sm grid-area-[1/1] text-[#0000]">
                           {compatToken}
                         </code>

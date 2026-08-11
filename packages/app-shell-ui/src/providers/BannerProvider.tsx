@@ -42,7 +42,7 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
   const { verticalNavigationWidth, setBannerMaxHeight } = useLayoutContext();
   const [banners, setBanners] = useState<Banner[]>([]);
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
+  const isPentahoTheme = activeTheme?.name === "pentaho";
 
   const show = (notification: HvAppShellEventNotification) => {
     const id = uid();

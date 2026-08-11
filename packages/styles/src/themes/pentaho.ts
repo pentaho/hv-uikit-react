@@ -21,7 +21,7 @@ import {
 } from "../palette";
 
 const pentaho = makeTheme((theme) => ({
-  name: "pentahoPlus",
+  name: "pentaho",
   colors: makeColors({
     brand: blue[600],
     catastrophic: [rose[800], pink[600]],
@@ -193,22 +193,6 @@ const pentaho = makeTheme((theme) => ({
   },
   snackbar: {
     actionButtonVariant: "secondaryGhost",
-  },
-
-  bulkActions: {
-    actionButtonVariant: "primaryGhost",
-  },
-  stepNavigation: {
-    separatorMargin: "4px",
-    defaultSeparatorHeight: 1,
-    simpleSeparatorHeight: 1,
-  },
-  filterGroup: {
-    applyButtonVariant: "primary",
-    cancelButtonVariant: "secondarySubtle",
-  },
-  colorPicker: {
-    hueDirection: "horizontal",
   },
 }));
 

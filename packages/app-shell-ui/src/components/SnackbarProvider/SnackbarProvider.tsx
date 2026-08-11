@@ -19,7 +19,7 @@ interface SnackbarProviderProps {
 const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
   const { activeTheme } = useTheme();
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
+  const isPentahoTheme = activeTheme?.name === "pentaho";
   const anchorOrigin: HvSnackbarProps["anchorOrigin"] = isPentahoTheme
     ? { vertical: "bottom", horizontal: "center" }
     : undefined;

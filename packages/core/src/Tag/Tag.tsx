@@ -122,7 +122,7 @@ export const HvTag = forwardRef<
   };
 
   const color =
-    (activeTheme?.name === "pentahoPlus" && colorMap[colorProp!]) || colorProp;
+    (activeTheme?.name === "pentaho" && colorMap[colorProp!]) || colorProp;
 
   const tagColor =
     // backwards-compatibility for `type` prop
