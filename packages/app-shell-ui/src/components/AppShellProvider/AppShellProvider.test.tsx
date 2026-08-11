@@ -61,7 +61,7 @@ describe("AppShellProvider component", () => {
       const bodyElement = baseElement.ownerDocument.body;
 
       await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("pentahoPlus");
+        expect(bodyElement.getAttribute("data-theme")).toBe("pentaho");
         expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });

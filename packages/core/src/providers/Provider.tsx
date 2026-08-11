@@ -64,7 +64,7 @@ export interface HvProviderProps {
   /**
    * The active theme. It must be one of the themes passed to `themes`.
    *
-   * If no value is provided, the first theme from the `themes` list is used. If no `themes` list is provided, the `pentaho` theme will be used.
+   * @default pentaho
    */
   theme?: HvTheme | HvThemeStructure;
   /**

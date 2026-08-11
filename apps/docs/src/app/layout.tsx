@@ -10,7 +10,6 @@ import { getPageMap } from "nextra/page-map";
 import { UIKitLogo } from "../assets/logos";
 import { Footer } from "../components/Footer";
 import { Main } from "../components/Main";
-import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 const title = "UI Kit";
 const description = "UI Kit documentation site";
@@ -38,7 +37,6 @@ const navbar = (
     projectLink="https://github.com/pentaho/hv-uikit-react"
   >
     <ThemeSwitch lite />
-    <ThemeSwitcher />
   </Navbar>
 );
 
