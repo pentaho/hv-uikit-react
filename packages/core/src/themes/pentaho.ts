@@ -45,7 +45,6 @@ import type { HvTableHeaderProps } from "../Table/TableHeader";
 import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
 import type { HvTagsInputProps } from "../TagsInput";
-import type { HvTooltipProps } from "../Tooltip";
 import type { HvCalloutProps } from "../utils/Callout";
 import type {
   HvVerticalNavigationActionProps,
@@ -904,14 +903,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvNumberInputProps>,
-    HvTooltip: {
-      classes: {
-        tooltip: {
-          padding: theme.spacing("xs", "sm"),
-          boxShadow: shadows.elevated,
-        },
-      },
-    } satisfies CSSClasses<HvTooltipProps>,
     HvCalendarCell: {
       classes: {
         dateWrapper: {
