@@ -19,7 +19,6 @@ import type {
   HvCalendarCellProps,
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";
-import type { HvCardProps } from "../Card";
 import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
@@ -227,48 +226,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvVerticalNavigationTreeViewItemProps>,
-    HvCard: {
-      classes: {
-        root: {
-          outlineColor: theme.colors.borderSubtle,
-          boxShadow: theme.colors.shadow,
-          "--rb": theme.radii.large,
-          // default non-semantic card
-          "&[data-color=sema0]": {
-            overflow: "hidden",
-            height: "fit-content",
-            "--rt": theme.radii.large,
-            "& .HvCard-semanticBar": {
-              display: "none",
-            },
-          },
-          "& .MuiCardContent-root:last-child": {
-            paddingBottom: 0,
-          },
-          "& > :last-child:not(.HvCardMedia-root)": {
-            paddingBottom: theme.space.sm,
-          },
-          "& .HvActionBar-root": {
-            borderTop: "none",
-          },
-        },
-        selectable: {
-          ":hover": {
-            outlineColor: theme.colors.primarySubtle,
-            backgroundColor: theme.colors.bgHover,
-          },
-        },
-        selected: {
-          "&,&:hover,&:focus": {
-            outlineColor: theme.colors.primary,
-          },
-        },
-        semanticBar: {
-          "--bar-height": "2px",
-          borderRadius: `${theme.radii.base} ${theme.radii.base} 0 0`,
-        },
-      },
-    } satisfies CSSClasses<HvCardProps>,
     HvFooter: {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,
