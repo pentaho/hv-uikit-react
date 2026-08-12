@@ -15,10 +15,7 @@ import {
 
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
-import type {
-  HvCalendarCellProps,
-  HvSingleCalendarProps,
-} from "../Calendar/SingleCalendar";
+import type { HvSingleCalendarProps } from "../Calendar/SingleCalendar";
 import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
@@ -162,62 +159,6 @@ export const pentaho = mergeTheme(pentahoBase, {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,
     } satisfies HvFooterProps,
-    HvCalendarCell: {
-      classes: {
-        dateWrapper: {
-          width: 32,
-          height: 32,
-        },
-        calendarDate: {
-          width: 32,
-          height: 32,
-          ...theme.typography.caption1,
-          borderRadius: theme.radii.full,
-          ":hover": {
-            borderRadius: theme.radii.full,
-          },
-        },
-        calendarDateSelected: {
-          backgroundColor: theme.colors.primary,
-          color: theme.colors.dimmer,
-          ":hover": {
-            border: `1px solid ${theme.colors.primary}`,
-            color: theme.colors.text,
-          },
-        },
-        cellContainer: {
-          "&:hover": {
-            backgroundColor: theme.colors.primaryDimmed,
-            borderRadius: theme.radii.full,
-          },
-          ":has(> span.HvCalendarCell-calendarDateInSelectionRange):has(> span.HvCalendarCell-startBookend)":
-            {
-              backgroundColor: theme.colors.bgPageSecondary,
-              borderTopLeftRadius: theme.radii.full,
-              borderBottomLeftRadius: theme.radii.full,
-            },
-          ":has(> span.HvCalendarCell-calendarDateInSelectionRange):has(> span.HvCalendarCell-endBookend)":
-            {
-              backgroundColor: theme.colors.bgPageSecondary,
-              borderTopRightRadius: theme.radii.full,
-              borderBottomRightRadius: theme.radii.full,
-            },
-        },
-        calendarDateInSelectionRange: {
-          borderRadius: 0,
-        },
-        startBookend: {
-          backgroundColor: theme.colors.primary,
-          color: theme.colors.dimmer,
-          borderRadius: theme.radii.full,
-        },
-        endBookend: {
-          backgroundColor: theme.colors.primary,
-          color: theme.colors.dimmer,
-          borderRadius: theme.radii.full,
-        },
-      },
-    } satisfies CSSClasses<HvCalendarCellProps>,
     HvSingleCalendar: {
       classes: {
         root: {
