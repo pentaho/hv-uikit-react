@@ -28,7 +28,7 @@ import type { HvCardHeaderProps, HvCardProps } from "../Card";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { HvInputProps } from "../Input";
-import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
+import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
@@ -854,23 +854,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSingleCalendarProps>,
-    HvSnackbarContent: {
-      classes: {
-        root: {
-          width: 525,
-          minHeight: "unset",
-          boxShadow: theme.colors.shadow,
-        },
-        messageText: {
-          paddingLeft: 0,
-        },
-        iconVariant: {
-          alignSelf: "flex-start",
-          margin: theme.space.xxs,
-          marginRight: theme.space.sm,
-        },
-      },
-    } satisfies CSSClasses<HvSnackbarContentProps>,
     HvBreadCrumb: {
       maxVisible: 5,
       separator: "/",
