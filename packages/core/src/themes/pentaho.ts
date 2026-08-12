@@ -34,7 +34,6 @@ import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
-import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
@@ -306,20 +305,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvBaseSwitchProps>,
-    HvSelect: {
-      classes: {
-        root: {
-          borderRadius: theme.radii.round,
-          "& .HvButton-subtle[data-color=text]": {
-            borderColor: theme.colors.textDimmed,
-            backgroundColor: inputColors.bg,
-          },
-        },
-        select: {
-          borderRadius: theme.radii.round,
-        },
-      },
-    } satisfies CSSClasses<HvSelectProps<any>>,
     HvTagsInput: {
       classes: {
         tagsList: {
