@@ -69,7 +69,7 @@ export const HvBulkActions = forwardRef<
     numSelected = 0,
     selectAllConjunctionLabel = "/",
     showSelectAllPages,
-    semantic = true,
+    semantic = false,
     onAction,
     onSelectAll,
     onSelectAllPages,

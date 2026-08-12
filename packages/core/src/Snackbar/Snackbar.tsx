@@ -95,7 +95,7 @@ export const HvSnackbar = forwardRef<
     open = false,
     onClose,
     label,
-    anchorOrigin = { vertical: "top", horizontal: "right" },
+    anchorOrigin = { vertical: "bottom", horizontal: "center" },
     autoHideDuration = 5000,
     variant,
     showIcon,
