@@ -20,7 +20,6 @@ import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTagProps } from "../Tag";
 import type {
-  HvVerticalNavigationProps,
   HvVerticalNavigationSliderProps,
   HvVerticalNavigationTreeViewItemProps,
 } from "../VerticalNavigation";
@@ -66,28 +65,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvButton: {
       radius: "full",
     } satisfies CSSClasses<HvButtonProps>,
-    HvVerticalNavigation: {
-      classes: {
-        root: {
-          width: 280,
-          color: theme.colors.textLight,
-          backgroundColor: slate[900],
-          boxShadow: `inset -1px 0 0 0 ${slate[500]}`,
-          "& > :not(nav:first-of-type)": {
-            borderTop: `1px solid ${slate[500]}`,
-          },
-          "& > :only-child": {
-            padding: theme.space.sm,
-            "& .HvVerticalNavigationSlider-listContainer": { padding: 0 },
-          },
-        },
-        slider: {
-          "& > div:first-of-type": {
-            borderBottom: `1px solid ${slate[500]}`,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvVerticalNavigationProps>,
     HvVerticalNavigationSlider: {
       classes: {
         root: {
