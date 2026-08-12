@@ -29,7 +29,6 @@ import type {
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";
 import type {
-  HvCardContentProps,
   HvCardHeaderProps,
   HvCardProps,
 } from "../Card";
@@ -847,16 +846,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvCardHeaderProps>,
-    HvCardContent: {
-      classes: {
-        content: {
-          paddingBottom: 0,
-          "&& + .HvCardMedia-root": {
-            paddingTop: theme.space.xs,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvCardContentProps>,
     HvFooter: {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,
