@@ -12,10 +12,7 @@ export const AlignmentBadge = ({ component }: AlignmentBadgeProps) => {
 
   if (!values) return null;
 
-  const items = [
-    ["Pentaho", values.pentaho || "—"],
-    ["NEXT", values.next || "—"],
-  ];
+  const items = [["Pentaho", values.pentaho || "—"]];
 
   return (
     <HvIconButton

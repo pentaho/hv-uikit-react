@@ -53,7 +53,7 @@ describe("AppShellProvider component", () => {
     it("should apply chosen theme and color mode", async () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
-          theme: "next",
+          theme: "pentaho",
           colorMode: "dark",
         },
       });
@@ -61,7 +61,7 @@ describe("AppShellProvider component", () => {
       const bodyElement = baseElement.ownerDocument.body;
 
       await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("next");
+        expect(bodyElement.getAttribute("data-theme")).toBe("pentaho");
         expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });

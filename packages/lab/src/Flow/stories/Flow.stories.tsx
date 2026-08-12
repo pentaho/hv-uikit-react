@@ -67,7 +67,7 @@ export const InitialState: StoryObj<HvFlowProps> = {
         story: "A Flow with an initial state",
       },
     },
-    ...setupChromatic("next"),
+    ...setupChromatic("all"),
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
