@@ -5,13 +5,13 @@ import { outlineStyles } from "../utils/focusUtils";
 
 export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
   root: {
-    padding: theme.space.xs,
+    padding: theme.space.xxs,
     cursor: "pointer",
     width: "fit-content",
     height: "fit-content",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: theme.radii.round,
+    borderRadius: theme.radii.full,
 
     "&:hover": {
       backgroundColor: theme.colors.bgHover,
@@ -46,6 +46,56 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
           opacity: 1,
           backgroundColor: theme.colors.bgDisabled,
           border: `solid 1px ${theme.colors.borderDisabled}`,
+        },
+      },
+    },
+
+    "& .HvBaseSwitch-switchBase": {
+      "& .HvBaseSwitch-thumb": {
+        borderColor: "transparent",
+        backgroundColor: "#FFFFFF",
+        left: -8,
+        top: -3,
+        width: 14,
+        height: 14,
+      },
+      "+.HvBaseSwitch-track": {
+        backgroundColor: theme.colors.textDimmed,
+        border: "none",
+        width: 40,
+        height: 18,
+      },
+      "&.HvBaseSwitch-checked": {
+        "+.HvBaseSwitch-track": {
+          backgroundColor: theme.colors.positive,
+        },
+        "& .HvBaseSwitch-thumb": {
+          left: -2,
+        },
+      },
+      "&.HvBaseSwitch-disabled": {
+        "& .HvBaseSwitch-thumb": {
+          borderColor: theme.colors.textDisabled,
+        },
+        "+.HvBaseSwitch-track": {
+          backgroundColor: theme.colors.bgDisabled,
+          border: "none",
+        },
+      },
+      "&[data-size=medium]": {
+        "+.HvBaseSwitch-track": {
+          width: 48,
+          height: 24,
+        },
+        "& .HvBaseSwitch-thumb": {
+          left: -5,
+          top: 0,
+          width: 16,
+          height: 16,
+        },
+        "&.HvBaseSwitch-checked .HvBaseSwitch-thumb": {
+          left: 3,
+          top: 0,
         },
       },
     },
@@ -114,7 +164,17 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
       border: `solid 1px ${theme.colors.textDisabled}`,
     },
   },
-  readOnly: {},
+  readOnly: {
+    ":hover": {
+      backgroundColor: "transparent",
+    },
+    "& .HvBaseSwitch-switchBase + .HvBaseSwitch-track": {
+      backgroundColor: theme.colors.border,
+    },
+    "& .HvBaseSwitch-switchBase.HvBaseSwitch-checked + .HvBaseSwitch-track": {
+      backgroundColor: theme.mix("positive", 0.5, "dimmer"),
+    },
+  },
   focusVisible: {
     borderRadius: theme.radii.round,
     ...outlineStyles,
