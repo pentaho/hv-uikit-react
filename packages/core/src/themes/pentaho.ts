@@ -30,7 +30,6 @@ import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvInputProps } from "../Input";
-import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
@@ -470,29 +469,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvButtonProps>,
-    HvMultiButton: {
-      classes: {
-        multiple: {
-          borderRadius: theme.radii.full,
-          borderColor: theme.colors.border,
-          "& .HvMultiButton-button": {
-            borderColor: "inherit",
-            ...theme.typography.body,
-            "&.HvMultiButton-selected": {
-              color: theme.colors.primary,
-              backgroundColor: theme.colors.primaryDimmed,
-            },
-            "&:not(.HvMultiButton-firstButton, .HvMultiButton-lastButton)": {
-              borderRadius: 0,
-            },
-          },
-        },
-        vertical: {
-          borderRadius: theme.radii.large,
-          borderColor: theme.colors.border,
-        },
-      },
-    } satisfies CSSClasses<HvMultiButtonProps>,
     HvDialog: {
       classes: {
         paper: {
