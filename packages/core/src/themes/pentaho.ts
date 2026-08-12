@@ -24,7 +24,6 @@ import type {
   HvDropdownPanelProps,
 } from "../BaseDropdown";
 import type { HvBaseInputProps } from "../BaseInput";
-import type { HvBaseRadioProps } from "../BaseRadio";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
@@ -283,13 +282,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvCheckBoxIconProps>,
-    HvBaseRadio: {
-      classes: {
-        root: {
-          borderRadius: theme.radii.base,
-        },
-      },
-    } satisfies CSSClasses<HvBaseRadioProps>,
     HvRadioIcon: {
       classes: {
         checked: {
