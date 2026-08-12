@@ -9,7 +9,7 @@ import {
   HvDialogTitle,
   HvIconButton,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { DocsContainer } from "./DocsProvider";
 

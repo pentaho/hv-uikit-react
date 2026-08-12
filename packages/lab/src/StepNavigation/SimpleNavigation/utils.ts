@@ -1,4 +1,4 @@
-import { theme } from "@hitachivantara/uikit-styles";
+import { theme } from "@pentaho/uikit-styles";
 
 import type { HvStepProps } from "../DefaultNavigation";
 

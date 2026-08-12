@@ -2,7 +2,7 @@ import { useNodes } from "reactflow";
 import {
   HvEmptyState,
   type HvEmptyStateProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { useClasses } from "./Empty.styles";
 

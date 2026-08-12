@@ -1,12 +1,12 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import { HvButton } from "@hitachivantara/uikit-react-core";
-import { Favorite, Heart } from "@hitachivantara/uikit-react-icons";
+import { HvButton } from "@pentaho/uikit-react-core";
+import { Favorite, Heart } from "@pentaho/uikit-react-icons";
 import {
   HvCanvasBottomPanel,
   type HvCanvasBottomPanelProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasBottomPanel> = {
   title: "Pentaho/Canvas/Bottom Panel",

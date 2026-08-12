@@ -1,10 +1,7 @@
 import { forwardRef, useMemo, useState } from "react";
 import type { Placement } from "@popperjs/core";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvSize } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvSize } from "@pentaho/uikit-styles";
 
 import { HvBaseDropdown } from "../BaseDropdown";
 import type { HvButtonVariant } from "../Button";

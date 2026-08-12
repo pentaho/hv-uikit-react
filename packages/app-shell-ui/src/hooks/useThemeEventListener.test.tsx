@@ -3,14 +3,14 @@ import { vi } from "vitest";
 import {
   HvAppShellEventThemeTrigger,
   type HvAppShellEventTheme,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 
 import { LOCAL_STORAGE_KEYS } from "./useLocalStorage";
 import useThemeEventListenerHook from "./useThemeEventListener";
 
 const mockedChangeMode = vi.fn();
-vi.mock("@hitachivantara/uikit-react-core", async () => {
-  const mod = await vi.importActual("@hitachivantara/uikit-react-core");
+vi.mock("@pentaho/uikit-react-core", async () => {
+  const mod = await vi.importActual("@pentaho/uikit-react-core");
   return {
     ...mod,
     useTheme: () => {

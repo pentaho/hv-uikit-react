@@ -6,7 +6,7 @@ import {
   HvCarouselSlide,
   HvStatusIcon,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type SlideVariant = "success" | "warning" | "info" | "default";
 

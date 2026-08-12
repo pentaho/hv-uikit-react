@@ -15,7 +15,7 @@ import {
   useHvSortBy,
   type HvActionsGenericProps,
   type HvLeftControlProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { CardView } from "./CardView";
 import {

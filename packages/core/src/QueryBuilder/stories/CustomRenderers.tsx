@@ -11,7 +11,7 @@ import {
   type HvQueryBuilderProps,
   type HvQueryBuilderRendererProps,
   type HvTagsInputProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const attributes: HvQueryBuilderProps["attributes"] = {
   month: {

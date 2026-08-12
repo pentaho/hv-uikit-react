@@ -4,7 +4,7 @@ import {
   HvBarChart,
   HvDonutChart,
   HvLineChart,
-} from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-viz";
 
 import type { NodeData } from "../../types";
 import { datasets } from "../../utils";

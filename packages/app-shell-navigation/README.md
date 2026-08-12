@@ -1,4 +1,4 @@
-# @hitachivantara/app-shell-navigation
+# @pentaho/app-shell-navigation
 
 App Shell Navigation. Support navigation at the App Shell ecosystem.
 
@@ -11,5 +11,5 @@ This package provides hooks and types to enable application to perform navigatio
 The App Shell navigation is available as an NPM package, and can be installed with:
 
 ```bash
-npm install @hitachivantara/app-shell-navigation
+npm install @pentaho/app-shell-navigation
 ```

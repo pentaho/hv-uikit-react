@@ -16,7 +16,7 @@ import {
   type ExtractNames,
   type HvBaseProps,
   type HvTypographyVariants,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { staticClasses, useClasses } from "./Blade.styles";
 

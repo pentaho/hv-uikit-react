@@ -9,7 +9,7 @@ import {
   HvInlineEditor,
   HvOverflowTooltip,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Add,
   Close,
@@ -18,7 +18,7 @@ import {
   Fullscreen,
   Report,
   Table,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 import {
   HvFlow,
   HvFlowBackground,
@@ -27,13 +27,13 @@ import {
   StickyNode,
   type HvFlowProps,
   type StickyNodeData,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 import {
   HvCanvasBottomPanel,
   HvCanvasProvider,
   HvCanvasToolbar,
   type HvCanvasBottomPanelProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 import { CanvasProvider, useCanvasContext } from "./Context";
 import { ListView } from "./ListView";

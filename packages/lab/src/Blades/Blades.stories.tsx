@@ -7,19 +7,19 @@ import {
   HvInput,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Cluster,
   Level0Good,
   PaintBucket,
   Table,
   TopXS,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 import {
   HvBlade,
   HvBlades,
   type HvBladesProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 const meta: Meta<typeof HvBlades> = {
   title: "Lab/Blades/Blades",

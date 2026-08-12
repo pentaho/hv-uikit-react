@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useTheme } from "nextra-theme-docs";
-import { HvProvider, themes } from "@hitachivantara/uikit-react-core";
+import { HvProvider, themes } from "@pentaho/uikit-react-core";
 
 export const DocsProvider = ({
   children,

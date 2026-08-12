@@ -4,7 +4,7 @@ import {
   useState,
   type PropsWithChildren,
 } from "react";
-import { useHvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellConfig } from "@pentaho/app-shell-shared";
 
 type DefaultAppContextValue = {
   text: string;

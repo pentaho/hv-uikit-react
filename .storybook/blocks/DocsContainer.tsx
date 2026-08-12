@@ -9,7 +9,7 @@ import {
   HvProvider,
   HvTypography,
   type HvThemeColorMode,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { getInitialMode } from "../decorators/utils";
 import { themes } from "../theme";

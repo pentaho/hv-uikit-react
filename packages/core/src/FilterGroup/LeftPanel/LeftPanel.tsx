@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
+import { useTheme, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvIcon } from "../../icons";
 import { HvListContainer, HvListItem } from "../../ListContainer";

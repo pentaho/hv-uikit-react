@@ -3,7 +3,7 @@ import {
   HvCardContent,
   HvIconContainer,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export const ActiveUsers = () => {
   return (

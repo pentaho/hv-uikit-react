@@ -3,7 +3,7 @@ import {
   HvFooter,
   HvTypography,
   type HvFooterProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvFooter> = {
   title: "Components/Footer",

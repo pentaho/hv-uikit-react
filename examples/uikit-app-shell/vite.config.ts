@@ -6,8 +6,8 @@ import unoCSS from "unocss/vite";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
-import { presetHv } from "@hitachivantara/uikit-uno-preset";
+import { HvAppShellVitePlugin } from "@pentaho/app-shell-vite-plugin";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     tsconfigPaths(),
     unoCSS({
       mode: "per-module",
-      presets: [presetHv()],
+      presets: [presetUikit()],
     }),
     cssInjectedByJsPlugin({
       relativeCSSInjection: true,

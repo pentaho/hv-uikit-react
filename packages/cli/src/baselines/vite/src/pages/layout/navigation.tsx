@@ -10,8 +10,8 @@ import {
   HvHeaderNavigation,
   theme,
   type HvContainerProps,
-} from "@hitachivantara/uikit-react-core";
-import { Menu } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Menu } from "@pentaho/uikit-react-icons";
 
 import * as logos from "../../assets/logos";
 import { Loading } from "../../components/common/Loading";

@@ -10,7 +10,7 @@ import {
   HvSkeleton,
   HvTypography,
   type HvTableInstance,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { getStatusIcon, type AssetInventoryEntry } from "./data";
 

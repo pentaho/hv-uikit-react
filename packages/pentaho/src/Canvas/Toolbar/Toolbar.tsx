@@ -7,9 +7,9 @@ import {
   type ExtractNames,
   type HvBaseProps,
   type HvIconButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { Previous } from "@hitachivantara/uikit-react-icons";
-import { mergeStyles } from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-core";
+import { Previous } from "@pentaho/uikit-react-icons";
+import { mergeStyles } from "@pentaho/uikit-react-utils";
 
 import { useCanvasContext } from "../CanvasContext";
 import { staticClasses, useClasses } from "./Toolbar.styles";

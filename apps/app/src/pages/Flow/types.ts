@@ -1,7 +1,7 @@
 import type {
   HvDashboardProps,
   HvFlowInstance,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 export type NodeGroup = "dashboard" | "visualization" | "dataset";
 

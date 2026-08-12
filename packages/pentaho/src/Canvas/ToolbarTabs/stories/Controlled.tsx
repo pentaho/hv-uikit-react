@@ -6,13 +6,13 @@ import {
   HvPanel,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 import {
   HvCanvasToolbar,
   HvCanvasToolbarTabs,
   type HvCanvasToolbarTabsProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 const classes = {
   panel: css({

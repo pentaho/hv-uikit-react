@@ -6,7 +6,7 @@ import {
   HvWarningText,
   type HvFormStatus,
   type HvWarningTextProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvWarningText> = {
   title: "Components/Form Element Blocks/Warning Text",

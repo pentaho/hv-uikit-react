@@ -6,10 +6,7 @@ import {
 } from "react-stately/useTimeFieldState";
 import { Time } from "@internationalized/date";
 import useForkRef from "@mui/utils/useForkRef";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseDropdown, type HvBaseDropdownProps } from "../BaseDropdown";
 import { DEFAULT_LOCALE } from "../Calendar/utils";

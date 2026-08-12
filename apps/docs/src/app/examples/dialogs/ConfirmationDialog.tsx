@@ -5,7 +5,7 @@ import {
   HvDialogActions,
   HvDialogContent,
   HvDialogTitle,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [open, setOpen] = useState(false);

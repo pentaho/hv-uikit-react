@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import { HvCodeEditor } from "@hitachivantara/uikit-react-code-editor";
+import { HvCodeEditor } from "@pentaho/uikit-react-code-editor";
 import {
   HvDialog,
   HvDialogContent,
@@ -8,12 +8,8 @@ import {
   HvIconButton,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Duplicate,
-  Fullscreen,
-  PopUp,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Duplicate, Fullscreen, PopUp } from "@pentaho/uikit-react-icons";
 
 const styles = {
   actionsContainer: css({

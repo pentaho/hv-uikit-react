@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { renderStory, setupChromatic } from "@hitachivantara/internal";
+import { renderStory, setupChromatic } from "@pentaho/internal";
 
 import { Disabled as AccordionDisabledStory } from "../Accordion/Accordion.stories";
 import { Main as ActionBarMainStory } from "../ActionBar/ActionBar.stories";

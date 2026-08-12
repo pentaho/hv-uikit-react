@@ -4,7 +4,7 @@ import {
   theme,
   useTheme,
   type HvSnackbarProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const snackbarClasses = {
   containerRoot: css`

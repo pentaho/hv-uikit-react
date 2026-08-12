@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-styles
+# @pentaho/uikit-styles
 
 UI Kit styling solution.
 
@@ -7,5 +7,5 @@ UI Kit styling solution.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-styles
+npm install @pentaho/uikit-styles
 ```

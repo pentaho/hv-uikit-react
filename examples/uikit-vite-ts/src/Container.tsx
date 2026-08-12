@@ -7,8 +7,8 @@ import {
   HvIconButton,
   theme,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
-import { Help, ThemeSwitcher } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Help, ThemeSwitcher } from "@pentaho/uikit-react-icons";
 
 const globalStyles: GlobalProps["styles"] = {
   "code::before, code::after": { content: '"`"' },

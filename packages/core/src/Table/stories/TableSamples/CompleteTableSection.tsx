@@ -18,13 +18,8 @@ import {
   useHvRowSelection,
   useHvTable,
   useHvTableSticky,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Delete,
-  Duplicate,
-  Lock,
-  Preview,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Delete, Duplicate, Lock, Preview } from "@pentaho/uikit-react-icons";
 
 import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 

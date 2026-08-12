@@ -8,8 +8,8 @@ import {
   useLabels,
   type ExtractNames,
   type HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 
 import { HvDashboard, type HvDashboardProps } from "../../Dashboard";
 import { HvFlowNode, type HvFlowNodeProps } from "../Node";

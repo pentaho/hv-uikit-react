@@ -37,8 +37,8 @@ import {
   type HvRowInstance,
   type HvTableColumnConfig,
   type HvTableState,
-} from "@hitachivantara/uikit-react-core";
-import { Add, Delete, Edit } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Delete, Edit } from "@pentaho/uikit-react-icons";
 
 import { useServerData, type AssetEvent } from "../serverUtils";
 

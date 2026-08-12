@@ -14,11 +14,11 @@ const extractVersion = (packageJsonFile: string): string => {
  */
 export default function injectMetadata(): PluginOption {
   const appShellUIVersion = extractVersion(
-    resolveModule("@hitachivantara/app-shell-ui/package.json"),
+    resolveModule("@pentaho/app-shell-ui/package.json"),
   );
 
   const appShellVitePluginVersion = extractVersion(
-    resolveModule("@hitachivantara/app-shell-vite-plugin/package.json"),
+    resolveModule("@pentaho/app-shell-vite-plugin/package.json"),
   );
 
   return {

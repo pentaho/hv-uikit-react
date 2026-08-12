@@ -1,12 +1,8 @@
 import { useMemo } from "react";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {
-  HvIconButton,
-  HvStack,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { Add } from "@hitachivantara/uikit-react-icons";
+import { HvIconButton, HvStack, HvTypography } from "@pentaho/uikit-react-core";
+import { Add } from "@pentaho/uikit-react-icons";
 
 import classes from "./styles";
 import { TaskCard } from "./TaskCard";

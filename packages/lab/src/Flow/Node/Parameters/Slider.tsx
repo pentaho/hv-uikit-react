@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { HvSlider } from "@hitachivantara/uikit-react-core";
+import { HvSlider } from "@pentaho/uikit-react-core";
 
 import { useFlowNodeUtils } from "../../hooks";
 import type { HvFlowNodeSliderParam } from "../../types";

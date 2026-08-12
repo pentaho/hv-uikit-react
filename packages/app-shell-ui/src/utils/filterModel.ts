@@ -7,7 +7,7 @@ import type {
   HvAppShellServiceProviderModel,
   HvAppShellServicesModel,
   HvAppShellViewsModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import type { ConditionResultsList } from "../hooks/useConditionsEvaluator";
 

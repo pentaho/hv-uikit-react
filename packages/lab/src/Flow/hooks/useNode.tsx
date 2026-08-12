@@ -7,9 +7,9 @@ import {
 } from "react";
 import type { NodeToolbarProps } from "reactflow";
 import { uid } from "uid";
-import { useLabels } from "@hitachivantara/uikit-react-core";
-import { Delete, Duplicate } from "@hitachivantara/uikit-react-icons";
-import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
+import { useLabels } from "@pentaho/uikit-react-core";
+import { Delete, Duplicate } from "@pentaho/uikit-react-icons";
+import { getColor, theme, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { useNodeMetaRegistry } from "../FlowContext/NodeMetaContext";
 import { identifyHandles } from "../Node/utils";

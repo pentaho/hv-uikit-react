@@ -16,11 +16,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {
-  HvListContainer,
-  HvListItem,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { HvListContainer, HvListItem, theme } from "@pentaho/uikit-react-core";
 import {
   Battery,
   Cloud,
@@ -31,7 +27,7 @@ import {
   Ghost,
   Heart,
   Palette,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 interface Item {
   id: string;

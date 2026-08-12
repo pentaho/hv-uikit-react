@@ -6,7 +6,7 @@ import {
   theme,
   useWidth,
   type HvGridProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvGrid> = {
   title: "Components/Grid",

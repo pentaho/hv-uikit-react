@@ -6,7 +6,7 @@ import {
   HvPanel,
   HvSearchInput,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const users = [
   { id: "1", name: "Alice Chen", role: "Engineer", initials: "AC", bg: "cat1" },

@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-react-code-editor",
+  "name": "@pentaho/uikit-react-code-editor",
   "version": "6.0.9",
   "type": "module",
   "private": false,
@@ -39,8 +39,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^6.2.6",
-    "@hitachivantara/uikit-styles": "^6.2.1",
+    "@pentaho/uikit-react-utils": "^6.2.6",
+    "@pentaho/uikit-styles": "^6.2.1",
     "@monaco-editor/react": "^4.5.1",
     "sql-formatter": "^15.4.2",
     "xml-formatter": "^3.6.3",

@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { HvContainer, HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvContainer, HvTypography } from "@pentaho/uikit-react-core";
 
 const ShouldNotBeVisible: FC = () => {
   return (

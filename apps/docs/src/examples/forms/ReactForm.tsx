@@ -10,8 +10,8 @@ import {
   HvRadioGroup,
   HvTextArea,
   HvTimePicker,
-} from "@hitachivantara/uikit-react-core";
-import { Map } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Map } from "@pentaho/uikit-react-icons";
 
 type Country = "Portugal" | "Spain" | "France" | "Germany" | "United States";
 

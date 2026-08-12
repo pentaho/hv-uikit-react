@@ -8,7 +8,7 @@ import {
   HvStatusIcon,
   type HvButtonVariant,
   type HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type SimpleDialogProps = Pick<HvDialogProps, "classes" | "variant"> & {
   buttonMessage?: string;

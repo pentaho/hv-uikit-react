@@ -2,11 +2,8 @@ import { forwardRef, useCallback, useState } from "react";
 import MuiRadio, {
   type RadioProps as MuiRadioProps,
 } from "@mui/material/Radio";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import { staticClasses, useClasses } from "./BaseRadio.styles";
 import { HvRadioIcon } from "./RadioIcon";

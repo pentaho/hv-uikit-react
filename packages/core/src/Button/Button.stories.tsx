@@ -1,5 +1,5 @@
 import type { StoryObj } from "@storybook/react-vite";
-import { HvButton, type HvButtonProps } from "@hitachivantara/uikit-react-core";
+import { HvButton, type HvButtonProps } from "@pentaho/uikit-react-core";
 import {
   Delete,
   Favorite,
@@ -10,7 +10,7 @@ import {
   Point,
   Refresh,
   Stop,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 export default { title: "Components/Button", component: HvButton };
 

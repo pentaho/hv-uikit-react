@@ -6,7 +6,7 @@ import {
   HvDialogContent,
   HvDialogTitle,
   type HvDialogProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export const MainStory = (props: HvDialogProps) => {
   const [open, setOpen] = useState(false);

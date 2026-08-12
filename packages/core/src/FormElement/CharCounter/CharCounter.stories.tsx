@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCharCounter,
   type HvCharCounterProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvCharCounter> = {
   title: "Components/Form Element Blocks/Char Counter",

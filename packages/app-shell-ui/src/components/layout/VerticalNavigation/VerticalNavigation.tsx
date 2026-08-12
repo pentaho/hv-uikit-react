@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { css, cx } from "@emotion/css";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
 import {
   HvVerticalNavigation,
   HvVerticalNavigationActions,
@@ -12,7 +12,7 @@ import {
   theme,
   useTheme,
   verticalNavigationTreeClasses,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { useResizeObserver } from "../../../hooks/useResizeObserver";
 import { useLayoutContext } from "../../../providers/LayoutProvider";

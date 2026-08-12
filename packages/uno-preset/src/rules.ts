@@ -1,6 +1,6 @@
 import type { UserConfig } from "@unocss/core";
 import type { Theme } from "@unocss/preset-wind3";
-import { theme as hvCssVars } from "@hitachivantara/uikit-styles";
+import { theme as hvCssVars } from "@pentaho/uikit-styles";
 
 export const rules: UserConfig<Theme>["rules"] = [
   ["bg-default", { "background-color": hvCssVars.colors.bgPage }],

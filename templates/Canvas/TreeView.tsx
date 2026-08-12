@@ -9,8 +9,8 @@ import {
   useForkRef,
   useHvTreeItem,
   type HvTreeItemProps,
-} from "@hitachivantara/uikit-react-core";
-import { DataSource, Drag, Table } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DataSource, Drag, Table } from "@pentaho/uikit-react-icons";
 
 import type { NodeData } from "./Node";
 

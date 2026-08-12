@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvAvatar,
   HvButton,
   HvTooltip,
   HvTypography,
   type HvTooltipProps,
-} from "@hitachivantara/uikit-react-core";
-import { Play } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Play } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvTooltip> = {
   title: "Components/Tooltip",

@@ -6,7 +6,7 @@ import { useHvCurrentNavigationPath } from "./useCurrentNavigationPath";
 // Mock only direct dependencies
 const mockUseHvMenuItems = vi.fn();
 
-vi.mock("@hitachivantara/app-shell-shared", () => ({
+vi.mock("@pentaho/app-shell-shared", () => ({
   useHvMenuItems: () => mockUseHvMenuItems(),
 }));
 

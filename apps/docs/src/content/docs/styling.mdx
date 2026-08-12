@@ -37,7 +37,7 @@ The `classes.root` (along with `className` and `style`) is passed to the main el
 These classes are also injected as CSS classes HTML elements, following a `Hv{ComponentName}-{className}` naming convention, and are exported as a `<componentName>Classes` object:
 
 ```tsx
-import { buttonClasses } from "@hitachivantara/uikit-react-core";
+import { buttonClasses } from "@pentaho/uikit-react-core";
 
 buttonClasses.root; // "HvButton-root"
 buttonClasses.disabled; // "HvButton-disabled"
@@ -86,7 +86,7 @@ It is especially useful when dealing with complex styles or overrides, or when t
 
 ```tsx
 import { css } from "@emotion/css";
-import { buttonClasses, theme } from "@hitachivantara/uikit-react-core";
+import { buttonClasses, theme } from "@pentaho/uikit-react-core";
 
 const classes = {
   button: css({
@@ -107,7 +107,7 @@ const classes = {
 
 ```tsx
 import styled from "@emotion/styled";
-import { buttonClasses, theme } from "@hitachivantara/uikit-react-core";
+import { buttonClasses, theme } from "@pentaho/uikit-react-core";
 
 const CustomButton = styled(HvButton)({
   backgroundColor: theme.colors.negative,
@@ -129,7 +129,7 @@ _Utility classes_, popularized by frameworks like [TailwindCSS](https://tailwind
 The **UI Kit** team recommends utility classes due to their **built-in theme support**, **performance** (no runtime or external dependencies),
 **portability** (to any build tool or framework), and **colocation** (easier maintenance).
 
-**UI Kit** offers a utility classes plugin via a [UnoCSS](https://unocss.dev) plugin, `@hitachivantara/uikit-uno-preset`.
+**UI Kit** offers a utility classes plugin via a [UnoCSS](https://unocss.dev) plugin, `@pentaho/uikit-uno-preset`.
 
 #### Setup
 
@@ -143,7 +143,7 @@ The **UI Kit** team recommends utility classes due to their **built-in theme sup
 1. Install UnoCSS and the **UI Kit** UnoCSS plugin packages
 
 ```sh
-npm i -D unocss @hitachivantara/uikit-uno-preset
+npm i -D unocss @pentaho/uikit-uno-preset
 ```
 
 2. Add them to your `vite.config.ts` and optionally the `unocss.config.ts` file.
@@ -152,12 +152,12 @@ npm i -D unocss @hitachivantara/uikit-uno-preset
 // vite.config.ts
 import unoCSS from "unocss/vite";
 import { defineConfig } from "vite";
-import { presetHv } from "@hitachivantara/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
   plugins: [
     unoCSS({
-      presets: [presetHv()],
+      presets: [presetUikit()],
     }),
   ],
 });
@@ -177,7 +177,7 @@ and add [`vite-plugin-css-injected-by-js`](https://www.npmjs.com/package/vite-pl
 + cssInjectedByJsPlugin({ relativeCSSInjection: true }),
   unoCSS({
 +   mode: "per-module",
-    presets: [presetHv()],
+    presets: [presetUikit()],
   }),
 ```
 
@@ -258,7 +258,7 @@ To illustrate the code difference from Emotion to UnoCSS, here's a typical scena
 
 ```diff
 -import { css } from "@emotion/css";
--import { theme } from "@hitachivantara/uikit-react-core";
+-import { theme } from "@pentaho/uikit-react-core";
 
 -const classes = {
 -  container: css({

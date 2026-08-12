@@ -8,15 +8,15 @@ import {
   useHvAppShellRuntimeContext,
   type HvAppShellAppSwitcherConfig,
   type HvAppShellAppSwitcherItemConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 import {
   HvAppSwitcher,
   HvIconButton,
   HvTypography,
   theme,
   type HvAppSwitcherActionApplication,
-} from "@hitachivantara/uikit-react-core";
-import { AppSwitcher } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { AppSwitcher } from "@pentaho/uikit-react-icons";
 
 import createAppContainerElement from "../../../../utils/documentUtil";
 import { ConfigIcon } from "../../../ConfigIcon";

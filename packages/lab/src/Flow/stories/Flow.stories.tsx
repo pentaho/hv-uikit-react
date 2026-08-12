@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvFlow,
   HvFlowBackground,
@@ -8,8 +8,8 @@ import {
   HvFlowMinimap,
   HvFlowSidebar,
   type HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
-import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-lab";
+import { HvVizProvider } from "@pentaho/uikit-react-viz";
 
 import { BaseHook as BaseHookStory } from "./BaseHook";
 import { CustomDrop as CustomDropStory } from "./CustomDrop";

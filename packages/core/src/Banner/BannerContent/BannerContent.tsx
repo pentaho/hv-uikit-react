@@ -1,9 +1,6 @@
 import { forwardRef } from "react";
 import type { SnackbarContentProps as MuiSnackbarContentProps } from "@mui/material/SnackbarContent";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvActionsGenericProps } from "../../ActionsGeneric";
 import type { HvButtonProps } from "../../Button";

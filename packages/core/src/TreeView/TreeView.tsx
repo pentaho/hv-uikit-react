@@ -1,8 +1,5 @@
 import useSlotProps from "@mui/utils/useSlotProps";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvIcon } from "../icons";
 import { fixedForwardRef, type HvBaseProps } from "../types/generic";

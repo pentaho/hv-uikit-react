@@ -1,5 +1,5 @@
-import { createClasses, outlineStyles } from "@hitachivantara/uikit-react-core";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses, outlineStyles } from "@pentaho/uikit-react-core";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvBlade", {
   root: {

@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-core";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-core";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvWizardTitle", {
   root: {

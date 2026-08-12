@@ -3,8 +3,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvSize } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import type { HvSize } from "@pentaho/uikit-styles";
 
 import { HvAvatar } from "../Avatar/Avatar";
 import type { HvBaseProps } from "../types/generic";

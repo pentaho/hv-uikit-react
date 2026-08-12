@@ -13,7 +13,7 @@ import {
   HvTableSection,
   HvTypography,
   type HvStatusIconVariant,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type AlertStatus = "Active" | "Acknowledged" | "Resolved" | "Suppressed";
 

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
-import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { HvAvatar } from "../../Avatar";
 import { useUniqueId } from "../../hooks/useUniqueId";

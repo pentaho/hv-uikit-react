@@ -1,4 +1,4 @@
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import { HvButton } from "@pentaho/uikit-react-core";
 
 export const Component = () => {
   return (

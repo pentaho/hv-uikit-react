@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { HvIconButton } from "@hitachivantara/uikit-react-core";
-import { HazyDay } from "@hitachivantara/uikit-react-icons";
+import { HvIconButton } from "@pentaho/uikit-react-core";
+import { HazyDay } from "@pentaho/uikit-react-icons";
 
 import { DefaultAppContext } from "../../providers/DefaultAppProvider";
 

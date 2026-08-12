@@ -12,7 +12,7 @@ import {
   HvTableSection,
   useHvData,
   useHvPagination,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { usePaginationData, type PaginationDataProps } from "./data";
 import { getColumns, type DetailsViewEntry } from "./utils";

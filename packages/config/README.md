@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-config
+# @pentaho/uikit-config
 
 UI Kit Sharable projects configurations
 
@@ -7,7 +7,7 @@ UI Kit Sharable projects configurations
 Install the package in your project, and any peer-dependencies you need
 
 ```sh
-npm i -D prettier@3 @hitachivantara/uikit-config
+npm i -D prettier@3 @pentaho/uikit-config
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ Example [Prettier configuration](https://prettier.io/docs/en/configuration.html#
 
 ```json
 {
-  "prettier": "@hitachivantara/uikit-config/prettier"
+  "prettier": "@pentaho/uikit-config/prettier"
 }
 ```
 
@@ -28,7 +28,7 @@ Example [Prettier configuration](https://prettier.io/docs/en/configuration.html#
 
 ```json
 {
-  "extends": "@hitachivantara/uikit-config/tsconfig"
+  "extends": "@pentaho/uikit-config/tsconfig"
 }
 ```
 
@@ -36,6 +36,6 @@ Example [Prettier configuration](https://prettier.io/docs/en/configuration.html#
 
 ```json
 {
-  "extends": ["./node_modules/@hitachivantara/uikit-config/oxlint/strict.json"]
+  "extends": ["./node_modules/@pentaho/uikit-config/oxlint/strict.json"]
 }
 ```

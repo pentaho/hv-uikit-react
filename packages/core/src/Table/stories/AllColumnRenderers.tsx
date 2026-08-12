@@ -24,8 +24,8 @@ import {
   useHvRowExpand,
   useHvTable,
   type HvRowInstance,
-} from "@hitachivantara/uikit-react-core";
-import { Ban } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Ban } from "@pentaho/uikit-react-icons";
 
 const getOption = (opts: string[], i: number) => opts[i % opts.length];
 

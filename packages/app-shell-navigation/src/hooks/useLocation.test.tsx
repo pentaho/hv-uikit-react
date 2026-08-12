@@ -15,7 +15,7 @@ vi.mock("react-router-dom", async () => {
   };
 });
 
-vi.mock("@hitachivantara/app-shell-shared", () => ({
+vi.mock("@pentaho/app-shell-shared", () => ({
   useHvAppShellModel: () => mockUseHvAppShellModel(),
 }));
 

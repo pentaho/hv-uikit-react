@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvTreemapChart,
   type HvTreemapChartProps,
-} from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-viz";
 
 import { vizDecorator } from "../../BaseChart/stories/utils";
 import { data as testData } from "./data";

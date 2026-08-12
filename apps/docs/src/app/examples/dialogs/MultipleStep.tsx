@@ -7,7 +7,7 @@ import {
   HvDialogTitle,
   HvInput,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type FormData = {
   name: string;

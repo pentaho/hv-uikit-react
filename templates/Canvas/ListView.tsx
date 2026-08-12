@@ -11,8 +11,8 @@ import {
   useForkRef,
   type HvInputProps,
   type HvListItemProps,
-} from "@hitachivantara/uikit-react-core";
-import { Drag } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Drag } from "@pentaho/uikit-react-icons";
 
 import type { NodeData } from "./Node";
 import { iconsMapping, iconsMappingKeys } from "./utils";

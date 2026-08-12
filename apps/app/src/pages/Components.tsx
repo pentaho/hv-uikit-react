@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { makeData, type AssetEvent } from "@hitachivantara/internal";
+import { makeData, type AssetEvent } from "@pentaho/internal";
 import {
   HvAccordion,
   HvActionBar,
@@ -54,7 +54,7 @@ import {
   useHvTable,
   useHvTableSticky,
   type HvActionGeneric,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Backwards,
   Ban,
@@ -68,7 +68,7 @@ import {
   Preview,
   Share,
   Upload,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const Tabs = () => {
   const [value, setValue] = useState(0);

@@ -4,7 +4,7 @@ import {
   useFlowInputNodes,
   type HvFlowNodeFC,
   type HvFlowNodeProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import type { NodeData } from "../types";
 

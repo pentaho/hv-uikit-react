@@ -1,7 +1,7 @@
 import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import { LOCAL_STORAGE_KEYS } from "../../../hooks/useLocalStorage";
 import * as NavigationProvider from "../../../providers/NavigationProvider";
@@ -14,8 +14,8 @@ const navigationContextSpy = vi.spyOn(
   "useNavigationContext",
 );
 const navigateSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-navigation", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-navigation");
+vi.mock("@pentaho/app-shell-navigation", async () => {
+  const mod = await vi.importActual("@pentaho/app-shell-navigation");
   return {
     ...(mod as object),
     useHvNavigation: vi.fn(() => {

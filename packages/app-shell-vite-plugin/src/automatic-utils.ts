@@ -4,7 +4,7 @@ import type {
   HvAppShellConfig,
   HvAppShellMenuConfig,
   HvAppShellViewsConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import { getFinalModuleName } from "./config-utils.js";
 

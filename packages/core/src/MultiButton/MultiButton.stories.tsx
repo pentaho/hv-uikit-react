@@ -5,8 +5,8 @@ import {
   HvMultiButton,
   HvSimpleGrid,
   type HvMultiButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { Abacus, LocationPin, Map } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Abacus, LocationPin, Map } from "@pentaho/uikit-react-icons";
 
 import { SplitButton as SplitButtonStory } from "./stories/SplitButton";
 import { VerticalOrientation as VerticalOrientationStory } from "./stories/VerticalOrientation";

@@ -38,7 +38,10 @@ export default {
     "Hippocratic-2.1",
   ],
   exclude: [
-    /^@hitachivantara/, // any HV packages
+    // any of our packages
+    /^@hitachivantara/,
+    /^@pentaho/,
+    /^@pentaho-apps/,
 
     "browser-assert", // MIT: https://github.com/socialally/browser-assert/pull/1
     "flatbuffers", // Apache-2.0: https://github.com/google/flatbuffers

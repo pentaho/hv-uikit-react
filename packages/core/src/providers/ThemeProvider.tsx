@@ -11,11 +11,8 @@ import {
   HvThemeContext,
   type HvTheme,
   type HvThemeContextValue,
-} from "@hitachivantara/uikit-react-shared";
-import type {
-  HvThemeColorMode,
-  HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-shared";
+import type { HvThemeColorMode, HvThemeStructure } from "@pentaho/uikit-styles";
 
 import { getContainerElement } from "../utils/document";
 import { setElementAttrs } from "../utils/theme";

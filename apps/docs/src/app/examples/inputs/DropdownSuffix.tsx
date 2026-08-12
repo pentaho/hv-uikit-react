@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HvInput, HvSelect } from "@hitachivantara/uikit-react-core";
+import { HvInput, HvSelect } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [email, setEmail] = useState("");

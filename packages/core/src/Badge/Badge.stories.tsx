@@ -3,8 +3,8 @@ import {
   HvBadge,
   HvTypography,
   type HvBadgeProps,
-} from "@hitachivantara/uikit-react-core";
-import { Alert } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Alert } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvBadge> = {
   title: "Components/Badge",

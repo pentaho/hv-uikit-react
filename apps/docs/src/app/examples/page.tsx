@@ -1,9 +1,6 @@
 import { clsx } from "clsx";
 import Link from "next/link";
-import {
-  HvIconContainer,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvIconContainer, HvTypography } from "@pentaho/uikit-react-core";
 
 import accordion from "./accordion/page.mdx?raw";
 import canvas from "./canvas/page.mdx?raw";

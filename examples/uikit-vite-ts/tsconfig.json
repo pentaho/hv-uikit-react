@@ -1,5 +1,5 @@
 {
-  "extends": "@hitachivantara/uikit-config/tsconfig",
+  "extends": "@pentaho/uikit-config/tsconfig",
   "compilerOptions": {},
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

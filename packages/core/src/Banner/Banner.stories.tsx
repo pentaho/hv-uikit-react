@@ -6,8 +6,8 @@ import {
   HvBannerContent,
   HvButton,
   type HvBannerProps,
-} from "@hitachivantara/uikit-react-core";
-import { Deploy } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Deploy } from "@pentaho/uikit-react-icons";
 
 export default {
   title: "Components/Banner",

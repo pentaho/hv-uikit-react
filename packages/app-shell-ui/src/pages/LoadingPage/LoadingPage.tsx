@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { HvLoading } from "@hitachivantara/uikit-react-core";
+import { HvLoading } from "@pentaho/uikit-react-core";
 
 const LoadingPage = styled(HvLoading)({
   width: "100%",

@@ -3,8 +3,8 @@ import {
   HvAppSwitcher,
   type HvAppSwitcherActionApplication,
   type HvAppSwitcherProps,
-} from "@hitachivantara/uikit-react-core";
-import { Code, LeftAlign } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Code, LeftAlign } from "@pentaho/uikit-react-icons";
 
 const applicationsList: HvAppSwitcherActionApplication[] = [
   {

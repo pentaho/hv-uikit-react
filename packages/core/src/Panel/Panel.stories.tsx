@@ -5,8 +5,8 @@ import {
   HvTypography,
   theme,
   type HvPanelProps,
-} from "@hitachivantara/uikit-react-core";
-import { Close } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Close } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvPanel> = {
   title: "Components/Panel",

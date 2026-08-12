@@ -6,8 +6,8 @@ import {
   HvCardHeader,
   HvIconButton,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { Cloud, DropDownXS, User } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Cloud, DropDownXS, User } from "@pentaho/uikit-react-icons";
 
 const classes = {
   card: css({

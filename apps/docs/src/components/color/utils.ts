@@ -1,7 +1,4 @@
-import type {
-  HvColorTokens,
-  HvThemeColors,
-} from "@hitachivantara/uikit-styles";
+import type { HvColorTokens, HvThemeColors } from "@pentaho/uikit-styles";
 
 /** Compatibility object between UI Kit tokens and NEXT tokens */
 export const compatMap: Partial<Record<keyof HvThemeColors, string>> = {

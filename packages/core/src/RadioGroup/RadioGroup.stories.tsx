@@ -3,7 +3,7 @@ import {
   HvRadio,
   HvRadioGroup,
   type HvRadioGroupProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvRadioGroup> = {
   title: "Components/Radio Group",

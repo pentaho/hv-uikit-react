@@ -1,8 +1,4 @@
-import {
-  HvLoading,
-  HvSection,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvLoading, HvSection, HvTypography } from "@pentaho/uikit-react-core";
 
 interface ChartContainerProps {
   children: React.ReactNode;

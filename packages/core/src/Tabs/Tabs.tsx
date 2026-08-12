@@ -1,9 +1,6 @@
 import { forwardRef } from "react";
 import Tabs, { type TabsProps as MuiTabsProps } from "@mui/material/Tabs";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { staticClasses, useClasses } from "./Tabs.styles";
 

@@ -4,8 +4,8 @@ import {
   HvDialogActions,
   type ExtractNames,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
-import { Backwards, Forwards } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Backwards, Forwards } from "@pentaho/uikit-react-icons";
 
 import { HvWizardContext, type HvWizardTabs } from "../WizardContext";
 import { staticClasses, useClasses } from "./WizardActions.styles";

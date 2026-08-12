@@ -9,7 +9,7 @@ import {
   HvTypography,
   theme,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Add,
   Backwards,
@@ -17,7 +17,7 @@ import {
   Leaf,
   Teapot,
   Water,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 import {
   HvFlow,
   HvFlowBackground,
@@ -25,7 +25,7 @@ import {
   HvFlowEmpty,
   HvFlowSidebar,
   type HvFlowProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import { restrictToSample } from "../Base";
 // The code for these utils are available here: https://github.com/pentaho/hv-uikit-react/tree/master/packages/lab/src/components/Flow/stories/BaseHook

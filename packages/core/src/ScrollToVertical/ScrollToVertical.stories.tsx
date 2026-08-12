@@ -5,7 +5,7 @@ import {
   HvScrollToVertical,
   HvTypography,
   type HvScrollToVerticalProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvScrollToVertical> = {
   title: "Components/ScrollToVertical",

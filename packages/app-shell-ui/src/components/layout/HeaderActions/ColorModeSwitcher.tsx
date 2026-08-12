@@ -2,9 +2,9 @@ import { useTranslation } from "react-i18next";
 import {
   HvAppShellEventThemeTrigger,
   type HvAppShellEventTheme,
-} from "@hitachivantara/app-shell-events";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
-import { HvIconButton, useTheme } from "@hitachivantara/uikit-react-core";
+} from "@pentaho/app-shell-events";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
+import { HvIconButton, useTheme } from "@pentaho/uikit-react-core";
 
 import IconUiKit from "../../IconUiKit/IconUiKit";
 

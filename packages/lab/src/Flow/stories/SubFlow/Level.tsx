@@ -8,8 +8,8 @@ import {
   theme,
   useUniqueId,
   type HvListValue,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS, DropUpXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS, DropUpXS } from "@pentaho/uikit-react-icons";
 
 const classes = {
   root: css({

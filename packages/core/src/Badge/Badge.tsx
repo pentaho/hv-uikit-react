@@ -3,8 +3,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny } from "@pentaho/uikit-styles";
 
 import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Badge.styles";

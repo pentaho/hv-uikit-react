@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvCanvasSidePanel,
   type HvCanvasSidePanelProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasSidePanel> = {
   title: "Pentaho/Canvas/Side Panel",

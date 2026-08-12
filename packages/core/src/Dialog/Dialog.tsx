@@ -6,7 +6,7 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";

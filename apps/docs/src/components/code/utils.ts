@@ -18,13 +18,13 @@ import * as echartsCore from "echarts/core";
 import * as reactflow from "reactflow";
 import useSWR from "swr";
 import * as zod from "zod";
-import * as HvCodeEditor from "@hitachivantara/uikit-react-code-editor";
-import * as HvCore from "@hitachivantara/uikit-react-core";
-import * as HvIcons from "@hitachivantara/uikit-react-icons";
-import * as HvLab from "@hitachivantara/uikit-react-lab";
-import * as HvPentaho from "@hitachivantara/uikit-react-pentaho";
-import * as HvViz from "@hitachivantara/uikit-react-viz";
-import * as HvStyles from "@hitachivantara/uikit-styles";
+import * as HvCodeEditor from "@pentaho/uikit-react-code-editor";
+import * as HvCore from "@pentaho/uikit-react-core";
+import * as HvIcons from "@pentaho/uikit-react-icons";
+import * as HvLab from "@pentaho/uikit-react-lab";
+import * as HvPentaho from "@pentaho/uikit-react-pentaho";
+import * as HvViz from "@pentaho/uikit-react-viz";
+import * as HvStyles from "@pentaho/uikit-styles";
 
 type ResolveContext = {
   files: Record<string, string>;
@@ -39,13 +39,13 @@ const defaultScope: Scope = {
   import: {
     react: React,
     "react-dom": ReactDOM,
-    "@hitachivantara/uikit-react-core": HvCore,
-    "@hitachivantara/uikit-react-icons": HvIcons,
-    "@hitachivantara/uikit-react-code-editor": HvCodeEditor,
-    "@hitachivantara/uikit-react-lab": HvLab,
-    "@hitachivantara/uikit-react-viz": HvViz,
-    "@hitachivantara/uikit-react-pentaho": HvPentaho,
-    "@hitachivantara/uikit-styles": HvStyles,
+    "@pentaho/uikit-react-core": HvCore,
+    "@pentaho/uikit-react-icons": HvIcons,
+    "@pentaho/uikit-react-code-editor": HvCodeEditor,
+    "@pentaho/uikit-react-lab": HvLab,
+    "@pentaho/uikit-react-viz": HvViz,
+    "@pentaho/uikit-react-pentaho": HvPentaho,
+    "@pentaho/uikit-styles": HvStyles,
     "@emotion/css": emotionCss,
     "@mui/material": muiMaterial,
     "@mui/utils": muiUtils,

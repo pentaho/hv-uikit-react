@@ -1,8 +1,5 @@
 import { forwardRef, useContext } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../../types/generic";
 import TableContext from "../TableContext";

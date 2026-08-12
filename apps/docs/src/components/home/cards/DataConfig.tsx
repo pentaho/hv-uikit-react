@@ -4,7 +4,7 @@ import {
   HvCheckBox,
   HvDropdown,
   HvInput,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { Card } from "./Card";
 

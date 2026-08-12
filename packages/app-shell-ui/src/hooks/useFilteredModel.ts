@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { HvAppShellModel } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellModel } from "@pentaho/app-shell-shared";
 
 import filterModel from "../utils/filterModel";
 import { useConditionsEvaluator } from "./useConditionsEvaluator";

@@ -18,8 +18,8 @@ import {
   useHvPagination,
   useHvSortBy,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Ban } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Ban } from "@pentaho/uikit-react-icons";
 
 interface TableProps {
   loading: boolean;

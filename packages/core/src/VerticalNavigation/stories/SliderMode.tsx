@@ -3,8 +3,8 @@ import {
   HvVerticalNavigation,
   HvVerticalNavigationHeader,
   HvVerticalNavigationTree,
-} from "@hitachivantara/uikit-react-core";
-import { BarChart, Deploy, Open } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { BarChart, Deploy, Open } from "@pentaho/uikit-react-icons";
 
 const navigationData = [
   {

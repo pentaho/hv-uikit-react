@@ -1,4 +1,4 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
+import { createClasses } from "@pentaho/uikit-react-utils";
 
 export const { staticClasses, useClasses } = createClasses("HvListContainer", {
   root: {

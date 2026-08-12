@@ -4,7 +4,7 @@ import {
   HvTagsInput,
   HvTypography,
   type HvTagProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export const ControlledTagArray = () => {
   const [currValueArr, setCurrValueArr] = useState<HvTagProps[]>([

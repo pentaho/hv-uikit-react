@@ -1,9 +1,6 @@
 import { forwardRef } from "react";
 import { Tabs, TabsList, type TabsProps } from "@mui/base";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-core";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-core";
 
 import { staticClasses, useClasses } from "./PanelTabs.styles";
 

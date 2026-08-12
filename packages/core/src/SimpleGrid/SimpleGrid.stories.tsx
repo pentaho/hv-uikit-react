@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvSimpleGrid,
   type HvSimpleGridProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvSimpleGrid> = {
   title: "Components/Simple Grid",

@@ -1,4 +1,4 @@
-import type { HvTableColumnConfig } from "@hitachivantara/uikit-react-core";
+import type { HvTableColumnConfig } from "@pentaho/uikit-react-core";
 
 // --- Table data utils ---
 

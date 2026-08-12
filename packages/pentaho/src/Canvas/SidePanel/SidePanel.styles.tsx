@@ -1,4 +1,4 @@
-import { createClasses, theme } from "@hitachivantara/uikit-react-core";
+import { createClasses, theme } from "@pentaho/uikit-react-core";
 
 const boxShadow = `4px 0px 8px -4px ${theme.alpha("textDark", "12%")}`;
 

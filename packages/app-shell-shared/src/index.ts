@@ -12,7 +12,7 @@ export * from "./types/menu";
 export * from "./types/condition";
 export * from "./types/Model";
 
-export { type AsyncResult, useAsync } from "@hitachivantara/app-shell-services";
+export { type AsyncResult, useAsync } from "@pentaho/app-shell-services";
 
 export * from "./i18n";
 

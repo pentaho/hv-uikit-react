@@ -3,8 +3,8 @@ import {
   type GetMiniMapNodeAttribute,
   type MiniMapProps,
 } from "reactflow";
-import type { ExtractNames } from "@hitachivantara/uikit-react-core";
-import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
+import type { ExtractNames } from "@pentaho/uikit-react-core";
+import { getColor, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { staticClasses, useClasses } from "./Minimap.styles";
 

@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  HvBaseSwitch,
-  HvButtonBase,
-  theme,
-} from "@hitachivantara/uikit-react-core";
+import { HvBaseSwitch, HvButtonBase, theme } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [checked, setChecked] = useState(false);

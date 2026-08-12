@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  HvButton,
-  HvSection,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvButton, HvSection, HvTypography } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   // only one section allowed to be expanded at a time, so we need to manage the state of the sections

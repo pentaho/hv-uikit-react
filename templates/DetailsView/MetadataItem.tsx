@@ -4,7 +4,7 @@ import {
   HvTypography,
   theme,
   type HvGridProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export interface MetadataItemProps extends Omit<HvGridProps, "title"> {
   title?: React.ReactNode;

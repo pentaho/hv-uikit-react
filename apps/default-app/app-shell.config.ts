@@ -1,5 +1,5 @@
 import { loadEnv } from "vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type { HvAppShellConfig } from "@pentaho/app-shell-vite-plugin";
 
 const {
   VITE_SAMPLE_APP_URL = "https://pentaho.github.io/uikit-templates/",

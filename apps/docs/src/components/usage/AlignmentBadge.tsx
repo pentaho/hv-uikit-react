@@ -1,5 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react/Info";
-import { HvIconButton, HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvIconButton, HvTypography } from "@pentaho/uikit-react-core";
 
 import { alignmentData } from "./alignmentData";
 

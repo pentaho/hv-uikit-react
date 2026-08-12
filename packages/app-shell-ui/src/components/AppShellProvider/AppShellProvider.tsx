@@ -8,15 +8,9 @@ import {
   type HvAppShellConfig,
   type HvAppShellModel,
   type HvAppShellProvidersComponent,
-} from "@hitachivantara/app-shell-shared";
-import {
-  themes as baseThemes,
-  HvProvider,
-} from "@hitachivantara/uikit-react-core";
-import type {
-  HvThemeColorMode,
-  HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/app-shell-shared";
+import { themes as baseThemes, HvProvider } from "@pentaho/uikit-react-core";
+import type { HvThemeColorMode, HvThemeStructure } from "@pentaho/uikit-styles";
 
 import { useFilteredModel } from "../../hooks/useFilteredModel";
 import useLocalStorage from "../../hooks/useLocalStorage";

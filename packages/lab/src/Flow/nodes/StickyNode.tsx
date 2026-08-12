@@ -20,7 +20,7 @@ import {
   HvSelectionList,
   theme,
   type HvColorAny,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   ActualSize,
   Bold,
@@ -29,7 +29,7 @@ import {
   Fullscreen,
   Italic,
   Palette,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 export type StickyNodeData =
   | undefined

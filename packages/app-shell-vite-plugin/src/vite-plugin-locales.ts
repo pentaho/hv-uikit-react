@@ -18,7 +18,7 @@ function resolveAppShellUiLocales(): string | undefined {
   try {
     // Resolve a known locale file via the ./locales/* export, then derive the directory
     const sampleFile =
-      require.resolve("@hitachivantara/app-shell-ui/locales/en/appShell.json");
+      require.resolve("@pentaho/app-shell-ui/locales/en/appShell.json");
     // Go up two levels: en/appShell.json -> en -> locales
     const localesDir = path.resolve(sampleFile, "../..");
     if (fs.existsSync(localesDir) && fs.statSync(localesDir).isDirectory()) {

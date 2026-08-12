@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-react-lab
+# @pentaho/uikit-react-lab
 
 Contributed React components to UI Kit by the community.
 
@@ -7,5 +7,5 @@ Contributed React components to UI Kit by the community.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-react-lab
+npm install @pentaho/uikit-react-lab
 ```

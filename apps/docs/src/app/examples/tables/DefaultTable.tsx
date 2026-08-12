@@ -7,8 +7,8 @@ import {
   type HvRowInstance,
   type HvTableColumnConfig,
   type HvTableInstance,
-} from "@hitachivantara/uikit-react-core";
-import { Delete, Duplicate, Preview } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Delete, Duplicate, Preview } from "@pentaho/uikit-react-icons";
 
 import { makeData, type AssetEvent } from "./makeData";
 import { MyTable } from "./MyTable";

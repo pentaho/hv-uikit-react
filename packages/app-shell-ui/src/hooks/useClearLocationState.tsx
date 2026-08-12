@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useBeforeUnload, useLocation } from "react-router-dom";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
 
 const useClearLocationState = () => {
   const location = useLocation();

@@ -1,4 +1,4 @@
-import { createClasses } from "@hitachivantara/uikit-react-core";
+import { createClasses } from "@pentaho/uikit-react-core";
 
 export const { staticClasses, useClasses } = createClasses(
   "HvCanvasPanelTabs",

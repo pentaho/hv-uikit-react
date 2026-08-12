@@ -1,4 +1,4 @@
-import { HvLoading } from "@hitachivantara/uikit-react-core";
+import { HvLoading } from "@pentaho/uikit-react-core";
 
 export interface LoadingProps {
   label?: string;

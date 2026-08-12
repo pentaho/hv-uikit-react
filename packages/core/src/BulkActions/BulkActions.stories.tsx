@@ -5,8 +5,8 @@ import {
   HvCheckBox,
   type HvActionGeneric,
   type HvBulkActionsProps,
-} from "@hitachivantara/uikit-react-core";
-import { Add, Delete, Preview } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Delete, Preview } from "@pentaho/uikit-react-icons";
 
 const actions: HvActionGeneric[] = [
   { id: "add", label: "Add", icon: <Add /> },

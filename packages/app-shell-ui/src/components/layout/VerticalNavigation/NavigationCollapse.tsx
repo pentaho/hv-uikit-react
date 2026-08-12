@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
-import { HvVerticalNavigationAction } from "@hitachivantara/uikit-react-core";
-import { End, Start } from "@hitachivantara/uikit-react-icons";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
+import { HvVerticalNavigationAction } from "@pentaho/uikit-react-core";
+import { End, Start } from "@pentaho/uikit-react-icons";
 
 const classes = {
   root: css({

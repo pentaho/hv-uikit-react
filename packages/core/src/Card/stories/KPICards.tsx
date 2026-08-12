@@ -6,13 +6,13 @@ import {
   HvCardHeader,
   HvCheckBox,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Level1,
   Level2Average,
   Level3Bad,
   Tool,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const data = {
   firstTitle: "Related assets",

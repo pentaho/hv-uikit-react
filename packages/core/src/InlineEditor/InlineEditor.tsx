@@ -3,7 +3,7 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvButton, type HvButtonProps } from "../Button";
 import { useControlled } from "../hooks/useControlled";

@@ -3,7 +3,7 @@ import {
   HvAppShellEventNotificationTrigger,
   type HvAppShellEventNotification,
   type HvAppShellEventNotificationType,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 import {
   HvButton,
   HvCheckBox,
@@ -13,7 +13,7 @@ import {
   HvTypography,
   type HvBannerVariant,
   type HvSnackbarVariant,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const Notifications = () => {
   const [notificationText, setNotificationText] = useState("");

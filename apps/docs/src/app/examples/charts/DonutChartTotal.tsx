@@ -1,6 +1,6 @@
-import { HvTypography } from "@hitachivantara/uikit-react-core";
-import { Ticket } from "@hitachivantara/uikit-react-icons";
-import { HvDonutChart } from "@hitachivantara/uikit-react-viz";
+import { HvTypography } from "@pentaho/uikit-react-core";
+import { Ticket } from "@pentaho/uikit-react-icons";
+import { HvDonutChart } from "@pentaho/uikit-react-viz";
 
 export default function Demo() {
   const data = {

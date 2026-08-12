@@ -9,10 +9,7 @@ import {
 import { useControlled, useForkRef } from "@mui/material/utils";
 import type { Placement } from "@popperjs/core";
 import { clsx, type ClassValue } from "clsx";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvDropdownPanel } from "../BaseDropdown";
 import type { HvButtonProps } from "../Button";

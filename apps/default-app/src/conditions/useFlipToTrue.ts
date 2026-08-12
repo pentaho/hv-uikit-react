@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+import type { UseConditionResult } from "@pentaho/app-shell-shared";
 
 const FLIP_DURATION = 10000;
 

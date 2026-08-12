@@ -7,8 +7,8 @@ import {
   HvSuggestions,
   type HvBaseInputProps,
   type HvSuggestionsProps,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS } from "@pentaho/uikit-react-icons";
 
 import { allCountries } from "../../Input/stories/countries";
 

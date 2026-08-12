@@ -6,20 +6,15 @@ import {
   HvDialogActions,
   HvDialogContent,
   HvDialogTitle,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Edit,
-  Favorite,
-  Flag,
-  Search,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Edit, Favorite, Flag, Search } from "@pentaho/uikit-react-icons";
 import {
   HvFlowNode,
   useFlowNode,
   type HvFlowInstance,
   type HvFlowNodeFC,
   type HvFlowNodeProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 type Node = ReturnType<HvFlowInstance["getNode"]>;
 

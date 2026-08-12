@@ -5,14 +5,14 @@ import {
   HvVerticalNavigationActions,
   HvVerticalNavigationHeader,
   HvVerticalNavigationTree,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   BarChart,
   Deploy,
   LogOut,
   Open,
   User,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const navigationData = [
   { id: "00", label: "Installation Overview", icon: <Open /> },

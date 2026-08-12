@@ -1,5 +1,5 @@
 import type { CSSInterpolation } from "@emotion/serialize";
-import { theme } from "@hitachivantara/uikit-styles";
+import { theme } from "@pentaho/uikit-styles";
 
 export default {
   "& .rc-slider": {

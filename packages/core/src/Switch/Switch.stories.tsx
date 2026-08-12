@@ -7,7 +7,7 @@ import {
   HvLabel,
   HvSwitch,
   type HvSwitchProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const decorator: Decorator = (Story) => (
   <div className="flex flex-wrap items-center gap-md">{Story()}</div>

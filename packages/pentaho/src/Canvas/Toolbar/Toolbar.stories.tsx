@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import { HvButton } from "@pentaho/uikit-react-core";
 import {
   HvCanvasToolbar,
   type HvCanvasToolbarProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 const meta: Meta<typeof HvCanvasToolbar> = {
   title: "Pentaho/Canvas/Toolbar",

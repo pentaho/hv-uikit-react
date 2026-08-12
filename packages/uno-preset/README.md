@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-uno-preset
+# @pentaho/uikit-uno-preset
 
 UI Kit UnoCSS preset.
 
@@ -7,21 +7,21 @@ UI Kit UnoCSS preset.
 Install the package in your project directory with:
 
 ```sh
-npm install -D unocss @hitachivantara/uikit-uno-preset
+npm install -D unocss @pentaho/uikit-uno-preset
 ```
 
-Add the `presetHv` to the array of presets in your `vite.config.ts` or `uno.config.ts` files:
+Add the `presetUikit` to the array of presets in your `vite.config.ts` or `uno.config.ts` files:
 
 ```ts
 // vite.config.ts
 import unoCSS from "unocss/vite";
 import { defineConfig } from "vite";
-import { presetHv } from "@hitachivantara/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
   plugins: [
     unoCSS({
-      presets: [presetHv()],
+      presets: [presetUikit()],
     }),
   ],
 });
@@ -30,10 +30,10 @@ export default defineConfig({
 ```ts
 // uno.config.ts
 import { defineConfig } from "unocss";
-import { presetHv } from "@hitachivantara/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
-  presets: [presetHv()],
+  presets: [presetUikit()],
 });
 ```
 

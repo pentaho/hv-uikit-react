@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import { HvButton } from "@pentaho/uikit-react-core";
 
 import { HvCanvasToolbar } from "./Toolbar";
 

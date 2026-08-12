@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvCodeEditor,
   type HvCodeEditorProps,
-} from "@hitachivantara/uikit-react-code-editor";
+} from "@pentaho/uikit-react-code-editor";
 
 import { MainStory } from "./stories/Main";
 

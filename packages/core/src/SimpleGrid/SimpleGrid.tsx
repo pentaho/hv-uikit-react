@@ -1,8 +1,5 @@
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvBreakpoints } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvBreakpoints } from "@pentaho/uikit-styles";
 
 import type { HvBaseProps } from "../types/generic";
 import {

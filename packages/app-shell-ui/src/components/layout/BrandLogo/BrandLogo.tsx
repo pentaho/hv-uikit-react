@@ -5,7 +5,7 @@ import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellRuntimeContext,
   type HvAppShellConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import { Hitachi, Lumada, Pentaho } from "./logos";
 

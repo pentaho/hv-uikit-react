@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 const { staticClasses, useClasses } = createClasses("HvLoadingContainer", {
   root: {

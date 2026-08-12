@@ -10,8 +10,8 @@ import {
   HvSection,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 import {
   HvDashboard,
   HvFlowNode,
@@ -19,7 +19,7 @@ import {
   useFlowNodeInputEdges,
   type HvFlowNodeFC,
   type HvFlowNodeProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import { useLayoutsContext, type LayoutConfig } from "./LayoutsContext";
 import { buildLayout } from "./utils";

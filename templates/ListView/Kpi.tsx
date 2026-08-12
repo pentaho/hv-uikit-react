@@ -6,8 +6,8 @@ import {
   theme,
   type HvCardProps,
   type HvTableInstance,
-} from "@hitachivantara/uikit-react-core";
-import { BottomXS, TopXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { BottomXS, TopXS } from "@pentaho/uikit-react-icons";
 
 import { getStatusIcon, type ListViewEntry, type TrendData } from "./data";
 import { Indicator } from "./Indicator";

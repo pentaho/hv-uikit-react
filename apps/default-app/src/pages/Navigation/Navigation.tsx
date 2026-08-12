@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
 import {
   HvGlobalActions,
   HvGrid,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const Navigation = () => {
   const { getViewRoute } = useHvNavigation();

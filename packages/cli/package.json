@@ -1,5 +1,5 @@
 {
-  "name": "@hitachivantara/uikit-cli",
+  "name": "@pentaho/uikit-cli",
   "version": "6.0.10",
   "private": false,
   "type": "module",

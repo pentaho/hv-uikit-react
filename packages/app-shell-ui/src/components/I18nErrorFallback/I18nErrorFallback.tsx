@@ -1,4 +1,4 @@
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 /**
  * Minimal error fallback used as the Error Boundary around i18n initialization.

@@ -3,13 +3,8 @@ import {
   HvIconButton,
   theme,
   type HvIconButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Add,
-  Delete,
-  Download,
-  DropLeft,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Delete, Download, DropLeft } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<HvIconButtonProps> = {
   title: "Components/Icon Button",

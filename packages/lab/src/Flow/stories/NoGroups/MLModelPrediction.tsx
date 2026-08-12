@@ -1,5 +1,5 @@
-import { MachineLearning } from "@hitachivantara/uikit-react-icons";
-import { HvFlowNode, type HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import { MachineLearning } from "@pentaho/uikit-react-icons";
+import { HvFlowNode, type HvFlowNodeFC } from "@pentaho/uikit-react-lab";
 
 export const MLModelPrediction: HvFlowNodeFC = (props) => {
   return (

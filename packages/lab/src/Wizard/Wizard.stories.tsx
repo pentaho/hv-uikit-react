@@ -3,7 +3,7 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import isChromatic from "chromatic/isChromatic";
 import { expect, within } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvAccordion,
   HvButton,
@@ -12,12 +12,12 @@ import {
   HvListContainer,
   HvListItem,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   HvWizard,
   HvWizardContext,
   type HvWizardProps,
-} from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-lab";
 
 import mockText from "./mockData";
 

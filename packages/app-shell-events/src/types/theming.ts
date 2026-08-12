@@ -1,4 +1,4 @@
-import type { HvProviderProps } from "@hitachivantara/uikit-react-core";
+import type { HvProviderProps } from "@pentaho/uikit-react-core";
 
 export const HvAppShellEventThemeTrigger = "@hv/app-shell:theme:trigger";
 

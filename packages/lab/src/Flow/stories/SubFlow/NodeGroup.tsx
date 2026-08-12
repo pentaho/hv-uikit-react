@@ -10,9 +10,9 @@ import {
   HvTypography,
   theme,
   type HvListValue,
-} from "@hitachivantara/uikit-react-core";
-import { Fullscreen } from "@hitachivantara/uikit-react-icons";
-import { useHvNode } from "@hitachivantara/uikit-react-lab";
+} from "@pentaho/uikit-react-core";
+import { Fullscreen } from "@pentaho/uikit-react-icons";
+import { useHvNode } from "@pentaho/uikit-react-lab";
 
 const dashedBorder = `1px dashed ${theme.colors.border}`;
 const containerBorderRadius = "0 16px 16px 16px";

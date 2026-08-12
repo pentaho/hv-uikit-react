@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { Leaf } from "@hitachivantara/uikit-react-icons";
+import { Leaf } from "@pentaho/uikit-react-icons";
 import {
   HvCanvasToolbarTabs,
   type HvCanvasToolbarTabsProps,
-} from "@hitachivantara/uikit-react-pentaho";
+} from "@pentaho/uikit-react-pentaho";
 
 import { ControlledStory } from "./stories/Controlled";
 

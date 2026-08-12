@@ -1,4 +1,4 @@
-import { HvTypography, theme } from "@hitachivantara/uikit-react-core";
+import { HvTypography, theme } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   return (

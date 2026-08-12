@@ -9,13 +9,8 @@ import {
   HvLabel,
   type HvAdornmentProps,
   type HvFormStatus,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Fail,
-  Preview,
-  PreviewOff,
-  Success,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Fail, Preview, PreviewOff, Success } from "@pentaho/uikit-react-icons";
 
 const classes = {
   button: css({ width: "250px", height: "50px", margin: "10px" }),

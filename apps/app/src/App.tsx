@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { HvProvider, pentaho } from "@hitachivantara/uikit-react-core";
+import { HvProvider, pentaho } from "@pentaho/uikit-react-core";
 
 import { routes } from "./routes";
 

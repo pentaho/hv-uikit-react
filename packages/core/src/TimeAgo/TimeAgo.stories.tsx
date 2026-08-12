@@ -7,7 +7,7 @@ import {
   HvTimeAgo,
   theme,
   type HvTimeAgoProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const styles = {
   container: css({

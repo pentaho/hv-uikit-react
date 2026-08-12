@@ -1,5 +1,5 @@
-import { Cluster } from "@hitachivantara/uikit-react-icons";
-import { HvFlowNode, type HvFlowNodeFC } from "@hitachivantara/uikit-react-lab";
+import { Cluster } from "@pentaho/uikit-react-icons";
+import { HvFlowNode, type HvFlowNodeFC } from "@pentaho/uikit-react-lab";
 
 export const Asset: HvFlowNodeFC = (props) => {
   return (

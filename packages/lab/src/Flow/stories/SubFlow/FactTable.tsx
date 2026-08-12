@@ -4,8 +4,8 @@ import {
   HvOverflowTooltip,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
-import { Preview, Table } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Preview, Table } from "@pentaho/uikit-react-icons";
 
 const classes = {
   root: css({

@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 
 const styles = {
   root: css({

@@ -2,7 +2,7 @@ import { lazy, memo, Suspense } from "react";
 import type {
   HvAppShellAppSwitcherConfig,
   HvAppShellHelp,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 export const internalActions = [
   {

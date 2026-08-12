@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { createClasses, theme } from "@hitachivantara/uikit-react-core";
+import { createClasses, theme } from "@pentaho/uikit-react-core";
 
 export const { staticClasses, useClasses } = createClasses("HvDashboard", {
   root: {},

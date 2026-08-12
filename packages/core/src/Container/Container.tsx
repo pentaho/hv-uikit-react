@@ -4,11 +4,8 @@ import MuiContainer, {
 } from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { staticClasses, useClasses } from "./Container.styles";
 

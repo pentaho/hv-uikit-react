@@ -1,13 +1,13 @@
 import { renderHook } from "@testing-library/react";
 import { vi } from "vitest";
-import { HvAppShellEventNotificationTrigger } from "@hitachivantara/app-shell-events";
+import { HvAppShellEventNotificationTrigger } from "@pentaho/app-shell-events";
 
 import * as BannerProvider from "../providers/BannerProvider";
 import useNotificationsEventListenerHook from "./useNotificationsEventListener";
 
 const mockedEnqueueSnackbar = vi.fn();
-vi.mock("@hitachivantara/uikit-react-core", async () => {
-  const mod = await vi.importActual("@hitachivantara/uikit-react-core");
+vi.mock("@pentaho/uikit-react-core", async () => {
+  const mod = await vi.importActual("@pentaho/uikit-react-core");
   return {
     ...(mod as object),
     useHvSnackbar: () => {

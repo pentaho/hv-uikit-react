@@ -15,10 +15,7 @@ import {
   type ReactFlowProps,
 } from "reactflow";
 import { uid } from "uid";
-import {
-  useUniqueId,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-core";
+import { useUniqueId, type ExtractNames } from "@pentaho/uikit-react-core";
 
 import { flowStyles } from "./base";
 import { staticClasses, useClasses } from "./Flow.styles";

@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvToggleButton,
   type HvToggleButtonProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   BackwardsEmpty,
   BackwardsSelected,
@@ -25,7 +25,7 @@ import {
   Unlock,
   UpEmpty,
   UpSelected,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvToggleButton> = {
   title: "Components/Toggle Button",

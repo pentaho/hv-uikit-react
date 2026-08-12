@@ -4,7 +4,7 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {

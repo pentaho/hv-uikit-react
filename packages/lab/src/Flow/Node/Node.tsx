@@ -10,8 +10,8 @@ import {
   type ExtractNames,
   type HvActionsGenericProps,
   type HvButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS, Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS, Info } from "@pentaho/uikit-react-icons";
 
 import { useFlowContext, useFlowNode, useFlowNodeUtils } from "../hooks";
 import type { HvFlowNodeParam } from "../types";

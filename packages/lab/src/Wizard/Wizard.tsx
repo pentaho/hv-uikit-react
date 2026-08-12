@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-core";
+import type { ExtractNames } from "@pentaho/uikit-react-core";
 
 import type { HvStepNavigationProps } from "../StepNavigation";
 import { staticClasses, useClasses } from "./Wizard.styles";

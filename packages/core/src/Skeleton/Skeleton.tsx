@@ -1,7 +1,4 @@
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../types/generic";
 import { staticClasses, useClasses } from "./Skeleton.styles";

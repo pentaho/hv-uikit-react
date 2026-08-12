@@ -1,6 +1,6 @@
 import { useMemo, useState, type FC } from "react";
-import { useService, useServices } from "@hitachivantara/app-shell-services";
-import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
+import { useService, useServices } from "@pentaho/app-shell-services";
+import { DynamicHooksEvaluator } from "@pentaho/app-shell-shared";
 import {
   HvButton,
   HvCard,
@@ -8,7 +8,7 @@ import {
   HvGrid,
   HvLoading,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { MainContainer } from "../../components/MainContainer";
 import { ServiceDefinitions } from "../../services/serviceDefinition";

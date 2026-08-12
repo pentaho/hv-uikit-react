@@ -1,8 +1,5 @@
 import { memo } from "react";
-import {
-  icons,
-  type HvIconSpriteProps,
-} from "@hitachivantara/uikit-react-icons";
+import { icons, type HvIconSpriteProps } from "@pentaho/uikit-react-icons";
 
 export interface IconUiKitProps extends Omit<
   HvIconSpriteProps,

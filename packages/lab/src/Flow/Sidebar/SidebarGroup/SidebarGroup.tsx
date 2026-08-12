@@ -4,9 +4,9 @@ import {
   HvTypography,
   type ExtractNames,
   type HvButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS } from "@hitachivantara/uikit-react-icons";
-import { getColor } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS } from "@pentaho/uikit-react-icons";
+import { getColor } from "@pentaho/uikit-styles";
 
 import { useFlowContext } from "../../hooks";
 import type { HvFlowNodeGroup } from "../../types";

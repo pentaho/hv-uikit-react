@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { HvThemeColorMode } from "@hitachivantara/uikit-styles";
+import type { HvThemeColorMode } from "@pentaho/uikit-styles";
 
 import type { HvTheme } from "../types/theme";
 

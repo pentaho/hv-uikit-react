@@ -19,8 +19,8 @@ import {
   HvTimePicker,
   type HvFormElementProps,
   type HvInputProps,
-} from "@hitachivantara/uikit-react-core";
-import { Map } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Map } from "@pentaho/uikit-react-icons";
 
 const passwordSchema = z
   .string()

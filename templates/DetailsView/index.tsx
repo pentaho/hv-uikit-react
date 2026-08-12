@@ -8,7 +8,7 @@ import {
   theme,
   type HvGlobalActionsProps,
   type HvGridProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { KPIs } from "./KPIs";
 import { Properties } from "./Properties";

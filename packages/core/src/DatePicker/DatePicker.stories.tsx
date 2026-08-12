@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvCalendar,
   HvDatePicker,
@@ -11,7 +11,7 @@ import {
   HvRadio,
   HvRadioGroup,
   type HvDatePickerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const containerDecorator: Decorator = (Story) => (
   <div className="decorator w-240px min-h-440px">{Story()}</div>

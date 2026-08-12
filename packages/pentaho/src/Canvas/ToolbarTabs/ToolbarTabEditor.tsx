@@ -8,8 +8,8 @@ import {
   useEnhancedEffect,
   type ExtractNames,
   type HvTypographyProps,
-} from "@hitachivantara/uikit-react-core";
-import { Edit } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Edit } from "@pentaho/uikit-react-icons";
 
 // TODO - Extract component in the future: when we have more specs and/or is used in other components
 

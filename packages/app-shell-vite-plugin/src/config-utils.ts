@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createJiti } from "jiti";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import type { AppShellVitePluginOptions } from "./vite-plugin.js";
 

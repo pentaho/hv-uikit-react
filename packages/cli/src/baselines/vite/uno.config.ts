@@ -1,6 +1,6 @@
 import { defineConfig } from "unocss";
-import { presetHv } from "@hitachivantara/uikit-uno-preset";
+import { presetUikit } from "@pentaho/uikit-uno-preset";
 
 export default defineConfig({
-  presets: [presetHv()],
+  presets: [presetUikit()],
 });

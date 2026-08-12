@@ -9,7 +9,7 @@ import {
   HvInput,
   HvTextArea,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const DialogForm = () => (
   <HvGrid container rowSpacing="xs">

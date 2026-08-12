@@ -3,14 +3,14 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 import {
   getColor,
   theme,
   type HvColorAny,
   type HvRadius,
   type HvSize,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-styles";
 
 import {
   fixedForwardRef,

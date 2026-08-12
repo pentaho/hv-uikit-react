@@ -1,10 +1,6 @@
 import { useMemo } from "react";
 import type ColumnTable from "arquero/dist/types/table/column-table";
-import {
-  HvCard,
-  HvLoading,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvCard, HvLoading, HvTypography } from "@pentaho/uikit-react-core";
 
 interface KpiProps {
   loading: boolean;

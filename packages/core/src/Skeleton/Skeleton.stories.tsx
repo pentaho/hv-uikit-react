@@ -15,7 +15,7 @@ import {
   HvSwitch,
   HvTypography,
   type HvSkeletonProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvSkeleton> = {
   title: "Components/Skeleton",

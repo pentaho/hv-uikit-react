@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  HvDropdown,
-  type HvDropdownProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvDropdown, type HvDropdownProps } from "@pentaho/uikit-react-core";
 
 import { useFlowNodeUtils } from "../../hooks";
 import type { HvFlowNodeSelectParam } from "../../types";

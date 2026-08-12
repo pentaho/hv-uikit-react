@@ -13,12 +13,8 @@ import {
   theme,
   useWidth,
   type HvStackProps,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Favorite,
-  FavoriteSelected,
-  Tool,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Favorite, FavoriteSelected, Tool } from "@pentaho/uikit-react-icons";
 
 const Box = styled(HvPanel)({
   display: "grid",

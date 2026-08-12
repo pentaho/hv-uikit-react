@@ -1,13 +1,13 @@
 import { useCallback, useMemo, useState, type FC } from "react";
 import { PlusCircleIcon } from "@phosphor-icons/react/PlusCircle";
-import { useServices } from "@hitachivantara/app-shell-services";
-import { DynamicHooksEvaluator } from "@hitachivantara/app-shell-shared";
+import { useServices } from "@pentaho/app-shell-services";
+import { DynamicHooksEvaluator } from "@pentaho/app-shell-shared";
 import {
   HvDropDownMenu,
   HvIconContainer,
   type HvDropDownMenuProps,
   type HvListValue,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { ServiceDefinitions } from "../serviceDefinition";
 import type {

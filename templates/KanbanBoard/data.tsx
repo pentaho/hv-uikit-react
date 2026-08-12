@@ -1,9 +1,4 @@
-import {
-  Copy,
-  Edit,
-  Magnifier,
-  Success,
-} from "@hitachivantara/uikit-react-icons";
+import { Copy, Edit, Magnifier, Success } from "@pentaho/uikit-react-icons";
 
 import type { Column, Task } from "./types";
 

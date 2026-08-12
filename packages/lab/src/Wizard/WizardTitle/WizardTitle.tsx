@@ -5,8 +5,8 @@ import {
   HvTypography,
   type ExtractNames,
   type HvBaseProps,
-} from "@hitachivantara/uikit-react-core";
-import { Report } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Report } from "@pentaho/uikit-react-icons";
 
 import {
   HvStepNavigation,

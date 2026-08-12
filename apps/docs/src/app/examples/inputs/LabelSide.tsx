@@ -1,8 +1,4 @@
-import {
-  HvFormElement,
-  HvInput,
-  HvLabel,
-} from "@hitachivantara/uikit-react-core";
+import { HvFormElement, HvInput, HvLabel } from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   return (

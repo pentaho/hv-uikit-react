@@ -3,8 +3,8 @@ import {
   HvFlowNode,
   useFlowInputNodes,
   type HvFlowNodeFC,
-} from "@hitachivantara/uikit-react-lab";
-import { HvBarChart } from "@hitachivantara/uikit-react-viz";
+} from "@pentaho/uikit-react-lab";
+import { HvBarChart } from "@pentaho/uikit-react-viz";
 
 import type { NodeData } from "./data";
 

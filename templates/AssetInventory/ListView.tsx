@@ -8,7 +8,7 @@ import {
   HvTableRow,
   type HvTableColumnConfig,
   type HvTableInstance,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import type { AssetInventoryEntry } from "./data";
 

@@ -5,7 +5,7 @@ import {
   HvOverflowTooltip,
   HvSelect,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [phoneNumber, setPhoneNumber] = useState("");
