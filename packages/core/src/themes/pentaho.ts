@@ -1,8 +1,7 @@
 import {
-  blue,
   mergeTheme,
-  neutral,
   pentaho as pentahoBase,
+<<<<<<< HEAD
   slate,
   theme,
 <<<<<<< HEAD
@@ -10,6 +9,8 @@ import {
   yellow,
 } from "@pentaho/uikit-styles";
 =======
+=======
+>>>>>>> 3a52f0c07 (refactor(core): make HvVerticalNavigationTreeViewItem pentaho style the default)
 } from "@hitachivantara/uikit-styles";
 >>>>>>> 64fc70411 (refactor(core): make HvAvatarGroup pentaho style the default)
 
@@ -19,9 +20,6 @@ import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTagProps } from "../Tag";
-import type {
-  HvVerticalNavigationTreeViewItemProps,
-} from "../VerticalNavigation";
 import type { CSSClasses } from "./utils";
 
 export const pentaho = mergeTheme(pentahoBase, {
@@ -64,40 +62,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvButton: {
       radius: "full",
     } satisfies CSSClasses<HvButtonProps>,
-    HvVerticalNavigationTreeViewItem: {
-      classes: {
-        content: {
-          borderLeft: "unset",
-          borderRadius: theme.radii.round,
-          ".HvVerticalNavigationTreeViewItem-selected>&": {
-            background: blue[800],
-            borderLeft: "unset",
-          },
-          ":not(.HvVerticalNavigationTreeViewItem-disabled>&):not(.HvVerticalNavigationTreeViewItem-selected>&)":
-            {
-              "&:hover, &:focus-visible, &.focus-visible": {
-                background: slate[700],
-              },
-            },
-          ".HvVerticalNavigationTreeViewItem-focused>&": {
-            background: slate[700],
-          },
-        },
-        disabled: {
-          "& .HvVerticalNavigationTreeViewItem-label": {
-            color: neutral[500],
-          },
-          "& .HvVerticalNavigationTreeViewItem-content": {
-            background: neutral[800],
-          },
-        },
-        icon: {
-          "& .HvAvatar-root": {
-            borderRadius: theme.radii.round,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvVerticalNavigationTreeViewItemProps>,
     HvFooter: {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,

@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { blue, neutral, slate, theme } from "@pentaho/uikit-styles";
 
 import { avatarClasses } from "../../Avatar";
 import { outlineStyles } from "../../utils/focusUtils";
@@ -45,7 +45,8 @@ export const { staticClasses, useClasses } = createClasses(
       justifyContent: "flex-start",
       alignItems: "center",
       height: "32px",
-      borderLeft: `4px solid transparent`,
+      borderLeft: "unset",
+      borderRadius: theme.radii.round,
       paddingRight: theme.space.xs,
       "&$minimized": {
         justifyContent: "center",
@@ -72,6 +73,20 @@ export const { staticClasses, useClasses } = createClasses(
       },
       "$focused>&": {
         ...hover,
+      },
+
+      ".HvVerticalNavigationTreeViewItem-selected>&": {
+        background: blue[800],
+        borderLeft: "unset",
+      },
+      ":not(.HvVerticalNavigationTreeViewItem-disabled>&):not(.HvVerticalNavigationTreeViewItem-selected>&)":
+        {
+          "&:hover, &:focus-visible, &.focus-visible": {
+            background: slate[700],
+          },
+        },
+      ".HvVerticalNavigationTreeViewItem-focused>&": {
+        background: slate[700],
       },
 
       "&[disabled], &:active": {
@@ -108,7 +123,14 @@ export const { staticClasses, useClasses } = createClasses(
       margin: "8px 0 0 0",
       padding: 0,
     },
-    disabled: {},
+    disabled: {
+      "& .HvVerticalNavigationTreeViewItem-label": {
+        color: neutral[500],
+      },
+      "& .HvVerticalNavigationTreeViewItem-content": {
+        background: neutral[800],
+      },
+    },
     expandable: {
       fontWeight: 600,
     },
@@ -149,6 +171,9 @@ export const { staticClasses, useClasses } = createClasses(
       [`&& .${avatarClasses.root}`]: {
         fontSize: "15px",
         borderColor: "transparent",
+      },
+      "& .HvAvatar-root": {
+        borderRadius: theme.radii.round,
       },
     },
   },
