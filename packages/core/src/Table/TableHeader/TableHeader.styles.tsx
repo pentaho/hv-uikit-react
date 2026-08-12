@@ -10,12 +10,12 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
     alignContent: "inherit",
     textAlign: "left",
     padding: theme.spacing(0, "sm"),
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderSubtle,
     borderBottomWidth: 1,
   },
   head: {
     fontWeight: theme.fontWeights.semibold,
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: theme.colors.bgPage,
     borderBottomWidth: 1,
 
     "*:first-of-type > &": {
