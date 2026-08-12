@@ -25,7 +25,6 @@ import type {
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";
 import type { HvCardHeaderProps, HvCardProps } from "../Card";
-import type { HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
@@ -469,19 +468,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvButtonProps>,
-    HvDialog: {
-      classes: {
-        paper: {
-          borderRadius: theme.radii.large,
-          boxShadow: shadows.modal,
-        },
-        statusBar: {
-          border: "none",
-          borderTopLeftRadius: theme.radii.large,
-          borderTopRightRadius: theme.radii.large,
-        },
-      },
-    } satisfies CSSClasses<HvDialogProps>,
     HvDropdownButton: {
       classes: {
         disabled: {
