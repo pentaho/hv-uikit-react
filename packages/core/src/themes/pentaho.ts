@@ -29,7 +29,6 @@ import type {
 import type { HvCardHeaderProps, HvCardProps } from "../Card";
 import type { HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
-import type { HvFilterGroupContentProps } from "../FilterGroup/FilterContent";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvIconContainerProps } from "../IconContainer";
@@ -1106,12 +1105,5 @@ export const pentaho = mergeTheme(pentahoBase, {
       },
       separator: "/",
     } satisfies CSSClasses<HvBreadCrumbProps>,
-    HvFilterGroupContent: {
-      classes: {
-        actions: {
-          flexDirection: "row-reverse",
-        },
-      },
-    } satisfies CSSClasses<HvFilterGroupContentProps>,
   },
 });
