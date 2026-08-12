@@ -17,7 +17,7 @@ const { useClasses } = createClasses("HvRadioIcon", {
   },
   checked: {
     borderColor: "transparent",
-    backgroundColor: `var(--bg-color, ${theme.colors.primaryStrong})`,
+    backgroundColor: `var(--bg-color, ${theme.colors.primary})`,
     color: theme.colors.bgContainer,
   },
   disabled: {

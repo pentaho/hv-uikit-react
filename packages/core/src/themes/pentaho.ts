@@ -18,7 +18,6 @@ import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvDropdownPanelProps } from "../BaseDropdown";
-import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvBulkActionsProps } from "../BulkActions";
@@ -255,13 +254,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvCheckBoxIconProps>,
-    HvRadioIcon: {
-      classes: {
-        checked: {
-          "--bg-color": theme.colors.primary,
-        },
-      },
-    } satisfies CSSClasses<HvRadioIconProps>,
     HvBaseSwitch: {
       classes: {
         root: {
