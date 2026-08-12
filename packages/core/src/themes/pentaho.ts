@@ -49,7 +49,6 @@ import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvSwitchProps } from "../Switch";
-import type { HvTableCellProps } from "../Table/TableCell";
 import type { HvTableHeaderProps } from "../Table/TableHeader";
 import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
@@ -863,13 +862,6 @@ export const pentaho = mergeTheme(pentahoBase, {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,
     } satisfies HvFooterProps,
-    HvTableCell: {
-      classes: {
-        root: {
-          borderColor: theme.colors.borderSubtle,
-        },
-      },
-    } satisfies CSSClasses<HvTableCellProps>,
     HvTableHeader: {
       classes: {
         root: {
