@@ -51,7 +51,6 @@ import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvIconContainerProps } from "../IconContainer";
 import type { HvInlineEditorProps } from "../InlineEditor";
 import type { HvInputProps } from "../Input";
-import type { HvLoadingProps } from "../Loading";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
 import type { HvPaginationProps } from "../Pagination";
@@ -198,13 +197,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvAvatarGroupProps>,
-    HvLoading: {
-      classes: {
-        loadingBar: {
-          borderRadius: 1,
-        },
-      },
-    } satisfies CSSClasses<HvLoadingProps>,
     HvBadge: {
       classes: {
         badge: {
