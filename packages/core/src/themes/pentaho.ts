@@ -18,10 +18,7 @@ import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
 import type { HvBannerContentProps } from "../Banner";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
-import type {
-  HvBaseDropdownProps,
-  HvDropdownPanelProps,
-} from "../BaseDropdown";
+import type { HvDropdownPanelProps } from "../BaseDropdown";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
@@ -937,19 +934,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvInputProps>,
-    HvBaseDropdown: {
-      classes: {
-        header: {
-          borderColor: theme.colors.textDimmed,
-          backgroundColor: inputColors.bg,
-        },
-        headerOpen: {
-          "&,:hover": {
-            borderColor: theme.colors.textDimmed,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvBaseDropdownProps>,
     HvDropdownPanel: {
       classes: {
         panel: {

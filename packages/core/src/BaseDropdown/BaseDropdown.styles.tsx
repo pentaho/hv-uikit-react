@@ -17,9 +17,9 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     cursor: "pointer",
     userSelect: "none",
     position: "relative",
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: "light-dark(#FFFFFF, #020617)",
     boxSizing: "border-box",
-    border: `1px solid ${theme.colors.text}`,
+    border: `1px solid ${theme.colors.textDimmed}`,
     borderRadius: theme.radii.round,
     ":hover,:focus-visible": {
       borderColor: theme.colors.primary,
@@ -33,7 +33,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
   },
   headerOpen: {
     "&,:hover": {
-      borderColor: theme.colors.text,
+      borderColor: theme.colors.textDimmed,
     },
   },
   headerDisabled: {
