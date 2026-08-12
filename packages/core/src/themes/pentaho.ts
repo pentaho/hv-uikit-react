@@ -45,7 +45,6 @@ import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
 import type { HvFilterGroupContentProps } from "../FilterGroup/FilterContent";
 import type { HvFooterProps } from "../Footer";
-import type { HvLabelProps } from "../FormElement";
 import type { HvHeaderBrandProps, HvHeaderProps } from "../Header";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvIconContainerProps } from "../IconContainer";
@@ -965,15 +964,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTabsProps>,
-    HvLabel: {
-      classes: {
-        root: {
-          "& span[aria-hidden]": {
-            color: theme.form.errorColor,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvLabelProps>,
     HvBaseInput: {
       classes: {
         root: {
