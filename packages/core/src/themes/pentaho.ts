@@ -31,7 +31,6 @@ import type { HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
-import type { HvIconContainerProps } from "../IconContainer";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
@@ -442,18 +441,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTagProps>,
-    HvIconContainer: {
-      classes: {
-        root: {
-          padding: 0,
-        },
-        xs: { fontSize: 16, padding: 0 },
-        sm: { fontSize: 20, padding: 2 },
-        md: { fontSize: 26, padding: 3 },
-        lg: { fontSize: 36, padding: 6 },
-        xl: { fontSize: 48, padding: 5 },
-      },
-    } satisfies CSSClasses<HvIconContainerProps>,
     HvButtonBase: {
       classes: {
         root: {
