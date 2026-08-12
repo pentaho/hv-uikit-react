@@ -34,7 +34,6 @@ import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
-import type { HvSectionProps } from "../Section";
 import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
@@ -323,17 +322,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSwitchProps>,
-    HvSection: {
-      classes: {
-        content: {
-          backgroundColor: theme.colors.bgContainer,
-        },
-        header: {
-          padding: theme.spacing("xs", "sm"),
-          gap: theme.space.xs,
-        },
-      },
-    } satisfies CSSClasses<HvSectionProps>,
     HvSelect: {
       classes: {
         root: {
