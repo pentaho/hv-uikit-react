@@ -18,24 +18,28 @@ export const { staticClasses, useClasses } = createClasses("HvIconContainer", {
     transition: "rotate 0.2s ease",
     justifyContent: "center",
     alignItems: "center",
-    padding: 8, // default padding
+    padding: 0, // default padding
     // we're assuming svg children inherits from text color and size
   },
   xs: {
-    fontSize: 12,
-    padding: 10,
+    fontSize: 16,
+    padding: 0,
   },
   sm: {
-    fontSize: 16,
+    fontSize: 20,
+    padding: 2,
   },
   md: {
-    fontSize: 32,
+    fontSize: 26,
+    padding: 3,
   },
   lg: {
-    fontSize: 96,
+    fontSize: 36,
+    padding: 6,
   },
   xl: {
-    fontSize: 112,
+    fontSize: 48,
+    padding: 5,
   },
 });
 
