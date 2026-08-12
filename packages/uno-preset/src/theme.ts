@@ -25,6 +25,8 @@ export const extendTheme: ThemeExtender<Theme> = (baseTheme) => ({
     ...theme.radii,
   },
   breakpoints: Object.fromEntries(hvBreakpoints),
+  maxWidth: Object.fromEntries(hvBreakpoints),
+  minWidth: Object.fromEntries(hvBreakpoints),
   containers: Object.fromEntries(
     hvBreakpoints.map(([k, v]) => [k, `(min-width: ${v})`]),
   ),
@@ -47,10 +49,9 @@ export const extendTheme: ThemeExtender<Theme> = (baseTheme) => ({
 
   // typography
   fontFamily: {
+    ...baseTheme.fontFamily,
     body: hvTheme.fontFamily.body,
     sans: hvTheme.fontFamily.body,
-    serif: hvTheme.fontFamily.body,
-    mono: "monospace",
   },
   lineHeight: { DEFAULT: hvTheme.lineHeights.base, ...hvTheme.lineHeights },
   fontSize: { DEFAULT: hvTheme.fontSizes.base, ...hvTheme.fontSizes },
