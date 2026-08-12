@@ -4,38 +4,56 @@ import { theme } from "@pentaho/uikit-styles";
 export const { staticClasses, useClasses } = createClasses("HvSingleCalendar", {
   root: {
     overflow: "hidden",
+    " .HvNavigation-text": {
+      ...theme.typography.captionLabel,
+    },
+    " .HvNavigation-root": {
+      gap: 0,
+    },
+    " .HvMonthSelector-calendarMonthlyGrid": {
+      gridTemplateColumns: "repeat(4, 1fr)",
+    },
+    " .HvMonthSelector-calendarMonthlyCell": {
+      borderRadius: theme.radii.full,
+      width: 48,
+      height: 48,
+    },
+    " .HvMonthSelector-calendarMonthlyCellSelected": {
+      backgroundColor: theme.colors.primary,
+      color: theme.colors.dimmer,
+      ":hover": {
+        border: `1px solid ${theme.colors.primary}`,
+        color: theme.colors.text,
+        backgroundColor: theme.colors.primaryDimmed,
+      },
+    },
   },
   calendarGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(7, 1fr)",
+    justifyContent: "center",
+    gridTemplateColumns: "repeat(7, 32px)",
     "& $cellsInRange": {
-      backgroundColor: theme.colors.bgPageSecondary,
       "& $startBookend": {
-        borderLeft: `1px solid ${theme.colors.text}`,
-        backgroundColor: theme.colors.bgPageSecondary,
-        "&:hover": {
-          borderRight: `1px solid ${theme.colors.text}`,
-        },
+        borderLeft: "none",
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.dimmer,
       },
     },
     "&:hover $cellsInRange": {
-      backgroundColor: theme.colors.bgPageSecondary,
       "& $startBookend": {
-        borderLeft: `1px solid ${theme.colors.text}`,
-        borderRight: "inherit",
+        borderLeft: "none",
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.dimmer,
       },
     },
     "& $cellsInRange:hover": {
-      backgroundColor: theme.colors.bgPageSecondary,
+      borderTopRightRadius: theme.radii.full,
+      borderBottomRightRadius: theme.radii.full,
       "& $calendarDate": {
-        borderRight: `2px solid ${theme.colors.text}`,
+        borderRight: "none",
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.dimmer,
       },
-    },
-    "& $cellsInRange:hover ~ $cellsInRange": {
-      backgroundColor: theme.colors.bgContainer, // controls the right side of the hovered range
-    },
-    "& $cellsOutsideRange:hover ~ $cellsInRange": {
-      backgroundColor: theme.colors.bgContainer, // control the right side when hovering outside of the range
     },
   },
   calendarDay: {
@@ -43,8 +61,9 @@ export const { staticClasses, useClasses } = createClasses("HvSingleCalendar", {
     justifyContent: "center",
     flexDirection: "column",
     textAlign: "center",
-    height: "40px",
-    width: "40px",
+    height: "32px",
+    width: "32px",
+    ...theme.typography.caption2,
   },
   navigationContainer: {},
   focusSelection: {},
@@ -53,13 +72,45 @@ export const { staticClasses, useClasses } = createClasses("HvSingleCalendar", {
   calendarDateNotInMonth: {},
   calendarDateSelected: {},
   calendarDateInvalid: {},
-  calendarDateInSelectionRange: {},
-  startBookend: {},
-  endBookend: {},
+  calendarDateInSelectionRange: {
+    ":hover:not( .HvSingleCalendar-endBookend):not( .HvSingleCalendar-startBookend)":
+      {
+        borderRadius: 0,
+      },
+  },
+  startBookend: {
+    borderLeft: "none",
+    borderTopLeftRadius: theme.radii.full,
+    borderBottomLeftRadius: theme.radii.full,
+  },
+  endBookend: {
+    borderRight: "none",
+    borderTopRightRadius: theme.radii.full,
+    borderBottomRightRadius: theme.radii.full,
+  },
   cellsInRange: {
     backgroundColor: theme.colors.bgPageSecondary,
+    ":has(span.HvSingleCalendar-startBookend)": {
+      borderTopLeftRadius: theme.radii.full,
+      borderBottomLeftRadius: theme.radii.full,
+    },
   },
   cellsOutsideRange: {},
-  cellContainer: {},
-  weekdays: {},
+  cellContainer: {
+    "&:hover": {
+      ":has(span.HvSingleCalendar-startBookend)": {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+      ":has(span.HvSingleCalendar-endBookend)": {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+      },
+    },
+  },
+  weekdays: {
+    borderBottom: `1px solid ${theme.colors.borderSubtle}`,
+    marginBottom: theme.space.xs,
+    justifyContent: "center",
+  },
 });
