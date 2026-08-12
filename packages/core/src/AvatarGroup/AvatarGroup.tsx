@@ -72,7 +72,7 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
       size = "sm",
       spacing = "loose",
       direction = "row",
-      maxVisible = 3,
+      maxVisible = 4,
       overflowComponent,
       highlight = false,
       toBack = false,

@@ -101,9 +101,6 @@ export const { staticClasses, useClasses } = createClasses("HvTag", {
     "&,:hover,:focus-visible": {
       backgroundColor: theme.colors.bgDisabled,
     },
-    "&,:hover": {
-      backgroundColor: theme.colors.bgDisabled,
-    },
     "& $label": {
       color: theme.colors.textDisabled,
     },
