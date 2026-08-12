@@ -25,7 +25,7 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
     "--bg-color": theme.colors.textSubtle,
     color: "light-dark(#FFFFFF, #000000)",
     borderRadius: theme.radii.full,
-    backgroundColor: `var(--bg-color, ${theme.colors.text})`,
+    backgroundColor: `var(--bg-color, ${theme.colors.textSubtle})`,
     lineHeight: "16px",
     minWidth: 8,
     padding: "0 5px",
