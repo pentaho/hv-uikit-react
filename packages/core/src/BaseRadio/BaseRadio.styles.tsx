@@ -10,7 +10,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseRadio", {
     minWidth: 32,
     height: 32,
     cursor: "pointer",
-    borderRadius: "inherit",
+    borderRadius: theme.radii.base,
     ":hover": {
       backgroundColor: theme.colors.bgHover,
     },
