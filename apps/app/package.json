@@ -16,7 +16,6 @@
     "@pentaho/uikit-react-code-editor": "*",
     "@pentaho/uikit-react-core": "*",
     "@pentaho/uikit-react-icons": "*",
-    "@pentaho/uikit-react-lab": "*",
     "@pentaho/uikit-react-widgets": "*",
     "@pentaho/uikit-react-viz": "*",
     "@pentaho/uikit-styles": "*",

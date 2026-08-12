@@ -21,7 +21,6 @@ import * as zod from "zod";
 import * as HvCodeEditor from "@pentaho/uikit-react-code-editor";
 import * as HvCore from "@pentaho/uikit-react-core";
 import * as HvIcons from "@pentaho/uikit-react-icons";
-import * as HvLab from "@pentaho/uikit-react-lab";
 import * as HvViz from "@pentaho/uikit-react-viz";
 import * as HvWidgets from "@pentaho/uikit-react-widgets";
 import * as HvStyles from "@pentaho/uikit-styles";
@@ -42,7 +41,6 @@ const defaultScope: Scope = {
     "@pentaho/uikit-react-core": HvCore,
     "@pentaho/uikit-react-icons": HvIcons,
     "@pentaho/uikit-react-code-editor": HvCodeEditor,
-    "@pentaho/uikit-react-lab": HvLab,
     "@pentaho/uikit-react-viz": HvViz,
     "@pentaho/uikit-react-widgets": HvWidgets,
     "@pentaho/uikit-styles": HvStyles,
@@ -91,7 +89,6 @@ export const resolveComponents = (
     HvCore[identifier as keyof typeof HvCore] ||
     HvIcons[identifier as keyof typeof HvIcons] ||
     HvCodeEditor[identifier as keyof typeof HvCodeEditor] ||
-    HvLab[identifier as keyof typeof HvLab] ||
     HvViz[identifier as keyof typeof HvViz] ||
     HvWidgets[identifier as keyof typeof HvWidgets];
 

@@ -12,7 +12,6 @@ export const navigationData = [
       { id: "form", label: "Form", path: "/templates/form" },
       { id: "details", label: "Details View", path: "/templates/details" },
       { id: "kanban", label: "Kanban Board", path: "/templates/kanban" },
-      { id: "canvas", label: "Canvas", path: "/templates/canvas" },
     ],
   },
   { id: "flow", label: "Flow", path: "/flow" },

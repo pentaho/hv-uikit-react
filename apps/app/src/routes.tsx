@@ -9,7 +9,6 @@ const templates: RouteObject[] = [
   { path: "dashboard", lazy: () => import("@hv/templates/Dashboard") },
   { path: "welcome", lazy: () => import("@hv/templates/Welcome") },
   { path: "kanban", lazy: () => import("@hv/templates/KanbanBoard") },
-  { path: "canvas", lazy: () => import("@hv/templates/Canvas") },
 ];
 
 export const routes: RouteObject[] = [
@@ -18,13 +17,8 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", lazy: () => import("./pages/Components") },
       { path: "/debug", lazy: () => import("./pages/Debug") },
-      { path: "/flow", lazy: () => import("./pages/Flow") },
       { path: "/templates", children: templates },
       { path: "*", lazy: () => import("./pages/NotFound") },
     ],
-  },
-  {
-    path: "/dashboard-preview",
-    lazy: () => import("./pages/Flow/DashboardPreview"),
   },
 ];

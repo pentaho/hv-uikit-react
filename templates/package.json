@@ -15,7 +15,6 @@
     "@emotion/css": "^11.11.0",
     "@pentaho/uikit-react-core": "*",
     "@pentaho/uikit-react-icons": "*",
-    "@pentaho/uikit-react-lab": "*",
     "@pentaho/uikit-react-widgets": "*",
     "@pentaho/uikit-react-viz": "*",
     "reactflow": "^11.10.1",
