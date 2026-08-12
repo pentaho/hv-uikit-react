@@ -209,12 +209,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     } satisfies CSSClasses<HvBadgeProps>,
     HvBulkActions: {
       semantic: false,
-      classes: {
-        root: {
-          borderRadius: theme.radii.round,
-          padding: theme.space.xs,
-        },
-      },
     } satisfies CSSClasses<HvBulkActionsProps>,
     HvCallout: {
       classes: {
