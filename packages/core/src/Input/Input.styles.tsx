@@ -1,8 +1,9 @@
+import type { CSSInterpolation } from "@emotion/serialize";
 import { createClasses } from "@pentaho/uikit-react-utils";
 
 import { suggestionsClasses } from "../FormElement/Suggestions";
 
-export const { staticClasses, useClasses } = createClasses("HvInput", {
+export const inputStyles = {
   root: { display: "block" },
   labelContainer: {},
   label: {},
@@ -43,4 +44,9 @@ export const { staticClasses, useClasses } = createClasses("HvInput", {
   inputRootDisabled: {},
   inputRootMultiline: { padding: 0 },
   error: {},
-});
+} satisfies Record<string, CSSInterpolation>;
+
+export const { staticClasses, useClasses } = createClasses(
+  "HvInput",
+  inputStyles,
+);
