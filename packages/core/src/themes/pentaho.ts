@@ -37,7 +37,6 @@ import type { HvNumberInputProps } from "../NumberInput";
 import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
-import type { HvSwitchProps } from "../Switch";
 import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
 import type { HvTagsInputProps } from "../TagsInput";
@@ -307,21 +306,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvBaseSwitchProps>,
-    HvSwitch: {
-      classes: {
-        container: {
-          borderRadius: theme.radii.full,
-          "&:hover": {
-            backgroundColor: theme.colors.bgHover,
-          },
-          "& .HvBaseSwitch-root": {
-            "&:hover": {
-              backgroundColor: "transparent",
-            },
-          },
-        },
-      },
-    } satisfies CSSClasses<HvSwitchProps>,
     HvSelect: {
       classes: {
         root: {
