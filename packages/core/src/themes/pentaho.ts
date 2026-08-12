@@ -36,7 +36,6 @@ import type {
 } from "../Card";
 import type { HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
-import type { HvDropDownMenuProps } from "../DropDownMenu";
 import type { HvFilterGroupContentProps } from "../FilterGroup/FilterContent";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
@@ -941,18 +940,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvDropdownPanelProps>,
-    HvDropDownMenu: {
-      classes: {
-        root: {
-          "--r": "calc(var(--HvButton-height) / 2)",
-        },
-        open: {
-          "&[data-color=secondary]": {
-            borderColor: theme.colors.textDimmed,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvDropDownMenuProps>,
     HvNumberInput: {
       classes: {
         root: {
