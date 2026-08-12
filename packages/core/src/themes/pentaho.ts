@@ -27,7 +27,6 @@ import type {
 import type { HvCardHeaderProps, HvCardProps } from "../Card";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
-import type { HvInputProps } from "../Input";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
@@ -670,27 +669,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTabsProps>,
-    HvInput: {
-      classes: {
-        label: {
-          "& span[aria-hidden]::before": {
-            content: '" "',
-          },
-        },
-        inputRoot: {
-          ":has([type=search])": {
-            borderRadius: theme.radii.full,
-          },
-        },
-        suggestionsContainer: {
-          "&::before": {
-            backgroundColor: "transparent",
-            height: 0,
-            boxShadow: "none",
-          },
-        },
-      },
-    } satisfies CSSClasses<HvInputProps>,
     HvDropdownPanel: {
       classes: {
         panel: {

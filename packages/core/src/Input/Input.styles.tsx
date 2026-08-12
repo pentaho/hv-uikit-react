@@ -1,12 +1,17 @@
 import type { CSSInterpolation } from "@emotion/serialize";
 import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { suggestionsClasses } from "../FormElement/Suggestions";
 
 export const inputStyles = {
   root: { display: "block" },
   labelContainer: {},
-  label: {},
+  label: {
+    "& span[aria-hidden]::before": {
+      content: '" "',
+    },
+  },
   description: {},
   adornmentsBox: {
     display: "flex",
@@ -24,7 +29,15 @@ export const inputStyles = {
   },
   iconClear: { display: "none" },
   hasSuggestions: {},
-  suggestionsContainer: { width: "100%", position: "relative" },
+  suggestionsContainer: {
+    width: "100%",
+    position: "relative",
+    "&::before": {
+      backgroundColor: "transparent",
+      height: 0,
+      boxShadow: "none",
+    },
+  },
   suggestionList: {
     [`& .${suggestionsClasses.root} .${suggestionsClasses.list} &`]: {
       width: "100%",
@@ -34,6 +47,9 @@ export const inputStyles = {
   inputRoot: {
     ":is(:hover,:focus-within) $iconClear": {
       display: "block",
+    },
+    ":has([type=search])": {
+      borderRadius: theme.radii.full,
     },
   },
   inputRootFocused: {
