@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses(
   "HvVerticalNavigation",
@@ -9,17 +9,19 @@ export const { staticClasses, useClasses } = createClasses(
       flexDirection: "column",
       justifyContent: "flex-start",
 
-      width: "220px",
+      width: "280px",
 
-      backgroundColor: theme.colors.bgContainer,
-      boxShadow: theme.colors.shadow,
+      color: theme.colors.textLight,
+      backgroundColor: slate[900],
+      boxShadow: `inset -1px 0 0 0 ${slate[500]}`,
       clipPath: "inset(0px -12px 0px 0px)",
 
       "& > :only-child": {
         padding: theme.space.sm,
+        "& .HvVerticalNavigationSlider-listContainer": { padding: 0 },
       },
       "& > :not(nav:first-of-type)": {
-        borderTop: `3px solid ${theme.colors.borderSubtle}`,
+        borderTop: `1px solid ${slate[500]}`,
         padding: theme.spacing("xs", "sm", "sm", "sm"),
       },
 
@@ -41,7 +43,7 @@ export const { staticClasses, useClasses } = createClasses(
 
     slider: {
       "& > div:first-of-type": {
-        borderBottom: `3px solid ${theme.colors.borderSubtle}`,
+        borderBottom: `1px solid ${slate[500]}`,
       },
     },
 
