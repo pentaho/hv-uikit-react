@@ -20,7 +20,6 @@ import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTagProps } from "../Tag";
 import type {
-  HvVerticalNavigationSliderProps,
   HvVerticalNavigationTreeViewItemProps,
 } from "../VerticalNavigation";
 import type { CSSClasses } from "./utils";
@@ -65,38 +64,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvButton: {
       radius: "full",
     } satisfies CSSClasses<HvButtonProps>,
-    HvVerticalNavigationSlider: {
-      classes: {
-        root: {
-          minHeight: "32px",
-          borderLeft: "unset",
-          borderRadius: theme.radii.round,
-          "&.HvIsFocused": {
-            backgroundColor: slate[700],
-          },
-          "&.HvListItem-interactive:not(.HvListItem-disabled):not(.HvListItem-selected):hover":
-            {
-              backgroundColor: slate[700],
-            },
-        },
-        listItemDisabled: {
-          color: neutral[500],
-          backgroundColor: neutral[800],
-          "& .HvListItem-startAdornment": { backgroundColor: "transparent" },
-          "& .HvListItem-endAdornment": { backgroundColor: "transparent" },
-        },
-        listItemSelected: {
-          background: blue[800],
-          borderLeft: "unset",
-        },
-        listItemFocus: {
-          background: slate[700],
-        },
-        listContainer: {
-          padding: theme.space.sm,
-        },
-      },
-    } satisfies CSSClasses<HvVerticalNavigationSliderProps>,
     HvVerticalNavigationTreeViewItem: {
       classes: {
         content: {
