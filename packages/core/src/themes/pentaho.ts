@@ -52,7 +52,6 @@ import type { HvInlineEditorProps } from "../InlineEditor";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
-import type { HvPaginationProps } from "../Pagination";
 import type { HvSectionProps } from "../Section";
 import type { HvSelectProps } from "../Select";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
@@ -704,13 +703,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvDropdownButtonProps>,
-    HvPagination: {
-      classes: {
-        icon: {
-          fontSize: 16,
-        },
-      },
-    } satisfies CSSClasses<HvPaginationProps>,
     HvHeader: {
       classes: {
         root: {
