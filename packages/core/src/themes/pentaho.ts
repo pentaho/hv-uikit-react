@@ -21,7 +21,6 @@ import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
-import type { HvButtonBaseProps } from "../ButtonBase";
 import type {
   HvCalendarCellProps,
   HvSingleCalendarProps,
@@ -90,10 +89,6 @@ const notificationMap = {
   info: "info",
   accent: "accent",
 } as const;
-
-const inputColors = {
-  bg: ld("#FFFFFF", "#020617"),
-};
 
 const shadows = {
   container: theme.colors.shadow,
@@ -374,17 +369,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTagProps>,
-    HvButtonBase: {
-      classes: {
-        root: {
-          borderRadius: theme.radii.base,
-          ":where(:not(.HvButtonBase-disabled))": {
-            ":hover": { backgroundColor: theme.colors.primaryDimmed },
-            ":active": { backgroundColor: theme.colors.primarySubtle },
-          },
-        },
-      },
-    } satisfies CSSClasses<HvButtonBaseProps>,
     HvButton: {
       radius: "full",
       classes: {
