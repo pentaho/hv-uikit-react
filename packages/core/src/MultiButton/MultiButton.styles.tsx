@@ -12,8 +12,8 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
   multiple: {
     backgroundColor: theme.colors.bgPage,
     borderWidth: 0,
-    borderColor: `${theme.colors.border} transparent`,
-    borderRadius: theme.radii.base,
+    borderColor: theme.colors.border,
+    borderRadius: theme.radii.full,
 
     "& $button": {
       minWidth: 32,
@@ -22,6 +22,7 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
       flex: "1 1 0%",
       borderColor: "inherit",
       borderRadius: 0,
+      ...theme.typography.body,
       fontWeight: theme.typography.body.fontWeight,
       "&:disabled": {
         color: theme.colors.textDisabled,
@@ -49,8 +50,12 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
       "&:not($firstButton)": {
         marginLeft: "-1px",
       },
+      "&:not($firstButton, $lastButton)": {
+        borderRadius: 0,
+      },
       "&$selected": {
-        backgroundColor: theme.colors.bgContainer,
+        color: theme.colors.primary,
+        backgroundColor: theme.colors.primaryDimmed,
         fontWeight: theme.typography.label.fontWeight,
         borderColor: "currentcolor",
         zIndex: 2,
@@ -105,7 +110,8 @@ export const { staticClasses, useClasses } = createClasses("HvMultiButton", {
     flexDirection: "column",
     alignItems: "stretch",
     height: "auto",
-    borderColor: `transparent ${theme.colors.border}`,
+    borderRadius: theme.radii.large,
+    borderColor: theme.colors.border,
     "& $button": {
       minWidth: 32,
       flex: "1 1 32px",
