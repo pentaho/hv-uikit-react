@@ -45,7 +45,6 @@ import type { HvTagProps } from "../Tag";
 import type { HvTagsInputProps } from "../TagsInput";
 import type { HvCalloutProps } from "../utils/Callout";
 import type {
-  HvVerticalNavigationActionProps,
   HvVerticalNavigationProps,
   HvVerticalNavigationSliderProps,
   HvVerticalNavigationTreeViewItemProps,
@@ -665,16 +664,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvVerticalNavigationProps>,
-    HvVerticalNavigationAction: {
-      classes: {
-        action: {
-          borderRadius: theme.radii.round,
-          "&:hover, &:focus": {
-            backgroundColor: slate[700],
-          },
-        },
-      },
-    } satisfies CSSClasses<HvVerticalNavigationActionProps>,
     HvVerticalNavigationSlider: {
       classes: {
         root: {
