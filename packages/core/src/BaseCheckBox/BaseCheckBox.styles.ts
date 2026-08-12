@@ -9,7 +9,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseCheckBox", {
     width: 32,
     minWidth: 32,
     height: 32,
-    borderRadius: theme.radii.round,
+    borderRadius: theme.radii.base,
     cursor: "pointer",
     ":hover": {
       backgroundColor: theme.colors.bgHover,
