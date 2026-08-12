@@ -15,7 +15,6 @@ import {
 
 import type { HvAvatarProps } from "../Avatar";
 import type { HvAvatarGroupProps } from "../AvatarGroup";
-import type { HvBadgeProps } from "../Badge";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
@@ -143,29 +142,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvAvatarGroupProps>,
-    HvBadge: {
-      classes: {
-        badge: {
-          "--bg-color": theme.colors.textSubtle,
-          color: ld("white", "black"),
-          "&[data-color='textSubtle']:not(:empty)": {
-            color: theme.colors.textSubtle,
-            backgroundColor: theme.colors.bgPageSecondary,
-          },
-          ...Object.fromEntries(
-            (["primary", "positive", "warning", "negative"] as const).map(
-              (color) => [
-                `&[data-color='${color}']:not(:empty)`,
-                {
-                  color: theme.colors[color],
-                  backgroundColor: theme.colors[`${color}Dimmed`],
-                },
-              ],
-            ),
-          ),
-        },
-      },
-    } satisfies CSSClasses<HvBadgeProps>,
     HvBulkActions: {
       semantic: false,
     } satisfies CSSClasses<HvBulkActionsProps>,
