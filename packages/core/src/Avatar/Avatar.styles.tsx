@@ -1,5 +1,14 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import {
+  blue,
+  orange,
+  pink,
+  slate,
+  teal,
+  theme,
+  violet,
+  yellow,
+} from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvAvatar", {
   // use `classes.avatar` instead
@@ -25,10 +34,10 @@ export const { staticClasses, useClasses } = createClasses("HvAvatar", {
     fontSize: "1rem",
   },
   xs: { "--size": "24px", fontSize: theme.fontSizes.sm },
-  sm: { "--size": "32px", fontSize: theme.fontSizes.base },
-  md: { "--size": "40px", fontSize: theme.fontSizes.xl },
-  lg: { "--size": "52px", fontSize: theme.fontSizes.xl2 },
-  xl: { "--size": "88px", fontSize: theme.fontSizes.xl3 },
+  sm: { "--size": "24px", fontSize: theme.fontSizes.sm },
+  md: { "--size": "32px", fontSize: theme.fontSizes.base },
+  lg: { "--size": "48px", fontSize: theme.fontSizes.xl2 },
+  xl: { "--size": "64px", fontSize: theme.fontSizes.xl3 },
   avatar: {
     fontSize: "1em",
     borderRadius: "inherit",
@@ -36,6 +45,36 @@ export const { staticClasses, useClasses } = createClasses("HvAvatar", {
     width: "var(--size)",
     height: "var(--size)",
     backgroundColor: "var(--bgColor)",
+    border: `1px solid ${theme.colors.bgContainerSecondary}`,
+    fontWeight: theme.fontWeights.semibold,
+    "&[data-color=blue]": {
+      color: `light-dark(${theme.colors.primaryStrong}, ${blue[300]})`,
+      backgroundColor: `light-dark(${theme.colors.primaryDimmed}, ${blue[900]})`,
+    },
+    "&[data-color=orange]": {
+      color: `light-dark(${orange[700]}, ${orange[200]})`,
+      backgroundColor: `light-dark(${orange[200]}, ${orange[900]})`,
+    },
+    "&[data-color=teal]": {
+      color: `light-dark(${teal[800]}, ${teal[200]})`,
+      backgroundColor: `light-dark(${teal[200]}, ${teal[900]})`,
+    },
+    "&[data-color=violet]": {
+      color: `light-dark(${violet[800]}, ${violet[200]})`,
+      backgroundColor: `light-dark(${violet[200]}, ${violet[900]})`,
+    },
+    "&[data-color=pink]": {
+      color: `light-dark(${pink[900]}, ${pink[200]})`,
+      backgroundColor: `light-dark(${pink[200]}, ${pink[900]})`,
+    },
+    "&[data-color=yellow]": {
+      color: `light-dark(${yellow[700]}, ${yellow[100]})`,
+      backgroundColor: `light-dark(${yellow[200]}, ${yellow[900]})`,
+    },
+    "&[data-color=neutral]": {
+      color: `light-dark(${slate[400]}, ${slate[300]})`,
+      backgroundColor: `light-dark(${slate[200]}, ${slate[700]})`,
+    },
   },
   badge: {
     width: 8,
