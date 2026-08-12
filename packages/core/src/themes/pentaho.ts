@@ -16,7 +16,6 @@ import {
 import type { HvAvatarProps } from "../Avatar";
 import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
-import type { HvDropdownPanelProps } from "../BaseDropdown";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
@@ -83,20 +82,6 @@ const notificationMap = {
   info: "info",
   accent: "accent",
 } as const;
-
-const shadows = {
-  container: theme.colors.shadow,
-  elevated: `0 16px 16px 0 ${theme.alpha(slate[900], 0.1)}, 0 10px 10px 0 ${theme.alpha(slate[900], 0.08)}, 0 6px 6px 0 ${theme.alpha(slate[900], 0.06)}, 0 3px 3px 0 ${theme.alpha(slate[900], 0.04)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.02)}`,
-  modal: `0 32px 32px 0 ${theme.alpha(slate[900], 0.1)}, 0 20px 20px 0 ${theme.alpha(slate[900], 0.08)}, 0 12px 12px 0 ${theme.alpha(slate[900], 0.06)}, 0 5px 5px 0 ${theme.alpha(slate[900], 0.04)}, 0 1px 1px 0 ${theme.alpha(slate[900], 0.02)}`,
-};
-
-const popperStyles = {
-  margin: theme.spacing("xxs", 0),
-  backgroundColor: theme.colors.bgContainer,
-  border: `1px solid ${theme.colors.borderSubtle}`,
-  borderRadius: theme.radii.large,
-  boxShadow: shadows.container,
-};
 
 export const pentaho = mergeTheme(pentahoBase, {
   icons: {
@@ -669,13 +654,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTabsProps>,
-    HvDropdownPanel: {
-      classes: {
-        panel: {
-          ...popperStyles,
-        },
-      },
-    } satisfies CSSClasses<HvDropdownPanelProps>,
     HvCalendarCell: {
       classes: {
         dateWrapper: {

@@ -79,5 +79,10 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
   },
   panel: {
     padding: 0, // TODO(major): re-add padding as most elements need it
+    margin: theme.spacing("xxs", 0),
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
   },
 });
