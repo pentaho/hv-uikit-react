@@ -38,7 +38,7 @@ import type {
   HvCardHeaderProps,
   HvCardProps,
 } from "../Card";
-import type { HvDialogActionsProps, HvDialogProps } from "../Dialog";
+import type { HvDialogProps } from "../Dialog";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
 import type { HvFilterGroupContentProps } from "../FilterGroup/FilterContent";
@@ -660,13 +660,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvDialogProps>,
-    HvDialogActions: {
-      classes: {
-        root: {
-          borderTop: "none",
-        },
-      },
-    } satisfies CSSClasses<HvDialogActionsProps>,
     HvDropdownButton: {
       classes: {
         disabled: {
