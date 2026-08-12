@@ -27,7 +27,6 @@ import type {
 import type { HvCardHeaderProps, HvCardProps } from "../Card";
 import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
-import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvInputProps } from "../Input";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
@@ -488,24 +487,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvDropdownButtonProps>,
-    HvHeaderMenuBarBar: {
-      classes: {
-        active: {
-          boxShadow: "none",
-          borderBottom: `1px solid ${theme.colors.borderSubtle}`,
-        },
-        list: {
-          "& li:hover > .HvHeader-MenuBar-hidden": {
-            boxShadow: "none",
-            borderBottom: `1px solid ${theme.colors.borderSubtle}`,
-          },
-          "& li:focus-within > .HvHeader-MenuBar-hidden": {
-            boxShadow: "none",
-            borderBottom: `1px solid ${theme.colors.borderSubtle}`,
-          },
-        },
-      },
-    } satisfies CSSClasses<BarProps>,
     HvVerticalNavigation: {
       classes: {
         root: {
