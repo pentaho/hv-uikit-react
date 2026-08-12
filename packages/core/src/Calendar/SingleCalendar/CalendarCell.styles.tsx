@@ -1,26 +1,44 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
 import { theme } from "@pentaho/uikit-styles";
 
-const hover = {
-  backgroundColor: theme.colors.bgHover,
-  cursor: "pointer",
-};
-
 export const { staticClasses, useClasses } = createClasses("HvCalendarCell", {
-  cellContainer: {},
+  cellContainer: {
+    "&:hover": {
+      backgroundColor: theme.colors.primaryDimmed,
+      borderRadius: theme.radii.full,
+    },
+    ":has(> span.HvCalendarCell-calendarDateInSelectionRange):has(> span.HvCalendarCell-startBookend)":
+      {
+        backgroundColor: theme.colors.bgPageSecondary,
+        borderTopLeftRadius: theme.radii.full,
+        borderBottomLeftRadius: theme.radii.full,
+      },
+    ":has(> span.HvCalendarCell-calendarDateInSelectionRange):has(> span.HvCalendarCell-endBookend)":
+      {
+        backgroundColor: theme.colors.bgPageSecondary,
+        borderTopRightRadius: theme.radii.full,
+        borderBottomRightRadius: theme.radii.full,
+      },
+  },
   calendarDate: {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
     textAlign: "center",
-    height: "40px",
-    width: "40px",
+    height: "32px",
+    width: "32px",
+    ...theme.typography.caption1,
+    borderRadius: theme.radii.full,
+    ":hover": {
+      borderRadius: theme.radii.full,
+    },
   },
   calendarDateSelected: {
-    backgroundColor: theme.colors.bgPageSecondary,
-    color: theme.colors.text,
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.dimmer,
     "&:hover": {
-      ...hover,
+      border: `1px solid ${theme.colors.primary}`,
+      color: theme.colors.text,
     },
   },
   calendarDateNotInMonth: {
@@ -29,20 +47,25 @@ export const { staticClasses, useClasses } = createClasses("HvCalendarCell", {
   },
   calendarDateInSelectionRange: {
     backgroundColor: theme.colors.bgPageSecondary,
+    borderRadius: 0,
   },
   calendarDateDisabled: {
     color: theme.colors.textDisabled,
     cursor: "no-drop",
   },
   startBookend: {
-    borderLeft: `1px solid ${theme.colors.text}`,
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.dimmer,
+    borderRadius: theme.radii.full,
   },
   endBookend: {
-    borderRight: `1px solid ${theme.colors.text}`,
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.dimmer,
+    borderRadius: theme.radii.full,
   },
   dateWrapper: {
-    width: "40px",
-    height: "40px",
+    width: "32px",
+    height: "32px",
   },
   cellsInRange: {
     "&:focus": {
