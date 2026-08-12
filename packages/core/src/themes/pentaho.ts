@@ -22,7 +22,6 @@ import type {
   HvBaseDropdownProps,
   HvDropdownPanelProps,
 } from "../BaseDropdown";
-import type { HvBaseInputProps } from "../BaseInput";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBreadCrumbProps } from "../BreadCrumb";
@@ -917,17 +916,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvTabsProps>,
-    HvBaseInput: {
-      classes: {
-        root: {
-          borderColor: theme.colors.textDimmed,
-          backgroundColor: inputColors.bg,
-        },
-        disabled: {
-          backgroundColor: theme.colors.bgDisabled,
-        },
-      },
-    } satisfies CSSClasses<HvBaseInputProps>,
     HvInput: {
       classes: {
         label: {
