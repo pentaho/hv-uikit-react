@@ -12,7 +12,8 @@ export const { staticClasses, useClasses } = createClasses("HvHeader", {
     flexShrink: 0,
     zIndex: theme.zIndices.banner,
     borderTop: "none",
-    boxShadow: theme.colors.shadow,
+    borderBottom: `1px solid ${theme.colors.borderSubtle}`,
+    boxShadow: "none",
   },
   header: {
     display: "flex",
