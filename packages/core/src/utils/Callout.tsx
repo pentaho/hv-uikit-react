@@ -27,6 +27,7 @@ const { useClasses } = createClasses("HvCallout", {
     flexWrap: "nowrap",
     borderRadius: theme.radii.round,
     alignItems: "center",
+    outline: "1px solid var(--icolor, currentcolor)",
 
     "&[data-size='large']": {
       padding: theme.space.sm,
@@ -39,28 +40,40 @@ const { useClasses } = createClasses("HvCallout", {
     },
   },
   success: {
-    backgroundColor: theme.colors.positiveDimmed,
+    backgroundColor: theme.mix("positiveDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.positive,
+    "--title": theme.colors.positiveDeep,
   },
   warning: {
-    backgroundColor: theme.colors.warningDimmed,
+    backgroundColor: theme.mix("warningDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.warning,
+    "--title": theme.colors.warningDeep,
   },
   error: {
-    backgroundColor: theme.colors.negativeDimmed,
+    backgroundColor: theme.mix("negativeDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.negative,
+    "--title": theme.colors.negativeDeep,
   },
   info: {
-    backgroundColor: theme.colors.infoDimmed,
+    backgroundColor: theme.mix("infoDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.info,
+    "--title": theme.colors.infoDeep,
   },
   accent: {
-    backgroundColor: theme.colors.accentDimmed,
+    backgroundColor: theme.mix("accentDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.accent,
+    "--title": theme.colors.accentDeep,
   },
   default: {
-    backgroundColor: theme.colors.infoDimmed,
+    backgroundColor: theme.mix("infoDimmed", 0.5, "dimmer"),
+    "--icolor": theme.colors.info,
+    "--title": theme.colors.infoDeep,
   },
   message: {
     display: "flex",
     alignItems: "center",
     padding: 0,
-    color: theme.colors.textDark,
+    color: theme.colors.text,
     width: "100%",
   },
   messageContent: {
@@ -68,10 +81,13 @@ const { useClasses } = createClasses("HvCallout", {
     overflow: "hidden",
     wordBreak: "break-word",
   },
-  messageIcon: {},
+  messageIcon: {
+    alignSelf: "start",
+  },
   messageTitle: {
     display: "block",
     fontWeight: theme.fontWeights.semibold,
+    color: "var(--title)",
   },
   action: {
     marginRight: 0,
@@ -89,6 +105,7 @@ const { useClasses } = createClasses("HvCallout", {
   },
   actionClose: {
     alignSelf: "flex-end",
+    color: theme.colors.text,
   },
 });
 

@@ -28,7 +28,6 @@ import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTagProps } from "../Tag";
-import type { HvCalloutProps } from "../utils/Callout";
 import type {
   HvVerticalNavigationProps,
   HvVerticalNavigationSliderProps,
@@ -71,15 +70,6 @@ const avatarColors = {
     backgroundColor: ld(slate[200], slate[700]),
   },
 } satisfies Record<string, CSSObject>;
-
-const notificationMap = {
-  success: "positive",
-  warning: "warning",
-  error: "negative",
-  default: "info",
-  info: "info",
-  accent: "accent",
-} as const;
 
 export const pentaho = mergeTheme(pentahoBase, {
   icons: {
@@ -144,37 +134,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvBulkActions: {
       semantic: false,
     } satisfies CSSClasses<HvBulkActionsProps>,
-    HvCallout: {
-      classes: {
-        root: {
-          outline: "1px solid var(--icolor, currentcolor)",
-        },
-        ...Object.fromEntries(
-          Object.entries(notificationMap).map(([variant, color]) => [
-            variant,
-            {
-              backgroundColor: theme.mix(`${color}Dimmed`, 0.5, "dimmer"),
-              "--icolor": theme.colors[color],
-              "--title": theme.colors[`${color}Deep`],
-            },
-          ]),
-        ),
-        message: {
-          "&&": {
-            color: theme.colors.text,
-          },
-        },
-        messageIcon: {
-          alignSelf: "start",
-        },
-        messageTitle: {
-          color: "var(--title)",
-        },
-        actionClose: {
-          color: theme.colors.text,
-        },
-      },
-    } satisfies CSSClasses<HvCalloutProps>,
     HvSnackbar: {
       anchorOrigin: { vertical: "bottom", horizontal: "center" },
     } satisfies CSSClasses<HvSnackbarProps>,
