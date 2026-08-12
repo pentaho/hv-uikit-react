@@ -45,6 +45,7 @@ export const { staticClasses, useClasses } = createClasses(name, {
   actions: {
     display: "flex",
     gap: theme.space.xs,
+    flexDirection: "row-reverse",
   },
   space: {
     flex: 1,
