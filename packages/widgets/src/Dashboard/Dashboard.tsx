@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import {
   Responsive as ResponsiveGrid,
-  WidthProvider,
-  type Layouts,
+  useContainerWidth,
   type ReactGridLayoutProps,
+  type ResponsiveLayouts,
   type ResponsiveProps,
 } from "react-grid-layout";
 import { Global } from "@emotion/react";
@@ -14,8 +14,6 @@ import {
 } from "@pentaho/uikit-react-core";
 
 import { gridStyles, staticClasses, useClasses } from "./Dashboard.styles";
-
-const GridLayout = WidthProvider(ResponsiveGrid);
 
 /** Default column breakpoints. For now, use always 12-column */
 const defaultCols: HvDashboardProps["cols"] = {
@@ -30,7 +28,10 @@ export { staticClasses as dashboardClasses };
 
 export type HvDashboardClasses = ExtractNames<typeof useClasses>;
 
-export interface HvDashboardProps extends Omit<ResponsiveProps, "cols"> {
+export interface HvDashboardProps extends Omit<
+  ResponsiveProps,
+  "cols" | "width"
+> {
   /** Dashboard items. Each node must be `key`'ed  */
   children: React.ReactNode;
   /** An object used to override or extend the styles applied. */
@@ -67,8 +68,9 @@ export const HvDashboard = (props: HvDashboardProps) => {
   } = useDefaultProps("HvDashboard", props);
   const { classes, cx } = useClasses(classesProp);
   const { activeTheme } = useTheme();
+  const { width, containerRef, mounted } = useContainerWidth();
 
-  const layouts = useMemo<Layouts>(() => {
+  const layouts = useMemo<ResponsiveLayouts>(() => {
     if (layoutsProp) return layoutsProp;
     if (!layout) return {};
 
@@ -92,17 +94,20 @@ export const HvDashboard = (props: HvDashboardProps) => {
   }, [colsProp]);
 
   return (
-    <>
+    <div ref={containerRef as React.Ref<HTMLDivElement>}>
       <Global styles={gridStyles} />
-      <GridLayout
-        className={cx(classes.root, className)}
-        breakpoints={activeTheme?.breakpoints.values}
-        cols={cols}
-        layouts={layouts}
-        {...others}
-      >
-        {children}
-      </GridLayout>
-    </>
+      {mounted && (
+        <ResponsiveGrid
+          width={width}
+          className={cx(classes.root, className)}
+          breakpoints={activeTheme?.breakpoints.values}
+          cols={cols}
+          layouts={layouts}
+          {...others}
+        >
+          {children}
+        </ResponsiveGrid>
+      )}
+    </div>
   );
 };

@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvSection, HvTypography } from "@pentaho/uikit-react-core";
-import { HvDashboard, type HvDashboardProps } from "@pentaho/uikit-react-lab";
+import {
+  HvDashboard,
+  type HvDashboardProps,
+} from "@pentaho/uikit-react-widgets";
 
 const meta: Meta<typeof HvDashboard> = {
-  title: "Lab/Dashboard",
+  title: "Components/Dashboard",
   component: HvDashboard,
 };
 

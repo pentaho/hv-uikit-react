@@ -5,19 +5,15 @@ import { HvSimpleGrid } from "@pentaho/uikit-react-core";
 import { Test as BottomPanelTestStory } from "../Canvas/BottomPanel/BottomPanel.stories";
 import { Main as SidePanelMainStory } from "../Canvas/SidePanel/SidePanel.stories";
 import { Test as ToolbarTabsTestStory } from "../Canvas/ToolbarTabs/ToolbarTabs.stories";
+import { Main as DashboardMainStory } from "../Dashboard/Dashboard.stories";
 
-/** Visual tests for components from the Pentaho package */
+/** Visual tests for components from the widgets package */
 const meta: Meta = {
   title: "Tests/Widgets",
   tags: ["skipTestRunner"],
 };
 export default meta;
 
-/**
- * Visual tests for:
- * - Bottom panel
- * - Toolbar tabs
- */
 export const Test: StoryObj = {
   parameters: {
     ...setupChromatic("pentaho", 5000),
@@ -30,6 +26,7 @@ export const Test: StoryObj = {
       {renderStory(BottomPanelTestStory, context)}
       {renderStory(ToolbarTabsTestStory, context)}
       {renderStory(SidePanelMainStory, context)}
+      {renderStory(DashboardMainStory, context)}
     </HvSimpleGrid>
   ),
 };
