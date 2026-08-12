@@ -32,7 +32,6 @@ import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
-import type { HvNumberInputProps } from "../NumberInput";
 import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
@@ -757,20 +756,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvDropdownPanelProps>,
-    HvNumberInput: {
-      classes: {
-        root: {
-          ".HvBaseInput-disabled .HvInput-adornmentsBox": {
-            backgroundColor: theme.colors.bgDisabled,
-          },
-        },
-        adornmentsBox: {
-          backgroundColor: theme.colors.bgContainer,
-          borderLeft: `1px solid ${theme.colors.border}`,
-          borderRadius: theme.radii.none,
-        },
-      },
-    } satisfies CSSClasses<HvNumberInputProps>,
     HvCalendarCell: {
       classes: {
         dateWrapper: {
