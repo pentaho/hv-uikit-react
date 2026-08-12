@@ -17,7 +17,8 @@ export const { staticClasses, useClasses } = createClasses("HvSection", {
     alignItems: "center",
     borderColor: "inherit",
     position: "relative",
-    padding: theme.space.sm,
+    padding: theme.spacing("xs", "sm"),
+    gap: theme.space.xs,
 
     "+ $content": {
       borderTopLeftRadius: 0,
@@ -31,7 +32,7 @@ export const { staticClasses, useClasses } = createClasses("HvSection", {
     },
   },
   content: {
-    backgroundColor: theme.colors.bgPage,
+    backgroundColor: theme.colors.bgContainer,
     padding: theme.space.sm,
     borderRadius: "inherit",
     borderColor: "inherit",
