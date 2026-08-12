@@ -23,7 +23,6 @@ import type {
   HvSingleCalendarProps,
 } from "../Calendar/SingleCalendar";
 import type { HvCardProps } from "../Card";
-import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
@@ -385,26 +384,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvButtonProps>,
-    HvDropdownButton: {
-      classes: {
-        disabled: {
-          backgroundColor: theme.colors.bgDisabled,
-          borderColor: theme.colors.bgDisabled,
-          "&.HvButton-subtle": {
-            borderColor: theme.colors.bgDisabled,
-            "&,:hover": {
-              backgroundColor: theme.colors.bgDisabled,
-            },
-          },
-          "&.HvButton-ghost": {
-            borderColor: theme.colors.bgDisabled,
-            "&,:hover": {
-              backgroundColor: theme.colors.bgDisabled,
-            },
-          },
-        },
-      },
-    } satisfies CSSClasses<HvDropdownButtonProps>,
     HvVerticalNavigation: {
       classes: {
         root: {
