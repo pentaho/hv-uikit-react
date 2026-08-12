@@ -39,7 +39,11 @@ export const { staticClasses, useClasses } = createClasses("HvHeaderMenuBar", {
     backgroundColor: theme.colors.bgContainer,
   },
   hidden: { ...hide },
-  active: { ...show },
+  active: {
+    ...show,
+    boxShadow: "none",
+    borderBottom: `1px solid ${theme.colors.borderSubtle}`,
+  },
   list: {
     margin: 0,
     padding: 0,
@@ -51,6 +55,8 @@ export const { staticClasses, useClasses } = createClasses("HvHeaderMenuBar", {
     },
     "& li:hover > $hidden": {
       ...show,
+      boxShadow: "none",
+      borderBottom: `1px solid ${theme.colors.borderSubtle}`,
     },
 
     "&:focus-within $active": {
@@ -59,6 +65,8 @@ export const { staticClasses, useClasses } = createClasses("HvHeaderMenuBar", {
     },
     "& li:focus-within > $hidden": {
       ...show,
+      boxShadow: "none",
+      borderBottom: `1px solid ${theme.colors.borderSubtle}`,
       zIndex: -1,
     },
   },
