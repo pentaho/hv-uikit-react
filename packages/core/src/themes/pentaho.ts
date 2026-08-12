@@ -32,7 +32,6 @@ import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvIconContainerProps } from "../IconContainer";
-import type { HvInlineEditorProps } from "../InlineEditor";
 import type { HvInputProps } from "../Input";
 import type { HvMultiButtonProps } from "../MultiButton";
 import type { HvNumberInputProps } from "../NumberInput";
@@ -456,19 +455,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         xl: { fontSize: 48, padding: 5 },
       },
     } satisfies CSSClasses<HvIconContainerProps>,
-    HvInlineEditor: {
-      classes: {
-        button: {
-          borderRadius: 2,
-          "&:focus": {
-            borderColor: theme.colors.text,
-          },
-        },
-        inputRoot: {
-          borderRadius: 2,
-        },
-      },
-    } satisfies CSSClasses<HvInlineEditorProps>,
     HvButtonBase: {
       classes: {
         root: {
