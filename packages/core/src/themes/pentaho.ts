@@ -30,8 +30,6 @@ import type {
 } from "../VerticalNavigation";
 import type { CSSClasses } from "./utils";
 
-const semaColors = ["positive", "warning", "negative", "info"] as const;
-
 export const pentaho = mergeTheme(pentahoBase, {
   icons: {
     viewBox: "0 0 256 256",
@@ -68,72 +66,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvTag: {
       showSelectIcon: false,
       size: "sm",
-      classes: {
-        root: {
-          outline: `1px solid ${theme.colors.border}`,
-          outlineOffset: -1,
-          ":where(:not([data-color],.HvTag-disabled))": {
-            color: theme.colors.text,
-            "--tagColor": theme.colors.bgContainer,
-          },
-
-          ":where([data-color]:not(.HvTag-disabled))": {
-            ":not([data-color$=_20],[data-color^=cat])": {
-              color: "var(--tagColor)",
-              backgroundColor: theme.mix("var(--tagColor)", "8%", "white"),
-              outlineColor: theme.mix("var(--tagColor)", "30%", "white"),
-              "&.HvTag-clickable:is(:hover,:focus-visible)": {
-                backgroundColor: theme.mix("var(--tagColor)", "20%", "white"),
-              },
-            },
-
-            ...Object.fromEntries(
-              semaColors.map((color) => [
-                [`&[data-color=${color}]`],
-                {
-                  color: theme.colors[`${color}Strong`],
-                  backgroundColor: theme.colors[`${color}Dimmed`],
-                  outlineColor: theme.colors[`${color}Border`],
-                  "&.HvTag-clickable:has(:hover,:focus-visible)": {
-                    backgroundColor: theme.colors[`${color}Subtle`],
-                  },
-                },
-              ]),
-            ),
-          },
-        },
-        hasIcon: {
-          paddingLeft: theme.space.xs,
-        },
-        xs: { borderRadius: theme.radii.base },
-        sm: { borderRadius: theme.radii.base },
-        md: { borderRadius: theme.radii.round },
-        label: {
-          paddingLeft: 8,
-          paddingRight: 8,
-        },
-        deleteIcon: {
-          borderRadius: "inherit",
-          marginRight: 4,
-        },
-        clickable: {
-          ":hover": {
-            backgroundColor: theme.colors.bgHover,
-          },
-        },
-        selected: {
-          "&&": {
-            outlineColor: "currentcolor",
-          },
-        },
-        disabled: {
-          color: theme.colors.textDisabled,
-          outlineColor: "transparent",
-          "&,:hover": {
-            backgroundColor: theme.colors.bgDisabled,
-          },
-        },
-      },
     } satisfies CSSClasses<HvTagProps>,
     HvButton: {
       radius: "full",
