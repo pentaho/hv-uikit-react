@@ -16,7 +16,6 @@ import {
 import type { HvAvatarProps } from "../Avatar";
 import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
-import type { HvBannerContentProps } from "../Banner";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type { HvDropdownPanelProps } from "../BaseDropdown";
 import type { HvRadioIconProps } from "../BaseRadio/RadioIcon";
@@ -1110,14 +1109,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvSingleCalendarProps>,
-    HvBannerContent: {
-      classes: {
-        root: {
-          overflow: "hidden",
-          minHeight: "unset",
-        },
-      },
-    } satisfies CSSClasses<HvBannerContentProps>,
     HvSnackbarContent: {
       classes: {
         root: {
