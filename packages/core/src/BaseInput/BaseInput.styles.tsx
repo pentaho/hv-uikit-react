@@ -35,9 +35,9 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     borderRadius: theme.radii.round,
     height: "32px",
     borderWidth: 1,
-    borderColor: theme.colors.text,
+    borderColor: theme.colors.textDimmed,
     boxSizing: "border-box",
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: "light-dark(#FFFFFF, #020617)",
     fontFamily: theme.fontFamily.body,
     alignItems: "stretch",
     ...theme.typography.body,
@@ -50,7 +50,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     },
   },
   disabled: {
-    backgroundColor: theme.colors.bgPage,
+    backgroundColor: theme.colors.bgDisabled,
     borderColor: theme.colors.textDisabled,
 
     cursor: "not-allowed",
