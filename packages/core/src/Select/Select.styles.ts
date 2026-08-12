@@ -4,6 +4,11 @@ import { theme } from "@pentaho/uikit-styles";
 export const { staticClasses, useClasses } = createClasses("HvSelect", {
   root: {
     position: "relative",
+    borderRadius: theme.radii.round,
+    "& .HvButton-subtle[data-color=text]": {
+      borderColor: theme.colors.textDimmed,
+      backgroundColor: "light-dark(#FFFFFF, #020617)",
+    },
     "&$disabled,&$readOnly": {
       pointerEvents: "none",
     },
@@ -15,6 +20,7 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
   label: {},
   description: {},
   select: {
+    borderRadius: theme.radii.round,
     "&&$invalid": { borderColor: theme.form.errorColor },
   },
   popper: {},
