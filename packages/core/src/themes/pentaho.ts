@@ -27,7 +27,6 @@ import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvFooterProps } from "../Footer";
 import type { HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
-import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
 import type { HvCalloutProps } from "../utils/Callout";
 import type {
@@ -581,38 +580,6 @@ export const pentaho = mergeTheme(pentahoBase, {
       name: "Pentaho",
       copyright: `© Pentaho. All Rights Reserved.`,
     } satisfies HvFooterProps,
-    HvTabs: {
-      classes: {
-        floating: {
-          "& .HvTab-root": {
-            marginTop: 0,
-            zIndex: 1,
-            "&:is(.HvTab-selected)": {
-              borderColor: "transparent",
-              backgroundColor: "transparent",
-            },
-            "&:hover": {
-              borderRadius: theme.radii.full,
-            },
-            "::after": {
-              display: "none",
-            },
-          },
-          "& .HvTabs-indicator": {
-            height: "100%",
-            backgroundColor: theme.colors.bgContainer,
-            border: `1px solid ${theme.colors.primary}`,
-            borderRadius: theme.radii.full,
-          },
-          "& .HvTabs-flexContainer": {
-            display: "inline-flex",
-            backgroundColor: theme.colors.bgPageSecondary,
-            borderRadius: theme.radii.full,
-            marginLeft: 0,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvTabsProps>,
     HvCalendarCell: {
       classes: {
         dateWrapper: {
