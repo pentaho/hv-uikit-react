@@ -4,12 +4,12 @@ import { Leaf } from "@pentaho/uikit-react-icons";
 import {
   HvCanvasToolbarTabs,
   type HvCanvasToolbarTabsProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 import { ControlledStory } from "./stories/Controlled";
 
 const meta: Meta<typeof HvCanvasToolbarTabs> = {
-  title: "Pentaho/Canvas/Toolbar Tabs",
+  title: "Components/Canvas/Toolbar Tabs",
   component: HvCanvasToolbarTabs,
 };
 export default meta;

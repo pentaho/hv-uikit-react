@@ -8,7 +8,7 @@ import {
 import {
   HvCanvasSidePanel,
   type HvCanvasSidePanelProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 export const CanvasSidebar = (props: HvCanvasSidePanelProps) => {
   const [overlay, setOverlay] = useState<React.ReactNode>();

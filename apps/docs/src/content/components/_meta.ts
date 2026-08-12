@@ -85,7 +85,7 @@ export default {
   canvas: { title: "Canvas" },
 
   // eslint-disable-next-line sort-keys
-  "-- Charts": { type: "separator", title: "Charts" },
+  "-- Charts": { type: "separator", title: "Chart Components" },
   charts: "Get started",
   "base-chart": "Base Chart",
   "bar-chart": "Bar Chart",

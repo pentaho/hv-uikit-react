@@ -1,10 +1,10 @@
 {
-  "name": "@pentaho/uikit-react-pentaho",
+  "name": "@pentaho/uikit-react-widgets",
   "version": "6.0.17",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
-  "description": "UI Kit Pentaho React components.",
+  "description": "UI Kit Widget React components.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [

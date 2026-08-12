@@ -17,7 +17,7 @@
     "@pentaho/uikit-react-core": "*",
     "@pentaho/uikit-react-icons": "*",
     "@pentaho/uikit-react-lab": "*",
-    "@pentaho/uikit-react-pentaho": "*",
+    "@pentaho/uikit-react-widgets": "*",
     "@pentaho/uikit-react-viz": "*",
     "@pentaho/uikit-styles": "*",
     "@hv/templates": "*",

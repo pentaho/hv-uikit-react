@@ -8,7 +8,7 @@ import { Test as ToolbarTabsTestStory } from "../Canvas/ToolbarTabs/ToolbarTabs.
 
 /** Visual tests for components from the Pentaho package */
 const meta: Meta = {
-  title: "Tests/Pentaho",
+  title: "Tests/Widgets",
   tags: ["skipTestRunner"],
 };
 export default meta;

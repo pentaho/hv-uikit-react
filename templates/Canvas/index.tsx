@@ -33,7 +33,7 @@ import {
   HvCanvasProvider,
   HvCanvasToolbar,
   type HvCanvasBottomPanelProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 import { CanvasProvider, useCanvasContext } from "./Context";
 import { ListView } from "./ListView";

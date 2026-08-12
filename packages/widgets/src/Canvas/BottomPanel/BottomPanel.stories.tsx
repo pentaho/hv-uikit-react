@@ -6,10 +6,10 @@ import { Favorite, Heart } from "@pentaho/uikit-react-icons";
 import {
   HvCanvasBottomPanel,
   type HvCanvasBottomPanelProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 const meta: Meta<typeof HvCanvasBottomPanel> = {
-  title: "Pentaho/Canvas/Bottom Panel",
+  title: "Components/Canvas/Bottom Panel",
   component: HvCanvasBottomPanel,
   parameters: {
     a11y: {

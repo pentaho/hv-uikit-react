@@ -12,7 +12,7 @@ import {
   HvCanvasToolbar,
   HvCanvasToolbarTabs,
   type HvCanvasToolbarTabsProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 const classes = {
   panel: css({

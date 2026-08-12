@@ -3,10 +3,10 @@ import { HvButton } from "@pentaho/uikit-react-core";
 import {
   HvCanvasToolbar,
   type HvCanvasToolbarProps,
-} from "@pentaho/uikit-react-pentaho";
+} from "@pentaho/uikit-react-widgets";
 
 const meta: Meta<typeof HvCanvasToolbar> = {
-  title: "Pentaho/Canvas/Toolbar",
+  title: "Components/Canvas/Toolbar",
   component: HvCanvasToolbar,
   decorators: [(Story) => <div className="h-54px">{Story()}</div>],
 };
