@@ -38,7 +38,6 @@ import type { HvSnackbarContentProps, HvSnackbarProps } from "../Snackbar";
 import type { HvSnackbarProviderProps } from "../SnackbarProvider";
 import type { HvTabsProps } from "../Tabs";
 import type { HvTagProps } from "../Tag";
-import type { HvTagsInputProps } from "../TagsInput";
 import type { HvCalloutProps } from "../utils/Callout";
 import type {
   HvVerticalNavigationProps,
@@ -305,29 +304,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvBaseSwitchProps>,
-    HvTagsInput: {
-      classes: {
-        tagsList: {
-          backgroundColor: inputColors.bg,
-          padding: theme.space.xxs,
-          borderColor: theme.colors.textDimmed,
-        },
-        singleLine: {
-          height: 32,
-        },
-        disabled: {
-          "& .HvTagsInput-tagsList": {
-            backgroundColor: theme.colors.bgDisabled,
-            "&,:hover": {
-              borderColor: theme.colors.textDisabled,
-            },
-          },
-          "& .HvTagsInput-tag": {
-            outlineColor: theme.colors.textDisabled,
-          },
-        },
-      },
-    } satisfies CSSClasses<HvTagsInputProps>,
     HvTag: {
       showSelectIcon: false,
       size: "sm",
