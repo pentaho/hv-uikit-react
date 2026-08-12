@@ -1,5 +1,15 @@
+import type { CSSObject } from "@emotion/serialize";
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import {
+  blue,
+  orange,
+  pink,
+  slate,
+  teal,
+  theme,
+  violet,
+  yellow,
+} from "@pentaho/uikit-styles";
 
 import { avatarClasses } from "../Avatar/Avatar";
 
@@ -13,6 +23,41 @@ export const { staticClasses, useClasses } = createClasses("HvAvatarGroup", {
     [`& .${avatarClasses.container}`]: {
       padding: 2,
     },
+    // eslint-disable-next-line no-useless-spread
+    ...Object.values({
+      blue: {
+        color: `light-dark(${theme.colors.primaryStrong}, ${blue[300]})`,
+        backgroundColor: `light-dark(${theme.colors.primaryDimmed}, ${blue[900]})`,
+      },
+      orange: {
+        color: `light-dark(${orange[700]}, ${orange[200]})`,
+        backgroundColor: `light-dark(${orange[200]}, ${orange[900]})`,
+      },
+      teal: {
+        color: `light-dark(${teal[800]}, ${teal[200]})`,
+        backgroundColor: `light-dark(${teal[200]}, ${teal[900]})`,
+      },
+      violet: {
+        color: `light-dark(${violet[800]}, ${violet[200]})`,
+        backgroundColor: `light-dark(${violet[200]}, ${violet[900]})`,
+      },
+      pink: {
+        color: `light-dark(${pink[900]}, ${pink[200]})`,
+        backgroundColor: `light-dark(${pink[200]}, ${pink[900]})`,
+      },
+      yellow: {
+        color: `light-dark(${yellow[700]}, ${yellow[100]})`,
+        backgroundColor: `light-dark(${yellow[200]}, ${yellow[900]})`,
+      },
+      neutral: {
+        color: `light-dark(${slate[400]}, ${slate[300]})`,
+        backgroundColor: `light-dark(${slate[200]}, ${slate[700]})`,
+      },
+    }).reduce<Record<string, CSSObject>>((acc, styles, i) => {
+      const key = `&>.HvAvatar-container:nth-of-type(${i + 1}) .HvAvatar-avatar`;
+      acc[key] = styles;
+      return acc;
+    }, {}),
   },
   row: {
     flexDirection: "row",
