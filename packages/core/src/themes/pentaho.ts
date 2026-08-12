@@ -17,7 +17,6 @@ import type { HvAvatarProps } from "../Avatar";
 import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
 import type { HvBannerContentProps } from "../Banner";
-import type { HvBaseCheckBoxProps } from "../BaseCheckBox";
 import type { HvCheckBoxIconProps } from "../BaseCheckBox/CheckBoxIcon";
 import type {
   HvBaseDropdownProps,
@@ -263,13 +262,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvSnackbarProvider: {
       anchorOrigin: { vertical: "bottom", horizontal: "center" },
     } satisfies CSSClasses<HvSnackbarProviderProps>,
-    HvBaseCheckBox: {
-      classes: {
-        root: {
-          borderRadius: theme.radii.base,
-        },
-      },
-    } satisfies CSSClasses<HvBaseCheckBoxProps>,
     HvCheckBoxIcon: {
       classes: {
         root: {
