@@ -1,19 +1,12 @@
-import type { CSSObject } from "@emotion/serialize";
 import {
   blue,
   mergeTheme,
   neutral,
-  orange,
   pentaho as pentahoBase,
-  pink,
   slate,
-  teal,
   theme,
-  violet,
-  yellow,
 } from "@pentaho/uikit-styles";
 
-import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
@@ -33,41 +26,7 @@ import type {
 } from "../VerticalNavigation";
 import type { CSSClasses } from "./utils";
 
-/** light-dark alias */
-const ld = (c1: string, c2: string) => `light-dark(${c1}, ${c2})`;
-
 const semaColors = ["positive", "warning", "negative", "info"] as const;
-
-const avatarColors = {
-  blue: {
-    color: ld(theme.colors.primaryStrong, blue[300]),
-    backgroundColor: ld(theme.colors.primaryDimmed, blue[900]),
-  },
-  orange: {
-    color: ld(orange[700], orange[200]),
-    backgroundColor: ld(orange[200], orange[900]),
-  },
-  teal: {
-    color: ld(teal[800], teal[200]),
-    backgroundColor: ld(teal[200], teal[900]),
-  },
-  violet: {
-    color: ld(violet[800], violet[200]),
-    backgroundColor: ld(violet[200], violet[900]),
-  },
-  pink: {
-    color: ld(pink[900], pink[200]),
-    backgroundColor: ld(pink[200], pink[900]),
-  },
-  yellow: {
-    color: ld(yellow[700], yellow[100]),
-    backgroundColor: ld(yellow[200], yellow[900]),
-  },
-  neutral: {
-    color: ld(slate[400], slate[300]),
-    backgroundColor: ld(slate[200], slate[700]),
-  },
-} satisfies Record<string, CSSObject>;
 
 export const pentaho = mergeTheme(pentahoBase, {
   icons: {
@@ -92,20 +51,7 @@ export const pentaho = mergeTheme(pentahoBase, {
   components: {
     HvAvatarGroup: {
       maxVisible: 4,
-      classes: {
-        root: {
-          // eslint-disable-next-line no-useless-spread
-          ...Object.values(avatarColors).reduce<Record<string, CSSObject>>(
-            (acc, styles, i) => {
-              const key = `&>.HvAvatar-container:nth-of-type(${i + 1}) .HvAvatar-avatar`;
-              acc[key] = styles;
-              return acc;
-            },
-            {},
-          ),
-        },
-      },
-    } satisfies CSSClasses<HvAvatarGroupProps>,
+    },
     HvBulkActions: {
       semantic: false,
     } satisfies CSSClasses<HvBulkActionsProps>,
