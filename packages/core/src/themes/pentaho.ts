@@ -18,7 +18,6 @@ import type { HvAvatarGroupProps } from "../AvatarGroup";
 import type { HvBadgeProps } from "../Badge";
 import type { HvDropdownPanelProps } from "../BaseDropdown";
 import type { HvBaseSwitchProps } from "../BaseSwitch";
-import type { HvBreadCrumbProps } from "../BreadCrumb";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
 import type {
@@ -931,23 +930,7 @@ export const pentaho = mergeTheme(pentahoBase, {
     } satisfies CSSClasses<HvSnackbarContentProps>,
     HvBreadCrumb: {
       maxVisible: 5,
-      classes: {
-        currentPage: {
-          fontWeight: theme.fontWeights.semibold,
-          padding: `0 ${theme.space.xxs}`,
-        },
-        separatorContainer: {
-          padding: `0 ${theme.space.xxs}`,
-        },
-        link: {
-          height: 24,
-          display: "flex",
-          alignItems: "center",
-          padding: `0px ${theme.space.xxs}`,
-          fontWeight: theme.fontWeights.normal,
-        },
-      },
       separator: "/",
-    } satisfies CSSClasses<HvBreadCrumbProps>,
+    },
   },
 });
