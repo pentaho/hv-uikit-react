@@ -45,7 +45,7 @@ import type { HvDropdownButtonProps } from "../DropdownButton";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
 import type { HvFilterGroupContentProps } from "../FilterGroup/FilterContent";
 import type { HvFooterProps } from "../Footer";
-import type { HvHeaderBrandProps, HvHeaderProps } from "../Header";
+import type { HvHeaderProps } from "../Header";
 import type { BarProps } from "../Header/Navigation/MenuBar/Bar";
 import type { HvIconContainerProps } from "../IconContainer";
 import type { HvInlineEditorProps } from "../InlineEditor";
@@ -711,13 +711,6 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
       },
     } satisfies CSSClasses<HvHeaderProps>,
-    HvHeaderBrand: {
-      classes: {
-        separator: {
-          backgroundColor: theme.colors.border,
-        },
-      },
-    } satisfies CSSClasses<HvHeaderBrandProps>,
     HvHeaderMenuBarBar: {
       classes: {
         active: {

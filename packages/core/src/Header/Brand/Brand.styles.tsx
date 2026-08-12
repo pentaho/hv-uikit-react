@@ -7,7 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvHeaderBrand", {
     width: 1,
     height: theme.space.sm,
     margin: theme.space.xs,
-    backgroundColor: theme.colors.text,
+    backgroundColor: theme.colors.border,
   },
   brandName: {},
 });
