@@ -88,7 +88,6 @@ export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./SearchInput";
 export * from "./Section";
-export * from "./SimpleGrid";
 export * from "./Slider";
 export * from "./Snackbar";
 export * from "./SnackbarProvider";

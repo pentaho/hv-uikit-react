@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvButton,
   HvMultiButton,
-  HvSimpleGrid,
   type HvMultiButtonProps,
 } from "@pentaho/uikit-react-core";
 import { Abacus, LocationPin, Map } from "@pentaho/uikit-react-icons";
@@ -86,10 +85,7 @@ export const Test: StoryObj = {
     <>
       <SplitButtonStory />
       <br />
-      <HvSimpleGrid
-        cols={3}
-        style={{ alignItems: "start", justifyContent: "start" }}
-      >
+      <div className="grid gap-sm grid-cols-3 items-start justify-start">
         <div className="grid gap-xs">
           <HvMultiButton>
             <HvButton>Label 1</HvButton>
@@ -192,7 +188,7 @@ export const Test: StoryObj = {
             ))}
           </HvMultiButton>
         </div>
-      </HvSimpleGrid>
+      </div>
     </>
   ),
 };

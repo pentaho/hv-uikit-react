@@ -52,7 +52,6 @@ import {
 import { Test as SectionTestStory } from "../Section/Section.stories";
 import { Test as SelectTestStory } from "../Select/Select.stories";
 import { Variants as SelectionListVariantsStory } from "../SelectionList/SelectionList.stories";
-import { Main as SimpleGridMainStory } from "../SimpleGrid/SimpleGrid.stories";
 import { Variants as SkeletonVariantsStory } from "../Skeleton/Skeleton.stories";
 import { RangeVariants as SliderRangeVariantsStory } from "../Slider/Slider.stories";
 import { Variants as SnackbarVariantsStory } from "../Snackbar/Snackbar.stories";
@@ -265,7 +264,6 @@ export const TestStructure: StoryObj = {
         </div>
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
-          {renderStory(SimpleGridMainStory, context)}
           <div>{renderStory(ContainerMainStory, context)}</div>
         </div>
       </div>

@@ -56,7 +56,6 @@ export default {
   section: "Section",
   select: "Select",
   "selection-list": "Selection List",
-  "simple-grid": "Simple Grid",
   skeleton: "Skeleton",
   slider: "Slider",
   snackbar: "Snackbar",
