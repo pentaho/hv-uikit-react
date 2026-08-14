@@ -1,10 +1,5 @@
-import {
-  mergeTheme,
-  pentaho as pentahoBase,
-  theme,
-} from "@pentaho/uikit-styles";
+import { mergeTheme, pentaho as pentahoBase } from "@pentaho/uikit-styles";
 
-import type { HvBaseSwitchProps } from "../BaseSwitch";
 import type { HvBulkActionsProps } from "../BulkActions";
 import type { HvButtonProps } from "../Button";
 import type { HvFooterProps } from "../Footer";
@@ -46,78 +41,6 @@ export const pentaho = mergeTheme(pentahoBase, {
     HvSnackbarProvider: {
       anchorOrigin: { vertical: "bottom", horizontal: "center" },
     } satisfies CSSClasses<HvSnackbarProviderProps>,
-    HvBaseSwitch: {
-      classes: {
-        root: {
-          padding: theme.space.xxs,
-          borderRadius: theme.radii.full,
-          "&:hover": {
-            backgroundColor: theme.colors.bgHover,
-          },
-          "& .HvBaseSwitch-switchBase": {
-            "& .HvBaseSwitch-thumb": {
-              borderColor: "transparent",
-              backgroundColor: "#FFFFFF",
-              left: -8,
-              top: -3,
-              width: 14,
-              height: 14,
-            },
-            "+.HvBaseSwitch-track": {
-              backgroundColor: theme.colors.textDimmed,
-              border: "none",
-              width: 40,
-              height: 18,
-            },
-            "&.HvBaseSwitch-checked": {
-              "+.HvBaseSwitch-track": {
-                backgroundColor: theme.colors.positive,
-              },
-              "& .HvBaseSwitch-thumb": {
-                left: -2,
-              },
-            },
-            "&.HvBaseSwitch-disabled": {
-              "& .HvBaseSwitch-thumb": {
-                borderColor: theme.colors.textDisabled,
-              },
-              "+.HvBaseSwitch-track": {
-                backgroundColor: theme.colors.bgDisabled,
-                border: "none",
-              },
-            },
-            "&[data-size=medium]": {
-              "+.HvBaseSwitch-track": {
-                width: 48,
-                height: 24,
-              },
-              "& .HvBaseSwitch-thumb": {
-                left: -5,
-                top: 0,
-                width: 16,
-                height: 16,
-              },
-              "&.HvBaseSwitch-checked .HvBaseSwitch-thumb": {
-                left: 3,
-                top: 0,
-              },
-            },
-          },
-        },
-        readOnly: {
-          ":hover": {
-            backgroundColor: "transparent",
-          },
-          "& .HvBaseSwitch-switchBase + .HvBaseSwitch-track": {
-            backgroundColor: theme.colors.border,
-          },
-          "& .HvBaseSwitch-switchBase.HvBaseSwitch-checked + .HvBaseSwitch-track":
-            {
-              backgroundColor: theme.mix("positive", 0.5, "dimmer"),
-            },
-        },
-      },
-    } satisfies CSSClasses<HvBaseSwitchProps>,
     HvTag: {
       showSelectIcon: false,
       size: "sm",
