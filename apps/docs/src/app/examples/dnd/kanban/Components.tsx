@@ -11,7 +11,6 @@ import {
   HvCardHeader,
   HvIconButton,
   HvOverflowTooltip,
-  HvStack,
   HvTypography,
 } from "@pentaho/uikit-react-core";
 import {
@@ -214,7 +213,7 @@ export const ColumnContainer = ({
             <Add />
           </HvIconButton>
         </div>
-        <HvStack direction="column" spacing="md">
+        <div className="flex flex-col gap-md">
           <SortableContext items={tasksIds}>
             {tasks &&
               tasks.map((task) => (
@@ -226,7 +225,7 @@ export const ColumnContainer = ({
                 />
               ))}
           </SortableContext>
-        </HvStack>
+        </div>
       </div>
     </div>
   );

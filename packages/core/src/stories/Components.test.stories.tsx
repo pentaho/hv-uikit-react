@@ -55,7 +55,6 @@ import { Variants as SelectionListVariantsStory } from "../SelectionList/Selecti
 import { Variants as SkeletonVariantsStory } from "../Skeleton/Skeleton.stories";
 import { RangeVariants as SliderRangeVariantsStory } from "../Slider/Slider.stories";
 import { Variants as SnackbarVariantsStory } from "../Snackbar/Snackbar.stories";
-import { Test as StackTestStory } from "../Stack/Stack.stories";
 import { Test as StatusIconTestStory } from "../StatusIcon/StatusIcon.stories";
 import { Variants as SwitchVariantsStory } from "../Switch/Switch.stories";
 import { Test as TabsTestStory } from "../Tabs/Tabs.stories";
@@ -259,9 +258,6 @@ export const TestStructure: StoryObj = {
     <div className="grid gap-sm">
       {renderStory(GridTheDesignSystemColumnsStory, context)}
       <div className="flex gap-xs">
-        <div className="grid gap-sm">
-          {renderStory(StackTestStory, context)}
-        </div>
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
           <div>{renderStory(ContainerMainStory, context)}</div>

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { HvIconButton, HvStack, HvTypography } from "@pentaho/uikit-react-core";
+import { HvIconButton, HvTypography } from "@pentaho/uikit-react-core";
 import { Add } from "@pentaho/uikit-react-icons";
 
 import classes from "./styles";
@@ -66,7 +66,7 @@ export const ColumnContainer = ({
             <Add />
           </HvIconButton>
         </div>
-        <HvStack direction="column" spacing="md">
+        <div className="flex flex-col gap-md">
           <SortableContext items={tasksIds}>
             {tasks &&
               tasks.map((task) => (
@@ -78,7 +78,7 @@ export const ColumnContainer = ({
                 />
               ))}
           </SortableContext>
-        </HvStack>
+        </div>
       </div>
     </div>
   );
