@@ -13,7 +13,6 @@ export const alignmentData: Record<string, { pentaho: string }> = {
   BulkActions: { pentaho },
   Button: { pentaho },
   Card: { pentaho },
-  Carousel: { pentaho },
   Checkbox: { pentaho },
   CheckboxGroup: { pentaho },
   CodeEditor: { pentaho },

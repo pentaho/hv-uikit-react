@@ -19,7 +19,6 @@ export default {
   "bulk-actions": "Bulk Actions",
   button: "Button",
   card: "Card",
-  carousel: "Carousel",
   checkbox: "Checkbox",
   "checkbox-group": "Checkbox Group",
   "code-editor": "Code Editor",

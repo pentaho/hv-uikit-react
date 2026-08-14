@@ -55,7 +55,6 @@ export * from "./BulkActions";
 export * from "./Button";
 export * from "./Calendar";
 export * from "./Card";
-export * from "./Carousel";
 export * from "./CheckBox";
 export * from "./CheckBoxGroup";
 export * from "./ColorPicker";

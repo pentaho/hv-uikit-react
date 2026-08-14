@@ -15,10 +15,6 @@ import { Test as BreadCrumbTestStory } from "../BreadCrumb/BreadCrumb.stories";
 import { Test as BulkActionsTestStory } from "../BulkActions/BulkActions.stories";
 import { Test as ButtonTestStory } from "../Button/Button.stories";
 import { Variants as CardVariantsStory } from "../Card/Card.stories";
-import {
-  Actions as CarouselActionsStory,
-  Embedded as CarouselEmbeddedStory,
-} from "../Carousel/Carousel.stories";
 import { Test as CheckBoxTestStory } from "../CheckBox/CheckBox.stories";
 import { Variants as CheckBoxGroupVariantsStory } from "../CheckBoxGroup/CheckBoxGroup.stories";
 import { Test as ColorPickerTestStory } from "../ColorPicker/ColorPicker.stories";
@@ -252,13 +248,7 @@ export const TestOthers: StoryObj = {
       </div>
       {renderStory(BadgeTestStory, context)}
       {renderStory(StatusIconTestStory, context)}
-      <div className="flex gap-sm">
-        {renderStory(CarouselEmbeddedStory, context)}
-        <div className="w-650px">
-          {renderStory(CarouselActionsStory, context)}
-        </div>
-        <div>{renderStory(TypographyTestStory, context)}</div>
-      </div>
+      <div>{renderStory(TypographyTestStory, context)}</div>
       <div className="grid grid-cols-2 gap-sm">
         {renderStory(ScrollToHorizontalMainStory, context)}
         {renderStory(ScrollToVerticalMainStory, context)}
