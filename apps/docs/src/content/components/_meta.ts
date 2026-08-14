@@ -52,8 +52,6 @@ export default {
   "query-builder": "Query Builder",
   radio: "Radio",
   "radio-group": "Radio Group",
-  "scroll-to-horizontal": "ScrollTo Horizontal",
-  "scroll-to-vertical": "ScrollTo Vertical",
   "search-input": "Search Input",
   section: "Section",
   select: "Select",

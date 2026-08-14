@@ -38,8 +38,6 @@ export const alignmentData: Record<string, { pentaho: string }> = {
   ProgressBar: { pentaho },
   Radio: { pentaho },
   RadioGroup: { pentaho },
-  ScrollToHorizontal: { pentaho },
-  ScrollToVertical: { pentaho },
   SearchInput: { pentaho },
   Section: { pentaho },
   Select: { pentaho },

@@ -86,8 +86,6 @@ export * from "./ProgressBar";
 export * from "./QueryBuilder";
 export * from "./Radio";
 export * from "./RadioGroup";
-export * from "./ScrollToHorizontal";
-export * from "./ScrollToVertical";
 export * from "./SearchInput";
 export * from "./Section";
 export * from "./SimpleGrid";

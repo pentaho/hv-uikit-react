@@ -49,8 +49,6 @@ import {
   Horizontal as RadioGroupHorizontalStory,
   Variants as RadioGroupVariantsStory,
 } from "../RadioGroup/RadioGroup.stories";
-import { Main as ScrollToHorizontalMainStory } from "../ScrollToHorizontal/ScrollToHorizontal.stories";
-import { Main as ScrollToVerticalMainStory } from "../ScrollToVertical/ScrollToVertical.stories";
 import { Test as SectionTestStory } from "../Section/Section.stories";
 import { Test as SelectTestStory } from "../Select/Select.stories";
 import { Variants as SelectionListVariantsStory } from "../SelectionList/SelectionList.stories";
@@ -249,10 +247,6 @@ export const TestOthers: StoryObj = {
       {renderStory(BadgeTestStory, context)}
       {renderStory(StatusIconTestStory, context)}
       <div>{renderStory(TypographyTestStory, context)}</div>
-      <div className="grid grid-cols-2 gap-sm">
-        {renderStory(ScrollToHorizontalMainStory, context)}
-        {renderStory(ScrollToVerticalMainStory, context)}
-      </div>
     </div>
   ),
 };
