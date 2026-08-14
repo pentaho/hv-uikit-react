@@ -60,7 +60,6 @@ export * from "./CheckBox";
 export * from "./CheckBoxGroup";
 export * from "./ColorPicker";
 export * from "./Container";
-export * from "./Controls";
 export * from "./DatePicker";
 export * from "./Dialog";
 export * from "./DotPagination";
