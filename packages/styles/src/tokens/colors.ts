@@ -1,7 +1,7 @@
 import type { Property } from "csstype";
 
 import { indigo } from "../palette";
-import { ds5Colors as dsColors, getColors, oldVizColors } from "./colorsCompat";
+import { ds5Colors as dsColors, getColors } from "./colorsCompat";
 
 type SemanticTypes =
   | "primary"
@@ -81,13 +81,6 @@ export interface HvColorTokens
   // #endregion
 }
 
-const base = {
-  /** @deprecated use `textLight` instead */
-  base_light: "#FBFCFC",
-  /** @deprecated use `textDark` instead */
-  base_dark: "#414141",
-};
-
 const categorical = {
   cat1: "#95AFE8",
   cat2: "#E89E5D",
@@ -104,9 +97,7 @@ const categorical = {
 };
 
 const common = {
-  ...base,
   ...categorical,
-  ...oldVizColors,
 } satisfies Partial<HvColorTokens>;
 
 // #region Light palette
@@ -153,8 +144,8 @@ const light = {
   textSubtle: dsColors.secondary_80[0],
   textDisabled: dsColors.secondary_60[0],
   textDimmed: dsColors.atmo1[0],
-  textLight: base.base_light,
-  textDark: base.base_dark,
+  textLight: dsColors.secondary[1],
+  textDark: dsColors.secondary[0],
 
   border: dsColors.atmo4[0],
   borderSubtle: dsColors.atmo3[0],
@@ -221,8 +212,8 @@ const dark = {
   textSubtle: dsColors.secondary_80[1],
   textDisabled: dsColors.secondary_60[1],
   textDimmed: dsColors.atmo1[1],
-  textLight: base.base_light,
-  textDark: base.base_dark,
+  textLight: dsColors.secondary[1],
+  textDark: dsColors.secondary[0],
 
   border: dsColors.atmo4[1],
   borderSubtle: dsColors.atmo3[1],
