@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/internal",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "description": "Internal utilities for docs & other stuff",
   "private": true,
   "exports": {

@@ -2,7 +2,7 @@
   "name": "@pentaho/uikit-config",
   "version": "0.6.5",
   "type": "module",
-  "private": false,
+  "private": true,
   "author": "UI Kit Team",
   "description": "UI Kit Sharable projects configurations",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
