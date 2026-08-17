@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -53,7 +53,7 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
     flexDirection: "row",
     flexWrap: "wrap",
 
-    backgroundColor: "light-dark(#FFFFFF, #020617)",
+    backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
     borderWidth: 1,
     borderColor: theme.colors.textDimmed,
     borderRadius: theme.radii.round,

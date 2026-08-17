@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -37,7 +37,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     borderWidth: 1,
     borderColor: theme.colors.textDimmed,
     boxSizing: "border-box",
-    backgroundColor: "light-dark(#FFFFFF, #020617)",
+    backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
     fontFamily: theme.fontFamily.body,
     alignItems: "stretch",
     ...theme.typography.body,

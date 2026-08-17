@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -17,7 +17,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     cursor: "pointer",
     userSelect: "none",
     position: "relative",
-    backgroundColor: "light-dark(#FFFFFF, #020617)",
+    backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
     boxSizing: "border-box",
     border: `1px solid ${theme.colors.textDimmed}`,
     borderRadius: theme.radii.round,
