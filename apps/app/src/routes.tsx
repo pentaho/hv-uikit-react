@@ -2,8 +2,6 @@ import { Navigate, type RouteObject } from "react-router";
 
 const templates: RouteObject[] = [
   { index: true, element: <Navigate to="welcome" replace /> },
-  { path: "assets", lazy: () => import("@hv/templates/AssetInventory") },
-  { path: "list-view", lazy: () => import("@hv/templates/ListView") },
   { path: "form", lazy: () => import("@hv/templates/Form") },
   { path: "details", lazy: () => import("@hv/templates/DetailsView") },
   { path: "dashboard", lazy: () => import("@hv/templates/Dashboard") },

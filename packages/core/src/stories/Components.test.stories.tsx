@@ -15,10 +15,6 @@ import { Test as BreadCrumbTestStory } from "../BreadCrumb/BreadCrumb.stories";
 import { Test as BulkActionsTestStory } from "../BulkActions/BulkActions.stories";
 import { Test as ButtonTestStory } from "../Button/Button.stories";
 import { Variants as CardVariantsStory } from "../Card/Card.stories";
-import {
-  Actions as CarouselActionsStory,
-  Embedded as CarouselEmbeddedStory,
-} from "../Carousel/Carousel.stories";
 import { Test as CheckBoxTestStory } from "../CheckBox/CheckBox.stories";
 import { Variants as CheckBoxGroupVariantsStory } from "../CheckBoxGroup/CheckBoxGroup.stories";
 import { Test as ColorPickerTestStory } from "../ColorPicker/ColorPicker.stories";
@@ -53,16 +49,12 @@ import {
   Horizontal as RadioGroupHorizontalStory,
   Variants as RadioGroupVariantsStory,
 } from "../RadioGroup/RadioGroup.stories";
-import { Main as ScrollToHorizontalMainStory } from "../ScrollToHorizontal/ScrollToHorizontal.stories";
-import { Main as ScrollToVerticalMainStory } from "../ScrollToVertical/ScrollToVertical.stories";
 import { Test as SectionTestStory } from "../Section/Section.stories";
 import { Test as SelectTestStory } from "../Select/Select.stories";
 import { Variants as SelectionListVariantsStory } from "../SelectionList/SelectionList.stories";
-import { Main as SimpleGridMainStory } from "../SimpleGrid/SimpleGrid.stories";
 import { Variants as SkeletonVariantsStory } from "../Skeleton/Skeleton.stories";
 import { RangeVariants as SliderRangeVariantsStory } from "../Slider/Slider.stories";
 import { Variants as SnackbarVariantsStory } from "../Snackbar/Snackbar.stories";
-import { Test as StackTestStory } from "../Stack/Stack.stories";
 import { Test as StatusIconTestStory } from "../StatusIcon/StatusIcon.stories";
 import { Variants as SwitchVariantsStory } from "../Switch/Switch.stories";
 import { Test as TabsTestStory } from "../Tabs/Tabs.stories";
@@ -252,17 +244,7 @@ export const TestOthers: StoryObj = {
       </div>
       {renderStory(BadgeTestStory, context)}
       {renderStory(StatusIconTestStory, context)}
-      <div className="flex gap-sm">
-        {renderStory(CarouselEmbeddedStory, context)}
-        <div className="w-650px">
-          {renderStory(CarouselActionsStory, context)}
-        </div>
-        <div>{renderStory(TypographyTestStory, context)}</div>
-      </div>
-      <div className="grid grid-cols-2 gap-sm">
-        {renderStory(ScrollToHorizontalMainStory, context)}
-        {renderStory(ScrollToVerticalMainStory, context)}
-      </div>
+      <div>{renderStory(TypographyTestStory, context)}</div>
     </div>
   ),
 };
@@ -276,12 +258,8 @@ export const TestStructure: StoryObj = {
     <div className="grid gap-sm">
       {renderStory(GridTheDesignSystemColumnsStory, context)}
       <div className="flex gap-xs">
-        <div className="grid gap-sm">
-          {renderStory(StackTestStory, context)}
-        </div>
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
-          {renderStory(SimpleGridMainStory, context)}
           <div>{renderStory(ContainerMainStory, context)}</div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBadge,
-  HvSimpleGrid,
   HvTab,
   HvTabs,
   type HvTabProps,
@@ -142,10 +141,7 @@ export const Icons: StoryObj<HvTabsProps> = {
 
 export const Test: StoryObj = {
   render: () => (
-    <HvSimpleGrid
-      cols={3}
-      style={{ alignItems: "start", justifyContent: "start" }}
-    >
+    <div className="grid gap-sm grid-cols-3 items-start justify-start">
       <HvTabs value={0}>
         <HvTab label="Clickable tab 1" />
         <HvTab label="Clickable tab 2" />
@@ -216,7 +212,7 @@ export const Test: StoryObj = {
           <HvTab label={<HvBadge label={1}>Vehicle events</HvBadge>} />
         </HvTabs>
       </div>
-    </HvSimpleGrid>
+    </div>
   ),
 };
 

@@ -26,7 +26,7 @@
   },
   "scripts": {
     "prepare": "cpy ../../templates src",
-    "pretest": "node src/index.js create uikit-app -t Form,ListView",
+    "pretest": "node src/index.js create uikit-app -t Form",
     "test": "cd uikit-app",
     "posttest": "rimraf uikit-app"
   },

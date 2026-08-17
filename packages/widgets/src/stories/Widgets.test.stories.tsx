@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { renderStory, setupChromatic } from "@pentaho/internal";
-import { HvSimpleGrid } from "@pentaho/uikit-react-core";
 
 import { Test as BottomPanelTestStory } from "../Canvas/BottomPanel/BottomPanel.stories";
 import { Main as SidePanelMainStory } from "../Canvas/SidePanel/SidePanel.stories";
@@ -19,14 +18,11 @@ export const Test: StoryObj = {
     ...setupChromatic("pentaho", 5000),
   },
   render: (args, context) => (
-    <HvSimpleGrid
-      cols={2}
-      style={{ alignItems: "start", justifyContent: "start" }}
-    >
+    <div className="grid gap-sm grid-cols-2 items-start justify-start">
       {renderStory(BottomPanelTestStory, context)}
       {renderStory(ToolbarTabsTestStory, context)}
       {renderStory(SidePanelMainStory, context)}
       {renderStory(DashboardMainStory, context)}
-    </HvSimpleGrid>
+    </div>
   ),
 };

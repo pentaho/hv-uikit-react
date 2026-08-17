@@ -4,7 +4,6 @@ import { HvIconContainer, HvTypography } from "@pentaho/uikit-react-core";
 
 import accordion from "./accordion/page.mdx?raw";
 import cards from "./cards/page.mdx?raw";
-import carousel from "./carousel/page.mdx?raw";
 import charts from "./charts/page.mdx?raw";
 import codeEditor from "./code-editor/page.mdx?raw";
 import dialogs from "./dialogs/page.mdx?raw";
@@ -29,7 +28,6 @@ const countCodeBlocks = (fileContent: string): number => {
 const sections = [
   { slug: "accordion", title: "Accordion", total: countCodeBlocks(accordion) },
   { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
-  { slug: "carousel", title: "Carousel", total: countCodeBlocks(carousel) },
   { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
   {
     slug: "code-editor",
@@ -79,8 +77,6 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-bell-ringing" />;
     case "accordion":
       return <div className="i-ph-caret-up-down" />;
-    case "carousel":
-      return <div className="i-ph-images" />;
     case "code-editor":
       return <div className="i-ph-code" />;
     default:
