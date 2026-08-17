@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/app-shell-events",
-  "version": "2.0.8",
+  "version": "3.0.0-next.0",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -20,7 +20,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@pentaho/uikit-react-core": "^6.0.0",
+    "@pentaho/uikit-react-core": "^7.0.0-next.0",
     "react": "^18.2.0"
   },
   "peerDependenciesMeta": {

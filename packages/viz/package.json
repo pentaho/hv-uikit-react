@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/uikit-react-viz",
-  "version": "6.1.10",
+  "version": "7.0.0-next.0",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -41,8 +41,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@pentaho/uikit-react-utils": "^6.2.6",
-    "@pentaho/uikit-styles": "^6.2.1"
+    "@pentaho/uikit-react-utils": "^7.0.0-next.0",
+    "@pentaho/uikit-styles": "^7.0.0-next.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/uikit-react-widgets",
-  "version": "6.0.17",
+  "version": "7.0.0-next.0",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -39,8 +39,8 @@
   "dependencies": {
     "@base-ui/react": "^1.0.0",
     "@emotion/css": "^11.11.0",
-    "@pentaho/uikit-react-core": "^6.10.0",
-    "@pentaho/uikit-react-utils": "^6.2.6",
+    "@pentaho/uikit-react-core": "^7.0.0-next.0",
+    "@pentaho/uikit-react-utils": "^7.0.0-next.0",
     "react-grid-layout": "^2.2.4",
     "react-resize-detector": "^12.3.0"
   },
