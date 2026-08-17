@@ -78,8 +78,8 @@ export const HvAvatar = forwardRef<
     children: childrenProp,
     component = "div",
     size: sizeProp,
-    backgroundColor = "primaryDimmed",
-    color: colorProp = "primaryStrong",
+    backgroundColor,
+    color: colorProp,
     src,
     srcSet,
     sizes,
@@ -92,10 +92,13 @@ export const HvAvatar = forwardRef<
     ...others
   } = useDefaultProps("HvAvatar", props);
   const { classes, cx } = useClasses(classesProp);
+  const defaultBackgroundColor = backgroundColor ?? "primaryDimmed";
+  const defaultColor = colorProp ?? "primaryStrong";
+
   // if a user-defined `backgroundColor` is passed, ignore the theme-defined `color`
   const color = props.backgroundColor
     ? props.color || "bgContainer"
-    : colorProp;
+    : defaultColor;
 
   const avatarGroupContext = useAvatarGroupContext();
 
@@ -157,7 +160,8 @@ export const HvAvatar = forwardRef<
         className={cx(classes.root, classes.avatar, classes[size], className)}
         data-color={color}
         style={mergeStyles(style, {
-          "--bgColor": !hasImgNotFailing && getColor(backgroundColor, "text"),
+          "--bgColor":
+            !hasImgNotFailing && getColor(defaultBackgroundColor, "text"),
           "--textColor": !hasImgNotFailing && getColor(color, "bgContainer"),
           borderRadius:
             component != null && typeof component !== "string" && "50%",

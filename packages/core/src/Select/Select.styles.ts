@@ -7,7 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
     borderRadius: theme.radii.round,
     "& .HvButton-subtle[data-color=text]": {
       borderColor: theme.colors.textDimmed,
-      backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
+      backgroundColor: `light-dark(white, ${slate[950]})`,
     },
     "&$disabled,&$readOnly": {
       pointerEvents: "none",

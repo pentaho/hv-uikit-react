@@ -13,7 +13,6 @@ export const { staticClasses, useClasses } = createClasses("HvHeader", {
     zIndex: theme.zIndices.banner,
     borderTop: "none",
     borderBottom: `1px solid ${theme.colors.borderSubtle}`,
-    boxShadow: "none",
   },
   header: {
     display: "flex",

@@ -13,9 +13,6 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
     borderRadius: theme.radii.round,
     marginBottom: theme.space.xs,
   },
-  semantic: {
-    backgroundColor: theme.colors.bgHover,
-  },
   disabled: {
     backgroundColor: theme.colors.bgDisabled,
   },

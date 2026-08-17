@@ -37,7 +37,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     borderWidth: 1,
     borderColor: theme.colors.textDimmed,
     boxSizing: "border-box",
-    backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
+    backgroundColor: `light-dark(white, ${slate[950]})`,
     fontFamily: theme.fontFamily.body,
     alignItems: "stretch",
     ...theme.typography.body,

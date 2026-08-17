@@ -17,7 +17,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     cursor: "pointer",
     userSelect: "none",
     position: "relative",
-    backgroundColor: `light-dark(${theme.colors.dimmer}, ${slate[950]})`,
+    backgroundColor: `light-dark(white, ${slate[950]})`,
     boxSizing: "border-box",
     border: `1px solid ${theme.colors.textDimmed}`,
     borderRadius: theme.radii.round,

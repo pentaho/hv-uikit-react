@@ -30,7 +30,7 @@ export const { staticClasses, useClasses } = createClasses("HvButton", {
     backgroundColor: "transparent",
     height: "var(--HvButton-height, fit-content)",
     border: "1px solid transparent",
-    borderRadius: `var(--radius, ${theme.radii.base})`,
+    borderRadius: `var(--radius, ${theme.radii.full})`,
     padding: theme.spacing(0, "sm"),
 
     // remove icon container spacing

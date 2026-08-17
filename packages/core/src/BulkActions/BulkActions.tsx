@@ -30,8 +30,6 @@ export interface HvBulkActionsProps extends HvBaseProps {
   onSelectAll?: HvCheckBoxProps["onChange"];
   /** Function called when the "select all pages" button is clicked toggled. */
   onSelectAllPages?: HvButtonProps["onClick"];
-  /** Whether the bulk actions should use the semantic styles when there are selected elements. */
-  semantic?: boolean;
   /** The renderable content inside the right actions slot, or an array of actions `{ id, label, icon, disabled, ... }` */
   actions?: HvActionsGenericProps["actions"];
   /** Whether the bulk actions component is disabled */
@@ -69,7 +67,6 @@ export const HvBulkActions = forwardRef<
     numSelected = 0,
     selectAllConjunctionLabel = "/",
     showSelectAllPages,
-    semantic = false,
     onAction,
     onSelectAll,
     onSelectAllPages,
@@ -78,7 +75,6 @@ export const HvBulkActions = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   const anySelected = numSelected > 0;
-  const isSemantic = semantic && anySelected;
   const actionsDisabled = disabled || actionsDisabledProp;
 
   return (
@@ -86,7 +82,6 @@ export const HvBulkActions = forwardRef<
       ref={ref}
       id={id}
       className={cx(classes.root, className, {
-        [classes.semantic]: isSemantic,
         [classes.disabled]: disabled,
       })}
       {...others}
@@ -96,7 +91,6 @@ export const HvBulkActions = forwardRef<
           disabled={disabled}
           className={classes.selectAll}
           checked={numSelected > 0}
-          semantic={isSemantic}
           onChange={onSelectAll}
           indeterminate={numSelected > 0 && numSelected < numTotal}
           label={
@@ -114,7 +108,7 @@ export const HvBulkActions = forwardRef<
             <HvButton
               disabled={disabled}
               className={classes.selectAllPages}
-              variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
+              variant="secondaryGhost"
               onClick={onSelectAllPages}
             >
               {selectAllPagesLabel ?? `Select all ${numTotal} items`}
@@ -124,7 +118,7 @@ export const HvBulkActions = forwardRef<
       </div>
       <HvActionsGeneric
         classes={{ root: classes.actions }}
-        variant={isSemantic ? "primaryGhost" : "secondaryGhost"}
+        variant="secondaryGhost"
         actions={actions}
         disabled={actionsDisabled ?? numSelected === 0}
         onAction={onAction}

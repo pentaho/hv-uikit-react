@@ -22,7 +22,6 @@ export const { staticClasses, useClasses } = createClasses("HvBadge", {
       left: "100%",
     },
     ...theme.typography.caption2,
-    "--bg-color": theme.colors.textSubtle,
     color: "light-dark(#FFFFFF, #000000)",
     borderRadius: theme.radii.full,
     backgroundColor: `var(--bg-color, ${theme.colors.textSubtle})`,
