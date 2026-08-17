@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@pentaho/uikit-react-lab": "^6.0.0",
-    "@pentaho/uikit-react-pentaho": "^6.0.0"
+    "@pentaho/uikit-react-widgets": "^6.0.0"
   }
 }

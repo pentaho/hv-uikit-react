@@ -3,7 +3,6 @@ import Link from "next/link";
 import { HvIconContainer, HvTypography } from "@pentaho/uikit-react-core";
 
 import accordion from "./accordion/page.mdx?raw";
-import canvas from "./canvas/page.mdx?raw";
 import cards from "./cards/page.mdx?raw";
 import carousel from "./carousel/page.mdx?raw";
 import charts from "./charts/page.mdx?raw";
@@ -29,7 +28,6 @@ const countCodeBlocks = (fileContent: string): number => {
 
 const sections = [
   { slug: "accordion", title: "Accordion", total: countCodeBlocks(accordion) },
-  { slug: "canvas", title: "Canvas", total: countCodeBlocks(canvas) },
   { slug: "cards", title: "Cards", total: countCodeBlocks(cards) },
   { slug: "carousel", title: "Carousel", total: countCodeBlocks(carousel) },
   { slug: "charts", title: "Charts", total: countCodeBlocks(charts) },
@@ -67,8 +65,6 @@ const getSectionIcon = (title: Slug) => {
       return <div className="i-ph-speedometer" />;
     case "dnd":
       return <div className="i-ph-hand-swipe-right" />;
-    case "canvas":
-      return <div className="i-ph-flow-arrow" />;
     case "login":
       return <div className="i-ph-lock-open" />;
     case "menus":

@@ -85,7 +85,7 @@ export default {
   canvas: { title: "Canvas" },
 
   // eslint-disable-next-line sort-keys
-  "-- Charts": { type: "separator", title: "Charts" },
+  "-- Charts": { type: "separator", title: "Chart Components" },
   charts: "Get started",
   "base-chart": "Base Chart",
   "bar-chart": "Bar Chart",
@@ -95,12 +95,4 @@ export default {
   treemap: "Treemap",
   heatmap: "Heatmap",
   "confusion-matrix": "Confusion Matrix",
-
-  // eslint-disable-next-line sort-keys
-  "-- Lab Components": { title: "Lab Components", type: "separator" },
-  lab: "Get started",
-  // eslint-disable-next-line sort-keys
-  dashboard: "Dashboard",
-  "step-navigation": "Step Navigation",
-  wizard: "Wizard",
 } satisfies MetaRecord;

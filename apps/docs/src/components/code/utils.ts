@@ -21,9 +21,8 @@ import * as zod from "zod";
 import * as HvCodeEditor from "@pentaho/uikit-react-code-editor";
 import * as HvCore from "@pentaho/uikit-react-core";
 import * as HvIcons from "@pentaho/uikit-react-icons";
-import * as HvLab from "@pentaho/uikit-react-lab";
-import * as HvPentaho from "@pentaho/uikit-react-pentaho";
 import * as HvViz from "@pentaho/uikit-react-viz";
+import * as HvWidgets from "@pentaho/uikit-react-widgets";
 import * as HvStyles from "@pentaho/uikit-styles";
 
 type ResolveContext = {
@@ -42,9 +41,8 @@ const defaultScope: Scope = {
     "@pentaho/uikit-react-core": HvCore,
     "@pentaho/uikit-react-icons": HvIcons,
     "@pentaho/uikit-react-code-editor": HvCodeEditor,
-    "@pentaho/uikit-react-lab": HvLab,
     "@pentaho/uikit-react-viz": HvViz,
-    "@pentaho/uikit-react-pentaho": HvPentaho,
+    "@pentaho/uikit-react-widgets": HvWidgets,
     "@pentaho/uikit-styles": HvStyles,
     "@emotion/css": emotionCss,
     "@mui/material": muiMaterial,
@@ -72,7 +70,7 @@ const defaultScope: Scope = {
  * - One to capture JSX component tags (e.g., <HvButton)
  * - One to capture hooks (e.g., useWidth)
  *
- * Each identifier is then resolved from HvCore, HvIcons, HvCodeEditor, HvLab, or HvViz if available.
+ * Each identifier is then resolved from the available packages.
  */
 export const resolveComponents = (
   code: Record<string, string> | string,
@@ -91,9 +89,8 @@ export const resolveComponents = (
     HvCore[identifier as keyof typeof HvCore] ||
     HvIcons[identifier as keyof typeof HvIcons] ||
     HvCodeEditor[identifier as keyof typeof HvCodeEditor] ||
-    HvLab[identifier as keyof typeof HvLab] ||
     HvViz[identifier as keyof typeof HvViz] ||
-    HvPentaho[identifier as keyof typeof HvPentaho];
+    HvWidgets[identifier as keyof typeof HvWidgets];
 
   // Normalize input to an array of code strings
   const contents = typeof code === "string" ? [code] : Object.values(code);
