@@ -61,7 +61,9 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
     padding: 0,
   },
   /** Styles applied to each navigation icon. */
-  icon: {},
+  icon: {
+    fontSize: 16,
+  },
   /** Styles applied to the central page information container. */
   pageInfo: {
     display: "inline-flex",

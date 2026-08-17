@@ -59,12 +59,12 @@ export const HvBreadCrumb = forwardRef<
     id,
     listRoute = [],
     home,
-    maxVisible,
+    maxVisible = 5,
     url,
     onClick,
     component,
     dropDownMenuProps,
-    separator,
+    separator = "/",
     ...others
   } = useDefaultProps("HvBreadCrumb", props);
 

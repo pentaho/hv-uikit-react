@@ -11,6 +11,15 @@ export const { staticClasses, useClasses } = createClasses("HvSwitch", {
   error: {},
   container: {
     display: "flex",
+    borderRadius: theme.radii.full,
+    "&:hover": {
+      backgroundColor: theme.colors.bgHover,
+    },
+    "& .HvBaseSwitch-root": {
+      "&:hover": {
+        backgroundColor: "transparent",
+      },
+    },
     "&$left, &$right": {
       alignItems: "center",
     },

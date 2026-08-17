@@ -31,8 +31,8 @@ export const HvFooter = forwardRef<
   HvFooterProps
 >(function HvFooter(props, ref) {
   const {
-    name,
-    copyright,
+    name = "Pentaho",
+    copyright = "© Pentaho. All Rights Reserved.",
     links,
     classes: classesProp,
     className,

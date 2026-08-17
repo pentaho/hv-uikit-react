@@ -7,6 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvInlineEditor", {
   inputRoot: {
     height: "100%",
     minHeight: "32px",
+    borderRadius: 2,
   },
   text: {},
   largeText: {},
@@ -16,6 +17,7 @@ export const { staticClasses, useClasses } = createClasses("HvInlineEditor", {
   button: {
     padding: theme.spacing(0, "xs"),
     minHeight: "32px",
+    borderRadius: 2,
 
     boxSizing: "border-box",
     cursor: "text",
@@ -45,6 +47,10 @@ export const { staticClasses, useClasses } = createClasses("HvInlineEditor", {
       "& $icon": {
         visibility: "visible",
       },
+    },
+
+    "&:focus": {
+      borderColor: theme.colors.text,
     },
   },
   icon: {

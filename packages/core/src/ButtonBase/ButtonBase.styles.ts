@@ -9,11 +9,15 @@ export const { staticClasses, useClasses } = createClasses("HvButtonBase", {
     cursor: "pointer",
     background: "none",
     padding: 0,
+    borderRadius: theme.radii.base,
 
     // Background color common for almost all variants
     ":where(:not($disabled))": {
-      ":hover, :focus-visible": {
-        backgroundColor: theme.colors.bgHover,
+      ":hover": {
+        backgroundColor: theme.colors.primaryDimmed,
+      },
+      ":active": {
+        backgroundColor: theme.colors.primarySubtle,
       },
     },
     ":focus-visible": {

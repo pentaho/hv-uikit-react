@@ -5,55 +5,103 @@ import { outlineStyles } from "../utils/focusUtils";
 
 export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
   root: {
-    padding: theme.space.xs,
+    padding: theme.space.xxs,
     cursor: "pointer",
     width: "fit-content",
     height: "fit-content",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: theme.radii.round,
+    borderRadius: theme.radii.full,
 
     "&:hover": {
       backgroundColor: theme.colors.bgHover,
-    },
-
-    // Higher CSS specificity here
-    "& $switchBase": {
-      "&:hover": {
-        backgroundColor: "transparent",
-      },
-
-      "&$checked": {
-        transform: "translateX(16px)",
-        "& + $track": {
-          opacity: 1,
-          backgroundColor: theme.colors.primary,
-          borderColor: "transparent",
-        },
-        "&:not($disabled) $thumb": {
-          borderColor: "transparent",
-        },
-        "&:hover": {
-          backgroundColor: "transparent",
-        },
-      },
-    },
-
-    // Higher CSS specificity here
-    "&$disabled": {
-      "& $switchBase": {
-        "& + $track": {
-          opacity: 1,
-          backgroundColor: theme.colors.bgDisabled,
-          border: `solid 1px ${theme.colors.borderDisabled}`,
-        },
-      },
     },
   },
   switch: {
     width: "40px",
     height: "32px",
     padding: 0,
+
+    "& $switchBase": {
+      width: "40px",
+      height: "32px",
+      padding: 0,
+
+      "&:hover": {
+        backgroundColor: "transparent",
+      },
+
+      "& $thumb": {
+        borderColor: "transparent",
+        backgroundColor: "#FFFFFF",
+        left: -8,
+        top: -3,
+        width: 14,
+        height: 14,
+      },
+
+      "& + $track": {
+        opacity: 1,
+        backgroundColor: theme.colors.textDimmed,
+        border: "none",
+        width: 40,
+        height: 18,
+      },
+
+      "&$checked": {
+        transform: "translateX(16px)",
+
+        "& + $track": {
+          opacity: 1,
+          backgroundColor: theme.colors.positive,
+          borderColor: "transparent",
+        },
+
+        "&:not($disabled) $thumb": {
+          borderColor: "transparent",
+        },
+
+        "& $thumb": {
+          left: -2,
+        },
+
+        "&:hover": {
+          backgroundColor: "transparent",
+        },
+      },
+
+      "&$disabled": {
+        "& $thumb": {
+          backgroundColor: "#FFFFFF",
+          borderColor: theme.colors.textDisabled,
+        },
+
+        "& + $track": {
+          opacity: 1,
+          backgroundColor: theme.colors.bgDisabled,
+          border: "none",
+        },
+      },
+    },
+
+    "&[data-size=medium] $switchBase": {
+      "& + $track": {
+        width: 48,
+        height: 24,
+      },
+
+      "& $thumb": {
+        left: -5,
+        top: 0,
+        width: 16,
+        height: 16,
+      },
+
+      "&$checked $thumb": {
+        left: 3,
+        top: 0,
+      },
+    },
 
     "&$readOnly $switchBase": {
       cursor: "default",
@@ -63,22 +111,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
     width: "40px",
     height: "32px",
     padding: 0,
-    "&[data-size=medium]": {
-      "+.HvBaseSwitch-track": {
-        width: 48,
-        height: 22,
-      },
-      "& $thumb": {
-        left: -2,
-        top: 3,
-        width: 18,
-        height: 18,
-      },
-      "&$checked $thumb": {
-        left: 8,
-        top: 3,
-      },
-    },
   },
   track: {
     opacity: 1,
@@ -110,11 +142,21 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
     },
 
     "& $thumb": {
-      backgroundColor: theme.colors.bgPageSecondary,
+      backgroundColor: "#FFFFFF",
       border: `solid 1px ${theme.colors.textDisabled}`,
     },
   },
-  readOnly: {},
+  readOnly: {
+    ":hover": {
+      backgroundColor: "transparent",
+    },
+    "& $switchBase + $track": {
+      backgroundColor: theme.colors.border,
+    },
+    "& $switchBase$checked + $track": {
+      backgroundColor: theme.mix("positive", 0.5, "dimmer"),
+    },
+  },
   focusVisible: {
     borderRadius: theme.radii.round,
     ...outlineStyles,

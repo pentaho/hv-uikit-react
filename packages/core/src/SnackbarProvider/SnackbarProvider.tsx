@@ -130,8 +130,8 @@ export const HvSnackbarProvider = (props: HvSnackbarProviderProps) => {
     maxSnack = 5,
     autoHideDuration = 5000,
     anchorOrigin = {
-      vertical: "top",
-      horizontal: "right",
+      vertical: "bottom",
+      horizontal: "center",
     },
     classes: classesProp,
     className,

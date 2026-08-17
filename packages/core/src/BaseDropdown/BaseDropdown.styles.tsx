@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -17,9 +17,9 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
     cursor: "pointer",
     userSelect: "none",
     position: "relative",
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: `light-dark(white, ${slate[950]})`,
     boxSizing: "border-box",
-    border: `1px solid ${theme.colors.text}`,
+    border: `1px solid ${theme.colors.textDimmed}`,
     borderRadius: theme.radii.round,
     ":hover,:focus-visible": {
       borderColor: theme.colors.primary,
@@ -33,7 +33,7 @@ export const { useClasses, staticClasses } = createClasses("HvBaseDropdown", {
   },
   headerOpen: {
     "&,:hover": {
-      borderColor: theme.colors.text,
+      borderColor: theme.colors.textDimmed,
     },
   },
   headerDisabled: {

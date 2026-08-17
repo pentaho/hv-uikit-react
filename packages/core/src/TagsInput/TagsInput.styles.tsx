@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -10,10 +10,13 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
   },
   disabled: {
     "& $tagsList": {
-      backgroundColor: theme.colors.bgPage,
+      backgroundColor: theme.colors.bgDisabled,
       "&,:hover": {
-        borderColor: theme.colors.border,
+        borderColor: theme.colors.textDisabled,
       },
+    },
+    "& $tag": {
+      outlineColor: theme.colors.textDisabled,
     },
   },
   readOnly: {
@@ -43,16 +46,16 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
     cursor: "text",
     width: "100%",
     minHeight: 32,
-    padding: theme.spacing("xxs", "xs"),
+    padding: theme.space.xxs,
     overflow: "auto",
     position: "relative",
 
     flexDirection: "row",
     flexWrap: "wrap",
 
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: `light-dark(white, ${slate[950]})`,
     borderWidth: 1,
-    borderColor: theme.colors.textSubtle,
+    borderColor: theme.colors.textDimmed,
     borderRadius: theme.radii.round,
 
     "&:hover": {
@@ -89,7 +92,7 @@ export const { staticClasses, useClasses } = createClasses("HvTagsInput", {
       color: theme.colors.textSubtle,
     },
   },
-  singleLine: {},
+  singleLine: { height: 32 },
   error: { float: "left" },
   inputExtension: {},
   suggestionsContainer: {},

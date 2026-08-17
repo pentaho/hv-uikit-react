@@ -27,7 +27,11 @@ const { useClasses } = createClasses(name, {
   },
   panel: {
     padding: theme.space.xs,
-    border: `1px solid ${theme.colors.text}`,
+    margin: theme.spacing("xxs", 0),
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
   },
 });
 

@@ -1,5 +1,5 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -35,9 +35,9 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     borderRadius: theme.radii.round,
     height: "32px",
     borderWidth: 1,
-    borderColor: theme.colors.text,
+    borderColor: theme.colors.textDimmed,
     boxSizing: "border-box",
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: `light-dark(white, ${slate[950]})`,
     fontFamily: theme.fontFamily.body,
     alignItems: "stretch",
     ...theme.typography.body,
@@ -50,7 +50,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseInput", {
     },
   },
   disabled: {
-    backgroundColor: theme.colors.bgPage,
+    backgroundColor: theme.colors.bgDisabled,
     borderColor: theme.colors.textDisabled,
 
     cursor: "not-allowed",

@@ -25,6 +25,7 @@ export const { staticClasses, useClasses } = createClasses("HvLoading", {
   },
   loadingBar: {
     backgroundColor: "currentcolor",
+    borderRadius: 1,
     display: "inline-block",
     animation: "loading 1s ease-in-out infinite",
     // TODO: make this the default when it has better support

@@ -124,7 +124,6 @@ export const HvButton = fixedForwardRef(function HvButton<
     endIcon,
     size,
     radius,
-    overrideIconColors,
     component: Component = "button",
     focusableWhenDisabled,
     onClick: onClickProp,
