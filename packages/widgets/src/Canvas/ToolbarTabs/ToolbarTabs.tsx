@@ -305,6 +305,9 @@ export const HvCanvasToolbarTabs = forwardRef<
                       <CloseXS
                         aria-hidden
                         size="xs"
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                        }}
                         onClick={(event) => {
                           handleDeleteTab(event, tab.id);
 

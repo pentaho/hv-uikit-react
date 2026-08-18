@@ -23,16 +23,32 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
     borderRadius: theme.radii.round,
     "&&$invalid": { borderColor: theme.form.errorColor },
   },
-  popper: {},
+  popper: {
+    zIndex: theme.zIndices.popover,
+    width: "var(--anchor-width)",
+    minWidth: "var(--anchor-width)",
+    maxWidth: "var(--available-width)",
+  },
+  popperVariableWidth: {
+    width: "auto",
+  },
   panel: {
     maxHeight: 400,
+    margin: theme.spacing("xxs", 0),
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
+    overflow: "hidden",
 
     // panel styles overrides
     padding: theme.space.xs,
-    "& > *": {
-      padding: 4,
-      margin: -4,
-    },
+  },
+  listContainer: {
+    padding: 4,
+    margin: -4,
+    overflow: "auto",
+    maxHeight: "inherit",
   },
   error: {},
 });

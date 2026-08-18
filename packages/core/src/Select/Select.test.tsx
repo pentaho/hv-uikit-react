@@ -83,7 +83,7 @@ describe("Select", () => {
     const listbox = screen.getByRole("listbox");
     expect(listbox).toBeInTheDocument();
     expect(listbox).toHaveAttribute("aria-multiselectable", "true");
-    expect(screen.getAllByRole("list").length).toBe(2);
+    expect(screen.getAllByRole("group").length).toBe(2);
     expect(screen.getAllByRole("option").length).toBe(5);
 
     await userEvent.click(screen.getByRole("option", { name: "Option2" }));

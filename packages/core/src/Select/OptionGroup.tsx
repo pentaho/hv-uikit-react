@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { OptionGroup, type OptionGroupProps } from "@mui/base";
+import { Select } from "@base-ui/react/select";
 import {
   createClasses,
   useDefaultProps,
@@ -18,13 +18,16 @@ export { staticClasses as optionGroupClasses };
 
 export type HvOptionGroupClasses = ExtractNames<typeof useClasses>;
 
-export interface HvOptionGroupProps extends OptionGroupProps {
+export interface HvOptionGroupProps extends Select.Group.Props {
+  label?: React.ReactNode;
   classes?: HvOptionGroupClasses;
 }
 
-export const HvOptionGroup = forwardRef<HTMLLIElement, HvOptionGroupProps>(
+export const HvOptionGroup = forwardRef<HTMLDivElement, HvOptionGroupProps>(
   function HvOptionGroup(props, ref) {
     const {
+      label,
+      children,
       className,
       classes: classesProp,
       ...others
@@ -32,11 +35,14 @@ export const HvOptionGroup = forwardRef<HTMLLIElement, HvOptionGroupProps>(
     const { classes, cx } = useClasses(classesProp);
 
     return (
-      <OptionGroup
+      <Select.Group
         ref={ref}
         className={cx(classes.root, className)}
         {...others}
-      />
+      >
+        {label != null && <Select.GroupLabel>{label}</Select.GroupLabel>}
+        {children}
+      </Select.Group>
     );
   },
 );

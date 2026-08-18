@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { useOption, type OptionOwnProps } from "@mui/base";
-import { useForkRef } from "@mui/material/utils";
+import { Select } from "@base-ui/react/select";
 import {
   createClasses,
   useDefaultProps,
@@ -22,16 +21,17 @@ export { staticClasses as optionClasses };
 
 export type HvOptionClasses = ExtractNames<typeof useClasses>;
 
-export interface HvOptionProps<OptionValue extends {}>
+export interface HvOptionProps
   extends
     Omit<HvListItemProps, "value" | "disabled">,
-    Pick<OptionOwnProps<OptionValue>, "disabled" | "label" | "value"> {
+    Pick<Select.Item.Props, "disabled" | "label" | "value"> {
   classes?: HvOptionClasses;
 }
 
-export const HvOption = fixedForwardRef(function HvOption<
-  OptionValue extends {},
->(props: HvOptionProps<OptionValue>, ref: React.Ref<HTMLLIElement>) {
+export const HvOption = fixedForwardRef(function HvOption(
+  props: HvOptionProps,
+  ref: React.Ref<HTMLLIElement>,
+) {
   const {
     classes: classesProp,
     className,
@@ -44,7 +44,6 @@ export const HvOption = fixedForwardRef(function HvOption<
   const { classes, cx } = useClasses(classesProp);
 
   const optionRef = useRef<HTMLElement>(null);
-  const rootRef = useForkRef(optionRef, ref);
 
   const computedLabel =
     label ??
@@ -52,23 +51,20 @@ export const HvOption = fixedForwardRef(function HvOption<
       ? children
       : optionRef.current?.textContent?.trim());
 
-  const { getRootProps, selected, highlighted } = useOption({
-    disabled,
-    label: computedLabel,
-    rootRef,
-    value,
-  });
-
   return (
-    <HvListItem
-      ref={ref}
-      selected={selected}
-      className={cx(classes.root, className, {
-        [classes.highlighted]: highlighted,
-      })}
-      {...getRootProps(others)}
+    <Select.Item
+      value={value}
+      disabled={disabled}
+      label={computedLabel}
+      render={<HvListItem ref={ref as React.Ref<HTMLLIElement>} />}
+      className={(state) =>
+        cx(classes.root, className, {
+          [classes.highlighted]: state.highlighted,
+        })
+      }
+      {...(others as any)}
     >
       {children}
-    </HvListItem>
+    </Select.Item>
   );
 });

@@ -21,7 +21,7 @@ export function Tabs({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const tab = (searchParams.get("tab") as TabId) || "usage";
+  const tab = (searchParams?.get("tab") as TabId) || "usage";
 
   return (
     <>
@@ -29,7 +29,7 @@ export function Tabs({
         variant="fullWidth"
         value={tab}
         onChange={(_, value) => {
-          const newParams = new URLSearchParams(searchParams);
+          const newParams = new URLSearchParams(searchParams?.toString());
           newParams.set("tab", value);
           router.push(`${pathname}?${newParams}`);
         }}
