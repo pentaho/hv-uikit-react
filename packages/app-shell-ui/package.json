@@ -31,7 +31,6 @@
     "@pentaho/app-shell-services": "^2.0.6",
     "@pentaho/app-shell-shared": "^2.3.5",
     "@pentaho/uikit-react-core": "^6.10.0",
-    "@pentaho/uikit-react-icons": "^6.0.8",
     "@mui/material": "^7.0.2",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.3",

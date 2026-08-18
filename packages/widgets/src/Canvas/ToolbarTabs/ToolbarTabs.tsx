@@ -3,8 +3,10 @@ import { useResizeDetector } from "react-resize-detector";
 import {
   HvButton,
   HvDropDownMenu,
+  HvIcon,
   HvOverflowTooltip,
   isKey,
+  SvgBase,
   uniqueId,
   useControlled,
   useDefaultProps,
@@ -14,11 +16,6 @@ import {
   type HvBaseProps,
   type HvButtonProps,
 } from "@pentaho/uikit-react-core";
-import {
-  AddAlt,
-  CloseXS,
-  MoreOptionsHorizontal,
-} from "@pentaho/uikit-react-icons";
 import { clamp } from "@pentaho/uikit-react-utils";
 
 import { HvCanvasPanelTab } from "../PanelTab";
@@ -31,6 +28,12 @@ import {
   staticClasses,
   useClasses,
 } from "./ToolbarTabs.styles";
+
+const AddAlt = () => (
+  <SvgBase viewBox="0 0 16 16">
+    <path d="M.01 7.99a8 8 0 1 1 16 .01A8 8 0 0 1 0 8Zm1 0a7 7 0 0 0 13.98 0 7 7 0 0 0-13.98 0m6.49 3v-2.5H5v-1h2.5V5h1v2.5H11v1H8.5V11Zm0 0" />
+  </SvgBase>
+);
 
 export { staticClasses as canvasToolbarTabsClasses };
 
@@ -302,7 +305,8 @@ export const HvCanvasToolbarTabs = forwardRef<
                   )}
                   {removable && (
                     <div className={classes.closeIconContainer}>
-                      <CloseXS
+                      <HvIcon
+                        name="Close"
                         aria-hidden
                         size="xs"
                         onClick={(event) => {
@@ -330,7 +334,7 @@ export const HvCanvasToolbarTabs = forwardRef<
                 menuListRoot: classes.dropdownMenuListRoot,
               }}
               dataList={hiddenTabs}
-              icon={<MoreOptionsHorizontal />}
+              icon={<HvIcon name="DotsHorizontal" compact />}
               labels={{ dropdownMenu: labels.dropdownMenu }}
               onClick={(event, value) =>
                 handleChangeSelectedTab(event, value.id ?? "none")

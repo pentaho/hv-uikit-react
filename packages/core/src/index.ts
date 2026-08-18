@@ -21,6 +21,7 @@ export {
 } from "@pentaho/uikit-react-utils";
 
 export * from "./themes";
+export * from "./icons";
 
 // Components that need to be loaded first because of mutual dependencies (preserve order)
 export * from "./Typography";
