@@ -44,7 +44,7 @@
     "@pentaho/uikit-react-utils": "^6.2.6",
     "@pentaho/uikit-styles": "^6.2.1",
     "@internationalized/date": "^3.2.0",
-    "@mui/base": "7.0.0-beta.4",
+    "@base-ui/react": "^1.0.0",
     "@popperjs/core": "^2.11.8",
     "@types/react-table": "^7.7.18",
     "@uiw/react-color-hue": "^2.9.2",

@@ -1,6 +1,4 @@
-import { useRef } from "react";
-import { useOption, type OptionOwnProps } from "@mui/base";
-import { useForkRef } from "@mui/material/utils";
+import { Select } from "@base-ui/react/select";
 import {
   createClasses,
   useDefaultProps,
@@ -10,6 +8,20 @@ import {
 import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { fixedForwardRef } from "../types/generic";
 import { outlineStyles } from "../utils/focusUtils";
+
+const setRef = <ElementType,>(
+  ref:
+    | React.Ref<ElementType>
+    | React.MutableRefObject<ElementType | null>
+    | undefined,
+  value: ElementType | null,
+) => {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref) {
+    (ref as React.MutableRefObject<ElementType | null>).current = value;
+  }
+};
 
 const { staticClasses, useClasses } = createClasses("HvOption", {
   root: {},
@@ -25,7 +37,8 @@ export type HvOptionClasses = ExtractNames<typeof useClasses>;
 export interface HvOptionProps<OptionValue extends {}>
   extends
     Omit<HvListItemProps, "value" | "disabled">,
-    Pick<OptionOwnProps<OptionValue>, "disabled" | "label" | "value"> {
+    Pick<Select.Item.Props, "disabled" | "label"> {
+  value: OptionValue;
   classes?: HvOptionClasses;
 }
 
@@ -43,32 +56,29 @@ export const HvOption = fixedForwardRef(function HvOption<
   } = useDefaultProps("HvOption", props);
   const { classes, cx } = useClasses(classesProp);
 
-  const optionRef = useRef<HTMLElement>(null);
-  const rootRef = useForkRef(optionRef, ref);
-
-  const computedLabel =
-    label ??
-    (typeof children === "string"
-      ? children
-      : optionRef.current?.textContent?.trim());
-
-  const { getRootProps, selected, highlighted } = useOption({
-    disabled,
-    label: computedLabel,
-    rootRef,
-    value,
-  });
-
   return (
-    <HvListItem
-      ref={ref}
-      selected={selected}
-      className={cx(classes.root, className, {
-        [classes.highlighted]: highlighted,
-      })}
-      {...getRootProps(others)}
-    >
-      {children}
-    </HvListItem>
+    <Select.Item
+      nativeButton={false}
+      value={value}
+      disabled={disabled}
+      label={label}
+      render={(itemProps, state) => (
+        <HvListItem
+          {...others}
+          {...itemProps}
+          ref={(instance) => {
+            setRef(ref, instance);
+            setRef(itemProps.ref, instance);
+          }}
+          selected={state.selected}
+          disabled={state.disabled}
+          className={cx(classes.root, className, itemProps.className, {
+            [classes.highlighted]: state.highlighted,
+          })}
+        >
+          {children}
+        </HvListItem>
+      )}
+    />
   );
 });

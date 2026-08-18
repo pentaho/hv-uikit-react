@@ -39,7 +39,7 @@ export const Main: StoryObj<HvSelectProps<{}, false>> = {
   play: async ({ canvas, userEvent }) => {
     const select = canvas.getByRole("combobox", { name: /country/i });
     await userEvent.click(select);
-    await expect(canvas.getAllByRole("option")).toHaveLength(6);
+    await expect(await canvas.findAllByRole("option")).toHaveLength(6);
   },
   render: (args) => {
     return (
@@ -84,7 +84,7 @@ export const Variants: StoryObj<HvSelectProps<{}, false>> = {
   play: async ({ canvas, userEvent }) => {
     const select = canvas.getByRole("combobox", { name: /required/i });
     await userEvent.click(select);
-    await expect(canvas.getAllByRole("option")).toHaveLength(2);
+    await expect(await canvas.findAllByRole("option")).toHaveLength(2);
   },
   render: () => {
     return (
@@ -126,6 +126,18 @@ export const Test: StoryObj<HvSelectProps<{}, false>> = {
         ],
       },
     },
+  },
+  // For interaction behavior
+  play: async ({ canvas }) => {
+    const select = canvas.getByRole("combobox", { name: /options/i });
+    await expect(select).toBeInTheDocument();
+
+    const firstOption = await canvas.findByRole("option", {
+      name: /argentina/i,
+    });
+
+    await expect(firstOption).toHaveAttribute("aria-selected", "true");
+    await expect(firstOption).toHaveAttribute("tabindex", "0");
   },
   render: () => (
     <>
