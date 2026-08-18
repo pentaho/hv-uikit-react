@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Tabs, TabsList, type TabsProps } from "@mui/base";
+import { Tabs } from "@base-ui/react/tabs";
 import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-core";
 
 import { staticClasses, useClasses } from "./PanelTabs.styles";
@@ -8,9 +8,24 @@ export { staticClasses as canvasPanelTabsClasses };
 
 export type HvCanvasPanelTabsClasses = ExtractNames<typeof useClasses>;
 
-export interface HvCanvasPanelTabsProps extends TabsProps {
+type HvCanvasPanelTabsOnChange = (
+  event: React.SyntheticEvent | null,
+  value: Tabs.Tab.Value,
+) => void;
+
+export interface HvCanvasPanelTabsProps extends Omit<
+  Tabs.Root.Props,
+  "onValueChange" | "onChange"
+> {
   /** A Jss Object used to override or extend the styles applied. */
   classes?: HvCanvasPanelTabsClasses;
+  /**
+   * If `true`, the selected tab changes on arrow key focus.
+   * @deprecated Use `activateOnFocus` behavior from Base UI Tabs list.
+   */
+  selectionFollowsFocus?: boolean;
+  /** Callback triggered when the value changes. */
+  onChange?: HvCanvasPanelTabsOnChange;
 }
 
 /**
@@ -22,6 +37,7 @@ export const HvCanvasPanelTabs = forwardRef<
 >(function HvCanvasPanelTabs(props, ref) {
   const {
     selectionFollowsFocus = true,
+    onChange,
     children,
     className,
     classes: classesProp,
@@ -31,13 +47,24 @@ export const HvCanvasPanelTabs = forwardRef<
   const { classes, cx } = useClasses(classesProp);
 
   return (
-    <Tabs
+    <Tabs.Root
       ref={ref}
       className={cx(classes.root, className)}
-      selectionFollowsFocus={selectionFollowsFocus}
+      onValueChange={(value, eventDetails) => {
+        onChange?.(
+          (eventDetails.event as unknown as React.SyntheticEvent | undefined) ??
+            null,
+          value,
+        );
+      }}
       {...others}
     >
-      <TabsList className={classes.list}>{children}</TabsList>
-    </Tabs>
+      <Tabs.List
+        className={classes.list}
+        activateOnFocus={selectionFollowsFocus}
+      >
+        {children}
+      </Tabs.List>
+    </Tabs.Root>
   );
 });
