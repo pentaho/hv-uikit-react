@@ -1,4 +1,3 @@
-import { tabClasses } from "@mui/base";
 import { createClasses, outlineStyles, theme } from "@pentaho/uikit-react-core";
 
 export const { staticClasses, useClasses } = createClasses("HvCanvasPanelTab", {
@@ -20,7 +19,7 @@ export const { staticClasses, useClasses } = createClasses("HvCanvasPanelTab", {
     "&:has(:focus)": {
       backgroundColor: theme.colors.bgContainer,
     },
-    [`:has(.${tabClasses.selected})`]: {
+    ":has([data-active])": {
       color: theme.colors.text,
       backgroundColor: theme.colors.bgContainer,
     },
@@ -38,7 +37,7 @@ export const { staticClasses, useClasses } = createClasses("HvCanvasPanelTab", {
     paddingInlineEnd: 0,
     paddingInlineStart: 0,
 
-    [`&.${tabClasses.selected}`]: {
+    "&[data-active]": {
       color: theme.colors.text,
       fontWeight: theme.fontWeights.semibold,
     },

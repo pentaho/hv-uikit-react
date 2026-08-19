@@ -60,6 +60,24 @@ describe("Select", () => {
     expect(getSelect()).toHaveTextContent("Option1, Option2");
   });
 
+  it("renders pre-selected element labels without stringifying them", () => {
+    render(
+      <HvSelect
+        multiple
+        label={name}
+        defaultValue={["opt1", "opt2"]}
+        options={[
+          { value: "opt1", label: <span>Option1</span> },
+          { value: "opt2", label: <strong>Option2</strong> },
+          { value: "opt3", label: "Option3" },
+        ]}
+      />,
+    );
+
+    expect(getSelect()).toHaveTextContent("Option1, Option2");
+    expect(getSelect()).not.toHaveTextContent("[object Object]");
+  });
+
   it("renders correctly with groups and multiple section", async () => {
     render(
       <HvSelect multiple label={name}>

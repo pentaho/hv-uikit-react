@@ -1,4 +1,3 @@
-import { tabClasses } from "@mui/base";
 import { createClasses, theme } from "@pentaho/uikit-react-core";
 
 import { toolbarTabEditorClasses } from "./ToolbarTabEditor";
@@ -41,12 +40,12 @@ export const { staticClasses, useClasses } = createClasses(
       boxShadow: "none",
       backgroundColor: "inherit",
       "&:first-of-type": { borderEndStartRadius: theme.radii.base },
-      [`:has(.${tabClasses.selected})`]: {
+      ':has([aria-selected="true"])': {
         color: theme.colors.primary,
         backgroundColor: TAB_COLOR,
         borderColor: theme.colors.border,
       },
-      [`:not(:has(.${tabClasses.selected}))`]: {
+      ':not(:has([aria-selected="true"]))': {
         "&:hover,&:focus": {
           borderRadius: 0,
           backgroundColor: TAB_COLOR,
@@ -81,7 +80,7 @@ export const { staticClasses, useClasses } = createClasses(
       alignItems: "center",
       width: "100%",
       padding: theme.space.xs,
-      [`&.${tabClasses.selected}`]: {
+      '&[aria-selected="true"]': {
         color: theme.colors.primary,
       },
     },

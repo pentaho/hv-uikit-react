@@ -23,9 +23,16 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
     borderRadius: theme.radii.round,
     "&&$invalid": { borderColor: theme.form.errorColor },
   },
-  popper: {},
+  popper: {
+    zIndex: theme.zIndices.popover,
+  },
   panel: {
+    margin: theme.spacing("xxs", 0),
     maxHeight: 400,
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
 
     // panel styles overrides
     padding: theme.space.xs,

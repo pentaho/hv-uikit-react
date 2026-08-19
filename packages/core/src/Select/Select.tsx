@@ -1,17 +1,12 @@
-import { useRef, useState } from "react";
+import { Children, isValidElement, useRef } from "react";
+import { Select } from "@base-ui/react/select";
+import { useControlled } from "@mui/material/utils";
 import {
-  SelectProvider,
-  useSelect,
-  type SelectOption,
-  type SelectValue,
-  type UseSelectParameters,
-} from "@mui/base";
-import { useControlled, useForkRef } from "@mui/material/utils";
-import type { Placement } from "@popperjs/core";
-import { clsx, type ClassValue } from "clsx";
-import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+  useDefaultProps,
+  useTheme,
+  type ExtractNames,
+} from "@pentaho/uikit-react-utils";
 
-import { HvDropdownPanel } from "../BaseDropdown";
 import type { HvButtonProps } from "../Button";
 import { HvDropdownButton } from "../DropdownButton";
 import {
@@ -23,36 +18,195 @@ import {
 import { HvLabelContainer } from "../FormElement/LabelContainer";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { HvListContainer } from "../ListContainer";
+import { HvPanel } from "../Panel";
 import { fixedForwardRef } from "../types/generic";
+import { getContainerElement } from "../utils/document";
 import { setId } from "../utils/setId";
 import { HvOption } from "./Option";
+import { HvOptionGroup } from "./OptionGroup";
 import { staticClasses, useClasses } from "./Select.styles";
 
-const noop = () => {};
+interface HvSelectOption<OptionValue extends {}> {
+  value: OptionValue;
+  label: React.ReactNode;
+  disabled?: boolean;
+}
 
-function defaultRenderValue<Value>(
-  options: SelectOption<Value> | SelectOption<Value>[] | null,
+interface HvSelectOptionGroup<OptionValue extends {}> {
+  label?: React.ReactNode;
+  items: HvSelectOption<OptionValue>[];
+}
+
+type HvSelectItems<OptionValue extends {}> = Array<
+  HvSelectOption<OptionValue> | HvSelectOptionGroup<OptionValue>
+>;
+
+type HvSelectValue<
+  OptionValue extends {},
+  Multiple extends boolean = false,
+> = Multiple extends true
+  ? HvSelectOption<OptionValue>[]
+  : HvSelectOption<OptionValue> | null;
+
+function defaultRenderValue<OptionValue extends {}>(
+  options: HvSelectValue<OptionValue, boolean>,
 ): React.ReactNode {
   if (Array.isArray(options)) {
-    return <>{options.map((o) => o.label).join(", ")}</>;
+    return (
+      <>
+        {options.flatMap((option: HvSelectOption<OptionValue>, index) =>
+          index === 0 ? [option.label] : [", ", option.label],
+        )}
+      </>
+    );
   }
 
   return options?.label ?? null;
 }
 
-const mergeIds = (...ids: ClassValue[]) => clsx(ids) || undefined;
+const setRef = (ref: any, value: any) => {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+};
 
-function renderOptions(options?: HvSelectProps<any>["options"]) {
+function renderOptions<OptionValue extends {}>(
+  options?: HvSelectProps<OptionValue>["options"],
+) {
   return options?.map((option) => (
-    <HvOption key={option.value} {...option}>
+    <HvOption
+      key={
+        typeof option.value === "string" ||
+        typeof option.value === "number" ||
+        typeof option.value === "boolean"
+          ? String(option.value)
+          : typeof option.label === "string" || typeof option.label === "number"
+            ? String(option.label)
+            : JSON.stringify(option.value)
+      }
+      disabled={option.disabled}
+      label={typeof option.label === "string" ? option.label : undefined}
+      value={option.value}
+    >
       {option.label}
     </HvOption>
   ));
 }
 
+function isOptionGroupElement(
+  child: React.ReactNode,
+): child is React.ReactElement<{
+  label?: React.ReactNode;
+  children?: React.ReactNode;
+}> {
+  return isValidElement(child) && child.type === HvOptionGroup;
+}
+
+function isOptionElement(child: React.ReactNode): child is React.ReactElement<{
+  disabled?: boolean;
+  label?: React.ReactNode;
+  value: any;
+  children?: React.ReactNode;
+}> {
+  return isValidElement(child) && child.type === HvOption;
+}
+
+function normalizeItems<OptionValue extends {}>(
+  options?: HvSelectProps<OptionValue>["options"],
+  children?: React.ReactNode,
+): HvSelectItems<OptionValue> {
+  if (options) {
+    return options.map(({ disabled, label, value }) => ({
+      disabled,
+      label,
+      value,
+    }));
+  }
+
+  return Children.toArray(children).flatMap((child) => {
+    if (isOptionGroupElement(child)) {
+      return {
+        items: normalizeItems<OptionValue>(
+          undefined,
+          child.props.children,
+        ).flatMap((item) => ("items" in item ? item.items : item)),
+        label: child.props.label,
+      };
+    }
+
+    if (isOptionElement(child)) {
+      return {
+        disabled: child.props.disabled,
+        label: child.props.label ?? child.props.children,
+        value: child.props.value as OptionValue,
+      };
+    }
+
+    return [];
+  });
+}
+
+function flattenItems<OptionValue extends {}>(
+  items: HvSelectItems<OptionValue>,
+) {
+  return items.flatMap((item) => ("items" in item ? item.items : item));
+}
+
+function resolveOption<OptionValue extends {}>(
+  value: OptionValue,
+  items: HvSelectOption<OptionValue>[],
+) {
+  return items.find((item) => Object.is(item.value, value)) ?? null;
+}
+
+function resolveSelectedOptions<
+  OptionValue extends {},
+  Multiple extends boolean,
+>(
+  value: OptionValue | OptionValue[] | null,
+  items: HvSelectOption<OptionValue>[],
+  multiple?: Multiple,
+): HvSelectValue<OptionValue, Multiple> {
+  if (multiple) {
+    return ((value as OptionValue[] | null) ?? [])
+      .map((itemValue) => resolveOption(itemValue, items))
+      .filter(
+        (item): item is HvSelectOption<OptionValue> => item != null,
+      ) as HvSelectValue<OptionValue, Multiple>;
+  }
+
+  return ((value == null ? null : resolveOption(value as OptionValue, items)) ??
+    null) as HvSelectValue<OptionValue, Multiple>;
+}
+
+function serializeValue<OptionValue extends {}, Multiple extends boolean>(
+  value: HvSelectValue<OptionValue, Multiple>,
+  getSerializedValue?: HvSelectProps<
+    OptionValue,
+    Multiple
+  >["getSerializedValue"],
+) {
+  if (getSerializedValue) {
+    return getSerializedValue(value);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item.value ?? "")).join(",");
+  }
+
+  return value == null ? "" : String(value.value ?? "");
+}
+
 export { staticClasses as selectClasses };
 
 export type HvSelectClasses = ExtractNames<typeof useClasses>;
+
+type HvSelectOnChange<OptionValue extends {}, Multiple extends boolean> = (
+  event: Event | undefined,
+  value: Multiple extends true ? OptionValue[] : OptionValue | null,
+) => void;
 
 export interface HvSelectProps<
   OptionValue extends {},
@@ -60,29 +214,26 @@ export interface HvSelectProps<
 >
   extends
     Omit<HvFormElementProps, "value" | "defaultValue" | "onChange">,
-    Pick<
-      UseSelectParameters<OptionValue, Multiple>,
-      | "name"
-      | "required"
-      | "disabled"
-      | "multiple"
-      | "open"
-      | "defaultOpen"
-      | "value"
-      | "defaultValue"
-      | "buttonRef"
-      | "options"
-      | "getSerializedValue"
-      | "onChange"
-      | "onOpenChange"
-    >,
     Pick<HvButtonProps, "size" | "variant"> {
+  name?: string;
+  required?: boolean;
+  disabled?: boolean;
+  multiple?: Multiple;
+  open?: boolean;
+  defaultOpen?: boolean;
+  value?: Multiple extends true ? OptionValue[] : OptionValue | null;
+  defaultValue?: Multiple extends true ? OptionValue[] : OptionValue | null;
+  buttonRef?: React.Ref<HTMLButtonElement>;
+  options?: HvSelectOption<OptionValue>[];
+  getSerializedValue?: (value: HvSelectValue<OptionValue, Multiple>) => string;
+  onChange?: HvSelectOnChange<OptionValue, Multiple>;
+  onOpenChange?: (open: boolean) => void;
   classes?: HvSelectClasses;
   placeholder?: React.ReactNode;
   autoComplete?: string;
   /** Custom render function for rendering the selected value. */
   renderValue?: (
-    option: SelectValue<SelectOption<OptionValue>, Multiple>,
+    option: HvSelectValue<OptionValue, Multiple>,
   ) => React.ReactNode;
   /** Whether the width of the select panel can vary independently. */
   variableWidth?: boolean;
@@ -90,7 +241,7 @@ export interface HvSelectProps<
    * Properties passed on to the input element.
    */
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-  /**  If enabled the panel will be rendered using a portal , if disabled will be under the DOM hierarchy of the parent component. */
+  /** If enabled the panel will be rendered using a portal, if disabled it will render under the parent DOM hierarchy. */
   enablePortal?: boolean;
 }
 
@@ -136,6 +287,7 @@ export const HvSelect = fixedForwardRef(function HvSelect<
     placeholder,
     inputProps,
     enablePortal,
+    buttonRef,
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledBy,
     description,
@@ -144,50 +296,46 @@ export const HvSelect = fixedForwardRef(function HvSelect<
     statusMessage,
     "aria-errormessage": ariaErrorMessage,
     getSerializedValue,
-    onClick,
     onChange,
     onOpenChange,
     ...others
   } = useDefaultProps("HvSelect", props);
   const { classes, cx } = useClasses(classesProp);
+  const { rootId } = useTheme();
 
-  const [placement, setPlacement] = useState<Placement>("bottom-start");
+  const mergeIds = (
+    externalIds: string | undefined,
+    conditionalIds: Record<string, any>,
+  ): string | undefined => {
+    const ids: string[] = [];
+    if (externalIds) ids.push(externalIds);
+    Object.entries(conditionalIds).forEach(([id, value]) => {
+      if (value) ids.push(id);
+    });
+    return ids.length > 0 ? ids.join(" ") : undefined;
+  };
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const handleButtonRef = useForkRef(ref, buttonRef);
+  const emptyValue = (multiple ? [] : null) as Multiple extends true
+    ? OptionValue[]
+    : OptionValue | null;
 
-  const {
-    contextValue,
-    disabled,
-    getButtonProps,
-    getListboxProps,
-    getHiddenInputProps,
-    getOptionMetadata,
-    value,
-    open,
-  } = useSelect<OptionValue, Multiple>({
-    componentName: "HvSelect",
-    name,
-    required,
-    disabled: disabledProp,
-    multiple,
-    open: openProp,
-    defaultOpen,
-    value: valueProp,
-    defaultValue,
-    options: optionsProp,
-    buttonRef: handleButtonRef,
-    getSerializedValue,
-    onChange,
-    onOpenChange: handleOpenChange,
+  const [currentValue, setCurrentValue] = useControlled<
+    Multiple extends true ? OptionValue[] : OptionValue | null
+  >({
+    name: "HvSelect.value",
+    controlled: valueProp,
+    default: (defaultValue ?? emptyValue) as Multiple extends true
+      ? OptionValue[]
+      : OptionValue | null,
   });
 
-  const renderValue = renderValueProp ?? defaultRenderValue;
+  const renderValue = renderValueProp ?? defaultRenderValue<OptionValue>;
 
   const id = useUniqueId(idProp);
   const labelId = useUniqueId(setId(idProp, "label"));
   const descriptionId = useUniqueId(setId(idProp, "description"));
   const errorMessageId = useUniqueId(setId(idProp, "error"));
+  const actualErrorMessageId = ariaErrorMessage ?? errorMessageId;
 
   const [validationMessage] = useControlled({
     name: "HvSelect.statusMessage",
@@ -200,18 +348,39 @@ export const HvSelect = fixedForwardRef(function HvSelect<
     default: "standBy",
   });
 
-  function handleOpenChange(newOpen: boolean) {
-    if (!newOpen) {
-      const hasValue = multiple ? (value as OptionValue[]).length > 0 : !!value;
-      setValidationState(required && !hasValue ? "invalid" : "valid");
-    }
-    onOpenChange?.(newOpen);
-  }
+  const items = normalizeItems(optionsProp, childrenProp);
+  const flatItems = flattenItems(items);
+  const children = childrenProp ?? renderOptions(optionsProp);
+  const hasOptions = Children.count(children) > 0;
+  const hasHighlightedFirstOptionRef = useRef(false);
 
-  // the error message area will only be created if:
-  // - an external element that provides an error message isn't identified via aria-errormessage AND
-  //   - both status and statusMessage properties are being controlled OR
-  //   - status is uncontrolled and required is true
+  const hasCurrentValue = multiple
+    ? ((currentValue as OptionValue[] | null) ?? []).length > 0
+    : currentValue != null;
+
+  const handleOpenChange: NonNullable<
+    Select.Root.Props<OptionValue, Multiple>["onOpenChange"]
+  > = (newOpen, _) => {
+    if (!newOpen) {
+      hasHighlightedFirstOptionRef.current = false;
+      setValidationState(required && !hasCurrentValue ? "invalid" : "valid");
+    }
+
+    onOpenChange?.(newOpen);
+  };
+
+  const handleValueChange: NonNullable<
+    Select.Root.Props<OptionValue, Multiple>["onValueChange"]
+  > = (newValue, eventDetails) => {
+    setCurrentValue(
+      newValue as Multiple extends true ? OptionValue[] : OptionValue | null,
+    );
+    onChange?.(
+      eventDetails.event as Event | undefined,
+      newValue as Multiple extends true ? OptionValue[] : OptionValue | null,
+    );
+  };
+
   const canShowError =
     ariaErrorMessage == null &&
     ((status !== undefined && statusMessage !== undefined) ||
@@ -219,98 +388,198 @@ export const HvSelect = fixedForwardRef(function HvSelect<
 
   const isInvalid = validationState === "invalid";
 
-  const actualValue = multiple
-    ? (value as OptionValue[])
-        .map((v) => getOptionMetadata(v))
-        .filter((v): v is SelectOption<OptionValue> => v !== undefined)
-    : (getOptionMetadata(value as OptionValue) ?? null);
+  const selectedOptions = resolveSelectedOptions(
+    currentValue as OptionValue | OptionValue[] | null,
+    flatItems,
+    multiple,
+  );
+  const serializedValue = serializeValue(selectedOptions, getSerializedValue);
 
-  const children = childrenProp ?? renderOptions(optionsProp);
-  const isOpen = open && !!children;
+  const popup = (
+    <Select.Positioner
+      className={classes.popper}
+      side="bottom"
+      align="start"
+      sideOffset={4}
+      alignItemWithTrigger={false}
+    >
+      <Select.Popup
+        render={(popupProps) => (
+          <HvPanel
+            {...popupProps}
+            tabIndex={0}
+            className={cx(classes.panel, popupProps.className)}
+            style={{
+              ...popupProps.style,
+              outline: "none",
+              ...(variableWidth
+                ? { minWidth: "var(--anchor-width)" }
+                : {
+                    minWidth: "var(--anchor-width)",
+                    width: "var(--anchor-width)",
+                  }),
+            }}
+          />
+        )}
+      >
+        <Select.List
+          render={(listProps) => (
+            <HvListContainer
+              {...listProps}
+              ref={(instance) => {
+                setRef(listProps.ref, instance);
+
+                if (
+                  hasHighlightedFirstOptionRef.current ||
+                  !instance ||
+                  multiple ||
+                  hasCurrentValue
+                ) {
+                  return;
+                }
+
+                hasHighlightedFirstOptionRef.current = true;
+
+                const firstEnabledOption = flatItems.find(
+                  (option) => !option.disabled,
+                );
+
+                if (firstEnabledOption) {
+                  setCurrentValue(
+                    firstEnabledOption.value as Multiple extends true
+                      ? OptionValue[]
+                      : OptionValue | null,
+                  );
+                }
+
+                queueMicrotask(() => {
+                  if (!instance.isConnected) return;
+
+                  instance.dispatchEvent(
+                    new KeyboardEvent("keydown", {
+                      bubbles: true,
+                      key: "ArrowDown",
+                    }),
+                  );
+                });
+              }}
+              condensed
+              selectable
+              data-is-dropdown
+            />
+          )}
+        >
+          {children}
+        </Select.List>
+      </Select.Popup>
+    </Select.Positioner>
+  );
 
   return (
-    <HvFormElement
-      name={name}
-      required={required}
-      disabled={disabled}
+    <Select.Root<OptionValue, Multiple>
+      disabled={disabledProp}
       readOnly={readOnly}
-      status={validationState}
-      className={cx(classes.root, className, {
-        [classes.readOnly]: readOnly,
-        [classes.disabled]: disabled,
-      })}
-      {...others}
+      required={required}
+      multiple={multiple}
+      open={openProp}
+      defaultOpen={defaultOpen}
+      value={
+        currentValue as Multiple extends true ? OptionValue[] : OptionValue
+      }
+      modal={false}
+      onOpenChange={handleOpenChange}
+      onValueChange={handleValueChange}
     >
-      <HvLabelContainer
-        label={label}
-        description={description}
-        inputId={id}
-        labelId={labelId}
-        descriptionId={descriptionId}
-        classes={{
-          root: classes.labelContainer,
-          label: classes.label,
-          description: classes.description,
-        }}
-      />
-      <HvDropdownButton
-        id={id}
-        open={isOpen}
-        disabled={disabled}
+      <HvFormElement
+        name={name}
+        required={required}
+        disabled={disabledProp}
         readOnly={readOnly}
-        className={cx(classes.select, {
-          [classes.invalid]: validationState === "invalid",
+        status={validationState}
+        className={cx(classes.root, className, {
+          [classes.readOnly]: readOnly,
+          [classes.disabled]: disabledProp,
         })}
-        data-popper-placement={placement} // NEXT5 border alignment
-        size={size}
-        variant={variant}
-        aria-label={ariaLabel}
-        aria-labelledby={mergeIds(ariaLabelledBy, { [labelId]: label })}
-        aria-invalid={isInvalid ? true : undefined}
-        aria-errormessage={errorMessageId}
-        aria-describedby={mergeIds(ariaDescribedBy, {
-          [descriptionId]: description,
-        })}
-        {...getButtonProps()}
+        {...others}
       >
-        {renderValue(actualValue as any) ?? placeholder}
-      </HvDropdownButton>
-      <HvDropdownPanel
-        role="none"
-        open={isOpen}
-        keepMounted
-        variableWidth={variableWidth}
-        disablePortal={!enablePortal}
-        anchorEl={buttonRef.current}
-        classes={{ container: classes.popper, panel: classes.panel }}
-        placement={placement}
-        onFirstUpdate={(state) => setPlacement(state.placement!)}
-        onClickAway={noop}
-        onToggle={noop}
-      >
-        <HvListContainer
-          condensed
-          selectable
-          data-is-dropdown
-          {...getListboxProps()}
+        <HvLabelContainer
+          label={label}
+          description={description}
+          inputId={id}
+          labelId={labelId}
+          descriptionId={descriptionId}
+          classes={{
+            root: classes.labelContainer,
+            label: classes.label,
+            description: classes.description,
+          }}
+        />
+        <Select.Trigger
+          render={(triggerProps, state) => (
+            <HvDropdownButton
+              {...triggerProps}
+              ref={(instance) => {
+                setRef(ref, instance);
+                setRef(buttonRef, instance);
+                setRef(triggerProps.ref, instance);
+              }}
+              id={id}
+              open={state.open && hasOptions}
+              disabled={disabledProp}
+              readOnly={readOnly}
+              className={cx(classes.select, triggerProps.className, {
+                [classes.invalid]: isInvalid,
+              })}
+              size={size}
+              variant={variant}
+              aria-label={ariaLabel}
+              aria-labelledby={mergeIds(ariaLabelledBy, { [labelId]: label })}
+              aria-invalid={isInvalid ? true : undefined}
+              aria-errormessage={actualErrorMessageId}
+              aria-describedby={mergeIds(ariaDescribedBy, {
+                [descriptionId]: description,
+              })}
+            />
+          )}
         >
-          <SelectProvider value={contextValue}>{children}</SelectProvider>
-        </HvListContainer>
-      </HvDropdownPanel>
-      <input
-        {...getHiddenInputProps()}
-        autoComplete={autoComplete}
-        {...inputProps}
-      />
-      {canShowError && (
-        <HvWarningText
-          id={errorMessageId}
-          disableBorder
-          className={classes.error}
-        >
-          {validationMessage}
-        </HvWarningText>
-      )}
-    </HvFormElement>
+          <Select.Value>
+            {(value) =>
+              renderValue(
+                resolveSelectedOptions(
+                  value as OptionValue | OptionValue[] | null,
+                  flatItems,
+                  multiple,
+                ) as HvSelectValue<OptionValue, Multiple>,
+              ) ?? placeholder
+            }
+          </Select.Value>
+        </Select.Trigger>
+        {hasOptions &&
+          (enablePortal ? (
+            <Select.Portal container={getContainerElement(rootId)}>
+              {popup}
+            </Select.Portal>
+          ) : (
+            popup
+          ))}
+        <input
+          {...inputProps}
+          type="hidden"
+          name={name}
+          autoComplete={autoComplete}
+          disabled={disabledProp}
+          value={serializedValue}
+        />
+        {canShowError && (
+          <HvWarningText
+            id={errorMessageId}
+            disableBorder
+            className={classes.error}
+          >
+            {validationMessage}
+          </HvWarningText>
+        )}
+      </HvFormElement>
+    </Select.Root>
   );
 });
