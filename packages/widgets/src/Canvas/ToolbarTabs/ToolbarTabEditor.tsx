@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import {
   createClasses,
+  HvIcon,
   HvTypography,
   isKey,
   theme,
@@ -9,7 +10,6 @@ import {
   type ExtractNames,
   type HvTypographyProps,
 } from "@pentaho/uikit-react-core";
-import { Edit } from "@pentaho/uikit-react-icons";
 
 // TODO - Extract component in the future: when we have more specs and/or is used in other components
 
@@ -54,9 +54,7 @@ const { staticClasses, useClasses } = createClasses(
     editIcon: {
       position: "absolute",
       right: theme.space.xxs,
-      top: 4,
-      width: 16,
-      height: 16,
+      alignSelf: "center",
       visibility: "hidden",
       pointerEvents: "none",
     },
@@ -216,7 +214,7 @@ export const ToolbarTabEditor = ({
         }}
         {...others}
       />
-      <Edit className={classes.editIcon} iconSize="XS" />
+      <HvIcon name="Edit" compact className={classes.editIcon} size="xs" />
     </div>
   );
 };

@@ -113,4 +113,5 @@ function HvIconInternal(
   );
 }
 
+/** @private internal use only */
 export const HvIcon = memo(forwardRef(HvIconInternal));

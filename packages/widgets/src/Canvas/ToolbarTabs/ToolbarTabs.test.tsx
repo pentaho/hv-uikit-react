@@ -10,18 +10,9 @@ import {
 const Sample = (props: Partial<HvCanvasToolbarTabsProps>) => (
   <HvCanvasToolbarTabs
     defaultTabs={[
-      {
-        id: "tab1",
-        label: "Tab 1",
-      },
-      {
-        id: "tab2",
-        label: "Tab 2",
-      },
-      {
-        id: "tab3",
-        label: "Tab 3",
-      },
+      { id: "tab1", label: "Tab 1" },
+      { id: "tab2", label: "Tab 2" },
+      { id: "tab3", label: "Tab 3" },
     ]}
     {...props}
   />
@@ -36,7 +27,7 @@ describe("CanvasToolbarTabs", () => {
 
     const closeBtn = screen
       .getAllByRole("tab")[0]
-      .querySelector("[data-name=CloseXS]");
+      .querySelector("[data-name=Close]");
     await user.click(closeBtn!);
     expect(onTabChangeMock).toHaveBeenCalledTimes(1);
     expect(onChangeMock).toHaveBeenCalledTimes(1);
@@ -62,7 +53,7 @@ describe("CanvasToolbarTabs", () => {
 
     const closeBtn = screen
       .getAllByRole("tab")[1]
-      .querySelector("[data-name=CloseXS]");
+      .querySelector("[data-name=Close]");
     await user.click(closeBtn!);
     expect(onTabChangeMock).not.toHaveBeenCalled();
     expect(onChangeMock).toHaveBeenCalledTimes(1);

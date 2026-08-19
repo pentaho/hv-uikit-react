@@ -47,9 +47,9 @@ export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
         }),
       ).toBeVisible();
       expect(canvas.getAllByRole("tab")).toHaveLength(2);
-      expect(
-        canvasElement.querySelectorAll("[data-name=CloseXS]"),
-      ).toHaveLength(2);
+      expect(canvasElement.querySelectorAll("[data-name=Close]")).toHaveLength(
+        2,
+      );
     });
 
     await step("renames selected tab", async () => {
@@ -86,7 +86,7 @@ export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
     });
 
     await step("selects previous tab when tab is closed", async () => {
-      const closeBtns = canvasElement.querySelectorAll("[data-name=CloseXS]");
+      const closeBtns = canvasElement.querySelectorAll("[data-name=Close]");
       await userEvent.click(closeBtns[1]); // Close "My tab with a very long label"
 
       const selectedTab = canvas.getByRole("tab", { selected: true });
@@ -94,7 +94,7 @@ export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
     });
 
     await step("selects next tab when first tab is closed", async () => {
-      const closeBtns = canvasElement.querySelectorAll("[data-name=CloseXS]");
+      const closeBtns = canvasElement.querySelectorAll("[data-name=Close]");
       await userEvent.click(closeBtns[0]); // Close first tab
 
       const selectedTab = canvas.getByRole("tab", { selected: true });
@@ -103,7 +103,7 @@ export const Main: StoryObj<HvCanvasToolbarTabsProps> = {
     });
 
     await step("can close remaining tab", async () => {
-      const closeBtn = canvasElement.querySelector("[data-name=CloseXS]");
+      const closeBtn = canvasElement.querySelector("[data-name=Close]");
       await userEvent.click(closeBtn!);
 
       expect(canvas.queryByRole("tab")).not.toBeInTheDocument();
@@ -210,7 +210,7 @@ export const Controlled: StoryObj<HvCanvasToolbarTabsProps> = {
       const initialTabCount = canvas.getAllByRole("tab").length;
       const selectedTab = canvas.getByRole("tab", { selected: true });
 
-      await userEvent.click(selectedTab.querySelector("[data-name=CloseXS]")!);
+      await userEvent.click(selectedTab.querySelector("[data-name=Close]")!);
       expect(canvas.getAllByRole("tab")).toHaveLength(initialTabCount - 1);
     });
   },

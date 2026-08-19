@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useId } from "react";
 import {
   HvButton,
+  HvIcon,
   HvPanel,
   useControlled,
   useDefaultProps,
@@ -9,7 +10,6 @@ import {
   type ExtractNames,
   type HvBaseProps,
 } from "@pentaho/uikit-react-core";
-import { End } from "@pentaho/uikit-react-icons";
 
 import { useCanvasContext } from "../CanvasContext";
 import { HvCanvasPanelTab } from "../PanelTab";
@@ -211,7 +211,7 @@ export const HvCanvasSidePanel = forwardRef<
           transition: isDragging ? "none" : undefined,
         }}
       >
-        <End rotate={open} />
+        <HvIcon name="End" rotate={open} />
       </HvButton>
     </>
   );

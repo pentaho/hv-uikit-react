@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import {
+  HvIcon,
   HvIconButton,
   HvTypography,
   useDefaultProps,
@@ -8,7 +9,6 @@ import {
   type HvBaseProps,
   type HvIconButtonProps,
 } from "@pentaho/uikit-react-core";
-import { Previous } from "@pentaho/uikit-react-icons";
 import { mergeStyles } from "@pentaho/uikit-react-utils";
 
 import { useCanvasContext } from "../CanvasContext";
@@ -89,7 +89,7 @@ export const HvCanvasToolbar = forwardRef<HTMLDivElement, HvCanvasToolbarProps>(
               variant="primaryGhost"
               {...backButtonProps}
             >
-              <Previous />
+              <HvIcon name="CaretRight" rotate />
             </HvIconButton>
           )}
         </div>
