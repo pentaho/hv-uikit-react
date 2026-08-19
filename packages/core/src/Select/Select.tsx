@@ -1,7 +1,6 @@
 import { Children, isValidElement, useRef } from "react";
 import { Select } from "@base-ui/react/select";
 import { useControlled } from "@mui/material/utils";
-import { clsx, type ClassValue } from "clsx";
 import {
   useDefaultProps,
   useTheme,
@@ -55,9 +54,9 @@ function defaultRenderValue<OptionValue extends {}>(
   if (Array.isArray(options)) {
     return (
       <>
-        {options
-          .map((option: HvSelectOption<OptionValue>) => option.label)
-          .join(", ")}
+        {options.flatMap((option: HvSelectOption<OptionValue>, index) =>
+          index === 0 ? [option.label] : [", ", option.label],
+        )}
       </>
     );
   }
@@ -65,19 +64,11 @@ function defaultRenderValue<OptionValue extends {}>(
   return options?.label ?? null;
 }
 
-const mergeIds = (...ids: ClassValue[]) => clsx(ids) || undefined;
-
-const setRef = <ElementType,>(
-  ref:
-    | React.Ref<ElementType>
-    | React.MutableRefObject<ElementType | null>
-    | undefined,
-  value: ElementType | null,
-) => {
+const setRef = (ref: any, value: any) => {
   if (typeof ref === "function") {
     ref(value);
   } else if (ref) {
-    (ref as React.MutableRefObject<ElementType | null>).current = value;
+    ref.current = value;
   }
 };
 
@@ -311,6 +302,18 @@ export const HvSelect = fixedForwardRef(function HvSelect<
   } = useDefaultProps("HvSelect", props);
   const { classes, cx } = useClasses(classesProp);
   const { rootId } = useTheme();
+
+  const mergeIds = (
+    externalIds: string | undefined,
+    conditionalIds: Record<string, any>,
+  ): string | undefined => {
+    const ids: string[] = [];
+    if (externalIds) ids.push(externalIds);
+    Object.entries(conditionalIds).forEach(([id, value]) => {
+      if (value) ids.push(id);
+    });
+    return ids.length > 0 ? ids.join(" ") : undefined;
+  };
 
   const emptyValue = (multiple ? [] : null) as Multiple extends true
     ? OptionValue[]

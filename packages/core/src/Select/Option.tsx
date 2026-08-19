@@ -9,18 +9,24 @@ import { HvListItem, type HvListItemProps } from "../ListContainer";
 import { fixedForwardRef } from "../types/generic";
 import { outlineStyles } from "../utils/focusUtils";
 
-const setRef = <ElementType,>(
-  ref:
-    | React.Ref<ElementType>
-    | React.MutableRefObject<ElementType | null>
-    | undefined,
-  value: ElementType | null,
-) => {
+const setRef = (ref: any, value: any) => {
   if (typeof ref === "function") {
     ref(value);
   } else if (ref) {
-    (ref as React.MutableRefObject<ElementType | null>).current = value;
+    ref.current = value;
   }
+};
+
+const mergeEventHandlers = (
+  baseHandler: ((...args: any[]) => void) | undefined,
+  consumerHandler: ((...args: any[]) => void) | undefined,
+) => {
+  if (!baseHandler) return consumerHandler;
+  if (!consumerHandler) return baseHandler;
+  return (...args: any[]) => {
+    baseHandler(...args);
+    consumerHandler(...args);
+  };
 };
 
 const { staticClasses, useClasses } = createClasses("HvOption", {
@@ -64,12 +70,21 @@ export const HvOption = fixedForwardRef(function HvOption<
       label={label}
       render={(itemProps, state) => (
         <HvListItem
-          {...others}
           {...itemProps}
+          {...others}
           ref={(instance) => {
-            setRef(ref, instance);
             setRef(itemProps.ref, instance);
+            setRef(ref, instance);
           }}
+          onClick={mergeEventHandlers(itemProps.onClick, others.onClick)}
+          onMouseDown={mergeEventHandlers(
+            itemProps.onMouseDown,
+            others.onMouseDown,
+          )}
+          onMouseUp={mergeEventHandlers(itemProps.onMouseUp, others.onMouseUp)}
+          onKeyDown={mergeEventHandlers(itemProps.onKeyDown, others.onKeyDown)}
+          onFocus={mergeEventHandlers(itemProps.onFocus, others.onFocus)}
+          onBlur={mergeEventHandlers(itemProps.onBlur, others.onBlur)}
           selected={state.selected}
           disabled={state.disabled}
           className={cx(classes.root, className, itemProps.className, {

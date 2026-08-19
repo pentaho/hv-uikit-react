@@ -16,6 +16,14 @@ const { staticClasses, useClasses } = createClasses("HvOptionGroup", {
   },
 });
 
+const mergeRefs = (refA: any, refB: any) => (value: any) => {
+  if (typeof refA === "function") refA(value);
+  else if (refA) refA.current = value;
+
+  if (typeof refB === "function") refB(value);
+  else if (refB) refB.current = value;
+};
+
 export { staticClasses as optionGroupClasses };
 
 export type HvOptionGroupClasses = ExtractNames<typeof useClasses>;
@@ -45,7 +53,7 @@ export const HvOptionGroup = forwardRef<HTMLDivElement, HvOptionGroupProps>(
         render={(groupProps) => (
           <div
             {...groupProps}
-            ref={ref}
+            ref={mergeRefs(groupProps.ref, ref)}
             className={cx(classes.root, className, groupProps.className)}
           />
         )}
