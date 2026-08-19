@@ -411,6 +411,7 @@ export const HvSelect = fixedForwardRef(function HvSelect<
             className={cx(classes.panel, popupProps.className)}
             style={{
               ...popupProps.style,
+              outline: "none",
               ...(variableWidth
                 ? { minWidth: "var(--anchor-width)" }
                 : {
