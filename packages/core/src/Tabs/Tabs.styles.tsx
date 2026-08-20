@@ -5,23 +5,10 @@ export const { staticClasses, useClasses } = createClasses("HvTabs", {
   root: {
     minHeight: 0,
   },
-  indicator: {
-    "&$floating": {
-      height: "100%",
-      backgroundColor: theme.colors.bgContainer,
-      border: `1px solid ${theme.colors.primary}`,
-      borderRadius: theme.radii.full,
-    },
-  },
+  indicator: {},
   scroller: {},
   flexContainer: {
     marginLeft: "3px",
-    "&$floating": {
-      display: "inline-flex",
-      backgroundColor: theme.colors.bgPageSecondary,
-      borderRadius: theme.radii.full,
-      marginLeft: 0,
-    },
   },
   floating: {
     "& .HvTab-root": {
@@ -37,6 +24,18 @@ export const { staticClasses, useClasses } = createClasses("HvTabs", {
       "::after": {
         display: "none",
       },
+    },
+    "& $indicator": {
+      height: "100%",
+      backgroundColor: theme.colors.bgContainer,
+      border: `1px solid ${theme.colors.primary}`,
+      borderRadius: theme.radii.full,
+    },
+    "& $flexContainer": {
+      display: "inline-flex",
+      backgroundColor: theme.colors.bgPageSecondary,
+      borderRadius: theme.radii.full,
+      marginLeft: 0,
     },
   },
 });
