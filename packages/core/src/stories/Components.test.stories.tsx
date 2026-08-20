@@ -57,7 +57,10 @@ import { RangeVariants as SliderRangeVariantsStory } from "../Slider/Slider.stor
 import { Variants as SnackbarVariantsStory } from "../Snackbar/Snackbar.stories";
 import { Test as StatusIconTestStory } from "../StatusIcon/StatusIcon.stories";
 import { Variants as SwitchVariantsStory } from "../Switch/Switch.stories";
-import { Test as TabsTestStory } from "../Tabs/Tabs.stories";
+import {
+  Floating as TabsFloatingStory,
+  Test as TabsTestStory,
+} from "../Tabs/Tabs.stories";
 import { Test as TagTestStory } from "../Tag/Tag.stories";
 import { Variants as TagsInputVariantsStory } from "../TagsInput/TagsInput.stories";
 import { Variants as TextAreaVariantsStory } from "../TextArea/TextArea.stories";
@@ -182,7 +185,10 @@ export const TestButtons: StoryObj = {
         </div>
         <div>{renderStory(PaginationMainStory, context)}</div>
       </div>
-      {renderStory(TabsTestStory, context)}
+      <div className="grid gap-sm">
+        {renderStory(TabsTestStory, context)}
+        {renderStory(TabsFloatingStory, context)}
+      </div>
     </div>
   ),
 };
