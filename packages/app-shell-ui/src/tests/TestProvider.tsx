@@ -8,6 +8,7 @@ import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   HvAppShellI18nContext,
   HvAppShellRuntimeContext,
+  useHvAppShellCombinedProviders,
   type HvAppShellConfig,
 } from "@hitachivantara/app-shell-shared";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
@@ -19,6 +20,7 @@ import en from "../locales/en/appShell.json";
 import GenericError from "../pages/GenericError";
 import { BannerProvider } from "../providers/BannerProvider";
 import { NavigationProvider } from "../providers/NavigationProvider";
+import CombinedProviders from "../utils/CombinedProviders";
 
 interface TestProviderProps extends PropsWithChildren {
   bundles?: Record<string, object>;
@@ -61,15 +63,21 @@ const createTestI18nInstance = (bundles?: Record<string, object>) => {
   return instance;
 };
 
-const DummyRoot = ({ children }: { children: ReactNode }) => (
-  <ErrorBoundary fallback={<GenericError />}>
-    <Suspense fallback={null}>
-      <NavigationProvider>
-        <BannerProvider>{children}</BannerProvider>
-      </NavigationProvider>
-    </Suspense>
-  </ErrorBoundary>
-);
+const DummyRoot = ({ children }: { children: ReactNode }) => {
+  const { providers } = useHvAppShellCombinedProviders();
+
+  return (
+    <ErrorBoundary fallback={<GenericError />}>
+      <CombinedProviders providers={providers}>
+        <Suspense fallback={null}>
+          <NavigationProvider>
+            <BannerProvider>{children}</BannerProvider>
+          </NavigationProvider>
+        </Suspense>
+      </CombinedProviders>
+    </ErrorBoundary>
+  );
+};
 
 const TestProvider = ({
   children,

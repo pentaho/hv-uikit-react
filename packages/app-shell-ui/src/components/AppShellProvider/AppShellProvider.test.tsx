@@ -105,5 +105,24 @@ describe("AppShellProvider component", () => {
 
       expect(await screen.findByText("dummy")).toBeInTheDocument();
     });
+
+    it("should log error if import of a system provider bundle fails and still render correctly", async () => {
+      await renderTestProvider(<div>dummy</div>, {
+        systemProviders: [
+          {
+            bundle: "dummySystemProvider",
+          },
+        ],
+      });
+
+      await waitFor(() => {
+        expect(consoleMock).toHaveBeenCalledWith(
+          "Failed to load bundle dummySystemProvider:",
+          expect.any(Error),
+        );
+      });
+
+      expect(await screen.findByText("dummy")).toBeInTheDocument();
+    });
   });
 });
