@@ -59,16 +59,8 @@ export interface HvGridProps extends Omit<
   container?: boolean;
   /**
    * Defines the number of columns the grid item occupies.
-   *
-   * This is the preferred API in MUI Grid.
    */
   size?: MuiGridProps["size"];
-  /**
-   * If `true`, the component will have the flex *item* behavior.
-   * You should be wrapping *items* with a *container*.
-   * @deprecated Grid items are implicit in MUI Grid. This prop has no effect.
-   */
-  item?: boolean;
   /**
    * Defines the space between the type item component. It can only be used on a type container component.
    * Based in the 8x factor defined in the theme, it allows the definition of this factor based on the factor
@@ -233,7 +225,6 @@ export const HvGrid = forwardRef<
   HvGridProps
 >(function HvGrid(props, ref) {
   const {
-    item: _item,
     container,
     spacing = "auto",
     rowSpacing,

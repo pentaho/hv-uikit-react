@@ -35,31 +35,31 @@ export const Main: StoryObj<HvGridProps> = {
         <br />
         <HvGrid container>
           <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 3, lg: 3, md: 6, sm: 12, xs: 12 }}>
-            <StyledItem>xl=6 lg=6 md=3 sm=2 xs=1</StyledItem>
+            <StyledItem>xl=3 lg=3 md=6 sm=12 xs=12</StyledItem>
           </HvGrid>
           <HvGrid size={{ xl: 3, lg: 3, md: 6, sm: 12, xs: 12 }}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+            <StyledItem>xl=3 lg=3 md=6 sm=12 xs=12</StyledItem>
           </HvGrid>
         </HvGrid>
       </>
