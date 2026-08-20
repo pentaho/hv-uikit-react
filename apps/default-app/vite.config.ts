@@ -38,8 +38,6 @@ export default defineConfig(({ mode }) => ({
         "src/conditions/useAsyncFalse",
         "src/conditions/useFlipToTrue",
         "src/conditions/useFlipToFalse",
-        "src/pages/ShouldBeVisible",
-        "src/pages/ShouldNotBeVisible",
       ],
     }),
   ],

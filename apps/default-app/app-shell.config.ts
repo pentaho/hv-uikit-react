@@ -502,6 +502,9 @@ export default {
       // Always visible provider (no conditions)
     },
     {
+      bundle: "$app/FailsToLoadAndAppDoesntBreak.js",
+    },
+    {
       bundle: "$app/providers/AsyncProvider.js",
       conditions: [{ bundle: "$app/conditions/useAsyncTrue.js" }],
     },

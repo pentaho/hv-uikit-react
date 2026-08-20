@@ -7,7 +7,6 @@ import {
   HvAppShellRuntimeContext,
   type HvAppShellConfig,
   type HvAppShellModel,
-  type HvAppShellProvidersComponent,
 } from "@pentaho/app-shell-shared";
 import { themes as baseThemes, HvProvider } from "@pentaho/uikit-react-core";
 import type { HvThemeColorMode, HvThemeStructure } from "@pentaho/uikit-styles";
@@ -57,21 +56,15 @@ const AppShellProviderInner = ({
       return;
     }
 
-    const providersComponents: HvAppShellProvidersComponent[] = [];
+    return filteredModel.providers.flatMap(({ bundle, key, config }) => {
+      const component = model.preloadedBundles.get(bundle) as
+        | React.ComponentType<React.PropsWithChildren>
+        | undefined;
 
-    for (const { bundle, key, config } of filteredModel.providers) {
-      const component = model.preloadedBundles.get(
-        bundle,
-      ) as React.ComponentType<React.PropsWithChildren>;
+      if (!component) return [];
 
-      providersComponents.push({
-        key,
-        component,
-        config,
-      });
-    }
-
-    return providersComponents;
+      return [{ key, component, config }];
+    });
   }, [filteredModel?.providers, model.preloadedBundles]);
 
   const providersContext = useMemo(
@@ -134,11 +127,15 @@ export function HvAppShellProvider({
   const systemProviders = useMemo(() => {
     if (!model?.systemProviders) return undefined;
 
-    return model.systemProviders.map(({ key, bundle, config }) => ({
-      key,
-      component: model.preloadedBundles.get(bundle) as React.ComponentType,
-      config,
-    }));
+    return model.systemProviders.flatMap(({ key, bundle, config }) => {
+      const component = model.preloadedBundles.get(bundle) as
+        | React.ComponentType
+        | undefined;
+
+      if (!component) return [];
+
+      return [{ key, component, config }];
+    });
   }, [model?.systemProviders, model?.preloadedBundles]);
 
   // Wait for config and condition bundles to load
