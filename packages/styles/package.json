@@ -8,7 +8,6 @@
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "typescript"

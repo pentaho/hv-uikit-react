@@ -8,13 +8,12 @@
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "config",
     "ui-kit"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pentaho/hv-uikit-react.git",
+    "url": "git+https://github.com/pentaho/hv-uikit-react.git",
     "directory": "packages/config"
   },
   "license": "Apache-2.0",
