@@ -1,12 +1,19 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { HvGrid } from "./Grid";
 
 describe("Grid", () => {
-  it("should be defined", () => {
-    const { container } = render(<HvGrid />);
-    expect(container).toBeDefined();
+  it("renders its content and forwards native element props", () => {
+    render(
+      <HvGrid component="section" aria-label="Results">
+        Grid content
+      </HvGrid>,
+    );
+
+    expect(screen.getByRole("region", { name: "Results" })).toHaveTextContent(
+      "Grid content",
+    );
   });
 
   it("should render a container with explicit size items", () => {

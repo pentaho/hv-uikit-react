@@ -1,9 +1,10 @@
-import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 
-import { HvVerticalNavigationHeader } from ".";
+import { HvVerticalNavigationHeader } from "./Header";
 
-const Sample = () => {
+const Sample = ({ onCollapse = vi.fn() }) => {
   return (
     <HvVerticalNavigationHeader
       title="Menu"
@@ -13,13 +14,24 @@ const Sample = () => {
         "aria-label": "collapseButton",
         "aria-expanded": true,
       }}
+      onCollapseButtonClick={onCollapse}
     />
   );
 };
 
 describe("VerticalNavigation - Header", () => {
-  it("should be defined", () => {
-    const { container } = render(<Sample />);
-    expect(container).toBeDefined();
+  it("renders the title and handles collapse requests", async () => {
+    const onCollapse = vi.fn();
+    render(<Sample onCollapse={onCollapse} />);
+
+    expect(screen.getByText("Menu")).toBeInTheDocument();
+
+    const collapseButton = screen.getByRole("button", {
+      name: "collapseButton",
+    });
+    expect(collapseButton).toHaveAttribute("aria-expanded", "true");
+
+    await userEvent.click(collapseButton);
+    expect(onCollapse).toHaveBeenCalledOnce();
   });
 });

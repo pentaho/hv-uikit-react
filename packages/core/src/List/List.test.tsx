@@ -1,14 +1,9 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { HvList } from ".";
+import { HvList } from "./List";
 
 describe("List", () => {
-  it("should be defined", () => {
-    const { container } = render(<HvList values={[]} />);
-    expect(container).toBeDefined();
-  });
-
   it("should render separators when items have separator property", () => {
     const values = [
       { id: 1, label: "Item 1", separator: true },
