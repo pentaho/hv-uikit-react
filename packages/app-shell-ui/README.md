@@ -18,4 +18,4 @@ The App Shell is available as an NPM package, and can be installed with:
 npm install @pentaho/app-shell-ui
 ```
 
-Setup instructions for the App Shell are available in https://github.com/lumada-design/hv-app-shell.
+Setup instructions for the App Shell are available in https://pentaho.github.io/uikit-docs/master/app-shell/installation.

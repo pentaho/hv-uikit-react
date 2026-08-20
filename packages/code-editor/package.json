@@ -4,11 +4,10 @@
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
-  "description": "A wrapper to the React Monaco editor (https://github.com/react-monaco-editor/react-monaco-editor) using the Design System styles.",
+  "description": "A wrapper to the React Monaco Editor using the Design System styles.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "react",

@@ -12,7 +12,6 @@
     "uikit-cli": "src/index.js"
   },
   "keywords": [
-    "hitachivantara",
     "uikit-cli",
     "cli"
   ],

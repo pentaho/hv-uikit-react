@@ -15,4 +15,4 @@ The App Shell Events is available as an NPM package, and can be installed with:
 npm install @pentaho/app-shell-events
 ```
 
-More info about App Shell events is available in https://github.com/lumada-design/hv-app-shell/blob/main/docs/notifications.md#notifications and https://github.com/lumada-design/hv-app-shell/blob/main/docs/theming.md#triggering-color-mode-change.
+More info about App Shell events is available in https://pentaho.github.io/uikit-docs/master/app-shell/api-reference
