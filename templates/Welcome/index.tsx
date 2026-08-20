@@ -31,22 +31,22 @@ const Welcome = () => {
   return (
     <div className={classes.root}>
       <HvGrid container>
-        <HvGrid item xs={6}>
+        <HvGrid size={6}>
           <HvGrid container>
-            <HvGrid item xs={8}>
+            <HvGrid size={8}>
               <HvTypography variant="title1">Welcome to UI Kit</HvTypography>
             </HvGrid>
-            <HvGrid item xs={8}>
+            <HvGrid size={8}>
               <HvTypography variant="label">
                 UI Kit is a composable and accessible component library that
                 gives you the foundation to build your application faster and
                 consistently.
               </HvTypography>
             </HvGrid>
-            <HvGrid item xs={8}>
+            <HvGrid size={8}>
               <HvInput type="search" placeholder="What are you looking for?" />
             </HvGrid>
-            <HvGrid item xs={6}>
+            <HvGrid size={6}>
               <div className={classes.glossaryContainer}>
                 <Palette iconSize="M" />
                 <HvTypography variant="title4" component="p">
@@ -58,7 +58,7 @@ const Welcome = () => {
                 </HvTypography>
               </div>
             </HvGrid>
-            <HvGrid item xs={6}>
+            <HvGrid size={6}>
               <div className={classes.glossaryContainer}>
                 <Heart iconSize="M" />
                 <HvTypography variant="title4" component="p">
@@ -72,7 +72,7 @@ const Welcome = () => {
             </HvGrid>
           </HvGrid>
         </HvGrid>
-        <HvGrid item xs={6} display="flex">
+        <HvGrid display="flex" size={6}>
           <div className={classes.imageContainer}>
             <img
               alt="Monitor showing a dashboard built with UI Kit components"
@@ -80,7 +80,7 @@ const Welcome = () => {
             />
           </div>
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvTypography
             link
             component="a"

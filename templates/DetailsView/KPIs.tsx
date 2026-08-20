@@ -40,7 +40,7 @@ export const KPIs = () => {
 
   return (
     <>
-      <HvGrid item xs={12} md={2} lg={2}>
+      <HvGrid size={{ xs: 12, md: 2, lg: 2 }}>
         <HvAvatar
           size="xl"
           status="border"
@@ -49,15 +49,15 @@ export const KPIs = () => {
           alt="Asset image"
         />
       </HvGrid>
-      <HvGrid item xs={12} md={10} lg={10}>
+      <HvGrid size={{ xs: 12, md: 10, lg: 10 }}>
         <HvGrid container direction="row">
           {deploys.summary.map((el) => (
-            <HvGrid key={el.id} item xs={12} sm={4}>
+            <HvGrid key={el.id} size={{ xs: 12, sm: 4 }}>
               <Kpi title={el.title} count={el.count} diff={el.diff} />
             </HvGrid>
           ))}
           {deploys.data.map((el) => (
-            <HvGrid key={el.id} item xs={12} sm={4}>
+            <HvGrid key={el.id} size={{ xs: 12, sm: 4 }}>
               <MetadataItem title={el.title}>
                 <HvTypography variant="caption1">{el.value}</HvTypography>
               </MetadataItem>

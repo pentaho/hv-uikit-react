@@ -39,11 +39,11 @@ const Theming = () => {
       <HvGlobalActions title="Theming" className="mb-xs" />
 
       <HvGrid container className="mb-xs">
-        <HvGrid item xs={12} display="flex" justifyContent="center">
+        <HvGrid display="flex" justifyContent="center" size={12}>
           <HvTypography variant="title3">Color mode</HvTypography>
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="space-evenly">
+        <HvGrid display="flex" justifyContent="space-evenly" size={12}>
           {colorModes.map((colorMode) => (
             <Button key={colorMode} colorMode={colorMode} />
           ))}

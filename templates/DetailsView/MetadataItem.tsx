@@ -16,7 +16,7 @@ export const MetadataItem = ({
   children,
   ...others
 }: MetadataItemProps) => (
-  <HvGrid item {...others}>
+  <HvGrid {...others}>
     <div
       role="group"
       className={css({

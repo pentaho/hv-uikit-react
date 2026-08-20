@@ -13,6 +13,12 @@ import { Header } from "../../components/Header";
 
 The example below illustrates a common grid layout where items occupy different number of columns based on the screen size.
 
+Use the `size` prop to define each grid item's responsive span.
+
+> [!NOTE]
+>
+> Legacy breakpoint props (`xs`, `sm`, `md`, `lg`, `xl`) were removed. Use `size` for all responsive spans.
+
 ```tsx live
 export default function Demo() {
   const width = useWidth();
@@ -20,47 +26,47 @@ export default function Demo() {
     <div className="flex flex-col gap-sm">
       <HvTypography variant="label">{`Current width: ${width}`}</HvTypography>
       <HvGrid container>
-        <HvGrid item xs={12} lg={6}>
+        <HvGrid size={{ xs: 12, lg: 6 }}>
           <HvPanel className="content-center h-100px">xs=12 lg=6</HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} lg={6}>
+        <HvGrid size={{ xs: 12, lg: 6 }}>
           <HvPanel className="content-center h-100px">xs=12 lg=6</HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} md={6} lg={4}>
+        <HvGrid size={{ xs: 12, md: 6, lg: 4 }}>
           <HvPanel className="content-center h-100px">xs=12 md=6 lg=4</HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} md={6} lg={4}>
+        <HvGrid size={{ xs: 12, md: 6, lg: 4 }}>
           <HvPanel className="content-center h-100px">xs=12 md=6 lg=4</HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} md={6} lg={4}>
+        <HvGrid size={{ xs: 12, md: 6, lg: 4 }}>
           <HvPanel className="content-center h-100px">xs=12 md=6 lg=4</HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 lg=3 xl=2
           </HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 md=4 lg=3 xl=2
           </HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 md=4 lg=3 xl=2
           </HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 md=4 lg=3 xl=2
           </HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 md=4 lg=3 xl=2
           </HvPanel>
         </HvGrid>
-        <HvGrid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <HvGrid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
           <HvPanel className="content-center h-100px">
             xs=12 sm=6 md=4 lg=3 xl=2
           </HvPanel>
@@ -86,7 +92,7 @@ export default function Demo() {
       <HvTypography variant="label">{`Current width: ${width} (gutter size: ${BREAKPOINT_GUTTERS[width]})`}</HvTypography>
       <HvGrid container>
         {columns.map((value) => (
-          <HvGrid key={value} item xs={1}>
+          <HvGrid key={value} size={1}>
             <HvPanel className="content-center h-100px">
               {value.toString()}
             </HvPanel>
@@ -130,7 +136,7 @@ export default function Demo() {
       <HvTypography variant="label">{`Current width: ${width} (${BREAKPOINT_COLUMNS[width]} columns)`}</HvTypography>
       <HvGrid container columns="auto">
         {columns.map((value) => (
-          <HvGrid key={value} item xs={1}>
+          <HvGrid key={value} size={1}>
             <HvPanel className="content-center h-100px">
               {value.toString()}
             </HvPanel>

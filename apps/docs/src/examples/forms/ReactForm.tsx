@@ -99,7 +99,7 @@ export default () => {
       }}
     >
       <HvGrid container maxWidth="md" rowSpacing="xs">
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             required
             inputProps={{ required: false }} // disable default browser behavior
@@ -110,7 +110,7 @@ export default () => {
             onChange={(evt, val) => setValue("name", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             required
             inputProps={{ required: false }} // disable default browser behavior
@@ -122,7 +122,7 @@ export default () => {
             onChange={(evt, val) => setValue("email", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             name="address"
             label="Address"
@@ -131,7 +131,7 @@ export default () => {
             onChange={(evt, val) => setValue("address", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             name="country"
             label="Country"
@@ -142,7 +142,7 @@ export default () => {
             endAdornment={<Map />}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             required
             inputProps={{ required: false }} // disable default browser behavior
@@ -154,7 +154,7 @@ export default () => {
             onChange={(evt, val) => setValue("password", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvInput
             required
             inputProps={{ required: false }} // disable default browser behavior
@@ -166,7 +166,7 @@ export default () => {
             onChange={(evt, val) => setValue("repeatPassword", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvDatePicker
             name="bday"
             label="Birthday"
@@ -174,14 +174,14 @@ export default () => {
             onChange={(val) => setValue("bday", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <HvTimePicker
             name="startTime"
             label="Start time"
             onChange={(val) => setValue("startTime", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvTextArea
             required
             inputProps={{ required: false }} // disable default browser behavior
@@ -196,7 +196,7 @@ export default () => {
             onChange={(evt, val) => setValue("description", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvRadioGroup
             required
             name="sex"
@@ -211,7 +211,7 @@ export default () => {
             <HvRadio value="other" label="Other" />
           </HvRadioGroup>
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvCheckBox
             defaultChecked
             name="subscribe"
@@ -220,7 +220,7 @@ export default () => {
             onChange={(evt, val) => setValue("subscribe", val)}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvButton type="submit">Submit</HvButton>
         </HvGrid>
       </HvGrid>

@@ -389,7 +389,7 @@ const Table = () => {
 export const Component = () => {
   return (
     <HvGrid container>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvGlobalActions
           variant="global"
           title="UI Kit Component Library"
@@ -403,24 +403,24 @@ export const Component = () => {
         </HvGlobalActions>
       </HvGrid>
 
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvBreadCrumb
           aria-label="Navigation"
           url="https://pentaho.github.io/uikit-docs/master/components/button"
         />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Panel1 />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Panel2 />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <HvTableSection>
           <Table />
         </HvTableSection>
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Card1 />
       </HvGrid>
     </HvGrid>

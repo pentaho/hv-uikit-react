@@ -34,32 +34,32 @@ export const Main: StoryObj<HvGridProps> = {
         <HvTypography variant="label">{`Current width: ${width}`}</HvTypography>
         <br />
         <HvGrid container>
-          <HvGrid item xl={2} lg={3} md={4} sm={6} xs={12}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+          <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={2} lg={3} md={4} sm={6} xs={12}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+          <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={2} lg={3} md={4} sm={6} xs={12}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+          <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={2} lg={3} md={4} sm={6} xs={12}>
-            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=1</StyledItem>
+          <HvGrid size={{ xl: 2, lg: 3, md: 4, sm: 6, xs: 12 }}>
+            <StyledItem>xl=2 lg=3 md=4 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={1} lg={2} md={3} xs={12}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+          <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={1} lg={2} md={3} xs={12}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+          <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={1} lg={2} md={3} xs={12}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+          <HvGrid size={{ xl: 1, lg: 2, md: 3, xs: 12 }}>
+            <StyledItem>xl=1 lg=2 md=3 sm=6 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={3} lg={3} md={6} sm={12} xs={12}>
-            <StyledItem>xl=6 lg=6 md=3 sm=2 xs=1</StyledItem>
+          <HvGrid size={{ xl: 3, lg: 3, md: 6, sm: 12, xs: 12 }}>
+            <StyledItem>xl=3 lg=3 md=6 sm=12 xs=12</StyledItem>
           </HvGrid>
-          <HvGrid item xl={3} lg={3} md={6} sm={12} xs={12}>
-            <StyledItem>xl=6 lg=4 md=3 sm=2 xs=1</StyledItem>
+          <HvGrid size={{ xl: 3, lg: 3, md: 6, sm: 12, xs: 12 }}>
+            <StyledItem>xl=3 lg=3 md=6 sm=12 xs=12</StyledItem>
           </HvGrid>
         </HvGrid>
       </>
@@ -94,7 +94,7 @@ export const The12Columns: StoryObj<HvGridProps> = {
         <HvTypography variant="label">{`Current width: ${width} (gutter size: ${BREAKPOINT_GUTTERS[width]})`}</HvTypography>
         <HvGrid container>
           {columns.map((value) => (
-            <HvGrid key={value} item xs={1}>
+            <HvGrid key={value} size={1}>
               <StyledItem>{value.toString()}</StyledItem>
             </HvGrid>
           ))}
@@ -131,7 +131,7 @@ export const TheDesignSystemColumns: StoryObj<HvGridProps> = {
         <HvTypography variant="label">{`Current width: ${width} (${BREAKPOINT_COLUMNS[width]} columns)`}</HvTypography>
         <HvGrid container columns="auto">
           {columns.map((value) => (
-            <HvGrid key={value} item xs={1}>
+            <HvGrid key={value} size={1}>
               <StyledItem>{value.toString()}</StyledItem>
             </HvGrid>
           ))}

@@ -103,10 +103,10 @@ const FactoryServiceDemo: FC = () => {
         </HvTypography>
 
         <HvGrid container spacing={2} style={{ marginBottom: "16px" }}>
-          <HvGrid item>
+          <HvGrid>
             <HvButton onClick={handleFormatMessage}>Format Message</HvButton>
           </HvGrid>
-          <HvGrid item>
+          <HvGrid>
             <HvButton onClick={handleGetWelcome}>Get Welcome</HvButton>
           </HvGrid>
         </HvGrid>
@@ -180,7 +180,7 @@ const InstanceBundleServiceDemo: FC = () => {
               if (!action) return null;
 
               return (
-                <HvGrid item key={action.id}>
+                <HvGrid key={action.id}>
                   <HvButton onClick={action.onAction}>
                     {action.label || `Action ${index + 1}`}
                   </HvButton>
@@ -246,19 +246,19 @@ const ServicesDemo: FC = () => {
       </HvTypography>
 
       <HvGrid container spacing={3}>
-        <HvGrid item xs={12} md={6}>
+        <HvGrid size={{ xs: 12, md: 6 }}>
           <InstanceServiceDemo />
         </HvGrid>
 
-        <HvGrid item xs={12} md={6}>
+        <HvGrid size={{ xs: 12, md: 6 }}>
           <FactoryServiceDemo />
         </HvGrid>
 
-        <HvGrid item xs={12} md={6}>
+        <HvGrid size={{ xs: 12, md: 6 }}>
           <InstanceBundleServiceDemo />
         </HvGrid>
 
-        <HvGrid item xs={12} md={6}>
+        <HvGrid size={{ xs: 12, md: 6 }}>
           <ComponentServiceDemo />
         </HvGrid>
       </HvGrid>

@@ -35,23 +35,23 @@ const Navigation = () => {
       <HvGlobalActions title="Navigation" className="mb-xs" />
 
       <HvGrid container className="mb-xs">
-        <HvGrid item xs={12} display="flex">
+        <HvGrid display="flex" size={12}>
           <HvTypography variant="label">
             For the correct usage of this page, it is required that simple app
             is available.
           </HvTypography>
         </HvGrid>
-        <HvGrid item xs={12} display="flex">
+        <HvGrid display="flex" size={12}>
           <HvTypography link component={Link} to={internalNavigation}>
             Detail: Internal Navigation (/pages/Details)
           </HvTypography>
         </HvGrid>
-        <HvGrid item xs={12} display="flex">
+        <HvGrid display="flex" size={12}>
           <HvTypography link component={Link} to={scopedNavigation}>
             Light Mode: Scoped bundle navigation (@hv/sample-app/pages/Home)
           </HvTypography>
         </HvGrid>
-        <HvGrid item xs={12} display="flex">
+        <HvGrid display="flex" size={12}>
           <HvTypography link component={Link} to={nonScopedNavigation}>
             Dark Mode: Non scoped bundle navigation (@hv/sample-app/pages/Home)
           </HvTypography>

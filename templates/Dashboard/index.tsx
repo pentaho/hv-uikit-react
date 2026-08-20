@@ -63,7 +63,7 @@ const Dashboard = () => {
 
   return (
     <HvGrid container>
-      <HvGrid item xs={12} display="flex" justifyContent="space-between">
+      <HvGrid display="flex" justifyContent="space-between" size={12}>
         <HvTypography component="h1" variant="title3">
           Dashboard
         </HvTypography>
@@ -81,7 +81,7 @@ const Dashboard = () => {
           </HvButton>
         </div>
       </HvGrid>
-      <GridPanel xs={12} md={8} isLoading={isLoading}>
+      <GridPanel size={{ xs: 12, md: 8 }} isLoading={isLoading}>
         <HvBarChart
           horizontal
           stack="Group"
@@ -95,7 +95,7 @@ const Dashboard = () => {
           groupBy="Group"
         />
       </GridPanel>
-      <GridPanel xs={12} md={4} isLoading={isLoading}>
+      <GridPanel size={{ xs: 12, md: 4 }} isLoading={isLoading}>
         <div className={css({ position: "relative", height: "100%" })}>
           <HvDonutChart
             data={data.donutData}
@@ -122,11 +122,11 @@ const Dashboard = () => {
         </div>
       </GridPanel>
       {[1, 2, 3, 4].map((key) => (
-        <HvGrid key={key} item xs={6} md={3}>
+        <HvGrid key={key} size={{ xs: 6, md: 3 }}>
           <Kpi color="positive" title="KPI description" value={3340} />
         </HvGrid>
       ))}
-      <GridPanel xs={12} isLoading={isLoading}>
+      <GridPanel size={12} isLoading={isLoading}>
         <HvLineChart
           area
           stack="total"
@@ -137,7 +137,12 @@ const Dashboard = () => {
           tooltip={{ valueFormatter: formatter }}
         />
       </GridPanel>
-      <GridPanel xs={12} md={6} width="100%" height={400} isLoading={isLoading}>
+      <GridPanel
+        size={{ xs: 12, md: 6 }}
+        width="100%"
+        height={400}
+        isLoading={isLoading}
+      >
         <MapComponent
           center={[38.7356, -9.2997]}
           zoom={18}
@@ -149,7 +154,7 @@ const Dashboard = () => {
           ]}
         />
       </GridPanel>
-      <GridPanel xs={12} md={6} height={400} isLoading={isLoading}>
+      <GridPanel size={{ xs: 12, md: 6 }} height={400} isLoading={isLoading}>
         <HvBarChart
           height={400}
           data={data.barData2}

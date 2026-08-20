@@ -73,7 +73,7 @@ const Notifications = () => {
       <HvGlobalActions title="Notifications" className="mb-xs" />
 
       <HvGrid container className="mb-xs">
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvInput
             type="text"
             label="Notification text"
@@ -87,22 +87,22 @@ const Notifications = () => {
           />
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="center">
+        <HvGrid display="flex" justifyContent="center" size={12}>
           <HvTypography variant="title3">Snackbars</HvTypography>
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="space-evenly">
+        <HvGrid display="flex" justifyContent="space-evenly" size={12}>
           {renderTriggerNotificationButton("snackbar", "default")}
           {renderTriggerNotificationButton("snackbar", "success")}
           {renderTriggerNotificationButton("snackbar", "warning")}
           {renderTriggerNotificationButton("snackbar", "error")}
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="center">
+        <HvGrid display="flex" justifyContent="center" size={12}>
           <HvTypography variant="title3">Banners</HvTypography>
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="space-evenly">
+        <HvGrid display="flex" justifyContent="space-evenly" size={12}>
           {renderTriggerNotificationButton("banner", "default")}
           {renderTriggerNotificationButton("banner", "success")}
           {renderTriggerNotificationButton("banner", "warning")}

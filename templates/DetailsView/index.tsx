@@ -89,7 +89,7 @@ const DetailsView = () => {
       </Section>
 
       <Section title="Events">
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <Table modelId={MODEL_ID} />
         </HvGrid>
       </Section>

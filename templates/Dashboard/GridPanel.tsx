@@ -14,7 +14,7 @@ export const GridPanel = ({
   isLoading,
   ...others
 }: HvGridProps & { isLoading?: boolean }) => (
-  <HvGrid item {...others}>
+  <HvGrid {...others}>
     <HvLoadingContainer hidden={!isLoading}>
       <HvPanel
         role="region"

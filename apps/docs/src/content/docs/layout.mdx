@@ -54,17 +54,17 @@ This component is ideal when your content should stay within a specific width. U
 
 The [`HvGrid`](/components/grid) component lets you build responsive grid layouts with a customizable number of columns. Grid items automatically adapt to different screen sizes.
 
-By default, the grid uses a 12-column layout. You can customize this using the `columns` prop—set it to a specific number for a fixed column count, or use `auto` to apply responsive behavior based on the default breakpoints.
+By default, the grid uses a 12-column layout. You can customize this using the `columns` prop, set it to a specific number for a fixed column count, or use `auto` to apply responsive behavior based on the default breakpoints.
 Grid items can also span across multiple columns, allowing you to build flexible and adaptive layouts to fit your design needs.
 
 ```tsx live
 <HvGrid columns="auto" container>
-  <HvGrid item xs={4} sm={8} md={12}>
+  <HvGrid size={{ xs: 4, sm: 8, md: 12 }}>
     <HvGlobalActions title="Dashboard" />
   </HvGrid>
   {Array.from({ length: 4 }).map((v, i) => {
     return (
-      <HvGrid item xs={4} sm={4} md={3} lg={3} key={i}>
+      <HvGrid size={{ xs: 4, sm: 4, md: 3, lg: 3 }} key={i}>
         <HvCard
           statusColor={i === 0 ? "warning" : "positive"}
           bgcolor="bgContainer"
@@ -92,7 +92,7 @@ Grid items can also span across multiple columns, allowing you to build flexible
       </HvGrid>
     );
   })}
-  <HvGrid item xs={4} sm={8} md={12}>
+  <HvGrid size={{ xs: 4, sm: 8, md: 12 }}>
     <HvCard bgcolor="bgContainer">
       <HvCardContent>
         <HvVizProvider>

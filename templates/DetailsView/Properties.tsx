@@ -45,7 +45,7 @@ const entries: Partial<
 > = {
   description: {
     label: "Description",
-    sm: 6,
+    size: { sm: 6 },
     EditComponent: ({ value }) => (
       <HvTextArea name="description" rows={3} defaultValue={value} />
     ),
@@ -116,7 +116,12 @@ export const Properties = ({ editMode }: { editMode?: boolean }) => {
     const ContentComponent = (editMode && EditComponent) || Component;
 
     return (
-      <MetadataItem key={key} xs={12} sm={3} title={label} {...others}>
+      <MetadataItem
+        key={key}
+        size={{ xs: 12, sm: 3 }}
+        title={label}
+        {...others}
+      >
         {(ContentComponent && <ContentComponent value={value} />) ||
           (value as any)}
       </MetadataItem>

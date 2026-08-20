@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
-import MuiGrid, {
-  type GridLegacyProps as MuiGridProps,
-} from "@mui/material/GridLegacy";
+import MuiGrid, { type GridProps as MuiGridProps } from "@mui/material/Grid";
 import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
-import { useWidth } from "../hooks/useWidth";
 import { staticClasses, useClasses } from "./Grid.styles";
 
 export { staticClasses as gridClasses };
@@ -51,17 +48,19 @@ export type HvGridSpacing =
   | 9
   | 10;
 
-export interface HvGridProps extends Omit<MuiGridProps, "classes" | "columns"> {
+export interface HvGridProps extends Omit<
+  MuiGridProps,
+  "classes" | "columns" | "size"
+> {
   /**
    * If `true`, the component will have the flex *container* behavior.
    * You should be wrapping *items* with a *container*.
    */
   container?: boolean;
   /**
-   * If `true`, the component will have the flex *item* behavior.
-   * You should be wrapping *items* with a *container*.
+   * Defines the number of columns the grid item occupies.
    */
-  item?: boolean;
+  size?: MuiGridProps["size"];
   /**
    * Defines the space between the type item component. It can only be used on a type container component.
    * Based in the 8x factor defined in the theme, it allows the definition of this factor based on the factor
@@ -106,31 +105,6 @@ export interface HvGridProps extends Omit<MuiGridProps, "classes" | "columns"> {
     | "space-around"
     | "space-evenly";
   /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for all the screen sizes with the lowest priority.
-   */
-  xs?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `sm` breakpoint and wider screens if not overridden.
-   */
-  sm?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `md` breakpoint and wider screens if not overridden.
-   */
-  md?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `lg` breakpoint and wider screens if not overridden.
-   */
-  lg?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `xl` breakpoint and wider screens.
-   */
-  xl?: number | boolean;
-  /**
    * Defines the `flex-wrap` style property.
    * It's applied for all screen sizes.
    */
@@ -138,6 +112,7 @@ export interface HvGridProps extends Omit<MuiGridProps, "classes" | "columns"> {
   /**
    * If `true`, it sets `min-width: 0` on the item.
    * Refer to the limitations section of the documentation to better understand the use case.
+   * @deprecated Use `sx={{ minWidth: 0 }}` instead.
    */
   zeroMinWidth?: boolean;
   /** A Jss Object used to override or extend the styles applied to the component. */
@@ -145,41 +120,62 @@ export interface HvGridProps extends Omit<MuiGridProps, "classes" | "columns"> {
 }
 
 function getGridSpacing(spacing: HvGridProps["spacing"]) {
-  let gridSpacing: MuiGridProps["spacing"];
-
   if (typeof spacing === "string") {
     if (spacing === "auto") {
-      gridSpacing = BREAKPOINT_GUTTERS;
-    } else {
-      gridSpacing = BREAKPOINT_GUTTERS[spacing];
+      return BREAKPOINT_GUTTERS;
     }
-  } else if (typeof spacing === "object") {
-    gridSpacing = Object.keys(spacing).reduce<Record<string, number>>(
-      (acc, bp) => {
-        acc[bp] = BREAKPOINT_GUTTERS[spacing[bp]] ?? spacing[bp];
+
+    return BREAKPOINT_GUTTERS[spacing];
+  } else if (typeof spacing === "object" && !Array.isArray(spacing)) {
+    return Object.keys(spacing).reduce<Record<string, number>>((acc, bp) => {
+      const value = spacing[bp as keyof typeof spacing] as
+        | HvGridSpacing
+        | number
+        | undefined;
+
+      if (value == null) return acc;
+
+      if (typeof value === "number") {
+        acc[bp] = value;
         return acc;
-      },
-      {},
-    );
+      }
+
+      if (value === "auto") {
+        acc[bp] = BREAKPOINT_GUTTERS[bp as keyof typeof BREAKPOINT_GUTTERS];
+        return acc;
+      }
+
+      acc[bp] = BREAKPOINT_GUTTERS[value];
+
+      return acc;
+    }, {});
   } else if (spacing === 0) {
-    gridSpacing = { xs: 0 };
-  } else {
-    gridSpacing = spacing;
+    return { xs: 0 };
   }
 
-  return gridSpacing;
+  return spacing;
 }
 
 function getNumberOfColumns(columns: HvGridProps["columns"]) {
-  let numberOfColumns: MuiGridProps["columns"];
-
   if (columns === "auto") {
-    numberOfColumns = BREAKPOINT_COLUMNS;
-  } else {
-    numberOfColumns = columns;
+    return BREAKPOINT_COLUMNS;
   }
 
-  return numberOfColumns;
+  return columns;
+}
+
+function getSx(
+  zeroMinWidth: HvGridProps["zeroMinWidth"],
+  sx: MuiGridProps["sx"],
+) {
+  if (!zeroMinWidth) {
+    return sx;
+  }
+
+  return [
+    { minWidth: 0 },
+    ...(Array.isArray(sx) ? sx : sx != null ? [sx] : []),
+  ];
 }
 
 function getContainerProps(
@@ -209,28 +205,6 @@ function getContainerProps(
   return containerProps;
 }
 
-const WidthGrid = forwardRef<
-  // no-indent
-  HTMLDivElement,
-  HvGridProps
->(function WidthGrid(props, ref) {
-  const { container, spacing, rowSpacing, columnSpacing, columns, ...others } =
-    props;
-
-  const width = useWidth();
-
-  const containerProps = container
-    ? getContainerProps(
-        spacing === "auto" ? width : spacing,
-        rowSpacing === "auto" ? width : rowSpacing,
-        columnSpacing === "auto" ? width : columnSpacing,
-        columns,
-      )
-    : {};
-
-  return <MuiGrid ref={ref} {...containerProps} {...others} />;
-});
-
 /**
  * The grid creates visual consistency between layouts while allowing flexibility
  * across a wide variety of designs. This component is based on a 12-column grid layout.
@@ -251,40 +225,22 @@ export const HvGrid = forwardRef<
   HvGridProps
 >(function HvGrid(props, ref) {
   const {
-    item,
     container,
     spacing = "auto",
     rowSpacing,
     columnSpacing,
     columns,
+    size,
+    justify,
+    justifyContent,
+    zeroMinWidth,
+    sx,
+    className,
     classes: classesProp,
     ...others
   } = useDefaultProps("HvGrid", props);
 
-  const { classes } = useClasses(classesProp);
-
-  // Fixes MUI error when using spacings as objects and the grid is an item and container
-  // When set to "auto", the spacing changes depending on the screen's breakpoint
-  // The condition avoids using useWidth and re-rendering the component unnecessarily
-  if (
-    container &&
-    item &&
-    (spacing === "auto" || rowSpacing === "auto" || columnSpacing === "auto")
-  ) {
-    return (
-      <WidthGrid
-        ref={ref}
-        classes={classes}
-        item={item}
-        container={container}
-        spacing={spacing}
-        rowSpacing={rowSpacing}
-        columnSpacing={columnSpacing}
-        columns={columns}
-        {...others}
-      />
-    );
-  }
+  const { classes, cx } = useClasses(classesProp);
 
   const containerProps = container
     ? getContainerProps(spacing, rowSpacing, columnSpacing, columns)
@@ -293,8 +249,10 @@ export const HvGrid = forwardRef<
   return (
     <MuiGrid
       ref={ref}
-      classes={classes}
-      item={item}
+      className={cx(classes.root, className)}
+      size={size}
+      justifyContent={justifyContent ?? justify}
+      sx={getSx(zeroMinWidth, sx)}
       {...containerProps}
       {...others}
     />

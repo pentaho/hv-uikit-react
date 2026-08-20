@@ -133,16 +133,16 @@ export default () => {
       )}
     >
       <HvGrid container maxWidth="md" rowSpacing="xs">
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl control={control} name="name" label="Full Name" />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl control={control} name="email" label="Email" />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl control={control} name="address" label="Address" />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl
             control={control}
             name="country"
@@ -151,7 +151,7 @@ export default () => {
             endAdornment={<Map />}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl
             control={control}
             type="password"
@@ -159,7 +159,7 @@ export default () => {
             label="Password"
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl
             control={control}
             type="password"
@@ -167,7 +167,7 @@ export default () => {
             label="Repeat password"
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <Controller
             control={control}
             name="bday"
@@ -181,7 +181,7 @@ export default () => {
             )}
           />
         </HvGrid>
-        <HvGrid item xs={12} sm={6}>
+        <HvGrid size={{ xs: 12, sm: 6 }}>
           <InputControl
             control={control}
             component={HvTimePicker}
@@ -190,7 +190,7 @@ export default () => {
             // TODO: onchange?
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <InputControl
             control={control}
             component={HvTextArea}
@@ -202,7 +202,7 @@ export default () => {
             maxCharQuantity={128}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <Controller
             control={control}
             name="sex"
@@ -220,7 +220,7 @@ export default () => {
             )}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <Controller
             control={control}
             name="subscribe"
@@ -235,7 +235,7 @@ export default () => {
             )}
           />
         </HvGrid>
-        <HvGrid item xs={12}>
+        <HvGrid size={12}>
           <HvButton type="submit">Submit</HvButton>
         </HvGrid>
       </HvGrid>
