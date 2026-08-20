@@ -25,13 +25,13 @@ export const { staticClasses, useClasses } = createClasses("HvTabs", {
         display: "none",
       },
     },
-    "& .HvTabs-indicator": {
+    "& $indicator": {
       height: "100%",
       backgroundColor: theme.colors.bgContainer,
       border: `1px solid ${theme.colors.primary}`,
       borderRadius: theme.radii.full,
     },
-    "& .HvTabs-flexContainer": {
+    "& $flexContainer": {
       display: "inline-flex",
       backgroundColor: theme.colors.bgPageSecondary,
       borderRadius: theme.radii.full,
