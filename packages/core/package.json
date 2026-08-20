@@ -34,6 +34,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^7.0.2",
+    "@mui/utils": "^7.0.2",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
@@ -47,6 +48,7 @@
     "@base-ui/react": "^1.0.0",
     "@popperjs/core": "^2.11.8",
     "@types/react-table": "^7.7.18",
+    "@uiw/color-convert": "^2.9.2",
     "@uiw/react-color-hue": "^2.9.2",
     "@uiw/react-color-saturation": "^2.9.2",
     "clsx": "^2.0.0",
@@ -54,7 +56,6 @@
     "rc-slider": "^10.5.0",
     "rc-tooltip": "~6.3.0",
     "react-aria": "^3.48.0",
-    "react-popper": "^2.3.0",
     "react-resize-detector": "^12.3.0",
     "react-stately": "^3.46.0",
     "react-table": "^7.8.0",

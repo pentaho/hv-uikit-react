@@ -148,5 +148,3 @@ export interface HvCalendarCellProps extends Omit<
   rangeMode?: boolean;
   tabIndex?: number;
 }
-
-export default HvCalendarCell;
