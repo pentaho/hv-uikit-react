@@ -25,8 +25,7 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "prepare": "cpy ../../templates src",
-    "pretest": "node src/index.js create uikit-app -t Form",
+    "pretest": "node src/index.js create uikit-app",
     "test": "cd uikit-app",
     "posttest": "rimraf uikit-app"
   },

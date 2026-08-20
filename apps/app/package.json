@@ -19,7 +19,6 @@
     "@pentaho/uikit-react-widgets": "*",
     "@pentaho/uikit-react-viz": "*",
     "@pentaho/uikit-styles": "*",
-    "@hv/templates": "*",
     "@mui/material": "^7.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "arquero": "^5.3.0",
