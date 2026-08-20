@@ -49,25 +49,6 @@ export const Main: StoryObj<HvBreadCrumbProps> = {
   },
 };
 
-export const WithURL: StoryObj<HvBreadCrumbProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Breadcrumb sample that generates the paths using an URL",
-      },
-    },
-  },
-  render: (args) => {
-    return (
-      <HvBreadCrumb
-        url="https://pentaho.github.io/uikit-docs/master/components/button"
-        aria-label="Breadcrumb"
-        {...args}
-      />
-    );
-  },
-};
-
 export const Test: StoryObj<HvBreadCrumbProps> = {
   parameters: {
     docs: {

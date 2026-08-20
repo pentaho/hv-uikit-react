@@ -7,10 +7,7 @@ import {
   type HvCardProps,
 } from "@pentaho/uikit-react-core";
 
-import { Expandable as ExpandableStory } from "./stories/Expandable";
-import { KPICards as KPICardsStory } from "./stories/KPICards";
 import { Main as MainStory } from "./stories/Main";
-import { Selectable as SelectableStory } from "./stories/Selectable";
 import { Variants as VariantsStory } from "./stories/Variants";
 
 const meta: Meta<typeof HvCard> = {
@@ -46,32 +43,4 @@ export const Variants: StoryObj<HvCardProps> = {
     },
   },
   render: () => <VariantsStory />,
-};
-
-export const KPICards: StoryObj<HvCardProps> = {
-  render: () => <KPICardsStory />,
-};
-
-export const Selectable: StoryObj<HvCardProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A card sample showcasing the ability to select in the content and click action.",
-      },
-    },
-  },
-  render: () => <SelectableStory />,
-};
-
-export const Expandable: StoryObj<HvCardProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A card sample showcasing the ability to expand a card and show hidden content.",
-      },
-    },
-  },
-  render: () => <ExpandableStory />,
 };

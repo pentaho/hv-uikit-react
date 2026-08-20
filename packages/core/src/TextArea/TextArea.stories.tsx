@@ -76,12 +76,8 @@ export const Variants: StoryObj<HvTextAreaProps> = {
   },
 };
 
-export const LimitedWithCustomLabels: StoryObj<HvTextAreaProps> = {
-  parameters: {
-    docs: {
-      description: { story: "Text area char count with a custom labels." },
-    },
-  },
+/** Text areas with custom labels & limits */
+export const Limited: StoryObj<HvTextAreaProps> = {
   render: () => {
     const validationMessages = {
       requiredError: "This text area can't be empty",
@@ -89,39 +85,26 @@ export const LimitedWithCustomLabels: StoryObj<HvTextAreaProps> = {
     };
 
     return (
-      <HvTextArea
-        rows={5}
-        label="Label"
-        description="You can write past the limit"
-        placeholder="Enter value"
-        middleCountLabel="of"
-        validationMessages={validationMessages}
-        required
-        maxCharQuantity={10}
-      />
-    );
-  },
-};
-
-export const LimitedBlocking: StoryObj<HvTextAreaProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Text area that limits the quantity of character that can be introduced in the text area.",
-      },
-    },
-  },
-  render: () => {
-    return (
-      <HvTextArea
-        defaultValue="Some text"
-        rows={5}
-        label="Label"
-        placeholder="Enter value"
-        maxCharQuantity={10}
-        blockMax
-      />
+      <div className="flex gap-md">
+        <HvTextArea
+          rows={5}
+          label="Soft-limited textarea"
+          description="You can write past the limit"
+          placeholder="Enter value"
+          middleCountLabel="of"
+          validationMessages={validationMessages}
+          required
+          maxCharQuantity={10}
+        />
+        <HvTextArea
+          defaultValue="Some text"
+          rows={5}
+          label="Hard-limited textarea"
+          placeholder="Enter value"
+          maxCharQuantity={10}
+          blockMax
+        />
+      </div>
     );
   },
 };

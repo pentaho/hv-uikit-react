@@ -1,16 +1,6 @@
 import type { StoryObj } from "@storybook/react-vite";
 import { HvButton, type HvButtonProps } from "@pentaho/uikit-react-core";
-import {
-  Delete,
-  Favorite,
-  Link as LinkIcon,
-  MoreOptionsVertical,
-  Pause,
-  Play,
-  Point,
-  Refresh,
-  Stop,
-} from "@pentaho/uikit-react-icons";
+import { Pause, Play, Stop } from "@pentaho/uikit-react-icons";
 
 export default { title: "Components/Button", component: HvButton };
 
@@ -84,31 +74,6 @@ export const Variants: StoryObj<HvButtonProps> = {
   ),
 };
 
-export const Sizes: StoryObj<HvButtonProps> = {
-  decorators: [
-    (Story) => <div className="flex flex-wrap gap-sm">{Story()}</div>,
-  ],
-  render: () => (
-    <>
-      <HvButton variant="primary" size="sm">
-        Small
-      </HvButton>
-      <HvButton variant="warningSubtle" size="md">
-        Medium
-      </HvButton>
-      <HvButton variant="positive" size="lg">
-        Large
-      </HvButton>
-      <HvButton icon variant="negativeGhost" size="md" aria-label="Play">
-        <Play />
-      </HvButton>
-      <HvButton icon variant="primarySubtle" size="lg" aria-label="Play">
-        <Play />
-      </HvButton>
-    </>
-  ),
-};
-
 export const FocusableWhenDisabled: StoryObj<HvButtonProps> = {
   decorators: [
     (Story) => (
@@ -148,126 +113,6 @@ export const FocusableWhenDisabled: StoryObj<HvButtonProps> = {
       </HvButton>
       <HvButton variant="secondaryGhost" disabled focusableWhenDisabled>
         Secondary Ghost
-      </HvButton>
-    </>
-  ),
-};
-
-export const Icons: StoryObj<HvButtonProps> = {
-  decorators: [
-    (Story) => (
-      <div className="flex flex-col gap-sm [&>div]:flex [&>div]:gap-sm">
-        {Story()}
-      </div>
-    ),
-  ],
-  render: () => (
-    <>
-      <div>
-        <HvButton icon aria-label="Play" variant="primaryGhost">
-          <Play iconSize="M" />
-        </HvButton>
-        <HvButton icon aria-label="Pause">
-          <Pause iconSize="M" />
-        </HvButton>
-        <HvButton icon disabled aria-label="Stop">
-          <Stop iconSize="M" />
-        </HvButton>
-      </div>
-      <div>
-        <HvButton startIcon={<Play />} variant="primaryGhost">
-          Play
-        </HvButton>
-        <HvButton startIcon={<Pause />} variant="secondaryGhost">
-          Pause
-        </HvButton>
-        <HvButton disabled startIcon={<Stop />} variant="secondaryGhost">
-          Stop
-        </HvButton>
-      </div>
-      <div>
-        <HvButton endIcon={<Play />} variant="primaryGhost">
-          Play
-        </HvButton>
-        <HvButton endIcon={<Pause />} variant="secondaryGhost">
-          Pause
-        </HvButton>
-        <HvButton endIcon={<Stop />} disabled variant="secondaryGhost">
-          Stop
-        </HvButton>
-      </div>
-    </>
-  ),
-};
-
-export const Semantic: StoryObj<HvButtonProps> = {
-  decorators: [
-    (Story) => (
-      <div className="flex gap-sm p-sm text-textDark bg-infoDimmed">
-        {Story()}
-      </div>
-    ),
-  ],
-  render: () => (
-    <>
-      <HvButton variant="semantic" startIcon={<Favorite />}>
-        Favorite
-      </HvButton>
-      <HvButton variant="semantic" startIcon={<Refresh />}>
-        Refresh
-      </HvButton>
-      <HvButton variant="semantic" startIcon={<Delete />}>
-        Delete
-      </HvButton>
-      <HvButton variant="semantic" icon aria-label="More options">
-        <MoreOptionsVertical />
-      </HvButton>
-    </>
-  ),
-};
-
-interface CustomLinkProps extends HvButtonProps<"a"> {
-  to: string;
-}
-
-const CustomLink = ({ to, children, ...others }: CustomLinkProps) => (
-  <a href={to} {...others}>
-    {children}
-  </a>
-);
-
-export const CustomRootComponent: StoryObj<HvButtonProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "If necessary the button's root component can be changed by setting the `component` property.",
-      },
-    },
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ display: "flex", gap: 20, padding: 20 }}>{Story()}</div>
-    ),
-  ],
-  render: () => (
-    <>
-      <HvButton startIcon={<Point />}>Button</HvButton>
-      <HvButton
-        variant="secondaryGhost"
-        component="a"
-        href="https://pentaho.github.io/uikit-docs/master/components/button"
-        startIcon={<LinkIcon />}
-      >
-        Link
-      </HvButton>
-      <HvButton
-        variant="secondarySubtle"
-        component={CustomLink}
-        to="https://pentaho.github.io/uikit-docs/master/components/button"
-        startIcon={<LinkIcon />}
-      >
-        Custom link
       </HvButton>
     </>
   ),

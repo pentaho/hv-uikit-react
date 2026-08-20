@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBanner,
   HvBannerContent,
-  HvButton,
   type HvBannerProps,
 } from "@pentaho/uikit-react-core";
 import { Deploy } from "@pentaho/uikit-react-icons";
@@ -117,65 +115,6 @@ export const Variants: StoryObj<HvBannerProps> = {
           size="micro"
           showIcon
         />
-      </>
-    );
-  },
-};
-
-export const BannerController: StoryObj<HvBannerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Different Banner variants with actions and controlled by buttons.",
-      },
-    },
-  },
-  render: () => {
-    const SimpleBanner = ({
-      variant,
-      ...others
-    }: Omit<HvBannerProps, "open">) => {
-      const [open, setOpen] = useState(false);
-
-      const handleOpen = () => setOpen(true);
-
-      const handleClose = () => setOpen(false);
-
-      return (
-        <>
-          <HvButton
-            onClick={handleOpen}
-            color="primary"
-            style={{ width: "150px", textTransform: "capitalize", margin: 10 }}
-          >
-            {variant}
-          </HvButton>
-          <HvBanner
-            open={open}
-            onClose={handleClose}
-            offset={10}
-            variant={variant}
-            showIcon
-            actions={
-              <HvButton variant="ghost" color="inherit">
-                Action
-              </HvButton>
-            }
-            bannerContentProps={{
-              actionProps: { "aria-label": "Close the banner" },
-            }}
-            {...others}
-          />
-        </>
-      );
-    };
-
-    return (
-      <>
-        <SimpleBanner variant="default" label="This is a banner." />
-        <SimpleBanner variant="success" label="This is a success banner." />
-        <SimpleBanner variant="error" label="This is an error banner." />
       </>
     );
   },

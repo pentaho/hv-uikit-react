@@ -37,36 +37,6 @@ export const Main: StoryObj<HvTooltipProps> = {
   },
 };
 
-export const Disabled: StoryObj<HvTooltipProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'To "hide" a Tooltip, remove its `title`; `disableFocusListener` and `disableHoverListener` disable focus or hover, respectively.',
-      },
-    },
-  },
-  render: () => (
-    <div className="flex justify-around pt-100px">
-      <HvTooltip placement="right" title="">
-        <HvButton variant="secondaryGhost">No tooltip</HvButton>
-      </HvTooltip>
-      <HvTooltip
-        disableFocusListener
-        title="Focusing the button will not open me"
-      >
-        <HvButton variant="secondaryGhost">Focus ignored</HvButton>
-      </HvTooltip>
-      <HvTooltip
-        disableHoverListener
-        title="Hovering the button will not open me"
-      >
-        <HvButton variant="secondaryGhost">Hover ignored</HvButton>
-      </HvTooltip>
-    </div>
-  ),
-};
-
 export const CustomElements: StoryObj<HvTooltipProps> = {
   parameters: {
     docs: {

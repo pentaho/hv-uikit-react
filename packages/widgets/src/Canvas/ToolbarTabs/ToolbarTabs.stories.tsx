@@ -218,42 +218,14 @@ export const Controlled: StoryObj<HvCanvasToolbarTabsProps> = {
 };
 
 export const NotEditable: StoryObj<HvCanvasToolbarTabsProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "By default all tabs' labels are editable. If this is not desired for your use case, the `disableTabEdit` property should be set to `true`.",
-      },
-    },
-  },
   args: {
     defaultTabs: [
-      { id: "tab1", label: "Tab 1", icon: <Leaf /> },
+      { id: "tab1", label: "Tab 1", icon: <Leaf />, fixed: true },
       { id: "tab2", label: "Tab 2", icon: <Leaf /> },
     ],
   },
   render: (args) => (
     <HvCanvasToolbarTabs disableTabEdit icon={<Leaf />} {...args} />
-  ),
-};
-
-export const NotRemovable: StoryObj<HvCanvasToolbarTabsProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "By default the tabs are removable. If this is not desired for your use case, the `fixed` property should be set to `true` at the tab level. Thus, it's possible to have both removable and not removable tabs. The `hideCreateNew` property also enables you to hide the 'Create new' button if needed.",
-      },
-    },
-  },
-  args: {
-    defaultTabs: [
-      { id: "tab1", label: "Tab 1", fixed: true },
-      { id: "tab2", label: "Tab 2" },
-    ],
-  },
-  render: (args) => (
-    <HvCanvasToolbarTabs hideCreateNew disableTabEdit {...args} />
   ),
 };
 

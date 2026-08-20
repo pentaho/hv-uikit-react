@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HvSlider, type HvSliderProps } from "@pentaho/uikit-react-core";
 
@@ -86,79 +85,6 @@ export const RangeVariants: StoryObj<HvSliderProps> = {
           defaultValues={values}
         />
       </>
-    );
-  },
-};
-
-export const FormattedMark: StoryObj<HvSliderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "A slider with a formatted mark to show the Cº unit.",
-      },
-    },
-  },
-  render: () => {
-    return (
-      <HvSlider
-        label="Temperature"
-        formatMark={(mark) => `${mark} Cº`}
-        defaultValues={[10]}
-      />
-    );
-  },
-};
-
-export const DecimalValues: StoryObj<HvSliderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A slider with decimal values that illustrates how to use a scale other than 0 to 100.",
-      },
-    },
-  },
-  render: () => {
-    return (
-      <HvSlider
-        minPointValue={0.01}
-        maxPointValue={1}
-        markStep={10}
-        divisionQuantity={100}
-        hideInput
-        markDigits={2}
-      />
-    );
-  },
-};
-
-export const CustomValues: StoryObj<HvSliderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "A slider with custom values.",
-      },
-    },
-  },
-  render: () => {
-    const [values, setValues] = useState([3]);
-    const formattedLabel = (label: React.ReactNode) => {
-      const labels = ["Very Low", "Low", "Medium", "High", "Very High"];
-      return labels[Number(label) - 1];
-    };
-
-    return (
-      <HvSlider
-        minPointValue={1}
-        maxPointValue={5}
-        markStep={1}
-        values={values}
-        onChange={setValues}
-        divisionQuantity={4}
-        hideInput
-        formatMark={(label) => formattedLabel(label)}
-        formatTooltip={(label) => formattedLabel(label)}
-      />
     );
   },
 };

@@ -21,7 +21,6 @@ import { ListRow as ListRowStory } from "./TableSamples/ListRow";
 import { Main as MainStory } from "./TableSamples/Main";
 import { NoData as NoDataStory } from "./TableSamples/NoData";
 import { SimpleTable as SimpleTableStory } from "./TableSamples/SimpleTable";
-import { TableEditable } from "./TableSamples/TableEditable";
 
 export default {
   title: "Visualizations/Table",
@@ -51,61 +50,17 @@ export const Main: StoryObj<HvTableProps> = {
   render: (args) => <MainStory {...args} />,
 };
 
+/** Table with no data available. */
 export const NoData: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Table with no data available.",
-      },
-    },
-  },
   render: () => <NoDataStory />,
 };
 
-export const SimpleTable: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Simple table that uses `HvTable` features in order to style checkbox and secondary actions columns.",
-      },
-    },
-  },
-  render: () => <SimpleTableStory />,
-};
-
-export const GroupedRows: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "A table example with grouped rows.",
-      },
-    },
-  },
-  render: () => <GroupedRowsStory />,
-};
-
+/** List row variant of the table. */
 export const ListRow: StoryObj<HvTableProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "List row variant of the table.",
-      },
-    },
-  },
   render: () => <ListRowStory />,
 };
-
-export const Renderers: StoryObj = {
-  render: () => <AllColumnRenderers />,
-};
-
 export const CompleteTable: StoryObj = {
   render: () => <CompleteTableSection />,
-};
-
-export const Editable: StoryObj = {
-  render: () => <TableEditable />,
 };
 
 export const Test: StoryObj = {

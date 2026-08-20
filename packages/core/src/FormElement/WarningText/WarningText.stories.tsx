@@ -1,10 +1,6 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  HvButton,
-  HvFormElement,
   HvWarningText,
-  type HvFormStatus,
   type HvWarningTextProps,
 } from "@pentaho/uikit-react-core";
 
@@ -29,45 +25,5 @@ export const Main: StoryObj<HvWarningTextProps> = {
   },
   render: (args) => {
     return <HvWarningText {...args}>List</HvWarningText>;
-  },
-};
-
-export const WarningTextWithStatus: StoryObj<HvWarningTextProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Warning text showcasing the ability to notify the user and to react to the form status.",
-      },
-    },
-  },
-  render: () => {
-    const [formStatus, setFormStatus] = useState<HvFormStatus>("invalid");
-    const btnStyle = { margin: "10px" };
-
-    return (
-      <HvFormElement status={formStatus}>
-        <HvWarningText id="warningText-notify">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been an standard dummy for a very long time
-        </HvWarningText>
-        <HvButton
-          style={btnStyle}
-          onClick={() => {
-            setFormStatus("valid");
-          }}
-        >
-          Set form as valid
-        </HvButton>
-        <HvButton
-          style={btnStyle}
-          onClick={() => {
-            setFormStatus("invalid");
-          }}
-        >
-          Set form as invalid
-        </HvButton>
-      </HvFormElement>
-    );
   },
 };

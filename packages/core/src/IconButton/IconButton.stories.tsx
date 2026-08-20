@@ -28,22 +28,6 @@ export const Main: StoryObj<HvIconButtonProps> = {
   ),
 };
 
-export const Disabled: StoryObj<HvIconButtonProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "For accessibility purposes, when disabled the button will be focusable and the tooltip will be shown when the button is hovered.",
-      },
-    },
-  },
-  render: () => (
-    <HvIconButton disabled title="Add">
-      <Add />
-    </HvIconButton>
-  ),
-};
-
 export const Variants: StoryObj<HvIconButtonProps> = {
   decorators: [
     (Story) => (
