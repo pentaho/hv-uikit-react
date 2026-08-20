@@ -18,14 +18,4 @@ describe("Grid", () => {
 
     expect(container.firstChild).toBeTruthy();
   });
-
-  it("should keep compatibility with legacy breakpoint props", () => {
-    const { container } = render(
-      <HvGrid container>
-        <HvGrid xs={12} md={6} data-testid="legacy-item" />
-      </HvGrid>,
-    );
-
-    expect(container.firstChild).toBeTruthy();
-  });
 });

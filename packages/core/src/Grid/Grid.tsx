@@ -48,14 +48,6 @@ export type HvGridSpacing =
   | 9
   | 10;
 
-type HvGridLegacyBreakpointSize = number | boolean;
-
-type HvGridBreakpoint = "xs" | "sm" | "md" | "lg" | "xl";
-
-type HvGridLegacySize = Partial<
-  Record<HvGridBreakpoint, HvGridLegacyBreakpointSize>
->;
-
 export interface HvGridProps extends Omit<
   MuiGridProps,
   "classes" | "columns" | "size"
@@ -121,36 +113,6 @@ export interface HvGridProps extends Omit<
     | "space-around"
     | "space-evenly";
   /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for all the screen sizes with the lowest priority.
-   * @deprecated Use `size` instead.
-   */
-  xs?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `sm` breakpoint and wider screens if not overridden.
-   * @deprecated Use `size` instead.
-   */
-  sm?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `md` breakpoint and wider screens if not overridden.
-   * @deprecated Use `size` instead.
-   */
-  md?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `lg` breakpoint and wider screens if not overridden.
-   * @deprecated Use `size` instead.
-   */
-  lg?: number | boolean;
-  /**
-   * Defines the number of grids the component is going to use.
-   * It's applied for the `xl` breakpoint and wider screens.
-   * @deprecated Use `size` instead.
-   */
-  xl?: number | boolean;
-  /**
    * Defines the `flex-wrap` style property.
    * It's applied for all screen sizes.
    */
@@ -208,29 +170,6 @@ function getNumberOfColumns(columns: HvGridProps["columns"]) {
   }
 
   return columns;
-}
-
-function getGridSize(
-  size: HvGridProps["size"],
-  legacySize: HvGridLegacySize,
-): MuiGridProps["size"] | undefined {
-  if (size != null) return size;
-
-  const responsiveSize = Object.entries(legacySize).reduce<
-    Partial<Record<HvGridBreakpoint, number | "grow">>
-  >((acc, [breakpoint, value]) => {
-    if (value == null || value === false) return acc;
-
-    acc[breakpoint as HvGridBreakpoint] = value === true ? "grow" : value;
-
-    return acc;
-  }, {});
-
-  if (Object.keys(responsiveSize).length === 0) {
-    return undefined;
-  }
-
-  return responsiveSize;
 }
 
 function getSx(
@@ -301,11 +240,6 @@ export const HvGrid = forwardRef<
     columnSpacing,
     columns,
     size,
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
     justify,
     justifyContent,
     zeroMinWidth,
@@ -325,7 +259,7 @@ export const HvGrid = forwardRef<
     <MuiGrid
       ref={ref}
       className={cx(classes.root, className)}
-      size={getGridSize(size, { xs, sm, md, lg, xl })}
+      size={size}
       justifyContent={justifyContent ?? justify}
       sx={getSx(zeroMinWidth, sx)}
       {...containerProps}

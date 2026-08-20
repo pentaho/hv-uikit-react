@@ -12,10 +12,10 @@ const Example = () => {
 
   return (
     <HvGrid container>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvTypography variant="title2">{t("page.title")}</HvTypography>
       </HvGrid>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvGlobalActions title={t("section.title")} variant="section" />
       </HvGrid>
     </HvGrid>

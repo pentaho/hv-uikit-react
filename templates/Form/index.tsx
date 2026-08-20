@@ -31,16 +31,16 @@ const Form = () => (
     }}
   >
     <HvGrid container maxWidth="md" rowSpacing="xs">
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvInput required name="name" label="Full Name" />
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvInput required type="email" name="email" label="Email" />
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvInput name="street-address" label="Address" />
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvSelect
           required
           name="country"
@@ -54,21 +54,21 @@ const Form = () => (
           ))}
         </HvSelect>
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvInput name="tel" label="Phone number" endAdornment={<Phone />} />
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvInput type="password" name="password" label="Password" />
       </HvGrid>
-      <HvGrid item xs={12} component="hr" />
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid component="hr" size={12} />
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvDatePicker name="bday" label="Birthday" placeholder="Select date" />
       </HvGrid>
-      <HvGrid item xs={12} sm={6}>
+      <HvGrid size={{ xs: 12, sm: 6 }}>
         <HvTimePicker name="startTime" label="Start time" />
       </HvGrid>
-      <HvGrid item xs={12} component="hr" />
-      <HvGrid item xs={12}>
+      <HvGrid component="hr" size={12} />
+      <HvGrid size={12}>
         <HvTextArea
           required
           name="description"
@@ -80,14 +80,14 @@ const Form = () => (
           maxCharQuantity={128}
         />
       </HvGrid>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvRadioGroup required name="sex" label="Sex" orientation="horizontal">
           <HvRadio value="male" label="Male" />
           <HvRadio value="female" label="Female" />
           <HvRadio value="other" label="Other" />
         </HvRadioGroup>
       </HvGrid>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvCheckBox
           defaultChecked
           name="subscribe"
@@ -95,7 +95,7 @@ const Form = () => (
           value="yes"
         />
       </HvGrid>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvButton type="submit">Submit</HvButton>
       </HvGrid>
     </HvGrid>
