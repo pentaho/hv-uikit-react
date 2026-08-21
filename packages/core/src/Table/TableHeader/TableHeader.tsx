@@ -162,7 +162,6 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
             component="div"
             className={cx(classes.headerText, {
               [classes.headerParagraph]: paragraph,
-              [classes.sortableHeaderText]: sortable,
             })}
             variant="label"
             {...headerTextProps}
@@ -175,11 +174,7 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
               aria-label="Sort"
               {...sortButtonProps}
             >
-              <HvIcon
-                compact
-                name={getSortIconName(sorted && sortDirection)}
-                className={classes.sortIcon}
-              />
+              <HvIcon compact name={getSortIconName(sorted && sortDirection)} />
             </HvButtonBase>
           )}
         </div>

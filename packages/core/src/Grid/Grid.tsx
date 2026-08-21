@@ -109,12 +109,6 @@ export interface HvGridProps extends Omit<
    * It's applied for all screen sizes.
    */
   wrap?: "nowrap" | "wrap" | "wrap-reverse";
-  /**
-   * If `true`, it sets `min-width: 0` on the item.
-   * Refer to the limitations section of the documentation to better understand the use case.
-   * @deprecated Use `sx={{ minWidth: 0 }}` instead.
-   */
-  zeroMinWidth?: boolean;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvGridClasses;
 }
@@ -162,20 +156,6 @@ function getNumberOfColumns(columns: HvGridProps["columns"]) {
   }
 
   return columns;
-}
-
-function getSx(
-  zeroMinWidth: HvGridProps["zeroMinWidth"],
-  sx: MuiGridProps["sx"],
-) {
-  if (!zeroMinWidth) {
-    return sx;
-  }
-
-  return [
-    { minWidth: 0 },
-    ...(Array.isArray(sx) ? sx : sx != null ? [sx] : []),
-  ];
 }
 
 function getContainerProps(
@@ -233,7 +213,6 @@ export const HvGrid = forwardRef<
     size,
     justify,
     justifyContent,
-    zeroMinWidth,
     sx,
     className,
     classes: classesProp,
@@ -252,7 +231,6 @@ export const HvGrid = forwardRef<
       className={cx(classes.root, className)}
       size={size}
       justifyContent={justifyContent ?? justify}
-      sx={getSx(zeroMinWidth, sx)}
       {...containerProps}
       {...others}
     />

@@ -87,18 +87,8 @@ export interface HvSliderProps extends HvBaseProps<
   knobProperties?: HvKnobProperty[];
   /** The object used to set the mark properties individually. */
   markProperties?: HvMarkProperty[];
-  /**
-   * The function executed before a change will occur in the slider.
-   * @deprecated It's always better to use onChange instead
-   */
-  onBeforeChange?: (value: number[]) => void;
   /** The function executed while a change is occurring in the slider. */
   onChange?: (value: number[]) => void;
-  /**
-   * The function executed after a change ocurred in the slider.
-   * @deprecated It's always better to use onChange instead
-   */
-  onAfterChange?: (value: number[]) => void;
   /** The function executed after a blur ocurred in the slider. */
   onBlur?: (
     event: React.FocusEvent,
@@ -179,8 +169,6 @@ export const HvSlider = forwardRef<
     formatMark,
     onChange,
     onBlur,
-    onBeforeChange,
-    onAfterChange,
     formatTooltip,
     ...others
   } = useDefaultProps("HvSlider", props);
@@ -479,28 +467,6 @@ export const HvSlider = forwardRef<
   };
 
   /**
-   * Function executed before a change.
-   *
-   * executes the callback provided by the user with the values and position of the knobs
-   */
-  const onBeforeChangeHandler = (knobsPosition: number[]) => {
-    const knobs = generateKnobsPositionAndValues(knobsPosition);
-
-    onBeforeChange?.(knobs.knobsValues);
-  };
-
-  /**
-   * Function executed after a change.
-   *
-   * executes the callback provided by the user with the values and position of the knobs
-   */
-  const onAfterChangeHandler = (knobsPosition: number[]) => {
-    const knobs = generateKnobsPositionAndValues(knobsPosition);
-
-    onAfterChange?.(knobs.knobsValues);
-  };
-
-  /**
    * Function used to create a custom knob for the slider.
    *
    * TODO: This should be isolated because is creating a sub component,
@@ -637,15 +603,9 @@ export const HvSlider = forwardRef<
           step={1}
           marks={marks}
           dotStyle={disabled ? sliderStyles.dotDisabled : sliderStyles.dot}
-          onChange={(singleValue) =>
-            onChangeHandler(Array<number>().concat(singleValue))
-          }
-          onBeforeChange={(singleValue) =>
-            onBeforeChangeHandler(Array<number>().concat(singleValue))
-          }
-          onAfterChange={(singleValue) =>
-            onAfterChangeHandler(Array<number>().concat(singleValue))
-          }
+          onChange={(singleValue) => {
+            onChangeHandler(Array<number>().concat(singleValue));
+          }}
           value={
             knobsPositions.length === 0
               ? undefined

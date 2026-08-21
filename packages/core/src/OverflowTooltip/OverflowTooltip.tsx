@@ -16,8 +16,6 @@ export interface HvOverflowTooltipProps extends Omit<
   data: React.ReactNode;
   /** If `true`, the overflow tooltip will always use the paragraph overflow style. */
   paragraphOverflow?: boolean;
-  /** Extra properties to add to the tooltip. @deprecated pass properties directly to the component */
-  tooltipsProps?: Partial<HvTooltipProps>;
   /** A Jss Object used to override or extend the styles applied to the component. */
   classes?: HvOverflowTooltipClasses;
 }
@@ -33,7 +31,6 @@ export const HvOverflowTooltip = (props: HvOverflowTooltipProps) => {
     className,
     data,
     paragraphOverflow,
-    tooltipsProps,
     ...others
   } = useDefaultProps("HvOverflowTooltip", props);
 
@@ -96,7 +93,6 @@ export const HvOverflowTooltip = (props: HvOverflowTooltipProps) => {
       // unset since `content` *is* the label
       aria-label={null as any}
       aria-labelledby={null as any}
-      {...tooltipsProps}
       {...others}
     >
       {content}

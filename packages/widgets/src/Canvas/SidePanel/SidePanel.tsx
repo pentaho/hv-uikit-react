@@ -202,10 +202,7 @@ export const HvCanvasSidePanel = forwardRef<
         onClick={handleTogglePanel}
         aria-expanded={open}
         aria-controls={panelId}
-        className={cx(classes.handle, {
-          [classes.handleOpen]: open,
-          [classes.handleClose]: !open,
-        })}
+        className={classes.handle}
         style={{
           left: open ? width : 0,
           transition: isDragging ? "none" : undefined,

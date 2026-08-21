@@ -51,35 +51,28 @@ export const Variants: StoryObj<HvBannerProps> = {
 
     return (
       <>
-        <HvBannerContent
-          content="This is a default banner."
-          variant="default"
-        />
-        <HvBannerContent
-          content="This is a success banner."
-          variant="success"
-          showIcon
-        />
-        <HvBannerContent
-          content="This is a warning banner."
-          variant="warning"
-          showIcon
-        />
-        <HvBannerContent
-          content="This is an error banner."
-          variant="error"
-          showIcon
-        />
+        <HvBannerContent variant="default">
+          This is a default banner.
+        </HvBannerContent>
+        <HvBannerContent variant="success" showIcon>
+          This is a success banner.
+        </HvBannerContent>
+        <HvBannerContent variant="warning" showIcon>
+          This is a warning banner.
+        </HvBannerContent>
+        <HvBannerContent variant="error" showIcon>
+          This is an error banner.
+        </HvBannerContent>
         <HvBannerContent
           title="This is the banner title"
-          content="This is an error banner."
           variant="success"
           showIcon
-        />
-        <HvBannerContent
-          content="This is a banner with a custom icon."
-          customIcon={<Deploy />}
-        />
+        >
+          This is an error banner.
+        </HvBannerContent>
+        <HvBannerContent customIcon={<Deploy />}>
+          This is a banner with a custom icon.
+        </HvBannerContent>
         <HvBanner
           open
           offset={0}
@@ -91,30 +84,31 @@ export const Variants: StoryObj<HvBannerProps> = {
           className={css({ position: "relative", top: 0 })}
         />
         <HvBannerContent
-          content="This is a banner with two actions."
           onClose={() => {}}
           actions={actionArray("banner3")}
           actionsPosition="inline"
-        />
+        >
+          This is a banner with two actions.
+        </HvBannerContent>
+
         <HvBannerContent
           customIcon={<Deploy />}
-          content="This could be a one-line message text string with two actions on a tablet or on a desktop. This could be a two-lines message text string with two actions on a tablet or on a desktop. However, this is actually a three-lines message text string with two actions on a tablet or on a desktop."
           onClose={() => {}}
           actions={actionArray("banner2")}
           actionsPosition="bottom-right"
-        />
-        <HvBannerContent
-          content="This is a large banner."
-          variant="success"
-          size="large"
-          showIcon
-        />
-        <HvBannerContent
-          content="This is a micro banner."
-          variant="success"
-          size="micro"
-          showIcon
-        />
+        >
+          This could be a one-line message text string with two actions on a
+          tablet or on a desktop. This could be a two-lines message text string
+          with two actions on a tablet or on a desktop. However, this is
+          actually a three-lines message text string with two actions on a
+          tablet or on a desktop.
+        </HvBannerContent>
+        <HvBannerContent variant="success" size="large" showIcon>
+          This is a large banner.
+        </HvBannerContent>
+        <HvBannerContent variant="success" size="micro" showIcon>
+          This is a micro banner.
+        </HvBannerContent>
       </>
     );
   },
