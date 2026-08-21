@@ -170,13 +170,13 @@ export const light = {
   bgContainer: slate[50],
   bgPageSecondary: slate[200],
   bgContainerSecondary: slate[100],
-  bgHover: blue[600],
+  bgHover: `${blue[600]}14`,
   bgDisabled: neutral[200],
-  bgOverlay: slate[950],
+  bgOverlay: `${slate[900]}10`,
   dimmer: "#FFFFFF",
 
-  shad1: "rgba(65, 65, 65, 0.12)",
-  shadow: "0 2px 12px rgba(65,65,65,0.12)",
+  shad1: `${slate[900]}14`,
+  shadow: `0 2px 12px ${slate[900]}14`,
 
   ...common,
 } satisfies HvColorTokens;
@@ -234,13 +234,13 @@ export const dark = {
   bgContainer: slate[800],
   bgPageSecondary: slate[950],
   bgContainerSecondary: slate[900],
-  bgHover: blue[600],
+  bgHover: `${blue[600]}14`,
   bgDisabled: neutral[900],
-  bgOverlay: slate[900],
+  bgOverlay: `${slate[900]}09`,
   dimmer: "#000000",
 
-  shad1: "rgba(0,0,0,.16)",
-  shadow: "0 3px 5px rgba(0,0,0,.16)",
+  shad1: `${slate[900]}14`,
+  shadow: `0 2px 12px ${slate[900]}14`,
 
   ...common,
 } satisfies HvColorTokens;
