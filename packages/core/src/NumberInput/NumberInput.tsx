@@ -64,7 +64,7 @@ export const HvNumberInput = forwardRef<
       endAdornment={!readOnly && buttons}
       classes={classes}
       readOnly={readOnly}
-      disableClear
+      hideClear
       {...others}
     />
   );
