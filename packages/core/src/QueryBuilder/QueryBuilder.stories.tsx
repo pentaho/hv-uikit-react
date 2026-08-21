@@ -5,7 +5,6 @@ import {
   type HvQueryBuilderProps,
 } from "@pentaho/uikit-react-core";
 
-import { CustomRenderers as CustomRenderersStory } from "./stories/CustomRenderers";
 import { Main as MainStory } from "./stories/Main";
 import { ReadOnly as ReadOnlyStory } from "./stories/ReadOnly";
 
@@ -45,16 +44,4 @@ export const ReadOnly: StoryObj<HvQueryBuilderProps> = {
     ...setupChromatic(),
   },
   render: () => <ReadOnlyStory />,
-};
-
-export const CustomRenderers: StoryObj<HvQueryBuilderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "If the default attribute types (`boolean`, `numeric`, `text`, `textarea`, and `dateandtime`) are not enough to cover your use case, custom ones can be used. For these custom types, if no corresponding renderer is provided through the `renderers` property, a text input will be rendered. The `renderers` property can also be used to customize the value renderers for specific operators of an attribute type.",
-      },
-    },
-  },
-  render: () => <CustomRenderersStory />,
 };

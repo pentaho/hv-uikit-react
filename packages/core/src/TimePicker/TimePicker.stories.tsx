@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { setupChromatic } from "@pentaho/internal";
 import {
-  HvButton,
   HvTimePicker,
   type HvTimePickerProps,
   type HvTimePickerValue,
@@ -29,40 +28,6 @@ export const Main: StoryObj<HvTimePickerProps> = {
   decorators: [(Story) => <div className="min-h-200px w-200px">{Story()}</div>],
   render: (args) => {
     return <HvTimePicker {...args} />;
-  },
-};
-
-export const Form: StoryObj<HvTimePickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A Time Picker usage inside a form`form`. Give `HvTimePicker` a `name`, and it will be included in the form data, \
-          following the time [`input` format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time).",
-      },
-    },
-  },
-  decorators: [(Story) => <div className="min-h-200px w-200px">{Story()}</div>],
-  render: () => {
-    return (
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          const formData = new FormData(event.currentTarget);
-          const data = Object.fromEntries(formData.entries());
-          alert(JSON.stringify(data));
-        }}
-      >
-        <HvTimePicker
-          name="scheduleTime"
-          label="Time Picker"
-          defaultValue={{ hours: 5, minutes: 30, seconds: 14 }}
-          onChange={console.log}
-        />
-        <br />
-        <HvButton type="submit">Submit</HvButton>
-      </form>
-    );
   },
 };
 

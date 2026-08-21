@@ -1,12 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
-  HvIconButton,
   HvPanel,
   HvTypography,
-  theme,
   type HvPanelProps,
 } from "@pentaho/uikit-react-core";
-import { Close } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvPanel> = {
   title: "Components/Panel",
@@ -38,32 +35,6 @@ export const WithScroll: StoryObj<HvPanelProps> = {
             {i === 0 ? chars : `Line ${i}: ${chars[i % chars.length]}`}
           </div>
         ))}
-      </HvPanel>
-    );
-  },
-};
-
-export const Modal: StoryObj<HvPanelProps> = {
-  render: () => {
-    return (
-      <HvPanel
-        style={{
-          width: "100%",
-          height: "200px",
-          boxShadow: theme.colors.shadow,
-        }}
-      >
-        <HvTypography>Panel Content</HvTypography>
-        <HvIconButton
-          title="Close"
-          style={{
-            position: "absolute",
-            top: theme.space.sm,
-            right: theme.space.sm,
-          }}
-        >
-          <Close />
-        </HvIconButton>
       </HvPanel>
     );
   },

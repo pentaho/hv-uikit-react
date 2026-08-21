@@ -5,8 +5,6 @@ import {
   type HvProgressBarProps,
 } from "@pentaho/uikit-react-core";
 
-import { ProgressBarSimulator } from "./ProgressBarSimulator";
-
 const meta: Meta<typeof HvProgressBar> = {
   title: "Components/Progress Bar",
   component: HvProgressBar,
@@ -25,51 +23,6 @@ export const Main: StoryObj<HvProgressBarProps> = {
     value: { control: { type: "range" } },
   },
   render: (args) => <HvProgressBar aria-label="Status" {...args} />,
-};
-
-export const Progressive: StoryObj<HvProgressBarProps> = {
-  render: () => {
-    return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: 400,
-            margin: "auto",
-            marginTop: 20,
-            marginBottom: 40,
-          }}
-        >
-          <HvTypography variant="label">Success</HvTypography>
-          <ProgressBarSimulator
-            inc={(v) => v + 10}
-            ariaLabel="Determinate Progress Bar"
-            ariaLive="assertive"
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: 400,
-            margin: "auto",
-          }}
-        >
-          <HvTypography variant="label">Error</HvTypography>
-          <ProgressBarSimulator
-            inc={(v) => v + 5}
-            error={30}
-            ariaLabel="Determinate Progress Bar"
-          />
-        </div>
-      </>
-    );
-  },
 };
 
 export const Variants: StoryObj<HvProgressBarProps> = {

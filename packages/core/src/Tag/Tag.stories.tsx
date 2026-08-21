@@ -30,41 +30,6 @@ export const Main: StoryObj<HvTagProps> = {
   },
 };
 
-export const Variants: StoryObj<HvTagProps> = {
-  decorators: [
-    (Story) => <div className="grid grid-cols-6 gap-sm">{Story()}</div>,
-  ],
-  render: () => {
-    return (
-      <>
-        <HvTag label="Informational" />
-        <HvTag label="Success" color="positive_20" />
-        <HvTag label="Warning" color="warning_20" />
-        <HvTag label="Error" color="negative_20" />
-        <HvTag label="Custom" color="#22FF45" />
-        <HvTag label="Disabled" disabled />
-        <HvTag label="Categorical" type="categorical" />
-        <HvTag label="Docs" type="categorical" color="cat2" />
-        <HvTag label="Fix" type="categorical" color="cat3" />
-        <HvTag label="Deprecated" type="categorical" color="cat5" />
-        <HvTag label="Custom" type="categorical" color="#22FF45" />
-        <HvTag label="Disabled" type="categorical" disabled />
-      </>
-    );
-  },
-};
-
-export const WithActions: StoryObj<HvTagProps> = {
-  render: () => {
-    return (
-      <>
-        <HvTag label="Click me!" onClick={() => alert("Clicked!")} />
-        <HvTag label="Delete me!" onDelete={() => alert("Deleted!")} />
-      </>
-    );
-  },
-};
-
 export const Test: StoryObj = {
   render: () => (
     <div className="flex flex-wrap gap-xs">

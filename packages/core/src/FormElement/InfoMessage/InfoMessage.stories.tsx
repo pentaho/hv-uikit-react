@@ -22,20 +22,3 @@ export const Main: StoryObj<HvInfoMessageProps> = {
     return <HvInfoMessage {...args}>Info Message</HvInfoMessage>;
   },
 };
-
-export const DisabledInfoMessage: StoryObj<HvInfoMessageProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Info message showcasing the disabled state.",
-      },
-    },
-  },
-  render: () => {
-    return (
-      <HvInfoMessage id="infoMessage-disabled" disabled>
-        Info message
-      </HvInfoMessage>
-    );
-  },
-};

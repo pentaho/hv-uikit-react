@@ -4,13 +4,11 @@ import {
   HvCardContent,
   HvCardHeader,
   HvCardMedia,
+  HvTypography,
   type HvCardProps,
 } from "@pentaho/uikit-react-core";
+import { Level2Average } from "@pentaho/uikit-react-icons";
 
-import { Expandable as ExpandableStory } from "./stories/Expandable";
-import { KPICards as KPICardsStory } from "./stories/KPICards";
-import { Main as MainStory } from "./stories/Main";
-import { Selectable as SelectableStory } from "./stories/Selectable";
 import { Variants as VariantsStory } from "./stories/Variants";
 
 const meta: Meta<typeof HvCard> = {
@@ -33,7 +31,31 @@ export const Main: StoryObj<HvCardProps> = {
     classes: { control: { disable: true } },
     icon: { control: { disable: true } },
   },
-  render: (args) => <MainStory {...args} />,
+  render: (args) => (
+    <HvCard style={{ width: 360 }} {...args}>
+      <HvCardHeader
+        title="Asset Avatar L90"
+        subheader="Compressor"
+        icon={<Level2Average color={args?.statusColor} />}
+      />
+      <HvCardMedia
+        component="img"
+        alt="Compressor"
+        height={140}
+        image="https://i.imgur.com/bxPPTD3.png"
+      />
+      <HvCardContent>
+        <div style={{ paddingTop: "20px" }}>
+          <HvTypography variant="label">ID</HvTypography>
+          <HvTypography>2101cad3-7cd4-1000-bdp95-d8c497176e7c</HvTypography>
+        </div>
+        <div style={{ marginTop: "20px" }}>
+          <HvTypography variant="label">Last connected</HvTypography>
+          <HvTypography>Aug 30, 2017 12:27:53 PM</HvTypography>
+        </div>
+      </HvCardContent>
+    </HvCard>
+  ),
 };
 
 export const Variants: StoryObj<HvCardProps> = {
@@ -46,32 +68,4 @@ export const Variants: StoryObj<HvCardProps> = {
     },
   },
   render: () => <VariantsStory />,
-};
-
-export const KPICards: StoryObj<HvCardProps> = {
-  render: () => <KPICardsStory />,
-};
-
-export const Selectable: StoryObj<HvCardProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A card sample showcasing the ability to select in the content and click action.",
-      },
-    },
-  },
-  render: () => <SelectableStory />,
-};
-
-export const Expandable: StoryObj<HvCardProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A card sample showcasing the ability to expand a card and show hidden content.",
-      },
-    },
-  },
-  render: () => <ExpandableStory />,
 };

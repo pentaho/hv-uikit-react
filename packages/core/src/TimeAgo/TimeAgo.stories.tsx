@@ -1,30 +1,11 @@
 import { useState } from "react";
-import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvRadio,
   HvRadioGroup,
   HvTimeAgo,
-  theme,
   type HvTimeAgoProps,
 } from "@pentaho/uikit-react-core";
-
-const styles = {
-  container: css({
-    minHeight: 300,
-    "& > div": {
-      padding: theme.spacing("xs"),
-    },
-  }),
-  table: css({
-    border: `1px solid ${theme.colors.text}`,
-    borderCollapse: "collapse",
-    "& th, td": {
-      border: `1px solid ${theme.colors.text}`,
-      padding: theme.spacing("5px", "sm"),
-    },
-  }),
-};
 
 const meta: Meta<typeof HvTimeAgo> = {
   title: "Components/Time Ago",
@@ -81,8 +62,8 @@ export const LocaleOverride: StoryObj<HvTimeAgoProps> = {
     const [locale, setLocale] = useState("en");
 
     return (
-      <div className={css(styles.container)}>
-        <div>
+      <div className="min-h-300px">
+        <div className="p-xs">
           <HvRadioGroup
             orientation="horizontal"
             value={locale}
@@ -99,16 +80,16 @@ export const LocaleOverride: StoryObj<HvTimeAgoProps> = {
             <HvRadio label="🇯🇵 Japanese" value="ja" />
           </HvRadioGroup>
         </div>
-        <table className={styles.table}>
+        <table className="border-collapse">
           <thead>
-            <tr>
+            <tr className="[&_th]:border [&_th]:p-xxs">
               <th>ISO Date</th>
               <th>{"<TimeAgo />"}</th>
             </tr>
           </thead>
           <tbody>
             {dates.map((dateTs) => (
-              <tr key={dateTs}>
+              <tr key={dateTs} className="[&_td]:border [&_td]:p-xxs">
                 <td>{new Date(dateTs).toISOString()}</td>
                 <td aria-label="Time ago">
                   <HvTimeAgo timestamp={dateTs} locale={locale} showSeconds />

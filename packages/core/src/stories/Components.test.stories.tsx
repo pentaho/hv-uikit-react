@@ -32,7 +32,7 @@ import {
 import { WithPreviewThumbnails as FileUploaderWithPreviewThumbnailsStory } from "../FileUploader/FileUploader.stories";
 import { Main as FooterCustomLabelsStory } from "../Footer/Footer.stories";
 import { Test as GlobalActionsTestStory } from "../GlobalActions/GlobalActions.stories";
-import { TheDesignSystemColumns as GridTheDesignSystemColumnsStory } from "../Grid/Grid.stories";
+import { Main as GridMainStory } from "../Grid/Grid.stories";
 import { Test as HeaderTestStory } from "../Header/Header.stories";
 import { Variants as IconButtonVariantsStory } from "../IconButton/IconButton.stories";
 import { Test as InlineEditorTestStory } from "../InlineEditor/InlineEditor.stories";
@@ -262,7 +262,7 @@ export const TestStructure: StoryObj = {
   },
   render: (args, context: any) => (
     <div className="grid gap-sm">
-      {renderStory(GridTheDesignSystemColumnsStory, context)}
+      {renderStory(GridMainStory, context)}
       <div className="flex gap-xs">
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
