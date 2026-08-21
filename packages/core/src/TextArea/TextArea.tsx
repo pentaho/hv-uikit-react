@@ -7,11 +7,7 @@ import {
   useState,
 } from "react";
 import { useForkRef } from "@mui/material/utils";
-import {
-  useDefaultProps,
-  useTheme,
-  type ExtractNames,
-} from "@pentaho/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {
@@ -205,17 +201,12 @@ export const HvTextArea = forwardRef<
   } = useDefaultProps("HvTextArea", props);
   const { classes, cx } = useClasses(classesProp);
   const elementId = useUniqueId(id);
-  const { activeTheme } = useTheme();
-
   // Signals that the user has manually edited the input value
   const isDirty = useRef(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const forkedRef = useForkRef(ref, inputRefProp, inputRef);
 
-  const [description, infoMessage] =
-    activeTheme?.name === "pentaho"
-      ? [infoMessageProp, descriptionProp]
-      : [descriptionProp, infoMessageProp];
+  const [description, infoMessage] = [infoMessageProp, descriptionProp];
 
   const [focused, setFocused] = useState(false);
 

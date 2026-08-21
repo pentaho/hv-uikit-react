@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { useTheme, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvIcon } from "../../icons";
 import { HvListContainer, HvListItem } from "../../ListContainer";
 import { HvOverflowTooltip } from "../../OverflowTooltip";
 import { HvPanel } from "../../Panel";
-import { HvFilterGroupCounter } from "../Counter";
 import { HvFilterGroupContext } from "../FilterGroupContext";
 import { staticClasses, useClasses } from "./LeftPanel.styles";
 
@@ -27,8 +26,6 @@ export const HvFilterGroupLeftPanel = ({
 }: HvFilterGroupLeftPanelProps) => {
   const { classes } = useClasses(classesProp);
 
-  const { activeTheme } = useTheme();
-
   const { filterOptions, activeGroup, setActiveGroup } =
     useContext(HvFilterGroupContext);
 
@@ -42,13 +39,7 @@ export const HvFilterGroupLeftPanel = ({
               className={classes.listItem}
               onClick={() => setActiveGroup(index)}
               selected={filterOptions[activeGroup].id === group.id}
-              endAdornment={
-                activeTheme?.name === "pentaho" ? (
-                  <HvIcon name="CaretRight" />
-                ) : (
-                  <HvFilterGroupCounter groupId={group.id} />
-                )
-              }
+              endAdornment={<HvIcon name="CaretRight" />}
             >
               <HvOverflowTooltip data={group.name} />
             </HvListItem>

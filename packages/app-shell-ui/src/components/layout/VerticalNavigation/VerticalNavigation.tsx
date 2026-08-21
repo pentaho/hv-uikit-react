@@ -10,7 +10,6 @@ import {
   HvVerticalNavigationHeader,
   HvVerticalNavigationTree,
   theme,
-  useTheme,
   verticalNavigationTreeClasses,
 } from "@pentaho/uikit-react-core";
 
@@ -26,8 +25,6 @@ const classes = {
     overflowY: "auto",
     position: "relative",
     zIndex: theme.zIndices.overlay,
-  }),
-  pentaho: css({
     maxHeight: "100vh",
   }),
   floating: css({
@@ -59,11 +56,8 @@ export const VerticalNavigation = () => {
   } = useNavigationContext();
   const { setVerticalNavigationWidth } = useLayoutContext();
   const { navigate } = useHvNavigation();
-  const { activeTheme } = useTheme();
   const ref = useRef<HTMLDivElement>(null);
   const open = verticalNavigationMode === "EXPANDED";
-
-  const isPentahoTheme = activeTheme?.name === "pentaho";
 
   const changeHandler = (
     event: React.SyntheticEvent<Element, Event>,
@@ -98,14 +92,13 @@ export const VerticalNavigation = () => {
       <HvVerticalNavigation
         ref={ref}
         className={cx(classes.root, {
-          [classes.pentaho]: isPentahoTheme,
           [classes.floating]: open && isCompactMode,
         })}
         open={open}
         useIcons
         slider={isCompactMode}
       >
-        {(!isPentahoTheme || isCompactMode) && (
+        {isCompactMode && (
           <HvVerticalNavigationHeader
             title={t("title")}
             onCollapseButtonClick={
@@ -134,12 +127,10 @@ export const VerticalNavigation = () => {
         />
 
         <HvVerticalNavigationActions>
-          {isPentahoTheme && (
-            <NavigationCollapse
-              onClick={switchVerticalNavigationMode}
-              isOpen={open}
-            />
-          )}
+          <NavigationCollapse
+            onClick={switchVerticalNavigationMode}
+            isOpen={open}
+          />
         </HvVerticalNavigationActions>
       </HvVerticalNavigation>
     </ClickAwayListener>

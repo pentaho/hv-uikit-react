@@ -1,9 +1,5 @@
 import { forwardRef } from "react";
-import {
-  useDefaultProps,
-  useTheme,
-  type ExtractNames,
-} from "@pentaho/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 import type { HvSize } from "@pentaho/uikit-styles";
 
 import { HvIconContainer } from "../IconContainer";
@@ -139,8 +135,6 @@ export const HvStatusIcon = forwardRef<
     weight = "regular",
   } = useDefaultProps("HvStatusIcon", props);
   const { classes, cx } = useClasses(classesProp);
-  const { activeTheme } = useTheme();
-
   return (
     <div
       ref={ref}
@@ -149,7 +143,7 @@ export const HvStatusIcon = forwardRef<
       data-size={size}
       className={cx(classes.root, className)}
     >
-      {activeTheme?.name === "pentaho" && !customIcon ? (
+      {!customIcon ? (
         <HvIconContainer size={size}>
           <SvgBase viewBox="0 0 256 256" className={classes.icon}>
             {pentahoIconsMap[variant as keyof typeof pentahoIconsMap]?.[weight]}
