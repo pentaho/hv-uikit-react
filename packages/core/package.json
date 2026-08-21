@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/uikit-react-core",
-  "version": "7.0.0-next.0",
+  "version": "7.0.0-next.1",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -38,13 +38,13 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "@base-ui/react": "^1.0.0",
     "@emotion/cache": "^11.11.0",
     "@emotion/serialize": "^1.1.2",
-    "@pentaho/uikit-react-shared": "^7.0.0-next.0",
-    "@pentaho/uikit-react-utils": "^7.0.0-next.0",
-    "@pentaho/uikit-styles": "^7.0.0-next.0",
     "@internationalized/date": "^3.2.0",
-    "@base-ui/react": "^1.0.0",
+    "@pentaho/uikit-react-shared": "^7.0.0-next.1",
+    "@pentaho/uikit-react-utils": "^7.0.0-next.1",
+    "@pentaho/uikit-styles": "^7.0.0-next.1",
     "@popperjs/core": "^2.11.8",
     "@types/react-table": "^7.7.18",
     "@uiw/color-convert": "^2.9.2",

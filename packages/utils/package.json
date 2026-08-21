@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/uikit-react-utils",
-  "version": "7.0.0-next.0",
+  "version": "7.0.0-next.1",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@emotion/serialize": "^1.1.2",
     "@emotion/utils": "^1.4.0",
-    "@pentaho/uikit-react-shared": "^7.0.0-next.0",
+    "@pentaho/uikit-react-shared": "^7.0.0-next.1",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
