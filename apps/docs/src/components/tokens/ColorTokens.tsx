@@ -4,11 +4,7 @@ import { HvTypography, useTheme } from "@pentaho/uikit-react-core";
 
 import { DocsProvider } from "../code/DocsProvider";
 import { descriptions } from "../color/descriptions";
-import {
-  colorTokensSpec,
-  compatMap,
-  groupColorTokensByCategory,
-} from "../color/utils";
+import { colorTokensSpec, groupColorTokensByCategory } from "../color/utils";
 
 export const ColorTokens = () => {
   return (
@@ -19,7 +15,7 @@ export const ColorTokens = () => {
 };
 
 export const ColorTokensInternal = () => {
-  const { activeTheme, colors } = useTheme();
+  const { colors } = useTheme();
 
   const colorTokens = Object.fromEntries(
     Object.entries(colors ?? {}).filter(([key]) => key in colorTokensSpec),
@@ -48,8 +44,6 @@ export const ColorTokensInternal = () => {
 
             <div className="w-full grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-xs">
               {tokens.map(({ token, value }) => {
-                const compatToken = compatMap[token as keyof typeof compatMap];
-
                 return (
                   <div
                     key={token}
@@ -63,11 +57,6 @@ export const ColorTokensInternal = () => {
                     />
 
                     <div className="grid text-center gap-xs">
-                      {compatToken && activeTheme?.name !== "pentaho" && (
-                        <code className="text-sm grid-area-[1/1] text-[#0000]">
-                          {compatToken}
-                        </code>
-                      )}
                       <code className="text-sm grid-area-[1/1]">{token}</code>
 
                       {/* Color value */}

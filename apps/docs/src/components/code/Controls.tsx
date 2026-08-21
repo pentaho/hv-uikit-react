@@ -208,17 +208,17 @@ function ColorControl({ prop, state, control, onChange, label }: ControlProps) {
       className="w-full"
       recommendedColors={[
         "positive",
-        "negative",
         "warning",
+        "negative",
         "info",
         "accent",
-        "catastrophic",
         "primary",
-        "secondary",
         "cat1",
         "cat2",
         "gold",
         "coral",
+        "magenta",
+        "rebeccapurple",
       ]}
     />
   );

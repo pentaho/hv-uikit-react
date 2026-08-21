@@ -1,7 +1,25 @@
 import type { Property } from "csstype";
 
-import { indigo } from "../palette";
-import { ds5Colors as dsColors, getColors } from "./colorsCompat";
+import {
+  amber,
+  blue,
+  cyan,
+  emerald,
+  fuchsia,
+  green,
+  indigo,
+  lime,
+  neutral,
+  orange,
+  pink,
+  red,
+  rose,
+  sky,
+  slate,
+  teal,
+  violet,
+  yellow,
+} from "../palette";
 
 type SemanticTypes =
   | "primary"
@@ -21,17 +39,16 @@ type SemanticKeys<Prefix extends string> =
 
 type VizKeys = `cat${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12}`;
 
-export interface HvColorTokens
-  extends Record<SemanticKeys<SemanticTypes>, string>, Record<VizKeys, string> {
-  // #region semantic
-  // 🔎: border tokens don't exist for "primary"
-  accentBorder: string;
-  positiveBorder: string;
-  warningBorder: string;
-  negativeBorder: string;
-  infoBorder: string;
-  // #endregion
+// export type ColorValue = string | [string, string];
 
+/** 🔎: border tokens don't exist for "primary"  */
+type BorderKeys = `${Exclude<SemanticTypes, "primary">}Border`;
+
+export interface HvColorTokens
+  extends
+    Record<SemanticKeys<SemanticTypes>, string>,
+    Record<VizKeys, string>,
+    Record<BorderKeys, string> {
   // #region text
   /** primary text color */
   text: string;
@@ -82,159 +99,151 @@ export interface HvColorTokens
 }
 
 const categorical = {
-  cat1: "#95AFE8",
-  cat2: "#E89E5D",
-  cat3: "#73BAA5",
-  cat4: "#6F749F",
-  cat5: "#D17A7C",
-  cat6: "#FFDA8A",
-  cat7: "#7DC1DB",
-  cat8: "#B67EA3",
-  cat9: "#F2BC66",
-  cat10: "#2D86B3",
-  cat11: "#FC9AAA",
-  cat12: "#8EBA8C",
+  cat1: blue[300],
+  cat2: orange[300],
+  cat3: teal[400],
+  cat4: violet[400],
+  cat5: pink[400],
+  cat6: yellow[400],
+  cat7: fuchsia[300],
+  cat8: cyan[400],
+  cat9: lime[300],
+  cat10: rose[400],
+  cat11: green[600],
+  cat12: indigo[500],
 };
 
 const common = {
   ...categorical,
 } satisfies Partial<HvColorTokens>;
 
-// #region Light palette
-const light = {
-  ...getColors(dsColors, "light"),
+export const light = {
+  primary: blue[600],
+  primaryDeep: blue[800],
+  primaryStrong: blue[700],
+  primarySubtle: blue[200],
+  primaryDimmed: blue[100],
+  positive: emerald[600],
+  positiveDeep: emerald[800],
+  positiveStrong: emerald[700],
+  positiveDimmed: emerald[50],
+  positiveSubtle: emerald[100],
+  positiveBorder: emerald[200],
+  warning: amber[500],
+  warningDeep: amber[700],
+  warningStrong: amber[600],
+  warningDimmed: amber[50],
+  warningSubtle: amber[100],
+  warningBorder: amber[200],
+  negative: red[600],
+  negativeDeep: red[800],
+  negativeStrong: red[700],
+  negativeDimmed: red[50],
+  negativeSubtle: red[100],
+  negativeBorder: red[200],
+  info: sky[500],
+  infoDeep: sky[700],
+  infoStrong: sky[600],
+  infoDimmed: sky[50],
+  infoSubtle: sky[100],
+  infoBorder: sky[200],
+  accent: indigo[600],
+  accentDeep: indigo[800],
+  accentStrong: indigo[700],
+  accentSubtle: indigo[100],
+  accentDimmed: indigo[50],
+  accentBorder: indigo[200],
 
-  primary: dsColors.primary[0],
-  primaryDeep: dsColors.primary_80[0],
-  primaryStrong: dsColors.primary_80[0],
-  primarySubtle: dsColors.primary_20[0],
-  primaryDimmed: dsColors.primary_20[0],
-  positive: dsColors.positive[0],
-  positiveDeep: dsColors.positive_120[0],
-  positiveStrong: dsColors.positive_80[0],
-  positiveDimmed: dsColors.positive_20,
-  positiveSubtle: dsColors.positive_20,
-  positiveBorder: dsColors.positive_20,
-  warning: dsColors.warning[0],
-  warningDeep: dsColors.warning_140[0],
-  warningStrong: dsColors.warning_120[0],
-  warningDimmed: dsColors.warning_20,
-  warningSubtle: dsColors.warning_20,
-  warningBorder: dsColors.warning_20,
-  negative: dsColors.negative[0],
-  negativeDeep: dsColors.negative_120[0],
-  negativeStrong: dsColors.negative_80[0],
-  negativeDimmed: dsColors.negative_20,
-  negativeSubtle: dsColors.negative_20,
-  negativeBorder: dsColors.negative_20,
-  info: dsColors.neutral[0],
-  infoDeep: dsColors.neutral[0],
-  infoStrong: dsColors.neutral[0],
-  infoDimmed: dsColors.neutral_20,
-  infoSubtle: dsColors.neutral_20,
-  infoBorder: dsColors.neutral_20,
-  accent: indigo[600] as string,
-  accentDeep: indigo[800] as string,
-  accentStrong: indigo[700] as string,
-  accentSubtle: indigo[100] as string,
-  accentDimmed: indigo[50] as string,
-  accentBorder: indigo[200] as string,
+  text: slate[700],
+  textSubtle: slate[500],
+  textDisabled: neutral[400],
+  textDimmed: slate[400],
+  textLight: slate[50],
+  textDark: slate[700],
 
-  text: dsColors.secondary[0],
-  textSubtle: dsColors.secondary_80[0],
-  textDisabled: dsColors.secondary_60[0],
-  textDimmed: dsColors.atmo1[0],
-  textLight: dsColors.secondary[1],
-  textDark: dsColors.secondary[0],
+  border: slate[300],
+  borderSubtle: slate[200],
+  borderStrong: slate[500],
+  borderDisabled: neutral[400],
 
-  border: dsColors.atmo4[0],
-  borderSubtle: dsColors.atmo3[0],
-  borderStrong: dsColors.secondary_80[0],
-  borderDisabled: dsColors.secondary_60[0],
-
-  bgPage: dsColors.atmo2[0],
-  bgContainer: dsColors.atmo1[0],
-  bgPageSecondary: dsColors.atmo3[0],
-  bgContainerSecondary: dsColors.atmo1[0],
-  bgHover: dsColors.primary_20[0],
-  bgDisabled: dsColors.atmo3[0],
-  bgOverlay: `color-mix(in srgb, ${dsColors.atmo4[0]} 80%, transparent)`,
+  bgPage: slate[100],
+  bgContainer: slate[50],
+  bgPageSecondary: slate[200],
+  bgContainerSecondary: slate[100],
+  bgHover: blue[600],
+  bgDisabled: neutral[200],
+  bgOverlay: slate[950],
   dimmer: "#FFFFFF",
 
   shad1: "rgba(65, 65, 65, 0.12)",
   shadow: "0 2px 12px rgba(65,65,65,0.12)",
 
-  ...categorical,
-} satisfies HvColorTokens & Record<string, string>;
-// #endregion
+  ...common,
+} satisfies HvColorTokens;
 
-// #region Dark palette
-const dark = {
-  ...getColors(dsColors, "dark"),
+export const dark = {
+  primary: blue[500],
+  primaryDeep: blue[700],
+  primaryStrong: blue[600],
+  primarySubtle: blue[900],
+  primaryDimmed: blue[950],
+  positive: green[600],
+  positiveDeep: green[300],
+  positiveStrong: green[500],
+  positiveDimmed: green[950],
+  positiveSubtle: green[900],
+  positiveBorder: green[800],
+  warning: yellow[500],
+  warningDeep: yellow[300],
+  warningStrong: yellow[400],
+  warningDimmed: yellow[950],
+  warningSubtle: yellow[900],
+  warningBorder: yellow[800],
+  negative: red[600],
+  negativeDeep: red[300],
+  negativeStrong: red[500],
+  negativeDimmed: red[950],
+  negativeSubtle: red[900],
+  negativeBorder: red[800],
+  info: cyan[500],
+  infoDeep: cyan[300],
+  infoStrong: cyan[400],
+  infoDimmed: cyan[950],
+  infoSubtle: cyan[900],
+  infoBorder: cyan[800],
+  accent: indigo[500],
+  accentDeep: indigo[700],
+  accentStrong: indigo[600],
+  accentSubtle: indigo[900],
+  accentDimmed: indigo[950],
+  accentBorder: indigo[800],
 
-  primary: dsColors.primary[1],
-  primaryDeep: dsColors.primary_80[1],
-  primaryStrong: dsColors.primary_80[1],
-  primarySubtle: dsColors.primary_20[1],
-  primaryDimmed: dsColors.primary_20[1],
-  positive: dsColors.positive[1],
-  positiveDeep: dsColors.positive_120[1],
-  positiveStrong: dsColors.positive_80[1],
-  positiveDimmed: dsColors.positive_20,
-  positiveSubtle: dsColors.positive_20,
-  positiveBorder: dsColors.positive_20,
-  warning: dsColors.warning[1],
-  warningDeep: dsColors.warning_140[1],
-  warningStrong: dsColors.warning_120[1],
-  warningDimmed: dsColors.warning_20,
-  warningSubtle: dsColors.warning_20,
-  warningBorder: dsColors.warning_20,
-  negative: dsColors.negative[1],
-  negativeDeep: dsColors.negative_120[1],
-  negativeStrong: dsColors.negative_80[1],
-  negativeDimmed: dsColors.negative_20,
-  negativeSubtle: dsColors.negative_20,
-  negativeBorder: dsColors.negative_20,
-  info: dsColors.neutral[1],
-  infoDeep: dsColors.neutral[1],
-  infoStrong: dsColors.neutral[1],
-  infoDimmed: dsColors.neutral_20,
-  infoSubtle: dsColors.neutral_20,
-  infoBorder: dsColors.neutral_20,
-  accent: indigo[500] as string,
-  accentDeep: indigo[700] as string,
-  accentStrong: indigo[600] as string,
-  accentSubtle: indigo[900] as string,
-  accentDimmed: indigo[950] as string,
-  accentBorder: indigo[800] as string,
+  text: slate[50],
+  textSubtle: slate[400],
+  textDisabled: neutral[500],
+  textDimmed: slate[600],
+  textLight: slate[50],
+  textDark: slate[700],
 
-  text: dsColors.secondary[1],
-  textSubtle: dsColors.secondary_80[1],
-  textDisabled: dsColors.secondary_60[1],
-  textDimmed: dsColors.atmo1[1],
-  textLight: dsColors.secondary[1],
-  textDark: dsColors.secondary[0],
+  border: slate[700],
+  borderSubtle: slate[950],
+  borderStrong: slate[400],
+  borderDisabled: neutral[700],
 
-  border: dsColors.atmo4[1],
-  borderSubtle: dsColors.atmo3[1],
-  borderStrong: dsColors.secondary_80[0],
-  borderDisabled: dsColors.secondary_60[0],
-
-  bgPage: dsColors.atmo2[1],
-  bgContainer: dsColors.atmo1[1],
-  bgPageSecondary: dsColors.atmo3[1],
-  bgContainerSecondary: dsColors.atmo1[1],
-  bgHover: dsColors.primary_20[1],
-  bgDisabled: dsColors.atmo3[1],
-  bgOverlay: `color-mix(in srgb, ${dsColors.atmo4[1]} 80%, transparent)`,
+  bgPage: slate[900],
+  bgContainer: slate[800],
+  bgPageSecondary: slate[950],
+  bgContainerSecondary: slate[900],
+  bgHover: blue[600],
+  bgDisabled: neutral[900],
+  bgOverlay: slate[900],
   dimmer: "#000000",
 
   shad1: "rgba(0,0,0,.16)",
   shadow: "0 3px 5px rgba(0,0,0,.16)",
 
-  ...categorical,
-} satisfies HvColorTokens & Record<string, string>;
-// #endregion
+  ...common,
+} satisfies HvColorTokens;
 
 export const colors = {
   common,
@@ -242,11 +251,8 @@ export const colors = {
   dark,
 };
 
-/** @deprecated replace with standard UI Kit ColorTokens in v6 */
-type AllColors = typeof colors.common & typeof colors.light;
-
 /** @experimental extendable theme colors */
-export interface HvThemeColors extends HvColorTokens, AllColors {}
+export interface HvThemeColors extends HvColorTokens {}
 
 /** A type with all the accepted colors from the color palette */
 export type HvColor = keyof HvThemeColors;
