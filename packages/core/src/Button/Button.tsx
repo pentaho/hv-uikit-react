@@ -81,21 +81,10 @@ export type HvButtonProps<C extends React.ElementType = "button"> =
   >;
 
 function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
-  const deprecatedVariantMap: Record<string, HvButtonVariant> = {
-    secondary: "secondarySubtle",
-  };
-
-  const mappedVariant = deprecatedVariantMap[variant];
-
-  if (import.meta.env.DEV && mappedVariant) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `HvButton variant '${variant}' is deprecated. Please use '${mappedVariant}'.`,
-    );
-  }
-
   if (variant === "semantic") return ["inherit", "ghost"];
   if (variant === "secondary") return ["text", "subtle"];
+  if (variant === "secondarySubtle") return ["text", "subtle"];
+  if (variant === "secondaryGhost") return ["text", "ghost"];
   if (variant === "ghost") return ["primary", "ghost"];
   if (variant === "contained" || variant === "subtle") {
     return ["text", variant];

@@ -122,7 +122,7 @@ export const { staticClasses, useClasses } = createClasses("HvButton", {
         borderColor: theme.colors.primarySubtle,
         backgroundColor: theme.colors.primaryDimmed,
       },
-      "&[data-color=secondary]": {
+      "&[data-color=text]": {
         borderColor: theme.colors.border,
         backgroundColor: theme.colors.bgPage,
       },
