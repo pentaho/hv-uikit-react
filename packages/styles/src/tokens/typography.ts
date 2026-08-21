@@ -1,5 +1,5 @@
 export const fontFamily = {
-  body: "'Open Sans', Arial, Helvetica, sans-serif",
+  body: "'Inter', Arial, Helvetica, sans-serif",
 };
 
 export const fontSizes = {
