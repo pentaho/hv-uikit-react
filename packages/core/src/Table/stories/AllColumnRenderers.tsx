@@ -52,7 +52,7 @@ const makeRendererEntry = (i: number) => ({
   eventType: generateLongString(i === 3 ? undefined : "Anomaly detection", i),
   status: {
     status_name: getOption(["Closed", "Open"], i),
-    status_color: getOption(["negative_20", "positive_20"], i),
+    status_color: getOption(["negative", "positive"], i),
   },
   riskScore: (i % 100) + 1,
   isDisabled: i % 3 === 0,
