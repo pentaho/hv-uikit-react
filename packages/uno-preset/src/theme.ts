@@ -25,8 +25,14 @@ export const extendTheme: ThemeExtender<Theme> = (baseTheme) => ({
     ...theme.radii,
   },
   breakpoints: Object.fromEntries(hvBreakpoints),
-  maxWidth: Object.fromEntries(hvBreakpoints),
-  minWidth: Object.fromEntries(hvBreakpoints),
+  maxWidth: {
+    ...baseTheme.maxWidth,
+    ...Object.fromEntries(hvBreakpoints),
+  },
+  minWidth: {
+    ...baseTheme.minWidth,
+    ...Object.fromEntries(hvBreakpoints),
+  },
   containers: Object.fromEntries(
     hvBreakpoints.map(([k, v]) => [k, `(min-width: ${v})`]),
   ),
