@@ -1,9 +1,17 @@
-import type { ExtractNames } from "@pentaho/uikit-react-utils";
+import { createClasses, type ExtractNames } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
-import { HvIcon } from "../../icons";
-import { staticClasses, useClasses } from "./PathElement.styles";
+import { HvIcon } from "../icons";
 
-export { staticClasses as pathElementClasses };
+export const { staticClasses, useClasses } = createClasses("HvPathElement", {
+  centerContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
+  separatorContainer: {
+    padding: `0 ${theme.space.xxs}`,
+  },
+});
 
 export type HvPathElementClasses = ExtractNames<typeof useClasses>;
 
@@ -28,7 +36,7 @@ export const HvPathElement = ({
       {!last && (
         <div className={classes.separatorContainer}>
           {separator || (
-            <HvIcon name="CaretRight" size="xs" color="textDisabled" />
+            <HvIcon name="CaretRight" size="xs" color="textSubtle" />
           )}
         </div>
       )}

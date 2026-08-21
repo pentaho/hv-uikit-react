@@ -1,6 +1,8 @@
 import { createClasses } from "@pentaho/uikit-react-utils";
 import { theme } from "@pentaho/uikit-styles";
 
+import { outlineStyles } from "../utils/focusUtils";
+
 export const { staticClasses, useClasses } = createClasses("HvBreadCrumb", {
   root: { display: "flex", alignItems: "center", zIndex: 0 },
   link: {
@@ -9,6 +11,16 @@ export const { staticClasses, useClasses } = createClasses("HvBreadCrumb", {
     alignItems: "center",
     padding: `0px ${theme.space.xxs}`,
     fontWeight: theme.fontWeights.normal,
+
+    borderRadius: theme.radii.base,
+    maxWidth: 170 + 16,
+    textTransform: "capitalize",
+    ":hover,:focus": {
+      backgroundColor: theme.colors.bgHover,
+    },
+    "&:focus-visible": {
+      ...outlineStyles,
+    },
   },
   orderedList: {
     display: "flex",
@@ -19,7 +31,4 @@ export const { staticClasses, useClasses } = createClasses("HvBreadCrumb", {
     padding: `0 ${theme.space.xxs}`,
     fontWeight: theme.fontWeights.semibold,
   },
-  centerContainer: {},
-  separatorContainer: { padding: `0 ${theme.space.xxs}` },
-  a: {},
 });

@@ -4,15 +4,19 @@ import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 import type { HvDropDownMenuProps } from "../DropDownMenu";
 import { HvIconButton } from "../IconButton";
 import { SvgBase } from "../icons";
+import { HvOverflowTooltip } from "../OverflowTooltip";
 import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
 import { staticClasses, useClasses } from "./BreadCrumb.styles";
-import { HvBreadCrumbPage } from "./Page";
 import { HvPathElement } from "./PathElement";
-import type { HvBreadCrumbPathElement } from "./types";
 import { pathWithSubMenu, removeExtension } from "./utils";
 
 export { staticClasses as breadCrumbClasses };
+
+export interface HvBreadCrumbPathElement extends Record<string, any> {
+  label: string;
+  path: string;
+}
 
 export type HvBreadCrumbClasses = ExtractNames<typeof useClasses>;
 
@@ -105,13 +109,7 @@ export const HvBreadCrumb = forwardRef<
     <nav ref={ref} id={id} className={cx(classes.root, className)} {...others}>
       <ol className={classes.orderedList}>
         {home && (
-          <HvPathElement
-            classes={{
-              centerContainer: classes.centerContainer,
-              separatorContainer: classes.separatorContainer,
-            }}
-            separator={separator}
-          >
+          <HvPathElement separator={separator}>
             <HvIconButton
               title={home.label}
               component={component || "a"}
@@ -130,15 +128,7 @@ export const HvBreadCrumb = forwardRef<
           const isLast = index === breadcrumbPath.length - 1;
 
           return (
-            <HvPathElement
-              classes={{
-                centerContainer: classes.centerContainer,
-                separatorContainer: classes.separatorContainer,
-              }}
-              key={key}
-              last={isLast}
-              separator={separator}
-            >
+            <HvPathElement key={key} last={isLast} separator={separator}>
               {(isValidElement(elem) && elem) ||
                 (isLast && (
                   <HvTypography
@@ -148,15 +138,20 @@ export const HvBreadCrumb = forwardRef<
                     {removeExtension(elem.label)}
                   </HvTypography>
                 )) || (
-                  <HvBreadCrumbPage
-                    elem={elem}
-                    classes={{
-                      a: classes.a,
-                      link: classes.link,
+                  <HvTypography
+                    noWrap
+                    variant="captionLabel"
+                    component={component || "a"}
+                    href={elem.path}
+                    onClick={(event: any) => {
+                      if (!onClick) return;
+                      event.preventDefault();
+                      onClick?.(event, elem);
                     }}
-                    component={component}
-                    onClick={onClick}
-                  />
+                    className={classes.link}
+                  >
+                    <HvOverflowTooltip data={elem.label} />
+                  </HvTypography>
                 )}
             </HvPathElement>
           );
