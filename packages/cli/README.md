@@ -2,7 +2,7 @@
 
 This CLI provides a way to automate tasks you regularly perform as part of your development workflow.
 
-Whether is quickly start a new application or scaffolding out templates and components, it will help you standardize these tasks in a consistent, and predictable manner.
+Whether it is quickly starting a new application or scaffolding out components, it will help you standardize these tasks in a consistent and predictable manner.
 
 ## Usage
 
@@ -15,7 +15,7 @@ npx @pentaho/uikit-cli@latest <command> --help
 
 ## Creating an App
 
-You can create a new app using the different baselines provided and our official supported templates.
+You can create a new app using the provided baseline.
 
 To get started, use the following command:
 
@@ -25,10 +25,10 @@ npx @pentaho/uikit-cli@latest create
 
 It launches an interactive experience that guides you through setting up a new app.
 
-You can also directly specify the app name and the template to use. For example:
+You can also directly specify the app name. For example:
 
 ```sh
-npx @pentaho/uikit-cli@latest create MyAppName --templates Form
+npx @pentaho/uikit-cli@latest create MyAppName
 ```
 
 ## How to test

@@ -31,8 +31,7 @@
         "**/*.test.tsx",
         "**/*.spec.ts",
         "apps/*/src/**/*",
-        "**/test/**/*",
-        "**/templates/**/*.tsx"
+        "**/test/**/*"
       ],
       "rules": {
         "no-alert": "off",
