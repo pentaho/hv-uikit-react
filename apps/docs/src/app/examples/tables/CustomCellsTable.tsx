@@ -115,6 +115,6 @@ function getPriorityColor(priority: AssetEvent["priority"]) {
     case "Low":
       return "positive";
     default:
-      return "neutral";
+      return "info";
   }
 }

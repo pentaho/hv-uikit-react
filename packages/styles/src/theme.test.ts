@@ -25,8 +25,8 @@ it("returns the correct alpha transparency values", () => {
     "color-mix(in srgb, var(--uikit-colors-warning) 80%, transparent)",
   );
 
-  expect(theme.alpha("secondary", "60%")).toBe(
-    "color-mix(in srgb, var(--uikit-colors-secondary) 60%, transparent)",
+  expect(theme.alpha("text", "60%")).toBe(
+    "color-mix(in srgb, var(--uikit-colors-text) 60%, transparent)",
   );
 
   expect(theme.alpha("#ff0000", 0.3)).toBe(
@@ -38,15 +38,15 @@ it("returns the correct alpha transparency values", () => {
 });
 
 it("returns the correct color-mix values", () => {
-  expect(theme.mix("primary", 0.7, "secondary")).toBe(
-    "color-mix(in srgb, var(--uikit-colors-primary) 70%, var(--uikit-colors-secondary))",
+  expect(theme.mix("primary", 0.7, "text")).toBe(
+    "color-mix(in srgb, var(--uikit-colors-primary) 70%, var(--uikit-colors-text))",
   );
   expect(theme.mix("warning", 0.5, "positive")).toBe(
     "color-mix(in srgb, var(--uikit-colors-warning) 50%, var(--uikit-colors-positive))",
   );
 
-  expect(theme.mix("primary", "60%", "secondary")).toBe(
-    "color-mix(in srgb, var(--uikit-colors-primary) 60%, var(--uikit-colors-secondary))",
+  expect(theme.mix("primary", "60%", "text")).toBe(
+    "color-mix(in srgb, var(--uikit-colors-primary) 60%, var(--uikit-colors-text))",
   );
 
   expect(theme.mix("primary", 0.8)).toBe(

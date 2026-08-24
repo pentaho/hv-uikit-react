@@ -11,7 +11,7 @@ export const { staticClasses, useClasses } = createClasses("HvDropDownMenu", {
   },
   open: {
     boxShadow: theme.colors.shadow,
-    "&[data-color=secondary]": {
+    "&[data-color=text]": {
       borderColor: theme.colors.textDimmed,
     },
   },

@@ -36,10 +36,10 @@ export const Test: StoryObj = {
       <HvTag label="Informational" />
       <HvTag label="Informational" disabled />
       <HvTag label="This is a very very very very very very very very long text for a tag" />
-      <HvTag color="positive_20" label="Success" />
-      <HvTag color="warning_20" label="Warning" />
-      <HvTag color="negative_20" label="Error" />
-      <HvTag label="Success" color="positive_20" onDelete={() => {}} />
+      <HvTag color="positive" label="Success" />
+      <HvTag color="warning" label="Warning" />
+      <HvTag color="negative" label="Error" />
+      <HvTag label="Success" color="positive" onDelete={() => {}} />
       <HvTag label="Feat" type="categorical" />
       <HvTag label="Feat" type="categorical" disabled />
       <HvTag label="Docs" type="categorical" color="cat2" />

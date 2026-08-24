@@ -5,7 +5,7 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
   root: {
     position: "relative",
     borderRadius: theme.radii.round,
-    "& .HvButton-subtle[data-color=text]": {
+    ":where(.HvButton-subtle[data-color=text])": {
       borderColor: theme.colors.textDimmed,
       backgroundColor: `light-dark(white, ${slate[950]})`,
     },
