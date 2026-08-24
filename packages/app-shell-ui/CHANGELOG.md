@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.4.0...@hitachivantara/app-shell-ui@2.5.0) (2026-08-24)
+
+### Bug Fixes
+
+* **Header:** update Pentaho logo ([#5216](https://github.com/pentaho/hv-uikit-react/issues/5216)) ([4859bc6](https://github.com/pentaho/hv-uikit-react/commit/4859bc63cbe080132a6721733d93fbb34c6c4bed))
+
+### Features
+
+* **AppShell:** improve provider handling and error logging [PPUC-867] ([#5242](https://github.com/pentaho/hv-uikit-react/issues/5242)) ([acb2adb](https://github.com/pentaho/hv-uikit-react/commit/acb2adbd2df97e80342da55f8a86566e337a77c9))
+
 # [2.4.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.3.5...@hitachivantara/app-shell-ui@2.4.0) (2026-07-15)
 
 ### Features

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.8...@hitachivantara/uikit-uno-preset@1.0.9) (2026-08-24)
+
+### Bug Fixes
+
+* **uno:** min/max-w using theme breakpoint values ([#5232](https://github.com/pentaho/hv-uikit-react/issues/5232)) ([bcc7cde](https://github.com/pentaho/hv-uikit-react/commit/bcc7cde699d66de3fa458bf0f9871e6b2568e059))
+
+### Reverts
+
+* "fix(uno): min/max-w using theme breakpoint values ([#5232](https://github.com/pentaho/hv-uikit-react/issues/5232))" ([#5253](https://github.com/pentaho/hv-uikit-react/issues/5253)) ([5edd534](https://github.com/pentaho/hv-uikit-react/commit/5edd5349099fa5f993a613c35f668105f4c2d5b9))
+
 ## [1.0.8](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-uno-preset@1.0.7...@hitachivantara/uikit-uno-preset@1.0.8) (2026-07-15)
 
 **Note:** Version bump only for package @hitachivantara/uikit-uno-preset

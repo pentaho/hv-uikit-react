@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.11](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-viz@6.1.10...@hitachivantara/uikit-react-viz@6.1.11) (2026-08-24)
+
+**Note:** Version bump only for package @hitachivantara/uikit-react-viz
+
 ## [6.1.10](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-viz@6.1.9...@hitachivantara/uikit-react-viz@6.1.10) (2026-07-15)
 
 **Note:** Version bump only for package @hitachivantara/uikit-react-viz

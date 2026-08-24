@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-navigation",
-  "version": "2.1.16",
+  "version": "2.1.17",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-shared": "^2.3.5",
+    "@hitachivantara/app-shell-shared": "^2.3.6",
     "path-to-regexp": "^8.1.0"
   },
   "peerDependencies": {

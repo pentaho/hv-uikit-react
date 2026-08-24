@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.2.1...@hitachivantara/uikit-styles@6.2.2) (2026-08-24)
+
+### Bug Fixes
+
+* **Header:** update Pentaho logo ([#5216](https://github.com/pentaho/hv-uikit-react/issues/5216)) ([4859bc6](https://github.com/pentaho/hv-uikit-react/commit/4859bc63cbe080132a6721733d93fbb34c6c4bed))
+
 ## [6.2.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-styles@6.2.0...@hitachivantara/uikit-styles@6.2.1) (2026-07-15)
 
 **Note:** Version bump only for package @hitachivantara/uikit-styles
