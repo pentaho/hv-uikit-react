@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForkRef } from "@mui/material/utils";
-import {
-  useDefaultProps,
-  useTheme,
-  type ExtractNames,
-} from "@pentaho/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {
@@ -250,16 +246,11 @@ export const HvInput = fixedForwardRef(function HvInput<
   const { classes, cx } = useClasses(classesProp);
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
   const elementId = useUniqueId(id);
-  const { activeTheme } = useTheme();
-
   const inputRef = useRef<HTMLInputElement>(null);
   const forkedRef = useForkRef(ref, inputRef, inputRefProp);
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
-  const [description, infoMessage] =
-    activeTheme?.name === "pentaho"
-      ? [infoMessageProp, descriptionProp]
-      : [descriptionProp, infoMessageProp];
+  const [description, infoMessage] = [infoMessageProp, descriptionProp];
 
   const [focused, setFocused] = useState(false);
 

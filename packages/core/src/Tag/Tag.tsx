@@ -99,7 +99,6 @@ export const HvTag = forwardRef<
     ...others
   } = useDefaultProps("HvTag", props);
   const { classes, cx } = useClasses(classesProp);
-
   const [isSelected, setIsSelected] = useControlled(
     selected,
     Boolean(defaultSelected),

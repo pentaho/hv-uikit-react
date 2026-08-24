@@ -68,12 +68,12 @@ describe("Input", () => {
     expect(screen.getByText("INFO")).toBeInTheDocument();
   });
 
-  it("renders only the statusMessage when invalid status", () => {
+  it("renders the statusMessage and info message when invalid", () => {
     render(
       <HvInput status="invalid" infoMessage="INFO" statusMessage="ERROR" />,
     );
     expect(screen.getByText("ERROR")).toBeInTheDocument();
-    expect(screen.queryByText("INFO")).toBeNull();
+    expect(screen.getByText("INFO")).toBeInTheDocument();
   });
 
   it("renders only the info message when in standby status", () => {

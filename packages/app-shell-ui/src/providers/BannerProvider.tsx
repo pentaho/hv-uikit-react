@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 import { uid } from "uid";
 import type { HvAppShellEventNotification } from "@pentaho/app-shell-events";
 import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
-import { HvBanner, theme, useTheme } from "@pentaho/uikit-react-core";
+import { HvBanner, theme } from "@pentaho/uikit-react-core";
 
 import { useLayoutContext } from "./LayoutProvider";
 import { useNavigationContext } from "./NavigationProvider";
@@ -37,12 +37,9 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
     i18n,
     keyPrefix: "notifications.banner",
   });
-  const { activeTheme } = useTheme();
   const { showHeaderSubMenu, isCompactMode } = useNavigationContext();
   const { verticalNavigationWidth, setBannerMaxHeight } = useLayoutContext();
   const [banners, setBanners] = useState<Banner[]>([]);
-
-  const isPentahoTheme = activeTheme?.name === "pentaho";
 
   const show = (notification: HvAppShellEventNotification) => {
     const id = uid();
@@ -93,16 +90,12 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
 
     return {
       root: css({
-        left: `calc(${verticalNavigationWidth}px + ${paddingX})`,
         width: `calc(100% - (${verticalNavigationWidth}px + ${paddingX}) - ${paddingX})`,
-        transform: "unset",
         minWidth: "unset",
         zIndex: theme.zIndices.banner,
-        ...(isPentahoTheme && {
-          maxWidth: 540,
-          left: `calc(${verticalNavigationWidth}px + (100% - ${verticalNavigationWidth}px) / 2)`,
-          transform: `translateX(-50%)`,
-        }),
+        maxWidth: 540,
+        left: `calc(${verticalNavigationWidth}px + (100% - ${verticalNavigationWidth}px) / 2)`,
+        transform: `translateX(-50%)`,
       }),
       topCenter: css({
         marginTop:
@@ -114,12 +107,7 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
         marginBottom: theme.space.md,
       }),
     };
-  }, [
-    isCompactMode,
-    isPentahoTheme,
-    showHeaderSubMenu,
-    verticalNavigationWidth,
-  ]);
+  }, [isCompactMode, showHeaderSubMenu, verticalNavigationWidth]);
 
   return (
     <BannerContext.Provider value={value}>
@@ -143,8 +131,8 @@ export const BannerProvider = ({ children }: BannerProviderProps) => {
           bannerContentProps={{
             actionProps: { "aria-label": t("close") },
           }}
-          anchorOrigin={isPentahoTheme ? "bottom" : undefined}
-          transitionDirection={isPentahoTheme ? "up" : undefined}
+          anchorOrigin="bottom"
+          transitionDirection="up"
         />
       ))}
       {children}

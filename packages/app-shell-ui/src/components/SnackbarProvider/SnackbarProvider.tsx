@@ -1,33 +1,13 @@
-import { css } from "@emotion/css";
-import {
-  HvSnackbarProvider,
-  theme,
-  useTheme,
-  type HvSnackbarProps,
-} from "@pentaho/uikit-react-core";
-
-const snackbarClasses = {
-  containerRoot: css`
-    margin-top: ${theme.header.height};
-  `,
-};
+import { HvSnackbarProvider } from "@pentaho/uikit-react-core";
 
 interface SnackbarProviderProps {
   children: React.ReactNode;
 }
 
 const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
-  const { activeTheme } = useTheme();
-
-  const isPentahoTheme = activeTheme?.name === "pentaho";
-  const anchorOrigin: HvSnackbarProps["anchorOrigin"] = isPentahoTheme
-    ? { vertical: "bottom", horizontal: "center" }
-    : undefined;
-
   return (
     <HvSnackbarProvider
-      anchorOrigin={anchorOrigin}
-      notistackClassesOverride={anchorOrigin ? undefined : snackbarClasses}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
       {children}
     </HvSnackbarProvider>
