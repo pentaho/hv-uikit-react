@@ -10,6 +10,10 @@ import { Props } from "./Props";
 
 type TabId = "usage" | "props" | "classes";
 
+const isTabId = (value: string | null): value is TabId => {
+  return value === "usage" || value === "props" || value === "classes";
+};
+
 export function Tabs({
   meta,
   playgroundProps,
@@ -21,7 +25,8 @@ export function Tabs({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const tab = (searchParams.get("tab") as TabId) || "usage";
+  const tabFromQuery = searchParams?.get("tab") ?? null;
+  const tab = isTabId(tabFromQuery) ? tabFromQuery : "usage";
 
   return (
     <>
@@ -29,7 +34,7 @@ export function Tabs({
         variant="fullWidth"
         value={tab}
         onChange={(_, value) => {
-          const newParams = new URLSearchParams(searchParams);
+          const newParams = new URLSearchParams(searchParams?.toString());
           newParams.set("tab", value);
           router.push(`${pathname}?${newParams}`);
         }}
