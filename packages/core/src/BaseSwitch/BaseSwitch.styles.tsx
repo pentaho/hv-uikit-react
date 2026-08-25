@@ -13,7 +13,11 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
     justifyContent: "center",
     borderRadius: theme.radii.round,
 
-    "&:hover": {
+    "&$readOnly $switchBase": {
+      cursor: "default",
+    },
+
+    ":hover:not($disabled,$readOnly)": {
       backgroundColor: theme.colors.bgHover,
     },
 
@@ -22,7 +26,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
       "&:hover": {
         backgroundColor: "transparent",
       },
-
       "&$checked": {
         transform: "translateX(16px)",
         "& + $track": {
@@ -32,9 +35,6 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
         },
         "&:not($disabled) $thumb": {
           borderColor: "transparent",
-        },
-        "&:hover": {
-          backgroundColor: "transparent",
         },
       },
     },
@@ -50,19 +50,23 @@ export const { staticClasses, useClasses } = createClasses("HvBaseSwitch", {
       },
     },
   },
-  switch: {
-    width: "40px",
-    height: "32px",
-    padding: 0,
-
-    "&$readOnly $switchBase": {
-      cursor: "default",
-    },
-  },
+  /** @deprecated use `classes.root` instead */
+  switch: {},
   switchBase: {
     width: "40px",
     height: "32px",
     padding: 0,
+
+    "&[data-color]": {
+      "& $thumb": {
+        border: "none",
+      },
+      "&+$track": {
+        backgroundColor: "var(--custom-color, transparent) !important",
+        border: "none",
+      },
+    },
+
     "&[data-size=medium]": {
       "+.HvBaseSwitch-track": {
         width: 48,
