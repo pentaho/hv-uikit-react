@@ -104,7 +104,7 @@ export const HvSliderInput = ({
             }}
             status={status?.[index] || "standBy"}
             readOnly={readOnly}
-            disableClear
+            hideClear
             {...inputProps[index]}
           />
         </Fragment>

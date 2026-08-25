@@ -82,8 +82,6 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
   },
   headerText: { overflow: "hidden", textOverflow: "ellipsis" },
   headerParagraph: { textOverflow: "inherit", display: "-webkit-box" },
-  /** @deprecated use `sortable: &$headerText` */
-  sortableHeaderText: {},
   sorted: {
     "& $sortButton": {
       opacity: 1,
@@ -99,8 +97,6 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
       backgroundColor: "transparent",
     },
   },
-  /** @deprecated use `classes.sortButton` instead */
-  sortIcon: {},
   // TODO: deprecate & merge these classes in favour of data-align
   alignLeft: { textAlign: "left" },
   alignRight: { textAlign: "right", flexDirection: "row-reverse" },

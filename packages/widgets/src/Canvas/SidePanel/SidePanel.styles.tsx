@@ -63,9 +63,5 @@ export const { staticClasses, useClasses } = createClasses(
         left: 320,
       },
     },
-    /** @deprecated use [aria-expanded] instead */
-    handleOpen: {},
-    /** @deprecated use [aria-expanded] instead */
-    handleClose: {},
   },
 );

@@ -165,7 +165,7 @@ function InputControl({ prop, state, control, onChange, label }: ControlProps) {
       value={String(state[prop] ?? control.defaultValue)}
       onChange={(e, value) => onChange(prop, value)}
       className="w-full"
-      disableClear
+      hideClear
     />
   );
 }
@@ -186,7 +186,7 @@ function NumberInputControl({
       value={state[prop] ?? control.defaultValue}
       onChange={(e, value) => onChange(prop, Number(value))}
       className="w-full"
-      disableClear
+      hideClear
     />
   );
 }

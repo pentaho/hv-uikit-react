@@ -118,12 +118,13 @@ const MultiButtons = () => {
 const Panel1 = () => (
   <HvPanel className="grid gap-xs">
     <Tabs />
-    <HvBannerContent
-      showIcon
-      variant="success"
-      content="Check out the UI Kit library!"
-    />
-    <HvBannerContent showIcon variant="error" content="An error has ocurred" />
+    <HvBannerContent showIcon variant="success">
+      Check out the UI Kit library!
+    </HvBannerContent>
+
+    <HvBannerContent showIcon variant="error">
+      An error has ocurred
+    </HvBannerContent>
     <div>
       <HvAccordion label="Analytics" defaultExpanded>
         <HvTypography>

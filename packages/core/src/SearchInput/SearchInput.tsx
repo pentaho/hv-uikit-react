@@ -28,7 +28,7 @@ export const HvSearchInput = forwardRef<
     <HvInput
       ref={ref}
       type="search"
-      disableSearchButton
+      hideSearchButton
       startAdornment={<HvAdornment icon={<HvIcon compact name="Search" />} />}
       classes={classes}
       {...others}

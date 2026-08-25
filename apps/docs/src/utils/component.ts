@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { withDefaultConfig, type Props } from "react-docgen-typescript";
 
@@ -56,6 +57,21 @@ const getParsedDocgen = (path: string) => {
   return parser.parse(resolve("../..", path));
 };
 
+const getSubComponentLocation = (
+  packageName: string,
+  componentPath: string,
+  subComponent: string,
+) => {
+  const candidates = [
+    `packages/${packageName}/src/${componentPath}/${subComponent}/${subComponent}.tsx`,
+    `packages/${packageName}/src/${componentPath}/${subComponent}.tsx`,
+  ];
+
+  return candidates.find((candidate) =>
+    existsSync(resolve("../..", candidate)),
+  );
+};
+
 export interface ComponentDataParams {
   name: string;
   packageName?: string;
@@ -85,7 +101,13 @@ export const getComponentData = async ({
 
   const parsedSubComponents: Record<string, Docgen> = {};
   for (const subComponent of subComponents) {
-    const subComponentLocation = `packages/${packageName}/src/${componentPath}/${subComponent}/${subComponent}.tsx`;
+    const subComponentLocation = getSubComponentLocation(
+      packageName,
+      componentPath,
+      subComponent,
+    );
+
+    if (!subComponentLocation) continue;
 
     const parsedSubComponent = getParsedDocgen(subComponentLocation);
     const cleanedSubComponentDocgen = cleanUndefinedValues(
