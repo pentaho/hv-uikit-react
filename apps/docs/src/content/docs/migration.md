@@ -1,8 +1,17 @@
 # Migration to v7
 
-UI Kit v7 is a major release with breaking changes in package names, themes, and component availability.
+UI Kit v7 is a **major release** focused on tighter integration with the Pentaho UI, and AI tools.
 
-This guide focuses on migrating from `v6.10.x` to `v7.0.0-next.x`.
+This guide focuses on migrating from `v6` to `v7`.
+
+## Suggested migration sequence
+
+1. Update all package dependencies from `@hitachivantara/*` to `@pentaho/*`.
+2. Rename `uikit-react-pentaho` usage to `uikit-react-widgets`.
+3. Remove any direct usage of `uikit-react-lab`.
+4. Remove `next` theme usage and replace `pentahoPlus` checks.
+5. Replace removed core components (`HvCarousel`, `HvStack`, etc.).
+6. Re-run visual and interaction tests for components with deep customization.
 
 ## Breaking changes
 
@@ -13,7 +22,6 @@ All public packages moved from `@hitachivantara/*` to `@pentaho/*`.
 Update every import and dependency entry.
 
 ```diff
-diff --git a/src/App.tsx b/src/App.tsx
 -import { HvButton } from "@hitachivantara/uikit-react-core";
 +import { HvButton } from "@pentaho/uikit-react-core";
 ```
@@ -26,16 +34,11 @@ diff --git a/src/App.tsx b/src/App.tsx
 If you were importing from `lab`, migrate to stable APIs where available or to `widgets` when functionality moved there.
 
 ```diff
-diff --git a/src/dashboard.tsx b/src/dashboard.tsx
 -import { HvDashboard } from "@hitachivantara/uikit-react-pentaho";
 +import { HvDashboard } from "@pentaho/uikit-react-widgets";
 ```
 
-### 2.1) Standalone icons package is no longer publicly available
-
-The standalone icons package is still present in the repository, but in v7 it is no longer publicly available as a consumer-installable package.
-
-### 2.2) Complete package mapping (v6 -> v7)
+### 2.1) Complete package mapping (v6 -> v7)
 
 The table below includes all packages that existed in `v6.10.0`, their v7 names, and current status.
 
@@ -71,10 +74,7 @@ Also, the Pentaho theme identifier was renamed:
 
 - `pentahoPlus` -> `pentaho`
 
-If your app checks `theme.name`, update any strict comparisons.
-
 ```diff
-diff --git a/packages/styles/src/index.ts b/packages/styles/src/index.ts
 -import next from "./themes/next";
  import pentaho from "./themes/pentaho";
 
@@ -84,28 +84,30 @@ diff --git a/packages/styles/src/index.ts b/packages/styles/src/index.ts
 +export const themes = { pentaho };
 ```
 
-```diff
-diff --git a/src/theme.ts b/src/theme.ts
--const isPentaho = activeTheme?.name === "pentahoPlus";
-+const isPentaho = activeTheme?.name === "pentaho";
-```
-
 ### 4) Deprecated core components removed
 
 The following components were removed from `@pentaho/uikit-react-core`:
 
-- `Carousel`
-- `Controls`
-- `Login`
-- `ScrollToHorizontal`
-- `ScrollToVertical`
-- `SimpleGrid`
-- `Stack`
+- `HvCarousel`
+- `HvControls`
+- `HvLogin`
+- `HvScrollToHorizontal`
+- `HvScrollToVertical`
+- `HvSimpleGrid`
+- `HvStack`
 
 Remove those imports and replace with alternatives in your application code.
 
+Recommended alternatives:
+
+- `HvCarousel`: use a minimal CSS carousel with horizontal scrolling and snap points (for example `overflow-x-scroll snap-x snap-mandatory`), or adopt [Embla Carousel](https://www.embla-carousel.com/).
+- `HvControls`: this was a widget/template-style component; copy/adapt the source from your `v6.x` codebase where needed.
+- `HvLogin`: this was a minimal template; use the [Login examples](https://pentaho.github.io/uikit-docs/v6.x/examples/login) as a starting point.
+- `HvScrollToHorizontal` and `HvScrollToVertical`: use `HvListContainer` + `HvListItem` with `component="a"` and `href="#your-section"`, plus CSS smooth scrolling via [`scroll-behavior`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior).
+- `HvSimpleGrid`: replace with utility-grid layouts such as `grid grid-cols-2 md:grid-cols-4`.
+- `HvStack`: replace with flex layouts such as `flex gap-sm` (row/column as needed).
+
 ```diff
-diff --git a/packages/core/src/index.ts b/packages/core/src/index.ts
 -export * from "./Carousel";
 -export * from "./Controls";
 -export * from "./Login";
@@ -132,14 +134,13 @@ Revalidate any deep customization around `Select`, tabs/canvas panels, and dropd
 
 If you rely on grid internals or legacy behavior, verify layout parity (especially spacing and breakpoint behavior).
 
-## Suggested migration sequence
+```diff
+-import MuiGrid, { type GridLegacyProps as MuiGridProps } from "@mui/material/GridLegacy";
++import MuiGrid, { type GridProps as MuiGridProps } from "@mui/material/Grid";
 
-1. Update all package dependencies from `@hitachivantara/*` to `@pentaho/*`.
-2. Rename `uikit-react-pentaho` usage to `uikit-react-widgets`.
-3. Remove any direct usage of `uikit-react-lab`.
-4. Remove `next` theme usage and replace `pentahoPlus` checks.
-5. Replace removed core components (`Carousel`, `Stack`, etc.).
-6. Re-run visual and interaction tests for components with deep customization.
+-<HvGrid item xs={12} sm={6} />
++<HvGrid size={{ xs: 12, sm: 6 }} />
+```
 
 ## Validation checklist
 
@@ -147,7 +148,3 @@ If you rely on grid internals or legacy behavior, verify layout parity (especial
 - No `@hitachivantara/uikit-react-pentaho` or `@hitachivantara/uikit-react-lab` dependencies remain.
 - No references to `themes.next`, `next`, or `pentahoPlus` remain.
 - No imports remain for removed components listed above.
-
-## Notes
-
-This guide was derived from the major-release changes introduced on the `next` branch up to `v7.0.0-next.1`.
