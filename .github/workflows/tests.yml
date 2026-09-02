@@ -76,7 +76,12 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Install Playwright
-        run: npx playwright install --with-deps --only-shell chromium
+        run: |
+          # runner images ship Microsoft apt repos that intermittently return 403,
+          # which fails apt-get update and aborts `--with-deps`
+          sudo rm -f /etc/apt/sources.list.d/microsoft*.list \
+            /etc/apt/sources.list.d/azure-cli*.list
+          npx playwright install --with-deps --only-shell chromium
 
       - name: Build dependent packages
         run: npm run build -w packages/uno-preset -w packages/styles
