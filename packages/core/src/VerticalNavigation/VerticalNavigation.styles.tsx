@@ -10,34 +10,59 @@ export const { staticClasses, useClasses } = createClasses(
       justifyContent: "flex-start",
 
       width: "280px",
+      overflow: "hidden",
+      transition: "width 300ms ease",
+      "@media (prefers-reduced-motion: reduce)": {
+        transition: "none",
+      },
 
+      colorScheme: "light",
+      padding: theme.space.sm,
+      paddingTop: 32,
       color: theme.colors.textLight,
-      backgroundColor: slate[900],
+      backgroundColor: `var(--hv-popup-nav-bg, ${slate[900]})`,
       boxShadow: `inset -1px 0 0 0 ${slate[500]}`,
       clipPath: "inset(0px -12px 0px 0px)",
 
+      "& > * + *": {
+        padding: 0,
+        paddingTop: theme.space.sm,
+        borderTop: `1px solid ${theme.alpha("border", 0.3)}`,
+      },
+      "& > * + div": {
+        borderTop: `1px solid ${slate[500]}`,
+      },
       "& > :only-child": {
         padding: theme.space.sm,
         "& .HvVerticalNavigationSlider-listContainer": { padding: 0 },
       },
-      "& > :not(nav:first-of-type)": {
-        borderTop: `1px solid ${slate[500]}`,
-        padding: theme.spacing("xs", "sm", "sm", "sm"),
+      "& > :first-child": {
+        padding: 0,
+        paddingBottom: theme.space.sm,
       },
 
-      "& > :first-of-type:not(:last-child)": {
-        borderTop: "none",
-        padding: theme.spacing("sm", "sm", "xs", "sm"),
+      ".HvVerticalNavigationPopup-wrapper:has(&)": {
+        "--hv-popup-nav-bg": slate[800],
+      },
+      ".HvVerticalNavigationPopup-container:has(> &)": {
+        borderRadius: theme.radii.round,
+        overflow: "hidden",
+      },
+      ".HvVerticalNavigationPopup-container &": {
+        padding: theme.space.sm,
+        paddingBottom: 0,
       },
     },
     collapsed: {
-      width: "fit-content",
-      "& > :first-of-type:not(:last-child)": {
-        padding: theme.spacing("sm", "xs", "xs", "xs"),
+      // calc: (padding-left + padding-right) + icon width
+      width: `calc(${theme.space.sm} * 2 + 32px)`,
+      "& > :first-child": {
+        padding: 0,
+        paddingBottom: theme.space.sm,
       },
-
-      "& > :not(nav:first-of-type)": {
-        padding: theme.spacing("xs", "xs", "sm", "xs"),
+      "& > * + *": {
+        padding: 0,
+        paddingTop: theme.space.sm,
       },
     },
 
