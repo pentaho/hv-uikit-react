@@ -893,7 +893,7 @@ export const pentaho = mergeTheme(pentahoBase, {
         },
         group: {
           "--hv-content-padding": "0px",
-          borderLeft: `1px solid ${theme.colors.border}`,
+          borderLeft: `1px solid ${theme.alpha("border", 0.3)}`,
           marginLeft: "calc(var(--hv-nav-item-padding, 0px) + 16px)",
           paddingLeft: theme.space.sm,
         },
