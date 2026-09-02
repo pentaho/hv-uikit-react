@@ -112,7 +112,7 @@ export default function Demo() {
     <HvVerticalNavigation>
       <HvVerticalNavigationTree
         mode="treeview"
-        collpasible
+        collapsible
         defaultExpanded
         aria-label="Example 3 navigation"
         selected={value}
@@ -265,6 +265,71 @@ const navigationData = [
       },
     ],
   },
+];
+```
+
+### Collapsed menu
+
+When the navigation is collapsed (`open={false}`) and `useIcons` is enabled, items are reduced to their icons. Items that have `data` no longer expand in place — they open their children in a flyout beside the rail:
+
+- **Hover** a parent item to preview its children. The flyout closes when the pointer leaves.
+- **Click** a parent item to pin the flyout open. Clicking it again, or clicking away, closes it.
+- Items without `data` are selected directly and open no flyout.
+
+Items with no `icon` fall back to the first letter of their label.
+
+```tsx live
+import { useState } from "react";
+
+export default function Demo() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("01");
+
+  return (
+    <div style={{ height: 340 }}>
+      <HvVerticalNavigation open={open} useIcons>
+        <HvVerticalNavigationHeader
+          title="Menu"
+          onCollapseButtonClick={() => setOpen((prev) => !prev)}
+          collapseButtonProps={{
+            "aria-label": "Toggle menu",
+            "aria-expanded": open,
+          }}
+        />
+        <HvVerticalNavigationTree
+          aria-label="Collapsed menu example"
+          selected={selected}
+          onChange={(event, data) => setSelected(data.id)}
+          data={navigationData}
+        />
+      </HvVerticalNavigation>
+    </div>
+  );
+}
+
+const navigationData = [
+  { id: "01", label: "Overview", icon: <Open /> },
+  {
+    id: "02",
+    label: "Analytics",
+    icon: <BarChart />,
+    data: [
+      { id: "02-01", label: "Semantic Models" },
+      { id: "02-02", label: "Business Reports" },
+      { id: "02-03", label: "Dashboards" },
+    ],
+  },
+  {
+    id: "03",
+    label: "Deployment",
+    icon: <Deploy />,
+    data: [
+      { id: "03-01", label: "Environments" },
+      { id: "03-02", label: "Pipelines" },
+    ],
+  },
+  // no `icon`, so the first letter of the label is used instead
+  { id: "04", label: "Settings" },
 ];
 ```
 
