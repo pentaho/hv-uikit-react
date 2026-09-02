@@ -8,7 +8,9 @@ export function useResizeObserver(
     if (!ref.current) return undefined;
 
     const observer = new ResizeObserver(([entry]) => {
-      onResize(entry.contentRect.width, entry.contentRect.height);
+      const { width, height } = entry.target.getBoundingClientRect();
+
+      onResize(Math.ceil(width), Math.ceil(height));
     });
 
     observer.observe(ref.current);

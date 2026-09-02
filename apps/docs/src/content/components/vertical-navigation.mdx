@@ -12,208 +12,168 @@ import { Header } from "../../components/Header";
 
 > [!NOTE]
 >
-> Use mode="disclosure" for most apps. Avoid mode="treeview" unless complex
-> hierarchy and custom keyboard interaction are required.
+> The tree defaults to `mode="disclosure"`, which suits most apps. Set
+> `mode="treeview"` for arrow-key navigation — it overrides standard keyboard
+> behavior, so only use it when the hierarchy genuinely needs it.
 
 ### Usage
 
-The example below demonstrates a typical use of the `VerticalNavigation` component, combining `VerticalNavigationTree` to render the navigation structure and `VerticalNavigationActions` to display bottom-aligned actions.
+`HvVerticalNavigationTree` renders a `data` array; `HvVerticalNavigationActions` pins actions to the bottom. Each child is separated by a divider, so grouping is a matter of how you nest them.
 
 ```tsx live
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 export default function Demo() {
-  const [value, setValue] = useState("00");
+  const [selected, setSelected] = useState("analytics-reports");
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(true);
+  const searchRef = useRef(null);
+
+  const sections = useMemo(
+    () => filterNavigation(mainSections, query),
+    [query],
+  );
+
+  const treeProps = {
+    selected,
+    onChange: (event, data) => setSelected(data.id),
+  };
+
+  // on the collapsed rail the field becomes an icon that reopens the navigation
+  const openSearch = () => {
+    setOpen(true);
+    requestAnimationFrame(() => searchRef.current?.focus());
+  };
 
   return (
-    <HvVerticalNavigation>
+    <HvVerticalNavigation open={open} useIcons>
       <HvVerticalNavigationTree
-        aria-label="Example 1 navigation"
-        selected={value}
-        onChange={(event, data) => {
-          if (data.id === "02-01-01") {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          setValue(data.id);
-        }}
-        data={navigationData}
+        aria-label="Quick access"
+        data={quickAccess}
+        {...treeProps}
       />
+      <section className="flex flex-col gap-sm">
+        {open ? (
+          <HvSearchInput
+            ref={searchRef}
+            aria-label="Menu search"
+            placeholder="Menu search..."
+            value={query}
+            onChange={(event, value) => setQuery(value)}
+          />
+        ) : (
+          <HvIconButton
+            title="Menu search"
+            onClick={openSearch}
+            // minimized tree items center themselves; match them
+            style={{ alignSelf: "center" }}
+          >
+            {/* the button resets the color the nav sets on its children */}
+            <Search color="textLight" />
+          </HvIconButton>
+        )}
+        <HvVerticalNavigationTree
+          // remounting re-applies defaultExpanded, so matches open on their own
+          key={query}
+          collapsible
+          aria-label="Sections"
+          defaultExpanded={query ? true : ["analytics"]}
+          data={sections}
+          {...treeProps}
+        />
+      </section>
       <HvVerticalNavigationActions>
-        <HvVerticalNavigationAction label="Profile" icon={<User />} />
-        <HvVerticalNavigationAction label="Logout" icon={<LogOut />} />
+        <HvVerticalNavigationAction
+          label={open ? "Collapse menu" : "Expand menu"}
+          icon={open ? <Backwards /> : <Forwards />}
+          onClick={() => setOpen((prev) => !prev)}
+        />
       </HvVerticalNavigationActions>
     </HvVerticalNavigation>
   );
 }
 
-const navigationData = [
-  { id: "00", label: "Overview" },
-  { id: "01", label: "Analytics" },
-  {
-    id: "02",
-    label: "Storage",
-    data: [
-      {
-        id: "02-01",
-        label: "Cloud",
-        data: [
-          {
-            id: "02-01-01",
-            label: "Servers",
-            href: "https://example.com/servers.html",
-          },
-          {
-            id: "02-01-02",
-            label: "HCP Anywhere",
-          },
-          {
-            id: "02-01-03",
-            label: "This Computer",
-            disabled: true,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "03",
-    label: "Administration",
-    href: "#admin",
-    data: [
-      {
-        id: "03-01",
-        label: "Rest API",
-        href: "#admin-rest",
-        data: [
-          {
-            id: "03-01-01",
-            label: "Log Bundle",
-            href: "#admin-rest-logs",
-          },
-        ],
-      },
-    ],
-  },
+/** Keeps matching items, and parents that still have a matching child. */
+const filterNavigation = (items, query) => {
+  const q = query.trim().toLowerCase();
+  if (!q) return items;
+
+  return items.flatMap((item) => {
+    const children = item.data ? filterNavigation(item.data, q) : [];
+
+    if (children.length > 0) return [{ ...item, data: children }];
+    if (item.label.toLowerCase().includes(q))
+      return [{ ...item, data: undefined }];
+    return [];
+  });
+};
+
+const quickAccess = [
+  { id: "home", label: "Home", icon: <Home /> },
+  { id: "marketplace", label: "Data Marketplace", icon: <Storage /> },
+  { id: "favorites", label: "Favorites", icon: <Favorite /> },
 ];
-```
 
-### Tree view
-
-Use `mode="treeview"` to enable keyboard navigation with arrow keys. Press Enter to expand/collapse or select items. Set `collapsible` to `true` to allow collapsing non-leaf nodes.
-
-```tsx live
-import { useState } from "react";
-
-export default function Demo() {
-  const [value, setValue] = useState("01-01");
-
-  return (
-    <HvVerticalNavigation>
-      <HvVerticalNavigationTree
-        mode="treeview"
-        collpasible
-        defaultExpanded
-        aria-label="Example 3 navigation"
-        selected={value}
-        onChange={(event, data) => setValue(data.id)}
-        data={navigationData}
-      />
-      <HvVerticalNavigationActions>
-        <HvVerticalNavigationAction label="Profile" icon={<User />} />
-        <HvVerticalNavigationAction label="Logout" icon={<LogOut />} />
-      </HvVerticalNavigationActions>
-    </HvVerticalNavigation>
-  );
-}
-
-const navigationData = [
-  { id: "00", label: "Installation Overview" },
+const mainSections = [
+  { id: "explore", label: "Explore", icon: <Map /> },
+  { id: "transform", label: "Transform", icon: <Machine /> },
+  { id: "governance", label: "Data Governance", icon: <Lock /> },
   {
-    id: "01",
-    label: "Hardware",
+    id: "analytics",
+    label: "Business Analytics",
+    icon: <BarChart />,
     data: [
+      { id: "analytics-models", label: "Semantic Models", icon: <DataStore /> },
+      { id: "analytics-reports", label: "Business Reports", icon: <Doc /> },
       {
-        id: "01-01",
-        label: "Ambient Monitoring",
-      },
-      {
-        id: "01-02",
-        label: "Server Status Summary",
+        id: "analytics-dashboards",
+        label: "Business Dashboards",
+        icon: <LineChart />,
       },
     ],
   },
-  {
-    id: "02",
-    label: "System",
-    data: [
-      {
-        id: "02-01",
-        label: "Buckets",
-      },
-      {
-        id: "02-02",
-        label: "Admin Users",
-      },
-      {
-        id: "02-03",
-        label: "Log Bundle",
-        data: [
-          {
-            id: "02-03-01",
-            label: "Rest API",
-          },
-          {
-            id: "02-03-02",
-            label: "License",
-          },
-        ],
-      },
-    ],
-  },
+  { id: "management", label: "Management", icon: <Deploy /> },
+  { id: "monitoring", label: "Monitoring", icon: <Preview /> },
+  { id: "settings", label: "Settings", icon: <Settings /> },
 ];
 ```
 
 ### Collapsible
 
-To make the navigation collapsible, use `HvVerticalNavigationHeader` with a collapse button. Control the open state via the `open` prop and show the button by passing a handler to `onCollapseButtonClick`.
+Use `HvVerticalNavigationHeader` with `onCollapseButtonClick` to add a collapse button, and `useIcons` to show icons when collapsed. Items without an `icon` show the first letter of their label.
 
-Enable `useIcons` to display icons when collapsed—defaults to the first letter of the label if no icon is provided.
+When collapsed, items with `data` open their children in a popup: hover to open it, click to keep it open. Items without `data` are selected on click.
 
 ```tsx live
 import { useState } from "react";
 
 export default function Demo() {
-  const [value, setValue] = useState("01-01");
-  const [show, setShow] = useState(false);
-  const [icons, setIcons] = useState(false);
-
-  const handleIsExpanded = () => {
-    setShow(!show);
-  };
+  const [selected, setSelected] = useState("analytics-reports");
+  const [open, setOpen] = useState(true);
+  const [icons, setIcons] = useState(true);
 
   return (
-    <div className="flex gap-xs" style={{ height: 400 }}>
+    <div className="flex gap-sm">
       <HvCheckBox
-        label="Show Icons"
+        label="Show icons"
         checked={icons}
-        onChange={() => setIcons(!icons)}
+        onChange={() => setIcons((prev) => !prev)}
       />
-      <HvVerticalNavigation open={show} useIcons={icons}>
+      <HvVerticalNavigation open={open} useIcons={icons}>
         <HvVerticalNavigationHeader
           title="Menu"
-          onCollapseButtonClick={handleIsExpanded}
+          onCollapseButtonClick={() => setOpen((prev) => !prev)}
           collapseButtonProps={{
-            "aria-label": "collapseButton",
-            "aria-expanded": show,
+            "aria-label": "Toggle menu",
+            "aria-expanded": open,
           }}
         />
         <HvVerticalNavigationTree
           collapsible
-          defaultExpanded
-          aria-label="Example 3 navigation"
-          selected={value}
-          onChange={(event, data) => setValue(data.id)}
+          defaultExpanded={["analytics"]}
+          aria-label="Sections"
+          selected={selected}
+          onChange={(event, data) => setSelected(data.id)}
           data={navigationData}
         />
       </HvVerticalNavigation>
@@ -222,75 +182,39 @@ export default function Demo() {
 }
 
 const navigationData = [
-  { id: "00", label: "Installation Overview", icon: <Open /> },
+  { id: "explore", label: "Explore", icon: <Map /> },
   {
-    id: "01",
-    label: "Hardware",
+    id: "analytics",
+    label: "Business Analytics",
     icon: <BarChart />,
     data: [
-      { id: "01-01", label: "Ambient Monitoring", icon: <BarChart /> },
-      { id: "01-02", label: "Server Status Summary" },
+      { id: "analytics-models", label: "Semantic Models", icon: <DataStore /> },
+      { id: "analytics-reports", label: "Business Reports", icon: <Doc /> },
     ],
   },
-  {
-    id: "02",
-    label: "System",
-    icon: <Deploy />,
-    data: [
-      { id: "02-01", label: "Buckets", icon: <Deploy /> },
-      { id: "02-02", label: "Admin Users" },
-      {
-        id: "02-03",
-        label: "Log Bundle",
-        data: [
-          { id: "02-03-01", label: "Rest API" },
-          { id: "02-03-02", label: "License" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "03",
-    label: "System 2",
-    data: [
-      { id: "03-01", label: "Buckets" },
-      { id: "03-02", label: "Admin Users" },
-      {
-        id: "03-03",
-        label: "Log Bundle",
-        data: [
-          { id: "03-03-01", label: "Rest API" },
-          { id: "03-03-02", label: "License" },
-        ],
-      },
-    ],
-  },
+  { id: "management", label: "Management", icon: <Deploy /> },
+  { id: "settings", label: "Settings" },
 ];
 ```
 
 ### Slider
 
-If you set the `slider` prop to `true`, the navigation will be displayed as a slider instead of a tree. When the user selects an item that contains
-children, the content of the navigation will be replaced with the children of the selected item.
-
-You can use this functionality to display the navigation in regular tree view mode and switch to slider mode when the
-screen size is lower that a certain threshold.
+`slider` replaces the content with an item's children instead of expanding in place, one level at a time. Use it when the screen is too narrow for a nested tree.
 
 ```tsx live
 import { useState } from "react";
 
 export default function Demo() {
-  const [value, setValue] = useState("menu1-3");
+  const [selected, setSelected] = useState("explore");
 
   return (
-    <HvVerticalNavigation open slider>
+    <HvVerticalNavigation open slider useIcons>
       <HvVerticalNavigationHeader title="Menu" />
       <HvVerticalNavigationTree
         collapsible
-        defaultExpanded
-        aria-label="Example 4 Slider Mode"
-        selected={value}
-        onChange={(event, data) => setValue(data.id)}
+        aria-label="Sections"
+        selected={selected}
+        onChange={(event, data) => setSelected(data.id)}
         data={navigationData}
       />
     </HvVerticalNavigation>
@@ -298,77 +222,32 @@ export default function Demo() {
 }
 
 const navigationData = [
+  { id: "explore", label: "Explore", icon: <Map /> },
   {
-    id: "menu1",
-    label: "Menu 1",
-    path: "",
-    icon: <Open />,
+    id: "analytics",
+    label: "Business Analytics",
+    icon: <BarChart />,
     data: [
       {
-        id: "menu1-1",
-        label: "Menu 1-1",
-        path: "",
-        icon: <Open />,
-        parent: null,
-      },
-      {
-        id: "menu1-2",
-        label: "Menu 1-2",
-        path: "",
-        icon: <BarChart />,
+        id: "analytics-models",
+        label: "Semantic Models",
+        icon: <DataStore />,
         data: [
-          {
-            id: "menu1-2-1",
-            label: "Menu 1-2-1",
-            path: "",
-            icon: <Open />,
-            parent: null,
-          },
-          {
-            id: "menu1-2-2",
-            label: "Menu 1-2-2",
-            path: "",
-            icon: <BarChart />,
-            parent: null,
-          },
-          {
-            id: "menu1-2-3",
-            label: "Menu 1-2-3",
-            path: "",
-            icon: <Deploy />,
-            parent: null,
-          },
+          { id: "analytics-models-sales", label: "Sales" },
+          { id: "analytics-models-inventory", label: "Inventory" },
         ],
-        parent: null,
       },
-      {
-        id: "menu1-3",
-        label: "Menu 1-3",
-        path: "",
-        icon: <Deploy />,
-        parent: null,
-      },
+      { id: "analytics-reports", label: "Business Reports", icon: <Doc /> },
     ],
-    parent: null,
   },
-  {
-    id: "menu2",
-    label: "Menu 2 with a very big name that should be truncated",
-    path: "",
-    icon: <BarChart />,
-    parent: null,
-  },
-  {
-    id: "menu3",
-    label: "Menu 3",
-    path: "",
-    icon: <Deploy />,
-    parent: null,
-  },
+  { id: "management", label: "Management", icon: <Deploy /> },
+  { id: "settings", label: "Settings" },
 ];
 ```
 
 ### Custom content
+
+`HvVerticalNavigation` accepts arbitrary children, so branding or a primary action can sit alongside the tree.
 
 ```tsx live
 import { useState } from "react";
@@ -397,29 +276,19 @@ export default function Demo() {
           label="Create"
         />
       </div>
-      <HvVerticalNavigationTree data={data} />
+      <HvVerticalNavigationTree aria-label="Sections" data={navigationData} />
       <HvVerticalNavigationActions>
-        <div className="relative">
-          {!collapsed && (
-            <Backwards className="absolute pointer-events-none top-0 right-0" />
-          )}
-          <HvVerticalNavigationAction
-            label={collapsed ? "Expand menu" : "Collapse menu"}
-            icon={collapsed ? <Forwards /> : undefined}
-            onClick={() => setCollapsed((prev) => !prev)}
-          />
-        </div>
+        <HvVerticalNavigationAction
+          label={collapsed ? "Expand menu" : "Collapse menu"}
+          icon={collapsed ? <Forwards /> : <Backwards />}
+          onClick={() => setCollapsed((prev) => !prev)}
+        />
       </HvVerticalNavigationActions>
     </HvVerticalNavigation>
   );
 }
 
-const CollapsibleButton = ({
-  collapsed,
-  label,
-  icon,
-  ...others
-}: CollapsibleButtonProps) => {
+const CollapsibleButton = ({ collapsed, label, icon, ...others }) => {
   const props = collapsed
     ? { "aria-label": String(label), children: icon, icon: true }
     : { startIcon: icon, children: label };
@@ -427,10 +296,18 @@ const CollapsibleButton = ({
   return <HvButton {...props} {...others} />;
 };
 
-const data = [
-  { id: "00", label: "Jobs", icon: <Job /> },
-  { id: "01", label: "Charts", icon: <BarChart /> },
-  { id: "02", label: "Deployment", icon: <Deploy /> },
-  { id: "03", label: "Cloud", icon: <Cloud /> },
+const navigationData = [
+  { id: "explore", label: "Explore", icon: <Map /> },
+  {
+    id: "analytics",
+    label: "Business Analytics",
+    icon: <BarChart />,
+    data: [
+      { id: "analytics-models", label: "Semantic Models", icon: <DataStore /> },
+      { id: "analytics-reports", label: "Business Reports", icon: <Doc /> },
+    ],
+  },
+  { id: "management", label: "Management", icon: <Deploy /> },
+  { id: "settings", label: "Settings" },
 ];
 ```
