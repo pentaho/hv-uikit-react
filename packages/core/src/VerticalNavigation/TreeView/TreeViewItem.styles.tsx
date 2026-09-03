@@ -2,7 +2,7 @@ import { createClasses } from "@hitachivantara/uikit-react-utils";
 import { theme } from "@hitachivantara/uikit-styles";
 
 import { avatarClasses } from "../../Avatar";
-import { outlineStyles } from "../../utils/focusUtils";
+import { insetOutlineStyles } from "../../utils/focusUtils";
 
 const selected = {
   background: theme.colors.bgPageSecondary,
@@ -57,6 +57,11 @@ export const { staticClasses, useClasses } = createClasses(
         "& $icon": {
           marginRight: 0,
           width: 32,
+          justifyContent: "center",
+          "> div:first-of-type": {
+            padding: 0,
+            marginLeft: 0,
+          },
         },
       },
       "$expandable>&": {
@@ -72,11 +77,11 @@ export const { staticClasses, useClasses } = createClasses(
       ":not($disabled>&):not($selected>&).focus-visible": { ...hover },
 
       "*:focus-visible $focused>&": {
-        ...outlineStyles,
+        ...insetOutlineStyles,
       },
 
       ".focus-visible $focused>&": {
-        ...outlineStyles,
+        ...insetOutlineStyles,
       },
       "$focused>&": {
         ...hover,
@@ -91,11 +96,11 @@ export const { staticClasses, useClasses } = createClasses(
       },
 
       "&:focus-visible": {
-        ...outlineStyles,
+        ...insetOutlineStyles,
       },
 
       "&.focus-visible": {
-        ...outlineStyles,
+        ...insetOutlineStyles,
       },
 
       // cursor
