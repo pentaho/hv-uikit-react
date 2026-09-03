@@ -82,8 +82,7 @@ export const Test: StoryObj<HvVerticalNavigationProps> = {
     ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
-    const buttons = canvas.getAllByRole("button", { name: "collapseButton" });
-    await userEvent.click(buttons[0]);
+    // no collapse click: it animates the width, moving the popup anchor
     const hwButtons = canvas.getAllByRole("button", { name: /hardware/i });
     expect(hwButtons).toHaveLength(2);
     await userEvent.click(hwButtons[1]);
