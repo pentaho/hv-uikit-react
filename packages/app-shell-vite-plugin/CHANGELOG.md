@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.5.3...@hitachivantara/app-shell-vite-plugin@2.5.4) (2026-09-03)
+
+**Note:** Version bump only for package @hitachivantara/app-shell-vite-plugin
+
 ## [2.5.3](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-vite-plugin@2.5.2...@hitachivantara/app-shell-vite-plugin@2.5.3) (2026-08-24)
 
 **Note:** Version bump only for package @hitachivantara/app-shell-vite-plugin

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.6.5...@hitachivantara/uikit-config@0.6.6) (2026-09-03)
+
+### Bug Fixes
+
+* **config:** restore prettier plugin dependency ([#5260](https://github.com/pentaho/hv-uikit-react/issues/5260)) ([6869b78](https://github.com/pentaho/hv-uikit-react/commit/6869b78e3aca626c9596890ba6893262cd4064f9))
+
 ## [0.6.5](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-config@0.6.4...@hitachivantara/uikit-config@0.6.5) (2026-07-15)
 
 **Note:** Version bump only for package @hitachivantara/uikit-config

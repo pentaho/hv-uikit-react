@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.5.0...@hitachivantara/app-shell-ui@2.6.0) (2026-09-03)
+
+### Features
+
+* **VerticalNavigation:** update styles to PD 0.12 ([#5209](https://github.com/pentaho/hv-uikit-react/issues/5209)) ([5b63692](https://github.com/pentaho/hv-uikit-react/commit/5b6369250b4009cf9ef3900bc44aefd516b3eded))
+
 # [2.5.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.4.0...@hitachivantara/app-shell-ui@2.5.0) (2026-08-24)
 
 ### Bug Fixes

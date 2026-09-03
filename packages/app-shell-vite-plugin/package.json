@@ -1,6 +1,6 @@
 {
   "name": "@hitachivantara/app-shell-vite-plugin",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@hitachivantara/app-shell-services": "^2.0.6",
-    "@hitachivantara/app-shell-shared": "^2.3.6",
-    "@hitachivantara/app-shell-ui": "^2.5.0",
+    "@hitachivantara/app-shell-shared": "^2.3.7",
+    "@hitachivantara/app-shell-ui": "^2.6.0",
     "@hitachivantara/uikit-react-shared": "^6.0.9",
     "@rollup/plugin-virtual": "^3.0.1",
     "es-module-shims": "^1.6.3",
