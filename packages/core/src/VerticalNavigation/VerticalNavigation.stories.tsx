@@ -54,6 +54,23 @@ export const Test: StoryObj<HvVerticalNavigationProps> = {
   play: async ({ canvas, userEvent }) => {
     const buttons = canvas.getAllByRole("button", { name: "collapseButton" });
     await userEvent.click(buttons[0]);
+
+    // expanding animates the width, which shifts the navigation the popup
+    // anchors to. the popup measures its anchor once, so wait for the
+    // transition before opening it — with a fallback for reduced motion
+    const nav = buttons[0].closest<HTMLElement>(".HvVerticalNavigation-root");
+    await new Promise<void>((resolve) => {
+      const timeout = setTimeout(resolve, 400);
+      nav?.addEventListener(
+        "transitionend",
+        () => {
+          clearTimeout(timeout);
+          resolve();
+        },
+        { once: true },
+      );
+    });
+
     const hwButtons = canvas.getAllByRole("button", { name: /hardware/i });
     expect(hwButtons).toHaveLength(2);
     await userEvent.click(hwButtons[1]);
