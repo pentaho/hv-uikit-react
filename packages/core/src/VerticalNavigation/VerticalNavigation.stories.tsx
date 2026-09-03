@@ -52,11 +52,15 @@ export const Test: StoryObj<HvVerticalNavigationProps> = {
     ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
+    // expand the last navigation: it grows rightward, so it doesn't move the
+    // popup anchor below — the popup measures its anchor once, and a moving
+    // anchor leaves it at a stale position
     const buttons = canvas.getAllByRole("button", { name: "collapseButton" });
-    await userEvent.click(buttons[0]);
+    await userEvent.click(buttons[buttons.length - 1]);
+
     const hwButtons = canvas.getAllByRole("button", { name: /hardware/i });
     expect(hwButtons).toHaveLength(2);
-    await userEvent.click(hwButtons[1]);
+    await userEvent.click(hwButtons[0]);
   },
   render: () => (
     <div className="flex gap-sm">
