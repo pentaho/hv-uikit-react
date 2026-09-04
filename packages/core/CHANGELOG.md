@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/uikit-react-core@7.0.0-next.1...@pentaho/uikit-react-core@7.0.0-next.2) (2026-09-04)
+
+### Bug Fixes
+
+- make pentaho conditionals the default ([#5258](https://github.com/pentaho/hv-uikit-react/issues/5258)) ([496e325](https://github.com/pentaho/hv-uikit-react/commit/496e325459872633143e4b05c1c5c3d9a8c48f04))
+- **VerticalNavigation:** clipped focus ring and off-center icons when collapsed ([#5266](https://github.com/pentaho/hv-uikit-react/issues/5266)) ([752439c](https://github.com/pentaho/hv-uikit-react/commit/752439c93e7eb325a2f560894e17c60a57cf5a8e))
+
+### Features
+
+- **colors:** remove NEXT colors ([#5250](https://github.com/pentaho/hv-uikit-react/issues/5250)) ([810da40](https://github.com/pentaho/hv-uikit-react/commit/810da400a4a4114aa12419375428ee8ac464eca5))
+- remove deprecated classes & props ([#5257](https://github.com/pentaho/hv-uikit-react/issues/5257)) ([e0db30b](https://github.com/pentaho/hv-uikit-react/commit/e0db30b6d94d7567a81d5e5e4743f673fb96d658))
+- **VerticalNavigation:** update styles to PD 0.12 ([#5209](https://github.com/pentaho/hv-uikit-react/issues/5209)) ([2eda525](https://github.com/pentaho/hv-uikit-react/commit/2eda5257ebaf31d79aefa48a2e228d3b4894d166))
+
+**Note:** Version bump only for package @pentaho/uikit-react-core
+
 # 7.0.0-next.1 (2026-08-21)
 
 ### Bug Fixes

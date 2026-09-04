@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/uikit-styles@7.0.0-next.1...@pentaho/uikit-styles@7.0.0-next.2) (2026-09-04)
+
+### Features
+
+- **colors:** remove NEXT colors ([#5250](https://github.com/pentaho/hv-uikit-react/issues/5250)) ([810da40](https://github.com/pentaho/hv-uikit-react/commit/810da400a4a4114aa12419375428ee8ac464eca5))
+
+**Note:** Version bump only for package @pentaho/uikit-styles
+
 # 7.0.0-next.1 (2026-08-21)
 
 ### Features

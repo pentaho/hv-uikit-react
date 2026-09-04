@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-next.2](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/uikit-uno-preset@7.0.0-next.1...@pentaho/uikit-uno-preset@7.0.0-next.2) (2026-09-04)
+
+### Bug Fixes
+
+- **uno:** keep existing min/max width breakpoints ([#5252](https://github.com/pentaho/hv-uikit-react/issues/5252)) ([24141d0](https://github.com/pentaho/hv-uikit-react/commit/24141d075d6f13af8b36b89936c7bdcaca375f11))
+
+**Note:** Version bump only for package @pentaho/uikit-uno-preset
+
 # 7.0.0-next.1 (2026-08-21)
 
 ### Bug Fixes
