@@ -1,17 +1,26 @@
 # Migration to v7
 
-UI Kit v7 is a **major release** focused on tighter integration with the Pentaho UI, and AI tools.
+UI Kit v7 is a **major release** that completes the move to Pentaho. Packages now ship under the `@pentaho/*` scope, Pentaho is the single theme, and the NEXT and v5 compatibility layers have been retired.
 
-This guide focuses on migrating from `v6` to `v7`.
+Changes fall into four areas:
+
+- **Packages** — new scope, one renamed, one removed, two no longer published
+- **Theming** — NEXT theme and the v5 compatibility colors removed; default font is now Inter
+- **Components** — some components, props, and style classes retired.
+- **Internals** — `@mui/base` replaced by `@base-ui/react`; `HvGrid` migrated to the latest MUI Grid.
+
+This guide covers migrating from `v6` to `v7`.
 
 ## Suggested migration sequence
 
 1. Update all package dependencies from `@hitachivantara/*` to `@pentaho/*`.
 2. Rename `uikit-react-pentaho` usage to `uikit-react-widgets`.
-3. Remove any direct usage of `uikit-react-lab`.
+3. Replace removed `uikit-react-lab` components and any direct `uikit-react-icons` usage.
 4. Remove `next` theme usage and replace `pentahoPlus` checks.
 5. Replace removed core components (`HvCarousel`, `HvStack`, etc.).
-6. Re-run visual and interaction tests for components with deep customization.
+6. Update renamed props and classes.
+7. Replace removed v5 compatibility color tokens.
+8. Re-run visual and interaction tests for components with deep customization.
 
 ## Breaking changes
 
@@ -26,21 +35,11 @@ Update every import and dependency entry.
 +import { HvButton } from "@pentaho/uikit-react-core";
 ```
 
-### 2) Widgets package rename + lab package removal
+`@pentaho/uikit-react-core` also adds `@mui/utils` (`^7.0.2`) as a peer dependency — install it alongside the existing `@mui/material` peer.
 
-- `@hitachivantara/uikit-react-pentaho` was renamed to `@pentaho/uikit-react-widgets`.
-- `@hitachivantara/uikit-react-lab` was removed.
+### 2) Complete package mapping (v6 → v7)
 
-If you were importing from `lab`, migrate to stable APIs where available or to `widgets` when functionality moved there.
-
-```diff
--import { HvDashboard } from "@hitachivantara/uikit-react-pentaho";
-+import { HvDashboard } from "@pentaho/uikit-react-widgets";
-```
-
-### 2.1) Complete package mapping (v6 -> v7)
-
-The table below includes all packages that existed in `v6.10.0`, their v7 names, and current status.
+Every package that existed in `v6.10.0`, with its v7 name and status.
 
 | v6 package                                | v7 package                         | Status in v7         |
 | ----------------------------------------- | ---------------------------------- | -------------------- |
@@ -57,36 +56,92 @@ The table below includes all packages that existed in `v6.10.0`, their v7 names,
 | `@hitachivantara/uikit-react-code-editor` | `@pentaho/uikit-react-code-editor` | Renamed, public      |
 | `@hitachivantara/uikit-react-core`        | `@pentaho/uikit-react-core`        | Renamed, public      |
 | `@hitachivantara/uikit-react-icons`       | `@pentaho/uikit-react-icons`       | Renamed, now private |
+| `@hitachivantara/uikit-react-lab`         | —                                  | **Removed**          |
+| `@hitachivantara/uikit-react-pentaho`     | `@pentaho/uikit-react-widgets`     | **Renamed**, public  |
 | `@hitachivantara/uikit-react-shared`      | `@pentaho/uikit-react-shared`      | Renamed, public      |
 | `@hitachivantara/uikit-react-utils`       | `@pentaho/uikit-react-utils`       | Renamed, public      |
 | `@hitachivantara/uikit-react-viz`         | `@pentaho/uikit-react-viz`         | Renamed, public      |
 | `@hitachivantara/uikit-styles`            | `@pentaho/uikit-styles`            | Renamed, public      |
 | `@hitachivantara/uikit-uno-preset`        | `@pentaho/uikit-uno-preset`        | Renamed, public      |
 
-### 3) NEXT theme removed
+Packages marked _private_ are no longer published to npm.
+
+### 3) Widgets package rename + lab package removal
+
+- `@hitachivantara/uikit-react-pentaho` was renamed to `@pentaho/uikit-react-widgets`.
+- `@hitachivantara/uikit-react-lab` was removed.
+
+`@pentaho/uikit-react-widgets` exports `HvCanvas` (renamed from `pentaho`) and `HvDashboard` (moved from `lab`).
+
+```diff
+-import { HvCanvas } from "@hitachivantara/uikit-react-pentaho";
+-import { HvDashboard } from "@hitachivantara/uikit-react-lab";
++import { HvCanvas, HvDashboard } from "@pentaho/uikit-react-widgets";
+```
+
+The remaining `lab` components don't ship in v7:
+
+- `HvBlade` and `HvBlades`
+- `HvFlow`
+- `HvStepNavigation`
+- `HvWizard`
+
+If you rely on any of these, copy the source from your `v6.x` codebase before upgrading — it ports across with minimal changes.
+
+### 4) Icons package no longer published
+
+`@hitachivantara/uikit-react-icons` was public in v6. In v7 the package is private, and `@pentaho/uikit-react-core` no longer depends on it.
+
+v7 doesn't ship a direct replacement, so if your application imports icon components directly you'll want to bring your own icon set.
+
+```diff
+-import { Info } from "@hitachivantara/uikit-react-icons";
+```
+
+### 5) NEXT theme removed and Pentaho theme renamed
 
 The NEXT theme is no longer exported.
 
 - Removed export: `next`
 - Removed bundle entry: `themes.next`
 
-Also, the Pentaho theme identifier was renamed:
-
-- `pentahoPlus` -> `pentaho`
-
 ```diff
--import next from "./themes/next";
- import pentaho from "./themes/pentaho";
-
--export { next, pentaho };
--export const themes = { next, pentaho };
-+export { pentaho };
-+export const themes = { pentaho };
+-import { next } from "@hitachivantara/uikit-styles";
++import { pentaho } from "@pentaho/uikit-styles";
 ```
 
-### 4) Deprecated core components removed
+The Pentaho theme was also renamed: its `name` is now `pentaho` instead of `pentahoPlus`. This is a runtime value, so update any comparisons and any CSS or selectors keyed on the `data-theme` attribute.
 
-The following components were removed from `@pentaho/uikit-react-core`:
+```diff
+-const isPentahoTheme = activeTheme?.name === "pentahoPlus";
++const isPentahoTheme = activeTheme?.name === "pentaho";
+```
+
+```diff
+-[data-theme="pentahoPlus"] { ... }
++[data-theme="pentaho"] { ... }
+```
+
+### 6) v5 compatibility color tokens removed
+
+`theme.colors` no longer carries the v5 palette (`primary_80`, `secondary_60`, `atmo2`–`atmo4`, `base_light` / `base_dark`) or the legacy visualization shades (`cat1_20` … `cat12_180`, `cat13`–`cat28`) — about 130 tokens.
+
+The current semantic tokens, base colors and visualization shades `cat1`–`cat12` are unchanged, and TypeScript flags every removed one.
+
+### 7) Default font changed
+
+The default body font changed from Open Sans to Inter.
+
+```diff
+-font-family: "Open Sans", Arial, Helvetica, sans-serif;
++font-family: "Inter", Arial, Helvetica, sans-serif;
+```
+
+If your application relied on Open Sans being bundled, you can load it yourself.
+
+### 8) Core components removed
+
+The following components are no longer part of `@pentaho/uikit-react-core`. They weren't deprecated in v6, so it's worth searching for them directly — a clean v6 build won't flag them:
 
 - `HvCarousel`
 - `HvControls`
@@ -95,8 +150,6 @@ The following components were removed from `@pentaho/uikit-react-core`:
 - `HvScrollToVertical`
 - `HvSimpleGrid`
 - `HvStack`
-
-Remove those imports and replace with alternatives in your application code.
 
 Recommended alternatives:
 
@@ -107,17 +160,29 @@ Recommended alternatives:
 - `HvSimpleGrid`: replace with utility-grid layouts such as `grid grid-cols-2 md:grid-cols-4`.
 - `HvStack`: replace with flex layouts such as `flex gap-sm` (row/column as needed).
 
+### 9) Props and style classes removed
+
+Most of these were deprecated during v6. `disableClear`, `disableRevealPassword`, `disableSearchButton`, and `semantic` weren't, so it's worth searching for those directly.
+
+| Component                     | Removed                                                        | Replacement                                                         |
+| ----------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `HvInput`, `HvSearchInput`    | `disableClear`, `disableRevealPassword`, `disableSearchButton` | `hideClear`, `hideRevealPassword`, `hideSearchButton`               |
+| `HvBannerContent`             | `content`                                                      | `children`                                                          |
+| `HvSlider`                    | `onBeforeChange`, `onAfterChange`                              | `onChange`                                                          |
+| `HvOverflowTooltip`           | `tooltipsProps`                                                | pass tooltip props directly                                         |
+| `HvTableHeader`               | `classes.sortableHeaderText`                                   | target `.HvTableHeader-headerText` within `.HvTableHeader-sortable` |
+| `HvTableHeader`               | `classes.sortIcon`                                             | `classes.sortButton`                                                |
+| `HvBulkActions`               | `semantic`, `classes.semantic`                                 | removed — action buttons are always `secondaryGhost`                |
+| `HvBreadCrumb`                | `classes.a`, and the `HvBreadCrumbPage` class namespace        | `classes.link`, or `classes.currentPage`                            |
+| `HvBreadCrumb`                | `classes.centerContainer`, `classes.separatorContainer`        | target `.HvPathElement-centerContainer` / `-separatorContainer`     |
+| `HvCanvasSidePanel` (widgets) | `classes.handleOpen`, `classes.handleClose`                    | `classes.handle` with `[aria-expanded]`                             |
+
 ```diff
--export * from "./Carousel";
--export * from "./Controls";
--export * from "./Login";
--export * from "./ScrollToHorizontal";
--export * from "./ScrollToVertical";
--export * from "./SimpleGrid";
--export * from "./Stack";
+-<HvInput disableClear disableSearchButton />
++<HvInput hideClear hideSearchButton />
 ```
 
-### 5) Internal base primitives migrated
+### 10) Internal base primitives migrated
 
 Core and widgets internals migrated from `@mui/base` to `@base-ui/react`.
 
@@ -126,25 +191,35 @@ For most consumers this is transparent, but it can affect:
 - custom style overrides that target internal DOM/class structure
 - test selectors coupled to internal markup
 
-Revalidate any deep customization around `Select`, tabs/canvas panels, and dropdown-like controls.
+It's worth revalidating any deep customization around `Select`, tabs/canvas panels, and dropdown-like controls.
 
-### 6) Grid implementation update
+### 11) Grid implementation update
 
-`HvGrid` migrated from legacy MUI Grid APIs to current MUI Grid APIs.
-
-If you rely on grid internals or legacy behavior, verify layout parity (especially spacing and breakpoint behavior).
+`HvGrid` now wraps `@mui/material/Grid` instead of `@mui/material/GridLegacy`. The `item` prop and the per-breakpoint props `xs`, `sm`, `md`, `lg`, `xl` were removed — sizing goes through `size`.
 
 ```diff
--import MuiGrid, { type GridLegacyProps as MuiGridProps } from "@mui/material/GridLegacy";
-+import MuiGrid, { type GridProps as MuiGridProps } from "@mui/material/Grid";
-
 -<HvGrid item xs={12} sm={6} />
 +<HvGrid size={{ xs: 12, sm: 6 }} />
+```
+
+`zeroMinWidth` was also removed; use `style={{ minWidth: 0 }}`.
+
+`spacing`, `rowSpacing`, `columnSpacing`, and `columns` are unchanged, but the underlying layout implementation differs — worth a visual check on nested or complex grids.
+
+### 12) CLI templates removed
+
+Template scaffolding has been retired from `@pentaho/uikit-cli`. The `create` command now uses a single baseline and no longer takes `--templates`.
+
+```diff
+-npx @pentaho/uikit-cli@latest create MyAppName --templates Form
++npx @pentaho/uikit-cli@latest create MyAppName
 ```
 
 ## Validation checklist
 
 - No `@hitachivantara/*` imports remain.
-- No `@hitachivantara/uikit-react-pentaho` or `@hitachivantara/uikit-react-lab` dependencies remain.
+- No `@hitachivantara/uikit-react-pentaho`, `uikit-react-lab`, or `uikit-react-icons` dependencies remain.
 - No references to `themes.next`, `next`, or `pentahoPlus` remain.
-- No imports remain for removed components listed above.
+- No imports remain for removed core or `lab` components listed above.
+- No usage remains of the removed props and classes listed above.
+- No references remain to removed v5 compatibility color tokens.
