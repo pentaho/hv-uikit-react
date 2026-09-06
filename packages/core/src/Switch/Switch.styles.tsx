@@ -24,11 +24,8 @@ export const { staticClasses, useClasses } = createClasses("HvSwitch", {
     },
     "&$top": {
       flexDirection: "column",
-      "&:hover": {
+      "&&:hover": {
         backgroundColor: "transparent",
-      },
-      "& $switchContainer:hover .HvBaseSwitch-root": {
-        backgroundColor: theme.colors.bgHover,
       },
     },
   },
