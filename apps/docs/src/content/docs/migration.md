@@ -52,7 +52,7 @@ Every package that existed in `v6.10.0`, with its v7 name and status.
 | `@hitachivantara/app-shell-vite-plugin`   | `@pentaho/app-shell-vite-plugin`   | Renamed, public      |
 | `@hitachivantara/internal`                | `@pentaho/internal`                | Renamed, private     |
 | `@hitachivantara/uikit-cli`               | `@pentaho/uikit-cli`               | Renamed, public      |
-| `@hitachivantara/uikit-config`            | `@pentaho/uikit-config`            | Renamed, now private |
+| `@hitachivantara/uikit-config`            | `@pentaho/uikit-config`            | Renamed, public      |
 | `@hitachivantara/uikit-react-code-editor` | `@pentaho/uikit-react-code-editor` | Renamed, public      |
 | `@hitachivantara/uikit-react-core`        | `@pentaho/uikit-react-core`        | Renamed, public      |
 | `@hitachivantara/uikit-react-icons`       | `@pentaho/uikit-react-icons`       | Renamed, now private |
@@ -139,7 +139,23 @@ The default body font changed from Open Sans to Inter.
 
 If your application relied on Open Sans being bundled, you can load it yourself.
 
-### 8) Core components removed
+### 8) UnoCSS preset renamed
+
+`@pentaho/uikit-uno-preset` exports `presetUikit` instead of `presetHv`.
+
+```diff
+-import { presetHv } from "@hitachivantara/uikit-uno-preset";
++import { presetUikit } from "@pentaho/uikit-uno-preset";
+
+ export default defineConfig({
+-  presets: [presetHv()],
++  presets: [presetUikit()],
+ });
+```
+
+Missing this shows up when the dev server starts, as `presetHv is not a function`.
+
+### 9) Core components removed
 
 The following components are no longer part of `@pentaho/uikit-react-core`. They weren't deprecated in v6, so it's worth searching for them directly — a clean v6 build won't flag them:
 
@@ -160,7 +176,7 @@ Recommended alternatives:
 - `HvSimpleGrid`: replace with utility-grid layouts such as `grid grid-cols-2 md:grid-cols-4`.
 - `HvStack`: replace with flex layouts such as `flex gap-sm` (row/column as needed).
 
-### 9) Props and style classes removed
+### 10) Props and style classes removed
 
 Most of these were deprecated during v6. `disableClear`, `disableRevealPassword`, `disableSearchButton`, and `semantic` weren't, so it's worth searching for those directly.
 
@@ -182,7 +198,7 @@ Most of these were deprecated during v6. `disableClear`, `disableRevealPassword`
 +<HvInput hideClear hideSearchButton />
 ```
 
-### 10) Internal base primitives migrated
+### 11) Internal base primitives migrated
 
 Core and widgets internals migrated from `@mui/base` to `@base-ui/react`.
 
@@ -193,7 +209,7 @@ For most consumers this is transparent, but it can affect:
 
 It's worth revalidating any deep customization around `Select`, tabs/canvas panels, and dropdown-like controls.
 
-### 11) Grid implementation update
+### 12) Grid implementation update
 
 `HvGrid` now wraps `@mui/material/Grid` instead of `@mui/material/GridLegacy`. The `item` prop and the per-breakpoint props `xs`, `sm`, `md`, `lg`, `xl` were removed — sizing goes through `size`.
 
@@ -206,7 +222,7 @@ It's worth revalidating any deep customization around `Select`, tabs/canvas pane
 
 `spacing`, `rowSpacing`, `columnSpacing`, and `columns` are unchanged, but the underlying layout implementation differs — worth a visual check on nested or complex grids.
 
-### 12) CLI templates removed
+### 13) CLI templates removed
 
 Template scaffolding has been retired from `@pentaho/uikit-cli`. The `create` command now uses a single baseline and no longer takes `--templates`.
 
