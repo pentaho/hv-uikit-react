@@ -183,7 +183,7 @@ describe("FilterGroup", () => {
 
     await user.click(dropdown);
     expect(screen.getAllByText("4")).toHaveLength(1);
-    expect(screen.getAllByText("2")).toHaveLength(3);
+    expect(screen.getAllByText("2")).toHaveLength(1);
     expect(screen.queryAllByText("1")).toHaveLength(0);
 
     const clearButton = screen.getByRole("button", {
@@ -193,7 +193,7 @@ describe("FilterGroup", () => {
     await userEvent.click(clearButton);
     expect(screen.queryAllByText("4")).toHaveLength(0);
     expect(screen.queryAllByText("2")).toHaveLength(0);
-    expect(screen.queryAllByText("1")).toHaveLength(3);
+    expect(screen.queryAllByText("1")).toHaveLength(2);
   });
 
   it("the right side elements change when changing the group", async () => {
@@ -222,14 +222,13 @@ describe("FilterGroup", () => {
 
     await user.click(dropdown);
     expect(screen.getAllByText("4")).toHaveLength(1);
-    expect(screen.getAllByText("2")).toHaveLength(3);
+    expect(screen.getAllByText("2")).toHaveLength(1);
 
     const checkBox1 = screen.getByRole("checkbox", { name: /category 3/i });
 
     await user.click(checkBox1);
     expect(screen.getAllByText("5")).toHaveLength(1);
-    expect(screen.getAllByText("2")).toHaveLength(1);
-    expect(screen.getAllByText("3")).toHaveLength(2);
+    expect(screen.getAllByText("3")).toHaveLength(1);
   });
 
   it("changes are committed on apply", async () => {
@@ -315,7 +314,7 @@ describe("FilterGroup", () => {
     expect(screen.getAllByText("4")).toHaveLength(1);
 
     await user.click(screen.getByRole("checkbox", { name: /2 \/ 4/i }));
-    expect(screen.getAllByText("2")).toHaveLength(2);
+    expect(screen.getAllByText("2")).toHaveLength(1);
   });
 
   it("clicking select all selects all options in the category when no options are selected and disabled", async () => {

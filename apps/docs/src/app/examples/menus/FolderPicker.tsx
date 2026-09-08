@@ -9,7 +9,7 @@ import {
   HvTreeView,
   HvTypography,
   type HvTreeItemProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type FileNode = {
   id: string;

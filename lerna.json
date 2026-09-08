@@ -18,7 +18,8 @@
       "preid": "next",
       "message": "chore(release): publish",
       "syncWorkspaceLock": true,
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "changelogPreset": "./.config/changelog-preset.js"
     }
   }
 }

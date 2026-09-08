@@ -1,10 +1,7 @@
 import MuiCardHeader, {
   type CardHeaderProps as MuiCardHeaderProps,
 } from "@mui/material/CardHeader";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { staticClasses, useClasses } from "./Header.styles";
 

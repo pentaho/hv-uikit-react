@@ -1,9 +1,6 @@
 import { Children, cloneElement, isValidElement, useMemo } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvSize } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvSize } from "@pentaho/uikit-styles";
 
 import type { HvButtonVariant } from "../Button";
 import type { HvBaseProps } from "../types/generic";

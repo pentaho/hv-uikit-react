@@ -1,4 +1,4 @@
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 
 export interface CatServerProps extends React.ComponentProps<"svg"> {
   title?: string;

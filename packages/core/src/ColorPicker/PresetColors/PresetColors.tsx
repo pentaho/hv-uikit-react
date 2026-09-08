@@ -1,8 +1,5 @@
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { HvTypography } from "../../Typography";
 import { Swatch } from "../Swatch";

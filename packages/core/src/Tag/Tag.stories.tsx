@@ -1,11 +1,7 @@
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvTag,
-  theme,
-  type HvTagProps,
-} from "@hitachivantara/uikit-react-core";
-import { Abacus } from "@hitachivantara/uikit-react-icons";
+import { HvTag, theme, type HvTagProps } from "@pentaho/uikit-react-core";
+import { Abacus } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvTag> = {
   title: "Components/Tag",
@@ -34,51 +30,16 @@ export const Main: StoryObj<HvTagProps> = {
   },
 };
 
-export const Variants: StoryObj<HvTagProps> = {
-  decorators: [
-    (Story) => <div className="grid grid-cols-6 gap-sm">{Story()}</div>,
-  ],
-  render: () => {
-    return (
-      <>
-        <HvTag label="Informational" />
-        <HvTag label="Success" color="positive_20" />
-        <HvTag label="Warning" color="warning_20" />
-        <HvTag label="Error" color="negative_20" />
-        <HvTag label="Custom" color="#22FF45" />
-        <HvTag label="Disabled" disabled />
-        <HvTag label="Categorical" type="categorical" />
-        <HvTag label="Docs" type="categorical" color="cat2" />
-        <HvTag label="Fix" type="categorical" color="cat3" />
-        <HvTag label="Deprecated" type="categorical" color="cat5" />
-        <HvTag label="Custom" type="categorical" color="#22FF45" />
-        <HvTag label="Disabled" type="categorical" disabled />
-      </>
-    );
-  },
-};
-
-export const WithActions: StoryObj<HvTagProps> = {
-  render: () => {
-    return (
-      <>
-        <HvTag label="Click me!" onClick={() => alert("Clicked!")} />
-        <HvTag label="Delete me!" onDelete={() => alert("Deleted!")} />
-      </>
-    );
-  },
-};
-
 export const Test: StoryObj = {
   render: () => (
     <div className="flex flex-wrap gap-xs">
       <HvTag label="Informational" />
       <HvTag label="Informational" disabled />
       <HvTag label="This is a very very very very very very very very long text for a tag" />
-      <HvTag color="positive_20" label="Success" />
-      <HvTag color="warning_20" label="Warning" />
-      <HvTag color="negative_20" label="Error" />
-      <HvTag label="Success" color="positive_20" onDelete={() => {}} />
+      <HvTag color="positive" label="Success" />
+      <HvTag color="warning" label="Warning" />
+      <HvTag color="negative" label="Error" />
+      <HvTag label="Success" color="positive" onDelete={() => {}} />
       <HvTag label="Feat" type="categorical" />
       <HvTag label="Feat" type="categorical" disabled />
       <HvTag label="Docs" type="categorical" color="cat2" />

@@ -1,9 +1,9 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Global } from "@emotion/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
-import HvAppShell from "@hitachivantara/app-shell-ui";
-import { setupChromatic } from "@hitachivantara/internal";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
+import HvAppShell from "@pentaho/app-shell-ui";
+import { setupChromatic } from "@pentaho/internal";
 
 const externalsEntries = [
   "react@18",
@@ -11,8 +11,8 @@ const externalsEntries = [
   "react-router-dom@6",
   "@emotion/react@11",
   "@emotion/cache@11",
-  "@hitachivantara/app-shell-shared@1",
-  "@hitachivantara/uikit-react-shared@5",
+  "@pentaho/app-shell-shared@2",
+  "@pentaho/uikit-react-shared@6",
 ].map((mod) => {
   const pkg = mod.slice(0, mod.lastIndexOf("@"));
   const version = mod.slice(mod.lastIndexOf("@") + 1);

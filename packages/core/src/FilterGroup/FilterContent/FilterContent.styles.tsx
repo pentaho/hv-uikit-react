@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 const name = "HvFilterGroupContent";
 
@@ -45,6 +45,7 @@ export const { staticClasses, useClasses } = createClasses(name, {
   actions: {
     display: "flex",
     gap: theme.space.xs,
+    flexDirection: "row-reverse",
   },
   space: {
     flex: 1,

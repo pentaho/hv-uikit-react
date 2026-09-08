@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { makeData, type AssetEvent } from "@hitachivantara/internal";
+import { makeData, type AssetEvent } from "@pentaho/internal";
 import {
   HvAccordion,
   HvActionBar,
@@ -54,7 +54,7 @@ import {
   useHvTable,
   useHvTableSticky,
   type HvActionGeneric,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Backwards,
   Ban,
@@ -68,7 +68,7 @@ import {
   Preview,
   Share,
   Upload,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const Tabs = () => {
   const [value, setValue] = useState(0);
@@ -118,12 +118,13 @@ const MultiButtons = () => {
 const Panel1 = () => (
   <HvPanel className="grid gap-xs">
     <Tabs />
-    <HvBannerContent
-      showIcon
-      variant="success"
-      content="Check out the UI Kit library!"
-    />
-    <HvBannerContent showIcon variant="error" content="An error has ocurred" />
+    <HvBannerContent showIcon variant="success">
+      Check out the UI Kit library!
+    </HvBannerContent>
+
+    <HvBannerContent showIcon variant="error">
+      An error has ocurred
+    </HvBannerContent>
     <div>
       <HvAccordion label="Analytics" defaultExpanded>
         <HvTypography>
@@ -389,7 +390,7 @@ const Table = () => {
 export const Component = () => {
   return (
     <HvGrid container>
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvGlobalActions
           variant="global"
           title="UI Kit Component Library"
@@ -403,24 +404,24 @@ export const Component = () => {
         </HvGlobalActions>
       </HvGrid>
 
-      <HvGrid item xs={12}>
+      <HvGrid size={12}>
         <HvBreadCrumb
           aria-label="Navigation"
           url="https://pentaho.github.io/uikit-docs/master/components/button"
         />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Panel1 />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Panel2 />
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <HvTableSection>
           <Table />
         </HvTableSection>
       </HvGrid>
-      <HvGrid item xs={12} sm={6} lg={4}>
+      <HvGrid size={{ xs: 12, sm: 6, lg: 4 }}>
         <Card1 />
       </HvGrid>
     </HvGrid>

@@ -6,13 +6,13 @@ import {
   HvCardHeader,
   HvCardMedia,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Level0Good,
   Level3Bad,
   LocationPin,
   WorldGlobe,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const subheader = (
   <div className="flex items-center">

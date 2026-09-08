@@ -19,7 +19,6 @@ export default {
   "bulk-actions": "Bulk Actions",
   button: "Button",
   card: "Card",
-  carousel: "Carousel",
   checkbox: "Checkbox",
   "checkbox-group": "Checkbox Group",
   "code-editor": "Code Editor",
@@ -53,18 +52,14 @@ export default {
   "query-builder": "Query Builder",
   radio: "Radio",
   "radio-group": "Radio Group",
-  "scroll-to-horizontal": "ScrollTo Horizontal",
-  "scroll-to-vertical": "ScrollTo Vertical",
   "search-input": "Search Input",
   section: "Section",
   select: "Select",
   "selection-list": "Selection List",
-  "simple-grid": "Simple Grid",
   skeleton: "Skeleton",
   slider: "Slider",
   snackbar: "Snackbar",
   "snackbar-provider": "Snackbar Provider",
-  stack: "Stack",
   "status-icon": "Status Icon",
   switch: "Switch",
   table: "Table",
@@ -85,7 +80,7 @@ export default {
   canvas: { title: "Canvas" },
 
   // eslint-disable-next-line sort-keys
-  "-- Charts": { type: "separator", title: "Charts" },
+  "-- Charts": { type: "separator", title: "Chart Components" },
   charts: "Get started",
   "base-chart": "Base Chart",
   "bar-chart": "Bar Chart",
@@ -95,12 +90,4 @@ export default {
   treemap: "Treemap",
   heatmap: "Heatmap",
   "confusion-matrix": "Confusion Matrix",
-
-  // eslint-disable-next-line sort-keys
-  "-- Lab Components": { title: "Lab Components", type: "separator" },
-  lab: "Get started",
-  // eslint-disable-next-line sort-keys
-  dashboard: "Dashboard",
-  "step-navigation": "Step Navigation",
-  wizard: "Wizard",
 } satisfies MetaRecord;

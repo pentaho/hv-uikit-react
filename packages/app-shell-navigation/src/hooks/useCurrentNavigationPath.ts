@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useHvMenuItems } from "@hitachivantara/app-shell-shared";
+import { useHvMenuItems } from "@pentaho/app-shell-shared";
 
 export const useHvCurrentNavigationPath = () => {
   const { items, selectedMenuItemId } = useHvMenuItems();

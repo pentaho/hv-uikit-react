@@ -2,10 +2,7 @@ import { forwardRef } from "react";
 import MuiDrawer, {
   type DrawerProps as MuiDrawerProps,
 } from "@mui/material/Drawer";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvIconButton } from "../IconButton";
 import { HvIcon } from "../icons";

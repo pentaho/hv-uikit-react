@@ -17,7 +17,7 @@ import {
   type HvRowInstance,
   type HvTableColumnConfig,
   type HvTableState,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { makeData, type AssetEvent } from "./makeData";
 

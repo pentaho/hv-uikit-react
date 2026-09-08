@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   CheckboxCheck,
   HvIconSprite,
   icons,
   type HvIconSpriteProps,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 export default {
   title: "Tests/Icons",

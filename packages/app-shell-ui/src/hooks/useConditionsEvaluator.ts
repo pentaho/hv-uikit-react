@@ -5,7 +5,7 @@ import type {
   PreloadedBundles,
   UseCondition,
   UseConditionResult,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 function assert(condition: boolean, message?: string): asserts condition {
   if (!condition) {

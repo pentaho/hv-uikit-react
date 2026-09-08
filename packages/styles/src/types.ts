@@ -55,29 +55,6 @@ export interface HvThemeComponents {
   snackbar: {
     actionButtonVariant: string;
   };
-
-  // #region COMPAT
-  // TODO: remove these properties once full v5 <-> v6 compatibility is no longer needed
-  /** @deprecated @internal will be removed */
-  bulkActions: {
-    actionButtonVariant: string;
-  };
-  /** @deprecated @internal will be removed */
-  stepNavigation: {
-    separatorMargin: string;
-    defaultSeparatorHeight: number;
-    simpleSeparatorHeight: number;
-  };
-  /** @deprecated @internal will be removed */
-  filterGroup: {
-    applyButtonVariant: string;
-    cancelButtonVariant: string;
-  };
-  /** @deprecated @internal will be removed */
-  colorPicker: {
-    hueDirection: "vertical" | "horizontal";
-  };
-  // #endregion
 }
 
 // Theme typography
@@ -114,7 +91,7 @@ export type HvThemeBreakpoint = Exclude<keyof typeof space, "base">;
 
 export type SpacingValue = number | HvThemeBreakpoint | (string & {});
 
-export type HvBaseTheme = "next" | "pentaho";
+export type HvBaseTheme = "pentaho";
 
 /** Theme color mode */
 export type HvThemeColorMode = "light" | "dark";

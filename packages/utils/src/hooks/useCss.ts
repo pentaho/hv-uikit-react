@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { serializeStyles, type RegisteredCache } from "@emotion/serialize";
 import { getRegisteredStyles, insertStyles } from "@emotion/utils";
 import { clsx } from "clsx";
-import { useEmotionCache } from "@hitachivantara/uikit-react-shared";
+import { useEmotionCache } from "@pentaho/uikit-react-shared";
 
 type CSS = any;
 

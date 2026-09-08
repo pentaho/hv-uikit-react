@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellModel,
   useHvAppShellRuntimeContext,
   useHvMenuItems,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import type { MenuItemsContext } from "../types";
 import { createNavigationMenuItems } from "../utils/navigationUtil";

@@ -10,8 +10,8 @@ import {
   HvAppShellRuntimeContext,
   useHvAppShellCombinedProviders,
   type HvAppShellConfig,
-} from "@hitachivantara/app-shell-shared";
-import { HvProvider } from "@hitachivantara/uikit-react-core";
+} from "@pentaho/app-shell-shared";
+import { HvProvider } from "@pentaho/uikit-react-core";
 
 import { HvAppShellProvider } from "../components/AppShellProvider/AppShellProvider";
 import { APP_SHELL_NAMESPACE } from "../i18n";

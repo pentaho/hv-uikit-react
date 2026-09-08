@@ -13,8 +13,8 @@ import {
   useHvTable,
   type HvCellProps,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Close, Edit } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Close, Edit } from "@pentaho/uikit-react-icons";
 
 import { makeData, type AssetEvent } from "../storiesUtils";
 

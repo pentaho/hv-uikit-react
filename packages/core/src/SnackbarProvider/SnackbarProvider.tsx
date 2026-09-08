@@ -7,10 +7,7 @@ import {
   type OptionsObject,
   type SnackbarProviderProps,
 } from "notistack";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import {
   HvSnackbarContent,
@@ -133,8 +130,8 @@ export const HvSnackbarProvider = (props: HvSnackbarProviderProps) => {
     maxSnack = 5,
     autoHideDuration = 5000,
     anchorOrigin = {
-      vertical: "top",
-      horizontal: "right",
+      vertical: "bottom",
+      horizontal: "center",
     },
     classes: classesProp,
     className,

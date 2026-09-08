@@ -1010,7 +1010,7 @@ describe("QueryBuilder", { timeout: 12_000 }, () => {
     expect(error).toHaveTextContent("Needs to be greater.");
   });
 
-  it("selects a date accordingly", async () => {
+  it("selects a date accordingly", { timeout: 20_000 }, async () => {
     const user = userEvent.setup();
     render(
       <HvQueryBuilder

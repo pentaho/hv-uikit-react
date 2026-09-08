@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useRef } from "react";
 import { useForkRef } from "@mui/material/utils";
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { HvAdornment } from "../FormElement";
 import { HvIcon } from "../icons";
@@ -64,7 +64,7 @@ export const HvNumberInput = forwardRef<
       endAdornment={!readOnly && buttons}
       classes={classes}
       readOnly={readOnly}
-      disableClear
+      hideClear
       {...others}
     />
   );

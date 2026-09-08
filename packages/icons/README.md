@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-react-icons
+# @pentaho/uikit-react-icons
 
 NEXT Design System icons packaged as a set of React components.
 
@@ -7,7 +7,7 @@ NEXT Design System icons packaged as a set of React components.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-react-icons
+npm install @pentaho/uikit-react-icons
 ```
 
 ## Adding New Icons

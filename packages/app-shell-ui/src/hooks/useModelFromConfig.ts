@@ -4,7 +4,7 @@ import {
   type AsyncResult,
   type HvAppShellConfig,
   type HvAppShellModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import { importAllBundles } from "../utils/lazyImport";
 import processConfig from "../utils/processConfig";

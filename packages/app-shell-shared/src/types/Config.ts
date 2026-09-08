@@ -1,12 +1,12 @@
 import type {
   ServiceId,
   ServiceProviderConfig,
-} from "@hitachivantara/app-shell-services";
+} from "@pentaho/app-shell-services";
 import type {
   HvBaseTheme,
   HvContainerProps,
   HvThemeColorMode,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export interface ViewHvContainerProps extends Omit<
   HvContainerProps,

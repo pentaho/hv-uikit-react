@@ -7,7 +7,7 @@ import {
   HvTreeItem,
   HvTreeView,
   type HvTreeItemProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [file, setFile] = useState("");

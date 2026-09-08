@@ -4,7 +4,7 @@ import {
   HvButton,
   theme,
   type HvActionBarProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvActionBar> = {
   title: "Components/Action Bar",

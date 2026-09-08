@@ -5,7 +5,7 @@ import {
   HvLabel,
   HvPanel,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 type Asset = { id: string; label: string };
 type Site = { id: string; label: string; assets: Asset[] };

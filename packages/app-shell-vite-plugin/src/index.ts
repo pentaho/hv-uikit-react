@@ -9,4 +9,4 @@ export type {
   HvAppShellMenuConfig,
   HvAppShellMainPanelConfig,
   HvAppShellViewsConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";

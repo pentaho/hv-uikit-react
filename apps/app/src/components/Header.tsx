@@ -8,8 +8,8 @@ import {
   HvHeaderNavigation,
   HvIconButton,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
-import { Debug, ThemeSwitcher } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Debug, ThemeSwitcher } from "@pentaho/uikit-react-icons";
 
 import { useNavigationContext } from "../context/navigation";
 

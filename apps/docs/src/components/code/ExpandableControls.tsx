@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react/ArrowCounterClockwise";
 import { CheckIcon } from "@phosphor-icons/react/Check";
 import { CopyIcon } from "@phosphor-icons/react/Copy";
-import { HvButton, HvTooltip } from "@hitachivantara/uikit-react-core";
+import { HvButton, HvTooltip } from "@pentaho/uikit-react-core";
 
 type ExpandableControlsProps = {
   onToggle: () => void;

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { HvProvider } from "@hitachivantara/uikit-react-core";
+import { HvProvider } from "@pentaho/uikit-react-core";
 
 import { SUSPENSE_LABEL } from "./mocks";
 

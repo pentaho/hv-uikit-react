@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { css } from "@emotion/css";
-import { HvButton, HvSnackbar } from "@hitachivantara/uikit-react-core";
-import { theme } from "@hitachivantara/uikit-styles";
+import { HvButton, HvSnackbar } from "@pentaho/uikit-react-core";
+import { theme } from "@pentaho/uikit-styles";
 
 const styles = {
   snackbar: css({

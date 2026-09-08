@@ -1,10 +1,6 @@
 import { forwardRef, memo } from "react";
 import styled from "@emotion/styled";
-import {
-  getColor,
-  type HvColorAny,
-  type HvSize,
-} from "@hitachivantara/uikit-styles";
+import { getColor, type HvColorAny, type HvSize } from "@pentaho/uikit-styles";
 
 import { HvIconContainer, type HvIconContainerProps } from "./IconContainer";
 import { getSizeStyles } from "./utils";

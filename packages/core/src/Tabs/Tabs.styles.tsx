@@ -1,4 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvTabs", {
   root: {
@@ -9,5 +10,32 @@ export const { staticClasses, useClasses } = createClasses("HvTabs", {
   flexContainer: {
     marginLeft: "3px",
   },
-  floating: {},
+  floating: {
+    "& .HvTab-root": {
+      marginTop: 0,
+      zIndex: 1,
+      "&:is(.HvTab-selected)": {
+        borderColor: "transparent",
+        backgroundColor: "transparent",
+      },
+      "&:hover": {
+        borderRadius: theme.radii.full,
+      },
+      "::after": {
+        display: "none",
+      },
+    },
+    "& $indicator": {
+      height: "100%",
+      backgroundColor: theme.colors.bgContainer,
+      border: `1px solid ${theme.colors.primary}`,
+      borderRadius: theme.radii.full,
+    },
+    "& $flexContainer": {
+      display: "inline-flex",
+      backgroundColor: theme.colors.bgPageSecondary,
+      borderRadius: theme.radii.full,
+      marginLeft: 0,
+    },
+  },
 });

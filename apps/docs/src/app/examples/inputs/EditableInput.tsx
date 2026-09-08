@@ -4,8 +4,8 @@ import {
   HvButton,
   HvIconButton,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { Check, Close, Edit } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Check, Close, Edit } from "@pentaho/uikit-react-icons";
 
 export default function Demo() {
   const [editing, setEditing] = useState(false);

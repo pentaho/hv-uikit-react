@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { HvCodeEditor } from "@hitachivantara/uikit-react-code-editor";
+import { HvCodeEditor } from "@pentaho/uikit-react-code-editor";
 import {
   HvIconButton,
   HvIconContainer,
   HvSection,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const defaultValue = `name: build-and-deploy
 

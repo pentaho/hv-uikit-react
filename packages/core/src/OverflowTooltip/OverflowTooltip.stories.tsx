@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvOverflowTooltip,
   type HvOverflowTooltipProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvOverflowTooltip> = {
   title: "Components/Overflow Tooltip",

@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvHeaderBrand", {
   root: { display: "flex", alignItems: "center" },
@@ -7,7 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvHeaderBrand", {
     width: 1,
     height: theme.space.sm,
     margin: theme.space.xs,
-    backgroundColor: theme.colors.text,
+    backgroundColor: theme.colors.border,
   },
   brandName: {},
 });

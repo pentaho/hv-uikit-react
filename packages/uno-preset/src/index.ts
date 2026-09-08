@@ -16,7 +16,7 @@ export interface HvUnoOptions extends PresetWind3Options {
   baseFontSize?: number;
 }
 
-export const presetHv = definePreset<HvUnoOptions, Theme>((options) => {
+export const presetUikit = definePreset<HvUnoOptions, Theme>((options) => {
   const { baseFontSize = 16, ...otherOptions } = options || {};
   /** HV base theme configuration */
   const hvConfig: UserConfig<Theme> = {
@@ -25,7 +25,7 @@ export const presetHv = definePreset<HvUnoOptions, Theme>((options) => {
   };
 
   return {
-    name: "@hitachivantara/uikit-uno-preset",
+    name: "@pentaho/uikit-uno-preset",
     ...mergeConfigs([
       // base uno config
       presetWind3(otherOptions),

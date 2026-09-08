@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { HvIconButton } from "@hitachivantara/uikit-react-core";
-import { Debug } from "@hitachivantara/uikit-react-icons";
+import { HvIconButton } from "@pentaho/uikit-react-core";
+import { Debug } from "@pentaho/uikit-react-icons";
 
 export default function DebugLink() {
   if (import.meta.env.PROD) return null;

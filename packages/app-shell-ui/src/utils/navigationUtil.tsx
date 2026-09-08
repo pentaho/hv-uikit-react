@@ -1,4 +1,4 @@
-import type { MenuItem } from "@hitachivantara/app-shell-shared";
+import type { MenuItem } from "@pentaho/app-shell-shared";
 
 import { ConfigIcon } from "../components/ConfigIcon";
 import type { NavigationMenuItem } from "../types";

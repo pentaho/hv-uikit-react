@@ -14,7 +14,7 @@ import {
   useHvTable,
   useHvTableSticky,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { ColumnResize } from "./ColumnResize";
 import { UseHvBulkActions } from "./UseHvBulkActions";

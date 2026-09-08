@@ -6,8 +6,8 @@ import renderTestProvider from "../../tests/testUtils";
 import { ErrorPage } from "./ErrorPage";
 
 const navigateSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-navigation", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-navigation");
+vi.mock("@pentaho/app-shell-navigation", async () => {
+  const mod = await vi.importActual("@pentaho/app-shell-navigation");
   return {
     ...(mod as object),
     useHvNavigation: vi.fn(() => {

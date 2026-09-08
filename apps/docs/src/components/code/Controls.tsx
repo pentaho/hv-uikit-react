@@ -9,7 +9,7 @@ import {
   HvSelect,
   HvSlider,
   useTheme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import type { ComponentMeta } from "../../utils/component";
 
@@ -165,7 +165,7 @@ function InputControl({ prop, state, control, onChange, label }: ControlProps) {
       value={String(state[prop] ?? control.defaultValue)}
       onChange={(e, value) => onChange(prop, value)}
       className="w-full"
-      disableClear
+      hideClear
     />
   );
 }
@@ -186,7 +186,7 @@ function NumberInputControl({
       value={state[prop] ?? control.defaultValue}
       onChange={(e, value) => onChange(prop, Number(value))}
       className="w-full"
-      disableClear
+      hideClear
     />
   );
 }
@@ -208,17 +208,17 @@ function ColorControl({ prop, state, control, onChange, label }: ControlProps) {
       className="w-full"
       recommendedColors={[
         "positive",
-        "negative",
         "warning",
+        "negative",
         "info",
         "accent",
-        "catastrophic",
         "primary",
-        "secondary",
         "cat1",
         "cat2",
         "gold",
         "coral",
+        "magenta",
+        "rebeccapurple",
       ]}
     />
   );

@@ -1,4 +1,4 @@
-import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+import type { UseConditionResult } from "@pentaho/app-shell-shared";
 
 const useAlwaysTrue = (): UseConditionResult => {
   return {

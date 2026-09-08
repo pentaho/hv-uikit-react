@@ -3,8 +3,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { getColor, theme, type HvColorAny } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, theme, type HvColorAny } from "@pentaho/uikit-styles";
 
 import { SvgBase } from "../icons";
 import type { HvBaseRadioProps } from "./BaseRadio";
@@ -17,7 +17,7 @@ const { useClasses } = createClasses("HvRadioIcon", {
   },
   checked: {
     borderColor: "transparent",
-    backgroundColor: `var(--bg-color, ${theme.colors.primaryStrong})`,
+    backgroundColor: `var(--bg-color, ${theme.colors.primary})`,
     color: theme.colors.bgContainer,
   },
   disabled: {

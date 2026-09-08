@@ -1,8 +1,5 @@
 import { forwardRef, useContext } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvButtonBase, type HvButtonBaseProps } from "../../ButtonBase";
 import { HvIcon } from "../../icons";
@@ -165,7 +162,6 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
             component="div"
             className={cx(classes.headerText, {
               [classes.headerParagraph]: paragraph,
-              [classes.sortableHeaderText]: sortable,
             })}
             variant="label"
             {...headerTextProps}
@@ -178,11 +174,7 @@ export const HvTableHeader = forwardRef<HTMLElement, HvTableHeaderProps>(
               aria-label="Sort"
               {...sortButtonProps}
             >
-              <HvIcon
-                compact
-                name={getSortIconName(sorted && sortDirection)}
-                className={classes.sortIcon}
-              />
+              <HvIcon compact name={getSortIconName(sorted && sortDirection)} />
             </HvButtonBase>
           )}
         </div>

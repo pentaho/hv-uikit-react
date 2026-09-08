@@ -1,14 +1,13 @@
 {
-  "name": "@hitachivantara/uikit-react-code-editor",
-  "version": "6.0.10",
+  "name": "@pentaho/uikit-react-code-editor",
+  "version": "7.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
-  "description": "A wrapper to the React Monaco editor (https://github.com/react-monaco-editor/react-monaco-editor) using the Design System styles.",
+  "description": "A wrapper to the React Monaco Editor using the Design System styles.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "react",
@@ -39,9 +38,9 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^6.2.7",
-    "@hitachivantara/uikit-styles": "^6.2.2",
     "@monaco-editor/react": "^4.5.1",
+    "@pentaho/uikit-react-utils": "^7.0.0-next.2",
+    "@pentaho/uikit-styles": "^7.0.0-next.2",
     "sql-formatter": "^15.4.2",
     "xml-formatter": "^3.6.3",
     "xmllint-wasm": "^4.0.2"

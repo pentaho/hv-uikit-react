@@ -50,7 +50,7 @@ Example: Add the following code to `pages/Hello.tsx`:
 
 ```tsx
 import { Link } from "react-router-dom";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
 
 export default function Hello() {
   const { getViewRoute } = useHvNavigation();

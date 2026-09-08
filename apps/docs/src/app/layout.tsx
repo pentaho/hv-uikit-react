@@ -10,7 +10,6 @@ import { getPageMap } from "nextra/page-map";
 import { UIKitLogo } from "../assets/logos";
 import { Footer } from "../components/Footer";
 import { Main } from "../components/Main";
-import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 const title = "UI Kit";
 const description = "UI Kit documentation site";
@@ -38,7 +37,6 @@ const navbar = (
     projectLink="https://github.com/pentaho/hv-uikit-react"
   >
     <ThemeSwitch lite />
-    <ThemeSwitcher />
   </Navbar>
 );
 
@@ -51,7 +49,7 @@ export default async function RootLayout({
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" color={{ hue: 210 }}>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;&family=Open+Sans:wght@400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
           rel="stylesheet"
         />
       </Head>

@@ -1,6 +1,6 @@
 import { useContext, useMemo, type PropsWithChildren } from "react";
 import { I18nContext, useTranslation } from "react-i18next";
-import { HvAppShellI18nContext } from "@hitachivantara/app-shell-shared";
+import { HvAppShellI18nContext } from "@pentaho/app-shell-shared";
 
 export function HvAppShellI18nProvider({
   children,

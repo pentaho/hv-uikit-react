@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 
 // zIndex calculation is needed so that the Header shadow goes on top of the panel and not the other way around.
 const StyledAppShellPanelWrapper = styled("div")({

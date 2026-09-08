@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvCalendar,
   HvDatePicker,
@@ -11,7 +11,7 @@ import {
   HvRadio,
   HvRadioGroup,
   type HvDatePickerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const containerDecorator: Decorator = (Story) => (
   <div className="decorator w-240px min-h-440px">{Story()}</div>
@@ -128,57 +128,6 @@ export const Localized: StoryObj<HvDatePickerProps> = {
           aria-label="Date"
         />
       </>
-    );
-  },
-};
-
-export const RangeMode: StoryObj<HvDatePickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Datepicker in range mode allowing the selection of more than one value.",
-      },
-    },
-  },
-  decorators: [containerDecorator],
-  render: () => {
-    return (
-      <HvDatePicker
-        aria-label="Date"
-        placeholder="Select a range"
-        rangeMode
-        startValue={new Date("2020-02-02")}
-        endValue={new Date("2020-02-10")}
-        labels={{
-          applyLabel: "Apply",
-          cancelLabel: "Cancel",
-        }}
-      />
-    );
-  },
-};
-
-export const NearInvalid: StoryObj<HvDatePickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Datepicker in range mode with invalid near invalid dates.",
-      },
-    },
-  },
-  decorators: [containerDecorator],
-  render: () => {
-    return (
-      <HvDatePicker
-        aria-label="Date"
-        placeholder="Select date"
-        value={new Date("2020-01-15")}
-        calendarProps={{
-          minimumDate: new Date("2020-01-10"),
-          maximumDate: new Date("2020-01-20"),
-        }}
-      />
     );
   },
 };

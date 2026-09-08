@@ -3,13 +3,8 @@ import {
   HvIconButton,
   theme,
   type HvIconButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import {
-  Add,
-  Delete,
-  Download,
-  DropLeft,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Add, Delete, Download, DropLeft } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<HvIconButtonProps> = {
   title: "Components/Icon Button",
@@ -29,22 +24,6 @@ export const Main: StoryObj<HvIconButtonProps> = {
   render: (args) => (
     <HvIconButton {...(args as HvIconButtonProps)}>
       <Download />
-    </HvIconButton>
-  ),
-};
-
-export const Disabled: StoryObj<HvIconButtonProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "For accessibility purposes, when disabled the button will be focusable and the tooltip will be shown when the button is hovered.",
-      },
-    },
-  },
-  render: () => (
-    <HvIconButton disabled title="Add">
-      <Add />
     </HvIconButton>
   ),
 };

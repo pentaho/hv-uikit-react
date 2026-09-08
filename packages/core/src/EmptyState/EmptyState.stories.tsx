@@ -3,8 +3,8 @@ import {
   HvEmptyState,
   HvTypography,
   type HvEmptyStateProps,
-} from "@hitachivantara/uikit-react-core";
-import { BarChart, Info } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { BarChart, Info } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvEmptyState> = {
   title: "Components/Empty State",

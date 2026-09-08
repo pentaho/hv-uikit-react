@@ -2,12 +2,9 @@ import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
-import { HvButton } from "@hitachivantara/uikit-react-core";
-import {
-  HvLineChart,
-  type HvLineChartProps,
-} from "@hitachivantara/uikit-react-viz";
+import { setupChromatic } from "@pentaho/internal";
+import { HvButton } from "@pentaho/uikit-react-core";
+import { HvLineChart, type HvLineChartProps } from "@pentaho/uikit-react-viz";
 
 import { vizDecorator } from "../BaseChart/stories/utils";
 import { emptyCellMode } from "../types/generic";

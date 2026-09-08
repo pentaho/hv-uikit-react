@@ -12,7 +12,7 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvAvatar } from "../../Avatar";
 import { useForkRef } from "../../hooks/useForkRef";

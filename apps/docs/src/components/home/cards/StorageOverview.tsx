@@ -1,6 +1,6 @@
 "use client";
 
-import { HvBarChart } from "@hitachivantara/uikit-react-viz";
+import { HvBarChart } from "@pentaho/uikit-react-viz";
 
 import { Card } from "./Card";
 

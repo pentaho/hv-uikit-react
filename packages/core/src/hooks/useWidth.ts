@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useTheme, type Breakpoint } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { theme } from "@hitachivantara/uikit-styles";
+import { theme } from "@pentaho/uikit-styles";
 
 export const useWidth = () => {
   const muiTheme = useTheme();

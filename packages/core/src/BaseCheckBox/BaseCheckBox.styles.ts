@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -9,7 +9,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseCheckBox", {
     width: 32,
     minWidth: 32,
     height: 32,
-    borderRadius: theme.radii.round,
+    borderRadius: theme.radii.base,
     cursor: "pointer",
     ":hover": {
       backgroundColor: theme.colors.bgHover,

@@ -5,7 +5,7 @@ import {
   HvIconContainer,
   HvInput,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function LoginFull() {
   return (

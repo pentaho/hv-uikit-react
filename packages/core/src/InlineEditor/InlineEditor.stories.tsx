@@ -3,7 +3,7 @@ import {
   HvInlineEditor,
   type HvInlineEditorProps,
   type HvTypographyVariants,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<HvInlineEditorProps> = {
   title: "Components/Inline Editor",

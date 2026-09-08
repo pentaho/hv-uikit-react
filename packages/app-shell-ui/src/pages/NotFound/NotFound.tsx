@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { useTranslation } from "react-i18next";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
 
 import { ErrorPage } from "../ErrorPage/ErrorPage";
 

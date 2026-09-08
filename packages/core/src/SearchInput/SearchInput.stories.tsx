@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvSearchInput,
-  type HvInputProps,
-} from "@hitachivantara/uikit-react-core";
+import { HvSearchInput, type HvInputProps } from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvSearchInput> = {
   title: "Components/Search Input",
@@ -38,8 +35,8 @@ export const Main: StoryObj<HvInputProps> = {
     inputRef: { control: { disable: true } },
     validationMessages: { control: { disable: true } },
     labels: { control: { disable: true } },
-    disableRevealPassword: { control: { disable: true } },
-    disableSearchButton: { control: { disable: true } },
+    hideRevealPassword: { control: { disable: true } },
+    hideSearchButton: { control: { disable: true } },
     minCharQuantity: { control: { disable: true } },
     maxCharQuantity: { control: { disable: true } },
   },

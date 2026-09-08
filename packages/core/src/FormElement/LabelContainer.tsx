@@ -2,8 +2,8 @@ import {
   createClasses,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { HvInfoMessage } from "./InfoMessage/InfoMessage";
 import { HvLabel } from "./Label/Label";

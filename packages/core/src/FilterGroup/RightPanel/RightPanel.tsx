@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvCheckBox } from "../../CheckBox";
 import { HvInput } from "../../Input";

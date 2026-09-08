@@ -3,7 +3,7 @@ import {
   HvCheckBox,
   HvCheckBoxGroup,
   type HvCheckBoxGroupProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvCheckBoxGroup> = {
   title: "Components/Checkbox Group",

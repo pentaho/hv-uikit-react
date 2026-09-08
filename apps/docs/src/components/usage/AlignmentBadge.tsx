@@ -1,5 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react/Info";
-import { HvIconButton, HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvIconButton, HvTypography } from "@pentaho/uikit-react-core";
 
 import { alignmentData } from "./alignmentData";
 
@@ -12,10 +12,7 @@ export const AlignmentBadge = ({ component }: AlignmentBadgeProps) => {
 
   if (!values) return null;
 
-  const items = [
-    ["Pentaho", values.pentaho || "—"],
-    ["NEXT", values.next || "—"],
-  ];
+  const items = [["Pentaho", values.pentaho || "—"]];
 
   return (
     <HvIconButton

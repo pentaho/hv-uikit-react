@@ -1,12 +1,12 @@
 import { useState } from "react";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvFilterGroup,
   type HvFilterGroupProps,
   type HvFilterGroupValue,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { EmptyFilters as EmptyFiltersStory } from "./stories/EmptyFilters";
 
