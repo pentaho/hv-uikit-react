@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "0 5 1,15 * *" # at 05:00 on day 1 and 15 of every month
   workflow_dispatch:
+    inputs:
+      mode:
+        description: |
+          default      version from conventional commits, then publish
+          graduate     take packages off the prerelease line (7.0.0-next.3 -> 7.0.0)
+          from-package publish the versions already committed, without bumping
+        type: choice
+        options: [default, graduate, from-package]
+        default: default
 
 concurrency:
   group: release
@@ -62,7 +71,18 @@ jobs:
 
       - name: Publish to NPM
         id: publish-npm
-        run: npm run publish
+        run: |
+          case "${{ inputs.mode || 'default' }}" in
+            graduate)
+              npx lerna publish --conventional-commits --conventional-graduate --yes
+              ;;
+            from-package)
+              npx lerna publish from-package --yes
+              ;;
+            *)
+              npm run publish
+              ;;
+          esac
         env:
           HUSKY: 0
 
@@ -72,16 +92,26 @@ jobs:
         # We only tag+publish+notify if there a new core package version
         run: |
           VERSION=v$(npm pkg get version --ws | sed -n 's/.*uikit-react-core": "\(.*\)".*/\1/p')
-          if [ "$CURRENT_VERSION" = "$VERSION" ]; then
+          if [ "$CURRENT_VERSION" = "$VERSION" ] && [ "${{ inputs.mode || 'default' }}" != "from-package" ]; then
             echo "No new uikit-react-core version to release. Exiting"
             exit 1
           fi
           echo "NEW_VERSION=$VERSION" >> "$GITHUB_ENV"
 
+      - name: Verify the publish
+        run: |
+          PKG=$(npm pkg get name -w packages/core | sed -n 's/.*"\(@[^"]*\)".*/\1/p' | head -1)
+          npm view "$PKG@${NEW_VERSION#v}" version
+          echo "Published $PKG@${NEW_VERSION#v}"
+
       - name: Tag Release
         run: |
-          git tag -a $NEW_VERSION -m "Version $NEW_VERSION"
-          git push origin $NEW_VERSION
+          if git rev-parse "$NEW_VERSION" >/dev/null 2>&1; then
+            echo "Tag $NEW_VERSION already exists, skipping"
+          else
+            git tag -a $NEW_VERSION -m "Version $NEW_VERSION"
+            git push origin $NEW_VERSION
+          fi
 
       - name: Create GitHub Release
         env:
