@@ -3,7 +3,7 @@ import {
   HvAvatar,
   HvAvatarGroup,
   type HvAvatarGroupProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvAvatarGroup> = {
   title: "Components/Avatar Group",

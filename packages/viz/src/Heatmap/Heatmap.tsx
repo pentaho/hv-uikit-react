@@ -3,8 +3,8 @@ import type ReactECharts from "echarts-for-react";
 import { HeatmapChart } from "echarts/charts";
 import { TooltipComponent, VisualMapComponent } from "echarts/components";
 import * as echarts from "echarts/core";
-import { useTheme, type ExtractNames } from "@hitachivantara/uikit-react-utils";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import { useTheme, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import { HvBaseChart } from "../BaseChart";
 import {

@@ -6,14 +6,14 @@ import {
   css as cssReact,
   Global,
 } from "@emotion/react";
-import type { HvTheme } from "@hitachivantara/uikit-react-shared";
+import type { HvTheme } from "@pentaho/uikit-react-shared";
 import {
   CssBaseline,
   CssScopedBaseline,
   getThemeVars,
   type HvThemeColorMode,
   type HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-styles";
 
 import { pentaho } from "../themes";
 import { getElementById } from "../utils/document";
@@ -64,7 +64,7 @@ export interface HvProviderProps {
   /**
    * The active theme. It must be one of the themes passed to `themes`.
    *
-   * If no value is provided, the first theme from the `themes` list is used. If no `themes` list is provided, the `next` theme will be used.
+   * @default pentaho
    */
   theme?: HvTheme | HvThemeStructure;
   /**

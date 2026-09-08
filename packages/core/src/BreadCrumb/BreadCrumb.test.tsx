@@ -17,7 +17,7 @@ const data = [
 describe("BreadCrumb", () => {
   it("renders the correct number of items", () => {
     render(<HvBreadCrumb listRoute={data} />);
-    expect(screen.queryAllByRole("listitem").length).toBe(7);
+    expect(screen.queryAllByRole("listitem").length).toBe(6);
     expect(screen.getByText("Label 1")).toBeInTheDocument();
     expect(screen.getByText("Label 7")).toBeInTheDocument();
   });

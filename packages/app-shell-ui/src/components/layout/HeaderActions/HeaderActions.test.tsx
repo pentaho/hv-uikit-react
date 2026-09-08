@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/dom";
 import { vi } from "vitest";
-import type { HvAppShellAppSwitcherConfig } from "@hitachivantara/app-shell-shared";
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellAppSwitcherConfig } from "@pentaho/app-shell-shared";
+import { HvButton } from "@pentaho/uikit-react-core";
 
 import renderTestProvider from "../../../tests/testUtils";
 import AppSwitcherToggle from "./AppSwitcherToggle/AppSwitcherToggle";

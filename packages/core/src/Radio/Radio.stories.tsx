@@ -3,7 +3,7 @@ import {
   HvBaseRadio,
   HvRadio,
   type HvRadioProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvRadio> = {
   title: "Components/Radio",
@@ -34,29 +34,6 @@ export const Main: StoryObj<HvRadioProps> = {
   },
   render: (args) => {
     return <HvRadio {...args} />;
-  },
-};
-
-export const Variants: StoryObj<HvRadioProps> = {
-  decorators: [
-    (Story) => <div className="flex flex-wrap gap-sm">{Story()}</div>,
-  ],
-  render: () => {
-    return (
-      <>
-        <HvRadio name="radio" label="Radio" value="1" />
-        <HvRadio required name="required" label="Required" value="1" />
-        <HvRadio disabled name="disabled" label="Disabled" value="1" />
-        <HvRadio readOnly name="readonly" label="Readonly" value="1" />
-        <HvRadio
-          status="invalid"
-          statusMessage="Oh no!"
-          name="invalid"
-          label="Invalid"
-          value="1"
-        />
-      </>
-    );
   },
 };
 

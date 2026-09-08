@@ -1,4 +1,4 @@
-# @hitachivantara/app-shell-shared
+# @pentaho/app-shell-shared
 
 App Shell Shared. Support package for shared functionality.
 

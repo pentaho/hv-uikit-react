@@ -17,8 +17,8 @@ const navigationContextSpy = vi.spyOn(
 );
 
 const navigateSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-navigation", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-navigation");
+vi.mock("@pentaho/app-shell-navigation", async () => {
+  const mod = await vi.importActual("@pentaho/app-shell-navigation");
   return {
     ...mod,
     useHvNavigation: () => ({

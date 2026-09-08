@@ -7,7 +7,7 @@ import { createAppShellBaseline, setupAppShell } from "./app-shell.js";
 import { createAppContents } from "./contents.js";
 import { createNavigationFiles } from "./navigation.js";
 import { updatePackageJson } from "./package.js";
-import { __dirname, toPascalCase, toSentenceCase } from "./utils.js";
+import { __dirname, toPascalCase } from "./utils.js";
 
 /** @type import("inquirer").QuestionCollection */
 const questions = [
@@ -39,7 +39,7 @@ const questions = [
       return answers.useAppShell;
     },
     filter(val) {
-      return val.map((v) => toPascalCase(v));
+      return val.map(toPascalCase);
     },
   },
   {
@@ -49,18 +49,6 @@ const questions = [
     default: true,
     when(answers) {
       return answers.useAppShell;
-    },
-  },
-  {
-    type: "checkbox",
-    message: "Do you want to use templates? If so, choose which:",
-    name: "templates",
-    choices: fs
-      .readdirSync(`${__dirname}/templates`, { withFileTypes: true })
-      .filter((d) => d.isDirectory())
-      .map((d) => toSentenceCase(d.name)),
-    filter(val) {
-      return val.map((v) => toPascalCase(v));
     },
   },
 ];
@@ -82,7 +70,6 @@ const create = async ({
   useAppShell = true,
   appShellFeatures = [],
   appShellAutoMenu = true,
-  templates = [],
 }) => {
   console.log(chalk.cyan("\nUI kit app generator\n"));
 
@@ -99,13 +86,7 @@ const create = async ({
   } else {
     createAppBaseline(appPath);
   }
-  // create app contents from recipe templates selection
-  const dependencies = await createAppContents(
-    appPath,
-    name,
-    templates,
-    useAppShell,
-  );
+  await createAppContents(appPath, name);
 
   if (useAppShell) {
     await setupAppShell(
@@ -124,7 +105,7 @@ const create = async ({
     await createNavigationFiles(appPath);
   }
 
-  updatePackageJson(appPath, packageName, dependencies);
+  updatePackageJson(appPath, packageName);
 
   console.log(`\nDone! Now run:\n`);
   console.log(` cd ${chalk.green(packageName)}`);
@@ -134,9 +115,7 @@ const create = async ({
 
 export const createCommand = new Command()
   .command("create [name]")
-  .description(
-    "Create new UI Kit app using the provided baselines and templates",
-  )
+  .description("Create a new UI Kit app using the provided baseline")
   .option("-w --without-app-shell", "Whether to not include AppShell.")
   .option(
     "--app-shell-features <appShellFeatures>",
@@ -146,7 +125,6 @@ export const createCommand = new Command()
     "--disable-file-based-routing",
     "Disable AppShell options for file based routing and automatic menu generation.",
   )
-  .option("-t --templates <templates>", "Templates to use (comma separated).")
   .action(async (name, options) => {
     const isInteractive = !name;
 
@@ -154,19 +132,14 @@ export const createCommand = new Command()
       const results = await inquirer.prompt(questions);
       create(results);
     } else {
-      const {
-        withoutAppShell,
-        appShellFeatures,
-        disableFileBasedRouting,
-        templates,
-      } = options;
+      const { withoutAppShell, appShellFeatures, disableFileBasedRouting } =
+        options;
 
       create({
         name,
         useAppShell: !withoutAppShell,
         appShellFeatures: appShellFeatures?.split(",").map(toPascalCase),
         appShellAutoMenu: !disableFileBasedRouting,
-        templates: templates?.split(",").map(toPascalCase),
       });
     }
   });

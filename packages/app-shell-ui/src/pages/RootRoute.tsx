@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Outlet } from "react-router-dom";
-import ServiceManagerProvider from "@hitachivantara/app-shell-services";
+import ServiceManagerProvider from "@pentaho/app-shell-services";
 import {
   useHvAppShellCombinedProviders,
   useHvAppShellModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import CustomHooksInitializer from "../components/CustomHooksInitializer";
 import { HvAppShellLayout } from "../components/layout/AppShellLayout";

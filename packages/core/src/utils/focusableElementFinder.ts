@@ -31,5 +31,3 @@ export const getFirstAndLastFocus = (node: any) => {
     last: focusableList[focusableList.length - 1] || null,
   };
 };
-
-export default getPrevNextFocus;

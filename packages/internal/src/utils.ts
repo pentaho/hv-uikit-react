@@ -5,23 +5,16 @@ export const allModes = {
   "Pentaho dark": {
     theme: "pentaho dark",
   },
-  "NEXT light": {
-    theme: "next light",
-  },
-  "NEXT dark": {
-    theme: "next dark",
-  },
 };
 
 type Mode = keyof typeof allModes;
 
 const customModes = {
-  light: ["NEXT light", "Pentaho light"],
-  dark: ["NEXT dark", "Pentaho dark"],
-  next: ["NEXT light", "NEXT dark"],
+  light: ["Pentaho light"],
+  dark: ["Pentaho dark"],
   pentaho: ["Pentaho light", "Pentaho dark"],
-  default: ["NEXT light"],
-  all: ["NEXT light", "NEXT dark", "Pentaho light", "Pentaho dark"],
+  default: ["Pentaho light"],
+  all: ["Pentaho light", "Pentaho dark"],
 } satisfies Record<string, Mode[]>;
 
 type Values = keyof typeof customModes | Mode | Mode[];

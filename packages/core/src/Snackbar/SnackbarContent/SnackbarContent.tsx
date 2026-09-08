@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
 import type { SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
 import type { SnackbarContentProps as MuiSnackbarContentProps } from "@mui/material/SnackbarContent";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type {
   HvActionGeneric,

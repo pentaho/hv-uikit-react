@@ -6,11 +6,11 @@ import {
   type HttpResourcesBackendOptions,
   type I18nInstance,
   type UseI18nResult,
-} from "@hitachivantara/app-shell-i18next";
+} from "@pentaho/app-shell-i18next";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   type HvAppShellConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 // @ts-ignore
 import en from "../locales/en/appShell.json";

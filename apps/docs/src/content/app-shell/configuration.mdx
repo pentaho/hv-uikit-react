@@ -7,7 +7,7 @@ You can find the [configuration properties documentation](#configuration-propert
 
 ```tsx
 // app-shell.config.ts
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type { HvAppShellConfig } from "@pentaho/app-shell-vite-plugin";
 
 export default {
   name: "App Name",
@@ -370,7 +370,7 @@ Conditions can be applied to various configuration elements by adding a `conditi
 
 ```ts
 // useIsAdmin.ts
-import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+import type { UseConditionResult } from "@pentaho/app-shell-shared";
 
 const useIsAdmin = (): UseConditionResult => {
   const user = useCurrentUser(); // Possibly supported by a system provider context
@@ -392,7 +392,7 @@ Conditions can access context provided by [`systemProviders`](#systemproviders),
 ```ts
 // useFeatureEnabled.ts
 import { useEffect, useState } from "react";
-import type { UseConditionResult } from "@hitachivantara/app-shell-shared";
+import type { UseConditionResult } from "@pentaho/app-shell-shared";
 
 interface FeatureConfig {
   featureFlag: string;
@@ -433,7 +433,7 @@ export default useFeatureEnabled;
 
 ### `services`
 
-This prop defines the _Services_ that are to be handled by the `@hitachivantara/app-shell-services` package.
+This prop defines the _Services_ that are to be handled by the `@pentaho/app-shell-services` package.
 
 The services property is a key-value object, where the key is the service identifier and the value is an array of supported service definitions:
 

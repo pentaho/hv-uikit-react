@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { renderStory, setupChromatic } from "@hitachivantara/internal";
+import { renderStory, setupChromatic } from "@pentaho/internal";
 
 import { Disabled as AccordionDisabledStory } from "../Accordion/Accordion.stories";
 import { Main as ActionBarMainStory } from "../ActionBar/ActionBar.stories";
@@ -15,10 +15,6 @@ import { Test as BreadCrumbTestStory } from "../BreadCrumb/BreadCrumb.stories";
 import { Test as BulkActionsTestStory } from "../BulkActions/BulkActions.stories";
 import { Test as ButtonTestStory } from "../Button/Button.stories";
 import { Variants as CardVariantsStory } from "../Card/Card.stories";
-import {
-  Actions as CarouselActionsStory,
-  Embedded as CarouselEmbeddedStory,
-} from "../Carousel/Carousel.stories";
 import { Test as CheckBoxTestStory } from "../CheckBox/CheckBox.stories";
 import { Variants as CheckBoxGroupVariantsStory } from "../CheckBoxGroup/CheckBoxGroup.stories";
 import { Test as ColorPickerTestStory } from "../ColorPicker/ColorPicker.stories";
@@ -36,7 +32,7 @@ import {
 import { WithPreviewThumbnails as FileUploaderWithPreviewThumbnailsStory } from "../FileUploader/FileUploader.stories";
 import { Main as FooterCustomLabelsStory } from "../Footer/Footer.stories";
 import { Test as GlobalActionsTestStory } from "../GlobalActions/GlobalActions.stories";
-import { TheDesignSystemColumns as GridTheDesignSystemColumnsStory } from "../Grid/Grid.stories";
+import { Main as GridMainStory } from "../Grid/Grid.stories";
 import { Test as HeaderTestStory } from "../Header/Header.stories";
 import { Variants as IconButtonVariantsStory } from "../IconButton/IconButton.stories";
 import { Test as InlineEditorTestStory } from "../InlineEditor/InlineEditor.stories";
@@ -53,19 +49,18 @@ import {
   Horizontal as RadioGroupHorizontalStory,
   Variants as RadioGroupVariantsStory,
 } from "../RadioGroup/RadioGroup.stories";
-import { Main as ScrollToHorizontalMainStory } from "../ScrollToHorizontal/ScrollToHorizontal.stories";
-import { Main as ScrollToVerticalMainStory } from "../ScrollToVertical/ScrollToVertical.stories";
 import { Test as SectionTestStory } from "../Section/Section.stories";
 import { Test as SelectTestStory } from "../Select/Select.stories";
 import { Variants as SelectionListVariantsStory } from "../SelectionList/SelectionList.stories";
-import { Main as SimpleGridMainStory } from "../SimpleGrid/SimpleGrid.stories";
 import { Variants as SkeletonVariantsStory } from "../Skeleton/Skeleton.stories";
 import { RangeVariants as SliderRangeVariantsStory } from "../Slider/Slider.stories";
 import { Variants as SnackbarVariantsStory } from "../Snackbar/Snackbar.stories";
-import { Test as StackTestStory } from "../Stack/Stack.stories";
 import { Test as StatusIconTestStory } from "../StatusIcon/StatusIcon.stories";
 import { Variants as SwitchVariantsStory } from "../Switch/Switch.stories";
-import { Test as TabsTestStory } from "../Tabs/Tabs.stories";
+import {
+  Floating as TabsFloatingStory,
+  Test as TabsTestStory,
+} from "../Tabs/Tabs.stories";
 import { Test as TagTestStory } from "../Tag/Tag.stories";
 import { Variants as TagsInputVariantsStory } from "../TagsInput/TagsInput.stories";
 import { Variants as TextAreaVariantsStory } from "../TextArea/TextArea.stories";
@@ -190,7 +185,10 @@ export const TestButtons: StoryObj = {
         </div>
         <div>{renderStory(PaginationMainStory, context)}</div>
       </div>
-      {renderStory(TabsTestStory, context)}
+      <div className="grid gap-sm">
+        {renderStory(TabsTestStory, context)}
+        {renderStory(TabsFloatingStory, context)}
+      </div>
     </div>
   ),
 };
@@ -252,17 +250,7 @@ export const TestOthers: StoryObj = {
       </div>
       {renderStory(BadgeTestStory, context)}
       {renderStory(StatusIconTestStory, context)}
-      <div className="flex gap-sm">
-        {renderStory(CarouselEmbeddedStory, context)}
-        <div className="w-650px">
-          {renderStory(CarouselActionsStory, context)}
-        </div>
-        <div>{renderStory(TypographyTestStory, context)}</div>
-      </div>
-      <div className="grid grid-cols-2 gap-sm">
-        {renderStory(ScrollToHorizontalMainStory, context)}
-        {renderStory(ScrollToVerticalMainStory, context)}
-      </div>
+      <div>{renderStory(TypographyTestStory, context)}</div>
     </div>
   ),
 };
@@ -274,14 +262,10 @@ export const TestStructure: StoryObj = {
   },
   render: (args, context: any) => (
     <div className="grid gap-sm">
-      {renderStory(GridTheDesignSystemColumnsStory, context)}
+      {renderStory(GridMainStory, context)}
       <div className="flex gap-xs">
-        <div className="grid gap-sm">
-          {renderStory(StackTestStory, context)}
-        </div>
         <div className="grid grid-cols-3 gap-sm flex-1">
           {renderStory(PanelMainStory, context)}
-          {renderStory(SimpleGridMainStory, context)}
           <div>{renderStory(ContainerMainStory, context)}</div>
         </div>
       </div>

@@ -1,17 +1,17 @@
-# @hitachivantara/uikit-react-code-editor
+# @pentaho/uikit-react-code-editor
 
 React Monaco editor wrapper with our Design System styles.
 
 ## Installation
 
 ```sh
-npm install @hitachivantara/uikit-react-code-editor
+npm install @pentaho/uikit-react-code-editor
 ```
 
 ## Usage
 
 ```jsx
-import { HvCodeEditor } from "@hitachivantara/uikit-react-code-editor";
+import { HvCodeEditor } from "@pentaho/uikit-react-code-editor";
 
 <HvCodeEditor
   language="javascript"

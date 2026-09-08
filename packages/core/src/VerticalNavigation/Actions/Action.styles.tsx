@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses(
   "HvVerticalNavigationAction",
@@ -12,6 +12,11 @@ export const { staticClasses, useClasses } = createClasses(
       fontWeight: "inherit",
       padding: theme.spacing(0, "xs"),
       border: "none",
+      borderRadius: theme.radii.round,
+
+      "&:hover, &:focus": {
+        backgroundColor: slate[700],
+      },
 
       // cursor
       "& *": {

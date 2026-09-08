@@ -15,8 +15,8 @@ import {
   HvTableHeader,
   HvTableRow,
   HvTableSection,
-} from "@hitachivantara/uikit-react-core";
-import { Ban } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Ban } from "@pentaho/uikit-react-icons";
 
 const rows = [...Array(12).keys()].map((i) => ({
   id: `${i + 1}`,

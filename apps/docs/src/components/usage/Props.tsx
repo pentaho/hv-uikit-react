@@ -14,8 +14,8 @@ import {
   HvTableRow,
   HvTypography,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Ban } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Ban } from "@pentaho/uikit-react-icons";
 
 import type { ComponentMeta } from "../../utils/component";
 

@@ -1,5 +1,5 @@
-import { HvEmptyState, HvLoading } from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+import { HvEmptyState, HvLoading } from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 
 export interface LoadingProps extends React.HTMLAttributes<HTMLDivElement> {
   delay?: number;

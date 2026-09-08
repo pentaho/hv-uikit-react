@@ -1,9 +1,6 @@
 import { createTheme, type PaletteOptions } from "@mui/material/styles";
-import type { HvTheme } from "@hitachivantara/uikit-react-shared";
-import type {
-  HvThemeColorsAny,
-  HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+import type { HvTheme } from "@pentaho/uikit-react-shared";
+import type { HvThemeColorsAny, HvThemeStructure } from "@pentaho/uikit-styles";
 
 export function createMuiTheme(theme: HvTheme | HvThemeStructure) {
   return createTheme({

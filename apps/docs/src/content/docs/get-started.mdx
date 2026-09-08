@@ -24,7 +24,7 @@ If you just want to try out **UI Kit** without setting up a local project, launc
 The quickest way to start a **UI Kit** project is with our CLI:
 
 ```sh
-npx @hitachivantara/uikit-cli@latest create
+npx @pentaho/uikit-cli@latest create
 ```
 
 This will scaffold a preconfigured project with all dependencies and setup included.
@@ -40,7 +40,7 @@ Prefer to set things up yourself? Follow these steps:
 [`@emotion/react`](https://emotion.sh/docs/introduction) and [`@mui/material`](https://mui.com/) are required peer dependencies.
 
 ```sh npm2yarn
-npm i @hitachivantara/uikit-react-core @emotion/react @emotion/styled @mui/material
+npm i @pentaho/uikit-react-core @emotion/react @emotion/styled @mui/material
 ```
 
 ### Set Up the Provider
@@ -49,7 +49,7 @@ Wrap your app with `HvProvider` to enable theming and global configuration:
 
 ```tsx
 // 1. import `Provider` component
-import { HvProvider } from "@hitachivantara/uikit-react-core";
+import { HvProvider } from "@pentaho/uikit-react-core";
 
 function App() {
   // 2. Wrap Provider at the root of your app
@@ -66,7 +66,7 @@ function App() {
 Now you can start building with UI Kit components:
 
 ```tsx
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 const MyComponent = () => {
   return <HvTypography>Hello from the UI Kit team!</HvTypography>;

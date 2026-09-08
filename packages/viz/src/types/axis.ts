@@ -1,4 +1,4 @@
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 /**
  * Axis types:

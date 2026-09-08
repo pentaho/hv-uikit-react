@@ -40,57 +40,8 @@ export const makeTheme = (
 
   // @ts-expect-error type this correctly
   newTheme.vars = makeVarsProxy(newTheme);
-  // add `modes` for backwards compatibility with existing v5 apps
-  // TODO: remove when this is no longer deemed necessary
-  // @ts-expect-error backwards compatibility hack
-  newTheme.colors.modes = {
-    dawn: newTheme.colors.light,
-    wicked: newTheme.colors.dark,
-  };
 
   return newTheme;
-};
-
-/** Compatibility object between UI Kit tokens and NEXT tokens */
-const compatMap: Partial<Record<keyof HvThemeColors, string>> = {
-  primaryStrong: "primary_80",
-  primaryDimmed: "primary_20",
-  positiveStrong: "positive_80",
-  positiveDeep: "positive_120",
-  positiveDimmed: "positive_20",
-  warningStrong: "warning_120",
-  warningDeep: "warning_140",
-  warningDimmed: "warning_20",
-  negativeStrong: "negative_80",
-  negativeDeep: "negative_120",
-  negativeDimmed: "negative_20",
-  info: "neutral",
-  infoDimmed: "neutral_20",
-
-  text: "secondary",
-  textSubtle: "secondary_80",
-  textDisabled: "secondary_60",
-  textDimmed: "atmo1",
-  textLight: "base_light",
-  textDark: "base_dark",
-
-  bgHover: "primary_20",
-  bgDisabled: "atmo3",
-  bgPage: "atmo2",
-  bgContainer: "atmo1",
-  bgPageSecondary: "atmo3",
-  border: "atmo4",
-};
-
-/** Adds the NEXT compatibility colors for a given palette. @example `bgPage` => `bgPage` => `atmo2` */
-const extendCompatColors = (baseColors: Partial<HvThemeColors>) => {
-  return Object.entries(baseColors).reduce((acc, [key, color]) => {
-    const compatKey = compatMap[key as keyof typeof compatMap];
-    if (compatKey) {
-      acc[compatKey as keyof typeof acc] = color;
-    }
-    return acc;
-  }, baseColors);
 };
 
 /**
@@ -118,16 +69,16 @@ export const makeColors = (
   );
 
   return {
-    light: extendCompatColors({
+    light: {
       ...colors.common,
       ...colors.light,
       ...lightColors,
-    }),
+    },
 
-    dark: extendCompatColors({
+    dark: {
       ...colors.common,
       ...colors.dark,
       ...darkColors,
-    }),
+    },
   };
 };

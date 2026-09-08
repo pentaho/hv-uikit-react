@@ -4,7 +4,7 @@ import {
   HvListContainer,
   HvListItem,
   type HvAccordionProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const classes = {
   listContainer: "[&>li]:pl-32px",

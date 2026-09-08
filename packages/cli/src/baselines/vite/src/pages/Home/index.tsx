@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 export function Component() {
   const { t } = useTranslation("home");

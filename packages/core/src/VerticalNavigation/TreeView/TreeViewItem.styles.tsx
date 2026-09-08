@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { blue, neutral, slate, theme } from "@pentaho/uikit-styles";
 
 import { avatarClasses } from "../../Avatar";
 import { insetOutlineStyles } from "../../utils/focusUtils";
@@ -49,7 +49,8 @@ export const { staticClasses, useClasses } = createClasses(
       justifyContent: "flex-start",
       alignItems: "center",
       height: "32px",
-      borderLeft: `4px solid transparent`,
+      borderLeft: "unset",
+      borderRadius: theme.radii.round,
       paddingRight: theme.space.xs,
       "&$minimized": {
         justifyContent: "center",
@@ -85,6 +86,20 @@ export const { staticClasses, useClasses } = createClasses(
       },
       "$focused>&": {
         ...hover,
+      },
+
+      ".HvVerticalNavigationTreeViewItem-selected>&": {
+        background: blue[800],
+        borderLeft: "unset",
+      },
+      ":not(.HvVerticalNavigationTreeViewItem-disabled>&):not(.HvVerticalNavigationTreeViewItem-selected>&)":
+        {
+          "&:hover, &:focus-visible, &.focus-visible": {
+            background: slate[700],
+          },
+        },
+      ".HvVerticalNavigationTreeViewItem-focused>&": {
+        background: slate[700],
       },
 
       "&[disabled], &:active": {
@@ -130,8 +145,19 @@ export const { staticClasses, useClasses } = createClasses(
       padding: 0,
       minHeight: 0,
       overflow: "hidden",
+      "--hv-content-padding": "0px",
+      borderLeft: `1px solid ${theme.alpha("border", 0.3)}`,
+      marginLeft: "calc(var(--hv-nav-item-padding, 0px) + 16px)",
+      paddingLeft: theme.space.sm,
     },
-    disabled: {},
+    disabled: {
+      "& .HvVerticalNavigationTreeViewItem-label": {
+        color: neutral[500],
+      },
+      "& .HvVerticalNavigationTreeViewItem-content": {
+        background: neutral[800],
+      },
+    },
     expandable: {
       fontWeight: 600,
     },
@@ -166,6 +192,9 @@ export const { staticClasses, useClasses } = createClasses(
       [`&& .${avatarClasses.root}`]: {
         fontSize: "15px",
         borderColor: "transparent",
+      },
+      "& .HvAvatar-root": {
+        borderRadius: theme.radii.round,
       },
     },
   },

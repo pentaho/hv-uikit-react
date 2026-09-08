@@ -77,7 +77,7 @@ For event dispatching, utilize the `globalThis` variable and below is an example
 import {
   HvAppShellEventTheme,
   HvAppShellEventThemeTrigger,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 
 const customEvent = new CustomEvent<HvAppShellEventTheme>()(
   HvAppShellEventThemeTrigger,
@@ -97,7 +97,7 @@ globalThis.dispatchEvent(customEvent);
 
 Hook that provides access to the App Shell's i18n context, allowing modules to read and change the current language.
 
-**Package**: `@hitachivantara/app-shell-shared`
+**Package**: `@pentaho/app-shell-shared`
 
 **Returns**: `HvUseAppShellI18nContextValue`
 
@@ -109,7 +109,7 @@ Hook that provides access to the App Shell's i18n context, allowing modules to r
 **Example**:
 
 ```tsx
-import { useHvAppShellI18n } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellI18n } from "@pentaho/app-shell-shared";
 
 function LanguageSwitcher() {
   const { language, changeLanguage } = useHvAppShellI18n();

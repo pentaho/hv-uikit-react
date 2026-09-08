@@ -1,4 +1,4 @@
-# @hitachivantara/uikit-react-core
+# @pentaho/uikit-react-core
 
 UI Kit core React components.
 
@@ -7,5 +7,5 @@ UI Kit core React components.
 Install the package in your project directory with:
 
 ```sh
-npm install @hitachivantara/uikit-react-core
+npm install @pentaho/uikit-react-core
 ```

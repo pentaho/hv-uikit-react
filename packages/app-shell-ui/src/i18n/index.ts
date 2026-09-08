@@ -1,8 +1,5 @@
 import LanguageDetector from "i18next-browser-languagedetector";
-import {
-  createI18n,
-  type I18nInstance,
-} from "@hitachivantara/app-shell-i18next";
+import { createI18n, type I18nInstance } from "@pentaho/app-shell-i18next";
 
 // @ts-ignore
 import en from "../locales/en/appShell.json";

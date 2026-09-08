@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/app-shell-navigation",
-  "version": "2.1.18",
+  "name": "@pentaho/app-shell-navigation",
+  "version": "3.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@hitachivantara/app-shell-shared": "^2.3.7",
+    "@pentaho/app-shell-shared": "^3.0.0-next.2",
     "path-to-regexp": "^8.1.0"
   },
   "peerDependencies": {

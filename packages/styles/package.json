@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/uikit-styles",
-  "version": "6.2.2",
+  "name": "@pentaho/uikit-styles",
+  "version": "7.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -8,7 +8,6 @@
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "typescript"

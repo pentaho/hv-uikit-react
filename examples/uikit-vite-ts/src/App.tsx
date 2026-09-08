@@ -1,4 +1,4 @@
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 export const App = () => {
   return (

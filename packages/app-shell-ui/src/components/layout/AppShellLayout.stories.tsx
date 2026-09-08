@@ -4,9 +4,9 @@ import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
 import { MemoryRouter } from "react-router-dom";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
-import { setupChromatic } from "@hitachivantara/internal";
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
+import { setupChromatic } from "@pentaho/internal";
+import { HvButton } from "@pentaho/uikit-react-core";
 
 import { createI18NextInstance, useI18nInit } from "../../i18n";
 import GenericError from "../../pages/GenericError";

@@ -76,7 +76,7 @@ This allows you to use your local version of the UI Kit in other projects withou
 npm link -ws
 
 # in your local project directory
-npm link @hitachivantara/uikit-react-core
+npm link @pentaho/uikit-react-core
 ```
 
 If package publishing is required, they can be easily published to a separate registry (eg. [Verdaccio](https://verdaccio.org/)) like so:

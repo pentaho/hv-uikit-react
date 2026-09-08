@@ -14,7 +14,7 @@ root.render(React.createElement(
 
     "virtual:App.tsx": inlineConfig
       ? `import React from "react";
-import HvAppShell from "@hitachivantara/app-shell-ui";
+import HvAppShell from "@pentaho/app-shell-ui";
 
 const App = () => {
   return React.createElement(HvAppShell, {
@@ -24,7 +24,7 @@ const App = () => {
 
 export default App;`
       : `import React from "react";
-import HvAppShell from "@hitachivantara/app-shell-ui";
+import HvAppShell from "@pentaho/app-shell-ui";
 
 const App = () => {
   return React.createElement(HvAppShell, {

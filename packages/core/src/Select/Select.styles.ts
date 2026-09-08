@@ -1,9 +1,14 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { slate, theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvSelect", {
   root: {
     position: "relative",
+    borderRadius: theme.radii.round,
+    ":where(.HvButton-subtle[data-color=text])": {
+      borderColor: theme.colors.textDimmed,
+      backgroundColor: `light-dark(white, ${slate[950]})`,
+    },
     "&$disabled,&$readOnly": {
       pointerEvents: "none",
     },
@@ -15,11 +20,19 @@ export const { staticClasses, useClasses } = createClasses("HvSelect", {
   label: {},
   description: {},
   select: {
+    borderRadius: theme.radii.round,
     "&&$invalid": { borderColor: theme.form.errorColor },
   },
-  popper: {},
+  popper: {
+    zIndex: theme.zIndices.popover,
+  },
   panel: {
+    margin: theme.spacing("xxs", 0),
     maxHeight: 400,
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
 
     // panel styles overrides
     padding: theme.space.xs,

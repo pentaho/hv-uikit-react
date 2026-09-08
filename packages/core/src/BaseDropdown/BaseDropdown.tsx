@@ -12,10 +12,7 @@ import type { PopperProps } from "@mui/material/Popper";
 import useEventCallback from "@mui/utils/useEventCallback";
 import useForkRef from "@mui/utils/useForkRef";
 import type { Placement, State } from "@popperjs/core";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useControlled } from "../hooks/useControlled";
 import { useUniqueId } from "../hooks/useUniqueId";

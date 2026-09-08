@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { clsx } from "clsx";
 import Link from "next/link";
-import { HvButton } from "@hitachivantara/uikit-react-core";
+import { HvButton } from "@pentaho/uikit-react-core";
 
 const SlideText = () => {
   const slideKeyframes = useMemo(

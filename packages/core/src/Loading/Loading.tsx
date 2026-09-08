@@ -3,8 +3,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { getColor, type HvColorAny } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny } from "@pentaho/uikit-styles";
 
 import type { HvBaseProps } from "../types/generic";
 import { range } from "../utils/helpers";
@@ -56,7 +56,7 @@ export const HvLoading = forwardRef<
       hidden={!!hidden}
       data-size={size}
       style={mergeStyles(style, {
-        color: getColor(color, small ? "text" : "brand"),
+        color: getColor(color, small ? "text" : "primary"),
         "--customColor": getColor(color),
       })}
       className={cx(

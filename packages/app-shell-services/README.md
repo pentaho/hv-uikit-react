@@ -1,4 +1,4 @@
-# @hitachivantara/app-shell-services
+# @pentaho/app-shell-services
 
 App Shell Services. Support package to manage services at the App Shell ecosystem.
 
@@ -145,5 +145,5 @@ To see more examples, please check the [Default App](../../apps/default-app) `Se
 The App Shell Services is available as an NPM package, and can be installed with:
 
 ```bash
-npm install @hitachivantara/app-shell-services
+npm install @pentaho/app-shell-services
 ```

@@ -4,7 +4,7 @@ import {
   HvBaseDropdown,
   HvDropdown,
   type HvDropdownProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default {
   title: "Components/Dropdown",

@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvTableCell", {
   /** Styles applied to the component root class. */
@@ -7,7 +7,7 @@ export const { staticClasses, useClasses } = createClasses("HvTableCell", {
     verticalAlign: "inherit",
     alignContent: "inherit",
     textAlign: "left",
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderSubtle,
     padding: theme.spacing(0, "sm"),
     borderBottomWidth: 1,
   },

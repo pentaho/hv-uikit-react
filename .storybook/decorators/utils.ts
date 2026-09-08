@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react";
-import type {
-  HvThemeColorMode,
-  HvThemeStructure,
-} from "@hitachivantara/uikit-styles";
+import type { HvThemeColorMode, HvThemeStructure } from "@pentaho/uikit-styles";
 
 export interface Theme {
   label: string;

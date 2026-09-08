@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { HvButton } from "../Button";
 import { useControlled } from "../hooks/useControlled";

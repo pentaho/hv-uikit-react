@@ -3,7 +3,7 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { HvLoading, type HvLoadingProps } from "../Loading";
 import type { HvBaseProps } from "../types/generic";

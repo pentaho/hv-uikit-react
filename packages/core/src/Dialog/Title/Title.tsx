@@ -1,10 +1,7 @@
 import MuiDialogTitle, {
   type DialogTitleProps as MuiDialogTitleProps,
 } from "@mui/material/DialogTitle";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvStatusIcon } from "../../StatusIcon";
 import { HvTypography } from "../../Typography";

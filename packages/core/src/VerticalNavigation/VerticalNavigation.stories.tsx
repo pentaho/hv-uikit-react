@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvVerticalNavigation,
   HvVerticalNavigationAction,
@@ -11,13 +11,12 @@ import {
   HvVerticalNavigationTreeView,
   HvVerticalNavigationTreeViewItem,
   type HvVerticalNavigationProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { CollapsibleIcons as CollapsibleIconsStory } from "./stories/CollapsibleIcons";
 import { Main as MainStory } from "./stories/Main";
 import { SliderMode as SliderModeStory } from "./stories/SliderMode";
 import { Test as TestStory } from "./stories/Test";
-import { TreeViewMode as TreeViewModeStory } from "./stories/TreeViewMode";
 
 const meta: Meta<typeof HvVerticalNavigation> = {
   title: "Components/Vertical Navigation",
@@ -48,41 +47,30 @@ export const Main: StoryObj<HvVerticalNavigationProps> = {
   render: (args) => <MainStory {...args} />,
 };
 
-export const TreeViewMode: StoryObj<HvVerticalNavigationProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Usage of the [Treeview Design Pattern](https://w3c.github.io/aria-practices/#TreeView) to build a navigation tree for a set of hierarchically organized web pages. " +
-          "Instead of TAB, use the arrow keys to navigate through items. Enter performs its default action (i.e. open/close parent nodes, select otherwise).",
-      },
-    },
-  },
-  render: () => <TreeViewModeStory />,
-};
-
-export const CollapsibleIcons: StoryObj<HvVerticalNavigationProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "When collapsed in icon mode only the icons are visible, if an icon is not provided one will be generated based on the first letter of the label.",
-      },
-    },
-  },
-  render: () => <CollapsibleIconsStory />,
-};
-
-export const SliderMode: StoryObj<HvVerticalNavigationProps> = {
-  render: () => <SliderModeStory />,
-};
-
 export const Test: StoryObj<HvVerticalNavigationProps> = {
   parameters: {
     ...setupChromatic("all", 5000),
   },
   play: async ({ canvas, userEvent }) => {
-    // no collapse click: it animates the width, moving the popup anchor
+    const buttons = canvas.getAllByRole("button", { name: "collapseButton" });
+    await userEvent.click(buttons[0]);
+
+    // expanding animates the width, which shifts the navigation the popup
+    // anchors to. the popup measures its anchor once, so wait for the
+    // transition before opening it — with a fallback for reduced motion
+    const nav = buttons[0].closest<HTMLElement>(".HvVerticalNavigation-root");
+    await new Promise<void>((resolve) => {
+      const timeout = setTimeout(resolve, 400);
+      nav?.addEventListener(
+        "transitionend",
+        () => {
+          clearTimeout(timeout);
+          resolve();
+        },
+        { once: true },
+      );
+    });
+
     const hwButtons = canvas.getAllByRole("button", { name: /hardware/i });
     expect(hwButtons).toHaveLength(2);
     await userEvent.click(hwButtons[1]);

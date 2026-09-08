@@ -4,7 +4,7 @@ import {
   HvGrid,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { DefaultAppContext } from "../../providers/DefaultAppProvider";
 
@@ -19,7 +19,7 @@ export const DisplayDefaultAppContext = () => {
       />
 
       <HvGrid container>
-        <HvGrid item xs={12} display="flex">
+        <HvGrid display="flex" size={12}>
           <HvTypography variant="label">{text}</HvTypography>
         </HvGrid>
       </HvGrid>

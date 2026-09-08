@@ -5,7 +5,7 @@ import {
   HvLoading,
   type HvButtonProps,
   type HvLoadingProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvLoading> = {
   title: "Components/Loading",

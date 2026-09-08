@@ -1,11 +1,11 @@
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18next from "i18next";
-import { useHvCurrentNavigationPath } from "@hitachivantara/app-shell-navigation";
+import { useHvCurrentNavigationPath } from "@pentaho/app-shell-navigation";
 import {
   HvBreadCrumb,
   HvGlobalActions,
   HvTextArea,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { initAppI18n } from "../../utils/i18n";
 

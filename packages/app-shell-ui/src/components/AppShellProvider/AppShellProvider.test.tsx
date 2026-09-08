@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import { useHvAppShellModel } from "@hitachivantara/app-shell-shared";
+import { useHvAppShellModel } from "@pentaho/app-shell-shared";
 
 import renderTestProvider from "../../tests/testUtils";
 
@@ -50,28 +50,10 @@ describe("AppShellProvider component", () => {
   });
 
   describe("config theming prop", () => {
-    it("should log error if import of a theme bundle fails and apply default", async () => {
-      const { baseElement } = await renderTestProvider(<div>dummy</div>, {
-        theming: {
-          theme: "dummyTheme",
-        },
-      });
-
-      const bodyElement = baseElement.ownerDocument.body;
-
-      await waitFor(() => {
-        expect(consoleMock).toHaveBeenCalledWith(
-          expect.stringContaining("Import of theme bundle dummyTheme failed!"),
-        );
-
-        expect(bodyElement.getAttribute("data-theme")).toBe("pentahoPlus");
-      });
-    });
-
     it("should apply chosen theme and color mode", async () => {
       const { baseElement } = await renderTestProvider(<div>dummy</div>, {
         theming: {
-          theme: "next",
+          theme: "pentaho",
           colorMode: "dark",
         },
       });
@@ -79,7 +61,7 @@ describe("AppShellProvider component", () => {
       const bodyElement = baseElement.ownerDocument.body;
 
       await waitFor(() => {
-        expect(bodyElement.getAttribute("data-theme")).toBe("next");
+        expect(bodyElement.getAttribute("data-theme")).toBe("pentaho");
         expect(bodyElement.getAttribute("data-color-mode")).toBe("dark");
         expect(bodyElement).toHaveStyle("color-scheme: dark;");
       });

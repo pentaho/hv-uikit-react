@@ -13,12 +13,12 @@ At its core, **App Shell** consists of:
 
 The **App Shell** comprises the following packages:
 
-- [`@hitachivantara/app-shell-events`](https://npm.im/@hitachivantara/app-shell-events)
-- [`@hitachivantara/app-shell-i18next`](https://npm.im/@hitachivantara/app-shell-i18next)
-- [`@hitachivantara/app-shell-navigation`](https://npm.im/@hitachivantara/app-shell-navigation)
-- [`@hitachivantara/app-shell-services`](https://npm.im/@hitachivantara/app-shell-services)
-- [`@hitachivantara/app-shell-shared`](https://npm.im/@hitachivantara/app-shell-shared)
-- [`@hitachivantara/app-shell-ui`](https://npm.im/@hitachivantara/app-shell-ui)
-- [`@hitachivantara/app-shell-vite-plugin`](https://npm.im/@hitachivantara/app-shell-vite-plugin)
+- [`@pentaho/app-shell-events`](https://npm.im/@pentaho/app-shell-events)
+- [`@pentaho/app-shell-i18next`](https://npm.im/@pentaho/app-shell-i18next)
+- [`@pentaho/app-shell-navigation`](https://npm.im/@pentaho/app-shell-navigation)
+- [`@pentaho/app-shell-services`](https://npm.im/@pentaho/app-shell-services)
+- [`@pentaho/app-shell-shared`](https://npm.im/@pentaho/app-shell-shared)
+- [`@pentaho/app-shell-ui`](https://npm.im/@pentaho/app-shell-ui)
+- [`@pentaho/app-shell-vite-plugin`](https://npm.im/@pentaho/app-shell-vite-plugin)
 
 Each package plays a specific role in enabling modularity, consistent layout, and runtime integration of independently deployed frontend modules.

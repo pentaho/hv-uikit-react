@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/uikit-cli",
-  "version": "6.0.11",
+  "name": "@pentaho/uikit-cli",
+  "version": "7.0.0-next.2",
   "private": false,
   "type": "module",
   "author": "UI Kit Team",
@@ -12,7 +12,6 @@
     "uikit-cli": "src/index.js"
   },
   "keywords": [
-    "hitachivantara",
     "uikit-cli",
     "cli"
   ],
@@ -25,8 +24,7 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "prepare": "cpy ../../templates src",
-    "pretest": "node src/index.js create uikit-app -t Form,ListView",
+    "pretest": "node src/index.js create uikit-app",
     "test": "cd uikit-app",
     "posttest": "rimraf uikit-app"
   },

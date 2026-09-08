@@ -5,7 +5,7 @@ import {
   HvListItem,
   HvTypography,
   type HvListItemProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Battery,
   Cloud,
@@ -16,7 +16,7 @@ import {
   Ghost,
   Heart,
   Palette,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 interface Item {
   id: string;

@@ -8,9 +8,8 @@ The **theme** object serves as the **UI Kit** foundation, defining all styling s
 
 ## Theme Configuration
 
-**UI Kit** includes three default themes, each available in two color modes: **dawn** (light) and **wicked** (dark):
+**UI Kit** ships with the **pentaho** theme by default, available in two color modes: **light** and **dark**:
 
-- **next** — aligned with the [Next Design System](https://designsystem.hitachi.com)
 - **pentaho** — aligned with the Pentaho Design System
 
 Use the `HvProvider` to configure the active theme and color mode:
@@ -21,7 +20,7 @@ Use the `HvProvider` to configure the active theme and color mode:
 </HvProvider>
 ```
 
-- If `themes` is not provided, the default is `next`.
+- If `theme` is not provided, the default is `pentaho`.
 - If only one theme is provided, `theme` can be omitted.
 - If `colorMode` is omitted, `light` is used by default.
 
@@ -97,7 +96,7 @@ const MyComponent = () => {
 All theme tokens are exported as CSS variables prefixed with `--uikit-*`.
 You can access them either via:
 
-- the static `theme` object from `@hitachivantara/uikit-react-core`
+- the static `theme` object from `@pentaho/uikit-react-core`
 - the `vars` property of the theme instance that you just created (eg. `myTheme.vars`)
 
 ```tsx
@@ -105,7 +104,7 @@ myTheme.vars.colors.primary; // "var(--uikit-colors-primary)"
 ```
 
 ```tsx
-import { HvTypography, theme } from "@hitachivantara/uikit-react-core";
+import { HvTypography, theme } from "@pentaho/uikit-react-core";
 
 const CssVariables = () => {
   return (
@@ -127,7 +126,7 @@ const CssVariables = () => {
 You can globally define default props and custom styles for any component using the `components` key inside your theme. This reduces boilerplate and improves consistency.
 
 ```tsx
-const newTheme = mergeTheme(next, {
+const newTheme = mergeTheme(pentaho, {
   name: "myTheme",
   components: {
     HvAvatar: {

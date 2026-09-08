@@ -3,8 +3,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvSize } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import type { HvSize } from "@pentaho/uikit-styles";
 
 import { HvAvatar } from "../Avatar/Avatar";
 import type { HvBaseProps } from "../types/generic";
@@ -72,7 +72,7 @@ export const HvAvatarGroup = forwardRef<HTMLDivElement, HvAvatarGroupProps>(
       size = "sm",
       spacing = "loose",
       direction = "row",
-      maxVisible = 3,
+      maxVisible = 4,
       overflowComponent,
       highlight = false,
       toBack = false,

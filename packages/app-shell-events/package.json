@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/app-shell-events",
-  "version": "2.0.10",
+  "name": "@pentaho/app-shell-events",
+  "version": "3.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -20,11 +20,11 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@hitachivantara/uikit-react-core": "^6.0.0",
+    "@pentaho/uikit-react-core": "^7.0.0-next.0",
     "react": "^18.2.0"
   },
   "peerDependenciesMeta": {
-    "@hitachivantara/uikit-react-core": {
+    "@pentaho/uikit-react-core": {
       "optional": true
     }
   },

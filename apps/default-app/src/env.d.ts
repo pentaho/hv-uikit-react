@@ -1,1 +1,1 @@
-/// <reference types="@hitachivantara/app-shell-vite-plugin" />
+/// <reference types="@pentaho/app-shell-vite-plugin" />

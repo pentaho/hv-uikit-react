@@ -1,8 +1,6 @@
 import { useId } from "react";
 import { useTheme } from "nextra-theme-docs";
-import { HvProvider, themes } from "@hitachivantara/uikit-react-core";
-
-import { useDocsTheme } from "../../hooks/useDocsTheme";
+import { HvProvider, themes } from "@pentaho/uikit-react-core";
 
 export const DocsProvider = ({
   children,
@@ -10,9 +8,7 @@ export const DocsProvider = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const id = useId();
   const { resolvedTheme } = useTheme();
-  const [docsTheme] = useDocsTheme();
-
-  const theme = themes[docsTheme as keyof typeof themes];
+  const theme = themes.pentaho;
 
   return (
     // ensures docs container styles change according to theme

@@ -1,4 +1,4 @@
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvButtonBase } from "../../../ButtonBase";
 import type { ViewMode } from "../../enums";

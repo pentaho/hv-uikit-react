@@ -3,7 +3,7 @@ import type ReactECharts from "echarts-for-react";
 import { BoxplotChart } from "echarts/charts";
 import { TooltipComponent, VisualMapComponent } from "echarts/components";
 import * as echarts from "echarts/core";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseChart } from "../BaseChart";
 import {

@@ -1,9 +1,6 @@
 import { forwardRef } from "react";
 import type { SnackbarContentProps as MuiSnackbarContentProps } from "@mui/material/SnackbarContent";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvActionsGenericProps } from "../../ActionsGeneric";
 import type { HvButtonProps } from "../../Button";
@@ -24,10 +21,8 @@ export type HvBannerContentClasses = ExtractNames<typeof useClasses>;
 
 export interface HvBannerContentProps extends Omit<
   MuiSnackbarContentProps,
-  "variant" | "classes" | "onClose"
+  "variant" | "classes" | "onClose" | "content"
 > {
-  /** The message to display. @deprecated use `children` instead */
-  content?: string;
   /** The message to display. */
   children?: React.ReactNode;
   /** Variant of the snackbar. */
@@ -68,7 +63,6 @@ export const HvBannerContent = forwardRef<
     actions,
     onAction,
     actionsPosition = "auto",
-    content,
     children,
     actionProps,
     size,
@@ -102,7 +96,7 @@ export const HvBannerContent = forwardRef<
       size={size}
       {...others}
     >
-      {children ?? content}
+      {children}
     </HvCallout>
   );
 });

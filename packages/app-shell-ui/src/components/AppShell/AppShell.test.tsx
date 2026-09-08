@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { render, screen } from "@testing-library/react";
 import i18next from "i18next";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import AppShell from "./AppShell";
 

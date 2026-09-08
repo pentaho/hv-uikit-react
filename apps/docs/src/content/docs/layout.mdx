@@ -25,7 +25,7 @@ When the screen width crosses a breakpoint, the layout automatically adapts to e
 ## Layout Components
 
 The **UI Kit** provides a set of components to help you create responsive layouts.
-The **Container** and **Grid** components use the predefined breakpoints. In contrast, **SimpleGrid** gives you the flexibility to define custom breakpoints based on your layout needs.
+The **Container** and **Grid** components use the predefined breakpoints.
 
 ### Container
 
@@ -54,17 +54,17 @@ This component is ideal when your content should stay within a specific width. U
 
 The [`HvGrid`](/components/grid) component lets you build responsive grid layouts with a customizable number of columns. Grid items automatically adapt to different screen sizes.
 
-By default, the grid uses a 12-column layout. You can customize this using the `columns` prop—set it to a specific number for a fixed column count, or use `auto` to apply responsive behavior based on the default breakpoints.
+By default, the grid uses a 12-column layout. You can customize this using the `columns` prop, set it to a specific number for a fixed column count, or use `auto` to apply responsive behavior based on the default breakpoints.
 Grid items can also span across multiple columns, allowing you to build flexible and adaptive layouts to fit your design needs.
 
 ```tsx live
 <HvGrid columns="auto" container>
-  <HvGrid item xs={4} sm={8} md={12}>
+  <HvGrid size={{ xs: 4, sm: 8, md: 12 }}>
     <HvGlobalActions title="Dashboard" />
   </HvGrid>
   {Array.from({ length: 4 }).map((v, i) => {
     return (
-      <HvGrid item xs={4} sm={4} md={3} lg={3} key={i}>
+      <HvGrid size={{ xs: 4, sm: 4, md: 3, lg: 3 }} key={i}>
         <HvCard
           statusColor={i === 0 ? "warning" : "positive"}
           bgcolor="bgContainer"
@@ -92,7 +92,7 @@ Grid items can also span across multiple columns, allowing you to build flexible
       </HvGrid>
     );
   })}
-  <HvGrid item xs={4} sm={8} md={12}>
+  <HvGrid size={{ xs: 4, sm: 8, md: 12 }}>
     <HvCard bgcolor="bgContainer">
       <HvCardContent>
         <HvVizProvider>
@@ -122,42 +122,4 @@ Grid items can also span across multiple columns, allowing you to build flexible
     </HvCard>
   </HvGrid>
 </HvGrid>
-```
-
-### Simple Grid
-
-The [`HvSimpleGrid`](/components/simple-grid) component is a simplified alternative to `HvGrid`, perfect for responsive layouts where each item takes up equal space and adapts to screen size changes.
-Use it when you need a uniform grid with a fixed number of equally sized columns.
-
-Unlike `HvGrid`, it doesn’t rely on default breakpoints. Instead, you can define custom breakpoints, column counts, and spacing. It doesn’t support column spans—each item always takes up one column—making it ideal for simpler, evenly spaced layouts.
-
-```tsx live
-export default function Demo() {
-  const { activeTheme } = useTheme();
-
-  return (
-    <HvSimpleGrid
-      cols={3}
-      breakpoints={[
-        {
-          maxWidth: activeTheme?.breakpoints.values.sm,
-          cols: 2,
-        },
-      ]}
-    >
-      {Array.from({ length: 9 }).map((v, i) => {
-        return (
-          <HvCard key={i} bgcolor="bgContainer">
-            <HvCardHeader title={`Card ${i}`} />
-            <HvCardContent>
-              <HvTypography>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </HvTypography>
-            </HvCardContent>
-          </HvCard>
-        );
-      })}
-    </HvSimpleGrid>
-  );
-}
 ```

@@ -3,19 +3,18 @@ import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvBadge,
-  HvSimpleGrid,
   HvTab,
   HvTabs,
   type HvTabProps,
   type HvTabsProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Alert,
   Calendar,
   DataStore,
   Helicopter,
   Reload,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvTabs> = {
   title: "Components/Tabs",
@@ -45,107 +44,9 @@ export const Main: StoryObj<HvTabsProps> = {
   },
 };
 
-export const Variants: StoryObj<HvTabsProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Tabs with the `fullWidth` and `scrollable` variants.",
-      },
-    },
-  },
-  render: () => {
-    const [value, setValue] = useState(0);
-
-    return (
-      <div className="grid gap-md">
-        <HvTabs
-          variant="fullWidth"
-          value={value}
-          onChange={(_, val) => setValue(val)}
-        >
-          <HvTab label="Clickable tab 1" />
-          <HvTab label="Clickable tab 2" />
-          <HvTab label="Clickable tab 3" />
-        </HvTabs>
-        <div className="max-w-400px">
-          <HvTabs
-            variant="scrollable"
-            scrollButtons="auto"
-            value={value}
-            onChange={(_, newValue) => setValue(newValue)}
-          >
-            {[...Array(12).keys()].map((i) => (
-              <HvTab key={i} label={`Clickable tab ${i + 1}`} />
-            ))}
-          </HvTabs>
-        </div>
-      </div>
-    );
-  },
-};
-
-export const Icons: StoryObj<HvTabsProps> = {
-  render: () => {
-    const [value, setValue] = useState(0);
-
-    const handleChange: HvTabsProps["onChange"] = (_, newValue) => {
-      setValue(newValue);
-    };
-
-    return (
-      <>
-        <HvTabs value={value} onChange={handleChange}>
-          <HvTab
-            label="Clickable tab 1"
-            icon={<DataStore />}
-            iconPosition="start"
-          />
-          <HvTab
-            label="Clickable tab 2"
-            icon={<DataStore />}
-            iconPosition="start"
-          />
-          <HvTab
-            label="Clickable tab 3"
-            icon={<DataStore />}
-            iconPosition="start"
-          />
-        </HvTabs>
-        <br />
-        <HvTabs value={value} onChange={handleChange}>
-          <HvTab
-            label="Clickable tab 1"
-            icon={<Helicopter />}
-            iconPosition="top"
-          />
-          <HvTab
-            label="Clickable tab 2"
-            icon={<Helicopter />}
-            iconPosition="top"
-          />
-          <HvTab
-            label="Clickable tab 3"
-            icon={<Helicopter />}
-            iconPosition="top"
-          />
-        </HvTabs>
-        <br />
-        <HvTabs value={value} onChange={handleChange}>
-          <HvTab icon={<Alert />} aria-label="Alert" />
-          <HvTab icon={<Reload />} aria-label="Reload" />
-          <HvTab icon={<Calendar />} aria-label="Calendar" />
-        </HvTabs>
-      </>
-    );
-  },
-};
-
 export const Test: StoryObj = {
   render: () => (
-    <HvSimpleGrid
-      cols={3}
-      style={{ alignItems: "start", justifyContent: "start" }}
-    >
+    <div className="grid gap-sm grid-cols-3 items-start justify-start">
       <HvTabs value={0}>
         <HvTab label="Clickable tab 1" />
         <HvTab label="Clickable tab 2" />
@@ -216,7 +117,7 @@ export const Test: StoryObj = {
           <HvTab label={<HvBadge label={1}>Vehicle events</HvBadge>} />
         </HvTabs>
       </div>
-    </HvSimpleGrid>
+    </div>
   ),
 };
 

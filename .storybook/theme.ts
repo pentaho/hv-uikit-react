@@ -1,5 +1,5 @@
 import { create, type ThemeVarsPartial } from "storybook/theming";
-import { pentaho } from "@hitachivantara/uikit-styles";
+import { pentaho } from "@pentaho/uikit-styles";
 
 const { colors } = pentaho;
 
@@ -17,7 +17,7 @@ const getThemeVars = (base: "light" | "dark"): ThemeVarsPartial => ({
 
   colorPrimary: colors[base].primary,
   colorSecondary: colors[base].text,
-  fontBase: "'Open Sans',sans-serif",
+  fontBase: "'Inter',sans-serif",
   fontCode: "monospace",
   textColor: colors[base].text,
   textInverseColor: colors[base === "dark" ? "light" : "dark"].text,

@@ -7,8 +7,8 @@ import {
   HvListItem,
   HvMultiButton,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS } from "@pentaho/uikit-react-icons";
 
 export default function LoginShort() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

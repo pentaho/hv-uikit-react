@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { HvAdornment } from "../FormElement";
 import { HvIcon } from "../icons";
@@ -28,7 +28,7 @@ export const HvSearchInput = forwardRef<
     <HvInput
       ref={ref}
       type="search"
-      disableSearchButton
+      hideSearchButton
       startAdornment={<HvAdornment icon={<HvIcon compact name="Search" />} />}
       classes={classes}
       {...others}

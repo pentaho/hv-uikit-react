@@ -29,7 +29,7 @@ outside of the i18n layer.
 
 > [!IMPORTANT]
 > This package is designed to be bundled with its consumers.
-> Additionally, applications using `@hitachivantara/app-shell-i18next` should
+> Additionally, applications using `@pentaho/app-shell-i18next` should
 > declare a direct dependency on `i18next`.
 
 ## Included API

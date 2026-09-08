@@ -1,7 +1,7 @@
 import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import { LOCAL_STORAGE_KEYS } from "../../../hooks/useLocalStorage";
 import * as NavigationProvider from "../../../providers/NavigationProvider";
@@ -14,8 +14,8 @@ const navigationContextSpy = vi.spyOn(
   "useNavigationContext",
 );
 const navigateSpy = vi.fn();
-vi.mock("@hitachivantara/app-shell-navigation", async () => {
-  const mod = await vi.importActual("@hitachivantara/app-shell-navigation");
+vi.mock("@pentaho/app-shell-navigation", async () => {
+  const mod = await vi.importActual("@pentaho/app-shell-navigation");
   return {
     ...(mod as object),
     useHvNavigation: vi.fn(() => {
@@ -78,7 +78,7 @@ describe("VerticalNavigation", () => {
     // Cleanup handled by afterEach.
   });
 
-  describe("pentahoPlus theme", () => {
+  describe("pentaho theme", () => {
     it("should render the collapse action label", async () => {
       await renderTestProvider(<VerticalNavigation />, {
         theming: { theme: "pentaho" },
@@ -95,32 +95,6 @@ describe("VerticalNavigation", () => {
 
       await screen.findByRole("navigation");
       expect(screen.queryByText("Menu")).not.toBeInTheDocument();
-    });
-  });
-
-  describe("non-pentaho theme", () => {
-    it("should render the standard header with title and collapse button", async () => {
-      await renderTestProvider(<VerticalNavigation />, {
-        theming: { theme: "next" },
-      });
-
-      const header = await screen.findByText("Menu");
-      expect(header).toBeInTheDocument();
-
-      const collapseButton = screen.getByRole("button", {
-        name: "Collapse vertical navigation",
-      });
-      expect(collapseButton).toBeInTheDocument();
-      expect(collapseButton).toHaveAttribute("aria-expanded", "true");
-    });
-
-    it("should not render the pentaho collapse action", async () => {
-      await renderTestProvider(<VerticalNavigation />, {
-        theming: { theme: "next" },
-      });
-
-      await screen.findByRole("navigation");
-      expect(screen.queryByText("Collapse Menu")).not.toBeInTheDocument();
     });
   });
 

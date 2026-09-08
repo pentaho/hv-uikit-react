@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useTheme } from "@hitachivantara/uikit-react-utils";
-import { mergeTheme } from "@hitachivantara/uikit-styles";
+import { useTheme } from "@pentaho/uikit-react-utils";
+import { mergeTheme } from "@pentaho/uikit-styles";
 
-import { next } from "../themes/next";
+import { pentaho } from "../themes/pentaho";
 import { HvProvider } from "./Provider";
 
-const customTheme = mergeTheme(next, {
+const customTheme = mergeTheme(pentaho, {
   name: "custom-theme",
 });
 
@@ -23,20 +23,6 @@ function ChangeModeButton() {
   );
 }
 
-function ChangeThemeButton() {
-  const {
-    // @ts-expect-error deprecated utility
-    changeTheme,
-    selectedMode,
-  } = useTheme();
-
-  return (
-    <button type="button" onClick={() => changeTheme(customTheme)}>
-      {selectedMode}
-    </button>
-  );
-}
-
 describe("Provider", () => {
   it("has the color mode selected if no properties are provided", () => {
     const { container } = render(
@@ -47,7 +33,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=pentahoPlus]");
+    const theme = container.querySelector("[data-theme=pentaho]");
     const mode = container.querySelector("[data-color-mode=light]");
 
     expect(theme).toBeInTheDocument();
@@ -63,7 +49,7 @@ describe("Provider", () => {
       </div>,
     );
 
-    const theme = container.querySelector("[data-theme=pentahoPlus]");
+    const theme = container.querySelector("[data-theme=pentaho]");
     const mode = container.querySelector("[data-color-mode=dark]");
 
     expect(theme).toBeInTheDocument();
@@ -113,17 +99,5 @@ describe("Provider", () => {
     expect(screen.getByRole("button")).toHaveTextContent("light");
     await userEvent.click(screen.getByRole("button"));
     expect(screen.getByRole("button")).toHaveTextContent("dark");
-  });
-
-  it("changes colorMode on deprecated changeTheme button click", async () => {
-    render(
-      <HvProvider theme={next} colorMode="light">
-        <ChangeThemeButton />
-      </HvProvider>,
-    );
-
-    expect(screen.getByRole("button")).toHaveTextContent("light");
-    await userEvent.click(screen.getByRole("button"));
-    expect(screen.getByRole("button")).toHaveTextContent("light");
   });
 });

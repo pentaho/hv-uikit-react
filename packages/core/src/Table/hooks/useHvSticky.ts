@@ -5,7 +5,7 @@ import {
   type PropGetter,
   type TableCommonProps,
 } from "react-table";
-import { theme } from "@hitachivantara/uikit-styles";
+import { theme } from "@pentaho/uikit-styles";
 
 // #region ##### TYPES #####
 

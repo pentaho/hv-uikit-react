@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { outlineStyles } from "../utils/focusUtils";
 
@@ -10,7 +10,7 @@ export const { staticClasses, useClasses } = createClasses("HvBaseRadio", {
     minWidth: 32,
     height: 32,
     cursor: "pointer",
-    borderRadius: "inherit",
+    borderRadius: theme.radii.base,
     ":hover": {
       backgroundColor: theme.colors.bgHover,
     },
