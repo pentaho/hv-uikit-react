@@ -153,7 +153,7 @@ If your application relied on Open Sans being bundled, you can load it yourself.
  });
 ```
 
-Missing this shows up when the dev server starts, as `presetHv is not a function`.
+Missing this shows up when the dev server starts, because `presetHv` is no longer exported (it will be undefined / a missing export error).
 
 ### 9) Core components removed
 
