@@ -1,8 +1,5 @@
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useControlled } from "../hooks/useControlled";
 import { useLabels } from "../hooks/useLabels";

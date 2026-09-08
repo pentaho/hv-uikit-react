@@ -16,8 +16,8 @@ import {
   useHvRowSelection,
   useHvTable,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Lock, Unlock } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Lock, Unlock } from "@pentaho/uikit-react-icons";
 
 import { getColumns, makeData, type AssetEvent } from "../storiesUtils";
 

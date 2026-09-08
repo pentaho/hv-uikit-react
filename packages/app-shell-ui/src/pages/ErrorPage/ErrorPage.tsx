@@ -3,7 +3,7 @@ import {
   HvContainer,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { useNavigationContext } from "../../providers/NavigationProvider";
 import { Footer } from "./Footer";

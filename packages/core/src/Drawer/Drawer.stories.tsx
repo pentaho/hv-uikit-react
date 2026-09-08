@@ -2,7 +2,7 @@ import { useState } from "react";
 import { css } from "@emotion/css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvButton,
   HvDialogActions,
@@ -12,7 +12,7 @@ import {
   HvGlobalActions,
   HvTypography,
   type HvDrawerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvDrawer> = {
   title: "Components/Drawer",

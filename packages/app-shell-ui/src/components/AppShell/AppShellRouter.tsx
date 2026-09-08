@@ -11,8 +11,8 @@ import {
   useHvAppShellModel,
   type HvAppShellMainPanelModel,
   type HvAppShellViewsModel,
-} from "@hitachivantara/app-shell-shared";
-import { HvContainer } from "@hitachivantara/uikit-react-core";
+} from "@pentaho/app-shell-shared";
+import { HvContainer } from "@pentaho/uikit-react-core";
 
 import GenericError from "../../pages/GenericError";
 import LoadingPage from "../../pages/LoadingPage";

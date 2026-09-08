@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { actionsGenericClasses } from "../ActionsGeneric";
 
@@ -9,11 +9,9 @@ export const { staticClasses, useClasses } = createClasses("HvBulkActions", {
     alignItems: "center",
     border: `1px solid ${theme.colors.border}`,
     backgroundColor: theme.colors.bgContainer,
-    padding: theme.spacing("xs", "md"),
+    padding: theme.space.xs,
+    borderRadius: theme.radii.round,
     marginBottom: theme.space.xs,
-  },
-  semantic: {
-    backgroundColor: theme.colors.bgHover,
   },
   disabled: {
     backgroundColor: theme.colors.bgDisabled,

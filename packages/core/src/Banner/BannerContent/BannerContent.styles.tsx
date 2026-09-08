@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { useClasses, staticClasses } = createClasses("HvBannerContent", {
   root: {
@@ -7,6 +7,8 @@ export const { useClasses, staticClasses } = createClasses("HvBannerContent", {
     width: "100%",
     position: "relative",
     gap: theme.space.xs,
+    overflow: "hidden",
+    minHeight: "unset",
   },
   success: {},
   warning: {},

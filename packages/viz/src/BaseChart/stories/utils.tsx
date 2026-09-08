@@ -1,6 +1,6 @@
 import type { Decorator } from "@storybook/react-vite";
-import { HvPanel } from "@hitachivantara/uikit-react-core";
-import { HvVizProvider } from "@hitachivantara/uikit-react-viz";
+import { HvPanel } from "@pentaho/uikit-react-core";
+import { HvVizProvider } from "@pentaho/uikit-react-viz";
 
 export const vizDecorator: Decorator = (Story) => (
   <HvVizProvider>

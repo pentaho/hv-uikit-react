@@ -1,8 +1,5 @@
 import { forwardRef, useCallback, useMemo, useRef, useState } from "react";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useControlled } from "../../hooks/useControlled";
 import { useForkRef } from "../../hooks/useForkRef";

@@ -17,7 +17,7 @@ import {
   HvListItem,
   HvTypography,
   theme,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 import {
   Battery,
   Cloud,
@@ -33,7 +33,7 @@ import {
   Storage,
   Submit,
   Time,
-} from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-icons";
 
 const sampleColumns = [
   { id: "column1", title: "To Do" },

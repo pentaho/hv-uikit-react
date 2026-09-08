@@ -8,8 +8,8 @@ import {
   HvFileUploaderPreview,
   type HvFileData,
   type HvFileUploaderProps,
-} from "@hitachivantara/uikit-react-core";
-import { Code, DocWord } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Code, DocWord } from "@pentaho/uikit-react-icons";
 
 import { cancelUpload, simulateUpload } from "./stories/simulators";
 
@@ -81,67 +81,6 @@ export const Main: StoryObj<HvFileUploaderProps> = {
     return (
       <HvFileUploader
         {...args}
-        fileList={list}
-        onFilesAdded={(newFiles) => {
-          newFiles.forEach((newFile) => addFile(newFile));
-        }}
-        onFileRemoved={(removedFile) => {
-          removeFile(removedFile);
-        }}
-      />
-    );
-  },
-};
-
-export const Basic: StoryObj<HvFileUploaderProps> = {
-  parameters: {
-    docs: {
-      description: { story: "FileUploader default usage sample" },
-    },
-  },
-  render: () => {
-    const [list, setList] = useState<HvFileData[]>([]);
-
-    const addFile = (file: HvFileData) => {
-      const newFile = file;
-
-      const hasFailed = file.status === "fail";
-
-      if (!hasFailed) {
-        newFile.status = "progress";
-        newFile.progress = 0;
-
-        simulateUpload(
-          newFile,
-          (progress) => {
-            newFile.progress = progress;
-            setList((previousList) => [...previousList]);
-          },
-          () => {
-            newFile.status = "success";
-            setList((previousList) => [...previousList]);
-          },
-        );
-      }
-
-      setList((previousList) => [newFile, ...previousList]);
-    };
-
-    const removeFile = (fileToRemove: HvFileData) => {
-      if (fileToRemove.status === "progress") {
-        cancelUpload(fileToRemove);
-      }
-
-      setList((previousList) =>
-        previousList.filter((file) => file !== fileToRemove),
-      );
-    };
-
-    return (
-      <HvFileUploader
-        accept=".jpg,.jpeg,.png"
-        labels={{ sizeWarning: "Maximum file size:" }}
-        maxFileSize={1 * 1000 ** 2}
         fileList={list}
         onFilesAdded={(newFiles) => {
           newFiles.forEach((newFile) => addFile(newFile));
@@ -315,140 +254,6 @@ export const WithPreviewThumbnails: StoryObj<HvFileUploaderProps> = {
           </HvDialogContent>
         </HvDialog>
       </>
-    );
-  },
-};
-
-export const SingleUpload: StoryObj<HvFileUploaderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "FileUploader which permits the upload of a single file at a time",
-      },
-    },
-  },
-  render: () => {
-    const [list, setList] = useState<HvFileData[]>([]);
-
-    const addFile = (file: HvFileData) => {
-      const newFile = file;
-
-      const hasFailed = file.status === "fail";
-
-      if (!hasFailed) {
-        newFile.status = "progress";
-        newFile.progress = 0;
-
-        simulateUpload(
-          newFile,
-          (progress) => {
-            newFile.progress = progress;
-
-            setList((previousList) => [...previousList]);
-          },
-          () => {
-            newFile.status = "success";
-
-            setList((previousList) => [...previousList]);
-          },
-        );
-      }
-
-      setList((previousList) => [newFile, ...previousList]);
-    };
-
-    const removeFile = (fileToRemove: HvFileData) => {
-      if (fileToRemove.status === "progress") {
-        cancelUpload(fileToRemove);
-      }
-
-      setList((previousList) =>
-        previousList.filter((file) => file !== fileToRemove),
-      );
-    };
-
-    return (
-      <HvFileUploader
-        fileList={list}
-        onFilesAdded={(newFiles) => {
-          newFiles.forEach((newFile) => addFile(newFile));
-        }}
-        onFileRemoved={(removedFile) => {
-          removeFile(removedFile);
-        }}
-        accept=".jpg,.jpeg,.png"
-        maxFileSize={1 * 1000 ** 2}
-        multiple={false}
-        disabled={list.length === 1}
-      />
-    );
-  },
-};
-
-export const CustomizedFileTypes: StoryObj<HvFileUploaderProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "FileUploader which restricts the upload to xls and xlsx files.",
-      },
-    },
-  },
-  render: () => {
-    const [list, setList] = useState<HvFileData[]>([]);
-
-    const addFile = (file: HvFileData) => {
-      const newFile = file;
-
-      const hasFailed = file.status === "fail";
-
-      if (!hasFailed) {
-        newFile.status = "progress";
-        newFile.progress = 0;
-
-        simulateUpload(
-          newFile,
-          (progress) => {
-            newFile.progress = progress;
-
-            setList((previousList) => [...previousList]);
-          },
-          () => {
-            newFile.status = "success";
-
-            setList((previousList) => [...previousList]);
-          },
-        );
-      }
-
-      setList((previousList) => [newFile, ...previousList]);
-    };
-
-    const removeFile = (fileToRemove: HvFileData) => {
-      if (fileToRemove.status === "progress") {
-        cancelUpload(fileToRemove);
-      }
-
-      setList((previousList) =>
-        previousList.filter((file) => file !== fileToRemove),
-      );
-    };
-
-    return (
-      <HvFileUploader
-        fileList={list}
-        onFilesAdded={(newFiles) => {
-          newFiles.forEach((newFile) => addFile(newFile));
-        }}
-        onFileRemoved={(removedFile) => {
-          removeFile(removedFile);
-        }}
-        accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        label="Upload your spreadsheets"
-        labels={{
-          acceptedFiles: "(excel files)",
-        }}
-      />
     );
   },
 };

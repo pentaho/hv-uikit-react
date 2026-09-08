@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/uikit-react-shared",
-  "version": "6.0.9",
+  "name": "@pentaho/uikit-react-shared",
+  "version": "7.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -8,7 +8,6 @@
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "react",
@@ -36,12 +35,12 @@
     "@types/react-dom": "^18.2.17"
   },
   "peerDependencies": {
-    "@hitachivantara/uikit-styles": "^6.0.0",
+    "@pentaho/uikit-styles": "^7.0.0-next.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
   "peerDependenciesMeta": {
-    "@hitachivantara/uikit-styles": {
+    "@pentaho/uikit-styles": {
       "optional": true
     }
   },

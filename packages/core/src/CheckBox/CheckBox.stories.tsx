@@ -4,7 +4,7 @@ import {
   HvBaseCheckBox,
   HvCheckBox,
   type HvCheckBoxProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvCheckBox> = {
   title: "Components/Checkbox",

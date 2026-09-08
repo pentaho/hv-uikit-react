@@ -2,11 +2,8 @@ import { forwardRef, useCallback, useState } from "react";
 import MuiCheckbox, {
   type CheckboxProps as MuiCheckboxProps,
 } from "@mui/material/Checkbox";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import type { HvColorAny } from "@hitachivantara/uikit-styles";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
+import type { HvColorAny } from "@pentaho/uikit-styles";
 
 import { staticClasses, useClasses } from "./BaseCheckBox.styles";
 import { HvCheckBoxIcon } from "./CheckBoxIcon";

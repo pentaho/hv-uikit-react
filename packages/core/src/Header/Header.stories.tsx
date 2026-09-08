@@ -10,8 +10,8 @@ import {
   HvHeaderBrand,
   HvHeaderNavigation,
   type HvHeaderProps,
-} from "@hitachivantara/uikit-react-core";
-import { Alert, Menu, User } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Alert, Menu, User } from "@pentaho/uikit-react-icons";
 
 const PentahoLogo = () => (
   <svg

@@ -1,4 +1,4 @@
-export { theme } from "@hitachivantara/uikit-styles";
+export { theme } from "@pentaho/uikit-styles";
 export type {
   HvThemeBreakpoint,
   HvThemeColorMode,
@@ -10,17 +10,18 @@ export type {
   HvColorAny,
   HvRadius,
   HvSize,
-} from "@hitachivantara/uikit-styles";
-export type { HvTheme } from "@hitachivantara/uikit-react-shared";
+} from "@pentaho/uikit-styles";
+export type { HvTheme } from "@pentaho/uikit-react-shared";
 export {
   createClasses,
   useCss,
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 export * from "./themes";
+export * from "./icons";
 
 // Components that need to be loaded first because of mutual dependencies (preserve order)
 export * from "./Typography";
@@ -55,12 +56,10 @@ export * from "./BulkActions";
 export * from "./Button";
 export * from "./Calendar";
 export * from "./Card";
-export * from "./Carousel";
 export * from "./CheckBox";
 export * from "./CheckBoxGroup";
 export * from "./ColorPicker";
 export * from "./Container";
-export * from "./Controls";
 export * from "./DatePicker";
 export * from "./Dialog";
 export * from "./DotPagination";
@@ -79,7 +78,6 @@ export * from "./Input";
 export * from "./List";
 export * from "./Loading";
 export * from "./LoadingContainer";
-export * from "./Login";
 export * from "./MultiButton";
 export * from "./NumberInput";
 export * from "./OverflowTooltip";
@@ -89,15 +87,11 @@ export * from "./ProgressBar";
 export * from "./QueryBuilder";
 export * from "./Radio";
 export * from "./RadioGroup";
-export * from "./ScrollToHorizontal";
-export * from "./ScrollToVertical";
 export * from "./SearchInput";
 export * from "./Section";
-export * from "./SimpleGrid";
 export * from "./Slider";
 export * from "./Snackbar";
 export * from "./SnackbarProvider";
-export * from "./Stack";
 export * from "./StatusIcon";
 export * from "./Switch";
 export * from "./Table";

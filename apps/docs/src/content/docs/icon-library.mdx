@@ -2,13 +2,20 @@ import { IconLibrary, IconPlayground } from "../../components/icons";
 
 # Icon Library
 
-The **UI Kit** includes a comprehensive library of SVG icons packaged as React components, specifically designed for use with the [NEXT Design System](https://designsystem.hitachi.com).
+> [!WARNING]
+>
+> `@pentaho/uikit-react-icons` is **internal to UI Kit** from v7 onwards. It is not
+> published to npm, and it is slated for deprecation.
+>
+> To use icons in your own application, see [Icons](/docs/icons) — UI Kit works with
+> any icon set that follows the `currentColor` and `1em` conventions.
 
-These icons are available through the `@hitachivantara/uikit-react-icons` package and are fully compatible with the [`HvIconContainer`](/components/icon-container) API, ensuring consistent sizing, color, and alignment across the system.
+This page lists the icons bundled with UI Kit. It is kept as a reference for the icon
+names used in [App Shell configuration](/app-shell/configuration#menu), where a menu or
+header action declares `iconType: "uikit"` and identifies an icon by `name`.
 
-```tsx
-import { Alert } from "@hitachivantara/uikit-react-icons";
-```
+These icons are compatible with the [`HvIconContainer`](/components/icon-container) API,
+so sizing, color, and alignment stay consistent wherever UI Kit renders them.
 
 <br />
 

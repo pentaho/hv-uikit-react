@@ -7,10 +7,7 @@ import {
   type AriaRole,
 } from "react";
 import { FixedSizeList } from "react-window";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvCheckBox } from "../CheckBox";
 import { HvIcon } from "../icons";

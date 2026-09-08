@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
-import { HvLoading, HvProvider } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
+import { HvLoading, HvProvider } from "@pentaho/uikit-react-core";
 
 import { createI18NextInstance, useI18nInit } from "../../i18n";
 import GenericError from "../../pages/GenericError";

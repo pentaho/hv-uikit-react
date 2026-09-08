@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  HvBarChart,
-  type HvBarChartProps,
-} from "@hitachivantara/uikit-react-viz";
+import { HvBarChart, type HvBarChartProps } from "@pentaho/uikit-react-viz";
 
 import { vizDecorator } from "../../BaseChart/stories/utils";
 

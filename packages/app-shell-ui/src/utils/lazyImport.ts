@@ -1,7 +1,4 @@
-import type {
-  AsyncResult,
-  PreloadedBundles,
-} from "@hitachivantara/app-shell-shared";
+import type { AsyncResult, PreloadedBundles } from "@pentaho/app-shell-shared";
 
 export type LazyImportResult = AsyncResult<unknown, Error, "module">;
 

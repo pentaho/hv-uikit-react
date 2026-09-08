@@ -9,17 +9,17 @@ import {
   HvInput,
   HvTextArea,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const DialogForm = () => (
   <HvGrid container rowSpacing="xs">
-    <HvGrid item xs={12}>
+    <HvGrid size={12}>
       <HvInput required name="author" label="Author" defaultValue="John Doe" />
     </HvGrid>
-    <HvGrid item xs={12}>
+    <HvGrid size={12}>
       <HvInput required name="title" label="Title" autoFocus />
     </HvGrid>
-    <HvGrid item xs={12}>
+    <HvGrid size={12}>
       <HvTextArea name="content" label="Description" rows={4} />
     </HvGrid>
   </HvGrid>

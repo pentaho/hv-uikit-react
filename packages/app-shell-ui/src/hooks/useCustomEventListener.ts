@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {
   HvAppShellEventNotificationTrigger,
   HvAppShellEventThemeTrigger,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 
 import useNotificationsEventListener from "./useNotificationsEventListener";
 import useThemeEventListener from "./useThemeEventListener";

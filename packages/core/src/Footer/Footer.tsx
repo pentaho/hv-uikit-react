@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../types/generic";
 import { HvTypography } from "../Typography";
@@ -34,8 +31,8 @@ export const HvFooter = forwardRef<
   HvFooterProps
 >(function HvFooter(props, ref) {
   const {
-    name,
-    copyright,
+    name = "Pentaho",
+    copyright = "© Pentaho. All Rights Reserved.",
     links,
     classes: classesProp,
     className,

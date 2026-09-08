@@ -1,7 +1,7 @@
 "use client";
 
-import { HvTypography, useTheme } from "@hitachivantara/uikit-react-core";
-import type { HvBreakpoints } from "@hitachivantara/uikit-styles";
+import { HvTypography, useTheme } from "@pentaho/uikit-react-core";
+import type { HvBreakpoints } from "@pentaho/uikit-styles";
 
 import { DocsProvider } from "../code/DocsProvider";
 

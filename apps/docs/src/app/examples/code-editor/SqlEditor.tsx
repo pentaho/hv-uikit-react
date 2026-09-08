@@ -1,13 +1,6 @@
 import { useRef, useState } from "react";
-import {
-  HvCodeEditor,
-  hvSqlFormatter,
-} from "@hitachivantara/uikit-react-code-editor";
-import {
-  HvButton,
-  HvPanel,
-  HvTypography,
-} from "@hitachivantara/uikit-react-core";
+import { HvCodeEditor, hvSqlFormatter } from "@pentaho/uikit-react-code-editor";
+import { HvButton, HvPanel, HvTypography } from "@pentaho/uikit-react-core";
 
 // DDL schema – drives table/column autocomplete and SQL validation
 const schema = `

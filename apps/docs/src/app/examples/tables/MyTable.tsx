@@ -26,8 +26,8 @@ import {
   type HvTableOptions,
   type HvTableSectionProps,
   type HvTableState,
-} from "@hitachivantara/uikit-react-core";
-import { Ban } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Ban } from "@pentaho/uikit-react-icons";
 
 export interface TableProps<T extends object> extends HvTableSectionProps {
   columns: HvTableColumnConfig<T>[];

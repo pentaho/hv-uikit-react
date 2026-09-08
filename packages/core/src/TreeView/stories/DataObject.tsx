@@ -5,8 +5,8 @@ import {
   HvTreeItem,
   HvTreeView,
   type HvTreeItemProps,
-} from "@hitachivantara/uikit-react-core";
-import { Doc, Folders } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Doc, Folders } from "@pentaho/uikit-react-icons";
 
 type TreeData = { id: string; label: string; children?: TreeData[] };
 

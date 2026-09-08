@@ -3,8 +3,8 @@ import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellRuntimeContext,
   type HvAppShellHelp,
-} from "@hitachivantara/app-shell-shared";
-import { HvIconButton } from "@hitachivantara/uikit-react-core";
+} from "@pentaho/app-shell-shared";
+import { HvIconButton } from "@pentaho/uikit-react-core";
 
 import IconUiKit from "../../../IconUiKit/IconUiKit";
 

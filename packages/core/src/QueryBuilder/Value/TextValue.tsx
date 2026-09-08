@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createClasses } from "@hitachivantara/uikit-react-utils";
+import { createClasses } from "@pentaho/uikit-react-utils";
 
 import type { HvFormStatus } from "../../FormElement";
 import { HvInput } from "../../Input";

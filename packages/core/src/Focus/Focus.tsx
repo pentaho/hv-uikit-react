@@ -1,5 +1,5 @@
 import { cloneElement, useRef, useState } from "react";
-import type { ExtractNames } from "@hitachivantara/uikit-react-utils";
+import type { ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvBaseProps } from "../types/generic";
 import { isKey, isOneOfKeys } from "../utils/keyboardUtils";

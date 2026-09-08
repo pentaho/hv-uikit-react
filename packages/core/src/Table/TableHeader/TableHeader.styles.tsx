@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
   root: {
@@ -10,12 +10,12 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
     alignContent: "inherit",
     textAlign: "left",
     padding: theme.spacing(0, "sm"),
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderSubtle,
     borderBottomWidth: 1,
   },
   head: {
     fontWeight: theme.fontWeights.semibold,
-    backgroundColor: theme.colors.bgContainer,
+    backgroundColor: theme.colors.bgPage,
     borderBottomWidth: 1,
 
     "*:first-of-type > &": {
@@ -82,8 +82,6 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
   },
   headerText: { overflow: "hidden", textOverflow: "ellipsis" },
   headerParagraph: { textOverflow: "inherit", display: "-webkit-box" },
-  /** @deprecated use `sortable: &$headerText` */
-  sortableHeaderText: {},
   sorted: {
     "& $sortButton": {
       opacity: 1,
@@ -99,8 +97,6 @@ export const { staticClasses, useClasses } = createClasses("HvTableHeader", {
       backgroundColor: "transparent",
     },
   },
-  /** @deprecated use `classes.sortButton` instead */
-  sortIcon: {},
   // TODO: deprecate & merge these classes in favour of data-align
   alignLeft: { textAlign: "left" },
   alignRight: { textAlign: "right", flexDirection: "row-reverse" },

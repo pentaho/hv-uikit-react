@@ -1,7 +1,7 @@
 import {
   HvAppShellEventThemeTrigger,
   type HvAppShellEventTheme,
-} from "@hitachivantara/app-shell-events";
+} from "@pentaho/app-shell-events";
 import {
   HvButton,
   HvGlobalActions,
@@ -9,7 +9,7 @@ import {
   HvTypography,
   useTheme,
   type HvThemeColorMode,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 function Button({ colorMode }: { colorMode: HvThemeColorMode }) {
   const handleColorModeClick = () => {
@@ -39,11 +39,11 @@ const Theming = () => {
       <HvGlobalActions title="Theming" className="mb-xs" />
 
       <HvGrid container className="mb-xs">
-        <HvGrid item xs={12} display="flex" justifyContent="center">
+        <HvGrid display="flex" justifyContent="center" size={12}>
           <HvTypography variant="title3">Color mode</HvTypography>
         </HvGrid>
 
-        <HvGrid item xs={12} display="flex" justifyContent="space-evenly">
+        <HvGrid display="flex" justifyContent="space-evenly" size={12}>
           {colorModes.map((colorMode) => (
             <Button key={colorMode} colorMode={colorMode} />
           ))}

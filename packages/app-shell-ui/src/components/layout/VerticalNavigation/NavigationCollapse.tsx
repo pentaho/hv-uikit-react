@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { css } from "@emotion/css";
-import { useHvAppShellRuntimeContext } from "@hitachivantara/app-shell-shared";
-import { HvVerticalNavigationAction } from "@hitachivantara/uikit-react-core";
-import { End, Start } from "@hitachivantara/uikit-react-icons";
+import { useHvAppShellRuntimeContext } from "@pentaho/app-shell-shared";
+import { HvIcon, HvVerticalNavigationAction } from "@pentaho/uikit-react-core";
 
 const classes = {
   root: css({
@@ -28,10 +27,10 @@ export const NavigationCollapse = ({ onClick, isOpen }: CollapseProps) => {
   });
   return (
     <div className={classes.root}>
-      {isOpen && <Start className={classes.icon} />}
+      {isOpen && <HvIcon name="Start" className={classes.icon} />}
       <HvVerticalNavigationAction
         label={t("collapseAction")}
-        icon={isOpen ? undefined : <End />}
+        icon={isOpen ? undefined : <HvIcon name="End" />}
         aria-label={isOpen ? t("ariaLabelCollapse") : t("ariaLabelExpand")}
         onClick={onClick}
       />

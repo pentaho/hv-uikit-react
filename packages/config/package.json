@@ -1,20 +1,19 @@
 {
-  "name": "@hitachivantara/uikit-config",
-  "version": "0.6.6",
+  "name": "@pentaho/uikit-config",
+  "version": "0.6.5",
   "type": "module",
-  "private": false,
+  "private": true,
   "author": "UI Kit Team",
   "description": "UI Kit Sharable projects configurations",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "config",
     "ui-kit"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pentaho/hv-uikit-react.git",
+    "url": "git+https://github.com/pentaho/hv-uikit-react.git",
     "directory": "packages/config"
   },
   "license": "Apache-2.0",

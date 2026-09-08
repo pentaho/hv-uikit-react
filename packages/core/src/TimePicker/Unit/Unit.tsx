@@ -2,7 +2,7 @@ import type {
   DateFieldState,
   DateSegment,
 } from "react-stately/useDateFieldState";
-import { theme } from "@hitachivantara/uikit-styles";
+import { theme } from "@pentaho/uikit-styles";
 
 import { HvBaseInput, type HvBaseInputProps } from "../../BaseInput";
 import { HvButton } from "../../Button";

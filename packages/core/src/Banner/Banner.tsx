@@ -4,10 +4,7 @@ import Snackbar, {
   type SnackbarProps as MuiSnackbarProps,
   type SnackbarOrigin,
 } from "@mui/material/Snackbar";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import type { HvActionsGenericProps } from "../ActionsGeneric";
 import { staticClasses, useClasses } from "./Banner.styles";

@@ -3,7 +3,7 @@ import {
   createClasses,
   useCss,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+} from "@pentaho/uikit-react-utils";
 
 import { useHvTreeItem } from "./useHvTreeItem";
 

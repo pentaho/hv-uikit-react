@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 export default function Page2() {
   return (

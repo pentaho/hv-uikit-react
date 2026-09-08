@@ -1,7 +1,7 @@
 import type {
   ServiceId,
   ServiceProviderConfig,
-} from "@hitachivantara/app-shell-services";
+} from "@pentaho/app-shell-services";
 
 import type {
   HvAppShellConditionConfig,

@@ -1,12 +1,12 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvDialogAction", {
   root: {
     margin: 0,
     padding: theme.space.sm,
     backgroundColor: "inherit",
-    borderTop: `1px solid ${theme.colors.border}`,
+    borderTop: "none",
     height: 65,
     maxHeight: 65,
   },

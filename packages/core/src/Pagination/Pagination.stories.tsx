@@ -5,7 +5,7 @@ import {
   HvPagination,
   theme,
   type HvPaginationProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const classes = {
   root: css({

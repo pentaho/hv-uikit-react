@@ -6,12 +6,8 @@ import {
   mergeStyles,
   useDefaultProps,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import {
-  getColor,
-  type HvColorAny,
-  type HvSize,
-} from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { getColor, type HvColorAny, type HvSize } from "@pentaho/uikit-styles";
 
 import { useAvatarGroupContext } from "../AvatarGroup/AvatarGroupContext";
 import { useImageLoaded } from "../hooks/useImageLoaded";
@@ -96,10 +92,13 @@ export const HvAvatar = forwardRef<
     ...others
   } = useDefaultProps("HvAvatar", props);
   const { classes, cx } = useClasses(classesProp);
+  const defaultBackgroundColor = backgroundColor ?? "primaryDimmed";
+  const defaultColor = colorProp ?? "primaryStrong";
+
   // if a user-defined `backgroundColor` is passed, ignore the theme-defined `color`
   const color = props.backgroundColor
     ? props.color || "bgContainer"
-    : colorProp;
+    : defaultColor;
 
   const avatarGroupContext = useAvatarGroupContext();
 
@@ -161,7 +160,8 @@ export const HvAvatar = forwardRef<
         className={cx(classes.root, classes.avatar, classes[size], className)}
         data-color={color}
         style={mergeStyles(style, {
-          "--bgColor": !hasImgNotFailing && getColor(backgroundColor, "text"),
+          "--bgColor":
+            !hasImgNotFailing && getColor(defaultBackgroundColor, "text"),
           "--textColor": !hasImgNotFailing && getColor(color, "bgContainer"),
           borderRadius:
             component != null && typeof component !== "string" && "50%",

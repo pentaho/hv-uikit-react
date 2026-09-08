@@ -1,5 +1,5 @@
 import type { PluginOption } from "vite";
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
 import { getBasePath } from "./config-utils.js";
 

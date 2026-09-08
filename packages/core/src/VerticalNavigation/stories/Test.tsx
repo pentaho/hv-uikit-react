@@ -5,8 +5,8 @@ import {
   HvVerticalNavigationActions,
   HvVerticalNavigationTree,
   type HvVerticalNavigationTreeProps,
-} from "@hitachivantara/uikit-react-core";
-import { LogOut, User } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { LogOut, User } from "@pentaho/uikit-react-icons";
 
 const navigationData = [
   { id: "00", label: "Overview" },

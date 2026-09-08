@@ -1,12 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/css";
-import {
-  HvButton,
-  HvEmptyState,
-  theme,
-} from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
+import { HvButton, HvEmptyState, theme } from "@pentaho/uikit-react-core";
+import { Info } from "@pentaho/uikit-react-icons";
 
 const classes = {
   root: css({

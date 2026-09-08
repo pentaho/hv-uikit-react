@@ -22,11 +22,7 @@ argument-hint: "Describe the page or paste an image or URL of the design"
 ## Package Imports
 
 ```tsx
-import {
-  HvButton,
-  HvCard,
-  HvContainer,
-} from "@hitachivantara/uikit-react-core";
+import { HvButton, HvCard, HvContainer } from "@pentaho/uikit-react-core";
 ```
 
 ## Procedure
@@ -73,7 +69,7 @@ Follow these rules:
 When UnoCSS utilities are insufficient, inline `style` is fine, such as dynamic values:
 
 ```tsx
-import { theme } from "@hitachivantara/uikit-react-core";
+import { theme } from "@pentaho/uikit-react-core";
 
 style={{ color: theme.colors[dynamicThemeColor] }}
 ```

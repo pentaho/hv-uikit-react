@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { HvButton, HvMultiButton } from "@hitachivantara/uikit-react-core";
-import { LocationPin, Map } from "@hitachivantara/uikit-react-icons";
+import { HvButton, HvMultiButton } from "@pentaho/uikit-react-core";
+import { LocationPin, Map } from "@pentaho/uikit-react-icons";
 
 const buttons = [
   { name: "Map", icon: <Map /> },

@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForkRef } from "@mui/material/utils";
-import {
-  useDefaultProps,
-  useTheme,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvBaseInput, type HvBaseInputProps } from "../BaseInput";
 import {
@@ -155,11 +151,11 @@ export interface HvInputProps<
   /** If `true` it should autofocus. */
   autoFocus?: boolean;
   /** If `true` the clear button is disabled. */
-  disableClear?: boolean; // TODO - rename in v6 since it doesn't disable but hides the button
+  hideClear?: boolean;
   /** If `true` the reveal password button is disabled. Valid only when type is "password". */
-  disableRevealPassword?: boolean; // TODO - rename in v6 since it doesn't disable but hides the button
+  hideRevealPassword?: boolean;
   /** If `true` the search button is disabled. Valid only when type is "search". */
-  disableSearchButton?: boolean; // TODO - rename in v6 since it doesn't disable but hides the button
+  hideSearchButton?: boolean;
   /**
    * If `true` the validation icon adornment is visible. Defaults to `false`.
    *
@@ -231,9 +227,9 @@ export const HvInput = fixedForwardRef(function HvInput<
     autoFocus,
     labels: labelsProp,
     validationMessages,
-    disableClear,
-    disableRevealPassword,
-    disableSearchButton,
+    hideClear,
+    hideRevealPassword,
+    hideSearchButton,
     endAdornment,
     maxCharQuantity,
     minCharQuantity,
@@ -250,16 +246,11 @@ export const HvInput = fixedForwardRef(function HvInput<
   const { classes, cx } = useClasses(classesProp);
   const labels = useLabels(DEFAULT_LABELS, labelsProp);
   const elementId = useUniqueId(id);
-  const { activeTheme } = useTheme();
-
   const inputRef = useRef<HTMLInputElement>(null);
   const forkedRef = useForkRef(ref, inputRef, inputRefProp);
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
-  const [description, infoMessage] =
-    activeTheme?.name === "pentahoPlus"
-      ? [infoMessageProp, descriptionProp]
-      : [descriptionProp, infoMessageProp];
+  const [description, infoMessage] = [infoMessageProp, descriptionProp];
 
   const [focused, setFocused] = useState(false);
 
@@ -503,22 +494,21 @@ export const HvInput = fixedForwardRef(function HvInput<
     }
   };
 
-  // show the clear button only if the input is enabled, not read-only, disableClear is false and the input is not empty
+  // show the clear button only if the input is enabled, not read-only, hideClear is false and the input is not empty
   // also, don't show it when the input type is "search" and the input is active (standBy)
   const showClear =
     !disabled &&
     !readOnly &&
-    !disableClear &&
+    !hideClear &&
     !isEmptyValue &&
     (!onEnter ||
       type !== "search" ||
-      disableSearchButton ||
+      hideSearchButton ||
       validationState !== "standBy");
 
-  const showSearchIcon = type === "search" && !disableSearchButton;
+  const showSearchIcon = type === "search" && !hideSearchButton;
 
-  const showRevealPasswordButton =
-    type === "password" && !disableRevealPassword;
+  const showRevealPasswordButton = type === "password" && !hideRevealPassword;
 
   /**
    * Clears the input value from the state and refocus the input.

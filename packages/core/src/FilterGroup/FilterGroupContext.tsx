@@ -7,7 +7,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import { useDefaultProps } from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps } from "@pentaho/uikit-react-utils";
 
 import { isEqual } from "../utils/helpers";
 import { useSavedState } from "../utils/useSavedState";

@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { baseDropdownClasses } from "../BaseDropdown";
 
@@ -61,7 +61,9 @@ export const { staticClasses, useClasses } = createClasses("HvPagination", {
     padding: 0,
   },
   /** Styles applied to each navigation icon. */
-  icon: {},
+  icon: {
+    fontSize: 16,
+  },
   /** Styles applied to the central page information container. */
   pageInfo: {
     display: "inline-flex",

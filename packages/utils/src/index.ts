@@ -1,4 +1,4 @@
-export { type HvTheme } from "@hitachivantara/uikit-react-shared";
+export { type HvTheme } from "@pentaho/uikit-react-shared";
 
 export * from "./hooks/useCss";
 export * from "./hooks/useDefaultProps";

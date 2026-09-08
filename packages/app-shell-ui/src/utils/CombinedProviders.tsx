@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { HvAppShellProvidersComponent } from "@hitachivantara/app-shell-shared";
+import type { HvAppShellProvidersComponent } from "@pentaho/app-shell-shared";
 
 interface CombinedProvidersProps extends React.PropsWithChildren {
   providers?: HvAppShellProvidersComponent[];

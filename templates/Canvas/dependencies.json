@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@dnd-kit/sortable": "^7.0.2",
-    "@dnd-kit/utilities": "^3.2.2",
-    "reactflow": "^11.10.1"
-  }
-}

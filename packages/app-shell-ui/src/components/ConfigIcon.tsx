@@ -1,5 +1,5 @@
-import type { HvAppShellIcon } from "@hitachivantara/app-shell-shared";
-import { HvIconContainer } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellIcon } from "@pentaho/app-shell-shared";
+import { HvIconContainer } from "@pentaho/uikit-react-core";
 
 import IconUiKit from "./IconUiKit/IconUiKit";
 

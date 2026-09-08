@@ -1,6 +1,6 @@
 import MuiLinearProgress from "@mui/material/LinearProgress";
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 const { useClasses } = createClasses("HvProgressColumnCell", {
   root: { display: "flex", width: "100%" },

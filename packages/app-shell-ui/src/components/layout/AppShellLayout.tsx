@@ -1,9 +1,5 @@
-import {
-  createClasses,
-  theme,
-  useTheme,
-} from "@hitachivantara/uikit-react-core";
-import { mergeStyles } from "@hitachivantara/uikit-react-utils";
+import { createClasses, theme } from "@pentaho/uikit-react-core";
+import { mergeStyles } from "@pentaho/uikit-react-utils";
 
 import { useLayoutContext } from "../../providers/LayoutProvider";
 import { useNavigationContext } from "../../providers/NavigationProvider";
@@ -18,12 +14,6 @@ const { useClasses } = createClasses("HvAppShellLayout", {
     display: "grid",
     gridTemplateColumns: "var(--vNavWidth) auto",
     gridTemplateRows: "var(--headerHeight) auto",
-    gridTemplateAreas: `
-      "header header"
-      "vnav main"
-    `,
-  },
-  pentaho: {
     gridTemplateAreas: `
       "vnav header"
       "vnav main"
@@ -51,7 +41,6 @@ export function HvAppShellLayout({
   ...others
 }: HvAppShellLayoutProps) {
   const { classes, cx } = useClasses();
-  const { activeTheme } = useTheme();
 
   const {
     hasVerticalNavigation,
@@ -61,7 +50,6 @@ export function HvAppShellLayout({
   } = useNavigationContext();
   const { verticalNavigationWidth } = useLayoutContext();
 
-  const isPentahoTheme = activeTheme?.name === "pentahoPlus";
   const showVerticalNavigation =
     hasVerticalNavigation && verticalNavigationMode !== "CLOSED";
 
@@ -69,7 +57,6 @@ export function HvAppShellLayout({
     <div
       className={cx(classes.root, className, {
         // order (priority) of these classes is very important
-        [classes.pentaho]: isPentahoTheme,
         [classes.compact]: isCompactMode || !showVerticalNavigation,
       })}
       style={mergeStyles(style, {

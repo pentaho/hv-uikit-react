@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import { setupChromatic } from "@hitachivantara/internal";
+import { setupChromatic } from "@pentaho/internal";
 import {
   HvAvatar,
   HvButton,
   HvTooltip,
   HvTypography,
   type HvTooltipProps,
-} from "@hitachivantara/uikit-react-core";
-import { Play } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Play } from "@pentaho/uikit-react-icons";
 
 const meta: Meta<typeof HvTooltip> = {
   title: "Components/Tooltip",
@@ -35,36 +35,6 @@ export const Main: StoryObj<HvTooltipProps> = {
       </div>
     );
   },
-};
-
-export const Disabled: StoryObj<HvTooltipProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'To "hide" a Tooltip, remove its `title`; `disableFocusListener` and `disableHoverListener` disable focus or hover, respectively.',
-      },
-    },
-  },
-  render: () => (
-    <div className="flex justify-around pt-100px">
-      <HvTooltip placement="right" title="">
-        <HvButton variant="secondaryGhost">No tooltip</HvButton>
-      </HvTooltip>
-      <HvTooltip
-        disableFocusListener
-        title="Focusing the button will not open me"
-      >
-        <HvButton variant="secondaryGhost">Focus ignored</HvButton>
-      </HvTooltip>
-      <HvTooltip
-        disableHoverListener
-        title="Hovering the button will not open me"
-      >
-        <HvButton variant="secondaryGhost">Hover ignored</HvButton>
-      </HvTooltip>
-    </div>
-  ),
 };
 
 export const CustomElements: StoryObj<HvTooltipProps> = {

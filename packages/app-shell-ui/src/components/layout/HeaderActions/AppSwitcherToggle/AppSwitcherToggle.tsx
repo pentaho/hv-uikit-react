@@ -8,20 +8,26 @@ import {
   useHvAppShellRuntimeContext,
   type HvAppShellAppSwitcherConfig,
   type HvAppShellAppSwitcherItemConfig,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 import {
   HvAppSwitcher,
   HvIconButton,
   HvTypography,
+  SvgBase,
   theme,
   type HvAppSwitcherActionApplication,
-} from "@hitachivantara/uikit-react-core";
-import { AppSwitcher } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
 
 import createAppContainerElement from "../../../../utils/documentUtil";
 import { ConfigIcon } from "../../../ConfigIcon";
 import { BrandLogo } from "../../BrandLogo/BrandLogo";
 import StyledAppShellPanelWrapper from "./styles";
+
+const AppSwitcher = () => (
+  <SvgBase viewBox="0 0 16 16">
+    <path d="M0 0h4v4H0zm0 10h4V6H0zm0 6h4v-4H0zM6 4h4V0H6zm0 6h4V6H6zm0 6h4v-4H6zm6-12h4V0h-4zm0 6h4V6h-4zm0 6h4v-4h-4z" />
+  </SvgBase>
+);
 
 const AppSwitcherToggle: React.FC<HvAppShellAppSwitcherConfig> = ({
   title,

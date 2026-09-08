@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvLoading", {
   root: {
@@ -25,9 +25,10 @@ export const { staticClasses, useClasses } = createClasses("HvLoading", {
   },
   loadingBar: {
     backgroundColor: "currentcolor",
+    borderRadius: 1,
     display: "inline-block",
     animation: "loading 1s ease-in-out infinite",
-    // TODO: make this the default when it has better support
+    // TODO(minor): make this the default when it has Baseline support
     // width: "round(up, 0.11em, 2px)",
     width: "var(--bar-size, 4px)",
     height: "100%",

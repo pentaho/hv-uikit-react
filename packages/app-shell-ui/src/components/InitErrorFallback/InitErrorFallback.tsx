@@ -1,4 +1,4 @@
-import { HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@pentaho/uikit-react-core";
 
 /**
  * Minimal error fallback rendered by the outermost Error Boundary in the App

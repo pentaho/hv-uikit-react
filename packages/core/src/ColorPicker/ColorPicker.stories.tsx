@@ -1,10 +1,8 @@
-import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   HvColorPicker,
-  HvTypography,
   type HvColorPickerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const meta: Meta<typeof HvColorPicker> = {
   title: "Components/Color Picker",
@@ -31,59 +29,6 @@ export const Main: StoryObj<HvColorPickerProps> = {
         onChangeComplete={(value) => console.log(value)}
         {...args}
       />
-    );
-  },
-};
-
-export const IconOnly: StoryObj<HvColorPickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "ColorPicker component that only shows an icon.",
-      },
-    },
-  },
-  render: () => {
-    return (
-      <HvColorPicker
-        iconOnly
-        label="Color"
-        defaultValue="#477DBD"
-        onChange={(color) => console.log(color)}
-      />
-    );
-  },
-};
-
-export const ControlledColorPicker: StoryObj<HvColorPickerProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Controlled ColorPicker component using the onChangeComplete callback. You can use this color picker to change the color of the square.",
-      },
-    },
-  },
-  render: () => {
-    const [color, setColor] = useState("#95AFE8");
-    const [squareColor, setSquareColor] = useState("#95AFE8");
-
-    return (
-      <div className="flex gap-lg">
-        <div
-          className="grid place-items-center size-134px"
-          style={{ backgroundColor: squareColor }}
-        >
-          <HvTypography variant="label">{squareColor}</HvTypography>
-        </div>
-        <HvColorPicker
-          aria-label="Color"
-          showSavedColors={false}
-          onChange={(value) => setColor(value)}
-          onChangeComplete={setSquareColor}
-          value={color}
-        />
-      </div>
     );
   },
 };

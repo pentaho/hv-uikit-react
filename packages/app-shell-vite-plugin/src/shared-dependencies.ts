@@ -78,25 +78,22 @@ export default [
     virtualSrc: `import createCache from "@emotion/cache"; export default createCache;`,
   },
   {
-    moduleId: "@hitachivantara/app-shell-shared",
+    moduleId: "@pentaho/app-shell-shared",
     bundle: "app-shell-shared.esm.js",
-    bundleSrc:
-      "@hitachivantara/app-shell-shared/bundles/app-shell-shared.esm.js",
-    virtualSrc: `export * from "@hitachivantara/app-shell-shared";`,
+    bundleSrc: "@pentaho/app-shell-shared/bundles/app-shell-shared.esm.js",
+    virtualSrc: `export * from "@pentaho/app-shell-shared";`,
   },
   {
-    moduleId: "@hitachivantara/app-shell-services",
+    moduleId: "@pentaho/app-shell-services",
     bundle: "app-shell-services.esm.js",
-    bundleSrc:
-      "@hitachivantara/app-shell-services/bundles/app-shell-services.esm.js",
-    virtualSrc: `export { default } from "@hitachivantara/app-shell-services";
-    export * from "@hitachivantara/app-shell-services";`,
+    bundleSrc: "@pentaho/app-shell-services/bundles/app-shell-services.esm.js",
+    virtualSrc: `export { default } from "@pentaho/app-shell-services";
+    export * from "@pentaho/app-shell-services";`,
   },
   {
-    moduleId: "@hitachivantara/uikit-react-shared",
+    moduleId: "@pentaho/uikit-react-shared",
     bundle: "uikit-react-shared.esm.js",
-    bundleSrc:
-      "@hitachivantara/uikit-react-shared/bundles/uikit-react-shared.esm.js",
-    virtualSrc: `export * from "@hitachivantara/uikit-react-shared";`,
+    bundleSrc: "@pentaho/uikit-react-shared/bundles/uikit-react-shared.esm.js",
+    virtualSrc: `export * from "@pentaho/uikit-react-shared";`,
   },
 ];

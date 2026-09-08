@@ -1,18 +1,11 @@
-import { forwardRef, useContext, useMemo, useRef, useState } from "react";
-import {
-  useDefaultProps,
-  useTheme,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { forwardRef, useContext, useRef, useState } from "react";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { HvActionBar } from "../../ActionBar";
 import { HvBaseDropdown, type HvBaseDropdownProps } from "../../BaseDropdown";
 import { HvButton } from "../../Button";
 import type { HvFormStatus } from "../../FormElement";
-import { HvIcon } from "../../icons";
-import { HvTypography } from "../../Typography";
 import { setId } from "../../utils/setId";
-import { HvFilterGroupCounter } from "../Counter";
 import type { HvFilterGroupLabels } from "../FilterGroup";
 import { HvFilterGroupContext } from "../FilterGroupContext";
 import { HvFilterGroupLeftPanel } from "../LeftPanel";
@@ -83,8 +76,6 @@ export const HvFilterGroupContent = forwardRef<
 
   const { classes } = useClasses(classesProp);
 
-  const { activeTheme } = useTheme();
-
   const {
     defaultValue,
     filterValues,
@@ -130,16 +121,6 @@ export const HvFilterGroupContent = forwardRef<
     if (!open) onCancelHandler?.(event);
   };
 
-  const Header = useMemo(
-    () => (
-      <>
-        <HvIcon name="Filters" />
-        <HvTypography variant="label">{labels?.placeholder}</HvTypography>
-      </>
-    ),
-    [labels?.placeholder],
-  );
-
   return (
     <HvBaseDropdown
       ref={ref}
@@ -159,12 +140,6 @@ export const HvFilterGroupContent = forwardRef<
       onToggle={handleToggle}
       onClickOutside={onCancelHandler}
       onContainerCreation={focusOnContainer}
-      placeholder={activeTheme?.name === "pentahoPlus" ? undefined : Header}
-      adornment={
-        activeTheme?.name === "pentahoPlus" ? undefined : (
-          <HvFilterGroupCounter />
-        )
-      }
       popperProps={{
         modifiers: [{ name: "preventOverflow", enabled: escapeWithReference }],
       }}
@@ -178,12 +153,11 @@ export const HvFilterGroupContent = forwardRef<
           .join(" ")
           .trim() || undefined
       }
-      {...(activeTheme?.name === "pentahoPlus" && {
-        headerComponent: HvHeaderButton,
-        iconOnly,
-        title: labels?.placeholder,
-        count: filterValues?.flat().length ?? 0,
-      })}
+      headerComponent={HvHeaderButton}
+      // @ts-expect-error headerComponent lacks type inference
+      iconOnly={iconOnly}
+      title={labels?.placeholder}
+      count={filterValues?.flat().length ?? 0}
       {...others}
     >
       <div ref={focusTarget} tabIndex={-1} />

@@ -1,5 +1,5 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+import { createClasses } from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 export const { staticClasses, useClasses } = createClasses("HvSection", {
   root: {
@@ -17,7 +17,8 @@ export const { staticClasses, useClasses } = createClasses("HvSection", {
     alignItems: "center",
     borderColor: "inherit",
     position: "relative",
-    padding: theme.space.sm,
+    padding: theme.spacing("xs", "sm"),
+    gap: theme.space.xs,
 
     "+ $content": {
       borderTopLeftRadius: 0,
@@ -31,7 +32,7 @@ export const { staticClasses, useClasses } = createClasses("HvSection", {
     },
   },
   content: {
-    backgroundColor: theme.colors.bgPage,
+    backgroundColor: theme.colors.bgContainer,
     padding: theme.space.sm,
     borderRadius: "inherit",
     borderColor: "inherit",

@@ -1,18 +1,18 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { useHvNavigation } from "@hitachivantara/app-shell-navigation";
+import { useHvNavigation } from "@pentaho/app-shell-navigation";
 import {
   CONFIG_TRANSLATIONS_NAMESPACE,
   useHvAppShellModel,
   useHvAppShellRuntimeContext,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 import {
   HvButton,
   HvHeader,
   HvHeaderBrand,
   HvHeaderNavigation,
   type HvHeaderNavigationProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { useNavigationContext } from "../../../providers/NavigationProvider";
 import IconUiKit from "../../IconUiKit/IconUiKit";

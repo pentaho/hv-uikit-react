@@ -9,8 +9,8 @@ import {
   useDefaultProps,
   useTheme,
   type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
-import { theme } from "@hitachivantara/uikit-styles";
+} from "@pentaho/uikit-react-utils";
+import { theme } from "@pentaho/uikit-styles";
 
 import { HvPanel } from "../Panel";
 import { getContainerElement } from "../utils/document";
@@ -27,7 +27,11 @@ const { useClasses } = createClasses(name, {
   },
   panel: {
     padding: theme.space.xs,
-    border: `1px solid ${theme.colors.text}`,
+    margin: theme.spacing("xxs", 0),
+    backgroundColor: theme.colors.bgContainer,
+    border: `1px solid ${theme.colors.borderSubtle}`,
+    borderRadius: theme.radii.large,
+    boxShadow: theme.colors.shadow,
   },
 });
 

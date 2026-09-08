@@ -1,7 +1,7 @@
 import {
   HvQueryBuilder,
   type HvQueryBuilderProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const attributes = {
   key1: {

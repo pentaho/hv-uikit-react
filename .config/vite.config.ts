@@ -14,7 +14,7 @@ const pkg = require(resolve("package.json"));
 const external = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.peerDependencies || {}),
-].map((ext) => new RegExp(`^${ext.split("/")[0]}`));
+].map((ext) => new RegExp(`^${ext}(?:/|$)`));
 
 export default defineConfig({
   resolve: {

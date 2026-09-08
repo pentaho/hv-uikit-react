@@ -1,5 +1,5 @@
-import type { HvAppShellEventTheme } from "@hitachivantara/app-shell-events";
-import { useTheme } from "@hitachivantara/uikit-react-core";
+import type { HvAppShellEventTheme } from "@pentaho/app-shell-events";
+import { useTheme } from "@pentaho/uikit-react-core";
 
 import useLocalStorage from "./useLocalStorage";
 

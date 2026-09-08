@@ -6,8 +6,8 @@ import {
   HvTypography,
   type HvCellProps,
   type HvTableColumnConfig,
-} from "@hitachivantara/uikit-react-core";
-import { Delete } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { Delete } from "@pentaho/uikit-react-icons";
 
 import { makeData, type AssetEvent } from "./makeData";
 import { MyTable } from "./MyTable";
@@ -115,6 +115,6 @@ function getPriorityColor(priority: AssetEvent["priority"]) {
     case "Low":
       return "positive";
     default:
-      return "neutral";
+      return "info";
   }
 }

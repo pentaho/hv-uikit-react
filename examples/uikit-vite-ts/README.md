@@ -1,7 +1,7 @@
 # UI Kit example with Vite.js, React, and TypeScript
 
-This is a working example project that uses Vite.js, React, and TypeScript. In this project, `@hitachivantara/uikit-react-core` and
-`@hitachivantara/uikit-react-icons` were installed as well as their peer dependencies, namely `@mui/material`, `@emotion/react`, and
+This is a working example project that uses Vite.js, React, and TypeScript. In this project, `@pentaho/uikit-react-core` and
+`@pentaho/uikit-react-icons` were installed as well as their peer dependencies, namely `@mui/material`, `@emotion/react`, and
 `@emotion/styled`.
 
 ## Usage

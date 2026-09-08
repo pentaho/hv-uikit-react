@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { HvTypographyVariants } from "@hitachivantara/uikit-react-core";
+import type { HvTypographyVariants } from "@pentaho/uikit-react-core";
 
 export interface NotificationComponentProps {
   message: string;

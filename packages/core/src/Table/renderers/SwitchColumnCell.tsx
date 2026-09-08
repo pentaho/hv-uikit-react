@@ -1,4 +1,4 @@
-import { createClasses } from "@hitachivantara/uikit-react-utils";
+import { createClasses } from "@pentaho/uikit-react-utils";
 
 import { HvBaseSwitch, type HvBaseSwitchProps } from "../../BaseSwitch";
 import { HvTypography } from "../../Typography";

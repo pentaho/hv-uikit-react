@@ -1,10 +1,7 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import type { TransitionProps } from "@mui/material/transitions";
-import {
-  useDefaultProps,
-  type ExtractNames,
-} from "@hitachivantara/uikit-react-utils";
+import { useDefaultProps, type ExtractNames } from "@pentaho/uikit-react-utils";
 
 import { useForkRef } from "../../hooks/useForkRef";
 import {

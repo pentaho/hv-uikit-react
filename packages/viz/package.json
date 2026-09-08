@@ -1,6 +1,6 @@
 {
-  "name": "@hitachivantara/uikit-react-viz",
-  "version": "6.1.11",
+  "name": "@pentaho/uikit-react-viz",
+  "version": "7.0.0-next.2",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -8,7 +8,6 @@
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "sideEffects": false,
   "keywords": [
-    "hitachi-vantara",
     "design-system",
     "ui-kit",
     "react",
@@ -41,8 +40,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@hitachivantara/uikit-react-utils": "^6.2.7",
-    "@hitachivantara/uikit-styles": "^6.2.2"
+    "@pentaho/uikit-react-utils": "^7.0.0-next.2",
+    "@pentaho/uikit-styles": "^7.0.0-next.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

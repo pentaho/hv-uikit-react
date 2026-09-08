@@ -4,8 +4,8 @@ import {
   HvDropDownMenu,
   HvMultiButton,
   type HvMultiButtonProps,
-} from "@hitachivantara/uikit-react-core";
-import { DropDownXS } from "@hitachivantara/uikit-react-icons";
+} from "@pentaho/uikit-react-core";
+import { DropDownXS } from "@pentaho/uikit-react-icons";
 
 const buttons = [
   { variant: "primary" },

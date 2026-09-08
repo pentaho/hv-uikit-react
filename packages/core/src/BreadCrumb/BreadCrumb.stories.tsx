@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import {
   HvBreadCrumb,
   type HvBreadCrumbProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 const data = [
   { label: "Label 1", path: "route1" },
@@ -42,25 +42,6 @@ export const Main: StoryObj<HvBreadCrumbProps> = {
       <HvBreadCrumb
         listRoute={data}
         home={{ label: "Home", path: "/" }}
-        aria-label="Breadcrumb"
-        {...args}
-      />
-    );
-  },
-};
-
-export const WithURL: StoryObj<HvBreadCrumbProps> = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Breadcrumb sample that generates the paths using an URL",
-      },
-    },
-  },
-  render: (args) => {
-    return (
-      <HvBreadCrumb
-        url="https://pentaho.github.io/uikit-docs/master/components/button"
         aria-label="Breadcrumb"
         {...args}
       />

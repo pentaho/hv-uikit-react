@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { HvThemeColorMode } from "@hitachivantara/uikit-styles";
+import type { HvThemeColorMode } from "@pentaho/uikit-styles";
 
 import type { HvTheme } from "../types/theme";
 
@@ -17,10 +17,4 @@ export const HvThemeContext = createContext<HvThemeContextValue>({
   selectedMode: "light",
   changeMode: () => {},
   rootId: undefined,
-
-  // TODO: remove once backwards-compatibility is not needed anymore
-  // @ts-expect-error removed from API interfaces to avoid usage
-  themes: [],
-  selectedTheme: "",
-  changeTheme() {},
 });

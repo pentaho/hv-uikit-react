@@ -1,7 +1,7 @@
 import type {
   HvAppShellMenuModel,
   HvAppShellModel,
-} from "@hitachivantara/app-shell-shared";
+} from "@pentaho/app-shell-shared";
 
 import filterModel from "./filterModel";
 

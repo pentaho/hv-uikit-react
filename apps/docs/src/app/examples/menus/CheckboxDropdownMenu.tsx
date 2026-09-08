@@ -8,7 +8,7 @@ import {
   HvSearchInput,
   HvTag,
   HvTypography,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 export default function Demo() {
   const [selected, setSelected] = useState<string[] | null>(null);

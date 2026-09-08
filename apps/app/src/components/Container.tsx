@@ -3,7 +3,7 @@ import {
   HvContainer,
   theme,
   type HvContainerProps,
-} from "@hitachivantara/uikit-react-core";
+} from "@pentaho/uikit-react-core";
 
 import { useNavigationContext } from "../context/navigation";
 import { Loading, type LoadingProps } from "./common/Loading";
