@@ -92,6 +92,9 @@
     "vitest": "^4.1.9"
   },
   "overrides": {
+    "speech-rule-engine": {
+      "@xmldom/xmldom": "^0.9.12"
+    },
     "storybook": {
       ".": "$storybook",
       "esbuild": "^0.28.1"
