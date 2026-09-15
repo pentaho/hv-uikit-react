@@ -55,7 +55,6 @@ See our documentation site [here](https://pentaho.github.io/uikit-docs/master/) 
   <tr>
     <td align="center"><a href="https://github.com/zettca"><img src="https://avatars.githubusercontent.com/u/638946?v=4" width="64px;" alt=""/><br /><sub><b>Bruno Henriques</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/francisco-guilherme"><img src="https://avatars.githubusercontent.com/u/14975353?v=4" width="64px;" alt=""/><br /><sub><b>Francisco Guilherme</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/MEsteves22"><img src="https://avatars.githubusercontent.com/u/43220251?v=4" width="64px;" alt=""/><br /><sub><b>Márcia Esteves</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/plagoa"><img src="https://avatars.githubusercontent.com/u/7498785?v=4" width="64px;" alt=""/><br /><sub><b>Paulo Lagoá</b></sub></a><br /></td>
   </tr>
 </table>
