@@ -22,25 +22,26 @@ List all valid variants and their semantic meaning. Used to teach agents which v
 **Format:**
 
 ```
-- `variantName`: semantic meaning
+- "variantName": semantic meaning
 ```
+
+Variant names must be in double quotes; the extractor does not read backtick names.
 
 **Example:**
 
 ```typescript
 /**
  * @variantSemantics
- * - `contained`: primary action, filled/contained style
- * - `subtle`: secondary action, low visual weight
- * - `ghost`: tertiary, minimal emphasis
- * - `{color}Contained`: emphasis for semantic colors (positive, negative, warning, primary, secondary)
- * - `{color}Subtle`: secondary emphasis for semantic colors
- * - `{color}Ghost`: tertiary for semantic colors
- * - `semantic`: inherits color from context via CSS variable, use only for custom color contexts
+ * - "primary": main action of a view, form, or dialog; filled style, the default variant
+ * - "subtle": secondary action, low visual weight
+ * - "ghost": tertiary, minimal emphasis
+ * - "{color}Subtle": secondary emphasis for semantic colors
+ * - "{color}Ghost": tertiary for semantic colors
+ * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
  */
 ```
 
-**Why:** Agents need to understand _intent_ behind variants. "Use `primary`" is vague; "`contained` = primary action" is actionable.
+**Why:** Agents need to understand _intent_ behind variants. "Use a filled button" is vague; "`primary` = main action" is actionable.
 
 ---
 
@@ -109,7 +110,7 @@ Common mistakes and the correct approach. This is critical for agent guidance.
 ```typescript
 /**
  * @antiPatterns
- * - Do not invent custom variant names; only use defined variants — Use one of: contained, subtle, ghost, {color}Contained, {color}Subtle, {color}Ghost, semantic
+ * - Do not invent custom variant names; only use defined variants — Use one of: primary, subtle, ghost, {color}Subtle, {color}Ghost, semantic
  * - Do not use "selected" for momentary/transient button states; it implies aria-pressed toggle semantics — Use selected only for true toggle buttons (e.g., view mode toggles)
  * - Do not use raw color hex/rgb values; use color tokens instead — Replace #FF0000 with variant="negative" or color token
  * - Do not apply custom CSS directly; use the classes prop and theme tokens — Use className or classes prop with design tokens
@@ -130,15 +131,18 @@ Accessibility requirements and implications.
 **Format:**
 
 ```
+role: <element role>
 - aspect: requirement and implications
 ```
+
+The first line must be the `role:` line without a dash; the extractor reads it as the role.
 
 **Example:**
 
 ```typescript
 /**
  * @a11y
- * - role: button (or implicit if component="button")
+ * role: button (or implicit if component="button")
  * - name: must have accessible name via children or aria-label
  * - disabled state: uses aria-disabled=true; when disabled without focusableWhenDisabled, not in tab order
  * - selected state: uses aria-pressed when selected prop is set, for toggle buttons
@@ -157,18 +161,20 @@ Rules that validation (`uikit-tools validate`) should enforce in consumer code.
 **Format:**
 
 ```
-- rule statement: error|warn|info
+- rule: message (error|warn|info)
 ```
+
+The rule needs a colon after the subject and the level in parentheses at the end of the line. Lines without them are dropped by the extractor.
 
 **Example:**
 
 ```typescript
 /**
  * @validationRules
- * - variant must be one of the defined HvButtonVariant values (no custom variants): error
- * - color must not be a raw hex/rgb value; use tokens instead: error
- * - selected should only be used with toggle-like interactions; flag if used with momentary actions: warn
- * - disabled + focusableWhenDisabled trade-off: warn if both true for extended periods in UI: info
+ * - variant: must be one of the defined HvButtonVariant values; no custom variants (error)
+ * - color: must not be a raw hex or rgb value; use tokens instead (error)
+ * - selected: should only be used with toggle-like interactions; flag momentary actions (warn)
+ * - disabled: focusableWhenDisabled trade-off; warn if both are true for extended periods (info)
  */
 ```
 
@@ -185,13 +191,12 @@ Here's the HvButton contract, used as the template:
  * Button component is used to trigger an action or event.
  *
  * @variantSemantics
- * - `contained`: primary action, filled/contained style
- * - `subtle`: secondary action, low visual weight
- * - `ghost`: tertiary, minimal emphasis
- * - `{color}Contained`: emphasis for semantic colors (positive, negative, warning, primary, secondary)
- * - `{color}Subtle`: secondary emphasis for semantic colors
- * - `{color}Ghost`: tertiary for semantic colors
- * - `semantic`: inherits color from context via CSS variable, use only for custom color contexts
+ * - "primary": main action of a view, form, or dialog; filled style, the default variant
+ * - "subtle": secondary action, low visual weight
+ * - "ghost": tertiary, minimal emphasis
+ * - "{color}Subtle": secondary emphasis for semantic colors
+ * - "{color}Ghost": tertiary for semantic colors
+ * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
  *
  * @stateRules
  * - "disabled": when true, click handlers do not fire, aria-disabled=true, button is not focusable unless focusableWhenDisabled=true
@@ -204,24 +209,24 @@ Here's the HvButton contract, used as the template:
  * - radius: use radius tokens (none, sm, md, lg), never raw px values
  *
  * @antiPatterns
- * - Do not invent custom variant names; only use defined variants — Use one of: contained, subtle, ghost, {color}Contained, {color}Subtle, {color}Ghost, semantic
+ * - Do not invent custom variant names; only use defined variants — Use one of: primary, subtle, ghost, {color}Subtle, {color}Ghost, semantic
  * - Do not use "selected" for momentary/transient button states; it implies aria-pressed toggle semantics — Use selected only for true toggle buttons (e.g., view mode toggles)
  * - Do not use raw color hex/rgb values; use color tokens instead — Replace #FF0000 with variant="negative" or color token
  * - Do not apply custom CSS directly; use the classes prop and theme tokens — Use className or classes prop with design tokens
  * - Do not mix semantic color variants with explicit color prop; choose one approach — Choose either variant="negative" OR color="..." but not both
  *
  * @a11y
- * - role: button (or implicit if component="button")
+ * role: button (or implicit if component="button")
  * - name: must have accessible name via children or aria-label
  * - disabled state: uses aria-disabled=true; when disabled without focusableWhenDisabled, not in tab order
  * - selected state: uses aria-pressed when selected prop is set, for toggle buttons
  * - required: focusableWhenDisabled should be true when a disabled button needs to be discoverable by assistive tech
  *
  * @validationRules
- * - variant must be one of the defined HvButtonVariant values (no custom variants): error
- * - color must not be a raw hex/rgb value; use tokens instead: error
- * - selected should only be used with toggle-like interactions; flag if used with momentary actions: warn
- * - disabled + focusableWhenDisabled trade-off: warn if both true for extended periods in UI: info
+ * - variant: must be one of the defined HvButtonVariant values; no custom variants (error)
+ * - color: must not be a raw hex or rgb value; use tokens instead (error)
+ * - selected: should only be used with toggle-like interactions; flag momentary actions (warn)
+ * - disabled: focusableWhenDisabled trade-off; warn if both are true for extended periods (info)
  */
 export const HvButton = fixedForwardRef(function HvButton<...>(props, ref) {
   // implementation
@@ -233,7 +238,7 @@ export const HvButton = fixedForwardRef(function HvButton<...>(props, ref) {
 ## Key Rules
 
 1. **Be specific.** "Use theme.colors.primary" is better than "use colors."
-2. **Include corrective guidance in anti-patterns.** Bad: "Don't use custom variants." Good: "Don't use custom variants — use one of: contained, subtle, ghost, ..."
+2. **Include corrective guidance in anti-patterns.** Bad: "Don't use custom variants." Good: "Don't use custom variants — use one of: primary, subtle, ghost, ..."
 3. **Link to accessibility.** Every state or prop with a11y implications must mention it.
 4. **Validate the important stuff.** Mark contract violations as `error`, style suggestions as `warn`, informational as `info`.
 5. **Use em-dashes for corrections.** Format: `Problem; reason — solution` enables proper extraction.

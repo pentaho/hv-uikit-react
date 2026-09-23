@@ -194,7 +194,7 @@ function eventTargetIsInsideContainer(
 }
 
 /**
- The Input is a UI control that allows users to enter and edit text, typically used for collecting user-provided information.
+ * The Input is a UI control that allows users to enter and edit text, typically used for collecting user-provided information.
  */
 export const HvInput = fixedForwardRef(function HvInput<
   InputElement extends HTMLElement = HTMLInputElement | HTMLTextAreaElement,

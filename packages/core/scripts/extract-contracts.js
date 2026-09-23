@@ -2,6 +2,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import ts from "typescript";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -242,7 +243,6 @@ function extractComponentContract(filePath, componentName) {
   const tags = parseJSDocTags(filePath);
 
   if (!tags.purpose) {
-    console.warn(`No purpose found for ${componentName}`);
     return null;
   }
 
@@ -270,12 +270,110 @@ function extractComponentContract(filePath, componentName) {
   };
 }
 
+const TS_COMPILER_OPTIONS = {
+  target: ts.ScriptTarget.ES2020,
+  module: ts.ModuleKind.ESNext,
+  moduleResolution: ts.ModuleResolutionKind.Bundler,
+  jsx: ts.JsxEmit.ReactJSX,
+  strict: true,
+  noEmit: true,
+  skipLibCheck: true,
+  esModuleInterop: true,
+};
+
+/**
+ * Find the first parameter of the first function inside a declaration.
+ * For `fixedForwardRef(function HvButton(props, ref) {...})` this is `props`.
+ */
+function findPropsParameter(node) {
+  let found = null;
+  const visit = (child) => {
+    if (found) return;
+    if (ts.isParameter(child) && ts.isFunctionLike(child.parent)) {
+      found = child;
+      return;
+    }
+    ts.forEachChild(child, visit);
+  };
+  ts.forEachChild(node, visit);
+  return found;
+}
+
+/**
+ * Read the props of an exported component from its TypeScript types.
+ * Only props declared inside the package's src folder are kept, so React's
+ * built-in HTML attributes are left out.
+ */
+function extractProps(program, componentFile, componentName, srcDir) {
+  const checker = program.getTypeChecker();
+  const sourceFile = program.getSourceFile(componentFile);
+  if (!sourceFile) return [];
+
+  const declaration = sourceFile.statements
+    .filter(ts.isVariableStatement)
+    .flatMap((statement) => statement.declarationList.declarations)
+    .find(
+      (decl) => ts.isIdentifier(decl.name) && decl.name.text === componentName,
+    );
+  if (!declaration) return [];
+
+  const param = findPropsParameter(declaration);
+  if (!param) return [];
+
+  const propsType = checker.getNonNullableType(
+    checker.getTypeAtLocation(param),
+  );
+  const srcPrefix = srcDir.split(path.sep).join("/") + "/";
+
+  return checker
+    .getPropertiesOfType(propsType)
+    .filter((symbol) =>
+      (symbol.declarations ?? []).some((decl) =>
+        decl.getSourceFile().fileName.startsWith(srcPrefix),
+      ),
+    )
+    .map((symbol) => ({
+      name: symbol.name,
+      type: checker.typeToString(
+        checker.getNonNullableType(checker.getTypeOfSymbol(symbol)),
+      ),
+      // Symbol flags are a bit mask; the flag check also covers optional
+      // props produced by mapped types such as Partial<T>.
+      // eslint-disable-next-line no-bitwise
+      required: !(symbol.flags & ts.SymbolFlags.Optional),
+      description: ts
+        .displayPartsToString(symbol.getDocumentationComment(checker))
+        .trim(),
+    }));
+}
+
+/**
+ * Attach props to each contract. One TypeScript program is shared by all
+ * component files so the source is parsed only once.
+ */
+function attachProps(components, componentFiles, srcDir) {
+  const program = ts.createProgram(
+    [...componentFiles.values()],
+    TS_COMPILER_OPTIONS,
+  );
+  for (const component of components) {
+    const file = componentFiles.get(component.name);
+    if (!file) continue;
+    const props = extractProps(program, file, component.name, srcDir);
+    if (props.length > 0) {
+      component.props = props;
+    }
+  }
+}
+
 /**
  * Main extraction function
  */
 async function extractMetadata() {
   const srcDir = path.join(projectRoot, "src");
   const components = [];
+  const missingPurpose = [];
+  const componentFiles = new Map();
 
   // Scan src directory for component folders
   const entries = fs.readdirSync(srcDir, { withFileTypes: true });
@@ -300,6 +398,9 @@ async function extractMetadata() {
 
     if (contract) {
       components.push(contract);
+      componentFiles.set(hvComponentName, componentFile);
+    } else {
+      missingPurpose.push(hvComponentName);
     }
   }
 
@@ -308,10 +409,13 @@ async function extractMetadata() {
     process.exit(1);
   }
 
+  attachProps(components, componentFiles, srcDir);
+
   const metadata = {
     version: process.env.npm_package_version || "7.0.0",
     generatedAt: new Date().toISOString(),
     components: components,
+    missingPurpose: missingPurpose,
   };
 
   const outputDir = path.join(projectRoot, "dist");
@@ -323,8 +427,40 @@ async function extractMetadata() {
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(metadata, null, 2));
+
+  // Full: purpose plus at least one contract tag.
+  const contractTags = [
+    "variantSemantics",
+    "stateRules",
+    "tokenConstraints",
+    "antiPatterns",
+    "a11y",
+    "validationRules",
+  ];
+  const full = [];
+  for (const component of components) {
+    const hasContract = contractTags.some((key) => key in component.tags);
+    if (hasContract) {
+      full.push(component.name);
+    }
+  }
+
+  // Print a heading followed by one indented name per line.
+  const printList = (heading, names) => {
+    if (names.length === 0) {
+      console.log(`  ${heading} none`);
+      return;
+    }
+    console.log(`  ${heading}`);
+    for (const name of names) {
+      console.log(`    - ${name}`);
+    }
+  };
+
+  console.log(`Total components: ${components.length + missingPurpose.length}`);
   console.log(`✓ Metadata extracted to ${outputPath}`);
-  console.log(`  Components: ${components.map((c) => c.name).join(", ")}`);
+  printList("Full metadata extracted for:", full);
+  printList("No purpose found for:", missingPurpose);
 }
 
 // Run if called directly

@@ -74,6 +74,11 @@ Besides the primary table components, UI Kit provides a set of containers that h
 - `HvTableContainer`, which provides a scrollable area for the table content.
 - [`HvLoadingContainer`](/components/loading-container), a loading container overlay to use while data is being fetched.
 
+> [!NOTE]
+>
+> When loading data into the table, wrap the `HvTable` (and its `HvTableContainer`, if used) with `HvLoadingContainer` to show the loading state
+> over the table while the data is being fetched.
+
 See also: [`HvBulkActions`](/components/bulk-actions), [`HvPagination`](/components/pagination).
 
 ```tsx live

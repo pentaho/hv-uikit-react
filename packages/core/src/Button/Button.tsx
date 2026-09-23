@@ -33,7 +33,7 @@ type ColorVariant =
   | "negative"
   | "warning";
 
-// "contained" has no suffix
+// the filled style (primary) has no suffix
 type TypeSuffix = "" | "Subtle" | "Ghost";
 
 export type HvButtonVariant =
@@ -110,10 +110,9 @@ function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
  * Button component is used to trigger an action or event.
  *
  * @variantSemantics
- * - "primary" (contained): primary emphasis, for main CTAs
+ * - "primary": default variant, for the main action of a view, form, or dialog; use only one per context
  * - "secondary" (subtle): secondary emphasis, deprecated, use secondarySubtle or secondaryGhost
  * - "ghost": tertiary emphasis, lowest visual weight
- * - "{color}Contained": emphasis for semantic colors (positive, negative, warning, primary, secondary)
  * - "{color}Subtle": secondary emphasis for semantic colors
  * - "{color}Ghost": tertiary for semantic colors
  * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
@@ -129,7 +128,8 @@ function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
  * - radius: use radius tokens (none, sm, md, lg), never raw px values
  *
  * @antiPatterns
- * - Do not invent custom variant names; only use defined variants — Use one of: contained, subtle, ghost, {color}Contained, {color}Subtle, {color}Ghost, semantic
+ * - Do not invent custom variant names; only use defined variants — Use one of: primary, subtle, ghost, {color}Subtle, {color}Ghost, semantic
+ * - Do not use subtle or ghost variants for the main action; they lower its emphasis — Use variant="primary" (the default) for the main action
  * - Do not use "selected" for momentary/transient button states; it implies aria-pressed toggle semantics — Use selected only for true toggle buttons (e.g., view mode toggles)
  * - Do not use raw color hex/rgb values; use color tokens instead — Replace #FF0000 with variant="negative" or color token
  * - Do not apply custom CSS directly; use the classes prop and theme tokens — Use className or classes prop with design tokens

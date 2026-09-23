@@ -133,6 +133,29 @@ export interface HvDatePickerProps
 /**
  * A date picker, popup calendar or date range picker is a graphical user
  * interface widget which allows the user to select a date from a calendar.
+ *
+ * @stateRules
+ * - "rangeMode": when true, the picker reads startValue and endValue, and onChange receives both dates; when false, it reads value and onChange receives one date
+ * - "showActions": when true, changes apply only through the Apply button and onCancel reverts pending changes; when false, a click applies the date
+ * - "showClear": only takes effect when showActions or rangeMode is true
+ * - "status": when invalid, the statusMessage is shown (default "Required")
+ *
+ * @antiPatterns
+ * - Do not pass ISO strings as value or startValue; the props are typed as Date — Convert the string with new Date() before passing it
+ * - Do not set value when rangeMode is true; range mode ignores value — Pass startValue and endValue instead
+ * - Do not leave the picker without label, aria-label, or aria-labelledby; the input has no accessible name — Provide one of the three
+ *
+ * @a11y
+ * role: inherited from the input and the calendar it opens
+ * - name: provide label, aria-label, or aria-labelledby so the input has an accessible name
+ * - description: use aria-describedby for format hints, such as the expected date format
+ * - error: when status is invalid, set aria-errormessage to the id of the element that shows the error
+ *
+ * @validationRules
+ * - value: value must be a Date object, not a string (error)
+ * - range: in rangeMode, use startValue and endValue instead of value (warn)
+ * - name: label, aria-label, or aria-labelledby must be provided (error)
+ * - showClear: has no effect unless showActions or rangeMode is true (info)
  */
 export const HvDatePicker = forwardRef<HTMLDivElement, HvDatePickerProps>(
   function HvDatePicker(props, ref) {

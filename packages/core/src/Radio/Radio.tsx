@@ -126,9 +126,9 @@ export interface HvRadioProps extends Omit<
 }
 
 /**
-A Radio Button lets users select a single option from a group.
-
-Use it within a Radio Button Group—individual usage is discouraged, as React may not track the `checked` state reliably outside a group.
+ * A Radio Button lets users select a single option from a group.
+ *
+ * Use it within a Radio Button Group—individual usage is discouraged, as React may not track the `checked` state reliably outside a group.
  */
 export const HvRadio = forwardRef<HTMLButtonElement, HvRadioProps>(
   function HvRadio(props, ref) {

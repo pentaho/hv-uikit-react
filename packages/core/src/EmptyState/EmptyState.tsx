@@ -30,6 +30,23 @@ export interface HvEmptyStateProps extends HvBaseProps<
 
 /**
  * Empty states communicate that there’s no information, data or values to display in a given context.
+ *
+ * @tokenConstraints
+ * - spacing: at sm and up, the gap between the icon and the text uses the xs space token (theme.space.xs); do not add custom margins
+ *
+ * @antiPatterns
+ * - Do not show an empty state while data is loading; it tells the user there is no data, not that data is pending — Use HvLoading while data is loading
+ * - Do not put buttons or links in message; the message is text only — Pass the call to action through the action prop
+ *
+ * @a11y
+ * role: none; renders a plain container
+ * - heading: title renders as typography in a div, so screen readers do not announce it as a heading
+ * - icon: mark a decorative icon as aria-hidden; the title and message must carry the meaning
+ * - action: the action must be a focusable control, such as HvButton
+ *
+ * @validationRules
+ * - icon: icon must be provided, the prop is required (error)
+ * - action: action must be a focusable control, not plain text (warn)
  */
 export const HvEmptyState = forwardRef<
   React.ComponentRef<"div">,

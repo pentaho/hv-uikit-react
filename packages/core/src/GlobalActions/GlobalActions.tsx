@@ -46,6 +46,33 @@ export interface HvGlobalActionsProps extends HvBaseProps<
  * It uses `variant="global"` by default, rendering an `h1` element and applying sticky positioning.
  * Use `variant="section"` to group related content blocks.
  * Use it sparingly, as it introduces strong visual separation, which may not always be necessary.
+ *
+ * @variantSemantics
+ * - "global": page-level heading; the title renders as an h1 by default, the position is sticky, and it is the only variant that shows backButton
+ * - "section": groups related content on the page; the title renders as an h2 by default, and the position is relative
+ *
+ * @stateRules
+ * - "position": sticky by default for global and relative by default for section; fixed applies responsive styles
+ * - "backButton": rendered only with variant="global"
+ * - "title": a string title is rendered as a heading; other nodes render as provided, without heading semantics
+ *
+ * @antiPatterns
+ * - Do not use variant="global" for a group inside a page; it renders an h1 and sticks to the top — Use variant="section" for groups
+ * - Do not put page actions in title; actions belong in children — Pass action buttons as children
+ * - Do not choose headingLevel for its look; it changes only the element, while variant sets the style — Set headingLevel to match the page outline
+ *
+ * @a11y
+ * role: heading, level 1 for global and 2 for section unless headingLevel is set
+ * - outline: set headingLevel so headings follow the page outline without skipping levels
+ * - title: a string title becomes a heading; a custom title node must provide its own heading semantics
+ * - actions: children must be focusable controls, such as HvButton
+ * - sticky: sticky and fixed bars must not cover focused content; keep them compact
+ *
+ * @validationRules
+ * - variant: variant must be global or section (error)
+ * - global: use at most one variant="global" per page (warn)
+ * - backButton: backButton is ignored with variant="section" (warn)
+ * - headingLevel: headingLevel must not skip levels on the page (warn)
  */
 export const HvGlobalActions = forwardRef<
   React.ComponentRef<"div">,
