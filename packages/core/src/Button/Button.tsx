@@ -81,10 +81,21 @@ export type HvButtonProps<C extends React.ElementType = "button"> =
   >;
 
 function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
+  const deprecatedVariantMap: Record<string, HvButtonVariant> = {
+    secondary: "secondarySubtle",
+  };
+
+  const mappedVariant = deprecatedVariantMap[variant];
+
+  if (import.meta.env.DEV && mappedVariant) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `HvButton variant '${variant}' is deprecated. Please use '${mappedVariant}'.`,
+    );
+  }
+
   if (variant === "semantic") return ["inherit", "ghost"];
   if (variant === "secondary") return ["text", "subtle"];
-  if (variant === "secondarySubtle") return ["text", "subtle"];
-  if (variant === "secondaryGhost") return ["text", "ghost"];
   if (variant === "ghost") return ["primary", "ghost"];
   if (variant === "contained" || variant === "subtle") {
     return ["text", variant];
@@ -97,6 +108,45 @@ function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
 }
 /**
  * Button component is used to trigger an action or event.
+ *
+ * @variantSemantics
+ * - "primary" (contained): primary emphasis, for main CTAs
+ * - "secondary" (subtle): secondary emphasis, deprecated, use secondarySubtle or secondaryGhost
+ * - "ghost": tertiary emphasis, lowest visual weight
+ * - "{color}Contained": emphasis for semantic colors (positive, negative, warning, primary, secondary)
+ * - "{color}Subtle": secondary emphasis for semantic colors
+ * - "{color}Ghost": tertiary for semantic colors
+ * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
+ *
+ * @stateRules
+ * - "disabled": when true, click handlers do not fire, aria-disabled=true, button is not focusable unless focusableWhenDisabled=true
+ * - "selected": implies aria-pressed=true, should only be used for true toggle actions (not momentary/transient actions)
+ * - "focusableWhenDisabled": when true, disabled button remains in tab order and can be focused (improves a11y for screen readers)
+ *
+ * @tokenConstraints
+ * - color: use semantic tokens only (primary, secondary, positive, negative, warning, or inherit for semantic)
+ * - size: use size tokens (xs, sm, md, lg, xl), never raw px values
+ * - radius: use radius tokens (none, sm, md, lg), never raw px values
+ *
+ * @antiPatterns
+ * - Do not invent custom variant names; only use defined variants — Use one of: contained, subtle, ghost, {color}Contained, {color}Subtle, {color}Ghost, semantic
+ * - Do not use "selected" for momentary/transient button states; it implies aria-pressed toggle semantics — Use selected only for true toggle buttons (e.g., view mode toggles)
+ * - Do not use raw color hex/rgb values; use color tokens instead — Replace #FF0000 with variant="negative" or color token
+ * - Do not apply custom CSS directly; use the classes prop and theme tokens — Use className or classes prop with design tokens
+ * - Do not mix semantic color variants with explicit color prop; choose one approach — Choose either variant="negative" OR color="..." but not both
+ *
+ * @a11y
+ * - role: button (or implicit if component="button")
+ * - name: must have accessible name via children or aria-label
+ * - disabled state: uses aria-disabled=true; when disabled without focusableWhenDisabled, not in tab order
+ * - selected state: uses aria-pressed when selected prop is set, for toggle buttons
+ * - required: focusableWhenDisabled should be true when a disabled button needs to be discoverable by assistive tech
+ *
+ * @validationRules
+ * - variant: must be one of the defined HvButtonVariant values only (error)
+ * - color: must not be a raw hex/rgb value, use tokens instead (error)
+ * - selected: should only be used with toggle-like interactions (warn)
+ * - disabled + focusableWhenDisabled: warn if both true for extended periods in UI (info)
  */
 export const HvButton = fixedForwardRef(function HvButton<
   C extends React.ElementType = "button",
