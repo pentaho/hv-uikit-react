@@ -34,6 +34,42 @@ export interface HvBadgeProps extends HvBaseProps {
 
 /**
  * The badge is a component used to notify the user that something has occurred, in the app context.
+ *
+ * @variantSemantics
+ * - "default": uses primary color by default, commonly for notifications and alerts
+ * - "positive" (color="positive"): success state, for completed or positive actions
+ * - "negative" (color="negative"): error or critical state, for alerts and errors
+ * - "warning" (color="warning"): attention state, for warnings and cautions
+ * - "secondary" (color="secondary"): neutral state, for secondary information
+ *
+ * @stateRules
+ * - "label": content to display; can be numeric (for counts) or React node
+ * - "showCount": when true with numeric label, displays the count; when false, empty badge
+ * - "maxCount": limits numeric display (e.g., "99+" when count exceeds maxCount)
+ * - "icon": when provided, badge attaches to icon instead of inline display
+ * - "children": when provided, badge displays alongside the children element
+ *
+ * @tokenConstraints
+ * - color: use semantic tokens only (positive, negative, warning, primary, secondary), never raw hex/rgb
+ * - size: determined by content; no explicit size control, adapts to parent
+ *
+ * @antiPatterns
+ * - Do not use arbitrary numeric values without semantic meaning; badges should represent countable state — Always pair numeric labels with clear meaning (unread count, notifications, etc.)
+ * - Do not hardcode color values; use color tokens instead — Replace color="#FF0000" with color="negative"
+ * - Do not use badge for purely decorative purposes without accessible text — If purely visual, use aria-hidden=true on wrapper
+ * - Do not mix label and icon without clear content hierarchy; choose one as primary — Pair either numeric label OR icon, not both competing for attention
+ *
+ * @a11y
+ * - role: status or presentation (depends on context; should be determined by parent)
+ * - name: if the badge conveys meaning (not purely visual), should have aria-label on parent
+ * - announcement: badge updates should trigger aria-live announcements if conveying important state changes
+ * - hidden: if badge is purely decorative (e.g., visual accent only), parent wrapper should have aria-hidden=true on badge
+ *
+ * @validationRules
+ * - color: must be a semantic token or undefined (error)
+ * - label: should be numeric or short React node; long text is poor UX (warn)
+ * - maxCount: should be >= 0 (error)
+ * - showCount + non-numeric label: showCount should only be true with numeric labels (warn)
  */
 export const HvBadge = forwardRef<
   // no-indent

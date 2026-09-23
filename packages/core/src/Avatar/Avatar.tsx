@@ -65,6 +65,46 @@ export interface HvAvatarProps extends HvBaseProps {
 
 /**
  * Avatars represent a user or brand and can display an image, icon, or initials.
+ * Use for profile pictures, user indicators, and brand representation.
+ * For displaying multiple avatars together, pair with HvAvatarGroup component.
+ *
+ * @variantSemantics
+ * - "circular" (default): standard avatar shape, recommended for user profiles and social contexts
+ * - "square": squared avatar shape, recommended for brand/product logos and icons
+ *
+ * @stateRules
+ * - "status": optional color indicator (typically green=online, red=offline, yellow=away) displayed as border
+ * - "badge": optional color badge overlay, useful for notifications or secondary status
+ * - "src/srcSet": when provided, displays image; when missing or fails to load, displays fallback (icon or initials)
+ * - "size": determines avatar dimensions; when in AvatarGroup, automatically scales down by one level
+ *
+ * @tokenConstraints
+ * - size: use tokens only (xs, sm, md, lg, xl), never raw pixel values
+ * - color: use semantic color tokens (primary, secondary, positive, negative, warning) or hex from design system
+ * - backgroundColor: use semantic color tokens or inherit from context when in AvatarGroup
+ * - status: use semantic tokens for status indication (positive=online, negative=offline, warning=away)
+ * - badge: use semantic tokens for badge color (negative=notification count, warning=pending, etc.)
+ *
+ * @antiPatterns
+ * - Do not pass both initials and image; image takes precedence, initials are fallback — Provide either src or children, not both with expectation of showing both
+ * - Do not use status/badge color without clear semantic meaning; use semantic colors — Use status/badge only for actual status indication, not purely decorative
+ * - Do not set backgroundColor when avatar will be in AvatarGroup; let group control styling — Remove custom backgroundColor if wrapping in HvAvatarGroup
+ * - Do not use xl/lg sizes in dense layouts; respect space constraints — Scale avatars appropriately for context (dense=xs/sm, normal=md, prominent=lg/xl)
+ * - Do not forget alt text when src is provided; accessibility requires it — Always include alt prop when using image
+ *
+ * @a11y
+ * - role: img (implicit when displaying image or initials)
+ * - name: alt text required when src provided; aria-label optional for icon-only avatars
+ * - status/badge: should be announced via aria-label or visible label (e.g., "User John, currently online")
+ * - fallback: should display accessible content (initials or generic User icon) when image fails
+ * - when in AvatarGroup: parent handles overall group semantics, avatar is presentational
+ *
+ * @validationRules
+ * - variant (circular | square): must be one of the defined variants only (error)
+ * - size (xs | sm | md | lg | xl): must be one of the defined size tokens only (error)
+ * - alt text: should be provided when src is set (warn)
+ * - semantic tokens: status and badge colors should use semantic tokens (warn)
+ * - backgroundColor: should be omitted if parent is HvAvatarGroup (info)
  */
 export const HvAvatar = forwardRef<
   // no-indent

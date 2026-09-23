@@ -23,7 +23,8 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "build": "vite build",
+    "extract:contracts": "node scripts/extract-contracts.js",
+    "build": "npm run extract:contracts && vite build",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "clean": "rimraf dist",
