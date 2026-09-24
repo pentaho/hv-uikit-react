@@ -3,8 +3,8 @@
  * This file should have ~8 violations that the validator catches
  */
 
-import React from 'react';
-import { HvButton, HvAvatar } from '@pentaho/uikit-react-core';
+import React from "react";
+import { HvAvatar, HvButton } from "@pentaho/uikit-react-core";
 
 export function ViolationExamples() {
   return (
@@ -13,7 +13,7 @@ export function ViolationExamples() {
       <HvButton variant="custom">Invalid Variant</HvButton>
 
       {/* Violation 2: Raw color instead of token */}
-      <HvButton style={{ color: '#FF0000' }}>Delete Me</HvButton>
+      <HvButton style={{ color: "#FF0000" }}>Delete Me</HvButton>
 
       {/* Violation 3: Selected without aria-pressed */}
       <HvButton selected={true}>Toggle?</HvButton>
@@ -36,7 +36,12 @@ export function ViolationExamples() {
       {/* Valid examples (no violations) */}
       <HvButton variant="contained">Save</HvButton>
       <HvButton variant="subtle">Cancel</HvButton>
-      <HvButton variant="ghost" selected={true} aria-pressed={true} onClick={() => {}}>
+      <HvButton
+        variant="ghost"
+        selected={true}
+        aria-pressed={true}
+        onClick={() => {}}
+      >
         Toggle
       </HvButton>
       <HvButton aria-label="Search">🔍</HvButton>

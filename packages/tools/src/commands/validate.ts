@@ -3,8 +3,13 @@
  * Checks component usage against validation rules extracted from JSDoc contracts.
  */
 
-import { globSync } from 'glob';
-import { validateFiles, formatViolations, getExitCode } from '../validation/validator.js';
+import { globSync } from "glob";
+
+import {
+  formatViolations,
+  getExitCode,
+  validateFiles,
+} from "../validation/validator.js";
 
 export async function validate(
   patterns: string[],
@@ -20,7 +25,7 @@ export async function validate(
 
     if (allFiles.length === 0) {
       // eslint-disable-next-line no-console
-      console.error(`No files matching patterns: ${patterns.join(', ')}`);
+      console.error(`No files matching patterns: ${patterns.join(", ")}`);
       // eslint-disable-next-line no-process-exit
       process.exit(1);
     }
@@ -44,7 +49,7 @@ export async function validate(
     process.exit(exitCode);
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Validation error:', error);
+    console.error("Validation error:", error);
     // eslint-disable-next-line no-process-exit
     process.exit(1);
   }

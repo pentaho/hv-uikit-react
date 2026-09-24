@@ -3,10 +3,11 @@
  * Parses JSX and checks component usage against rules
  */
 
-import fs from 'fs';
-import path from 'path';
-import type { ValidationRule } from './rules.js';
-import { getRulesForComponent, getKnownComponents } from './rules.js';
+import fs from "fs";
+import path from "path";
+
+import type { ValidationRule } from "./rules.js";
+import { getKnownComponents, getRulesForComponent } from "./rules.js";
 
 export interface Violation {
   file: string;
@@ -17,7 +18,7 @@ export interface Violation {
   reason: string;
   failureMessage: string;
   suggestion: string;
-  enforcement: 'error' | 'warn' | 'info';
+  enforcement: "error" | "warn" | "info";
 }
 
 /**
@@ -38,7 +39,7 @@ function extractProps(componentTag: string): Record<string, any> {
   const dynamicPropRegex = /(\w+)=\{/g;
   while ((match = dynamicPropRegex.exec(componentTag)) !== null) {
     if (!props[match[1]]) {
-      props[match[1]] = '__DYNAMIC__'; // marker for dynamic values
+      props[match[1]] = "__DYNAMIC__"; // marker for dynamic values
     }
   }
 
@@ -47,7 +48,12 @@ function extractProps(componentTag: string): Record<string, any> {
   while ((match = booleanPropRegex.exec(componentTag)) !== null) {
     const propName = match[1];
     // Skip React/HTML reserved words and props we already found
-    if (!['return', 'if', 'else', 'for', 'while', 'children'].includes(propName) && !props.hasOwnProperty(propName)) {
+    if (
+      !["return", "if", "else", "for", "while", "children"].includes(
+        propName,
+      ) &&
+      !props.hasOwnProperty(propName)
+    ) {
       props[propName] = true;
     }
   }
@@ -61,7 +67,13 @@ function extractProps(componentTag: string): Record<string, any> {
  */
 function findComponentInstances(
   content: string,
-): Array<{ line: number; column: number; componentName: string; fullTag: string; props: Record<string, any> }> {
+): Array<{
+  line: number;
+  column: number;
+  componentName: string;
+  fullTag: string;
+  props: Record<string, any>;
+}> {
   const instances: Array<{
     line: number;
     column: number;
@@ -71,14 +83,14 @@ function findComponentInstances(
   }> = [];
   const knownComponents = getKnownComponents();
 
-  const lines = content.split('\n');
+  const lines = content.split("\n");
 
   for (let lineNum = 0; lineNum < lines.length; lineNum++) {
     const line = lines[lineNum];
 
     for (const component of knownComponents) {
       // Match <ComponentName props... > or <ComponentName props... />
-      const regex = new RegExp(`<(${component})([^>]*)(/?>)`, 'g');
+      const regex = new RegExp(`<(${component})([^>]*)(/?>)`, "g");
       let match;
 
       while ((match = regex.exec(line)) !== null) {
@@ -108,7 +120,7 @@ export function validateFile(filePath: string): Violation[] {
     return [];
   }
 
-  const content = fs.readFileSync(filePath, 'utf-8');
+  const content = fs.readFileSync(filePath, "utf-8");
   const violations: Violation[] = [];
 
   // Find all component instances
@@ -162,7 +174,7 @@ export function validateFiles(filePaths: string[]): Violation[] {
  */
 export function formatViolations(violations: Violation[]): string {
   if (violations.length === 0) {
-    return '✓ No violations found\n';
+    return "✓ No violations found\n";
   }
 
   // Group by file and sort by line
@@ -174,7 +186,7 @@ export function formatViolations(violations: Violation[]): string {
     grouped.get(v.file)!.push(v);
   }
 
-  let output = '';
+  let output = "";
 
   for (const [file, fileViolations] of grouped) {
     fileViolations.sort((a, b) => a.line - b.line || a.column - b.column);
@@ -187,11 +199,11 @@ export function formatViolations(violations: Violation[]): string {
   }
 
   // Summary
-  const errorCount = violations.filter((v) => v.enforcement === 'error').length;
-  const warnCount = violations.filter((v) => v.enforcement === 'warn').length;
-  const infoCount = violations.filter((v) => v.enforcement === 'info').length;
+  const errorCount = violations.filter((v) => v.enforcement === "error").length;
+  const warnCount = violations.filter((v) => v.enforcement === "warn").length;
+  const infoCount = violations.filter((v) => v.enforcement === "info").length;
 
-  output += '=================\n';
+  output += "=================\n";
   output += `${errorCount} errors, ${warnCount} warnings, ${infoCount} info\n`;
 
   return output;
@@ -201,6 +213,6 @@ export function formatViolations(violations: Violation[]): string {
  * Get exit code based on violations
  */
 export function getExitCode(violations: Violation[]): number {
-  const hasErrors = violations.some((v) => v.enforcement === 'error');
+  const hasErrors = violations.some((v) => v.enforcement === "error");
   return hasErrors ? 1 : 0;
 }
