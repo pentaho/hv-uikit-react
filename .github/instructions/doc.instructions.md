@@ -3,9 +3,7 @@ applyTo: "apps/docs/src/**/*.mdx"
 name: Documentation Instructions
 ---
 
-## Components
+<!-- Canonical source: apps/docs/AGENTS.md. Kept as a pointer so Copilot still scopes
+     by applyTo, without the rules living in two places. -->
 
-- Leverage the `Playground` component for the most commonly/relevant component props.
-- Include only meaningful and distinct doc sections, avoiding redundant examples.
-- Ensure each doc section has a clear description aligned with the following code block.
-- Use UnoCSS classes to style the docs, avoiding EmotionCSS and `style`.
+See [`apps/docs/AGENTS.md`](../../apps/docs/AGENTS.md).

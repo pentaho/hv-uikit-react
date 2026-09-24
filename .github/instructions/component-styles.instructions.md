@@ -3,30 +3,7 @@ applyTo: "packages/*/**/*.styles.ts,packages/*/**/*.styles.tsx"
 name: Component Styling Instructions
 ---
 
-## Example
+<!-- Canonical source: packages/AGENTS.md. Kept as a pointer so Copilot still scopes
+     by applyTo, without the rules living in two places. -->
 
-```ts
-// HvComp.styles.ts
-import { createClasses } from "@pentaho/uikit-react-utils";
-import { theme } from "@pentaho/uikit-styles";
-
-export const { staticClasses, useClasses } = createClasses("HvComp", {
-  /** Applied to the root element */
-  root: {
-    padding: theme.spacing("xs", "sm"), // 👈 leverage the `theme.` object
-    marginTop: theme.space.sm,
-    backgroundColor: theme.colors.backgroundColor,
-  },
-  /** Applied to the root element when selected */
-  selected: {},
-  /** Applied to the root element when disabled */
-  disabled: {
-    // 👇 leverage global `disabled` instead of adding a `buttonDisabled`
-    "& $button": {
-      cursor: "not-allowed",
-    },
-  },
-  /** Applied to the button element */
-  button: {},
-});
-```
+See [`packages/AGENTS.md`](../../packages/AGENTS.md#component-styles) — _Component styles_.
