@@ -31,7 +31,10 @@
     "typecheck": "tsc --noEmit",
     "prepare": "husky install .config/husky",
     "publish-dry": "lerna publish --no-push --registry \"http://localhost:4873/\"",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "spike:describe": "node scripts/spike/build-index.ts",
+    "spike:test": "node --test scripts/spike/spike.test.ts",
+    "spike:score": "node scripts/spike/baseline/score.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.1.0",

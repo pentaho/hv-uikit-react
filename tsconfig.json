@@ -10,7 +10,15 @@
     "apps",
     "docs",
     "packages",
-    "templates"
+    "templates",
+    "scripts"
   ],
-  "exclude": ["node_modules", "**/dist", "packages/*/package"]
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "packages/*/package",
+    "scripts/spike/baseline/fixtures",
+    "scripts/spike/baseline/runs",
+    "scripts/spike/baseline/app"
+  ]
 }

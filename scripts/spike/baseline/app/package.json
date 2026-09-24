@@ -1,0 +1,17 @@
+{
+  "name": "uikit-baseline-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "HVUIKIT-7482 — target app for baseline scenario runs. Not published, not built in CI.",
+  "scripts": {
+    "score": "node ../../baseline/score.ts src"
+  },
+  "dependencies": {
+    "@pentaho/uikit-react-core": "*",
+    "@pentaho/uikit-react-icons": "*",
+    "@pentaho/uikit-styles": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

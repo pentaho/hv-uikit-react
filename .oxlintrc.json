@@ -45,5 +45,6 @@
         "react-hooks/rules-of-hooks": "off"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["scripts/spike/baseline/runs/**"]
 }
