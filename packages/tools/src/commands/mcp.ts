@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+  type Tool,
+} from "@modelcontextprotocol/sdk/types.js";
 
 interface ComponentContract {
   name: string;
@@ -54,47 +61,174 @@ function getComponentContract(
   return metadata.components.find((c) => c.name === componentName) || null;
 }
 
-function listComponents(
-  metadata: ComponentMetadata,
-  limit: number,
-  offset: number,
-) {
-  const components = metadata.components.slice(offset, offset + limit);
-  return {
-    tool: "list_components",
-    components: components.map((c) => ({
-      name: c.name,
-      displayName: c.displayName,
-      purpose: c.purpose,
-    })),
-    total: metadata.components.length,
-    offset,
-    limit,
-  };
-}
-
-function getComponent(metadata: ComponentMetadata, componentName: string) {
-  const contract = getComponentContract(componentName, metadata);
-  return {
-    tool: "get_component_contract",
-    componentName,
-    contract: contract || { error: `Component ${componentName} not found` },
-  };
-}
-
 /**
  * Start the MCP server on stdio.
- * Phase 5.1: MCP Server Skeleton - list_components & get_component_contract tools
+ * Phase 5.1: Proper MCP Protocol Implementation
  *
- * Usage:
- *   node cli.js mcp list_components [--limit 10] [--offset 0]
- *   node cli.js mcp get_component_contract --component HvButton
+ * The server exposes two tools:
+ * - list_components: Paginated list of components
+ * - get_component_contract: Retrieve full component contract
+ *
+ * Clients connect via MCP protocol (stdio transport) and invoke tools.
  */
-export async function mcp(
-  toolName?: string,
-  options?: Record<string, unknown>,
-): Promise<void> {
+export async function mcp(): Promise<void> {
   const metadata = await loadMetadata();
+
+  const server = new Server(
+    {
+      name: "hv-uikit-mcp",
+      version: metadata.version,
+    },
+    {
+      capabilities: {
+        tools: {},
+      },
+    },
+  );
+
+  // Define tools
+  const tools: Tool[] = [
+    {
+      name: "list_components",
+      description:
+        "Get a paginated list of all UI components in the design system",
+      inputSchema: {
+        type: "object" as const,
+        properties: {
+          limit: {
+            type: "number",
+            description: "Maximum number of components to return (default: 10)",
+            default: 10,
+          },
+          offset: {
+            type: "number",
+            description:
+              "Number of components to skip for pagination (default: 0)",
+            default: 0,
+          },
+        },
+      },
+    },
+    {
+      name: "get_component_contract",
+      description:
+        "Get the full semantic contract of a specific component (variants, state rules, token constraints, antipatterns, a11y, validation rules)",
+      inputSchema: {
+        type: "object" as const,
+        properties: {
+          componentName: {
+            type: "string",
+            description:
+              "Name of the component (e.g., HvButton, HvAvatar, HvBadge)",
+          },
+        },
+        required: ["componentName"],
+      },
+    },
+  ];
+
+  // List tools handler
+  server.setRequestHandler(ListToolsRequestSchema, async () => {
+    return { tools };
+  });
+
+  // Call tool handler
+  server.setRequestHandler(CallToolRequestSchema, async (request: unknown) => {
+    const callRequest = request as {
+      params: { name: string; arguments?: Record<string, unknown> };
+    };
+    const { name, arguments: args } = callRequest.params;
+
+    if (name === "list_components") {
+      const limit = (args?.limit as number) || 10;
+      const offset = (args?.offset as number) || 0;
+
+      if (offset < 0 || limit < 0) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: "Error: limit and offset must be non-negative",
+            },
+          ],
+          isError: true,
+        };
+      }
+
+      const components = metadata.components.slice(offset, offset + limit);
+      const response = {
+        components: components.map((c) => ({
+          name: c.name,
+          displayName: c.displayName,
+          purpose: c.purpose,
+        })),
+        total: metadata.components.length,
+        offset,
+        limit,
+      };
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(response, null, 2),
+          },
+        ],
+      };
+    }
+
+    if (name === "get_component_contract") {
+      const componentName = args?.componentName as string;
+
+      if (!componentName) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: "Error: componentName is required",
+            },
+          ],
+          isError: true,
+        };
+      }
+
+      const contract = getComponentContract(componentName, metadata);
+
+      if (!contract) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `Error: Component "${componentName}" not found. Available components: ${metadata.components.map((c) => c.name).join(", ")}`,
+            },
+          ],
+          isError: true,
+        };
+      }
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(contract, null, 2),
+          },
+        ],
+      };
+    }
+
+    return {
+      content: [
+        {
+          type: "text" as const,
+          text: `Unknown tool: ${name}`,
+        },
+      ],
+      isError: true,
+    };
+  });
+
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
 
   // eslint-disable-next-line no-console
   console.error(`[hv-uikit-mcp] Server started (v${metadata.version})`);
@@ -102,46 +236,4 @@ export async function mcp(
   console.error(
     `[hv-uikit-mcp] Loaded ${metadata.components.length} components`,
   );
-
-  if (!toolName) {
-    // Default: show both tools for demo
-    const listResult = listComponents(metadata, 10, 0);
-    const getResult = getComponent(metadata, "HvButton");
-
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(listResult, null, 2));
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(getResult, null, 2));
-    return;
-  }
-
-  if (toolName === "list_components") {
-    const limit = (options?.limit as number) || 10;
-    const offset = (options?.offset as number) || 0;
-    const result = listComponents(metadata, limit, offset);
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(result, null, 2));
-    return;
-  }
-
-  if (toolName === "get_component_contract") {
-    const componentName = options?.component as string;
-    if (!componentName) {
-      // eslint-disable-next-line no-console
-      console.error("Error: --component <name> is required");
-      // eslint-disable-next-line no-process-exit
-      process.exit(1);
-    }
-    const result = getComponent(metadata, componentName);
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(result, null, 2));
-    return;
-  }
-
-  // eslint-disable-next-line no-console
-  console.error(`Unknown tool: ${toolName}`);
-  // eslint-disable-next-line no-console
-  console.error("Available tools: list_components, get_component_contract");
-  // eslint-disable-next-line no-process-exit
-  process.exit(1);
 }

@@ -24,17 +24,10 @@ program
   .action(validate);
 
 program
-  .command("mcp [tool]")
-  .description("Start the MCP server on stdio or call a specific tool")
-  .option("--limit <number>", "Limit for list_components (default: 10)", "10")
-  .option("--offset <number>", "Offset for list_components (default: 0)", "0")
-  .option("--component <name>", "Component name for get_component_contract")
-  .action(async (tool, options) => {
-    await mcp(tool, {
-      limit: parseInt(options.limit as string),
-      offset: parseInt(options.offset as string),
-      component: options.component as string,
-    });
+  .command("mcp")
+  .description("Start the MCP server on stdio for agent integration")
+  .action(async () => {
+    await mcp();
   });
 
 program.parse();
