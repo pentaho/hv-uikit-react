@@ -58,8 +58,43 @@ export interface HvCheckBoxProps extends Omit<HvBaseCheckBoxProps, "classes"> {
 
 /**
  * A Checkbox lets users select one or more options.
- * It’s commonly used in a Checkbox Group to present multiple choices, but can also be used individually to toggle a single option.
- */
+ * It’s commonly used in a Checkbox Group to present multiple choices, but can also be used individually to toggle a single option. *
+ * @variantSemantics
+ * - "default" (semantic=false): standard checkbox appearance
+ * - "semantic" (semantic=true): checkbox inherits color from context via CSS variable
+ *
+ * @stateRules
+ * - "checked": when true, checkbox displays checked mark and aria-checked=true
+ * - "indeterminate": when true, checkbox displays mixed state (neither checked nor unchecked); commonly used in groups when some but not all items are selected
+ * - "disabled": when true, checkbox cannot be interacted with; disables click handlers and removes from tab order
+ * - "readOnly": when true, checkbox is visible but not editable; remains in tab order for accessibility
+ * - "required": when true, form submission validation requires checkbox to be checked
+ * - "focusVisible": managed internally; indicates keyboard focus for accessibility
+ *
+ * @tokenConstraints
+ * - color: when semantic=true, inherits from context; otherwise use semantic tokens (primary, secondary, positive, negative, warning)
+ * - size: size determined by design system defaults; no explicit prop control
+ *
+ * @antiPatterns
+ * - Do not use checkbox without a label; always pair with label prop or aria-label — Required for accessibility; screen readers need to announce the checkbox purpose
+ * - Do not use indeterminate state without explaining its meaning to users — Indeterminate should be clearly communicated via label or helper text (e.g., \"Some items selected\")
+ * - Do not mix controlled (checked) and uncontrolled (defaultChecked) usage — Choose one: either manage state via onChange/checked OR use defaultChecked, not both
+ * - Do not disable checkbox without communicating why to the user — Disabled state confuses users; provide context via helper text or nearby label
+ * - Do not use readOnly; it's rarely the right pattern — Use disabled with explanation or reconsider the interaction model
+ *
+ * @a11y
+ * - role: checkbox (implicit)
+ * - name: must have accessible name via label or aria-label (required by accessibility standards)
+ * - state: aria-checked reflects checked/indeterminate state; aria-disabled when disabled
+ * - required: aria-required=true when required prop is set
+ * - invalid: aria-invalid=true and aria-errormessage when status="invalid"
+ * - describedby: statusMessage is announced via aria-describedby
+ *
+ * @validationRules
+ * - label or aria-label: must have one; checkbox cannot be used without accessible name (error)
+ * - controlled vs uncontrolled: should not mix checked (controlled) with defaultChecked (uncontrolled) (warn)
+ * - status: must be one of 'standBy', 'valid', 'invalid' (error)
+ * - indeterminate + checked: both should not be true simultaneously; indeterminate takes precedence (warn) */
 export const HvCheckBox = forwardRef<HTMLButtonElement, HvCheckBoxProps>(
   function HvCheckBox(props, ref) {
     const {
