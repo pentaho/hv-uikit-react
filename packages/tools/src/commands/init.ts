@@ -5,12 +5,12 @@ import chalk from "chalk";
 import { loadMetadata } from "../utils/metadata.js";
 
 /**
- * Generate lean AGENTS.md and update CLAUDE.md.
+ * Generate lean AGENTS.md and auto-discoverable instructions.
  * Phase 5.1b: Non-destructive initialization for agents.
  *
  * Creates:
- * - .claude/rules/hv-uikit.md (lean guide, ~12 KB)
- * - CLAUDE.md reference (if doesn't exist or needs update)
+ * - .claude/rules/hv-uikit.md (lean guide, ~20 KB)
+ * - .claude/instructions.md (auto-discovered by agent on workspace load)
  */
 export async function init(targetDir?: string): Promise<void> {
   const dir = targetDir ?? ".";
@@ -26,16 +26,18 @@ export async function init(targetDir?: string): Promise<void> {
     const agentsContent = generateLeanAgentsMd(metadata);
     writeFileSync(agentsPath, agentsContent, "utf-8");
 
-    // Create or update CLAUDE.md with reference
-    const claudePath = join(dir, "CLAUDE.md");
-    updateClaudeMd(claudePath);
+    // Create or update .claude/instructions.md (auto-discovered)
+    const claudeDir = join(dir, ".claude");
+    mkdirSync(claudeDir, { recursive: true });
+    const instructionsPath = join(claudeDir, "instructions.md");
+    createInstructions(instructionsPath);
 
     // eslint-disable-next-line no-console
     console.log(chalk.green(`✓ Generated HV UI Kit agent guide`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Rules: ${agentsPath}`));
     // eslint-disable-next-line no-console
-    console.log(chalk.gray(`  Reference: ${claudePath}`));
+    console.log(chalk.gray(`  Instructions: ${instructionsPath}`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Version: ${metadata.version}`));
     // eslint-disable-next-line no-console
@@ -49,26 +51,49 @@ export async function init(targetDir?: string): Promise<void> {
 }
 
 /**
- * Create or update CLAUDE.md with reference to hv-uikit rules.
- * Idempotent: checks if reference already exists before adding.
+ * Create .claude/instructions.md for auto-discovery by agents.
+ * This file is automatically loaded when opening a workspace in VS Code.
+ * Idempotent: overwrites existing file.
  */
-function updateClaudeMd(claudePath: string): void {
-  const rulesRef =
-    "Read the HV UI Kit component guide:\n\n<file:.claude/rules/hv-uikit.md>\n\n";
+function createInstructions(instructionsPath: string): void {
+  const content = `# HV UI Kit Instructions
 
-  let content = "";
-  try {
-    content = readFileSync(claudePath, "utf-8");
-  } catch {
-    // File doesn't exist, we'll create it
-  }
+When working with @pentaho/uikit-react components, follow the rules and patterns in the HV UI Kit guide:
 
-  // Check if reference already exists (idempotent)
-  if (!content.includes(".claude/rules/hv-uikit.md")) {
-    // Prepend reference
-    const newContent = rulesRef + content;
-    writeFileSync(claudePath, newContent, "utf-8");
-  }
+<file:.claude/rules/hv-uikit.md>
+
+## Quick Start
+
+1. **Check the inventory** to see available components
+2. **Follow universal rules** for tokens, spacing, and accessibility
+3. **Query MCP for detailed contracts** when implementing components:
+   \`\`\`bash
+   npx uikit-tools mcp get_component_contract --component HvButton
+   \`\`\`
+4. **Validate before committing**:
+   \`\`\`bash
+   npx uikit-tools validate src/**/*.tsx
+   \`\`\`
+
+## When to Query MCP
+
+Ask the MCP server for:
+- Variant options and their semantic meaning
+- State rule behavior (checked, disabled, selected, etc.)
+- Token constraints (allowed color/size values)
+- Component-specific anti-patterns
+- Accessibility requirements (ARIA attributes)
+- Validation rules
+
+Example:
+\`\`\`
+Agent: "I need to build a form with HvInput, HvCheckBox, and HvButton"
+Action: Query \`mcp get_component_contract\` for each component
+Result: Full contracts with all constraints and rules
+\`\`\`
+`;
+
+  writeFileSync(instructionsPath, content, "utf-8");
 }
 
 /**
@@ -128,18 +153,6 @@ ${componentSections}
   \`\`\`tsx
   <HvInput label="Name" />  // or
   <HvInput aria-label="Search" placeholder="Type..." />
-  \`\`\`
-- **Buttons**: Semantic variants should match intent
-  \`\`\`tsx
-  <HvButton variant="contained">Save</HvButton>    // primary action
-  <HvButton variant="negative">Delete</HvButton>  // destructive
-  <HvButton variant="ghost">Cancel</HvButton>     // secondary
-  \`\`\`
-- **Toggle buttons**: Must include \`aria-pressed\` when toggling state
-  \`\`\`tsx
-  <HvButton variant="ghost" selected={isActive} aria-pressed={isActive}>
-    Bold
-  </HvButton>
   \`\`\`
 - **Images/Avatars**: Always include \`alt\` or \`aria-label\`
   \`\`\`tsx

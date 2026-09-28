@@ -110,10 +110,9 @@ function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
  * Button component is used to trigger an action or event.
  *
  * @variantSemantics
- * - "primary" (contained): primary emphasis, for main CTAs
+ * - "primary": primary emphasis, for main CTAs
  * - "secondary" (subtle): secondary emphasis, deprecated, use secondarySubtle or secondaryGhost
  * - "ghost": tertiary emphasis, lowest visual weight
- * - "{color}Contained": emphasis for semantic colors (positive, negative, warning, primary, secondary)
  * - "{color}Subtle": secondary emphasis for semantic colors
  * - "{color}Ghost": tertiary for semantic colors
  * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
