@@ -99,7 +99,7 @@ Result: Full contracts with all constraints and rules
 /**
  * Generate lean AGENTS.md content from component metadata.
  * Focus: Inventory + Universal Rules + MCP delegation
- * Size: ~12 KB (reasonable for context windows)
+ * CRITICAL: Emphasizes that MCP queries are mandatory before implementation
  */
 function generateLeanAgentsMd(metadata: any): string {
   const { version, generatedAt, components } = metadata;
@@ -129,7 +129,7 @@ This guide covers the HV UI Kit component library. Use this as your reference fo
 - Universal styling and accessibility rules
 - When to query the MCP server for full contracts
 
-For detailed component contracts (all variants, state rules, token constraints, anti-patterns, a11y), use the MCP server.
+**⚠️ CRITICAL: ALWAYS query the MCP server BEFORE implementing any component.** Many components have required boolean flags, specific prop constraints, or anti-patterns that aren't obvious from the component name.
 
 ## Component Inventory
 
@@ -175,19 +175,27 @@ ${componentSections}
 
 ## Getting Full Component Contracts
 
-This guide covers universal rules only. For detailed information about a specific component:
+This guide covers universal rules only. For detailed information about a specific component, **ALWAYS query the MCP server before implementing**:
 
 \`\`\`bash
 npx uikit-tools mcp get_component_contract --component HvButton
 \`\`\`
 
-Returns:
+**Returns:**
 - All available variants and their semantic meaning
 - State rules (when to use \`checked\`, \`disabled\`, \`selected\`, etc.)
 - Token constraints (allowed color/size values)
 - Anti-patterns specific to this component
 - Accessibility requirements (ARIA attributes)
 - Validation rules (what inputs are valid)
+
+**CRITICAL: Query MCP Server for:**
+- Required vs optional props
+- Boolean flags that enable features (like \`showCount\` for HvBadge)
+- Valid prop values and enums
+- Component state rules
+- Accessibility requirements
+- Anti-patterns specific to the component
 
 ## Listing All Components
 
@@ -196,6 +204,18 @@ To see the full inventory programmatically:
 \`\`\`bash
 npx uikit-tools mcp list_components --limit 10 --offset 0
 \`\`\`
+
+## Common Component Gotchas (Query MCP First!)
+
+These props are often required or enable critical features:
+
+- **HvBadge** — Requires \`showCount={true}\` to display numeric values
+- **HvInput** — Must include \`label\` or \`aria-label\` for accessibility
+- **HvButton** — Variants like \`"contained"\`, \`"ghost"\`, \`"primaryGhost"\` have specific semantic meanings
+- **HvCheckBox** — Needs \`label\` or \`aria-label\`; use controlled component pattern
+- **HvAvatar** — Requires \`alt\` text for accessibility
+
+**ALWAYS query the component contract before implementing** to catch these requirements.
 
 ## Validation
 
@@ -215,10 +235,15 @@ Checks:
 
 1. **Understand the task** — What are you building?
 2. **Check this guide** — What components exist? What are universal rules?
-3. **Query MCP if needed** — Get full contract for specific component
+3. **QUERY MCP SERVER FOR EACH COMPONENT** — Get full contract before writing code
    \`\`\`bash
    npx uikit-tools mcp get_component_contract --component HvInput
    \`\`\`
+   This is **CRITICAL** to find:
+   - Required props
+   - Boolean feature flags (e.g., \`showCount\` for HvBadge)
+   - Valid prop values
+   - Component-specific anti-patterns
 4. **Generate or write code** — Follow the contract and universal rules
 5. **Validate before committing**
    \`\`\`bash
@@ -263,7 +288,11 @@ npx uikit-tools validate LoginForm.tsx
 
 ## Questions?
 
-- **Need variants for a component?** → \`mcp get_component_contract\`
+- **Need variants or props for a component?** → **QUERY MCP FIRST** with mcp command
+  \`\`\`bash
+  npx uikit-tools mcp get_component_contract --component HvComponentName
+  \`\`\`
+- **Component display is wrong or empty?** → Check MCP for required boolean flags (showCount, etc.)
 - **Want examples?** → See component Storybook stories
 - **Validation failing?** → Check the error message, query MCP for full rules
 - **Token values?** → Check design tokens documentation
