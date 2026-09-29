@@ -116,13 +116,13 @@ export async function mcp(): Promise<void> {
       inputSchema: {
         type: "object" as const,
         properties: {
-          componentName: {
+          component: {
             type: "string",
             description:
               "Name of the component (e.g., HvButton, HvAvatar, HvBadge)",
           },
         },
-        required: ["componentName"],
+        required: ["component"],
       },
     },
   ];
@@ -178,14 +178,14 @@ export async function mcp(): Promise<void> {
     }
 
     if (name === "get_component_contract") {
-      const componentName = args?.componentName as string;
+      const componentName = args?.component as string;
 
       if (!componentName) {
         return {
           content: [
             {
               type: "text" as const,
-              text: "Error: componentName is required",
+              text: "Error: component is required",
             },
           ],
           isError: true,

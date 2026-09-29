@@ -9,16 +9,16 @@ import { loadMetadata } from "../utils/metadata.js";
  * Phase 5.1b: Non-destructive initialization for agents.
  *
  * Creates:
- * - .claude/rules/hv-uikit.md (lean guide, ~20 KB)
- * - .claude/instructions.md (auto-discovered by agent on workspace load)
+ * - .github/rules/hv-uikit.md (lean guide, ~20 KB)
+ * - .github/copilot-instructions.md (auto-discovered by agent on workspace load)
  */
 export async function init(targetDir?: string): Promise<void> {
   const dir = targetDir ?? ".";
   try {
     const metadata = loadMetadata();
 
-    // Create .claude/rules directory
-    const rulesDir = join(dir, ".claude", "rules");
+    // Create .github/rules directory
+    const rulesDir = join(dir, ".github", "rules");
     mkdirSync(rulesDir, { recursive: true });
 
     // Generate and write lean AGENTS.md
@@ -26,10 +26,10 @@ export async function init(targetDir?: string): Promise<void> {
     const agentsContent = generateLeanAgentsMd(metadata);
     writeFileSync(agentsPath, agentsContent, "utf-8");
 
-    // Create or update .claude/instructions.md (auto-discovered)
-    const claudeDir = join(dir, ".claude");
-    mkdirSync(claudeDir, { recursive: true });
-    const instructionsPath = join(claudeDir, "instructions.md");
+    // Create or update .github/copilot-instructions.md (auto-discovered)
+    const githubDir = join(dir, ".github");
+    mkdirSync(githubDir, { recursive: true });
+    const instructionsPath = join(githubDir, "copilot-instructions.md");
     createInstructions(instructionsPath);
 
     // eslint-disable-next-line no-console
@@ -51,46 +51,60 @@ export async function init(targetDir?: string): Promise<void> {
 }
 
 /**
- * Create .claude/instructions.md for auto-discovery by agents.
+ * Create .github/copilot-instructions.md for auto-discovery by agents.
  * This file is automatically loaded when opening a workspace in VS Code.
  * Idempotent: overwrites existing file.
  */
 function createInstructions(instructionsPath: string): void {
-  const content = `# HV UI Kit Instructions
+  const content = `---
+name: "HV UI Kit Component Guide"
+description: "Rules and workflows for building with HV UI Kit components"
+---
 
-When working with @pentaho/uikit-react components, follow the rules and patterns in the HV UI Kit guide:
+# HV UI Kit Instructions
 
-<file:.claude/rules/hv-uikit.md>
+**CRITICAL:** Always read the component guide before implementing any component. Many components have required props, feature flags, or anti-patterns that aren't obvious.
 
-## Quick Start
+Load the full guide:
 
-1. **Check the inventory** to see available components
-2. **Follow universal rules** for tokens, spacing, and accessibility
-3. **Query MCP for detailed contracts** when implementing components:
+<file:.github/rules/hv-uikit.md>
+
+## Quick Start Workflow
+
+1. **Identify components** — Check the inventory in the guide
+2. **Query MCP for each component** — Get full contract BEFORE coding
    \`\`\`bash
    npx uikit-tools mcp get_component_contract --component HvButton
    \`\`\`
-4. **Validate before committing**:
+3. **Follow the contract** — Variants, props, state rules, accessibility
+4. **Validate code** — Before committing
    \`\`\`bash
    npx uikit-tools validate src/**/*.tsx
    \`\`\`
 
-## When to Query MCP
+## Critical: MCP is Mandatory
 
-Ask the MCP server for:
-- Variant options and their semantic meaning
-- State rule behavior (checked, disabled, selected, etc.)
-- Token constraints (allowed color/size values)
-- Component-specific anti-patterns
-- Accessibility requirements (ARIA attributes)
-- Validation rules
+Do NOT implement without querying the MCP server first. Components have:
+- Required boolean flags (e.g., \`showCount\` for HvBadge)
+- Specific variant meanings
+- Anti-patterns to avoid
+- Accessibility requirements
 
-Example:
-\`\`\`
-Agent: "I need to build a form with HvInput, HvCheckBox, and HvButton"
-Action: Query \`mcp get_component_contract\` for each component
-Result: Full contracts with all constraints and rules
-\`\`\`
+## Common Gotchas
+
+- **HvBadge**: Need \`showCount={true}\` to display numbers
+- **HvInput**: Must have \`label\` or \`aria-label\`
+- **HvButton**: Variants like \`"contained"\`, \`"ghost"\` have specific semantic meanings
+- **HvCheckBox**: Needs \`label\`; use controlled pattern
+- **HvAvatar**: Requires \`alt\` text
+
+**Always query the component contract in MCP before implementing.**
+
+## Reference
+
+For detailed rules, token constraints, validation, and examples, see:
+
+<file:.github/rules/hv-uikit.md>
 `;
 
   writeFileSync(instructionsPath, content, "utf-8");

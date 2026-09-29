@@ -92,7 +92,7 @@ async function main() {
           : JSON.stringify(content, null, 2),
       );
     } else if (toolName === "get_component_contract") {
-      const componentName = toolArgs.componentName as string;
+      const componentName = toolArgs.component as string;
 
       if (!componentName) {
         console.error("Error: --component <name> is required");
@@ -106,7 +106,7 @@ async function main() {
 
       const result = await client.callTool({
         name: "get_component_contract",
-        arguments: { componentName },
+        arguments: { component: componentName },
       });
 
       // eslint-disable-next-line no-console
