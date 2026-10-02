@@ -14,7 +14,9 @@ node packages/tools/dist/cli.js init .
 
 node packages/tools/dist/cli.js validate "packages/tools/test-fixtures/validation-violations.tsx"
 
-# List components
+# Test MCP tools locally
+
+# The MCP server itself runs on stdio; use the test client to call its tools.
 
 packages/tools/test-mcp.sh list_components --limit 3
 

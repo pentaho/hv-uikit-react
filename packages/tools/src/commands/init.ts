@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import chalk from "chalk";
 
@@ -11,6 +11,7 @@ import { loadMetadata } from "../utils/metadata.js";
  * Creates:
  * - .github/rules/hv-uikit.md (lean guide, ~20 KB)
  * - .github/copilot-instructions.md (auto-discovered by agent on workspace load)
+ * - .vscode/mcp.json (HV UI Kit MCP server registration)
  */
 export async function init(targetDir?: string): Promise<void> {
   const dir = targetDir ?? ".";
@@ -32,12 +33,20 @@ export async function init(targetDir?: string): Promise<void> {
     const instructionsPath = join(githubDir, "copilot-instructions.md");
     createInstructions(instructionsPath);
 
+    // Register the stdio server so Copilot can invoke MCP tools directly.
+    const vscodeDir = join(dir, ".vscode");
+    mkdirSync(vscodeDir, { recursive: true });
+    const mcpConfigPath = join(vscodeDir, "mcp.json");
+    updateMcpConfig(mcpConfigPath);
+
     // eslint-disable-next-line no-console
     console.log(chalk.green(`✓ Generated HV UI Kit agent guide`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Rules: ${agentsPath}`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Instructions: ${instructionsPath}`));
+    // eslint-disable-next-line no-console
+    console.log(chalk.gray(`  MCP: ${mcpConfigPath}`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Version: ${metadata.version}`));
     // eslint-disable-next-line no-console
@@ -48,6 +57,36 @@ export async function init(targetDir?: string): Promise<void> {
     // eslint-disable-next-line no-process-exit
     process.exit(1);
   }
+}
+
+/**
+ * Add the HV UI Kit MCP server to a VS Code MCP configuration.
+ * Existing servers are preserved; invalid JSON must be fixed manually.
+ */
+function updateMcpConfig(mcpConfigPath: string): void {
+  let config: { servers?: Record<string, unknown> } = {};
+
+  if (existsSync(mcpConfigPath)) {
+    try {
+      config = JSON.parse(readFileSync(mcpConfigPath, "utf-8"));
+    } catch (error) {
+      throw new Error(
+        `Cannot update ${mcpConfigPath}: the existing file is not valid JSON.`,
+        { cause: error },
+      );
+    }
+  }
+
+  config.servers = {
+    ...config.servers,
+    "hv-uikit": {
+      type: "stdio",
+      command: "npx",
+      args: ["--no-install", "uikit-tools", "mcp"],
+    },
+  };
+
+  writeFileSync(mcpConfigPath, `${JSON.stringify(config, null, 2)}\n`, "utf-8");
 }
 
 /**
@@ -72,10 +111,8 @@ Load the full guide:
 ## Quick Start Workflow
 
 1. **Identify components** — Check the inventory in the guide
-2. **Query MCP for each component** — Get full contract BEFORE coding
-   \`\`\`bash
-   npx uikit-tools mcp get_component_contract --component HvButton
-   \`\`\`
+2. **Query MCP for each component** — Call \`get_component_contract\` with
+  \`{ component: "HvButton" }\` BEFORE coding
 3. **Follow the contract** — Variants, props, state rules, accessibility
 4. **Validate code** — Before committing
    \`\`\`bash
@@ -84,7 +121,7 @@ Load the full guide:
 
 ## Critical: MCP is Mandatory
 
-Do NOT implement without querying the MCP server first. Components have:
+Do NOT implement without querying the registered MCP server first. Components have:
 - Required boolean flags (e.g., \`showCount\` for HvBadge)
 - Specific variant meanings
 - Anti-patterns to avoid
@@ -98,7 +135,7 @@ Do NOT implement without querying the MCP server first. Components have:
 - **HvCheckBox**: Needs \`label\`; use controlled pattern
 - **HvAvatar**: Requires \`alt\` text
 
-**Always query the component contract in MCP before implementing.**
+**Always call the \`get_component_contract\` MCP tool before implementing.**
 
 ## Reference
 
@@ -189,11 +226,13 @@ ${componentSections}
 
 ## Getting Full Component Contracts
 
-This guide covers universal rules only. For detailed information about a specific component, **ALWAYS query the MCP server before implementing**:
+This guide covers universal rules only. For detailed information about a specific component, **ALWAYS call the registered MCP tool before implementing**:
 
-\`\`\`bash
-npx uikit-tools mcp get_component_contract --component HvButton
+\`\`\`text
+get_component_contract({ component: "HvButton" })
 \`\`\`
+
+The init command registers the server in \`.vscode/mcp.json\`. Use the MCP tools exposed by your agent; \`uikit-tools mcp\` starts the stdio server and does not accept tool calls as terminal arguments.
 
 **Returns:**
 - All available variants and their semantic meaning
@@ -213,10 +252,10 @@ npx uikit-tools mcp get_component_contract --component HvButton
 
 ## Listing All Components
 
-To see the full inventory programmatically:
+To see the full inventory programmatically, call:
 
-\`\`\`bash
-npx uikit-tools mcp list_components --limit 10 --offset 0
+\`\`\`text
+list_components({ limit: 10, offset: 0 })
 \`\`\`
 
 ## Common Component Gotchas (Query MCP First!)
@@ -249,10 +288,10 @@ Checks:
 
 1. **Understand the task** — What are you building?
 2. **Check this guide** — What components exist? What are universal rules?
-3. **QUERY MCP SERVER FOR EACH COMPONENT** — Get full contract before writing code
-   \`\`\`bash
-   npx uikit-tools mcp get_component_contract --component HvInput
-   \`\`\`
+3. **QUERY MCP SERVER FOR EACH COMPONENT** — Call \`get_component_contract\` before writing code
+  \`\`\`text
+  get_component_contract({ component: "HvInput" })
+  \`\`\`
    This is **CRITICAL** to find:
    - Required props
    - Boolean feature flags (e.g., \`showCount\` for HvBadge)
@@ -302,9 +341,9 @@ npx uikit-tools validate LoginForm.tsx
 
 ## Questions?
 
-- **Need variants or props for a component?** → **QUERY MCP FIRST** with mcp command
-  \`\`\`bash
-  npx uikit-tools mcp get_component_contract --component HvComponentName
+- **Need variants or props for a component?** → **QUERY MCP FIRST**
+  \`\`\`text
+  get_component_contract({ component: "HvComponentName" })
   \`\`\`
 - **Component display is wrong or empty?** → Check MCP for required boolean flags (showCount, etc.)
 - **Want examples?** → See component Storybook stories
