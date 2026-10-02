@@ -1,52 +1,84 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import path from "node:path";
 import chalk from "chalk";
 
 import { loadMetadata } from "../utils/metadata.js";
 
+type Harness = "claude" | "copilot";
+
+interface InitOptions {
+  harness: Harness;
+}
+
 /**
- * Generate lean AGENTS.md and auto-discoverable instructions.
+ * Generate lean agent guide and auto-discoverable instructions.
  * Phase 5.1b: Non-destructive initialization for agents.
  *
- * Creates:
- * - .github/rules/hv-uikit.md (lean guide, ~20 KB)
- * - .github/copilot-instructions.md (auto-discovered by agent on workspace load)
- * - .vscode/mcp.json (HV UI Kit MCP server registration)
+ * Creates (harness-dependent):
+ * - .claude/rules/hv-uikit.md or .github/rules/hv-uikit.md (lean guide, ~20 KB)
+ * - .claude/instructions.md or .github/copilot-instructions.md (auto-discovered)
+ * - .vscode/mcp.json (Copilot only)
  */
-export async function init(targetDir?: string): Promise<void> {
+export async function init(
+  targetDir?: string,
+  options?: InitOptions,
+): Promise<void> {
   const dir = targetDir ?? ".";
+  const harness = options?.harness ?? "copilot";
+
+  if (!["claude", "copilot"].includes(harness)) {
+    // eslint-disable-next-line no-console
+    console.error(
+      chalk.red(`✗ Invalid harness: ${harness}. Use 'claude' or 'copilot'.`),
+    );
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
+  }
+
   try {
     const metadata = loadMetadata();
 
-    // Create .github/rules directory
-    const rulesDir = join(dir, ".github", "rules");
+    // Determine folder structure based on harness
+    const agentDir = harness === "claude" ? ".claude" : ".github";
+    const instructionsFileName =
+      harness === "claude" ? "instructions.md" : "copilot-instructions.md";
+
+    // Create rules directory
+    const rulesDir = path.join(dir, agentDir, "rules");
     mkdirSync(rulesDir, { recursive: true });
 
-    // Generate and write lean AGENTS.md
-    const agentsPath = join(rulesDir, "hv-uikit.md");
+    // Generate and write lean guide
+    const agentsPath = path.join(rulesDir, "hv-uikit.md");
     const agentsContent = generateLeanAgentsMd(metadata);
     writeFileSync(agentsPath, agentsContent, "utf-8");
 
-    // Create or update .github/copilot-instructions.md (auto-discovered)
-    const githubDir = join(dir, ".github");
-    mkdirSync(githubDir, { recursive: true });
-    const instructionsPath = join(githubDir, "copilot-instructions.md");
-    createInstructions(instructionsPath);
+    // Create or update instructions (auto-discovered)
+    const agentConfigDir = path.join(dir, agentDir);
+    mkdirSync(agentConfigDir, { recursive: true });
+    const instructionsPath = path.join(agentConfigDir, instructionsFileName);
+    createInstructions(instructionsPath, harness);
 
-    // Register the stdio server so Copilot can invoke MCP tools directly.
-    const vscodeDir = join(dir, ".vscode");
-    mkdirSync(vscodeDir, { recursive: true });
-    const mcpConfigPath = join(vscodeDir, "mcp.json");
-    updateMcpConfig(mcpConfigPath);
+    // Register MCP server for Copilot only
+    let mcpConfigPath: string | undefined;
+    if (harness === "copilot") {
+      const vscodeDir = path.join(dir, ".vscode");
+      mkdirSync(vscodeDir, { recursive: true });
+      mcpConfigPath = path.join(vscodeDir, "mcp.json");
+      updateMcpConfig(mcpConfigPath);
+    }
 
     // eslint-disable-next-line no-console
     console.log(chalk.green(`✓ Generated HV UI Kit agent guide`));
     // eslint-disable-next-line no-console
+    console.log(chalk.gray(`  Harness: ${harness}`));
+    // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Rules: ${agentsPath}`));
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Instructions: ${instructionsPath}`));
-    // eslint-disable-next-line no-console
-    console.log(chalk.gray(`  MCP: ${mcpConfigPath}`));
+    if (mcpConfigPath) {
+      // eslint-disable-next-line no-console
+      console.log(chalk.gray(`  MCP: ${mcpConfigPath}`));
+    }
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`  Version: ${metadata.version}`));
     // eslint-disable-next-line no-console
@@ -90,11 +122,16 @@ function updateMcpConfig(mcpConfigPath: string): void {
 }
 
 /**
- * Create .github/copilot-instructions.md for auto-discovery by agents.
- * This file is automatically loaded when opening a workspace in VS Code.
+ * Create instructions file for auto-discovery by agents (harness-dependent).
+ * This file is automatically loaded when opening a workspace.
  * Idempotent: overwrites existing file.
  */
-function createInstructions(instructionsPath: string): void {
+function createInstructions(instructionsPath: string, harness: Harness): void {
+  const rulesPath =
+    harness === "claude"
+      ? ".claude/rules/hv-uikit.md"
+      : ".github/rules/hv-uikit.md";
+
   const content = `---
 name: "HV UI Kit Component Guide"
 description: "Rules and workflows for building with HV UI Kit components"
@@ -106,7 +143,7 @@ description: "Rules and workflows for building with HV UI Kit components"
 
 Load the full guide:
 
-<file:.github/rules/hv-uikit.md>
+<file:${rulesPath}>
 
 ## Quick Start Workflow
 
@@ -141,7 +178,7 @@ Do NOT implement without querying the registered MCP server first. Components ha
 
 For detailed rules, token constraints, validation, and examples, see:
 
-<file:.github/rules/hv-uikit.md>
+<file:${rulesPath}>
 `;
 
   writeFileSync(instructionsPath, content, "utf-8");

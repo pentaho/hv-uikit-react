@@ -13,7 +13,12 @@ program
 program
   .command("init [targetDir]")
   .description(
-    "Generate AGENTS.md in the target directory (default: current directory)",
+    "Generate agent instructions in the target directory (default: current directory)",
+  )
+  .option(
+    "--harness <type>",
+    "Target harness: 'claude' or 'copilot' (default: copilot)",
+    "copilot",
   )
   .action(init);
 

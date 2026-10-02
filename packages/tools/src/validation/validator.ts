@@ -65,9 +65,7 @@ function extractProps(componentTag: string): Record<string, any> {
  * Find component instances in JSX
  * Returns: { line, column, componentName, fullTag, props }
  */
-function findComponentInstances(
-  content: string,
-): Array<{
+function findComponentInstances(content: string): Array<{
   line: number;
   column: number;
   componentName: string;
