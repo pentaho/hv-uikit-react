@@ -139,40 +139,60 @@ description: "Rules and workflows for building with HV UI Kit components"
 
 # HV UI Kit Instructions
 
-**CRITICAL:** Always read the component guide before implementing any component. Many components have required props, feature flags, or anti-patterns that aren't obvious.
+**CRITICAL:** This project uses HV UI Kit components exclusively. You MUST use the MCP server to discover available components before implementing any UI elements. Never use plain HTML elements (e.g., \`<input>\`, \`<button>\`, \`<select>\`) when HV UI Kit alternatives exist.
 
-Load the full guide:
+Load the full component reference:
 
 <file:${rulesPath}>
 
-## Quick Start Workflow
+## Mandatory Workflow
 
-1. **Identify components** — Check the inventory in the guide
-2. **Query MCP for each component** — Call \`get_component_contract\` with
-  \`{ component: "HvButton" }\` BEFORE coding
-3. **Follow the contract** — Variants, props, state rules, accessibility
-4. **Validate code** — Before committing
-   \`\`\`bash
-   npx uikit-tools validate src/**/*.tsx
-   \`\`\`
+### Step 1: Discover Available Components
+**Before coding anything, call the \`list_components\` MCP tool** to see all available HV UI Kit components and their purposes.
 
-## Critical: MCP is Mandatory
-
-Do NOT implement without querying the registered MCP server first. Components have:
-- Required boolean flags (e.g., \`showCount\` for HvBadge)
-- Specific variant meanings
-- Anti-patterns to avoid
+### Step 2: Query Component Contracts
+For each component you plan to use, **call the \`get_component_contract\` MCP tool** with the component name (e.g., \`{ component: "HvInput" }\`) to get:
+- Required props (many components have mandatory props like \`label\` or \`aria-label\`)
+- Variant definitions and their semantic meanings
+- Prop constraints and boolean flags
 - Accessibility requirements
+- Anti-patterns to avoid
+
+### Step 3: Implement Using the Contract
+Follow the contract exactly. Many components have:
+- Required boolean flags (e.g., \`showCount\` for HvBadge)
+- Specific variant meanings (not just styling—they change component behavior)
+- Mandatory accessibility properties
+- Controlled/uncontrolled patterns
+
+### Step 4: Validate Before Committing
+\`\`\`bash
+npx uikit-tools validate src/**/*.tsx
+\`\`\`
+
+## NO PLAIN HTML ELEMENTS
+
+❌ **NEVER do this:**
+- \`<input placeholder="..." />\` → use \`<HvInput label="..." />\`
+- \`<button>Click</button>\` → use \`<HvButton>Click</HvButton>\`
+- \`<select><option>...</option></select>\` → use \`<HvDropdown />\`
+- \`<label>Checkbox</label><input type="checkbox" />\` → use \`<HvCheckBox label="..." />\`
+
+✅ **ALWAYS:**
+1. Call \`list_components\` to see what's available
+2. Call \`get_component_contract\` for each component before using it
+3. Use HV UI Kit components for ALL UI elements
 
 ## Common Gotchas
 
-- **HvBadge**: Need \`showCount={true}\` to display numbers
-- **HvInput**: Must have \`label\` or \`aria-label\`
-- **HvButton**: Variants like \`"contained"\`, \`"ghost"\` have specific semantic meanings
-- **HvCheckBox**: Needs \`label\`; use controlled pattern
-- **HvAvatar**: Requires \`alt\` text
+- **HvInput**: Requires \`label\` or \`aria-label\`; never use bare \`<input>\`
+- **HvBadge**: Requires \`showCount={true}\` to display numbers
+- **HvButton**: Variants like \`"contained"\`, \`"ghost"\` have semantic meanings—not just styling
+- **HvCheckBox**: Requires \`label\`; use controlled pattern
+- **HvAvatar**: Requires \`alt\` text for accessibility
+- **HvDropdown**: Not a wrapper—it has specific API; check contract
 
-**Always call the \`get_component_contract\` MCP tool before implementing.**
+**ALWAYS query the MCP tools before implementing.**
 
 ## Reference
 
