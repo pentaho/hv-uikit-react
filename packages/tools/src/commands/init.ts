@@ -165,10 +165,39 @@ Follow the contract exactly. Many components have:
 - Mandatory accessibility properties
 - Controlled/uncontrolled patterns
 
-### Step 4: Validate Before Committing
+### Step 4: Validate and Verify (MANDATORY BEFORE COMPLETION)
+
+⚠️ **THIS STEP IS REQUIRED. DO NOT SKIP OR CLAIM THE TASK IS COMPLETE WITHOUT RUNNING VALIDATION.**
+
+Run validation:
 \`\`\`bash
 npx uikit-tools validate src/**/*.tsx
 \`\`\`
+
+**Validation must complete with ZERO errors.** If validation fails:
+1. Read the error messages carefully
+2. Identify which components are violating the contract
+3. Call \`get_component_contract\` again for the problematic component
+4. Fix the implementation
+5. Run validation again
+6. **Repeat until validation passes**
+
+**The task is NOT COMPLETE until validation passes.** Compilation success or code review approval does NOT count as task completion if validation has not been run and passed.
+
+## Definition of Done
+
+✅ Task is complete ONLY when ALL of the following are true:
+- [ ] All components discovered via \`list_components\` MCP tool
+- [ ] Each component's contract reviewed via \`get_component_contract\`
+- [ ] Code implements components according to their contracts
+- [ ] \`npx uikit-tools validate src/**/*.tsx\` runs with ZERO errors
+- [ ] No plain HTML elements used (no \`<input>\`, \`<button>\`, \`<select>\`, etc.)
+
+❌ Task is NOT complete if:
+- Validation has not been run
+- Validation passed only after ignoring errors
+- Only \`npm run build\` was run (build success ≠ contract compliance)
+- Components were used without querying their contracts first
 
 ## NO PLAIN HTML ELEMENTS
 
@@ -182,6 +211,18 @@ npx uikit-tools validate src/**/*.tsx
 1. Call \`list_components\` to see what's available
 2. Call \`get_component_contract\` for each component before using it
 3. Use HV UI Kit components for ALL UI elements
+4. Run \`npx uikit-tools validate src/**/*.tsx\` and verify ZERO errors
+
+## Why Validation is Mandatory
+
+The validator catches:
+- ✓ Components used without required props
+- ✓ Props set to invalid values per the contract
+- ✓ Variants used incorrectly
+- ✓ Accessibility violations
+- ✓ Anti-patterns that will break at runtime
+
+Skipping validation means these issues won't be caught until users encounter broken functionality.
 
 ## Common Gotchas
 
@@ -191,8 +232,6 @@ npx uikit-tools validate src/**/*.tsx
 - **HvCheckBox**: Requires \`label\`; use controlled pattern
 - **HvAvatar**: Requires \`alt\` text for accessibility
 - **HvDropdown**: Not a wrapper—it has specific API; check contract
-
-**ALWAYS query the MCP tools before implementing.**
 
 ## Reference
 
