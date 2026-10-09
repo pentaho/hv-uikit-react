@@ -28,7 +28,7 @@
     "i18next": "^24.2.2"
   },
   "peerDependencies": {
-    "@pentaho/uikit-react-core": "^7.0.0-next.0",
+    "@pentaho/uikit-react-core": "^7.0.0",
     "react": "^18.2.0",
     "react-router-dom": "^6.30.6"
   },
