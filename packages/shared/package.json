@@ -35,7 +35,7 @@
     "@types/react-dom": "^18.2.17"
   },
   "peerDependencies": {
-    "@pentaho/uikit-styles": "^7.0.0-next.0",
+    "@pentaho/uikit-styles": "^7.0.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
