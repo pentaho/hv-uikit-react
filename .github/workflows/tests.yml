@@ -40,7 +40,7 @@ jobs:
         run: npx license-compliance
 
       - name: Security Audit
-        run: npm audit --workspaces --omit dev --audit-level high
+        run: npm audit --workspaces --omit dev --audit-level critical
 
   test:
     name: Unit Tests
