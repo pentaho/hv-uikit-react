@@ -1,84 +1,35 @@
-# HV UI Kit Workflow and Validation
+# Workflow Rules
 
-## Getting Full Component Contracts
+## Introduction
 
-These rule files cover universal rules only. For detailed information about a specific component, **ALWAYS call the registered MCP tool before implementing**:
+Consult component contracts before implementation and validate usage afterward. Automated validation complements, but does not replace, reviewing the interface in context.
 
-```text
-info({ component: "HvButton" })
-```
+## Component contracts
 
-The init command registers the server in `.vscode/mcp.json`. Use the MCP tools exposed by your agent; `uikit-tools mcp` starts the stdio server and does not accept tool calls as terminal arguments.
+Before implementing a component, retrieve its contract using the registered MCP tool `get_component_contract`. Use `list_components` to discover the inventory. Check supported props, required boolean flags, variants, state semantics, token constraints, accessibility requirements, and anti-patterns rather than guessing.
 
-**Returns:**
+Examples:
 
-- Props with their types, whether they are required, and descriptions
-- All available variants and their semantic meaning
-- State rules (when to use `checked`, `disabled`, `selected`, etc.)
-- Token constraints (allowed color/size values)
-- Anti-patterns specific to this component
-- Accessibility requirements (ARIA attributes)
-- Validation rules (what inputs are valid)
-
-**CRITICAL: Query MCP Server for:**
-
-- Required vs optional props
-- Boolean flags that enable features (like `showCount` for HvBadge)
-- Valid prop values and enums
-- Component state rules
-- Accessibility requirements
-- Anti-patterns specific to the component
-
-## Listing All Components
-
-To see the full inventory programmatically, call:
-
-```text
-components({ limit: 10, offset: 0 })
+```diff
+- // Invent a variant or assume every component supports the same props.
+- // Pass MCP tool calls as terminal arguments to uikit-tools mcp (a stdio server).
++ // Call the agent's registered MCP tools before implementing a form:
++ list_components({ limit: 10, offset: 0 })
++ get_component_contract({ component: "HvInput" })
++ // Consult component stories for usage examples.
 ```
 
 ## Validation
 
-Before committing code, validate against the component contracts:
+After implementation and before committing, run `npx uikit-tools validate 'src/**/*.tsx'`, resolve reported violations, and review the guidance manually against the actual product flow.
 
-```bash
-npx uikit-tools validate src/**/*.tsx
+The current CLI only checks a subset of `HvButton` and `HvAvatar` usage, including variants, some raw colors, selected/toggle semantics, image alternatives, and icon-only labels. It does not validate all spacing, date formatting, destructive control flow, or data states. A clean result is not proof of compliance with every rule.
+
+Examples:
+
+```diff
+- // Treat "All validations passed" as proof that every rule or component was checked.
+- // Claim the CLI validates all spacing and accessibility requirements.
++ // Query the relevant contract, correct reported violations, and rerun validation.
++ // Separately verify destructive confirmation, date formatting, layout, tokens, and component choice.
 ```
-
-Checks:
-
-- Invalid component variant values
-- Raw color/spacing values instead of tokens
-- Known anti-pattern usage
-- Missing required props (esp. accessibility)
-
-## Workflow
-
-1. **Understand the task**: What are you building?
-2. **Check the rule files**: What components exist? What are the universal rules?
-3. **Query the MCP server for each component**: Call `info` before writing code
-   ```text
-   info({ component: "HvInput" })
-   ```
-   This is **CRITICAL** to find:
-   - Required props
-   - Boolean feature flags (e.g., `showCount` for HvBadge)
-   - Valid prop values
-   - Component-specific anti-patterns
-4. **Generate or write code**: Follow the contract and universal rules
-5. **Validate before committing**
-   ```bash
-   npx uikit-tools validate src/**/*.tsx
-   ```
-6. **Fix violations**: Review errors and correct (usually tokens or a11y)
-
-## Questions?
-
-- **Need variants or props for a component?** → **QUERY MCP FIRST**
-  ```text
-  info({ component: "HvComponentName" })
-  ```
-- **Component display is wrong or empty?** → Check MCP for required boolean flags (showCount, etc.)
-- **Want examples?** → See component Storybook stories
-- **Validation failing?** → Check the error message, query MCP for full rules
-- **Token values?** → Check design tokens documentation

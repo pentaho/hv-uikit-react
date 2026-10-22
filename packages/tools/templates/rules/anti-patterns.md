@@ -1,15 +1,28 @@
-# HV UI Kit Anti-Patterns
+# Component Rules
 
-Avoid these common mistakes.
+## Introduction
 
-1. **Raw values instead of tokens**
-   - ❌ `<HvButton style={{ color: "#FF0000", padding: "16px" }} />`
-   - ✅ `<HvButton variant="negative" />` (uses semantic tokens)
+Use UI Kit components consistently to preserve shared behavior, accessibility, and theme support.
 
-2. **Missing accessible names on interactive elements**
-   - ❌ `<HvInput />` (no label or aria-label)
-   - ✅ `<HvInput label="Email" required />`
+## Prefer UI Kit components
 
-3. **Using disabled without explaining why**
-   - ❌ `<HvButton disabled>Save</HvButton>` (user cannot tell why it is unavailable)
-   - ✅ `<HvButton disabled>Save</HvButton>` with helper text beside it, such as `<HvTypography variant="caption">Enter a name to enable saving.</HvTypography>`
+Prefer an existing UI Kit component over native controls, third-party widgets, or custom implementations of the same interaction. Consult the component inventory and contract first to preserve accessibility, behavior, and theme consistency.
+
+Native semantic elements and layout wrappers are appropriate where they do not recreate a UI Kit widget. Application-logic wrappers may compose UI Kit components. If no component meets the requirement, document that gap rather than forcing an unsuitable replacement.
+
+Examples:
+
+```diff
+- <div onClick={save}>Save</div>
++ <HvButton onClick={save}>Save</HvButton>
+```
+
+## Self-evident disabled actions
+
+Explain why an action is disabled when the reason is not otherwise clear. Make the explanation available without requiring hover or focus on the disabled control, which may not be keyboard-focusable.
+
+Examples:
+
+```diff
++ <HvTypography variant="caption1">Enter a name to enable saving.</HvTypography>
+```

@@ -1,39 +1,18 @@
-# HV UI Kit Form Rules
+# Form Rules
 
-## Labels
+## Introduction
 
-- Every input must have a label or `aria-label`
-  ```tsx
-  <HvInput label="Name" />  // or
-  <HvInput aria-label="Search" placeholder="Type..." />
-  ```
+- Forms must make it clear what information users need to provide and how to identify each control.
+- Forms should use a form element and the UI Kit form components whenever possible to ensure consistency, accessibility, and theme support.
+- Handle the native form submission using the `onSubmit` event.
 
-## Example: Building a Form
+Example:
 
 ```tsx
-import { HvButton, HvCheckBox, HvInput } from "@pentaho/uikit-react-core";
-
-export function LoginForm() {
-  return (
-    <form>
-      {/* Input with label (a11y requirement) */}
-      <HvInput label="Email" type="email" required />
-
-      {/* Checkbox with label (a11y requirement) */}
-      <HvCheckBox label="Remember me" />
-
-      {/* Primary button for form submission */}
-      <HvButton variant="primary" type="submit">
-        Sign In
-      </HvButton>
-    </form>
-  );
-}
-```
-
-Run validation:
-
-```bash
-npx uikit-tools validate LoginForm.tsx
-# ✓ All validations passed
+<form onSubmit={handleSubmit}>
+  <HvInput required name="email" label="Email" type="email" />
+  <HvInput required name="password" label="Password" type="password" />
+  <HvCheckBox name="remember" label="Remember me" />
+  <HvButton type="submit">Sign In</HvButton>
+</form>
 ```

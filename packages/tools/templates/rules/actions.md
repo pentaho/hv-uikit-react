@@ -1,17 +1,21 @@
-# HV UI Kit Actions Rules
+# UI Kit Action Rules
 
-Rules for dialogs and destructive operations.
+## Introduction
 
-## Dialogs
+Actions must communicate their consequences and protect users from accidental data loss.
 
-- Use `HvDialog` for interactions that need a focused decision or input, such as editing an item or deleting an asset
+## Color Actions accordingly
 
-## Confirmation
+Use the correct theme color to indicate the nature of the action, such as `primary` for main actions, `negative` or `warning` for destructive actions.
 
-- Every destructive action (delete, remove, discard, irreversible change) must be confirmed in an `HvDialog` before it runs
-  - The confirm action performs the change; the cancel action leaves data unchanged
-  - Never run destructive logic directly from the triggering button
+## Prevent accidental and destructive actions
 
-## Destructive Buttons
+Prevent accidental and destructive actions by requiring explicit user intent before performing potentially destructive operations, or a way to recover from the change.
+This can include confirmation dialogs, undo options, or additional verification steps.
 
-- Use `HvButton` with `variant="negativeGhost"` for destructive actions
+Examples:
+
+```diff
+- <HvButton variant="negative" onClick={deleteAsset}>Delete asset</HvButton>
++ <HvButton variant="negative" onClick={() => setConfirmOpen(true)}>Delete asset</HvButton>
+```

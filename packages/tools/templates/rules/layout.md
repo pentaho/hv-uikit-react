@@ -19,6 +19,11 @@ Rules for page and section layout, spacing, and loading states. Read these befor
   - `xxs` (4px), `xs` (8px), `sm` (16px), `md` (24px), `lg` (48px), `xl` (80px)
   - Never raw pixel values
 
+```diff
+-<div style={{ padding: "24px", marginBottom: "16px" }}>{content}</div>
++<div style={{ padding: theme.space.md, marginBottom: theme.space.sm }}>{content}</div>
+```
+
 ## Consistency
 
 - Keep spacing and layout structure consistent across sibling sections of the same page
