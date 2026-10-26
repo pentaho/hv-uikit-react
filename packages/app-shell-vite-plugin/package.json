@@ -29,6 +29,7 @@
     "@rollup/plugin-virtual": "^3.0.1",
     "es-module-shims": "^1.6.3",
     "jiti": "^2.6.1",
+    "rollup-plugin-sbom": "^3.2.3",
     "vite-plugin-static-copy": "^4.1.0"
   },
   "peerDependencies": {

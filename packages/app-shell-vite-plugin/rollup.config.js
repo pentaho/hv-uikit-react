@@ -12,6 +12,8 @@ import replace from "@rollup/plugin-replace";
 // minified version
 import terser from "@rollup/plugin-terser";
 
+import bundledPackages from "./rollup-plugin-bundled-packages.js";
+
 const require = createRequire(import.meta.url);
 
 const createEsmBundleConfig = (name, external, suffix = "production.min") => {
@@ -44,6 +46,8 @@ const createEsmBundleConfig = (name, external, suffix = "production.min") => {
         },
       }),
       terser(),
+      // list the packages inlined into the bundle, for the SBOM of the apps that copy it
+      bundledPackages(),
     ],
   };
 };

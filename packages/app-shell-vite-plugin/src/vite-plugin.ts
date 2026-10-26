@@ -28,6 +28,10 @@ import generateImportmap, {
 } from "./vite-plugin-importmap.js";
 import copyAppShellLocales from "./vite-plugin-locales.js";
 import injectMetadata from "./vite-plugin-metadata.js";
+import generateSbom, {
+  copiedBundlePackages,
+  type SbomOptions,
+} from "./vite-plugin-sbom.js";
 import serveAppShellConfig from "./vite-plugin-watch-config.js";
 
 const ViteBuildMode = {
@@ -174,6 +178,17 @@ export interface AppShellVitePluginOptions {
    * @default "@pentaho-apps:source"
    */
   sourceCondition?: string;
+
+  /**
+   * Generates a CycloneDX SBOM of the build at `sbom/bom.json` (and `.well-known/sbom`) with
+   * `rollup-plugin-sbom`, including the packages of the shared bundles copied to `bundles/`.
+   *
+   * Set to `false` to disable, or pass `rollup-plugin-sbom` options to override the defaults.
+   * Requires Vite 5 or later.
+   *
+   * @default true
+   */
+  sbom?: boolean | SbomOptions;
 }
 
 /**
@@ -198,6 +213,7 @@ export async function HvAppShellVitePlugin(
     disableAppsKeyNormalization = false,
     experimentalNewPackageLayout = false,
     sourceCondition,
+    sbom = true,
   } = opts;
 
   const globalEnv = loadEnv(mode, process.cwd(), "");
@@ -360,5 +376,11 @@ export async function HvAppShellVitePlugin(
     // generate dist/package.json for the build output directory
     experimentalNewPackageLayout &&
       distPackageJsonPlugin(root, sourceCondition),
+
+    // generate the SBOM, including the shared bundles copied to "bundles"
+    generateSbom(
+      sbom,
+      !devMode && buildEntryPoint ? copiedBundlePackages : undefined,
+    ),
   ];
 }
