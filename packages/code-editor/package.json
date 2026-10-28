@@ -1,6 +1,6 @@
 {
   "name": "@pentaho/uikit-react-code-editor",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "type": "module",
   "private": false,
   "author": "UI Kit Team",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.5.1",
-    "@pentaho/uikit-react-utils": "^7.0.0",
+    "@pentaho/uikit-react-utils": "^7.0.1",
     "@pentaho/uikit-styles": "^7.0.0",
     "sql-formatter": "^15.4.2",
     "xml-formatter": "^3.6.3",

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/uikit-react-code-editor@7.0.0...@pentaho/uikit-react-code-editor@7.0.1) (2026-10-28)
+
+**Note:** Version bump only for package @pentaho/uikit-react-code-editor
+
 # [7.0.0](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/uikit-react-code-editor@7.0.0-next.2...@pentaho/uikit-react-code-editor@7.0.0) (2026-09-08)
 
 **Note:** Version bump only for package @pentaho/uikit-react-code-editor
