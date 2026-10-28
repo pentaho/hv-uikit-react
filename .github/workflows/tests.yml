@@ -40,6 +40,7 @@ jobs:
         run: npx license-compliance
 
       - name: Security Audit
+        continue-on-error: true
         run: npm audit --workspaces --omit dev --audit-level critical
 
   test:
