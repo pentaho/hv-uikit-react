@@ -13,7 +13,8 @@ This plugin is responsible for the hard lifting during development time and buil
 - create virtual endpoints to support dev mode;
 - create virtual `main.tsx` and `App.tsx` files. These files are there strictly for development purposes, as what ultimately matters are the ESM modules exported and consumed by others;
 - create `importmap` and inject it into `index.html`;
-- create `<base href="...">` tag and inject it into `index.html`.
+- create `<base href="...">` tag and inject it into `index.html`;
+- generate a CycloneDX SBOM of the build, including the shared bundles copied to "bundles".
 
 ## How to use
 
@@ -50,6 +51,12 @@ The configuration file must be placed at the root directory of the app and the v
 - `autoMenu`: creates a navigation menu derived from the views. This ensures a more organized and streamlined development process.
 
 > Empty Configuration Validity: With these automatic features in place, the configuration file isn't even mandatory for dev environments.
+
+## SBOM
+
+Builds write a CycloneDX 1.6 SBOM to `sbom/bom.json` (and `.well-known/sbom`) using [rollup-plugin-sbom](https://github.com/janbiasi/rollup-plugin-sbom). It lists the npm packages bundled into the app and, for `app` builds, the packages inside the shared bundles copied to the "bundles" folder (React, React Router, Emotion, `es-module-shims` and the App Shell and UI Kit shared bundles), which the bundler does not see. The copied bundles are added to the JSON outputs.
+
+- `sbom`: `true` by default. Set it to `false` to disable the SBOM, or pass `rollup-plugin-sbom` options to override the defaults (`{ specVersion: "1.6", outDir: "sbom", outFormats: ["json"], saveTimestamp: false }`). Requires Vite 5 or later.
 
 ## \<base href> tag
 
