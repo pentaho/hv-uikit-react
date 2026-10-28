@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.6.0...@hitachivantara/app-shell-ui@2.6.1) (2026-10-28)
+
+**Note:** Version bump only for package @hitachivantara/app-shell-ui
+
 # [2.6.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/app-shell-ui@2.5.0...@hitachivantara/app-shell-ui@2.6.0) (2026-09-03)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.1](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.11.0...@hitachivantara/uikit-react-core@6.11.1) (2026-10-28)
+
+### Bug Fixes
+
+* **VerticalNavigation:** clipped focus ring and off-center icons when collapsed ([#5266](https://github.com/pentaho/hv-uikit-react/issues/5266)) ([f6ffb9f](https://github.com/pentaho/hv-uikit-react/commit/f6ffb9f9da92f931ec759ce99d85e72428a15a82))
+
 # [6.11.0](https://github.com/pentaho/hv-uikit-react/compare/@hitachivantara/uikit-react-core@6.10.1...@hitachivantara/uikit-react-core@6.11.0) (2026-09-03)
 
 ### Features
