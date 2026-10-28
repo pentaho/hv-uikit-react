@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/app-shell-vite-plugin@3.0.1...@pentaho/app-shell-vite-plugin@3.1.0) (2026-10-28)
+
+### Features
+
+- **app-shell-vite-plugin:** generate a CycloneDX SBOM that includes the copied shared bundles ([#5301](https://github.com/pentaho/hv-uikit-react/issues/5301)) ([d7fb839](https://github.com/pentaho/hv-uikit-react/commit/d7fb839bdc391125a8b75775c7532338f386bb99))
+
+### Reverts
+
+- "chore(release): publish" ([#5307](https://github.com/pentaho/hv-uikit-react/issues/5307)) ([73fe734](https://github.com/pentaho/hv-uikit-react/commit/73fe734137c6741cc726d1a3fa1bd7696bf2a7dd))
+
+**Note:** Version bump only for package @pentaho/app-shell-vite-plugin
+
 ## [3.0.1](https://github.com/pentaho/hv-uikit-react/compare/@pentaho/app-shell-vite-plugin@3.0.0...@pentaho/app-shell-vite-plugin@3.0.1) (2026-09-15)
 
 **Note:** Version bump only for package @pentaho/app-shell-vite-plugin
