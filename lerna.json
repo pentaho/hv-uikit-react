@@ -4,7 +4,7 @@
   "packages": ["packages/*"],
   "yes": true,
   "private": false,
-  "distTag": "latest",
+  "distTag": "previous",
   "preDistTag": "next",
   "ignoreChanges": [
     "**/*.md",
