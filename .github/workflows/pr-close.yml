@@ -2,8 +2,6 @@ name: Pull Request Close
 
 on:
   pull_request:
-    branches:
-      - master
     types: [closed]
 
 env:
