@@ -1,0 +1,42 @@
+{
+  "name": "hv-uikit-react",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:24-trixie",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+    "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {},
+    "ghcr.io/jungaretti/features/vim:1": {}
+  },
+  "onCreateCommand": "sudo corepack enable",
+  // "postCreateCommand": "npm ci",
+  "forwardPorts": [5173, 6006, 3000],
+  "portsAttributes": {
+    "5173": { "label": "App (vite)" },
+    "6006": { "label": "Storybook" },
+    "3000": { "label": "Docs (nextra)" }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "oxc.oxc-vscode",
+        "esbenp.prettier-vscode",
+        "vitest.explorer",
+        "ms-playwright.playwright",
+        "antfu.unocss",
+        "unifiedjs.vscode-mdx"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "js/ts.tsdk.path": "node_modules/typescript/lib"
+      }
+    }
+  }
+}
