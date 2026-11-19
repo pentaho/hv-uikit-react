@@ -1,0 +1,182 @@
+{
+  "name": "Tooltip",
+  "category": "Data display",
+  "description": "A short hint shown on hover, focus or tap, which also names the element it describes.",
+  "overview": "On an icon button, and as an overflow tooltip on truncated text, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "On an icon button",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 122],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "On an icon button",
+          "sizing": ["HUG", "HUG"],
+          "size": [102, 18],
+          "type": "text",
+          "characters": "On an icon button",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stage",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [240, 96],
+          "type": "frame",
+          "children": [
+            {
+              "name": "Icon button",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [32, 32],
+              "at": [40, 56],
+              "type": "instance",
+              "component": "Icon button",
+              "variant": {
+                "Size": "md",
+                "State": "Hover"
+              },
+              "properties": {
+                "Icon#58:0": {
+                  "component": "Icon/Trash"
+                }
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "swap": {
+                    "component": "Icon/Trash"
+                  }
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Text/text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Tooltip",
+              "sizing": ["HUG", "HUG"],
+              "size": [115, 37],
+              "at": [-1, 11],
+              "type": "instance",
+              "component": "Tooltip",
+              "properties": {
+                "Text#58:13": "Delete asset"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Overflow tooltip on truncated text",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 122],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Overflow tooltip on truncated text",
+          "sizing": ["HUG", "HUG"],
+          "size": [193, 18],
+          "type": "text",
+          "characters": "Overflow tooltip on truncated text",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stage",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [320, 96],
+          "type": "frame",
+          "children": [
+            {
+              "name": "Truncated",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [200, 21],
+              "at": [0, 60],
+              "type": "text",
+              "characters": "Quarterly revenue by region and product line, restated",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/text"
+              },
+              "truncate": true
+            },
+            {
+              "name": "Tooltip",
+              "sizing": ["HUG", "HUG"],
+              "size": [392, 37],
+              "at": [0, 15],
+              "type": "instance",
+              "component": "Tooltip",
+              "properties": {
+                "Text#58:13": "Quarterly revenue by region and product line, restated"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Naming icon-only buttons (Icon button adds it for you).",
+    "Showing the full text of a value truncated to fit: Overflow tooltip.",
+    "A short hint that is not essential to the task."
+  ],
+  "dont": [
+    "Put essential instructions or interactive content in it.",
+    "Repeat the visible label of a button."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1068],
+    "size": [1280, 253],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [67, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Tooltip",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [179, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Text · place 8px from the target",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Tooltip",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

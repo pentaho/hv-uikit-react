@@ -1,0 +1,212 @@
+{
+  "name": "Tabs",
+  "category": "Navigation",
+  "description": "Switches between peer views of the same thing without leaving the page.",
+  "overview": "Default and floating, with a selected and a disabled tab, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 59],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["HUG", "HUG"],
+          "size": [41, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Tabs",
+          "sizing": ["HUG", "HUG"],
+          "size": [320, 33],
+          "type": "instance",
+          "component": "Tabs",
+          "variant": {
+            "Style": "default"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Floating",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Floating",
+          "sizing": ["HUG", "HUG"],
+          "size": [46, 18],
+          "type": "text",
+          "characters": "Floating",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Tabs",
+          "sizing": ["HUG", "HUG"],
+          "size": [330, 32],
+          "type": "instance",
+          "component": "Tabs",
+          "variant": {
+            "Style": "floating"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tab states",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Tab states",
+          "sizing": ["HUG", "HUG"],
+          "size": [60, 18],
+          "type": "text",
+          "characters": "Tab states",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [344, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 8,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tab",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 32],
+              "type": "instance",
+              "component": "Tab",
+              "variant": {
+                "Style": "default",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#75:0": "Overview"
+              }
+            },
+            {
+              "name": "Tab",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 32],
+              "type": "instance",
+              "component": "Tab",
+              "variant": {
+                "Style": "default",
+                "State": "Hover"
+              },
+              "properties": {
+                "Label#75:0": "Overview"
+              }
+            },
+            {
+              "name": "Tab",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 32],
+              "type": "instance",
+              "component": "Tab",
+              "variant": {
+                "Style": "default",
+                "State": "Selected"
+              },
+              "properties": {
+                "Label#75:0": "Overview"
+              }
+            },
+            {
+              "name": "Tab",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 32],
+              "type": "instance",
+              "component": "Tab",
+              "variant": {
+                "Style": "default",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#75:0": "Overview"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Peer views of one record or area: overview, schema, lineage, history.",
+    "Floating for a compact switch of two to four views."
+  ],
+  "dont": [
+    "Use tabs for steps in a sequence: use a stepper.",
+    "Use them as main navigation between areas."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 986],
+    "size": [1280, 572],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [47, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Tabs",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [226, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Tabs (Style) · Tab (Style × State · Label)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Tabs",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Tab",
+        "at": [80, 344]
+      }
+    ]
+  }
+}

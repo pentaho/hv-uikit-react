@@ -1,0 +1,217 @@
+{
+  "name": "Header",
+  "category": "Navigation",
+  "description": "The application's top bar: brand on the left, optional top-level navigation, global actions on the right.",
+  "overview": "One and two levels, in light and dark. Narrow screens hide the navigation behind a menu Icon button.",
+  "modes": "VERTICAL",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "1 level",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 74],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "1 level",
+          "sizing": ["HUG", "HUG"],
+          "size": [35, 18],
+          "type": "text",
+          "characters": "1 level",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Header",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 48],
+          "type": "instance",
+          "component": "Header",
+          "variant": {
+            "Levels": "1"
+          },
+          "properties": {
+            "Show navigation#68:5": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 levels",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 116],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "2 levels",
+          "sizing": ["HUG", "HUG"],
+          "size": [43, 18],
+          "type": "text",
+          "characters": "2 levels",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Header",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 90],
+          "type": "instance",
+          "component": "Header",
+          "variant": {
+            "Levels": "2"
+          },
+          "properties": {
+            "Show navigation#68:5": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Brand · nav items",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 74],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Brand · nav items",
+          "sizing": ["HUG", "HUG"],
+          "size": [99, 18],
+          "type": "text",
+          "characters": "Brand · nav items",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Parts",
+          "sizing": ["HUG", "HUG"],
+          "size": [441, 48],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Header/Brand",
+              "sizing": ["HUG", "HUG"],
+              "size": [129, 24],
+              "type": "instance",
+              "component": "Header/Brand",
+              "properties": {
+                "Name#68:0": "Data Catalog"
+              }
+            },
+            {
+              "name": "Header/Nav item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 48],
+              "type": "instance",
+              "component": "Header/Nav item",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Label#68:1": "Assets"
+              }
+            },
+            {
+              "name": "Header/Nav item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 48],
+              "type": "instance",
+              "component": "Header/Nav item",
+              "variant": {
+                "State": "Hover"
+              },
+              "properties": {
+                "Label#68:1": "Assets"
+              }
+            },
+            {
+              "name": "Header/Nav item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 48],
+              "type": "instance",
+              "component": "Header/Nav item",
+              "variant": {
+                "State": "Selected"
+              },
+              "properties": {
+                "Label#68:1": "Assets"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Every application page, once, at the top: one header landmark.",
+    "Up to about six top-level areas; a second level for their sections."
+  ],
+  "dont": [
+    "Put page actions in it: they go beside the page title.",
+    "Leave icon actions without a title, or the navigation without aria-label \"Main\"."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1477],
+    "size": [1504, 698],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [71, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Header",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [518, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Header (Levels · Show navigation) · Header/Nav item (State · Label) · Header/Brand (Name)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Header",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Header/Nav item",
+        "at": [80, 434]
+      },
+      {
+        "type": "set",
+        "name": "Header/Brand",
+        "at": [80, 594]
+      }
+    ]
+  }
+}

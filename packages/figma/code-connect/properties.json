@@ -1,0 +1,996 @@
+{
+  "Action bar": {
+    "Show secondary": {
+      "type": "BOOLEAN"
+    }
+  },
+  "Avatar": {
+    "Initials": {
+      "type": "TEXT"
+    },
+    "Show status": {
+      "type": "BOOLEAN"
+    },
+    "Show badge": {
+      "type": "BOOLEAN"
+    },
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["xs", "sm", "md", "lg", "xl"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["initials", "icon", "image"]
+    },
+    "Shape": {
+      "type": "VARIANT",
+      "values": ["circular", "square"]
+    }
+  },
+  "Avatar group": {
+    "Size": {
+      "type": "VARIANT",
+      "values": ["sm", "md", "lg"]
+    },
+    "Spacing": {
+      "type": "VARIANT",
+      "values": ["compact", "loose"]
+    }
+  },
+  "Badge": {
+    "Count": {
+      "type": "TEXT"
+    },
+    "Color": {
+      "type": "VARIANT",
+      "values": ["default", "primary", "positive", "warning", "negative"]
+    },
+    "Type": {
+      "type": "VARIANT",
+      "values": ["count", "dot"]
+    }
+  },
+  "Banner": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Show title": {
+      "type": "BOOLEAN"
+    },
+    "Message": {
+      "type": "TEXT"
+    },
+    "Show icon": {
+      "type": "BOOLEAN"
+    },
+    "Show action": {
+      "type": "BOOLEAN"
+    },
+    "Show close": {
+      "type": "BOOLEAN"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": ["default", "info", "success", "warning", "error", "accent"]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["regular", "micro", "large"]
+    }
+  },
+  "Breadcrumb": {
+    "Level 1": {
+      "type": "TEXT"
+    },
+    "Level 2": {
+      "type": "TEXT"
+    },
+    "Level 3": {
+      "type": "TEXT"
+    },
+    "Current": {
+      "type": "TEXT"
+    },
+    "Levels": {
+      "type": "VARIANT",
+      "values": ["2", "3", "4"]
+    }
+  },
+  "Bulk actions": {
+    "Selection": {
+      "type": "VARIANT",
+      "values": ["none", "some", "all"]
+    }
+  },
+  "Button": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Start icon": {
+      "type": "BOOLEAN"
+    },
+    "Start icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "End icon": {
+      "type": "BOOLEAN"
+    },
+    "End icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": [
+        "primary",
+        "primarySubtle",
+        "primaryGhost",
+        "secondarySubtle",
+        "secondaryGhost",
+        "semantic"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Pressed", "Disabled"]
+    }
+  },
+  "Button/Large": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Start icon": {
+      "type": "BOOLEAN"
+    },
+    "Start icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "End icon": {
+      "type": "BOOLEAN"
+    },
+    "End icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": [
+        "primary",
+        "primarySubtle",
+        "primaryGhost",
+        "secondarySubtle",
+        "secondaryGhost",
+        "semantic"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Pressed", "Disabled"]
+    }
+  },
+  "Button/Small": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Start icon": {
+      "type": "BOOLEAN"
+    },
+    "Start icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "End icon": {
+      "type": "BOOLEAN"
+    },
+    "End icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": [
+        "primary",
+        "primarySubtle",
+        "primaryGhost",
+        "secondarySubtle",
+        "secondaryGhost",
+        "semantic"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Pressed", "Disabled"]
+    }
+  },
+  "Button/Status": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Start icon": {
+      "type": "BOOLEAN"
+    },
+    "Start icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "End icon": {
+      "type": "BOOLEAN"
+    },
+    "End icon instance": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Color": {
+      "type": "VARIANT",
+      "values": ["positive", "warning", "negative"]
+    },
+    "Style": {
+      "type": "VARIANT",
+      "values": ["contained", "subtle", "ghost"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Disabled"]
+    }
+  },
+  "Calendar day": {
+    "Day": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": [
+        "Default",
+        "Hover",
+        "Selected",
+        "InRange",
+        "Outside",
+        "Disabled",
+        "Today"
+      ]
+    }
+  },
+  "Card": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Subheader": {
+      "type": "TEXT"
+    },
+    "Show subheader": {
+      "type": "BOOLEAN"
+    },
+    "Body": {
+      "type": "TEXT"
+    },
+    "Show media": {
+      "type": "BOOLEAN"
+    },
+    "Show icon": {
+      "type": "BOOLEAN"
+    },
+    "Show actions": {
+      "type": "BOOLEAN"
+    },
+    "Status": {
+      "type": "VARIANT",
+      "values": ["none", "positive", "warning", "negative", "info"]
+    },
+    "Selected": {
+      "type": "VARIANT",
+      "values": ["false", "true"]
+    }
+  },
+  "Checkbox": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Error": {
+      "type": "TEXT"
+    },
+    "Value": {
+      "type": "VARIANT",
+      "values": ["unchecked", "checked", "indeterminate"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Disabled", "Invalid"]
+    }
+  },
+  "Checkbox group": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show select all": {
+      "type": "BOOLEAN"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "values": ["vertical", "horizontal"]
+    },
+    "Status": {
+      "type": "VARIANT",
+      "values": ["default", "invalid"]
+    }
+  },
+  "Date picker": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Value": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Open", "Invalid", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Placeholder", "Value"]
+    }
+  },
+  "Date picker panel": {
+    "Show actions": {
+      "type": "BOOLEAN"
+    },
+    "Mode": {
+      "type": "VARIANT",
+      "values": ["single", "range"]
+    }
+  },
+  "Dialog": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Body": {
+      "type": "TEXT"
+    },
+    "Show close": {
+      "type": "BOOLEAN"
+    },
+    "Show secondary": {
+      "type": "BOOLEAN"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": ["default", "success", "warning", "error"]
+    }
+  },
+  "Drawer": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Content": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Show actions": {
+      "type": "BOOLEAN"
+    }
+  },
+  "Dropdown": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Value": {
+      "type": "TEXT"
+    },
+    "Helper": {
+      "type": "TEXT"
+    },
+    "Show helper": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Open", "Invalid", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Placeholder", "Value"]
+    }
+  },
+  "Dropdown menu": {
+    "Open": {
+      "type": "VARIANT",
+      "values": ["false", "true"]
+    }
+  },
+  "Dropdown panel": {
+    "Selection": {
+      "type": "VARIANT",
+      "values": ["single", "multi"]
+    }
+  },
+  "Empty state": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Message": {
+      "type": "TEXT"
+    },
+    "Show action": {
+      "type": "BOOLEAN"
+    },
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Layout": {
+      "type": "VARIANT",
+      "values": ["default", "stacked"]
+    }
+  },
+  "File": {
+    "Name": {
+      "type": "TEXT"
+    },
+    "Size": {
+      "type": "TEXT"
+    },
+    "Status": {
+      "type": "VARIANT",
+      "values": ["uploading", "success", "error"]
+    }
+  },
+  "File uploader": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Description": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Dragging", "Disabled"]
+    }
+  },
+  "Filter group": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Applied", "Open"]
+    }
+  },
+  "Footer": {
+    "Name": {
+      "type": "TEXT"
+    },
+    "Copyright": {
+      "type": "TEXT"
+    },
+    "Show links": {
+      "type": "BOOLEAN"
+    },
+    "Layout": {
+      "type": "VARIANT",
+      "values": ["default", "stacked"]
+    }
+  },
+  "Header": {
+    "Show navigation": {
+      "type": "BOOLEAN"
+    },
+    "Levels": {
+      "type": "VARIANT",
+      "values": ["1", "2"]
+    }
+  },
+  "Header/Brand": {
+    "Name": {
+      "type": "TEXT"
+    }
+  },
+  "Header/Nav item": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected"]
+    }
+  },
+  "Icon button": {
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["sm", "md", "lg"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Pressed", "Disabled"]
+    }
+  },
+  "Input": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Text": {
+      "type": "TEXT"
+    },
+    "Helper": {
+      "type": "TEXT"
+    },
+    "Show helper": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Focus", "Invalid", "ReadOnly", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Placeholder", "Value"]
+    }
+  },
+  "List item": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected", "Disabled"]
+    },
+    "Start": {
+      "type": "VARIANT",
+      "values": ["none", "icon", "checkbox"]
+    }
+  },
+  "Loading": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["regular", "small"]
+    }
+  },
+  "Multi button": {
+    "Orientation": {
+      "type": "VARIANT",
+      "values": ["horizontal", "vertical"]
+    }
+  },
+  "Multi button/Segment": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show icon": {
+      "type": "BOOLEAN"
+    },
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected", "Disabled"]
+    }
+  },
+  "Pagination": {
+    "Show page size": {
+      "type": "BOOLEAN"
+    },
+    "Page": {
+      "type": "TEXT"
+    },
+    "Total": {
+      "type": "TEXT"
+    },
+    "Position": {
+      "type": "VARIANT",
+      "values": ["first", "middle", "last"]
+    }
+  },
+  "Progress bar": {
+    "Value": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Status": {
+      "type": "VARIANT",
+      "values": ["inProgress", "completed", "error"]
+    }
+  },
+  "Radio": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Value": {
+      "type": "VARIANT",
+      "values": ["unchecked", "checked"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Disabled"]
+    }
+  },
+  "Radio group": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "values": ["vertical", "horizontal"]
+    },
+    "Status": {
+      "type": "VARIANT",
+      "values": ["default", "invalid"]
+    }
+  },
+  "Search input": {
+    "Text": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Focus", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Empty", "Value"]
+    }
+  },
+  "Section": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Show action": {
+      "type": "BOOLEAN"
+    },
+    "Content": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Expandable": {
+      "type": "VARIANT",
+      "values": ["no", "open", "closed"]
+    }
+  },
+  "Select": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Value": {
+      "type": "TEXT"
+    },
+    "Helper": {
+      "type": "TEXT"
+    },
+    "Show helper": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Open", "Invalid", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Placeholder", "Value"]
+    }
+  },
+  "Skeleton": {
+    "Variant": {
+      "type": "VARIANT",
+      "values": ["text", "circle", "square"]
+    }
+  },
+  "Slider": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show input": {
+      "type": "BOOLEAN"
+    },
+    "Mode": {
+      "type": "VARIANT",
+      "values": ["single", "range"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Disabled"]
+    }
+  },
+  "Snackbar": {
+    "Message": {
+      "type": "TEXT"
+    },
+    "Show icon": {
+      "type": "BOOLEAN"
+    },
+    "Show action": {
+      "type": "BOOLEAN"
+    },
+    "Show close": {
+      "type": "BOOLEAN"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": ["default", "info", "success", "warning", "error", "accent"]
+    }
+  },
+  "Status icon": {
+    "Variant": {
+      "type": "VARIANT",
+      "values": ["default", "success", "warning", "error", "info", "accent"]
+    },
+    "Type": {
+      "type": "VARIANT",
+      "values": ["full", "simple"]
+    }
+  },
+  "Switch": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show label": {
+      "type": "BOOLEAN"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["small", "medium"]
+    },
+    "Value": {
+      "type": "VARIANT",
+      "values": ["off", "on"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Disabled"]
+    }
+  },
+  "Tab": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Style": {
+      "type": "VARIANT",
+      "values": ["default", "floating"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected", "Disabled"]
+    }
+  },
+  "Table section": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Show bulk actions": {
+      "type": "BOOLEAN"
+    },
+    "Show pagination": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["default", "loading", "empty"]
+    }
+  },
+  "Table/Cell": {
+    "Text": {
+      "type": "TEXT"
+    },
+    "Secondary": {
+      "type": "TEXT"
+    },
+    "Type": {
+      "type": "VARIANT",
+      "values": [
+        "text",
+        "number",
+        "status",
+        "checkbox",
+        "actions",
+        "link",
+        "twoLine",
+        "statusText",
+        "progress",
+        "delete"
+      ]
+    }
+  },
+  "Table/Header cell": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Sort": {
+      "type": "VARIANT",
+      "values": ["none", "ascending", "descending"]
+    },
+    "Align": {
+      "type": "VARIANT",
+      "values": ["left", "right"]
+    }
+  },
+  "Table/Row": {
+    "State": {
+      "type": "VARIANT",
+      "values": ["default", "hover", "selected"]
+    },
+    "Style": {
+      "type": "VARIANT",
+      "values": ["default", "listrow"]
+    }
+  },
+  "Tabs": {
+    "Style": {
+      "type": "VARIANT",
+      "values": ["default", "floating"]
+    }
+  },
+  "Tag": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Color": {
+      "type": "VARIANT",
+      "values": ["default", "positive", "warning", "negative", "info"]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "values": ["sm", "md", "xs"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Disabled"]
+    }
+  },
+  "Tags input": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Show counter": {
+      "type": "BOOLEAN"
+    },
+    "Helper": {
+      "type": "TEXT"
+    },
+    "Show helper": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Focus", "Invalid", "ReadOnly", "Disabled"]
+    }
+  },
+  "Text area": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Text": {
+      "type": "TEXT"
+    },
+    "Counter": {
+      "type": "TEXT"
+    },
+    "Show counter": {
+      "type": "BOOLEAN"
+    },
+    "Helper": {
+      "type": "TEXT"
+    },
+    "Show helper": {
+      "type": "BOOLEAN"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Focus", "Invalid", "Disabled"]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "values": ["Placeholder", "Value"]
+    }
+  },
+  "Time picker": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Value": {
+      "type": "TEXT"
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Open", "Invalid", "Disabled"]
+    }
+  },
+  "Time picker panel": {
+    "Format": {
+      "type": "VARIANT",
+      "values": ["12", "24"]
+    }
+  },
+  "Tooltip": {
+    "Text": {
+      "type": "TEXT"
+    }
+  },
+  "Tree item": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Type": {
+      "type": "VARIANT",
+      "values": ["open", "closed", "leaf"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected", "Disabled"]
+    }
+  },
+  "Typography": {
+    "Text": {
+      "type": "TEXT"
+    },
+    "Variant": {
+      "type": "VARIANT",
+      "values": [
+        "display",
+        "title1",
+        "title2",
+        "title3",
+        "title4",
+        "label",
+        "body",
+        "captionLabel",
+        "caption1",
+        "caption2"
+      ]
+    },
+    "Kind": {
+      "type": "VARIANT",
+      "values": ["default", "link", "disabled"]
+    }
+  },
+  "Vertical navigation": {
+    "Title": {
+      "type": "TEXT"
+    },
+    "Show header": {
+      "type": "BOOLEAN"
+    },
+    "Open": {
+      "type": "VARIANT",
+      "values": ["true", "false"]
+    }
+  },
+  "Vertical navigation/Item": {
+    "Label": {
+      "type": "TEXT"
+    },
+    "Icon": {
+      "type": "INSTANCE_SWAP"
+    },
+    "Type": {
+      "type": "VARIANT",
+      "values": ["item", "parent", "child", "icon"]
+    },
+    "State": {
+      "type": "VARIANT",
+      "values": ["Default", "Hover", "Selected"]
+    }
+  }
+}

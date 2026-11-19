@@ -1,0 +1,376 @@
+{
+  "name": "Grid",
+  "category": "Layout",
+  "description": "A responsive column grid (12 columns, or 4 / 8 / 12 with columns=\"auto\") for laying out cards and regions.",
+  "overview": "Cards spanning 4 of 12 columns, then 6, in light and dark. Apply the Grid styles to frames to design at each breakpoint.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "3 cards · 4 columns each",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 164],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "3 cards · 4 columns each",
+          "sizing": ["HUG", "HUG"],
+          "size": [143, 18],
+          "type": "text",
+          "characters": "3 cards · 4 columns each",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 138],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [2, 1, 2, 1],
+          "clips": true,
+          "children": [
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [161, 134],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources. Owned by Sales Ops.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [161, 134],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources. Owned by Sales Ops.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [161, 134],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources. Owned by Sales Ops.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2 cards · 6 columns each",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 143],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "2 cards · 6 columns each",
+          "sizing": ["HUG", "HUG"],
+          "size": [142, 18],
+          "type": "text",
+          "characters": "2 cards · 6 columns each",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 117],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [2, 1, 2, 1],
+          "clips": true,
+          "children": [
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [249, 113],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources. Owned by Sales Ops.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [249, 113],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources. Owned by Sales Ops.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Laying out cards, KPIs and regions that reflow across screen sizes.",
+    "columns=\"auto\" for the design system's 4 / 8 / 12 columns."
+  ],
+  "dont": [
+    "Nest grids deeply, or use it to align form fields: use a stack.",
+    "Hard-code pixel widths: size items in columns per breakpoint."
+  ],
+  "components": {
+    "name": "Breakpoints",
+    "at": [0, 1123],
+    "size": [4192, 464],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [105, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Grid styles",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [660, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Layout grid styles per breakpoint (xs 0, sm 600, md 960, lg 1270, xl 1920): apply them to frames from the grid picker",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "name": "xs · 0px+ · 4 columns",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [360, 240],
+        "at": [80, 136],
+        "type": "frame",
+        "fills": [
+          {
+            "variable": "Surfaces/bgPage"
+          }
+        ],
+        "strokes": [
+          {
+            "variable": "Borders/borderSubtle"
+          }
+        ],
+        "strokeWeight": 1,
+        "clips": true,
+        "children": []
+      },
+      {
+        "name": "Label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [165, 18],
+        "at": [80, 384],
+        "type": "text",
+        "characters": "xs · 0px+ · 4 col · 16px gutter",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "name": "sm · 600px+ · 8 columns",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [600, 240],
+        "at": [488, 136],
+        "type": "frame",
+        "fills": [
+          {
+            "variable": "Surfaces/bgPage"
+          }
+        ],
+        "strokes": [
+          {
+            "variable": "Borders/borderSubtle"
+          }
+        ],
+        "strokeWeight": 1,
+        "clips": true,
+        "children": []
+      },
+      {
+        "name": "Label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [183, 18],
+        "at": [488, 384],
+        "type": "text",
+        "characters": "sm · 600px+ · 8 col · 16px gutter",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "name": "md · 960px+ · 12 columns",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [960, 240],
+        "at": [1136, 136],
+        "type": "frame",
+        "fills": [
+          {
+            "variable": "Surfaces/bgPage"
+          }
+        ],
+        "strokes": [
+          {
+            "variable": "Borders/borderSubtle"
+          }
+        ],
+        "strokeWeight": 1,
+        "clips": true,
+        "children": []
+      },
+      {
+        "name": "Label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [192, 18],
+        "at": [1136, 384],
+        "type": "text",
+        "characters": "md · 960px+ · 12 col · 32px gutter",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "name": "lg · 1270px+ · 12 columns",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [960, 240],
+        "at": [2144, 136],
+        "type": "frame",
+        "fills": [
+          {
+            "variable": "Surfaces/bgPage"
+          }
+        ],
+        "strokes": [
+          {
+            "variable": "Borders/borderSubtle"
+          }
+        ],
+        "strokeWeight": 1,
+        "clips": true,
+        "children": []
+      },
+      {
+        "name": "Label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [278, 18],
+        "at": [2144, 384],
+        "type": "text",
+        "characters": "lg · 1270px+ · 12 col · 32px gutter (shown at 960)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "name": "xl · 1920px+ · 12 columns",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [960, 240],
+        "at": [3152, 136],
+        "type": "frame",
+        "fills": [
+          {
+            "variable": "Surfaces/bgPage"
+          }
+        ],
+        "strokes": [
+          {
+            "variable": "Borders/borderSubtle"
+          }
+        ],
+        "strokeWeight": 1,
+        "clips": true,
+        "children": []
+      },
+      {
+        "name": "Label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [278, 18],
+        "at": [3152, 384],
+        "type": "text",
+        "characters": "xl · 1920px+ · 12 col · 32px gutter (shown at 960)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      }
+    ]
+  }
+}

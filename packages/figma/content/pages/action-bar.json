@@ -1,0 +1,172 @@
+{
+  "name": "Action bar",
+  "category": "Actions",
+  "description": "A footer strip that holds the actions for a card, panel or task, aligned to the end.",
+  "overview": "On its own and at the end of a panel, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Action bar",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 91],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Action bar",
+          "sizing": ["HUG", "HUG"],
+          "size": [59, 18],
+          "type": "text",
+          "characters": "Action bar",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Action bar",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 65],
+          "type": "instance",
+          "component": "Action bar",
+          "properties": {
+            "Show secondary#75:10": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "At the end of a panel",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 171],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "At the end of a panel",
+          "sizing": ["HUG", "HUG"],
+          "size": [119, 18],
+          "type": "text",
+          "characters": "At the end of a panel",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Panel",
+          "sizing": ["FIXED", "HUG"],
+          "size": [400, 145],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "radius": 16,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Content",
+              "sizing": ["FILL", "HUG"],
+              "size": [398, 78],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 4,
+              "padding": [16, 16, 16, 16],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Title",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [119, 21],
+                  "type": "text",
+                  "characters": "Refresh schedule",
+                  "style": "Typography/label",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "Body",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [320, 21],
+                  "type": "text",
+                  "characters": "Every day at 06:00, in the workspace time zone.",
+                  "style": "Typography/body",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Action bar",
+              "sizing": ["FILL", "HUG"],
+              "size": [398, 65],
+              "type": "instance",
+              "component": "Action bar",
+              "properties": {
+                "Show secondary#75:10": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "The actions that end a card, panel, drawer or task: Cancel then the primary."
+  ],
+  "dont": [
+    "Put more than one primary action in it.",
+    "Use it for page-level actions: they go beside the page title."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1057],
+    "size": [1280, 281],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [101, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Action bar",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [280, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Show secondary · buttons are exposed instances",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Action bar",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

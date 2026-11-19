@@ -1,0 +1,393 @@
+{
+  "name": "Select",
+  "category": "Inputs",
+  "description": "A form control for choosing one option (or several) from a list, aligned with the native select API.",
+  "overview": "Field states, then open with grouped options, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["HUG", "HUG"],
+          "size": [41, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Default",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Select a domain"
+              }
+            },
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Default",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Finance"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hover",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Hover",
+          "sizing": ["HUG", "HUG"],
+          "size": [34, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Hover",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Select a domain"
+              }
+            },
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Hover",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Finance"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invalid",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 105],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Invalid",
+          "sizing": ["HUG", "HUG"],
+          "size": [37, 18],
+          "type": "text",
+          "characters": "Invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 79],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 79],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#64:33": "Choose a domain",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": true,
+                "Show label#64:11": true,
+                "Value#64:22": "Select a domain"
+              }
+            },
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 79],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#64:33": "Choose a domain",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": true,
+                "Show label#64:11": true,
+                "Value#64:22": "Finance"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Select a domain"
+              }
+            },
+            {
+              "name": "Select",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Finance"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 327],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [31, 18],
+          "type": "text",
+          "characters": "Open",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [240, 301],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 2,
+          "padding": [0, 0, 8, 0],
+          "clips": true,
+          "children": [
+            {
+              "name": "Select",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 57],
+              "type": "instance",
+              "component": "Select",
+              "variant": {
+                "State": "Open",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#64:33": "Where the asset is listed",
+                "Label#64:0": "Domain",
+                "Show helper#64:44": false,
+                "Show label#64:11": true,
+                "Value#64:22": "Finance"
+              }
+            },
+            {
+              "name": "Select panel",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 234],
+              "type": "instance",
+              "component": "Select panel"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Choosing one value in a form, from a list that fits on screen; groups for longer lists.",
+    "Forms that submit natively (name, value)."
+  ],
+  "dont": [
+    "Use it when people need search or Apply / Cancel: use Dropdown.",
+    "Use it for two or three options: use radios."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1545],
+    "size": [1280, 1058],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [62, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Select",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [342, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Select (State × Content · Label, Value, Helper) · Select panel",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Select",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Select panel",
+        "at": [80, 744]
+      }
+    ]
+  }
+}

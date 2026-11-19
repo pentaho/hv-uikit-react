@@ -1,0 +1,172 @@
+{
+  "name": "Filter group",
+  "category": "Inputs",
+  "description": "A button that opens a two-pane panel of filter categories and their values, applied together.",
+  "overview": "Trigger with no filters, with filters applied and open, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default · applied",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default · applied",
+          "sizing": ["HUG", "HUG"],
+          "size": [93, 18],
+          "type": "text",
+          "characters": "Default · applied",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["HUG", "HUG"],
+          "size": [416, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Filter group",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [200, 32],
+              "type": "instance",
+              "component": "Filter group",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Label#65:0": "Filters"
+              }
+            },
+            {
+              "name": "Filter group",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [200, 32],
+              "type": "instance",
+              "component": "Filter group",
+              "variant": {
+                "State": "Applied"
+              },
+              "properties": {
+                "Label#65:0": "Filters"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 341],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [31, 18],
+          "type": "text",
+          "characters": "Open",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [482, 315],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "padding": [0, 0, 8, 2],
+          "clips": true,
+          "children": [
+            {
+              "name": "Filter group",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [200, 32],
+              "type": "instance",
+              "component": "Filter group",
+              "variant": {
+                "State": "Open"
+              },
+              "properties": {
+                "Label#65:0": "Filters"
+              }
+            },
+            {
+              "name": "Filter group panel",
+              "sizing": ["FIXED", "HUG"],
+              "size": [480, 271],
+              "type": "instance",
+              "component": "Filter group panel"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Lists and tables filtered by several categories at once: status, owner, domain.",
+    "Beside the Search input, above the Table section."
+  ],
+  "dont": [
+    "Use it for one category: use a Dropdown with multiple selection.",
+    "Apply filters on each click: changes apply together on Apply."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1194],
+    "size": [1280, 631],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [112, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Filter group",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [258, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Filter group (State · Label) · Filter group panel",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Filter group",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Filter group panel",
+        "at": [80, 280]
+      }
+    ]
+  }
+}

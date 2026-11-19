@@ -1,0 +1,167 @@
+{
+  "name": "Breadcrumb",
+  "category": "Navigation",
+  "description": "The path from the top of a hierarchy to the current page, each level a link back up.",
+  "overview": "Two, three and four levels, in light and dark. Past five levels the middle collapses into a menu in code.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "2 levels",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 44],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "2 levels",
+          "sizing": ["HUG", "HUG"],
+          "size": [43, 18],
+          "type": "text",
+          "characters": "2 levels",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Breadcrumb",
+          "sizing": ["HUG", "HUG"],
+          "size": [165, 18],
+          "type": "instance",
+          "component": "Breadcrumb",
+          "variant": {
+            "Levels": "2"
+          },
+          "properties": {
+            "Current#53:12": "Customer orders",
+            "Level 1#53:0": "Home",
+            "Level 2#53:4": "Catalog",
+            "Level 3#53:8": "Sales"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 levels",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 44],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "3 levels",
+          "sizing": ["HUG", "HUG"],
+          "size": [44, 18],
+          "type": "text",
+          "characters": "3 levels",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Breadcrumb",
+          "sizing": ["HUG", "HUG"],
+          "size": [242, 18],
+          "type": "instance",
+          "component": "Breadcrumb",
+          "variant": {
+            "Levels": "3"
+          },
+          "properties": {
+            "Current#53:12": "Customer orders",
+            "Level 1#53:0": "Home",
+            "Level 2#53:4": "Catalog",
+            "Level 3#53:8": "Sales"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 levels",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 44],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "4 levels",
+          "sizing": ["HUG", "HUG"],
+          "size": [44, 18],
+          "type": "text",
+          "characters": "4 levels",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Breadcrumb",
+          "sizing": ["HUG", "HUG"],
+          "size": [305, 18],
+          "type": "instance",
+          "component": "Breadcrumb",
+          "variant": {
+            "Levels": "4"
+          },
+          "properties": {
+            "Current#53:12": "Customer orders",
+            "Level 1#53:0": "Home",
+            "Level 2#53:4": "Catalog",
+            "Level 3#53:8": "Sales"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Pages inside a hierarchy deeper than two levels: catalog › collection › asset.",
+    "Above the page title, as the first thing on the page."
+  ],
+  "dont": [
+    "Use it as the main navigation or for steps in a flow (use a stepper).",
+    "Make the current page a link."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 943],
+    "size": [1280, 400],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [120, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Breadcrumb",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [197, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Levels (2, 3, 4) · Level 1–3, Current",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Breadcrumb",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

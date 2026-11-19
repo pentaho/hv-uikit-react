@@ -1,0 +1,127 @@
+{
+  "name": "Footer",
+  "category": "Navigation",
+  "description": "A thin bar at the end of an application with the product name, copyright and a few links.",
+  "overview": "Default and stacked (small screens), in light and dark.",
+  "modes": "VERTICAL",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 64],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["HUG", "HUG"],
+          "size": [41, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Footer",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 38],
+          "type": "instance",
+          "component": "Footer",
+          "variant": {
+            "Layout": "default"
+          },
+          "properties": {
+            "Copyright#70:3": "© 2026 Data Catalog. All rights reserved.",
+            "Name#70:0": "Data Catalog",
+            "Show links#70:6": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stacked",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 122],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Stacked",
+          "sizing": ["HUG", "HUG"],
+          "size": [47, 18],
+          "type": "text",
+          "characters": "Stacked",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Footer",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 96],
+          "type": "instance",
+          "component": "Footer",
+          "variant": {
+            "Layout": "stacked"
+          },
+          "properties": {
+            "Copyright#70:3": "© 2026 Data Catalog. All rights reserved.",
+            "Name#70:0": "Data Catalog",
+            "Show links#70:6": true
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Once per page, at the end: product name, copyright, legal and help links."
+  ],
+  "dont": [
+    "Put navigation or actions people need often in it.",
+    "Add more than a few links."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1289],
+    "size": [1504, 456],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [63, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Footer",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [315, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Layout (default, stacked) · Name, Copyright, Show links",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Footer",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

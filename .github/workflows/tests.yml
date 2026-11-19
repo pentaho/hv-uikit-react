@@ -123,6 +123,56 @@ jobs:
       - name: Run Tests
         run: npm run test:storybook -- --no-file-parallelism ${{ github.head_ref && '--changed=origin/master' || '' }} --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
+  figma:
+    # the Figma library from code (packages/figma): the sync file and the Code Connect templates stay current; with a
+    # FIGMA_TOKEN secret (callers that pass secrets), the library is compared read-only, component properties are
+    # checked for drift, and on master the templates are published. Only those steps see the token.
+    name: Figma Library Sync
+    runs-on: ubuntu-latest
+    env:
+      HAS_FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN != '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build
+        # the theme's tokens and the components' metadata it reads, then the plugin (a private package, which lerna
+        # leaves out)
+        run: |
+          npx lerna run build --scope @pentaho/uikit-styles --scope @pentaho/uikit-react-core --include-dependencies
+          npm run build -w packages/figma
+
+      - name: Test
+        run: npm run test -w packages/figma -- --run
+
+      - name: Check the generated files are current
+        run: npm run generate -w packages/figma -- --check
+
+      - name: Parse the Code Connect templates
+        working-directory: packages/figma
+        run: npx --no-install figma connect parse > /dev/null
+
+      - name: Compare the library with the code (read-only)
+        if: env.HAS_FIGMA_TOKEN == 'true'
+        working-directory: packages/figma
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: |
+          npm run compare
+          npm run capture
+          git diff --exit-code code-connect/properties.json
+
+      - name: Publish the Code Connect templates
+        if: env.HAS_FIGMA_TOKEN == 'true' && github.ref == 'refs/heads/master'
+        working-directory: packages/figma
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: npx --no-install figma connect publish
+
   build:
     name: Build
     uses: ./.github/workflows/build.yml

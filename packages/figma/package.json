@@ -1,0 +1,26 @@
+{
+  "name": "@pentaho/uikit-figma",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "author": "UI Kit Team",
+  "description": "The Pentaho UI Figma library from code: the sync file (variables, text styles), the team's Figma plugin that applies it and draws the documentation pages, and the Code Connect templates.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "vite build",
+    "generate": "node scripts/generate.ts",
+    "capture": "node scripts/capture.ts",
+    "compare": "node scripts/compare.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@figma/code-connect": "2.1.0",
+    "@figma/plugin-typings": "1.142.0",
+    "@pentaho/uikit-react-core": "*",
+    "@pentaho/uikit-styles": "*",
+    "prettier": "^3.8.3",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.9",
+    "zod": "^3.25.76"
+  }
+}

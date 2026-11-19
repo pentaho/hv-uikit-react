@@ -1,0 +1,916 @@
+{
+  "name": "Badge",
+  "category": "Data display",
+  "description": "A small count or dot attached to an icon or label, saying something new needs attention.",
+  "overview": "On an icon, capped by maxCount, on text, and each colour as a count and a dot, in light and dark. The badge sits at the top-right corner of what it marks.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "On an icon: dot · count · capped",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 54],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "On an icon: dot · count · capped",
+          "sizing": ["HUG", "HUG"],
+          "size": [182, 18],
+          "type": "text",
+          "characters": "On an icon: dot · count · capped",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Icons",
+          "sizing": ["HUG", "HUG"],
+          "size": [163, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 40,
+          "cross": "MAX",
+          "children": [
+            {
+              "name": "Anchored",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [19, 24],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Icon/Bell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [16, 16],
+                  "at": [0, 8],
+                  "type": "instance",
+                  "component": "Icon/Bell",
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [8, 8],
+                  "at": [11, 6],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "dot"
+                  },
+                  "properties": {
+                    "Count#73:0": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Anchored",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [26, 24],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Icon/Bell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [16, 16],
+                  "at": [0, 8],
+                  "type": "instance",
+                  "component": "Icon/Bell",
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [16, 16],
+                  "at": [10, 0],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "count"
+                  },
+                  "properties": {
+                    "Count#73:0": "8"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Anchored",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [38, 24],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Icon/Bell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [16, 16],
+                  "at": [0, 8],
+                  "type": "instance",
+                  "component": "Icon/Bell",
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [28, 16],
+                  "at": [10, 0],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "count"
+                  },
+                  "properties": {
+                    "Count#73:0": "99+"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maximum value (maxCount): 9+ · 99+ · 999+",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 46],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Maximum value (maxCount): 9+ · 99+ · 999+",
+          "sizing": ["HUG", "HUG"],
+          "size": [255, 18],
+          "type": "text",
+          "characters": "Maximum value (maxCount): 9+ · 99+ · 999+",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Max",
+          "sizing": ["HUG", "HUG"],
+          "size": [131, 16],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "cross": "CENTER",
+          "children": [
+            {
+              "name": "Badge",
+              "sizing": ["HUG", "FIXED"],
+              "size": [21, 16],
+              "type": "instance",
+              "component": "Badge",
+              "variant": {
+                "Color": "default",
+                "Type": "count"
+              },
+              "properties": {
+                "Count#73:0": "9+"
+              }
+            },
+            {
+              "name": "Badge",
+              "sizing": ["HUG", "FIXED"],
+              "size": [28, 16],
+              "type": "instance",
+              "component": "Badge",
+              "variant": {
+                "Color": "default",
+                "Type": "count"
+              },
+              "properties": {
+                "Count#73:0": "99+"
+              }
+            },
+            {
+              "name": "Badge",
+              "sizing": ["HUG", "FIXED"],
+              "size": [34, 16],
+              "type": "instance",
+              "component": "Badge",
+              "variant": {
+                "Color": "default",
+                "Type": "count"
+              },
+              "properties": {
+                "Count#73:0": "999+"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "On text",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 62],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "On text",
+          "sizing": ["HUG", "HUG"],
+          "size": [42, 18],
+          "type": "text",
+          "characters": "On text",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Text",
+          "sizing": ["HUG", "HUG"],
+          "size": [271, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 40,
+          "cross": "MAX",
+          "children": [
+            {
+              "name": "Anchored text",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [54, 29],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Events",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [45, 21],
+                  "at": [0, 8],
+                  "type": "text",
+                  "characters": "Events",
+                  "style": "Typography/body",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [8, 8],
+                  "at": [46, 6],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "dot"
+                  },
+                  "properties": {
+                    "Count#73:0": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Anchored text",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [64, 29],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Events",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [47, 21],
+                  "at": [0, 8],
+                  "type": "text",
+                  "characters": "Events",
+                  "style": "Typography/label",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [16, 16],
+                  "at": [48, 0],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "count"
+                  },
+                  "properties": {
+                    "Count#73:0": "8"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Anchored text",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [73, 32],
+              "type": "frame",
+              "children": [
+                {
+                  "name": "Events",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [53, 24],
+                  "at": [0, 8],
+                  "type": "text",
+                  "characters": "Events",
+                  "style": "Typography/title4",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "Badge",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [19, 16],
+                  "at": [54, 0],
+                  "type": "instance",
+                  "component": "Badge",
+                  "variant": {
+                    "Color": "default",
+                    "Type": "count"
+                  },
+                  "properties": {
+                    "Count#73:0": "12"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Colours: default · primary · positive · warning · negative",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 54],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Colours: default · primary · positive · warning · negative",
+          "sizing": ["HUG", "HUG"],
+          "size": [313, 18],
+          "type": "text",
+          "characters": "Colours: default · primary · positive · warning · negative",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Colours",
+          "sizing": ["HUG", "HUG"],
+          "size": [465, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 40,
+          "cross": "MAX",
+          "children": [
+            {
+              "name": "default",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "MAX",
+              "children": [
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [26, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [16, 16],
+                      "at": [10, 0],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "default",
+                        "Type": "count"
+                      },
+                      "properties": {
+                        "Count#73:0": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [19, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [8, 8],
+                      "at": [11, 6],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "default",
+                        "Type": "dot"
+                      },
+                      "properties": {
+                        "Count#73:0": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "primary",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "MAX",
+              "children": [
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [26, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [16, 16],
+                      "at": [10, 0],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "primary",
+                        "Type": "count"
+                      },
+                      "properties": {
+                        "Count#73:0": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [19, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [8, 8],
+                      "at": [11, 6],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "primary",
+                        "Type": "dot"
+                      },
+                      "properties": {
+                        "Count#73:0": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "positive",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "MAX",
+              "children": [
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [26, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [16, 16],
+                      "at": [10, 0],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "positive",
+                        "Type": "count"
+                      },
+                      "properties": {
+                        "Count#73:0": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [19, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [8, 8],
+                      "at": [11, 6],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "positive",
+                        "Type": "dot"
+                      },
+                      "properties": {
+                        "Count#73:0": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "warning",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "MAX",
+              "children": [
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [26, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [16, 16],
+                      "at": [10, 0],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "warning",
+                        "Type": "count"
+                      },
+                      "properties": {
+                        "Count#73:0": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [19, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [8, 8],
+                      "at": [11, 6],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "warning",
+                        "Type": "dot"
+                      },
+                      "properties": {
+                        "Count#73:0": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "negative",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "MAX",
+              "children": [
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [26, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [16, 16],
+                      "at": [10, 0],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "negative",
+                        "Type": "count"
+                      },
+                      "properties": {
+                        "Count#73:0": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Anchored",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [19, 24],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon/Bell",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [16, 16],
+                      "at": [0, 8],
+                      "type": "instance",
+                      "component": "Icon/Bell",
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "fills": [
+                            {
+                              "variable": "Text/text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Badge",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [8, 8],
+                      "at": [11, 6],
+                      "type": "instance",
+                      "component": "Badge",
+                      "variant": {
+                        "Color": "negative",
+                        "Type": "dot"
+                      },
+                      "properties": {
+                        "Count#73:0": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Unread or new items on a header action: notifications, messages.",
+    "A count beside a tab or filter label."
+  ],
+  "dont": [
+    "Use it for a status: use Tag or Status icon.",
+    "Show exact large numbers: cap them (99+)."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1112],
+    "size": [1280, 336],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [62, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Badge",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [118, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Color × Type · Count",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Badge",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

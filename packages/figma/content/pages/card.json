@@ -1,0 +1,304 @@
+{
+  "name": "Card",
+  "category": "Layout",
+  "description": "A container for one item or one summary that leads to more detail: a KPI, an asset, a chart.",
+  "overview": "Plain and selected, media and actions, a status bar and a status icon, in light and dark. Media, the status icon and the action bar are toggles on every card.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "Plain · selected",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 130],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Plain · selected",
+          "sizing": ["HUG", "HUG"],
+          "size": [86, 18],
+          "type": "text",
+          "characters": "Plain · selected",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 100],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 92],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "1,284 rows from 3 sources.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": true,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Customer orders"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 78],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "true"
+              },
+              "properties": {
+                "Body#51:33": "48,906 rows, refreshed hourly.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": false,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Web sessions"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Media · actions",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 252],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Media · actions",
+          "sizing": ["HUG", "HUG"],
+          "size": [87, 18],
+          "type": "text",
+          "characters": "Media · actions",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 222],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 214],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "412 hosts, 98.7% healthy.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": true,
+                "Show subheader#51:22": false,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Data center EU-West"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 139],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "none",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "Sales and churn for week 44.",
+                "Show actions#87:22": true,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": false,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Weekly report"
+              },
+              "overrides": [
+                {
+                  "path": [2, 0],
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Later",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false,
+                    "State": "Default",
+                    "Variant": "secondaryGhost"
+                  }
+                },
+                {
+                  "path": [2, 1],
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Open",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false,
+                    "State": "Default",
+                    "Variant": "primary"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Status bar · status icon",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 114],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Status bar · status icon",
+          "sizing": ["HUG", "HUG"],
+          "size": [131, 18],
+          "type": "text",
+          "characters": "Status bar · status icon",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 84],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 76],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "negative",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "The source did not respond.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": false,
+                "Show media#87:0": false,
+                "Show subheader#51:22": false,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Sync failed"
+              }
+            },
+            {
+              "name": "Card",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 76],
+              "type": "instance",
+              "component": "Card",
+              "variant": {
+                "Status": "positive",
+                "Selected": "false"
+              },
+              "properties": {
+                "Body#51:33": "All 12 jobs succeeded.",
+                "Show actions#87:22": false,
+                "Show icon#87:11": true,
+                "Show media#87:0": false,
+                "Show subheader#51:22": false,
+                "Subheader#51:11": "Updated 2 hours ago",
+                "Title#51:0": "Pipeline healthy"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "One item or summary that leads to more detail: a KPI, an asset, a chart.",
+    "A few items with a lot of content each, in a grid."
+  ],
+  "dont": [
+    "Put an onClick on the card: add a link or button inside, named after the item.",
+    "Lay out records people compare as cards: use a Table.",
+    "Rely on the status bar alone: say the status in words."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1393],
+    "size": [1752, 557],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [47, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Card",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [342, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Status × Selected · Title, Subheader, Show subheader, Body",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Card",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

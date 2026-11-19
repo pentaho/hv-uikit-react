@@ -1,0 +1,612 @@
+{
+  "name": "Checkbox",
+  "category": "Inputs",
+  "description": "Turns one option on or off; several checkboxes choose several options. Indeterminate shows that some of a group is selected.",
+  "overview": "Every value in every state, in light and dark. The 32px area around the box is what people click. Invalid shows the error message below in negative. Then Checkbox group: vertical with select all, horizontal and invalid.",
+  "panelGap": 12,
+  "light": [
+    {
+      "name": "States",
+      "sizing": ["HUG", "HUG"],
+      "size": [516, 18],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "Text",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Default",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Hover",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Disabled",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Invalid",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "Invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "unchecked",
+      "sizing": ["HUG", "HUG"],
+      "size": [516, 50],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "unchecked",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "unchecked",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [99, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "unchecked",
+                "State": "Default"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Archived",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [99, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "unchecked",
+                "State": "Hover"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Archived",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [99, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "unchecked",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Archived",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 50],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [99, 50],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "unchecked",
+                "State": "Invalid"
+              },
+              "properties": {
+                "Error#41:10": "Required",
+                "Label#27:0": "Archived",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "checked",
+      "sizing": ["HUG", "HUG"],
+      "size": [516, 50],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "checked",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "checked",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [98, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "checked",
+                "State": "Default"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Certified",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [98, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "checked",
+                "State": "Hover"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Certified",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [98, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "checked",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Certified",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 50],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [98, 50],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "checked",
+                "State": "Invalid"
+              },
+              "properties": {
+                "Error#41:10": "Required",
+                "Label#27:0": "Certified",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "indeterminate",
+      "sizing": ["HUG", "HUG"],
+      "size": [516, 50],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "indeterminate",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "indeterminate",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "indeterminate",
+                "State": "Default"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Owners",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "indeterminate",
+                "State": "Hover"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Owners",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 32],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "indeterminate",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Error#41:10": "Select at least one option",
+                "Label#27:0": "Owners",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 50],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 50],
+              "type": "instance",
+              "component": "Checkbox",
+              "variant": {
+                "Value": "indeterminate",
+                "State": "Invalid"
+              },
+              "properties": {
+                "Error#41:10": "Required",
+                "Label#27:0": "Owners",
+                "Show label#27:10": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Checkbox group: vertical with select all · horizontal",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 183],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Row label",
+          "sizing": ["HUG", "HUG"],
+          "size": [290, 18],
+          "type": "text",
+          "characters": "Checkbox group: vertical with select all · horizontal",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Groups",
+          "sizing": ["HUG", "HUG"],
+          "size": [444, 157],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 48,
+          "clips": true,
+          "children": [
+            {
+              "name": "Checkbox group",
+              "sizing": ["HUG", "HUG"],
+              "size": [105, 157],
+              "type": "instance",
+              "component": "Checkbox group",
+              "variant": {
+                "Orientation": "vertical",
+                "Status": "default"
+              },
+              "properties": {
+                "Label#89:19": "Status",
+                "Show select all#89:24": true
+              }
+            },
+            {
+              "name": "Checkbox group",
+              "sizing": ["HUG", "HUG"],
+              "size": [291, 57],
+              "type": "instance",
+              "component": "Checkbox group",
+              "variant": {
+                "Orientation": "horizontal",
+                "Status": "default"
+              },
+              "properties": {
+                "Label#89:19": "Status",
+                "Show select all#89:24": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Checkbox group: invalid",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 114],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Row label",
+          "sizing": ["HUG", "HUG"],
+          "size": [137, 18],
+          "type": "text",
+          "characters": "Checkbox group: invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Checkbox group",
+          "sizing": ["HUG", "HUG"],
+          "size": [291, 88],
+          "type": "instance",
+          "component": "Checkbox group",
+          "variant": {
+            "Orientation": "horizontal",
+            "Status": "invalid"
+          },
+          "properties": {
+            "Label#89:19": "Status",
+            "Show select all#89:24": false
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Options in forms and filters, each independent of the others.",
+    "Select-all in a table header: indeterminate while only some rows are selected.",
+    "A short label that says what is on when checked."
+  ],
+  "dont": [
+    "Use it for a setting that applies at once: use Switch.",
+    "Use it for one choice among several: use Radio.",
+    "Hide the label without an accessible name (aria-label)."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1413],
+    "size": [1280, 932],
+    "items": [
+      {
+        "name": "Checkbox",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [79, 24],
+        "at": [80, 80],
+        "type": "text",
+        "characters": "Checkbox",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Value × State · Label and Show label",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [207, 18],
+        "at": [80, 108],
+        "type": "text",
+        "characters": "Value × State · Label and Show label",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Checkbox",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Checkbox group",
+        "at": [80, 448]
+      }
+    ]
+  }
+}

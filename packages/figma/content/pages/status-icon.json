@@ -1,0 +1,309 @@
+{
+  "name": "Status icon",
+  "category": "Data display",
+  "description": "An icon that marks the state of a process or item: success, warning, error or info.",
+  "overview": "default, success, warning, error, info and accent, full and simple, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Full",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 52],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Full",
+          "sizing": ["HUG", "HUG"],
+          "size": [20, 18],
+          "type": "text",
+          "characters": "Full",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [236, 26],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "default",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "success",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "warning",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "error",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "info",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "accent",
+                "Type": "full"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Simple",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 42],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Simple",
+          "sizing": ["HUG", "HUG"],
+          "size": [39, 18],
+          "type": "text",
+          "characters": "Simple",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [176, 16],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "default",
+                "Type": "simple"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "success",
+                "Type": "simple"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "warning",
+                "Type": "simple"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "error",
+                "Type": "simple"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "info",
+                "Type": "simple"
+              }
+            },
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [16, 16],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "accent",
+                "Type": "simple"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With words",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 52],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "With words",
+          "sizing": ["HUG", "HUG"],
+          "size": [65, 18],
+          "type": "text",
+          "characters": "With words",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["HUG", "HUG"],
+          "size": [161, 26],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 8,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Status icon",
+              "sizing": ["HUG", "HUG"],
+              "size": [26, 26],
+              "type": "instance",
+              "component": "Status icon",
+              "variant": {
+                "Variant": "success",
+                "Type": "full"
+              }
+            },
+            {
+              "name": "Label",
+              "sizing": ["HUG", "HUG"],
+              "size": [127, 21],
+              "type": "text",
+              "characters": "Pipeline completed",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Beside a short status in words: a pipeline run, a connection, a check.",
+    "At the start of a Card or Dialog title for its state."
+  ],
+  "dont": [
+    "Use it alone as the status: say it in words too.",
+    "Use it as decoration: use a plain icon."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 957],
+    "size": [1280, 352],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [110, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Status icon",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [113, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant × Type (md)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Status icon",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

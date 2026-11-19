@@ -1,0 +1,2299 @@
+{
+  "name": "Table",
+  "category": "Data display",
+  "description": "Rows of records people scan, sort, select and act on.",
+  "overview": "A table with many columns, a compact table from the Header and Row components, then row states and list rows, in light and dark. Cell and Header cell build any other column set.",
+  "modes": "VERTICAL",
+  "panelGap": 32,
+  "light": [
+    {
+      "name": "More columns",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 348],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "children": [
+        {
+          "name": "Many columns: id link, title with description, date, tags, status in words, progress, row action",
+          "sizing": ["HUG", "HUG"],
+          "size": [525, 18],
+          "type": "text",
+          "characters": "Many columns: id link, title with description, date, tags, status in words, progress, row action",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Event log",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 322],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/border"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Header",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 32],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "fills": [
+                        {
+                          "variable": "Surfaces/bgPage"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Id"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Title"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "descending",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Time"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Event type"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Status"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "right"
+                  },
+                  "properties": {
+                    "Title#36:6": "Probability"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Severity"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": "Priority"
+                  }
+                },
+                {
+                  "name": "Table/Header cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 32],
+                  "type": "instance",
+                  "component": "Table/Header cell",
+                  "variant": {
+                    "Sort": "none",
+                    "Align": "left"
+                  },
+                  "properties": {
+                    "Title#36:6": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 1",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgContainer"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "1"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Event 1"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-04"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Closed"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Status icon",
+                        "variant": {
+                          "Variant": "error",
+                          "Type": "simple"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [1, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [19, 16],
+                              "type": "text",
+                              "characters": "15%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [13, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Critical"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "negative",
+                        "Label#13:0": "High",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "negative",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 2",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgContainer"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 2",
+                    "Text#36:0": "Event 2"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-05"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Open"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [5, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [21, 16],
+                              "type": "text",
+                              "characters": "30%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [26, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Major"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "warning",
+                        "Label#13:0": "Medium",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "warning",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 3",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Error#41:10": "Select at least one option",
+                        "Label#27:0": "Label",
+                        "Show label#27:10": false,
+                        "State": "Default",
+                        "Value": "checked"
+                      },
+                      "swap": {
+                        "component": "Checkbox",
+                        "variant": {
+                          "Value": "checked",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "3"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 3",
+                    "Text#36:0": "Event 3"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-06"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Closed"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Status icon",
+                        "variant": {
+                          "Variant": "error",
+                          "Type": "simple"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [19, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [21, 16],
+                              "type": "text",
+                              "characters": "45%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [40, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Average"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "positive",
+                        "Label#13:0": "Low",
+                        "Size": "sm",
+                        "State": "Default"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 4",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgContainer"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "4"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 4",
+                    "Text#36:0": "Event 4"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-07"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Open"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [32, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [21, 16],
+                              "type": "text",
+                              "characters": "60%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [53, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Minor"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "negative",
+                        "Label#13:0": "High",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "negative",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 5",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgContainer"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "5"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 5",
+                    "Text#36:0": "Event 5"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-08"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Closed"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Status icon",
+                        "variant": {
+                          "Variant": "error",
+                          "Type": "simple"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [46, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [20, 16],
+                              "type": "text",
+                              "characters": "75%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [66, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Critical"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "warning",
+                        "Label#13:0": "Medium",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "warning",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Row 6",
+              "sizing": ["FILL", "HUG"],
+              "size": [1102, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgContainer"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "checkbox"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [56, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "link"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "6"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [288, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "twoLine"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 6",
+                    "Text#36:0": "Event 6"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [112, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "2026-11-09"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [150, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "info",
+                        "Label#13:0": "Anomaly detection",
+                        "Size": "sm",
+                        "State": "Default"
+                      },
+                      "swap": {
+                        "component": "Tag",
+                        "variant": {
+                          "Color": "info",
+                          "Size": "sm",
+                          "State": "Default"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [104, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "statusText"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Open"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [120, 48],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [0, 16, 0, 16],
+                  "cross": "CENTER",
+                  "strokes": [
+                    {
+                      "variable": "Borders/borderSubtle"
+                    }
+                  ],
+                  "strokeWeight": 0,
+                  "set": {
+                    "strokeTopWeight": 0,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 0
+                  },
+                  "children": [
+                    {
+                      "name": "Progress",
+                      "sizing": ["FILL", "HUG"],
+                      "size": [88, 22],
+                      "type": "frame",
+                      "direction": "VERTICAL",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "name": "Label row",
+                          "sizing": ["FILL", "HUG"],
+                          "size": [88, 16],
+                          "type": "frame",
+                          "direction": "HORIZONTAL",
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Offset",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [58, 1],
+                              "type": "frame",
+                              "clips": true,
+                              "children": []
+                            },
+                            {
+                              "name": "Value",
+                              "sizing": ["HUG", "HUG"],
+                              "size": [21, 16],
+                              "type": "text",
+                              "characters": "90%",
+                              "style": "Typography/caption2",
+                              "fill": {
+                                "variable": "Text/text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Track",
+                          "sizing": ["FILL", "FIXED"],
+                          "size": [88, 4],
+                          "type": "frame",
+                          "radius": 2,
+                          "fills": [
+                            {
+                              "variable": "Borders/border"
+                            }
+                          ],
+                          "clips": true,
+                          "children": [
+                            {
+                              "name": "Bar",
+                              "sizing": ["FIXED", "FIXED"],
+                              "size": [79, 4],
+                              "at": [0, 0],
+                              "type": "frame",
+                              "radius": 2,
+                              "fills": [
+                                {
+                                  "variable": "Text/text"
+                                }
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "text"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Major"
+                  }
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [88, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "status"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  },
+                  "overrides": [
+                    {
+                      "path": [0],
+                      "properties": {
+                        "Color": "positive",
+                        "Label#13:0": "Low",
+                        "Size": "sm",
+                        "State": "Default"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table/Cell",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [48, 48],
+                  "type": "instance",
+                  "component": "Table/Cell",
+                  "variant": {
+                    "Type": "delete"
+                  },
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Customer orders"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Header and rows",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 186],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "children": [
+        {
+          "name": "Compact: the Header and Row components (fixed columns)",
+          "sizing": ["HUG", "HUG"],
+          "size": [340, 18],
+          "type": "text",
+          "characters": "Compact: the Header and Row components (fixed columns)",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Table",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 160],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "radius": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "Table/Header",
+              "sizing": ["FILL", "HUG"],
+              "size": [1104, 32],
+              "type": "instance",
+              "component": "Table/Header"
+            },
+            {
+              "name": "Table/Row",
+              "sizing": ["FILL", "HUG"],
+              "size": [1104, 32],
+              "type": "instance",
+              "component": "Table/Row",
+              "variant": {
+                "State": "default",
+                "Style": "default"
+              }
+            },
+            {
+              "name": "Table/Row",
+              "sizing": ["FILL", "HUG"],
+              "size": [1104, 32],
+              "type": "instance",
+              "component": "Table/Row",
+              "variant": {
+                "State": "selected",
+                "Style": "default"
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Inventory snapshot",
+                    "Type": "text"
+                  }
+                },
+                {
+                  "path": [2, 0],
+                  "properties": {
+                    "Color": "default",
+                    "Label#13:0": "Draft",
+                    "Size": "sm",
+                    "State": "Default"
+                  },
+                  "swap": {
+                    "component": "Tag",
+                    "variant": {
+                      "Color": "default",
+                      "Size": "sm",
+                      "State": "Default"
+                    }
+                  }
+                },
+                {
+                  "path": [3],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "312",
+                    "Type": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Table/Row",
+              "sizing": ["FILL", "HUG"],
+              "size": [1104, 32],
+              "type": "instance",
+              "component": "Table/Row",
+              "variant": {
+                "State": "default",
+                "Style": "default"
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Web sessions",
+                    "Type": "text"
+                  }
+                },
+                {
+                  "path": [2, 0],
+                  "properties": {
+                    "Color": "negative",
+                    "Label#13:0": "Failed",
+                    "Size": "sm",
+                    "State": "Default"
+                  },
+                  "swap": {
+                    "component": "Tag",
+                    "variant": {
+                      "Color": "negative",
+                      "Size": "sm",
+                      "State": "Default"
+                    }
+                  }
+                },
+                {
+                  "path": [3],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "—",
+                    "Type": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Table/Row",
+              "sizing": ["FILL", "HUG"],
+              "size": [1104, 32],
+              "type": "instance",
+              "component": "Table/Row",
+              "variant": {
+                "State": "default",
+                "Style": "default"
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "Supplier ledger",
+                    "Type": "text"
+                  }
+                },
+                {
+                  "path": [3],
+                  "properties": {
+                    "Secondary#100:1": "Description for event 1",
+                    "Text#36:0": "48,906",
+                    "Type": "number"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Row states: default, hover, selected",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 138],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "children": [
+        {
+          "name": "Row states: default, hover, selected",
+          "sizing": ["HUG", "HUG"],
+          "size": [203, 18],
+          "type": "text",
+          "characters": "Row states: default, hover, selected",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "default",
+            "Style": "default"
+          }
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "hover",
+            "Style": "default"
+          }
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "selected",
+            "Style": "default"
+          }
+        }
+      ]
+    },
+    {
+      "name": "List rows",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 144],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "children": [
+        {
+          "name": "List rows (Style=listrow)",
+          "sizing": ["HUG", "HUG"],
+          "size": [138, 18],
+          "type": "text",
+          "characters": "List rows (Style=listrow)",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 34],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "default",
+            "Style": "listrow"
+          }
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 34],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "selected",
+            "Style": "listrow"
+          },
+          "overrides": [
+            {
+              "path": [1],
+              "properties": {
+                "Secondary#100:1": "Description for event 1",
+                "Text#36:0": "Inventory snapshot",
+                "Type": "text"
+              }
+            },
+            {
+              "path": [2, 0],
+              "properties": {
+                "Color": "default",
+                "Label#13:0": "Draft",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "swap": {
+                "component": "Tag",
+                "variant": {
+                  "Color": "default",
+                  "Size": "sm",
+                  "State": "Default"
+                }
+              }
+            },
+            {
+              "path": [3],
+              "properties": {
+                "Secondary#100:1": "Description for event 1",
+                "Text#36:0": "312",
+                "Type": "number"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Table/Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 34],
+          "type": "instance",
+          "component": "Table/Row",
+          "variant": {
+            "State": "default",
+            "Style": "listrow"
+          },
+          "overrides": [
+            {
+              "path": [1],
+              "properties": {
+                "Secondary#100:1": "Description for event 1",
+                "Text#36:0": "Web sessions",
+                "Type": "text"
+              }
+            },
+            {
+              "path": [2, 0],
+              "properties": {
+                "Color": "negative",
+                "Label#13:0": "Failed",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "swap": {
+                "component": "Tag",
+                "variant": {
+                  "Color": "negative",
+                  "Size": "sm",
+                  "State": "Default"
+                }
+              }
+            },
+            {
+              "path": [3],
+              "properties": {
+                "Secondary#100:1": "Description for event 1",
+                "Text#36:0": "—",
+                "Type": "number"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Records with comparable fields: assets, terms, runs.",
+    "Packed rows for data people compare and sort; list rows when each row reads as one entry.",
+    "A few items with a lot of text each: Cards in a grid. A hierarchy: Tree view."
+  ],
+  "dont": [
+    "Use a raw <table>: the parts carry the styles, roles and sort semantics.",
+    "Render unbounded rows: page them with Pagination.",
+    "Show status by colour alone: use a Tag with words."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 2812],
+    "size": [1528, 856],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [54, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Table",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [388, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Cell (Type) · Header cell (Sort × Align) · Header · Row (State × Style)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Table/Cell",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Table/Header cell",
+        "at": [80, 264]
+      },
+      {
+        "type": "set",
+        "name": "Table/Header",
+        "at": [80, 504]
+      },
+      {
+        "type": "set",
+        "name": "Table/Row",
+        "at": [80, 584]
+      }
+    ]
+  }
+}

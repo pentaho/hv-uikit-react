@@ -1,0 +1,119 @@
+{
+  "name": "Vertical navigation",
+  "category": "Navigation",
+  "description": "A collapsible side rail for an application's global navigation, with a tree of sections and actions at the bottom.",
+  "overview": "Open and collapsed. The rail is always dark: a fixed slate palette in both modes, so it looks the same on the light and dark pages.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Open · collapsed",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 586],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · collapsed",
+          "sizing": ["HUG", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "Open · collapsed",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Rails",
+          "sizing": ["HUG", "HUG"],
+          "size": [368, 560],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "clips": true,
+          "children": [
+            {
+              "name": "Vertical navigation",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [280, 560],
+              "type": "instance",
+              "component": "Vertical navigation",
+              "variant": {
+                "Open": "true"
+              },
+              "properties": {
+                "Show header#98:0": false,
+                "Title#69:26": "Catalog"
+              }
+            },
+            {
+              "name": "Vertical navigation",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [64, 560],
+              "type": "instance",
+              "component": "Vertical navigation",
+              "variant": {
+                "Open": "false"
+              },
+              "properties": {
+                "Show header#98:0": false,
+                "Title#69:26": "Catalog"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Applications with more than about six areas, or areas with sections: the rail replaces header navigation.",
+    "Collapse it to icons (useIcons) to give the page room; each icon has a tooltip."
+  ],
+  "dont": [
+    "Use it together with header navigation for the same destinations.",
+    "Restyle it to theme colours: its palette is fixed on purpose."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1407],
+    "size": [1280, 1288],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [182, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Vertical navigation",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [518, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Vertical navigation (Open · Title) · Vertical navigation/Item (Type × State · Label, Icon swap)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Vertical navigation",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Vertical navigation/Item",
+        "at": [80, 968]
+      }
+    ]
+  }
+}

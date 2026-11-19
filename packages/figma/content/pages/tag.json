@@ -1,0 +1,750 @@
+{
+  "name": "Tag",
+  "category": "Data display",
+  "description": "A short label: a status in words, a category, a filter value. The label says the status; colour only supports it.",
+  "overview": "Each colour in the three sizes, and disabled, in light and dark. xs is 16px (caption2), sm 24px (caption1, the default), md 32px (body). Outlined and categorical tags are deprecated in code.",
+  "panelGap": 12,
+  "light": [
+    {
+      "name": "Columns",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 18],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "Text",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "xs",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "xs",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "sm",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "sm",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "md",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "md",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Disabled",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "default",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "default",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [42, 16],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "default",
+                "Size": "xs",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Draft"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [47, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "default",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Draft"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [52, 32],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "default",
+                "Size": "md",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Draft"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [45, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "default",
+                "Size": "sm",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#13:0": "Draft"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "positive",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "positive",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [60, 16],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "positive",
+                "Size": "xs",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Certified"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [68, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "positive",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Certified"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [76, 32],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "positive",
+                "Size": "md",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Certified"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [66, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "positive",
+                "Size": "sm",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#13:0": "Certified"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "warning",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "warning",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [57, 16],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "warning",
+                "Size": "xs",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Pending"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [65, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "warning",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Pending"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [73, 32],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "warning",
+                "Size": "md",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Pending"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [63, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "warning",
+                "Size": "sm",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#13:0": "Pending"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "negative",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "negative",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "negative",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [49, 16],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "negative",
+                "Size": "xs",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Failing"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [55, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "negative",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Failing"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [61, 32],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "negative",
+                "Size": "md",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "Failing"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [53, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "negative",
+                "Size": "sm",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#13:0": "Failing"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "info",
+          "sizing": ["FIXED", "HUG"],
+          "size": [96, 18],
+          "type": "text",
+          "characters": "info",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [40, 16],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "info",
+                "Size": "xs",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "New"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [44, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "info",
+                "Size": "sm",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "New"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [49, 32],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "info",
+                "Size": "md",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#13:0": "New"
+              }
+            }
+          ]
+        },
+        {
+          "name": "cell",
+          "sizing": ["FIXED", "HUG"],
+          "size": [104, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tag",
+              "sizing": ["HUG", "FIXED"],
+              "size": [42, 24],
+              "type": "instance",
+              "component": "Tag",
+              "variant": {
+                "Color": "info",
+                "Size": "sm",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#13:0": "New"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A status beside a record: positive, warning, negative, info.",
+    "A neutral tag for categories and filter values.",
+    "Labels in words people scan: \"Certified\", \"Failing\"."
+  ],
+  "dont": [
+    "Use a tag as a button: use Button.",
+    "Leave out the label, or rely on colour alone.",
+    "Write long text: a tag stops at 180px."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1063],
+    "size": [1280, 544],
+    "items": [
+      {
+        "name": "Tag",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [29, 24],
+        "at": [80, 80],
+        "type": "text",
+        "characters": "Tag",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Color × Size × State",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [114, 18],
+        "at": [80, 108],
+        "type": "text",
+        "characters": "Color × Size × State",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Tag",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

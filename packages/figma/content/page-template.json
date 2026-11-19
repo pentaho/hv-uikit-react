@@ -1,0 +1,343 @@
+{
+  "name": "{{name}} — documentation",
+  "sizing": ["FIXED", "HUG"],
+  "size": [1280, 943],
+  "type": "frame",
+  "direction": "VERTICAL",
+  "gap": 48,
+  "padding": [64, 64, 64, 64],
+  "radius": 16,
+  "fills": [
+    {
+      "variable": "Surfaces/bgContainer"
+    }
+  ],
+  "clips": true,
+  "children": [
+    {
+      "name": "Header",
+      "sizing": ["HUG", "HUG"],
+      "size": [720, 103],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "{{category}}",
+          "sizing": ["HUG", "HUG"],
+          "size": [72, 18],
+          "type": "text",
+          "characters": "{{category}}",
+          "style": "Typography/captionLabel",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "{{name}}",
+          "sizing": ["HUG", "HUG"],
+          "size": [58, 48],
+          "type": "text",
+          "characters": "{{name}}",
+          "style": "Typography/title1",
+          "fill": {
+            "variable": "Text/text"
+          }
+        },
+        {
+          "name": "{{description}}",
+          "sizing": ["FIXED", "HUG"],
+          "size": [720, 21],
+          "type": "text",
+          "characters": "{{description}}",
+          "style": "Typography/body",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Overview",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 408],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Title",
+          "sizing": ["HUG", "HUG"],
+          "size": [720, 76],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "{{overviewTitle}}",
+              "sizing": ["HUG", "HUG"],
+              "size": [93, 30],
+              "type": "text",
+              "characters": "{{overviewTitle}}",
+              "style": "Typography/title3",
+              "fill": {
+                "variable": "Text/text"
+              }
+            },
+            {
+              "name": "{{overview}}",
+              "sizing": ["FIXED", "HUG"],
+              "size": [720, 42],
+              "type": "text",
+              "characters": "{{overview}}",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Modes",
+          "sizing": ["FILL", "HUG"],
+          "size": [1152, 316],
+          "type": "frame",
+          "direction": "{{modes}}",
+          "gap": 24,
+          "clips": true,
+          "children": [
+            {
+              "name": "Light",
+              "sizing": ["FILL", "HUG"],
+              "size": [564, 316],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": "{{panelGap}}",
+              "padding": [24, 24, 24, 24],
+              "radius": 12,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Light",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [30, 18],
+                  "type": "text",
+                  "characters": "Light",
+                  "style": "Typography/captionLabel",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "slot": "light"
+                }
+              ]
+            },
+            {
+              "name": "Dark",
+              "sizing": ["FILL", "HUG"],
+              "size": [564, 316],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": "{{panelGap}}",
+              "padding": [24, 24, 24, 24],
+              "radius": 12,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Dark",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [28, 18],
+                  "type": "text",
+                  "characters": "Dark",
+                  "style": "Typography/captionLabel",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "slot": "dark"
+                }
+              ]
+            }
+          ],
+          "if": "light"
+        },
+        {
+          "slot": "body"
+        }
+      ]
+    },
+    {
+      "slot": "sections"
+    },
+    {
+      "name": "Usage",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 208],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Title",
+          "sizing": ["HUG", "HUG"],
+          "size": [62, 30],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "Usage",
+              "sizing": ["HUG", "HUG"],
+              "size": [62, 30],
+              "type": "text",
+              "characters": "Usage",
+              "style": "Typography/title3",
+              "fill": {
+                "variable": "Text/text"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Do and don't",
+          "sizing": ["FILL", "HUG"],
+          "size": [1152, 162],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "clips": true,
+          "children": [
+            {
+              "name": "When to use",
+              "sizing": ["FILL", "HUG"],
+              "size": [564, 162],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "padding": [20, 20, 20, 20],
+              "radius": 12,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Rectangle",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 3],
+                  "type": "frame",
+                  "radius": 2,
+                  "fills": [
+                    {
+                      "variable": "Positive/positive"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "When to use",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [98, 24],
+                  "type": "text",
+                  "characters": "When to use",
+                  "style": "Typography/title4",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "· {{item}}",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [524, 21],
+                  "type": "text",
+                  "characters": "·  {{item}}",
+                  "style": "Typography/body",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  },
+                  "each": "when"
+                }
+              ],
+              "if": "when"
+            },
+            {
+              "name": "Don't",
+              "sizing": ["FILL", "HUG"],
+              "size": [564, 162],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "padding": [20, 20, 20, 20],
+              "radius": 12,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Rectangle",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 3],
+                  "type": "frame",
+                  "radius": 2,
+                  "fills": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Don't",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [41, 24],
+                  "type": "text",
+                  "characters": "Don't",
+                  "style": "Typography/title4",
+                  "fill": {
+                    "variable": "Text/text"
+                  }
+                },
+                {
+                  "name": "· {{item}}",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [524, 21],
+                  "type": "text",
+                  "characters": "·  {{item}}",
+                  "style": "Typography/body",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  },
+                  "each": "dont"
+                }
+              ],
+              "if": "dont"
+            }
+          ]
+        }
+      ],
+      "if": "usage"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "name": "Search input",
+  "category": "Inputs",
+  "description": "The search box above a list or table: a pill-shaped input with a search icon and a clear button.",
+  "overview": "Each state empty and with a value, in light and dark. Focus is the keyboard focus ring.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["HUG", "HUG"],
+          "size": [41, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [4, 4, 4, 4],
+          "clips": true,
+          "children": [
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Default",
+                "Content": "Empty"
+              },
+              "properties": {
+                "Text#52:0": "Name, owner or tag"
+              }
+            },
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Default",
+                "Content": "Value"
+              },
+              "properties": {
+                "Text#52:0": "sales"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hover",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Hover",
+          "sizing": ["HUG", "HUG"],
+          "size": [34, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [4, 4, 4, 4],
+          "clips": true,
+          "children": [
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Hover",
+                "Content": "Empty"
+              },
+              "properties": {
+                "Text#52:0": "Name, owner or tag"
+              }
+            },
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Hover",
+                "Content": "Value"
+              },
+              "properties": {
+                "Text#52:0": "sales"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Focus",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Focus",
+          "sizing": ["HUG", "HUG"],
+          "size": [34, 18],
+          "type": "text",
+          "characters": "Focus",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [4, 4, 4, 4],
+          "clips": true,
+          "children": [
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Focus",
+                "Content": "Empty"
+              },
+              "properties": {
+                "Text#52:0": "Name, owner or tag"
+              }
+            },
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Focus",
+                "Content": "Value"
+              },
+              "properties": {
+                "Text#52:0": "sales"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "padding": [4, 4, 4, 4],
+          "clips": true,
+          "children": [
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Empty"
+              },
+              "properties": {
+                "Text#52:0": "Name, owner or tag"
+              }
+            },
+            {
+              "name": "Search input",
+              "sizing": ["FILL", "FIXED"],
+              "size": [246, 32],
+              "type": "instance",
+              "component": "Search input",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Value"
+              },
+              "properties": {
+                "Text#52:0": "sales"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Filtering a list or table by text, above it and left of the filters.",
+    "A placeholder that names what is searchable: \"Name, owner or tag\"."
+  ],
+  "dont": [
+    "Leave it without an accessible name: aria-label \"Search assets\".",
+    "Use it for a form field that is not a search: use Input."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1091],
+    "size": [1280, 480],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [123, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Search input",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [126, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "State × Content · Text",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Search input",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

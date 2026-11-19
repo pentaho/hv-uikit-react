@@ -16,6 +16,7 @@
     "node_modules",
     "**/dist",
     "packages/*/package",
-    "packages/tools/test-fixtures"
+    "packages/tools/test-fixtures",
+    "packages/figma/code-connect/generated"
   ]
 }

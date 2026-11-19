@@ -1,0 +1,285 @@
+{
+  "name": "Tree view",
+  "category": "Data display",
+  "description": "A hierarchy people expand, collapse and select from: folders, schemas, categories.",
+  "overview": "A three-level tree with a selected, a hovered and a disabled node, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Tree",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 282],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Tree",
+          "sizing": ["HUG", "HUG"],
+          "size": [26, 18],
+          "type": "text",
+          "characters": "Tree",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Tree",
+          "sizing": ["HUG", "HUG"],
+          "size": [240, 256],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "open",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "Sales"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Selected"
+              },
+              "properties": {
+                "Label#97:0": "customer_orders"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Hover"
+              },
+              "properties": {
+                "Label#97:0": "invoice_lines"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "closed",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "Marketing"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "open",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "Operations"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "open",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "Inventory"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "stock_levels"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#97:0": "warehouse_moves"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Item states: default · hover · selected · disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 154],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Item states: default · hover · selected · disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [269, 18],
+          "type": "text",
+          "characters": "Item states: default · hover · selected · disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [240, 128],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#97:0": "default"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Hover"
+              },
+              "properties": {
+                "Label#97:0": "hover"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Selected"
+              },
+              "properties": {
+                "Label#97:0": "selected"
+              }
+            },
+            {
+              "name": "Tree item",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "Tree item",
+              "variant": {
+                "Type": "leaf",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#97:0": "disabled"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Hierarchies people browse and pick from: catalogs, schemas, folders.",
+    "With the arrow keys: it supports full keyboard navigation in code."
+  ],
+  "dont": [
+    "Use it for app navigation: use Vertical navigation.",
+    "Nest more than a few levels without search."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1231],
+    "size": [1280, 408],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [94, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Tree view",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [311, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Tree item (Type × State · Label; resize Indent per level)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Tree item",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

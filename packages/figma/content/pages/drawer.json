@@ -1,0 +1,185 @@
+{
+  "name": "Drawer",
+  "category": "Feedback",
+  "description": "A panel that slides in from the edge of the screen for details or edits, keeping the page in view.",
+  "overview": "Anchored right over the bgOverlay backdrop, in light and dark. The page stays visible behind it.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Right, over the page",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 426],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Right, over the page",
+          "sizing": ["HUG", "HUG"],
+          "size": [115, 18],
+          "type": "text",
+          "characters": "Right, over the page",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stage",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [516, 400],
+          "type": "frame",
+          "fills": [
+            {
+              "variable": "Surfaces/bgPage"
+            }
+          ],
+          "clips": true,
+          "children": [
+            {
+              "name": "Backdrop",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [516, 400],
+              "at": [0, 0],
+              "type": "frame",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgOverlay",
+                  "opacity": 0.6000000238418579
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "Drawer",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [300, 400],
+              "at": [216, 0],
+              "type": "instance",
+              "component": "Drawer",
+              "properties": {
+                "Content#75:12": {
+                  "component": "Section/Slot"
+                },
+                "Show actions#75:13": true,
+                "Title#75:11": "Edit asset"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dark": [
+    {
+      "name": "Right, over the page",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 426],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Right, over the page",
+          "sizing": ["HUG", "HUG"],
+          "size": [115, 18],
+          "type": "text",
+          "characters": "Right, over the page",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stage",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [516, 400],
+          "type": "frame",
+          "fills": [
+            {
+              "variable": "Surfaces/bgPage"
+            }
+          ],
+          "clips": true,
+          "children": [
+            {
+              "name": "Backdrop",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [516, 400],
+              "at": [0, 0],
+              "type": "frame",
+              "fills": [
+                {
+                  "variable": "Surfaces/bgOverlay",
+                  "opacity": 0.4000000059604645
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "Drawer",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [300, 400],
+              "at": [216, 0],
+              "type": "instance",
+              "component": "Drawer",
+              "properties": {
+                "Content#75:12": {
+                  "component": "Section/Slot"
+                },
+                "Show actions#75:13": true,
+                "Title#75:11": "Edit asset"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Details or a short edit form people use while keeping the list in view.",
+    "Filters or settings for the current page."
+  ],
+  "dont": [
+    "Use it for a decision that blocks the page: use Dialog.",
+    "Stack drawers, or put a long multi-step flow in one."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1205],
+    "size": [1280, 936],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [71, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Drawer",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [293, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Title, Content swap, Show actions · uses Action bar",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Drawer",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

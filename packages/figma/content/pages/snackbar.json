@@ -1,0 +1,319 @@
+{
+  "name": "Snackbar",
+  "category": "Feedback",
+  "description": "A brief message about something that just happened, which hides itself after a few seconds.",
+  "overview": "Each variant, then with an Undo action and close, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 65],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "default",
+          "sizing": ["HUG", "HUG"],
+          "size": [40, 18],
+          "type": "text",
+          "characters": "default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 39],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "default"
+          },
+          "properties": {
+            "Message#76:0": "Asset saved",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 86],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "info",
+          "sizing": ["HUG", "HUG"],
+          "size": [22, 18],
+          "type": "text",
+          "characters": "info",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 60],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "info"
+          },
+          "properties": {
+            "Message#76:0": "Export started. You'll get an email when it's ready.",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "success",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 65],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "success",
+          "sizing": ["HUG", "HUG"],
+          "size": [47, 18],
+          "type": "text",
+          "characters": "success",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 39],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "success"
+          },
+          "properties": {
+            "Message#76:0": "12 assets published",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 65],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "warning",
+          "sizing": ["HUG", "HUG"],
+          "size": [46, 18],
+          "type": "text",
+          "characters": "warning",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 39],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "warning"
+          },
+          "properties": {
+            "Message#76:0": "Some rows were skipped",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "error",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 65],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "error",
+          "sizing": ["HUG", "HUG"],
+          "size": [28, 18],
+          "type": "text",
+          "characters": "error",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 39],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "error"
+          },
+          "properties": {
+            "Message#76:0": "Couldn't save the asset",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "accent",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 65],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "accent",
+          "sizing": ["HUG", "HUG"],
+          "size": [39, 18],
+          "type": "text",
+          "characters": "accent",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 39],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "accent"
+          },
+          "properties": {
+            "Message#76:0": "New: column-level lineage",
+            "Show action#76:14": false,
+            "Show close#76:21": false,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "With action and close",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 68],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "With action and close",
+          "sizing": ["HUG", "HUG"],
+          "size": [123, 18],
+          "type": "text",
+          "characters": "With action and close",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Snackbar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [360, 42],
+          "type": "instance",
+          "component": "Snackbar",
+          "variant": {
+            "Variant": "success"
+          },
+          "properties": {
+            "Message#76:0": "3 assets deleted",
+            "Show action#76:14": true,
+            "Show close#76:21": true,
+            "Show icon#76:7": true
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Confirming something people just did: saved, published, deleted (with Undo).",
+    "Short messages people can miss without harm."
+  ],
+  "dont": [
+    "Use it for errors people must act on, or for a state of the page: use Banner.",
+    "Put more than one action, or long text, in it."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1354],
+    "size": [1280, 472],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [92, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Snackbar",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [316, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant · Message, Show icon, Show action, Show close",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Snackbar",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

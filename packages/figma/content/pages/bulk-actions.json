@@ -1,0 +1,150 @@
+{
+  "name": "Bulk actions",
+  "category": "Data display",
+  "description": "The bar above a table or list with the select-all checkbox, the selection count and actions on the selected items.",
+  "overview": "Nothing, some and all selected, in light and dark. The checkbox goes indeterminate when some rows are selected.",
+  "modes": "VERTICAL",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Nothing selected",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 76],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Nothing selected",
+          "sizing": ["HUG", "HUG"],
+          "size": [98, 18],
+          "type": "text",
+          "characters": "Nothing selected",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Bulk actions",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 50],
+          "type": "instance",
+          "component": "Bulk actions",
+          "variant": {
+            "Selection": "none"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Some selected",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 76],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Some selected",
+          "sizing": ["HUG", "HUG"],
+          "size": [85, 18],
+          "type": "text",
+          "characters": "Some selected",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Bulk actions",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 50],
+          "type": "instance",
+          "component": "Bulk actions",
+          "variant": {
+            "Selection": "some"
+          }
+        }
+      ]
+    },
+    {
+      "name": "All selected",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 76],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "All selected",
+          "sizing": ["HUG", "HUG"],
+          "size": [66, 18],
+          "type": "text",
+          "characters": "All selected",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Bulk actions",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 50],
+          "type": "instance",
+          "component": "Bulk actions",
+          "variant": {
+            "Selection": "all"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Tables and lists where people act on several rows at once: download, delete, move.",
+    "Inside a Table section, above the table."
+  ],
+  "dont": [
+    "Show more than about three actions: the rest go into a menu (maxVisibleActions).",
+    "Put actions for the whole table here: use the section header."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1468],
+    "size": [1280, 464],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [119, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Bulk actions",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [345, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Selection (none, some, all) · Select all is an exposed instance",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Bulk actions",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

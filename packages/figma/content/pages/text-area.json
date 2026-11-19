@@ -1,0 +1,252 @@
+{
+  "name": "Text area",
+  "category": "Inputs",
+  "description": "Multi-line text with an optional character counter.",
+  "overview": "Placeholder and value, focus and invalid, and disabled, in light and dark. The counter sits above the field; the message below only when there is something to say.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "Placeholder · value",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 151],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Placeholder · value",
+          "sizing": ["HUG", "HUG"],
+          "size": [108, 18],
+          "type": "text",
+          "characters": "Placeholder · value",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 121],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Text area",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 113],
+              "type": "instance",
+              "component": "Text area",
+              "variant": {
+                "State": "Default",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Counter#91:18": "0 / 200",
+                "Helper#91:36": "Shown on the asset page",
+                "Label#91:0": "Description",
+                "Show counter#91:27": true,
+                "Show helper#91:45": false,
+                "Text#91:9": "What is in this asset, and where it comes from"
+              }
+            },
+            {
+              "name": "Text area",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 113],
+              "type": "instance",
+              "component": "Text area",
+              "variant": {
+                "State": "Default",
+                "Content": "Value"
+              },
+              "properties": {
+                "Counter#91:18": "56 / 200",
+                "Helper#91:36": "Shown on the asset page",
+                "Label#91:0": "Description",
+                "Show counter#91:27": true,
+                "Show helper#91:45": false,
+                "Text#91:9": "Daily snapshot of open orders from the EU and US stores."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Focus · invalid",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 173],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Focus · invalid",
+          "sizing": ["HUG", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Focus · invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 143],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Text area",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 113],
+              "type": "instance",
+              "component": "Text area",
+              "variant": {
+                "State": "Focus",
+                "Content": "Value"
+              },
+              "properties": {
+                "Counter#91:18": "56 / 200",
+                "Helper#91:36": "Shown on the asset page",
+                "Label#91:0": "Description",
+                "Show counter#91:27": true,
+                "Show helper#91:45": false,
+                "Text#91:9": "Daily snapshot of open orders from the EU and US stores."
+              }
+            },
+            {
+              "name": "Text area",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 135],
+              "type": "instance",
+              "component": "Text area",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Value"
+              },
+              "properties": {
+                "Counter#91:18": "56 / 200",
+                "Helper#91:36": "Keep it under 200 characters",
+                "Label#91:0": "Description",
+                "Show counter#91:27": true,
+                "Show helper#91:45": true,
+                "Text#91:9": "Daily snapshot of open orders from the EU and US stores."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 151],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 121],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "padding": [4, 1, 4, 1],
+          "children": [
+            {
+              "name": "Text area",
+              "sizing": ["FILL", "HUG"],
+              "size": [245, 113],
+              "type": "instance",
+              "component": "Text area",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Value"
+              },
+              "properties": {
+                "Counter#91:18": "56 / 200",
+                "Helper#91:36": "Shown on the asset page",
+                "Label#91:0": "Description",
+                "Show counter#91:27": true,
+                "Show helper#91:45": false,
+                "Text#91:9": "Daily snapshot of open orders from the EU and US stores."
+              }
+            },
+            {
+              "name": "Spacer",
+              "sizing": ["FILL", "FIXED"],
+              "size": [245, 1],
+              "type": "frame",
+              "clips": true,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Free text longer than a line: descriptions, comments, notes.",
+    "A counter when there is a limit."
+  ],
+  "dont": [
+    "Use it for a single value: use Input.",
+    "Hide the limit until people pass it."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1343],
+    "size": [1280, 896],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [90, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Text area",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [259, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "State × Content · Label, Text, Counter, Helper",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Text area",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2722 @@
+{
+  "name": "Button",
+  "category": "Actions",
+  "description": "Triggers an action. One primary button per view, form or dialog; the others secondary.",
+  "overview": "Every variant in every state, in light and dark. Semantic buttons sit on coloured containers such as banners.",
+  "panelGap": 12,
+  "light": [
+    {
+      "name": "States",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 18],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "clips": true,
+      "children": [
+        {
+          "name": "Text",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Default",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Hover",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pressed",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "Pressed",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Disabled",
+          "sizing": ["FIXED", "HUG"],
+          "size": [100, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "primary",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "primary",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "primary",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "primarySubtle",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "primarySubtle",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "primarySubtle",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [80, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primarySubtle",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [80, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primarySubtle",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primarySubtle",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primarySubtle",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "primaryGhost",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "primaryGhost",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "primaryGhost",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primaryGhost",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primaryGhost",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primaryGhost",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primaryGhost",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "secondarySubtle",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "secondarySubtle",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "secondarySubtle",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [80, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [80, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "secondaryGhost",
+      "sizing": ["HUG", "HUG"],
+      "size": [528, 32],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "secondaryGhost",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "secondaryGhost",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondaryGhost",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondaryGhost",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondaryGhost",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondaryGhost",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "semantic",
+      "sizing": ["HUG", "HUG"],
+      "size": [534, 42],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "cross": "CENTER",
+      "clips": true,
+      "children": [
+        {
+          "name": "semantic",
+          "sizing": ["FIXED", "HUG"],
+          "size": [128, 18],
+          "type": "text",
+          "characters": "semantic",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [406, 42],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "padding": [4, 0, 4, 4],
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/dimmer"
+            },
+            {
+              "variable": "Info/infoDimmed"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Info/infoBorder"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "semantic",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "semantic",
+                    "State": "Hover"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "semantic",
+                    "State": "Pressed"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            },
+            {
+              "name": "cell",
+              "sizing": ["FIXED", "HUG"],
+              "size": [100, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "semantic",
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "name": "Sizes",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 145],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Title",
+          "sizing": ["HUG", "HUG"],
+          "size": [720, 55],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "Sizes",
+              "sizing": ["HUG", "HUG"],
+              "size": [53, 30],
+              "type": "text",
+              "characters": "Sizes",
+              "style": "Typography/title3",
+              "fill": {
+                "variable": "Text/text"
+              }
+            },
+            {
+              "name": "sm 24px, md 32px (the default), lg 48px. In code xs is sm and xl is lg.",
+              "sizing": ["FIXED", "HUG"],
+              "size": [720, 21],
+              "type": "text",
+              "characters": "sm 24px, md 32px (the default), lg 48px. In code xs is sm and xl is lg.",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sizes",
+          "sizing": ["HUG", "HUG"],
+          "size": [612, 74],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "cross": "MAX",
+          "clips": true,
+          "children": [
+            {
+              "name": "sm",
+              "sizing": ["HUG", "HUG"],
+              "size": [71, 50],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button/Small",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [71, 24],
+                  "type": "instance",
+                  "component": "Button/Small",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:275": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:250": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:225": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:200": false
+                  }
+                },
+                {
+                  "name": "sm",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [17, 18],
+                  "type": "text",
+                  "characters": "sm",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "md",
+              "sizing": ["HUG", "HUG"],
+              "size": [78, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [78, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                },
+                {
+                  "name": "md",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [18, 18],
+                  "type": "text",
+                  "characters": "md",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "lg",
+              "sizing": ["HUG", "HUG"],
+              "size": [94, 74],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button/Large",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [94, 48],
+                  "type": "instance",
+                  "component": "Button/Large",
+                  "variant": {
+                    "Variant": "primary",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:375": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:350": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:325": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:300": false
+                  }
+                },
+                {
+                  "name": "lg",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [11, 18],
+                  "type": "text",
+                  "characters": "lg",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "sm",
+              "sizing": ["HUG", "HUG"],
+              "size": [73, 50],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button/Small",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [73, 24],
+                  "type": "instance",
+                  "component": "Button/Small",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:275": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:250": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:225": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:200": false
+                  }
+                },
+                {
+                  "name": "sm",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [17, 18],
+                  "type": "text",
+                  "characters": "sm",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "md",
+              "sizing": ["HUG", "HUG"],
+              "size": [80, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [80, 32],
+                  "type": "instance",
+                  "component": "Button",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:175": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:150": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:125": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:100": false
+                  }
+                },
+                {
+                  "name": "md",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [18, 18],
+                  "type": "text",
+                  "characters": "md",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "lg",
+              "sizing": ["HUG", "HUG"],
+              "size": [96, 74],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Button/Large",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [96, 48],
+                  "type": "instance",
+                  "component": "Button/Large",
+                  "variant": {
+                    "Variant": "secondarySubtle",
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "End icon instance#24:375": {
+                      "component": "Icon/CaretDown"
+                    },
+                    "End icon#24:350": false,
+                    "Label#7:0": "Button",
+                    "Start icon instance#24:325": {
+                      "component": "Icon/Plus"
+                    },
+                    "Start icon#24:300": false
+                  }
+                },
+                {
+                  "name": "lg",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [11, 18],
+                  "type": "text",
+                  "characters": "lg",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Status",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 230],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Title",
+          "sizing": ["HUG", "HUG"],
+          "size": [720, 76],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "Status",
+              "sizing": ["HUG", "HUG"],
+              "size": [64, 30],
+              "type": "text",
+              "characters": "Status",
+              "style": "Typography/title3",
+              "fill": {
+                "variable": "Text/text"
+              }
+            },
+            {
+              "name": "Positive, warning and negative actions. In Pentaho UI 7.0 the positive and warning text is below WCAG AA: prefer primary or secondarySubtle, and say the status in words.",
+              "sizing": ["FIXED", "HUG"],
+              "size": [720, 42],
+              "type": "text",
+              "characters": "Positive, warning and negative actions. In Pentaho UI 7.0 the positive and warning text is below WCAG AA: prefer primary or secondarySubtle, and say the status in words.",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Status",
+          "sizing": ["HUG", "HUG"],
+          "size": [428, 138],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 8,
+          "clips": true,
+          "children": [
+            {
+              "name": "Styles",
+              "sizing": ["HUG", "HUG"],
+              "size": [428, 18],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Text",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [128, 18],
+                  "type": "text",
+                  "characters": "",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "contained",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 18],
+                  "type": "text",
+                  "characters": "contained",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "subtle",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 18],
+                  "type": "text",
+                  "characters": "subtle",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "ghost",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 18],
+                  "type": "text",
+                  "characters": "ghost",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "positive",
+              "sizing": ["HUG", "HUG"],
+              "size": [428, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "positive",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [128, 18],
+                  "type": "text",
+                  "characters": "positive",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "positive",
+                        "Style": "contained",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [80, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "positive",
+                        "Style": "subtle",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "positive",
+                        "Style": "ghost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "warning",
+              "sizing": ["HUG", "HUG"],
+              "size": [428, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "warning",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [128, 18],
+                  "type": "text",
+                  "characters": "warning",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "warning",
+                        "Style": "contained",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [80, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "warning",
+                        "Style": "subtle",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "warning",
+                        "Style": "ghost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "negative",
+              "sizing": ["HUG", "HUG"],
+              "size": [428, 32],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "cross": "CENTER",
+              "clips": true,
+              "children": [
+                {
+                  "name": "negative",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [128, 18],
+                  "type": "text",
+                  "characters": "negative",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "negative",
+                        "Style": "contained",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [80, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "negative",
+                        "Style": "subtle",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "cell",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [100, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "negative",
+                        "Style": "ghost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Button",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Examples",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 392],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Title",
+          "sizing": ["HUG", "HUG"],
+          "size": [720, 76],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "clips": true,
+          "children": [
+            {
+              "name": "Examples",
+              "sizing": ["HUG", "HUG"],
+              "size": [94, 30],
+              "type": "text",
+              "characters": "Examples",
+              "style": "Typography/title3",
+              "fill": {
+                "variable": "Text/text"
+              }
+            },
+            {
+              "name": "Icons, icon-only actions, semantic buttons on a coloured container, a dialog footer and a destructive decision.",
+              "sizing": ["FIXED", "HUG"],
+              "size": [720, 42],
+              "type": "text",
+              "characters": "Icons, icon-only actions, semantic buttons on a coloured container, a dialog footer and a destructive decision.",
+              "style": "Typography/body",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Examples grid",
+          "sizing": ["FILL", "HUG"],
+          "size": [1152, 300],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "wrap": true,
+          "gap": 48,
+          "rowGap": 32,
+          "clips": true,
+          "children": [
+            {
+              "name": "With a start or end icon (startIcon, endIcon)",
+              "sizing": ["HUG", "HUG"],
+              "size": [467, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "With a start or end icon (startIcon, endIcon)",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [249, 18],
+                  "type": "text",
+                  "characters": "With a start or end icon (startIcon, endIcon)",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Icons",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [467, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 12,
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [128, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "primary",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "New asset",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": true
+                      }
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [104, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "secondarySubtle",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Export",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Export"
+                        },
+                        "Start icon#24:100": true
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/Export"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [90, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "secondarySubtle",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/ArrowRight"
+                        },
+                        "End icon#24:150": true,
+                        "Label#7:0": "Next",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      },
+                      "overrides": [
+                        {
+                          "path": [1],
+                          "swap": {
+                            "component": "Icon/ArrowRight"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [109, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "primaryGhost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Refresh",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/ArrowsClockwise"
+                        },
+                        "Start icon#24:100": true
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/ArrowsClockwise"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Icon only: use Icon button (it adds the tooltip and the name)",
+              "sizing": ["HUG", "HUG"],
+              "size": [341, 102],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Icon only: use Icon button (it adds the tooltip and the name)",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [341, 18],
+                  "type": "text",
+                  "characters": "Icon only: use Icon button (it adds the tooltip and the name)",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Icon only",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [200, 76],
+                  "type": "frame",
+                  "children": [
+                    {
+                      "name": "Icon button",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [32, 32],
+                      "at": [0, 44],
+                      "type": "instance",
+                      "component": "Icon button",
+                      "variant": {
+                        "Size": "md",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "Icon#58:0": {
+                          "component": "Icon/PencilSimple"
+                        }
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/PencilSimple"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Icon button",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [32, 32],
+                      "at": [40, 44],
+                      "type": "instance",
+                      "component": "Icon button",
+                      "variant": {
+                        "Size": "md",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "Icon#58:0": {
+                          "component": "Icon/Copy"
+                        }
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Icon button",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [32, 32],
+                      "at": [80, 44],
+                      "type": "instance",
+                      "component": "Icon button",
+                      "variant": {
+                        "Size": "md",
+                        "State": "Hover"
+                      },
+                      "properties": {
+                        "Icon#58:0": {
+                          "component": "Icon/Trash"
+                        }
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/Trash"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tooltip",
+                      "sizing": ["HUG", "HUG"],
+                      "size": [115, 37],
+                      "at": [39, 0],
+                      "type": "instance",
+                      "component": "Tooltip",
+                      "properties": {
+                        "Text#58:13": "Delete asset"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Semantic, on a coloured container (variant=\"semantic\")",
+              "sizing": ["HUG", "HUG"],
+              "size": [393, 76],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Semantic, on a coloured container (variant=\"semantic\")",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [315, 18],
+                  "type": "text",
+                  "characters": "Semantic, on a coloured container (variant=\"semantic\")",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Container",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [393, 50],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 4,
+                  "padding": [8, 8, 8, 8],
+                  "cross": "CENTER",
+                  "radius": 8,
+                  "fills": [
+                    {
+                      "variable": "Surfaces/dimmer"
+                    },
+                    {
+                      "variable": "Info/infoDimmed",
+                      "opacity": 0.5
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "variable": "Info/info"
+                    }
+                  ],
+                  "strokeWeight": 1,
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [121, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "semantic",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Duplicate",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Copy"
+                        },
+                        "Start icon#24:100": true
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [109, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "semantic",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Refresh",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/ArrowsClockwise"
+                        },
+                        "Start icon#24:100": true
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/ArrowsClockwise"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [101, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "semantic",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Delete",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Trash"
+                        },
+                        "Start icon#24:100": true
+                      },
+                      "overrides": [
+                        {
+                          "path": [0],
+                          "swap": {
+                            "component": "Icon/Trash"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Icon button",
+                      "sizing": ["FIXED", "FIXED"],
+                      "size": [32, 32],
+                      "type": "instance",
+                      "component": "Icon button",
+                      "variant": {
+                        "Size": "md",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "Icon#58:0": {
+                          "component": "Icon/DotsThreeVertical"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ending a dialog or form: Cancel, then one primary",
+              "sizing": ["HUG", "HUG"],
+              "size": [282, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Ending a dialog or form: Cancel, then one primary",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [282, 18],
+                  "type": "text",
+                  "characters": "Ending a dialog or form: Cancel, then one primary",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Footer",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [215, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 8,
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [80, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "secondaryGhost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Cancel",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      }
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [127, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "primary",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Save changes",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "A destructive decision: the negative variant, named for the action",
+              "sizing": ["HUG", "HUG"],
+              "size": [372, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "A destructive decision: the negative variant, named for the action",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [372, 18],
+                  "type": "text",
+                  "characters": "A destructive decision: the negative variant, named for the action",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Destructive",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [225, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 8,
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [80, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "secondaryGhost",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Cancel",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      }
+                    },
+                    {
+                      "name": "Button/Status",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [137, 32],
+                      "type": "instance",
+                      "component": "Button/Status",
+                      "variant": {
+                        "Color": "negative",
+                        "Style": "contained",
+                        "State": "Default"
+                      },
+                      "properties": {
+                        "End icon instance#24:457": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:438": false,
+                        "Label#12:4": "Delete 3 assets",
+                        "Start icon instance#24:419": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:400": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Disabled: say why nearby; it stays focusable with focusableWhenDisabled",
+              "sizing": ["HUG", "HUG"],
+              "size": [420, 58],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Disabled: say why nearby; it stays focusable with focusableWhenDisabled",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [420, 18],
+                  "type": "text",
+                  "characters": "Disabled: say why nearby; it stays focusable with focusableWhenDisabled",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Disabled",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [169, 32],
+                  "type": "frame",
+                  "direction": "HORIZONTAL",
+                  "gap": 8,
+                  "cross": "CENTER",
+                  "clips": true,
+                  "children": [
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [83, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "primary",
+                        "State": "Disabled"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Publish",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      }
+                    },
+                    {
+                      "name": "Button",
+                      "sizing": ["HUG", "FIXED"],
+                      "size": [78, 32],
+                      "type": "instance",
+                      "component": "Button",
+                      "variant": {
+                        "Variant": "secondarySubtle",
+                        "State": "Disabled"
+                      },
+                      "properties": {
+                        "End icon instance#24:175": {
+                          "component": "Icon/CaretDown"
+                        },
+                        "End icon#24:150": false,
+                        "Label#7:0": "Export",
+                        "Start icon instance#24:125": {
+                          "component": "Icon/Plus"
+                        },
+                        "Start icon#24:100": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "primary for the main action of a view, form or dialog.",
+    "secondarySubtle for the other actions; secondaryGhost in toolbars, cards and table rows.",
+    "negative in a confirming dialog for destructive actions.",
+    "Icon only: Icon Button, which adds the tooltip and the name."
+  ],
+  "dont": [
+    "Place two primary buttons side by side, or one in every row.",
+    "Use a raw <button>, or colour values instead of a variant.",
+    "Rely on colour alone to say a status."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 2057],
+    "size": [1280, 1984],
+    "items": [
+      {
+        "name": "Button",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [52, 24],
+        "at": [80, 80],
+        "type": "text",
+        "characters": "Button",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Variant × State · md 32px",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [145, 18],
+        "at": [80, 108],
+        "type": "text",
+        "characters": "Variant × State · md 32px",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Button",
+        "at": [80, 136]
+      },
+      {
+        "name": "Button/Small",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [101, 24],
+        "at": [80, 584],
+        "type": "text",
+        "characters": "Button/Small",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Variant × State · sm 24px",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [144, 18],
+        "at": [80, 612],
+        "type": "text",
+        "characters": "Variant × State · sm 24px",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Button/Small",
+        "at": [80, 640]
+      },
+      {
+        "name": "Button/Large",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [102, 24],
+        "at": [80, 1040],
+        "type": "text",
+        "characters": "Button/Large",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Variant × State · lg 48px",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [138, 18],
+        "at": [80, 1068],
+        "type": "text",
+        "characters": "Variant × State · lg 48px",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Button/Large",
+        "at": [80, 1096]
+      },
+      {
+        "name": "Button/Status",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [109, 24],
+        "at": [80, 1640],
+        "type": "text",
+        "characters": "Button/Status",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Color × Style × State · md 32px",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [179, 18],
+        "at": [80, 1668],
+        "type": "text",
+        "characters": "Color × Style × State · md 32px",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Button/Status",
+        "at": [80, 1696]
+      }
+    ]
+  }
+}

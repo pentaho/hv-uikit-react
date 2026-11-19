@@ -1,0 +1,112 @@
+{
+  "name": "Dropdown menu",
+  "category": "Actions",
+  "description": "A button that opens a menu of actions, by default an overflow (three dots) icon.",
+  "overview": "Closed and open, in light and dark. Delete sits after a separator, at the end.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Closed · open",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 229],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Closed · open",
+          "sizing": ["HUG", "HUG"],
+          "size": [79, 18],
+          "type": "text",
+          "characters": "Closed · open",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stage",
+          "sizing": ["HUG", "HUG"],
+          "size": [284, 203],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 48,
+          "padding": [4, 0, 8, 4],
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown menu",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Dropdown menu",
+              "variant": {
+                "Open": "false"
+              }
+            },
+            {
+              "name": "Dropdown menu",
+              "sizing": ["HUG", "HUG"],
+              "size": [200, 191],
+              "type": "instance",
+              "component": "Dropdown menu",
+              "variant": {
+                "Open": "true"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Row and card actions that do not fit as buttons: edit, duplicate, download, delete.",
+    "More than about three actions in a toolbar: the rest go here."
+  ],
+  "dont": [
+    "Put navigation in it: use links or tabs.",
+    "Hide the only or the main action of a view in it."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1029],
+    "size": [1280, 674],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [160, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Dropdown menu",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [360, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Open (false, true) · Trigger is an exposed instance · Menu panel",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Dropdown menu",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Menu panel",
+        "at": [80, 439]
+      }
+    ]
+  }
+}

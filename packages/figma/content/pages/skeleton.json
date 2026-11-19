@@ -1,0 +1,298 @@
+{
+  "name": "Skeleton",
+  "category": "Feedback",
+  "description": "A placeholder shaped like the content that is loading, so the layout does not jump when it arrives.",
+  "overview": "The three shapes, and loading rows built from them, in light and dark. Size each instance to what it replaces.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "text · circle · square",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 106],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "text · circle · square",
+          "sizing": ["HUG", "HUG"],
+          "size": [112, 18],
+          "type": "text",
+          "characters": "text · circle · square",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Shapes",
+          "sizing": ["HUG", "HUG"],
+          "size": [408, 80],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [240, 12],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "text"
+              }
+            },
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "circle"
+              }
+            },
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [80, 80],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "square"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loading rows",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 138],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Loading rows",
+          "sizing": ["HUG", "HUG"],
+          "size": [77, 18],
+          "type": "text",
+          "characters": "Loading rows",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "circle"
+              }
+            },
+            {
+              "name": "Lines",
+              "sizing": ["FILL", "HUG"],
+              "size": [472, 32],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [472, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                },
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [180, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "circle"
+              }
+            },
+            {
+              "name": "Lines",
+              "sizing": ["FILL", "HUG"],
+              "size": [472, 32],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [472, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                },
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [140, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Row",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 32],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Skeleton",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Skeleton",
+              "variant": {
+                "Variant": "circle"
+              }
+            },
+            {
+              "name": "Lines",
+              "sizing": ["FILL", "HUG"],
+              "size": [472, 32],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 8,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FILL", "FIXED"],
+                  "size": [472, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                },
+                {
+                  "name": "Skeleton",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [200, 12],
+                  "type": "instance",
+                  "component": "Skeleton",
+                  "variant": {
+                    "Variant": "text"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Content that takes a moment to load and has a known shape: table rows, cards, a profile.",
+    "Hide it when the data arrives, so the real content fades in."
+  ],
+  "dont": [
+    "Use it for actions that run in place: use a loading state on the button.",
+    "Show it for errors or empty results: use a message or Empty state."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1060],
+    "size": [1280, 360],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [86, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Skeleton",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [259, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant (text, circle, square) · resize instances",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Skeleton",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

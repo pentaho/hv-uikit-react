@@ -1,0 +1,712 @@
+{
+  "description": "The Pentaho UI Figma library's components and icons, by key and node: which UI Kit component each Figma component set (or component) is drawn for, `part` marking a Figma piece with no component of its own in code; icons by their @phosphor-icons/react name. The Code Connect templates and the sync file's component keys are generated from it. Read from the library, never written to it.",
+  "file": {
+    "key": "2VFXBat8b1Qj7upl6oHKqZ",
+    "name": "Pentaho UI"
+  },
+  "components": {
+    "HvActionBar": [
+      {
+        "name": "Action bar",
+        "type": "component",
+        "key": "ec3af0db7dc71098a1bf86c28a2a2f5435e90b91",
+        "node": "75:514"
+      }
+    ],
+    "HvAvatar": [
+      {
+        "name": "Avatar",
+        "type": "set",
+        "key": "72372ba064e1b0798d31287f6b3efeb7b7bed730",
+        "node": "83:5640"
+      }
+    ],
+    "HvAvatarGroup": [
+      {
+        "name": "Avatar group",
+        "type": "set",
+        "key": "538c10f16096ae6bcbc9e93a29baeb509269f7b0",
+        "node": "99:984"
+      }
+    ],
+    "HvBadge": [
+      {
+        "name": "Badge",
+        "type": "set",
+        "key": "11db33d76dd8f8b246be123db34f95aaace27b38",
+        "node": "73:40"
+      }
+    ],
+    "HvBanner": [
+      {
+        "name": "Banner",
+        "type": "set",
+        "key": "a6474b840d76712ecaa9953986f1eaeb1615c7a7",
+        "node": "31:112"
+      }
+    ],
+    "HvBreadCrumb": [
+      {
+        "name": "Breadcrumb",
+        "type": "set",
+        "key": "c78000620605708d31198b36016879462a370337",
+        "node": "53:56"
+      }
+    ],
+    "HvBulkActions": [
+      {
+        "name": "Bulk actions",
+        "type": "set",
+        "key": "51dcc420c974246d473b15db9cb66d7672366728",
+        "node": "54:485"
+      }
+    ],
+    "HvButton": [
+      {
+        "name": "Button",
+        "type": "set",
+        "key": "dc87cac5df81bc85298ff3b99876932bde183d53",
+        "node": "7:43"
+      },
+      {
+        "name": "Button/Small",
+        "type": "set",
+        "key": "09f19a5c02b2c78cfaad6becbb58715c25078563",
+        "node": "12:50"
+      },
+      {
+        "name": "Button/Large",
+        "type": "set",
+        "key": "2260d0e248875b28e49b65b9a353901af4e12ddd",
+        "node": "12:99"
+      },
+      {
+        "name": "Button/Status",
+        "type": "set",
+        "key": "99b074c5e10743c90e92617f009649f4e1c61239",
+        "node": "12:184"
+      }
+    ],
+    "HvCalendar": [
+      {
+        "name": "Calendar day",
+        "type": "set",
+        "key": "5b1ae2568a98b840573f37db960ebdc5c14ebf12",
+        "node": "94:40",
+        "part": true
+      }
+    ],
+    "HvCard": [
+      {
+        "name": "Card",
+        "type": "set",
+        "key": "f396d8c6b83c97e7d8fc833ceb4e308f31e27e96",
+        "node": "51:95"
+      }
+    ],
+    "HvCheckBox": [
+      {
+        "name": "Checkbox",
+        "type": "set",
+        "key": "ccd8a5f58f30e41bff76b66c55abc568bc6af1fd",
+        "node": "27:74"
+      }
+    ],
+    "HvCheckBoxGroup": [
+      {
+        "name": "Checkbox group",
+        "type": "set",
+        "key": "8819fa02946e330148ee561b92d9f7ac48c0f8a8",
+        "node": "89:606"
+      }
+    ],
+    "HvDatePicker": [
+      {
+        "name": "Date picker",
+        "type": "set",
+        "key": "ac7067314f38b0f5ab058917c975c7a8d0ef5708",
+        "node": "94:360"
+      },
+      {
+        "name": "Date picker panel",
+        "type": "set",
+        "key": "b6e00112fefb90b6a76c382bf971e20429d0c5c5",
+        "node": "94:297",
+        "part": true
+      }
+    ],
+    "HvDialog": [
+      {
+        "name": "Dialog",
+        "type": "set",
+        "key": "6676a28c88035f79c911d4f5425de678154ede69",
+        "node": "35:119"
+      }
+    ],
+    "HvDrawer": [
+      {
+        "name": "Drawer",
+        "type": "component",
+        "key": "2cd7f583af40e6d41cf1b3d7fe563b2e2286e46d",
+        "node": "75:704"
+      }
+    ],
+    "HvDropDownMenu": [
+      {
+        "name": "Dropdown menu",
+        "type": "set",
+        "key": "ea561341d2e419f9b9b8771a044cd515cfb71db1",
+        "node": "60:131"
+      },
+      {
+        "name": "Menu panel",
+        "type": "component",
+        "key": "07f8128168b5849d11bd56170cafed0b6167f5a0",
+        "node": "60:81",
+        "part": true
+      }
+    ],
+    "HvDropdown": [
+      {
+        "name": "Dropdown",
+        "type": "set",
+        "key": "b36b113e6856775ca6168cdb0d2bd696650598c2",
+        "node": "62:96"
+      }
+    ],
+    "HvDropdownPanel": [
+      {
+        "name": "Dropdown panel",
+        "type": "set",
+        "key": "d8122c9c2f5ede2f0b4833b23f0b8beccf89b5d3",
+        "node": "62:168"
+      }
+    ],
+    "HvEmptyState": [
+      {
+        "name": "Empty state",
+        "type": "set",
+        "key": "6d29a4ed52c461c8e47397dea85fde58d62506ec",
+        "node": "48:56"
+      }
+    ],
+    "HvFile": [
+      {
+        "name": "File",
+        "type": "set",
+        "key": "14416c2d7edace14dc0196703b349ca2a680907b",
+        "node": "108:91"
+      }
+    ],
+    "HvFileUploader": [
+      {
+        "name": "File uploader",
+        "type": "set",
+        "key": "c88a80f8ad31d205e2246b13a391479afe0e100e",
+        "node": "108:61"
+      }
+    ],
+    "HvFilterGroup": [
+      {
+        "name": "Filter group",
+        "type": "set",
+        "key": "434827a7b504c597025ccd37199d4ef835b3a0ff",
+        "node": "65:44"
+      },
+      {
+        "name": "Filter group panel",
+        "type": "component",
+        "key": "544a2e2023ff64b2f9956b1747a113f8144e3c2c",
+        "node": "65:45",
+        "part": true
+      }
+    ],
+    "HvFooter": [
+      {
+        "name": "Footer",
+        "type": "set",
+        "key": "1520ee693ec3f6424d037ead9db0b58cfb1a5299",
+        "node": "70:350"
+      }
+    ],
+    "HvHeader": [
+      {
+        "name": "Header",
+        "type": "set",
+        "key": "d835603fdd00c3341d456d57371c632f9f68df81",
+        "node": "68:106"
+      }
+    ],
+    "HvHeaderBrand": [
+      {
+        "name": "Header/Brand",
+        "type": "component",
+        "key": "fdef60dba4c5d30e94f980a076f6af66e1b836d3",
+        "node": "68:26"
+      }
+    ],
+    "HvHeaderMenuItem": [
+      {
+        "name": "Header/Nav item",
+        "type": "set",
+        "key": "e0a971148545593463dd084213af33d5539b6ba6",
+        "node": "68:37"
+      }
+    ],
+    "HvIconButton": [
+      {
+        "name": "Icon button",
+        "type": "set",
+        "key": "ab4ccf346971ff699310b8e25bc0c5ecdd4ce6a9",
+        "node": "58:62"
+      }
+    ],
+    "HvInput": [
+      {
+        "name": "Input",
+        "type": "set",
+        "key": "01d5edeea0871d89da0d5c2842111e9ceb62cce6",
+        "node": "29:88"
+      }
+    ],
+    "HvListContainer": [
+      {
+        "name": "List separator",
+        "type": "component",
+        "key": "467001e5a9ff08513203fa80984cab9556a116c3",
+        "node": "59:76",
+        "part": true
+      }
+    ],
+    "HvListItem": [
+      {
+        "name": "List item",
+        "type": "set",
+        "key": "e665a23d8ce562dfadd49995a4baec366afe568f",
+        "node": "59:75"
+      }
+    ],
+    "HvLoading": [
+      {
+        "name": "Loading",
+        "type": "set",
+        "key": "90d642227c9c81965b155da60ad82b131c8db76b",
+        "node": "74:251"
+      }
+    ],
+    "HvMultiButton": [
+      {
+        "name": "Multi button",
+        "type": "set",
+        "key": "7a98263f2ef91e6c67cfecf81bfa18ad41271fdb",
+        "node": "109:71"
+      },
+      {
+        "name": "Multi button/Segment",
+        "type": "set",
+        "key": "4dc8c54dab7f73cfab27a82453cc578ff59f5cad",
+        "node": "109:42",
+        "part": true
+      }
+    ],
+    "HvPagination": [
+      {
+        "name": "Pagination",
+        "type": "set",
+        "key": "a96a177121557e6f36f93b4d50727ef52aad0073",
+        "node": "54:104"
+      }
+    ],
+    "HvProgressBar": [
+      {
+        "name": "Progress bar",
+        "type": "set",
+        "key": "7cd51c4f9cc2d8a9c3ab810e35aba6b44878d477",
+        "node": "74:44"
+      }
+    ],
+    "HvRadio": [
+      {
+        "name": "Radio",
+        "type": "set",
+        "key": "dfe800bc3f9cae4a4facadc1a987c34f4844d44a",
+        "node": "89:53"
+      }
+    ],
+    "HvRadioGroup": [
+      {
+        "name": "Radio group",
+        "type": "set",
+        "key": "679d9530cc455fe7efc6f1da684e48b9e7c16b15",
+        "node": "89:120"
+      }
+    ],
+    "HvSearchInput": [
+      {
+        "name": "Search input",
+        "type": "set",
+        "key": "c943910a0a5f5097b08476a5a47232f0731ab14a",
+        "node": "52:64"
+      }
+    ],
+    "HvSection": [
+      {
+        "name": "Section/Slot",
+        "type": "component",
+        "key": "cd029fa82cd0f904baf18fc40a399c82963395aa",
+        "node": "55:26",
+        "part": true
+      },
+      {
+        "name": "Section",
+        "type": "set",
+        "key": "ad614253cb6f0ac32dae7cf3a1a2e733778dcd1d",
+        "node": "55:70"
+      }
+    ],
+    "HvSelect": [
+      {
+        "name": "Select",
+        "type": "set",
+        "key": "0bbe900ea25b466edb6d57f7558da7ebac6e39c9",
+        "node": "64:96"
+      },
+      {
+        "name": "Select panel",
+        "type": "component",
+        "key": "0eb011219817b6265a8e49cf1a6e59cbb828fdfa",
+        "node": "64:97",
+        "part": true
+      }
+    ],
+    "HvSkeleton": [
+      {
+        "name": "Skeleton",
+        "type": "set",
+        "key": "e5d52f88d1239af7c44b57ecc55b234f1028a60f",
+        "node": "47:78"
+      }
+    ],
+    "HvSlider": [
+      {
+        "name": "Slider",
+        "type": "set",
+        "key": "25671a9157e1d28d919d0e732025c96fe9e70e30",
+        "node": "107:116"
+      }
+    ],
+    "HvSnackbar": [
+      {
+        "name": "Snackbar",
+        "type": "set",
+        "key": "f2aa80a455b54a5ba801d86eea991cb5d2ac4301",
+        "node": "76:100"
+      }
+    ],
+    "HvStatusIcon": [
+      {
+        "name": "Status icon",
+        "type": "set",
+        "key": "d6fe8c13a73eb9ca1ad2d629a861ba50511a81f7",
+        "node": "71:62"
+      }
+    ],
+    "HvSwitch": [
+      {
+        "name": "Switch",
+        "type": "set",
+        "key": "ab32f2dfb117dd512332532e5adf6caa46604c63",
+        "node": "90:58"
+      }
+    ],
+    "HvTab": [
+      {
+        "name": "Tab",
+        "type": "set",
+        "key": "3bb69cb7e99b97ac83ea4deb9d4807093df7ba33",
+        "node": "75:42"
+      }
+    ],
+    "HvTableCell": [
+      {
+        "name": "Table/Cell",
+        "type": "set",
+        "key": "ec46151249a790155f2db0d6de7b7c72bad92ded",
+        "node": "36:41"
+      }
+    ],
+    "HvTableHead": [
+      {
+        "name": "Table/Header",
+        "type": "component",
+        "key": "358ec86f8d81ccdd48b6fe93d072f8aa7ca19c9f",
+        "node": "36:63"
+      }
+    ],
+    "HvTableHeader": [
+      {
+        "name": "Table/Header cell",
+        "type": "set",
+        "key": "16ed9bb2de6ed32a9421c0bd652fae909518ef54",
+        "node": "36:62"
+      }
+    ],
+    "HvTableRow": [
+      {
+        "name": "Table/Row",
+        "type": "set",
+        "key": "496f8c684b670cd6c17cd6c69ffb241d44082203",
+        "node": "36:126"
+      }
+    ],
+    "HvTableSection": [
+      {
+        "name": "Table section",
+        "type": "set",
+        "key": "8eed08f0a2e8d8166c6a454160dc9af6a9026e91",
+        "node": "55:469"
+      }
+    ],
+    "HvTabs": [
+      {
+        "name": "Tabs",
+        "type": "set",
+        "key": "cd25a382277032cb45ed225d95d71dc2197bf377",
+        "node": "75:61"
+      }
+    ],
+    "HvTag": [
+      {
+        "name": "Tag",
+        "type": "set",
+        "key": "f5193943ea5952ab01cd4490d8fd4ba506a44f67",
+        "node": "13:121"
+      }
+    ],
+    "HvTagsInput": [
+      {
+        "name": "Tags input",
+        "type": "set",
+        "key": "5dd3c2eb7ebfda9cd8de98f467ff50e721912f78",
+        "node": "92:91"
+      }
+    ],
+    "HvTextArea": [
+      {
+        "name": "Text area",
+        "type": "set",
+        "key": "0db8f5a63b4125b4c9c30688748a753575941ed3",
+        "node": "91:82"
+      }
+    ],
+    "HvTimePicker": [
+      {
+        "name": "Time picker",
+        "type": "set",
+        "key": "2eaae298df0e5e62ce96e6307d30a93dad458103",
+        "node": "93:57"
+      },
+      {
+        "name": "Time picker panel",
+        "type": "set",
+        "key": "0550b99b1d841a936b62b2b67dd219344920482b",
+        "node": "93:93",
+        "part": true
+      }
+    ],
+    "HvTooltip": [
+      {
+        "name": "Tooltip",
+        "type": "component",
+        "key": "ad5617ae00c5d7221e4092f9cfb30a13e309c8cb",
+        "node": "58:309"
+      }
+    ],
+    "HvTreeItem": [
+      {
+        "name": "Tree item",
+        "type": "set",
+        "key": "53e24e33e992fa540c44d2292185355e9a909788",
+        "node": "97:82"
+      }
+    ],
+    "HvTypography": [
+      {
+        "name": "Typography",
+        "type": "set",
+        "key": "fa3b919f58f3ceafc40a110a44dd17a42acec5f4",
+        "node": "97:385"
+      }
+    ],
+    "HvVerticalNavigation": [
+      {
+        "name": "Vertical navigation",
+        "type": "set",
+        "key": "ccf741d54fb4b477528c48467ef2e6546909c808",
+        "node": "69:157"
+      }
+    ],
+    "HvVerticalNavigationTreeViewItem": [
+      {
+        "name": "Vertical navigation/Item",
+        "type": "set",
+        "key": "58e0a7a56def1889074251db8218ed896ea6a69b",
+        "node": "69:71"
+      }
+    ]
+  },
+  "icons": {
+    "ArrowRight": {
+      "key": "c06bfde7daabade4a75d0ba9f3f1c737d3dccffa",
+      "node": "24:53"
+    },
+    "ArrowsClockwise": {
+      "key": "bd2254aaf8e17b87434cdaf1339e7083d3df0673",
+      "node": "24:56"
+    },
+    "Bell": {
+      "key": "e189551a1e218fa8cca6f9585a0b417e80c1eb7d",
+      "node": "24:80"
+    },
+    "CaretDoubleLeft": {
+      "key": "670d4c02d2bde95ce3ed8647841ed0d1dddc1ec1",
+      "node": "47:56"
+    },
+    "CaretDoubleRight": {
+      "key": "a0ab7b9c7e5a395e2bc227b4a3312671e601c831",
+      "node": "47:65"
+    },
+    "CaretDown": {
+      "key": "aad1108985b6accd6dc80e58b82a10f252755513",
+      "node": "24:47"
+    },
+    "CaretLeft": {
+      "key": "858c8d73b1288e609944c6f812b474bc764314dd",
+      "node": "47:47"
+    },
+    "CaretRight": {
+      "key": "569681e252da68ec3c3ba5b3ef04852b1bcdaf56",
+      "node": "24:50"
+    },
+    "ChartBar": {
+      "key": "115635c6b544b4df58dca4aad1c9fa80cce16b65",
+      "node": "98:104"
+    },
+    "ChartLine": {
+      "key": "4827e5f097dc110b6d0515c0c7bf19e4a47e74da",
+      "node": "98:131"
+    },
+    "Check": {
+      "key": "49976d68850637073cbbe827d404b79da65f23c2",
+      "node": "24:44"
+    },
+    "CheckCircle": {
+      "key": "c6e9322e431195eb73e7c120f32b7f12011fdbad",
+      "node": "24:68"
+    },
+    "Copy": {
+      "key": "9c7df92ac957124a4159e11bcb1c574fdfe7ebb9",
+      "node": "24:74"
+    },
+    "Database": {
+      "key": "a58c7a6eb3a1f01ccdf0c92451c780f0df1c9c14",
+      "node": "98:59"
+    },
+    "DotsThreeVertical": {
+      "key": "41e1e08a73bc5fbba5e44ebc2014a5a45825aa83",
+      "node": "24:59"
+    },
+    "DownloadSimple": {
+      "key": "68ebd286127b6dbc1e959997de711cc96e9fe64a",
+      "node": "24:29"
+    },
+    "Export": {
+      "key": "42083fef682b36c06da4b6bca9e3cdd4646201ee",
+      "node": "24:77"
+    },
+    "Eye": {
+      "key": "7055ba3effee2b553927c4682d18e8728bf39089",
+      "node": "98:149"
+    },
+    "FileText": {
+      "key": "977d75ea23622efaec0d70dcc602b5567943a1c1",
+      "node": "98:122"
+    },
+    "FlowArrow": {
+      "key": "4855f272297e516006f220a98bdbe2e2e0d9feba",
+      "node": "98:86"
+    },
+    "Funnel": {
+      "key": "9a42cf80758c7fc0a21c42bac0141834cbcd7353",
+      "node": "24:26"
+    },
+    "Gear": {
+      "key": "814a5fbee5da539078cbe7db1680c9eb7227d6f7",
+      "node": "98:158"
+    },
+    "House": {
+      "key": "69bf8b4cdf3f83cd63c0dcd35ed1bf3a59abb099",
+      "node": "98:50"
+    },
+    "Info": {
+      "key": "579b4514ad8ea2f24da011e1c411eb44a57a9bb7",
+      "node": "24:62"
+    },
+    "MagnifyingGlass": {
+      "key": "2a165152df66c006cfc98dc68248f33f5589229a",
+      "node": "24:23"
+    },
+    "MapTrifold": {
+      "key": "bf6c1761fd3d43eb5ef1f2287dec8da726a6960b",
+      "node": "98:77"
+    },
+    "PencilSimple": {
+      "key": "3547eb82bf535a3e676b376f1fc90e4233d0f30b",
+      "node": "24:35"
+    },
+    "Plus": {
+      "key": "9857306cad759559c10a402df40e44c554826bc8",
+      "node": "24:20"
+    },
+    "Rocket": {
+      "key": "7cee11fa985cabe4c3303b7ead3372d43a388896",
+      "node": "98:140"
+    },
+    "ShieldCheck": {
+      "key": "3048d703d5a4b6bc94e04e784928c6200e6b850b",
+      "node": "98:95"
+    },
+    "Star": {
+      "key": "be89f202c4d0a3b96155132e4b05667e4efe2b52",
+      "node": "98:68"
+    },
+    "Table": {
+      "key": "3cb3b666151478ce2124fb88ce4e087dbc87b73e",
+      "node": "98:113"
+    },
+    "Trash": {
+      "key": "2ca95c5126b95190f9f8b957bf2c09cbb8994d8b",
+      "node": "24:38"
+    },
+    "UploadSimple": {
+      "key": "a8a3455388416765098e6d3d28121aee24a7c0ee",
+      "node": "24:32"
+    },
+    "User": {
+      "key": "236d9c117da463f0005d2ff69a8664459d7ad8cd",
+      "node": "24:83"
+    },
+    "Warning": {
+      "key": "b2e25af774a3b93af112ee9574ea150059cd57c2",
+      "node": "24:65"
+    },
+    "X": {
+      "key": "148e597a35601c2ea828e93cd38a3855591a4c86",
+      "node": "24:41"
+    },
+    "XCircle": {
+      "key": "ceaa6dd92253b0ce4a6ebe48d47c2c5d64b9138c",
+      "node": "24:71"
+    }
+  }
+}

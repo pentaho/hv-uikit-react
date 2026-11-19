@@ -1,0 +1,313 @@
+{
+  "name": "Date picker",
+  "category": "Inputs",
+  "description": "Picks a date, or a range of dates, from a calendar.",
+  "overview": "Field states, then open with a single date and with a range, in light and dark. Today is outlined; the 28th is disabled.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Placeholder · value",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Placeholder · value",
+          "sizing": ["HUG", "HUG"],
+          "size": [108, 18],
+          "type": "text",
+          "characters": "Placeholder · value",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Date picker",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Default",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Select a date"
+              }
+            },
+            {
+              "name": "Date picker",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Default",
+                "Content": "Value"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Nov 12, 2026"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invalid · disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 105],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Invalid · disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [95, 18],
+          "type": "text",
+          "characters": "Invalid · disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 79],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Date picker",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 79],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Value"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Nov 12, 2026"
+              }
+            },
+            {
+              "name": "Date picker",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Value"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Nov 12, 2026"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open · single date",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 437],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · single date",
+          "sizing": ["HUG", "HUG"],
+          "size": [103, 18],
+          "type": "text",
+          "characters": "Open · single date",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [260, 411],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "padding": [0, 0, 8, 2],
+          "clips": true,
+          "children": [
+            {
+              "name": "Date picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 57],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Open",
+                "Content": "Value"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Nov 12, 2026"
+              }
+            },
+            {
+              "name": "Date picker panel",
+              "sizing": ["HUG", "HUG"],
+              "size": [258, 342],
+              "type": "instance",
+              "component": "Date picker panel",
+              "variant": {
+                "Mode": "single"
+              },
+              "properties": {
+                "Show actions#94:8": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open · range",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 437],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · range",
+          "sizing": ["HUG", "HUG"],
+          "size": [74, 18],
+          "type": "text",
+          "characters": "Open · range",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [260, 411],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "padding": [0, 0, 8, 2],
+          "clips": true,
+          "children": [
+            {
+              "name": "Date picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 57],
+              "type": "instance",
+              "component": "Date picker",
+              "variant": {
+                "State": "Open",
+                "Content": "Value"
+              },
+              "properties": {
+                "Label#94:11": "Start date",
+                "Value#94:22": "Nov 10 – Nov 14, 2026"
+              }
+            },
+            {
+              "name": "Date picker panel",
+              "sizing": ["HUG", "HUG"],
+              "size": [258, 342],
+              "type": "instance",
+              "component": "Date picker panel",
+              "variant": {
+                "Mode": "range"
+              },
+              "properties": {
+                "Show actions#94:8": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Dates people pick rather than type: schedules, report periods, filters.",
+    "Range mode for a period, with Apply so both ends change together."
+  ],
+  "dont": [
+    "Use it for a date people know by heart, such as a birth date: an Input with a format is faster.",
+    "Hide which dates are unavailable: disable them in the calendar."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1931],
+    "size": [1280, 1374],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [111, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Date picker",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [646, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Date picker (State × Content · Label, Value) · Date picker panel (Mode · Show actions) · Calendar day (State · Day)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Date picker",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Date picker panel",
+        "at": [80, 744]
+      },
+      {
+        "type": "set",
+        "name": "Calendar day",
+        "at": [80, 1198]
+      }
+    ]
+  }
+}

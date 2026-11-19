@@ -1,0 +1,250 @@
+{
+  "name": "Switch",
+  "category": "Inputs",
+  "description": "Turns a setting on or off immediately, with no Save step.",
+  "overview": "Off and on, disabled, and the two sizes, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Off · on",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 47],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Off · on",
+          "sizing": ["HUG", "HUG"],
+          "size": [43, 18],
+          "type": "text",
+          "characters": "Off · on",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Values",
+          "sizing": ["HUG", "HUG"],
+          "size": [258, 21],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [113, 21],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "small",
+                "Value": "off",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            },
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [113, 21],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "small",
+                "Value": "on",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 47],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [258, 21],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [113, 21],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "small",
+                "Value": "off",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            },
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [113, 21],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "small",
+                "Value": "on",
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "small · medium",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 50],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "small · medium",
+          "sizing": ["HUG", "HUG"],
+          "size": [85, 18],
+          "type": "text",
+          "characters": "small · medium",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Sizes",
+          "sizing": ["HUG", "HUG"],
+          "size": [266, 24],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [113, 21],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "small",
+                "Value": "on",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            },
+            {
+              "name": "Switch",
+              "sizing": ["HUG", "HUG"],
+              "size": [121, 24],
+              "type": "instance",
+              "component": "Switch",
+              "variant": {
+                "Size": "medium",
+                "Value": "on",
+                "State": "Default"
+              },
+              "properties": {
+                "Label#90:0": "Notify me",
+                "Show label#90:9": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A setting that applies as soon as it changes: notifications, auto-refresh, dark mode."
+  ],
+  "dont": [
+    "Use it in a form that saves with a button: use Checkbox.",
+    "Leave it without a label or aria-label that names the setting."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 955],
+    "size": [1280, 360],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [67, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Switch",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [225, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Size × Value × State · Label, Show label",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Switch",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

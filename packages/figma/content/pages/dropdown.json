@@ -1,0 +1,458 @@
+{
+  "name": "Dropdown",
+  "category": "Inputs",
+  "description": "Picks one or several values from a list, with optional search, select-all and Apply / Cancel.",
+  "overview": "Field states, then open with single and multiple selection, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["HUG", "HUG"],
+          "size": [41, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Default",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Select..."
+              }
+            },
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Default",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hover",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Hover",
+          "sizing": ["HUG", "HUG"],
+          "size": [34, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Hover",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Select..."
+              }
+            },
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Hover",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invalid",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 105],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Invalid",
+          "sizing": ["HUG", "HUG"],
+          "size": [37, 18],
+          "type": "text",
+          "characters": "Invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 79],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 79],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#62:33": "Required",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": true,
+                "Show label#62:11": true,
+                "Value#62:22": "Select..."
+              }
+            },
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 79],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Invalid",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Required",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": true,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 83],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 57],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Placeholder"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Select..."
+              }
+            },
+            {
+              "name": "Dropdown",
+              "sizing": ["FILL", "HUG"],
+              "size": [250, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Disabled",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open · single",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 253],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · single",
+          "sizing": ["HUG", "HUG"],
+          "size": [75, 18],
+          "type": "text",
+          "characters": "Open · single",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [240, 227],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "padding": [0, 0, 8, 0],
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Open",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops"
+              }
+            },
+            {
+              "name": "Dropdown panel",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 158],
+              "type": "instance",
+              "component": "Dropdown panel",
+              "variant": {
+                "Selection": "single"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open · multiple",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 357],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · multiple",
+          "sizing": ["HUG", "HUG"],
+          "size": [86, 18],
+          "type": "text",
+          "characters": "Open · multiple",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [240, 331],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 4,
+          "padding": [0, 0, 8, 0],
+          "clips": true,
+          "children": [
+            {
+              "name": "Dropdown",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 57],
+              "type": "instance",
+              "component": "Dropdown",
+              "variant": {
+                "State": "Open",
+                "Content": "Value"
+              },
+              "properties": {
+                "Helper#62:33": "Who maintains the asset",
+                "Label#62:0": "Owner",
+                "Show helper#62:44": false,
+                "Show label#62:11": true,
+                "Value#62:22": "Sales Ops, Finance"
+              }
+            },
+            {
+              "name": "Dropdown panel",
+              "sizing": ["FIXED", "HUG"],
+              "size": [240, 262],
+              "type": "instance",
+              "component": "Dropdown panel",
+              "variant": {
+                "Selection": "multi"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Choosing values from a list of more than about five options, in forms and filters.",
+    "Multiple selection with search for long lists; changes apply on Apply."
+  ],
+  "dont": [
+    "Use it for two or three options: use radios or checkboxes.",
+    "Use it for actions: use a Dropdown menu."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1844],
+    "size": [1280, 1150],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [101, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Dropdown",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [453, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Dropdown (State × Content · Label, Value, Helper) · Dropdown panel (Selection)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Dropdown",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Dropdown panel",
+        "at": [80, 744]
+      }
+    ]
+  }
+}

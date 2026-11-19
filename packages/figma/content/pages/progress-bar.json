@@ -1,0 +1,161 @@
+{
+  "name": "Progress bar",
+  "category": "Feedback",
+  "description": "A thin bar with a percentage showing how far a process with a known length has got.",
+  "overview": "In progress, completed and error, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "inProgress",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 48],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "inProgress",
+          "sizing": ["HUG", "HUG"],
+          "size": [61, 18],
+          "type": "text",
+          "characters": "inProgress",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Progress bar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [320, 22],
+          "type": "instance",
+          "component": "Progress bar",
+          "variant": {
+            "Status": "inProgress"
+          },
+          "properties": {
+            "Show label#74:4": true,
+            "Value#74:0": "60%"
+          }
+        }
+      ]
+    },
+    {
+      "name": "completed",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 48],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "completed",
+          "sizing": ["HUG", "HUG"],
+          "size": [61, 18],
+          "type": "text",
+          "characters": "completed",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Progress bar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [320, 22],
+          "type": "instance",
+          "component": "Progress bar",
+          "variant": {
+            "Status": "completed"
+          },
+          "properties": {
+            "Show label#74:4": true,
+            "Value#74:0": "100%"
+          }
+        }
+      ]
+    },
+    {
+      "name": "error",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 48],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "error",
+          "sizing": ["HUG", "HUG"],
+          "size": [28, 18],
+          "type": "text",
+          "characters": "error",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Progress bar",
+          "sizing": ["FIXED", "HUG"],
+          "size": [320, 22],
+          "type": "instance",
+          "component": "Progress bar",
+          "variant": {
+            "Status": "error"
+          },
+          "properties": {
+            "Show label#74:4": true,
+            "Value#74:0": "35%"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Processes with a known length: uploads, imports, a run with counted steps.",
+    "With a label naming the process (aria-label)."
+  ],
+  "dont": [
+    "Use it for unknown durations: use Loading.",
+    "Stop at 100% without saying it completed."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 955],
+    "size": [1280, 422],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [124, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Progress bar",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [147, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Status · Value, Show label",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Progress bar",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

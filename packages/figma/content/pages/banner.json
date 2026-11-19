@@ -1,0 +1,565 @@
+{
+  "name": "Banner",
+  "category": "Feedback",
+  "description": "An important message at the top of the page that stays until people dismiss it, with optional actions.",
+  "overview": "Each variant, a long message with two actions, custom actions and a custom icon, then the three sizes, in light and dark. Close sits top-right and the actions bottom-right.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "default",
+          "sizing": ["HUG", "HUG"],
+          "size": [40, 18],
+          "type": "text",
+          "characters": "default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "default",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "A new version of the catalog is available.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Status update"
+          }
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "info",
+          "sizing": ["HUG", "HUG"],
+          "size": [22, 18],
+          "type": "text",
+          "characters": "info",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "info",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Changes are paused while the workspace is being migrated.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Read-only mode"
+          }
+        }
+      ]
+    },
+    {
+      "name": "success",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "success",
+          "sizing": ["HUG", "HUG"],
+          "size": [47, 18],
+          "type": "text",
+          "characters": "success",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "success",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "All sources are syncing again.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Connection restored"
+          }
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "warning",
+          "sizing": ["HUG", "HUG"],
+          "size": [46, 18],
+          "type": "text",
+          "characters": "warning",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "warning",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Renew it to keep scheduled jobs running.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Licence expires in 7 days"
+          }
+        }
+      ]
+    },
+    {
+      "name": "error",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "error",
+          "sizing": ["HUG", "HUG"],
+          "size": [28, 18],
+          "type": "text",
+          "characters": "error",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "error",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Check your connection and try again.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Couldn't load assets"
+          }
+        }
+      ]
+    },
+    {
+      "name": "accent",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 88],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "accent",
+          "sizing": ["HUG", "HUG"],
+          "size": [39, 18],
+          "type": "text",
+          "characters": "accent",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "accent",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Lineage now shows column-level dependencies.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "New feature"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Long message with two actions",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 128],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Long message with two actions",
+          "sizing": ["HUG", "HUG"],
+          "size": [180, 18],
+          "type": "text",
+          "characters": "Long message with two actions",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 102],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "default",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Three sources failed their last sync and 42 assets may be out of date. Retry the failed sources, or open the run report to see which tables are affected and why.",
+            "Show action#31:28": true,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": false,
+            "Title#31:0": "Status update"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom actions",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 149],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Custom actions",
+          "sizing": ["HUG", "HUG"],
+          "size": [89, 18],
+          "type": "text",
+          "characters": "Custom actions",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 123],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "info",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "Three sources failed their last sync and 42 assets may be out of date. Retry the failed sources, or open the run report to see which tables are affected and why.",
+            "Show action#31:28": true,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": false,
+            "Title#31:0": "Status update"
+          },
+          "overrides": [
+            {
+              "path": [2, 1, 0],
+              "properties": {
+                "End icon instance#24:275": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:250": false,
+                "Label#7:0": "Read more",
+                "Start icon instance#24:225": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:200": false,
+                "State": "Default",
+                "Variant": "secondaryGhost"
+              }
+            },
+            {
+              "path": [2, 1, 1],
+              "properties": {
+                "End icon instance#24:175": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:150": false,
+                "Label#7:0": "Accept",
+                "Start icon instance#24:125": {
+                  "component": "Icon/Check"
+                },
+                "Start icon#24:100": true,
+                "State": "Default",
+                "Variant": "secondarySubtle"
+              },
+              "swap": {
+                "component": "Button",
+                "variant": {
+                  "Variant": "secondarySubtle",
+                  "State": "Default"
+                }
+              }
+            },
+            {
+              "path": [2, 1, 1, 0],
+              "swap": {
+                "component": "Icon/Check"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Custom icon",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 70],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Custom icon",
+          "sizing": ["HUG", "HUG"],
+          "size": [72, 18],
+          "type": "text",
+          "characters": "Custom icon",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 44],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "accent",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "This is a banner with a custom icon.",
+            "Show action#31:28": false,
+            "Show close#31:35": false,
+            "Show icon#31:21": true,
+            "Show title#31:7": false,
+            "Title#31:0": "Status update"
+          },
+          "overrides": [
+            {
+              "path": [0, 0],
+              "swap": {
+                "component": "Icon/Bell"
+              }
+            },
+            {
+              "path": [0, 0, 0],
+              "fills": [
+                {
+                  "variable": "Accent/accent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "micro · regular · large",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 228],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "micro · regular · large",
+          "sizing": ["HUG", "HUG"],
+          "size": [120, 18],
+          "type": "text",
+          "characters": "micro · regular · large",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 46],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "info",
+            "Size": "micro"
+          },
+          "properties": {
+            "Message#31:14": "No padding: for tight inline spaces.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Micro"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 62],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "info",
+            "Size": "regular"
+          },
+          "properties": {
+            "Message#31:14": "The default, padded space.xs.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Regular"
+          }
+        },
+        {
+          "name": "Banner",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 78],
+          "type": "instance",
+          "component": "Banner",
+          "variant": {
+            "Variant": "info",
+            "Size": "large"
+          },
+          "properties": {
+            "Message#31:14": "Padded space.sm.",
+            "Show action#31:28": false,
+            "Show close#31:35": true,
+            "Show icon#31:21": true,
+            "Show title#31:7": true,
+            "Title#31:0": "Large"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A state of the whole page or app that people must notice: a failed load, an expiring licence, read-only mode.",
+    "Brief confirmation of something that just happened: Snackbar. A decision before continuing: Dialog.",
+    "The same message inside a page region, not floating: Banner content."
+  ],
+  "dont": [
+    "Show several banners at once, or one for routine success.",
+    "Rely on colour alone: keep the status icon, and say what happened and what to do."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 2118],
+    "size": [2208, 868],
+    "items": [
+      {
+        "name": "Banner",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [70, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Banner",
+        "style": "Typography/title3",
+        "fill": {
+          "rgb": [0, 0, 0]
+        }
+      },
+      {
+        "name": "Variant × Size · Title, Message, Show icon, Show action, Show close",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [386, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant × Size · Title, Message, Show icon, Show action, Show close",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Banner",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1184 @@
+{
+  "name": "Multi button",
+  "category": "Actions",
+  "description": "A group of buttons for picking one of a few options, such as a time range or a view.",
+  "overview": "Content (icons, labels, both, one disabled), single and several selected, a split button, and vertical, in light and dark. Segments in a group share one width.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "Content: icons only · labels · icons and labels, one disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 156],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Content: icons only · labels · icons and labels, one disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [335, 18],
+          "type": "text",
+          "characters": "Content: icons only · labels · icons and labels, one disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Stack",
+          "sizing": ["HUG", "HUG"],
+          "size": [290, 126],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "clips": true,
+          "children": [
+            {
+              "name": "Multi button",
+              "sizing": ["HUG", "HUG"],
+              "size": [106, 34],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "radius": 9999,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "strokes": [
+                {
+                  "variable": "Borders/border"
+                }
+              ],
+              "strokeWeight": 1,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Map",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [35, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/MapTrifold"
+                    },
+                    "Label#109:0": "Map",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": false
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 9,
+                        "paddingLeft": 9,
+                        "topLeftRadius": 999,
+                        "topRightRadius": 0,
+                        "bottomRightRadius": 0,
+                        "bottomLeftRadius": 999
+                      }
+                    },
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Icon/MapTrifold"
+                      }
+                    },
+                    {
+                      "path": [0, 0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [35, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/Table"
+                    },
+                    "Label#109:0": "Table",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": false
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 9,
+                        "paddingLeft": 9
+                      }
+                    },
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Icon/Table"
+                      }
+                    },
+                    {
+                      "path": [0, 0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Chart",
+                  "sizing": ["HUG", "FIXED"],
+                  "size": [34, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "Chart",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": false
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 9,
+                        "paddingLeft": 9,
+                        "strokeWeight": 0
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Multi button",
+              "sizing": ["HUG", "HUG"],
+              "size": [290, 34],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "radius": 9999,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "strokes": [
+                {
+                  "variable": "Borders/border"
+                }
+              ],
+              "strokeWeight": 1,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Map",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "Map",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED",
+                        "topLeftRadius": 999,
+                        "topRightRadius": 0,
+                        "bottomRightRadius": 0,
+                        "bottomLeftRadius": 999
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Table",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "Table",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Chart",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "Chart",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeWeight": 0
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Multi button",
+              "sizing": ["HUG", "HUG"],
+              "size": [290, 34],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "radius": 9999,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "strokes": [
+                {
+                  "variable": "Borders/border"
+                }
+              ],
+              "strokeWeight": 1,
+              "clips": true,
+              "children": [
+                {
+                  "name": "Map",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/MapTrifold"
+                    },
+                    "Label#109:0": "Map",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED",
+                        "topLeftRadius": 999,
+                        "topRightRadius": 0,
+                        "bottomRightRadius": 0,
+                        "bottomLeftRadius": 999
+                      }
+                    },
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Icon/MapTrifold"
+                      }
+                    },
+                    {
+                      "path": [0, 0],
+                      "fills": [
+                        {
+                          "variable": "Text/text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Table",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Disabled"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/Table"
+                    },
+                    "Label#109:0": "Table",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED"
+                      }
+                    },
+                    {
+                      "path": [0],
+                      "swap": {
+                        "component": "Icon/Table"
+                      }
+                    },
+                    {
+                      "path": [0, 0],
+                      "fills": [
+                        {
+                          "variable": "Text/textDisabled"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Chart",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [96, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "Chart",
+                    "Show icon#109:5": true,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 12,
+                        "paddingLeft": 12,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeWeight": 0
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single selection: a time range",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 64],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Single selection: a time range",
+          "sizing": ["HUG", "HUG"],
+          "size": [168, 18],
+          "type": "text",
+          "characters": "Single selection: a time range",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Multi button",
+          "sizing": ["HUG", "HUG"],
+          "size": [290, 34],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "radius": 9999,
+          "fills": [
+            {
+              "variable": "Surfaces/bgPage"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/border"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Day",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [72, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Day",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED",
+                    "strokeWeight": 0,
+                    "topLeftRadius": 999,
+                    "topRightRadius": 0,
+                    "bottomRightRadius": 0,
+                    "bottomLeftRadius": 999
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Week",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [72, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Selected"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Week",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Month",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [72, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Month",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Year",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [72, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Year",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED",
+                    "strokeWeight": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Several selected: weekdays, with a quick action",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 64],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Several selected: weekdays, with a quick action",
+          "sizing": ["HUG", "HUG"],
+          "size": [272, 18],
+          "type": "text",
+          "characters": "Several selected: weekdays, with a quick action",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Line",
+          "sizing": ["HUG", "HUG"],
+          "size": [370, 34],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Button/Small",
+              "sizing": ["HUG", "FIXED"],
+              "size": [132, 24],
+              "type": "instance",
+              "component": "Button/Small",
+              "variant": {
+                "Variant": "primarySubtle",
+                "State": "Default"
+              },
+              "properties": {
+                "End icon instance#24:275": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:250": false,
+                "Label#7:0": "Select weekdays",
+                "Start icon instance#24:225": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:200": false
+              }
+            },
+            {
+              "name": "Multi button",
+              "sizing": ["HUG", "HUG"],
+              "size": [226, 34],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "radius": 9999,
+              "fills": [
+                {
+                  "variable": "Surfaces/bgPage"
+                }
+              ],
+              "strokes": [
+                {
+                  "variable": "Borders/border"
+                }
+              ],
+              "strokeWeight": 1,
+              "clips": true,
+              "children": [
+                {
+                  "name": "S",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "S",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeWeight": 0,
+                        "topLeftRadius": 999,
+                        "topRightRadius": 0,
+                        "bottomRightRadius": 0,
+                        "bottomLeftRadius": 999
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "M",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Selected"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "M",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "T",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Selected"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "T",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeTopWeight": 1,
+                        "strokeRightWeight": 1,
+                        "strokeBottomWeight": 1,
+                        "strokeLeftWeight": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "W",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Selected"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "W",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeTopWeight": 1,
+                        "strokeRightWeight": 1,
+                        "strokeBottomWeight": 1,
+                        "strokeLeftWeight": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "T",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "T",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "F",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "F",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "S",
+                  "sizing": ["FIXED", "FIXED"],
+                  "size": [32, 32],
+                  "type": "instance",
+                  "component": "Multi button/Segment",
+                  "variant": {
+                    "State": "Default"
+                  },
+                  "properties": {
+                    "Icon#109:10": {
+                      "component": "Icon/ChartBar"
+                    },
+                    "Label#109:0": "S",
+                    "Show icon#109:5": false,
+                    "Show label#111:0": true
+                  },
+                  "overrides": [
+                    {
+                      "path": [],
+                      "set": {
+                        "paddingRight": 0,
+                        "paddingLeft": 0,
+                        "primaryAxisSizingMode": "FIXED",
+                        "strokeWeight": 0
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Split button: the main action and a menu of alternatives",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 64],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Split button: the main action and a menu of alternatives",
+          "sizing": ["HUG", "HUG"],
+          "size": [315, 18],
+          "type": "text",
+          "characters": "Split button: the main action and a menu of alternatives",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Multi button",
+          "sizing": ["HUG", "HUG"],
+          "size": [165, 34],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "radius": 9999,
+          "fills": [
+            {
+              "variable": "Surfaces/bgPage"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/border"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Merge commit",
+              "sizing": ["HUG", "FIXED"],
+              "size": [131, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Merge commit",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 16,
+                    "paddingLeft": 16,
+                    "topLeftRadius": 999,
+                    "topRightRadius": 0,
+                    "bottomRightRadius": 0,
+                    "bottomLeftRadius": 999
+                  }
+                },
+                {
+                  "path": [0],
+                  "font": {
+                    "family": "Inter",
+                    "style": "Semi Bold",
+                    "size": 14
+                  }
+                }
+              ]
+            },
+            {
+              "name": "More",
+              "sizing": ["HUG", "FIXED"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/CaretDown"
+                },
+                "Label#109:0": "More",
+                "Show icon#109:5": true,
+                "Show label#111:0": false
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 8,
+                    "paddingLeft": 8,
+                    "strokeWeight": 0
+                  }
+                },
+                {
+                  "path": [0],
+                  "swap": {
+                    "component": "Icon/CaretDown"
+                  }
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Text/text"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vertical",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 128],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "children": [
+        {
+          "name": "Vertical",
+          "sizing": ["HUG", "HUG"],
+          "size": [43, 18],
+          "type": "text",
+          "characters": "Vertical",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Multi button",
+          "sizing": ["HUG", "HUG"],
+          "size": [69, 98],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "radius": 16,
+          "fills": [
+            {
+              "variable": "Surfaces/bgPage"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/border"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Day",
+              "sizing": ["FILL", "FIXED"],
+              "size": [67, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Day",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED",
+                    "strokeWeight": 0,
+                    "topLeftRadius": 12,
+                    "topRightRadius": 12,
+                    "bottomRightRadius": 0,
+                    "bottomLeftRadius": 0
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Week",
+              "sizing": ["FILL", "FIXED"],
+              "size": [67, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Selected"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Week",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED",
+                    "strokeTopWeight": 1,
+                    "strokeRightWeight": 0,
+                    "strokeBottomWeight": 1,
+                    "strokeLeftWeight": 1
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Month",
+              "sizing": ["FILL", "FIXED"],
+              "size": [67, 32],
+              "type": "instance",
+              "component": "Multi button/Segment",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Icon#109:10": {
+                  "component": "Icon/ChartBar"
+                },
+                "Label#109:0": "Month",
+                "Show icon#109:5": false,
+                "Show label#111:0": true
+              },
+              "overrides": [
+                {
+                  "path": [],
+                  "set": {
+                    "paddingRight": 12,
+                    "paddingLeft": 12,
+                    "primaryAxisSizingMode": "FIXED",
+                    "strokeWeight": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "One choice among two to five options that change a view at once: time range, chart type, layout."
+  ],
+  "dont": [
+    "Use it for actions: use Buttons.",
+    "Use it in a form that submits: use Radio group."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1400],
+    "size": [1280, 516],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [119, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Multi button",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [491, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Multi button (Orientation) · Multi button/Segment (State · Label, Show icon, Icon swap)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Multi button",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Multi button/Segment",
+        "at": [80, 342]
+      }
+    ]
+  }
+}

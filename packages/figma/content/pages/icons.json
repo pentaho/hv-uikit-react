@@ -1,0 +1,1815 @@
+{
+  "name": "Icons",
+  "category": "Foundations",
+  "description": "Phosphor regular glyphs at 16px, coloured by the text they sit with. Swap them into Button, Banner and Dialog through the icon properties.",
+  "overview": "38 icons. In code, pass the icon component (for example startIcon on a Button); name icon-only buttons with aria-label.",
+  "overviewTitle": "Set",
+  "body": [
+    {
+      "name": "Grid",
+      "sizing": ["FILL", "HUG"],
+      "size": [1152, 544],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "wrap": true,
+      "gap": 16,
+      "rowGap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Icon/Plus",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Plus",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Plus"
+            },
+            {
+              "name": "Plus",
+              "sizing": ["HUG", "HUG"],
+              "size": [24, 15],
+              "type": "text",
+              "characters": "Plus",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/MagnifyingGlass",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/MagnifyingGlass",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/MagnifyingGlass"
+            },
+            {
+              "name": "MagnifyingGlass",
+              "sizing": ["HUG", "HUG"],
+              "size": [94, 15],
+              "type": "text",
+              "characters": "MagnifyingGlass",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Funnel",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Funnel",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Funnel"
+            },
+            {
+              "name": "Funnel",
+              "sizing": ["HUG", "HUG"],
+              "size": [38, 15],
+              "type": "text",
+              "characters": "Funnel",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/DownloadSimple",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/DownloadSimple",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/DownloadSimple"
+            },
+            {
+              "name": "DownloadSimple",
+              "sizing": ["HUG", "HUG"],
+              "size": [95, 15],
+              "type": "text",
+              "characters": "DownloadSimple",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/UploadSimple",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/UploadSimple",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/UploadSimple"
+            },
+            {
+              "name": "UploadSimple",
+              "sizing": ["HUG", "HUG"],
+              "size": [79, 15],
+              "type": "text",
+              "characters": "UploadSimple",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/PencilSimple",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/PencilSimple",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/PencilSimple"
+            },
+            {
+              "name": "PencilSimple",
+              "sizing": ["HUG", "HUG"],
+              "size": [73, 15],
+              "type": "text",
+              "characters": "PencilSimple",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Trash",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Trash",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Trash"
+            },
+            {
+              "name": "Trash",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 15],
+              "type": "text",
+              "characters": "Trash",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/X",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/X",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/X"
+            },
+            {
+              "name": "X",
+              "sizing": ["HUG", "HUG"],
+              "size": [8, 15],
+              "type": "text",
+              "characters": "X",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Check",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Check",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Check"
+            },
+            {
+              "name": "Check",
+              "sizing": ["HUG", "HUG"],
+              "size": [37, 15],
+              "type": "text",
+              "characters": "Check",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CaretDown",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CaretDown",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CaretDown"
+            },
+            {
+              "name": "CaretDown",
+              "sizing": ["HUG", "HUG"],
+              "size": [64, 15],
+              "type": "text",
+              "characters": "CaretDown",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CaretRight",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CaretRight",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CaretRight"
+            },
+            {
+              "name": "CaretRight",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 15],
+              "type": "text",
+              "characters": "CaretRight",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/ArrowRight",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/ArrowRight",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/ArrowRight"
+            },
+            {
+              "name": "ArrowRight",
+              "sizing": ["HUG", "HUG"],
+              "size": [63, 15],
+              "type": "text",
+              "characters": "ArrowRight",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/ArrowsClockwise",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/ArrowsClockwise",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/ArrowsClockwise"
+            },
+            {
+              "name": "ArrowsClockwise",
+              "sizing": ["HUG", "HUG"],
+              "size": [98, 15],
+              "type": "text",
+              "characters": "ArrowsClockwise",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/DotsThreeVertical",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/DotsThreeVertical",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/DotsThreeVertical"
+            },
+            {
+              "name": "DotsThreeVertical",
+              "sizing": ["HUG", "HUG"],
+              "size": [101, 15],
+              "type": "text",
+              "characters": "DotsThreeVertical",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Info",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Info",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Info"
+            },
+            {
+              "name": "Info",
+              "sizing": ["HUG", "HUG"],
+              "size": [22, 15],
+              "type": "text",
+              "characters": "Info",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Warning",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Warning",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Warning"
+            },
+            {
+              "name": "Warning",
+              "sizing": ["HUG", "HUG"],
+              "size": [47, 15],
+              "type": "text",
+              "characters": "Warning",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CheckCircle",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CheckCircle",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CheckCircle"
+            },
+            {
+              "name": "CheckCircle",
+              "sizing": ["HUG", "HUG"],
+              "size": [69, 15],
+              "type": "text",
+              "characters": "CheckCircle",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/XCircle",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/XCircle",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/XCircle"
+            },
+            {
+              "name": "XCircle",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 15],
+              "type": "text",
+              "characters": "XCircle",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Copy",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Copy",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Copy"
+            },
+            {
+              "name": "Copy",
+              "sizing": ["HUG", "HUG"],
+              "size": [30, 15],
+              "type": "text",
+              "characters": "Copy",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Export",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Export",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Export"
+            },
+            {
+              "name": "Export",
+              "sizing": ["HUG", "HUG"],
+              "size": [38, 15],
+              "type": "text",
+              "characters": "Export",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Bell",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Bell",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Bell"
+            },
+            {
+              "name": "Bell",
+              "sizing": ["HUG", "HUG"],
+              "size": [21, 15],
+              "type": "text",
+              "characters": "Bell",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/User",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/User",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/User"
+            },
+            {
+              "name": "User",
+              "sizing": ["HUG", "HUG"],
+              "size": [27, 15],
+              "type": "text",
+              "characters": "User",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CaretLeft",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CaretLeft",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CaretLeft"
+            },
+            {
+              "name": "CaretLeft",
+              "sizing": ["HUG", "HUG"],
+              "size": [54, 15],
+              "type": "text",
+              "characters": "CaretLeft",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CaretDoubleLeft",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CaretDoubleLeft",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CaretDoubleLeft"
+            },
+            {
+              "name": "CaretDoubleLeft",
+              "sizing": ["HUG", "HUG"],
+              "size": [94, 15],
+              "type": "text",
+              "characters": "CaretDoubleLeft",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/CaretDoubleRight",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/CaretDoubleRight",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/CaretDoubleRight"
+            },
+            {
+              "name": "CaretDoubleRight",
+              "sizing": ["HUG", "HUG"],
+              "size": [101, 15],
+              "type": "text",
+              "characters": "CaretDoubleRight",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/House",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/House",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/House"
+            },
+            {
+              "name": "House",
+              "sizing": ["HUG", "HUG"],
+              "size": [37, 15],
+              "type": "text",
+              "characters": "House",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Database",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Database",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Database"
+            },
+            {
+              "name": "Database",
+              "sizing": ["HUG", "HUG"],
+              "size": [54, 15],
+              "type": "text",
+              "characters": "Database",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Star",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Star",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Star"
+            },
+            {
+              "name": "Star",
+              "sizing": ["HUG", "HUG"],
+              "size": [24, 15],
+              "type": "text",
+              "characters": "Star",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/MapTrifold",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/MapTrifold",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/MapTrifold"
+            },
+            {
+              "name": "MapTrifold",
+              "sizing": ["HUG", "HUG"],
+              "size": [61, 15],
+              "type": "text",
+              "characters": "MapTrifold",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/FlowArrow",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/FlowArrow",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/FlowArrow"
+            },
+            {
+              "name": "FlowArrow",
+              "sizing": ["HUG", "HUG"],
+              "size": [60, 15],
+              "type": "text",
+              "characters": "FlowArrow",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/ShieldCheck",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/ShieldCheck",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/ShieldCheck"
+            },
+            {
+              "name": "ShieldCheck",
+              "sizing": ["HUG", "HUG"],
+              "size": [71, 15],
+              "type": "text",
+              "characters": "ShieldCheck",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/ChartBar",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/ChartBar",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/ChartBar"
+            },
+            {
+              "name": "ChartBar",
+              "sizing": ["HUG", "HUG"],
+              "size": [51, 15],
+              "type": "text",
+              "characters": "ChartBar",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Table",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Table",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Table"
+            },
+            {
+              "name": "Table",
+              "sizing": ["HUG", "HUG"],
+              "size": [31, 15],
+              "type": "text",
+              "characters": "Table",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/FileText",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/FileText",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/FileText"
+            },
+            {
+              "name": "FileText",
+              "sizing": ["HUG", "HUG"],
+              "size": [44, 15],
+              "type": "text",
+              "characters": "FileText",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/ChartLine",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/ChartLine",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/ChartLine"
+            },
+            {
+              "name": "ChartLine",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 15],
+              "type": "text",
+              "characters": "ChartLine",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Rocket",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Rocket",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Rocket"
+            },
+            {
+              "name": "Rocket",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 15],
+              "type": "text",
+              "characters": "Rocket",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Eye",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Eye",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Eye"
+            },
+            {
+              "name": "Eye",
+              "sizing": ["HUG", "HUG"],
+              "size": [21, 15],
+              "type": "text",
+              "characters": "Eye",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Icon/Gear",
+          "sizing": ["FIXED", "FIXED"],
+          "size": [128, 96],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "main": "CENTER",
+          "cross": "CENTER",
+          "radius": 8,
+          "fills": [
+            {
+              "variable": "Surfaces/bgContainer"
+            }
+          ],
+          "strokes": [
+            {
+              "variable": "Borders/borderSubtle"
+            }
+          ],
+          "strokeWeight": 1,
+          "clips": true,
+          "children": [
+            {
+              "name": "Icon/Gear",
+              "sizing": ["FIXED", "FIXED"],
+              "size": [24, 24],
+              "type": "instance",
+              "component": "Icon/Gear"
+            },
+            {
+              "name": "Gear",
+              "sizing": ["HUG", "HUG"],
+              "size": [28, 15],
+              "type": "text",
+              "characters": "Gear",
+              "fill": {
+                "variable": "Text/textSubtle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1056],
+    "size": [1280, 272],
+    "items": [
+      {
+        "type": "set",
+        "name": "Icon/Plus",
+        "at": [80, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/MagnifyingGlass",
+        "at": [128, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Funnel",
+        "at": [176, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/DownloadSimple",
+        "at": [224, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/UploadSimple",
+        "at": [272, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/PencilSimple",
+        "at": [320, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Trash",
+        "at": [368, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/X",
+        "at": [416, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Check",
+        "at": [464, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CaretDown",
+        "at": [512, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CaretRight",
+        "at": [560, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/ArrowRight",
+        "at": [608, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/ArrowsClockwise",
+        "at": [656, 80]
+      },
+      {
+        "type": "set",
+        "name": "Icon/DotsThreeVertical",
+        "at": [80, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Info",
+        "at": [128, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Warning",
+        "at": [176, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CheckCircle",
+        "at": [224, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/XCircle",
+        "at": [272, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Copy",
+        "at": [320, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Export",
+        "at": [368, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Bell",
+        "at": [416, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/User",
+        "at": [464, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CaretLeft",
+        "at": [512, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CaretDoubleLeft",
+        "at": [560, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/CaretDoubleRight",
+        "at": [608, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/House",
+        "at": [656, 128]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Database",
+        "at": [80, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Star",
+        "at": [128, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/MapTrifold",
+        "at": [176, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/FlowArrow",
+        "at": [224, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/ShieldCheck",
+        "at": [272, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/ChartBar",
+        "at": [320, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Table",
+        "at": [368, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/FileText",
+        "at": [416, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/ChartLine",
+        "at": [464, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Rocket",
+        "at": [512, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Eye",
+        "at": [560, 176]
+      },
+      {
+        "type": "set",
+        "name": "Icon/Gear",
+        "at": [608, 176]
+      }
+    ]
+  }
+}

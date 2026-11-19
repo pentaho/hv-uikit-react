@@ -1,0 +1,1855 @@
+{
+  "$comment": "What the rules (src/code-connect/rules.ts) can't map, per Figma component: `element` when the snippet's root isn't the component library.json files it under, `skip` with the reason, and per property what it becomes (src/code-connect/map.ts says how). Hand-written; `npm run generate` fails on a property nothing maps.",
+  "components": {
+    "Action bar": {
+      "layers": {
+        "secondary": {
+          "instance": "Secondary"
+        },
+        "primary": {
+          "instance": "Primary"
+        }
+      },
+      "example": [
+        "<HvActionBar>",
+        "  {{secondary}}",
+        "  {{primary}}",
+        "</HvActionBar>"
+      ]
+    },
+    "Avatar": {
+      "example": "<HvAvatar{{attrs}}>{{children}}{{icon}}</HvAvatar>",
+      "properties": {
+        "Show status": {
+          "figmaOnly": "`status` takes the colour of a real state (online, away); the toggle draws a ring, not which state"
+        },
+        "Show badge": {
+          "figmaOnly": "`badge` takes the colour of a real state; the toggle draws a dot, not which state"
+        },
+        "Icon": {
+          "instance": "icon"
+        },
+        "Content": {
+          "shows": {
+            "initials": ["children"],
+            "icon": ["icon"],
+            "image": []
+          }
+        },
+        "Shape": {
+          "values": {
+            "circular": {
+              "variant": "circular"
+            },
+            "square": {
+              "variant": "square"
+            }
+          }
+        }
+      }
+    },
+    "Avatar group": {
+      "layers": {
+        "avatar1": {
+          "instance": "Avatar",
+          "nth": 0
+        },
+        "avatar2": {
+          "instance": "Avatar",
+          "nth": 1
+        },
+        "avatar3": {
+          "instance": "Avatar",
+          "nth": 2
+        }
+      },
+      "example": [
+        "<HvAvatarGroup{{attrs}}>",
+        "  {{avatar1}}",
+        "  {{avatar2}}",
+        "  {{avatar3}}",
+        "</HvAvatarGroup>"
+      ]
+    },
+    "Badge": {
+      "properties": {
+        "Count": {
+          "text": "label"
+        },
+        "Type": {
+          "values": {
+            "count": {
+              "showCount": true
+            },
+            "dot": {
+              "label": ""
+            }
+          },
+          "shows": {
+            "count": ["label"],
+            "dot": []
+          }
+        }
+      }
+    },
+    "Banner": {
+      "fixed": {
+        "open": true
+      },
+      "layers": {
+        "action": {
+          "instance": "Action"
+        },
+        "action2": {
+          "instance": "Action 2"
+        },
+        "actions": {
+          "code": "<>{{action}}{{action2}}</>"
+        }
+      },
+      "properties": {
+        "Title": {
+          "text": "title"
+        },
+        "Message": {
+          "text": "label"
+        },
+        "Show action": {
+          "shows": {
+            "true": ["actions"],
+            "false": []
+          }
+        },
+        "Show close": {
+          "values": {
+            "true": {
+              "onClose": "{handleClose}"
+            },
+            "false": {}
+          }
+        },
+        "Size": {
+          "values": {
+            "regular": {},
+            "micro": {
+              "size": "micro"
+            },
+            "large": {
+              "size": "large"
+            }
+          }
+        }
+      }
+    },
+    "Breadcrumb": {
+      "properties": {
+        "Level 1": {
+          "text": "level1"
+        },
+        "Level 2": {
+          "text": "level2"
+        },
+        "Level 3": {
+          "text": "level3"
+        },
+        "Current": {
+          "text": "current"
+        },
+        "Levels": {
+          "examples": {
+            "2": [
+              "<HvBreadCrumb",
+              "  listRoute={[",
+              "    { label: \"{{level1}}\", path: \"/\" },",
+              "    { label: \"{{current}}\", path: \"\" },",
+              "  ]}",
+              "/>"
+            ],
+            "3": [
+              "<HvBreadCrumb",
+              "  listRoute={[",
+              "    { label: \"{{level1}}\", path: \"/\" },",
+              "    { label: \"{{level2}}\", path: \"/\" },",
+              "    { label: \"{{current}}\", path: \"\" },",
+              "  ]}",
+              "/>"
+            ],
+            "4": [
+              "<HvBreadCrumb",
+              "  listRoute={[",
+              "    { label: \"{{level1}}\", path: \"/\" },",
+              "    { label: \"{{level2}}\", path: \"/\" },",
+              "    { label: \"{{level3}}\", path: \"/\" },",
+              "    { label: \"{{current}}\", path: \"\" },",
+              "  ]}",
+              "/>"
+            ]
+          }
+        }
+      }
+    },
+    "Bulk actions": {
+      "fixed": {
+        "numTotal": 10
+      },
+      "layers": {
+        "download": {
+          "text": "Label",
+          "path": ["Download"]
+        },
+        "remove": {
+          "text": "Label",
+          "path": ["Delete"]
+        }
+      },
+      "example": [
+        "<HvBulkActions{{attrs}}",
+        "  actions={[",
+        "    { id: \"download\", label: \"{{download}}\" },",
+        "    { id: \"delete\", label: \"{{remove}}\" },",
+        "  ]}",
+        "/>"
+      ],
+      "properties": {
+        "Selection": {
+          "values": {
+            "none": {
+              "numSelected": 0
+            },
+            "some": {
+              "numSelected": 3
+            },
+            "all": {
+              "numSelected": 10
+            }
+          }
+        }
+      }
+    },
+    "Button/Large": {
+      "fixed": {
+        "size": "lg"
+      },
+      "layers": {}
+    },
+    "Button/Small": {
+      "fixed": {
+        "size": "sm"
+      },
+      "layers": {}
+    },
+    "Button/Status": {
+      "properties": {
+        "Color + Style": {
+          "values": {
+            "positive + contained": {
+              "variant": "positive"
+            },
+            "positive + subtle": {
+              "variant": "positiveSubtle"
+            },
+            "positive + ghost": {
+              "variant": "positiveGhost"
+            },
+            "warning + contained": {
+              "variant": "warning"
+            },
+            "warning + subtle": {
+              "variant": "warningSubtle"
+            },
+            "warning + ghost": {
+              "variant": "warningGhost"
+            },
+            "negative + contained": {
+              "variant": "negative"
+            },
+            "negative + subtle": {
+              "variant": "negativeSubtle"
+            },
+            "negative + ghost": {
+              "variant": "negativeGhost"
+            }
+          }
+        }
+      }
+    },
+    "Calendar day": {
+      "properties": {
+        "Day": {
+          "figmaOnly": "one day cell of HvCalendar: its number comes from the month the calendar shows"
+        },
+        "State": {
+          "figmaOnly": "drawn from HvCalendar's value, minimumDate and maximumDate and the pointer; a day cell has no props"
+        }
+      }
+    },
+    "Card": {
+      "fixed": {
+        "bgcolor": "bgContainer"
+      },
+      "layers": {
+        "icon": {
+          "instance": "Status icon"
+        },
+        "actions": {
+          "instance": "Action bar"
+        },
+        "media": {
+          "code": "<HvCardMedia image={mediaUrl} />"
+        }
+      },
+      "example": [
+        "<HvCard{{attrs}}>",
+        "  <HvCardHeader title=\"{{title}}\"{{@subheader}} />",
+        "  {{media}}",
+        "  <HvCardContent>{{body}}</HvCardContent>",
+        "  {{actions}}",
+        "</HvCard>"
+      ],
+      "properties": {
+        "Title": {
+          "text": "title"
+        },
+        "Subheader": {
+          "text": "subheader"
+        },
+        "Body": {
+          "text": "body"
+        },
+        "Status": {
+          "values": {
+            "none": {},
+            "positive": {
+              "statusColor": "positive"
+            },
+            "warning": {
+              "statusColor": "warning"
+            },
+            "negative": {
+              "statusColor": "negative"
+            },
+            "info": {
+              "statusColor": "info"
+            }
+          }
+        },
+        "Selected": {
+          "values": {
+            "false": {},
+            "true": {
+              "selectable": true,
+              "selected": true
+            }
+          }
+        }
+      }
+    },
+    "Checkbox": {
+      "properties": {
+        "Error": {
+          "text": "statusMessage"
+        },
+        "Value": {
+          "values": {
+            "unchecked": {},
+            "checked": {
+              "checked": true
+            },
+            "indeterminate": {
+              "indeterminate": true
+            }
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Disabled": {
+              "disabled": true
+            },
+            "Invalid": {
+              "status": "invalid"
+            }
+          },
+          "shows": {
+            "Invalid": ["statusMessage"]
+          }
+        }
+      }
+    },
+    "Checkbox group": {
+      "layers": {
+        "statusMessage": {
+          "text": "Error"
+        },
+        "published": {
+          "instance": "Published"
+        },
+        "draft": {
+          "instance": "Draft"
+        },
+        "failed": {
+          "instance": "Failed"
+        }
+      },
+      "example": [
+        "<HvCheckBoxGroup{{attrs}}>",
+        "  {{published}}",
+        "  {{draft}}",
+        "  {{failed}}",
+        "</HvCheckBoxGroup>"
+      ],
+      "properties": {
+        "Orientation": {
+          "values": {
+            "vertical": {},
+            "horizontal": {
+              "orientation": "horizontal"
+            }
+          }
+        },
+        "Status": {
+          "values": {
+            "default": {},
+            "invalid": {
+              "status": "invalid"
+            }
+          },
+          "shows": {
+            "invalid": ["statusMessage"]
+          }
+        }
+      }
+    },
+    "Date picker": {
+      "layers": {
+        "statusMessage": {
+          "text": "Error"
+        }
+      },
+      "properties": {
+        "Value": {
+          "text": "text"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Open": {
+              "expanded": true
+            },
+            "Invalid": {
+              "status": "invalid"
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          },
+          "shows": {
+            "Invalid": ["statusMessage"]
+          }
+        },
+        "Content": {
+          "examples": {
+            "Placeholder": "<HvDatePicker{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvDatePicker{{attrs}} value={new Date(\"{{text}}\")} />"
+          }
+        }
+      }
+    },
+    "Date picker panel": {
+      "fixed": {
+        "expanded": true
+      },
+      "properties": {
+        "Mode": {
+          "values": {
+            "single": {},
+            "range": {
+              "rangeMode": true
+            }
+          }
+        }
+      }
+    },
+    "Dialog": {
+      "fixed": {
+        "open": true
+      },
+      "layers": {
+        "secondary": {
+          "instance": "Secondary"
+        },
+        "primary": {
+          "instance": "Primary"
+        }
+      },
+      "example": [
+        "<HvDialog{{attrs}}{{@variant}}>",
+        "  <HvDialogTitle{{@variant}}>{{title}}</HvDialogTitle>",
+        "  <HvDialogContent>{{body}}</HvDialogContent>",
+        "  <HvDialogActions>",
+        "    {{secondary}}",
+        "    {{primary}}",
+        "  </HvDialogActions>",
+        "</HvDialog>"
+      ],
+      "properties": {
+        "Title": {
+          "text": "title"
+        },
+        "Body": {
+          "text": "body"
+        },
+        "Show close": {
+          "values": {
+            "true": {
+              "onClose": "{handleClose}"
+            },
+            "false": {}
+          }
+        }
+      }
+    },
+    "Drawer": {
+      "fixed": {
+        "open": true,
+        "onClose": "{handleClose}"
+      },
+      "layers": {
+        "secondary": {
+          "instance": "Secondary",
+          "path": ["Action bar"]
+        },
+        "primary": {
+          "instance": "Primary",
+          "path": ["Action bar"]
+        }
+      },
+      "properties": {
+        "Title": {
+          "text": "title"
+        },
+        "Content": {
+          "instance": "content"
+        },
+        "Show actions": {
+          "examples": {
+            "true": [
+              "<HvDrawer{{attrs}}>",
+              "  <HvDialogTitle>{{title}}</HvDialogTitle>",
+              "  <HvDialogContent>{{content}}</HvDialogContent>",
+              "  <HvDialogActions>",
+              "    {{secondary}}",
+              "    {{primary}}",
+              "  </HvDialogActions>",
+              "</HvDrawer>"
+            ],
+            "false": [
+              "<HvDrawer{{attrs}}>",
+              "  <HvDialogTitle>{{title}}</HvDialogTitle>",
+              "  <HvDialogContent>{{content}}</HvDialogContent>",
+              "</HvDrawer>"
+            ]
+          }
+        }
+      }
+    },
+    "Dropdown": {
+      "properties": {
+        "Value": {
+          "text": "text"
+        },
+        "Helper": {
+          "text": "description"
+        },
+        "Show helper": {
+          "shows": {
+            "true": ["description"],
+            "false": []
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Open": {
+              "expanded": true
+            },
+            "Invalid": {
+              "status": "invalid"
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        },
+        "Content": {
+          "examples": {
+            "Placeholder": "<HvDropdown{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvDropdown{{attrs}} values={[{ label: \"{{text}}\", selected: true }]} />"
+          }
+        }
+      }
+    },
+    "Dropdown menu": {
+      "layers": {
+        "icon": {
+          "instance": "Icon",
+          "path": ["Trigger"]
+        },
+        "edit": {
+          "text": "Label",
+          "path": ["Menu", "Edit"]
+        },
+        "duplicate": {
+          "text": "Label",
+          "path": ["Menu", "Duplicate"]
+        },
+        "download": {
+          "text": "Label",
+          "path": ["Menu", "Download"]
+        },
+        "remove": {
+          "text": "Label",
+          "path": ["Menu", "Delete"]
+        }
+      },
+      "properties": {
+        "Open": {
+          "examples": {
+            "false": "<HvDropDownMenu{{attrs}} />",
+            "true": [
+              "<HvDropDownMenu{{attrs}}",
+              "  expanded",
+              "  dataList={[",
+              "    { label: \"{{edit}}\" },",
+              "    { label: \"{{duplicate}}\" },",
+              "    { label: \"{{download}}\" },",
+              "    { label: \"{{remove}}\" },",
+              "  ]}",
+              "/>"
+            ]
+          }
+        }
+      }
+    },
+    "Dropdown panel": {
+      "element": "HvDropdown",
+      "fixed": {
+        "expanded": true
+      },
+      "properties": {
+        "Selection": {
+          "values": {
+            "single": {},
+            "multi": {
+              "multiSelect": true,
+              "showSearch": true
+            }
+          }
+        }
+      }
+    },
+    "Empty state": {
+      "layers": {
+        "action": {
+          "instance": "Action"
+        }
+      },
+      "properties": {
+        "Layout": {
+          "figmaOnly": "HvEmptyState stacks its icon over the text by itself on narrow screens; it has no layout prop"
+        }
+      }
+    },
+    "File": {
+      "layers": {
+        "error": {
+          "text": "Error"
+        }
+      },
+      "properties": {
+        "Name": {
+          "text": "name"
+        },
+        "Size": {
+          "figmaOnly": "HvFile writes data.size (bytes) as \"4.2 MB\" itself: the text is its output, not a value to pass"
+        },
+        "Status": {
+          "examples": {
+            "uploading": "<HvFile data={{ id: \"file\", name: \"{{name}}\", status: \"progress\" }} />",
+            "success": "<HvFile data={{ id: \"file\", name: \"{{name}}\", status: \"success\" }} />",
+            "error": "<HvFile data={{ id: \"file\", name: \"{{name}}\", status: \"fail\", errorMessage: \"{{error}}\" }} />"
+          }
+        }
+      }
+    },
+    "File uploader": {
+      "layers": {
+        "drag": {
+          "text": "Message"
+        },
+        "selectFiles": {
+          "text": "Link"
+        }
+      },
+      "example": "<HvFileUploader{{attrs}} labels={{ drag: \"{{drag}}\", selectFiles: \"{{selectFiles}}\" }} />",
+      "properties": {
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Dragging": {},
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Filter group": {
+      "fixed": {
+        "filters": "{filters}"
+      },
+      "properties": {
+        "Label": {
+          "text": "placeholder"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Applied": {},
+            "Open": {}
+          }
+        }
+      }
+    },
+    "Filter group panel": {
+      "fixed": {
+        "filters": "{filters}"
+      }
+    },
+    "Footer": {
+      "layers": {
+        "privacy": {
+          "text": "Privacy"
+        },
+        "terms": {
+          "text": "Terms"
+        },
+        "help": {
+          "text": "Help"
+        },
+        "links": {
+          "code": [
+            "<>",
+            "  <HvTypography link component=\"a\" href=\"#\">{{privacy}}</HvTypography>",
+            "  <HvTypography link component=\"a\" href=\"#\">{{terms}}</HvTypography>",
+            "  <HvTypography link component=\"a\" href=\"#\">{{help}}</HvTypography>",
+            "</>"
+          ]
+        }
+      },
+      "properties": {
+        "Layout": {
+          "figmaOnly": "HvFooter stacks by itself below the sm breakpoint (useMediaQuery); it has no layout prop"
+        }
+      }
+    },
+    "Header": {
+      "layers": {
+        "brand": {
+          "instance": "Header/Brand"
+        },
+        "action1": {
+          "instance": "Icon button",
+          "nth": 0
+        },
+        "action2": {
+          "instance": "Icon button",
+          "nth": 1
+        },
+        "action3": {
+          "instance": "Icon button",
+          "nth": 2
+        },
+        "navigation": {
+          "code": "<HvHeaderNavigation data={navigation}{{@levels}} />"
+        }
+      },
+      "example": [
+        "<HvHeader{{attrs}}>",
+        "  {{brand}}",
+        "  {{navigation}}",
+        "  <HvHeaderActions>",
+        "    {{action1}}",
+        "    {{action2}}",
+        "    {{action3}}",
+        "  </HvHeaderActions>",
+        "</HvHeader>"
+      ],
+      "properties": {
+        "Levels": {
+          "values": {
+            "1": {},
+            "2": {
+              "levels": 2
+            }
+          }
+        }
+      }
+    },
+    "Header/Nav item": {
+      "element": "HvHeaderNavigation",
+      "example": "<HvHeaderNavigation data={[{ id: \"item\", label: \"{{label}}\" }]}{{attrs}} />",
+      "properties": {
+        "Label": {
+          "text": "label"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Selected": {
+              "selected": "item"
+            }
+          }
+        }
+      }
+    },
+    "Icon button": {
+      "example": "<HvIconButton{{attrs}}>{{icon}}</HvIconButton>",
+      "properties": {
+        "Icon": {
+          "instance": "icon"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Pressed": {},
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Input": {
+      "properties": {
+        "Text": {
+          "text": "text"
+        },
+        "Helper": {
+          "text": "description"
+        },
+        "Show helper": {
+          "shows": {
+            "true": ["description"],
+            "false": []
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Focus": {},
+            "Invalid": {
+              "status": "invalid"
+            },
+            "ReadOnly": {
+              "readOnly": true
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        },
+        "Content": {
+          "examples": {
+            "Placeholder": "<HvInput{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvInput{{attrs}} value=\"{{text}}\" />"
+          }
+        }
+      }
+    },
+    "List item": {
+      "layers": {
+        "checkbox": {
+          "instance": "Checkbox"
+        }
+      },
+      "example": "<HvListItem{{attrs}}{{@startAdornment}}>{{checkbox}}{{children}}</HvListItem>",
+      "properties": {
+        "Icon": {
+          "instance": "startAdornment"
+        },
+        "Start": {
+          "shows": {
+            "none": [],
+            "icon": ["startAdornment"],
+            "checkbox": ["checkbox"]
+          }
+        }
+      }
+    },
+    "List separator": {
+      "element": "HvListItem",
+      "fixed": {
+        "separator": true
+      }
+    },
+    "Loading": {
+      "properties": {
+        "Size": {
+          "values": {
+            "regular": {},
+            "small": {
+              "small": true
+            }
+          }
+        }
+      }
+    },
+    "Menu panel": {
+      "fixed": {
+        "expanded": true
+      },
+      "layers": {
+        "edit": {
+          "text": "Label",
+          "path": ["Edit"]
+        },
+        "duplicate": {
+          "text": "Label",
+          "path": ["Duplicate"]
+        },
+        "download": {
+          "text": "Label",
+          "path": ["Download"]
+        },
+        "remove": {
+          "text": "Label",
+          "path": ["Delete"]
+        }
+      },
+      "example": [
+        "<HvDropDownMenu{{attrs}}",
+        "  dataList={[",
+        "    { label: \"{{edit}}\" },",
+        "    { label: \"{{duplicate}}\" },",
+        "    { label: \"{{download}}\" },",
+        "    { label: \"{{remove}}\" },",
+        "  ]}",
+        "/>"
+      ]
+    },
+    "Multi button": {
+      "layers": {
+        "day": {
+          "instance": "Day"
+        },
+        "week": {
+          "instance": "Week"
+        },
+        "month": {
+          "instance": "Month"
+        }
+      },
+      "example": [
+        "<HvMultiButton{{attrs}}>",
+        "  {{day}}",
+        "  {{week}}",
+        "  {{month}}",
+        "</HvMultiButton>"
+      ],
+      "properties": {
+        "Orientation": {
+          "values": {
+            "horizontal": {},
+            "vertical": {
+              "vertical": true
+            }
+          }
+        }
+      }
+    },
+    "Multi button/Segment": {
+      "element": "HvButton",
+      "properties": {
+        "Label": {
+          "text": "label"
+        },
+        "Icon": {
+          "instance": "startIcon"
+        },
+        "Show icon + Show label": {
+          "examples": {
+            "true + true": "<HvButton{{attrs}}{{@startIcon}}>{{label}}</HvButton>",
+            "true + false": "<HvButton{{attrs}} icon aria-label=\"{{label}}\">{{startIcon}}</HvButton>",
+            "false + true": "<HvButton{{attrs}}>{{label}}</HvButton>",
+            "false + false": "<HvButton{{attrs}} />"
+          }
+        }
+      }
+    },
+    "Pagination": {
+      "properties": {
+        "Show page size": {
+          "values": {
+            "true": {},
+            "false": {
+              "showPageSizeOptions": "{false}"
+            }
+          }
+        },
+        "Page": {
+          "text": "page",
+          "as": "index"
+        },
+        "Total": {
+          "text": "pages",
+          "as": "number"
+        },
+        "Position": {
+          "values": {
+            "first": {
+              "canPrevious": "{false}"
+            },
+            "middle": {},
+            "last": {
+              "canNext": "{false}"
+            }
+          }
+        }
+      }
+    },
+    "Progress bar": {
+      "properties": {
+        "Value": {
+          "text": "value",
+          "as": "number"
+        },
+        "Show label": {
+          "values": {
+            "true": {},
+            "false": {
+              "hideLabel": true
+            }
+          }
+        },
+        "Status": {
+          "values": {
+            "inProgress": {},
+            "completed": {
+              "status": "completed"
+            },
+            "error": {
+              "status": "error"
+            }
+          }
+        }
+      }
+    },
+    "Radio": {
+      "properties": {
+        "Value": {
+          "values": {
+            "unchecked": {},
+            "checked": {
+              "checked": true
+            }
+          }
+        }
+      }
+    },
+    "Radio group": {
+      "layers": {
+        "statusMessage": {
+          "text": "Error"
+        },
+        "hourly": {
+          "instance": "Hourly"
+        },
+        "daily": {
+          "instance": "Daily"
+        },
+        "weekly": {
+          "instance": "Weekly"
+        }
+      },
+      "example": [
+        "<HvRadioGroup{{attrs}}>",
+        "  {{hourly}}",
+        "  {{daily}}",
+        "  {{weekly}}",
+        "</HvRadioGroup>"
+      ],
+      "properties": {
+        "Orientation": {
+          "values": {
+            "vertical": {},
+            "horizontal": {
+              "orientation": "horizontal"
+            }
+          }
+        },
+        "Status": {
+          "values": {
+            "default": {},
+            "invalid": {
+              "status": "invalid"
+            }
+          },
+          "shows": {
+            "invalid": ["statusMessage"]
+          }
+        }
+      }
+    },
+    "Search input": {
+      "properties": {
+        "Text": {
+          "text": "text"
+        },
+        "Content": {
+          "examples": {
+            "Empty": "<HvSearchInput{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvSearchInput{{attrs}} value=\"{{text}}\" />"
+          }
+        }
+      }
+    },
+    "Section": {
+      "layers": {
+        "actions": {
+          "instance": "Action"
+        }
+      },
+      "example": "<HvSection{{attrs}}>{{content}}</HvSection>",
+      "properties": {
+        "Show action": {
+          "shows": {
+            "true": ["actions"],
+            "false": []
+          }
+        },
+        "Content": {
+          "instance": "content"
+        },
+        "Expandable": {
+          "values": {
+            "no": {},
+            "open": {
+              "expandable": true
+            },
+            "closed": {
+              "expandable": true,
+              "defaultExpanded": "{false}"
+            }
+          },
+          "shows": {
+            "no": ["content"],
+            "open": ["content"],
+            "closed": []
+          }
+        }
+      }
+    },
+    "Section/Slot": {
+      "skip": "A layout slot inside its parent, drawn in Figma only"
+    },
+    "Select": {
+      "properties": {
+        "Value": {
+          "text": "text"
+        },
+        "Helper": {
+          "text": "description"
+        },
+        "Show helper": {
+          "shows": {
+            "true": ["description"],
+            "false": []
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Open": {
+              "open": true
+            },
+            "Invalid": {
+              "status": "invalid"
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        },
+        "Content": {
+          "examples": {
+            "Placeholder": "<HvSelect{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvSelect{{attrs}} value=\"{{text}}\" />"
+          }
+        }
+      }
+    },
+    "Select panel": {
+      "fixed": {
+        "open": true
+      },
+      "layers": {
+        "group": {
+          "text": "Group"
+        },
+        "finance": {
+          "text": "Label",
+          "path": ["Finance"]
+        },
+        "sales": {
+          "text": "Label",
+          "path": ["Sales"]
+        },
+        "marketing": {
+          "text": "Label",
+          "path": ["Marketing"]
+        },
+        "supplyChain": {
+          "text": "Label",
+          "path": ["Supply chain"]
+        },
+        "manufacturing": {
+          "text": "Label",
+          "path": ["Manufacturing"]
+        }
+      },
+      "example": [
+        "<HvSelect{{attrs}}>",
+        "  <HvOptionGroup label=\"{{group}}\">",
+        "    <HvOption value=\"{{finance}}\">{{finance}}</HvOption>",
+        "    <HvOption value=\"{{sales}}\">{{sales}}</HvOption>",
+        "    <HvOption value=\"{{marketing}}\">{{marketing}}</HvOption>",
+        "    <HvOption value=\"{{supplyChain}}\">{{supplyChain}}</HvOption>",
+        "    <HvOption value=\"{{manufacturing}}\">{{manufacturing}}</HvOption>",
+        "  </HvOptionGroup>",
+        "</HvSelect>"
+      ]
+    },
+    "Skeleton": {
+      "properties": {
+        "Variant": {
+          "values": {
+            "text": {},
+            "circle": {
+              "variant": "circle"
+            },
+            "square": {
+              "variant": "square"
+            }
+          }
+        }
+      }
+    },
+    "Slider": {
+      "layers": {
+        "value": {
+          "text": "Value",
+          "as": "number",
+          "nth": 0
+        },
+        "value2": {
+          "text": "Value",
+          "as": "number",
+          "nth": 1
+        }
+      },
+      "properties": {
+        "Show input": {
+          "values": {
+            "true": {},
+            "false": {
+              "hideInput": true
+            }
+          }
+        },
+        "Mode": {
+          "examples": {
+            "single": "<HvSlider{{attrs}} defaultValues={[{{value}}]} />",
+            "range": "<HvSlider{{attrs}} defaultValues={[{{value}}, {{value2}}]} />"
+          }
+        }
+      }
+    },
+    "Snackbar": {
+      "fixed": {
+        "open": true
+      },
+      "layers": {
+        "action": {
+          "instance": "Action"
+        }
+      },
+      "properties": {
+        "Message": {
+          "text": "label"
+        }
+      }
+    },
+    "Switch": {
+      "properties": {
+        "Value": {
+          "values": {
+            "off": {},
+            "on": {
+              "checked": true
+            }
+          }
+        }
+      }
+    },
+    "Tab": {
+      "properties": {
+        "Style": {
+          "figmaOnly": "floating is HvTabs' prop (set on the tabs); a tab only draws it"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Selected": {},
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Table section": {
+      "layers": {
+        "actions": {
+          "instance": "Action"
+        },
+        "bulkActions": {
+          "instance": "Bulk actions"
+        },
+        "header": {
+          "instance": "Table header"
+        },
+        "row1": {
+          "instance": "Row",
+          "nth": 0
+        },
+        "row2": {
+          "instance": "Row",
+          "nth": 1
+        },
+        "row3": {
+          "instance": "Row",
+          "nth": 2
+        },
+        "row4": {
+          "instance": "Row",
+          "nth": 3
+        },
+        "row5": {
+          "instance": "Row",
+          "nth": 4
+        },
+        "emptyState": {
+          "instance": "Empty state"
+        },
+        "pagination": {
+          "instance": "Pagination"
+        }
+      },
+      "properties": {
+        "State": {
+          "examples": {
+            "default": [
+              "<HvTableSection{{attrs}}>",
+              "  {{bulkActions}}",
+              "  <HvTableContainer>",
+              "    <HvTable>",
+              "      {{header}}",
+              "      <HvTableBody>",
+              "        {{row1}}",
+              "        {{row2}}",
+              "        {{row3}}",
+              "        {{row4}}",
+              "        {{row5}}",
+              "      </HvTableBody>",
+              "    </HvTable>",
+              "  </HvTableContainer>",
+              "  {{pagination}}",
+              "</HvTableSection>"
+            ],
+            "loading": [
+              "<HvTableSection{{attrs}}>",
+              "  {{bulkActions}}",
+              "  <HvLoadingContainer>",
+              "    <HvTableContainer>",
+              "      <HvTable>{{header}}</HvTable>",
+              "    </HvTableContainer>",
+              "  </HvLoadingContainer>",
+              "  {{pagination}}",
+              "</HvTableSection>"
+            ],
+            "empty": [
+              "<HvTableSection{{attrs}}>",
+              "  {{bulkActions}}",
+              "  <HvTableContainer>",
+              "    <HvTable>{{header}}</HvTable>",
+              "  </HvTableContainer>",
+              "  {{emptyState}}",
+              "  {{pagination}}",
+              "</HvTableSection>"
+            ]
+          }
+        }
+      }
+    },
+    "Table/Cell": {
+      "layers": {
+        "status": {
+          "instance": "Status"
+        },
+        "checkbox": {
+          "instance": "Checkbox"
+        },
+        "menu": {
+          "code": "<HvDropDownMenu dataList={actions} />"
+        },
+        "statusIcon": {
+          "instance": "Status icon"
+        },
+        "progress": {
+          "instance": "Progress"
+        },
+        "deleteIcon": {
+          "instance": "Delete"
+        }
+      },
+      "properties": {
+        "Text": {
+          "text": "text"
+        },
+        "Secondary": {
+          "text": "secondary"
+        },
+        "Type": {
+          "examples": {
+            "text": "<HvTableCell>{{text}}</HvTableCell>",
+            "number": "<HvTableCell align=\"right\">{{text}}</HvTableCell>",
+            "status": "<HvTableCell>{{status}}</HvTableCell>",
+            "checkbox": "<HvTableCell variant=\"checkbox\">{{checkbox}}</HvTableCell>",
+            "actions": "<HvTableCell variant=\"actions\">{{menu}}</HvTableCell>",
+            "link": [
+              "<HvTableCell>",
+              "  <HvTypography link component=\"a\" href=\"#\">{{text}}</HvTypography>",
+              "</HvTableCell>"
+            ],
+            "twoLine": [
+              "<HvTableCell>",
+              "  <HvTypography>{{text}}</HvTypography>",
+              "  <HvTypography variant=\"caption1\">{{secondary}}</HvTypography>",
+              "</HvTableCell>"
+            ],
+            "statusText": "<HvTableCell>{{statusIcon}} {{text}}</HvTableCell>",
+            "progress": "<HvTableCell>{{progress}}</HvTableCell>",
+            "delete": "<HvTableCell variant=\"actions\"><HvIconButton title=\"Delete\">{{deleteIcon}}</HvIconButton></HvTableCell>"
+          }
+        }
+      }
+    },
+    "Table/Header": {
+      "layers": {
+        "select": {
+          "instance": "Table/Cell"
+        },
+        "header1": {
+          "instance": "Table/Header cell",
+          "nth": 0
+        },
+        "header2": {
+          "instance": "Table/Header cell",
+          "nth": 1
+        },
+        "header3": {
+          "instance": "Table/Header cell",
+          "nth": 2
+        }
+      },
+      "example": [
+        "<HvTableHead>",
+        "  <HvTableRow>",
+        "    {{select}}",
+        "    {{header1}}",
+        "    {{header2}}",
+        "    {{header3}}",
+        "    <HvTableHeader variant=\"actions\" />",
+        "  </HvTableRow>",
+        "</HvTableHead>"
+      ]
+    },
+    "Table/Header cell": {
+      "properties": {
+        "Sort": {
+          "values": {
+            "none": {},
+            "ascending": {
+              "sortable": true,
+              "sorted": true,
+              "sortDirection": "ascending"
+            },
+            "descending": {
+              "sortable": true,
+              "sorted": true,
+              "sortDirection": "descending"
+            }
+          }
+        },
+        "Align": {
+          "values": {
+            "left": {},
+            "right": {
+              "align": "right"
+            }
+          }
+        }
+      }
+    },
+    "Table/Row": {
+      "layers": {
+        "cell1": {
+          "instance": "Table/Cell",
+          "nth": 0
+        },
+        "cell2": {
+          "instance": "Table/Cell",
+          "nth": 1
+        },
+        "cell3": {
+          "instance": "Table/Cell",
+          "nth": 2
+        },
+        "cell4": {
+          "instance": "Table/Cell",
+          "nth": 3
+        },
+        "cell5": {
+          "instance": "Table/Cell",
+          "nth": 4
+        }
+      },
+      "example": [
+        "<HvTableRow{{attrs}}>",
+        "  {{cell1}}",
+        "  {{cell2}}",
+        "  {{cell3}}",
+        "  {{cell4}}",
+        "  {{cell5}}",
+        "</HvTableRow>"
+      ],
+      "properties": {
+        "Style": {
+          "figmaOnly": "listrow is HvTable's variant (set on the table); a row only draws it"
+        }
+      }
+    },
+    "Tabs": {
+      "fixed": {
+        "value": "{0}"
+      },
+      "layers": {
+        "overview": {
+          "instance": "Overview"
+        },
+        "schema": {
+          "instance": "Schema"
+        },
+        "lineage": {
+          "instance": "Lineage"
+        },
+        "history": {
+          "instance": "History"
+        }
+      },
+      "example": [
+        "<HvTabs{{attrs}}>",
+        "  {{overview}}",
+        "  {{schema}}",
+        "  {{lineage}}",
+        "  {{history}}",
+        "</HvTabs>"
+      ],
+      "properties": {
+        "Style": {
+          "values": {
+            "default": {},
+            "floating": {
+              "floating": true
+            }
+          }
+        }
+      }
+    },
+    "Tags input": {
+      "layers": {
+        "maxTagsQuantity": {
+          "text": "Counter",
+          "as": "number"
+        },
+        "placeholder": {
+          "text": "Text"
+        },
+        "tag1": {
+          "text": "Label",
+          "path": ["Tag"],
+          "nth": 0
+        },
+        "tag2": {
+          "text": "Label",
+          "path": ["Tag"],
+          "nth": 1
+        },
+        "tag3": {
+          "text": "Label",
+          "path": ["Tag"],
+          "nth": 2
+        }
+      },
+      "example": "<HvTagsInput{{attrs}} defaultValue={[\"{{tag1}}\", \"{{tag2}}\", \"{{tag3}}\"]} />",
+      "properties": {
+        "Show counter": {
+          "values": {
+            "true": {},
+            "false": {
+              "hideCounter": true
+            }
+          },
+          "shows": {
+            "true": ["maxTagsQuantity"],
+            "false": []
+          }
+        },
+        "Helper": {
+          "text": "description"
+        },
+        "Show helper": {
+          "shows": {
+            "true": ["description"],
+            "false": []
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Focus": {},
+            "Invalid": {
+              "status": "invalid"
+            },
+            "ReadOnly": {
+              "readOnly": true
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Text area": {
+      "properties": {
+        "Text": {
+          "text": "text"
+        },
+        "Counter": {
+          "text": "maxCharQuantity",
+          "as": "number"
+        },
+        "Show counter": {
+          "values": {
+            "true": {},
+            "false": {
+              "hideCounter": true
+            }
+          },
+          "shows": {
+            "true": ["maxCharQuantity"],
+            "false": []
+          }
+        },
+        "Helper": {
+          "text": "description"
+        },
+        "Show helper": {
+          "shows": {
+            "true": ["description"],
+            "false": []
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Focus": {},
+            "Invalid": {
+              "status": "invalid"
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        },
+        "Content": {
+          "examples": {
+            "Placeholder": "<HvTextArea{{attrs}} placeholder=\"{{text}}\" />",
+            "Value": "<HvTextArea{{attrs}} value=\"{{text}}\" />"
+          }
+        }
+      }
+    },
+    "Time picker": {
+      "layers": {
+        "statusMessage": {
+          "text": "Error"
+        }
+      },
+      "properties": {
+        "Value": {
+          "figmaOnly": "HvTimePicker's value is { hours, minutes, seconds }; \"09:30 AM\" is how it draws one, not text it takes"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Open": {},
+            "Invalid": {
+              "status": "invalid"
+            },
+            "Disabled": {
+              "disabled": true
+            }
+          },
+          "shows": {
+            "Invalid": ["statusMessage"]
+          }
+        }
+      }
+    },
+    "Time picker panel": {
+      "properties": {
+        "Format": {
+          "values": {
+            "12": {
+              "timeFormat": "12"
+            },
+            "24": {
+              "timeFormat": "24"
+            }
+          }
+        }
+      }
+    },
+    "Tooltip": {
+      "example": "<HvTooltip{{attrs}}>{trigger}</HvTooltip>",
+      "properties": {
+        "Text": {
+          "text": "title"
+        }
+      }
+    },
+    "Tree item": {
+      "fixed": {
+        "nodeId": "item"
+      },
+      "properties": {
+        "Type": {
+          "figmaOnly": "open and closed come from HvTreeView's expanded ids, leaf from having no child items; an item has no prop for either"
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Selected": {},
+            "Disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Typography": {
+      "properties": {
+        "Kind": {
+          "values": {
+            "default": {},
+            "link": {
+              "link": true
+            },
+            "disabled": {
+              "disabled": true
+            }
+          }
+        }
+      }
+    },
+    "Vertical navigation": {
+      "layers": {
+        "header": {
+          "code": "<HvVerticalNavigationHeader title=\"{{title}}\" />"
+        }
+      },
+      "example": [
+        "<HvVerticalNavigation{{attrs}}>",
+        "  {{header}}",
+        "  <HvVerticalNavigationTree data={navigation} />",
+        "</HvVerticalNavigation>"
+      ],
+      "properties": {
+        "Title": {
+          "text": "title"
+        },
+        "Open": {
+          "values": {
+            "true": {},
+            "false": {
+              "open": "{false}",
+              "useIcons": true
+            }
+          }
+        }
+      }
+    },
+    "Vertical navigation/Item": {
+      "element": "HvVerticalNavigationTree",
+      "properties": {
+        "Label": {
+          "text": "label"
+        },
+        "Icon": {
+          "instance": "icon"
+        },
+        "Type": {
+          "examples": {
+            "item": "<HvVerticalNavigationTree{{attrs}} data={[{ id: \"item\", label: \"{{label}}\", icon: {{icon}} }]} />",
+            "parent": "<HvVerticalNavigationTree{{attrs}} data={[{ id: \"item\", label: \"{{label}}\", icon: {{icon}}, data: [] }]} />",
+            "child": "<HvVerticalNavigationTree{{attrs}} data={[{ id: \"item\", label: \"{{label}}\" }]} />",
+            "icon": "<HvVerticalNavigationTree{{attrs}} data={[{ id: \"item\", label: \"{{label}}\", icon: {{icon}} }]} />"
+          }
+        },
+        "State": {
+          "values": {
+            "Default": {},
+            "Hover": {},
+            "Selected": {
+              "selected": "item"
+            }
+          }
+        }
+      }
+    }
+  }
+}

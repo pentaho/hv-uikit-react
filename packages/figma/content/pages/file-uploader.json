@@ -1,0 +1,207 @@
+{
+  "name": "File uploader",
+  "category": "Inputs",
+  "description": "A drop zone for adding files, with the list of files below as they upload.",
+  "overview": "An uploader with one file done, one uploading and one failed, then the drop zone while dragging and disabled, in light and dark.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "Files uploading, done and failed",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 301],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "clips": true,
+      "children": [
+        {
+          "name": "Files uploading, done and failed",
+          "sizing": ["HUG", "HUG"],
+          "size": [180, 18],
+          "type": "text",
+          "characters": "Files uploading, done and failed",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Uploader",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 271],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 8,
+          "clips": true,
+          "children": [
+            {
+              "name": "File uploader",
+              "sizing": ["FILL", "HUG"],
+              "size": [516, 100],
+              "type": "instance",
+              "component": "File uploader",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Description#108:5": "Max 10 MB · .csv, .xlsx",
+                "Label#108:0": "Upload data files"
+              }
+            },
+            {
+              "name": "File",
+              "sizing": ["FILL", "HUG"],
+              "size": [516, 39],
+              "type": "instance",
+              "component": "File",
+              "variant": {
+                "Status": "success"
+              },
+              "properties": {
+                "Name#108:10": "orders_2026_q3.csv",
+                "Size#108:14": "4.2 MB"
+              }
+            },
+            {
+              "name": "File",
+              "sizing": ["FILL", "HUG"],
+              "size": [516, 47],
+              "type": "instance",
+              "component": "File",
+              "variant": {
+                "Status": "uploading"
+              },
+              "properties": {
+                "Name#108:10": "customers.xlsx",
+                "Size#108:14": "1.8 MB · 45%"
+              }
+            },
+            {
+              "name": "File",
+              "sizing": ["FILL", "HUG"],
+              "size": [516, 61],
+              "type": "instance",
+              "component": "File",
+              "variant": {
+                "Status": "error"
+              },
+              "properties": {
+                "Name#108:10": "web_sessions_full.csv",
+                "Size#108:14": "23 MB"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dragging · disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 130],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "clips": true,
+      "children": [
+        {
+          "name": "Dragging · disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [111, 18],
+          "type": "text",
+          "characters": "Dragging · disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pair",
+          "sizing": ["FILL", "FIXED"],
+          "size": [516, 100],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 16,
+          "clips": true,
+          "children": [
+            {
+              "name": "File uploader",
+              "sizing": ["FILL", "FILL"],
+              "size": [516, 42],
+              "type": "instance",
+              "component": "File uploader",
+              "variant": {
+                "State": "Dragging"
+              },
+              "properties": {
+                "Description#108:5": "Max 10 MB · .csv, .xlsx",
+                "Label#108:0": "Upload data files"
+              }
+            },
+            {
+              "name": "File uploader",
+              "sizing": ["FILL", "FILL"],
+              "size": [516, 42],
+              "type": "instance",
+              "component": "File uploader",
+              "variant": {
+                "State": "Disabled"
+              },
+              "properties": {
+                "Description#108:5": "Max 10 MB · .csv, .xlsx",
+                "Label#108:0": "Upload data files"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Adding one or several files to a form or import, with a visible limit on size and type."
+  ],
+  "dont": [
+    "Hide why a file failed: say it on the file row.",
+    "Start a long upload with no progress."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1271],
+    "size": [1280, 866],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [126, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "File uploader",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [381, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "File uploader (State · Label, Description) · File (Status · Name, Size)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "File uploader",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "File",
+        "at": [80, 498]
+      }
+    ]
+  }
+}

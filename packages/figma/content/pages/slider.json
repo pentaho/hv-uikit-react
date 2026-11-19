@@ -1,0 +1,164 @@
+{
+  "name": "Slider",
+  "category": "Inputs",
+  "description": "Picks a value, or a range of values, on a scale.",
+  "overview": "A single value, a range and disabled, in light and dark. The number fields let people type an exact value.",
+  "panelGap": 28,
+  "light": [
+    {
+      "name": "Single value",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 103],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "clips": true,
+      "children": [
+        {
+          "name": "Single value",
+          "sizing": ["HUG", "HUG"],
+          "size": [69, 18],
+          "type": "text",
+          "characters": "Single value",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Slider",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 73],
+          "type": "instance",
+          "component": "Slider",
+          "variant": {
+            "Mode": "single",
+            "State": "Default"
+          },
+          "properties": {
+            "Label#107:0": "Confidence threshold",
+            "Show input#107:5": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Range",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 103],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "clips": true,
+      "children": [
+        {
+          "name": "Range",
+          "sizing": ["HUG", "HUG"],
+          "size": [36, 18],
+          "type": "text",
+          "characters": "Range",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Slider",
+          "sizing": ["HUG", "HUG"],
+          "size": [464, 73],
+          "type": "instance",
+          "component": "Slider",
+          "variant": {
+            "Mode": "range",
+            "State": "Default"
+          },
+          "properties": {
+            "Label#107:0": "Confidence threshold",
+            "Show input#107:5": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 103],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 12,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [50, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Slider",
+          "sizing": ["HUG", "HUG"],
+          "size": [400, 73],
+          "type": "instance",
+          "component": "Slider",
+          "variant": {
+            "Mode": "single",
+            "State": "Disabled"
+          },
+          "properties": {
+            "Label#107:0": "Confidence threshold",
+            "Show input#107:5": true
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A value on a known scale where the rough position matters: thresholds, percentages, ranges.",
+    "Keep the number field so people can type an exact value."
+  ],
+  "dont": [
+    "Use it for exact values with no visual meaning: use Input.",
+    "Hide the scale: keep the marks or the field."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1177],
+    "size": [1280, 490],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [57, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Slider",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [189, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Mode × State · Label, Show input",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Slider",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

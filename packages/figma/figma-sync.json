@@ -1,0 +1,4720 @@
+{
+  "version": 1,
+  "collections": [
+    {
+      "name": "Primitives",
+      "modes": ["Value"]
+    },
+    {
+      "name": "Color",
+      "modes": ["Light", "Dark"]
+    },
+    {
+      "name": "Spacing",
+      "modes": ["Value"]
+    },
+    {
+      "name": "Radius",
+      "modes": ["Value"]
+    },
+    {
+      "name": "Typography",
+      "modes": ["Value"]
+    }
+  ],
+  "variables": [
+    {
+      "path": "palette.slate.50",
+      "collection": "Primitives",
+      "name": "slate/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9725, 0.9804, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.100",
+      "collection": "Primitives",
+      "name": "slate/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9451, 0.9608, 0.9765, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.200",
+      "collection": "Primitives",
+      "name": "slate/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8863, 0.9098, 0.9412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.300",
+      "collection": "Primitives",
+      "name": "slate/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7961, 0.8353, 0.8824, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.400",
+      "collection": "Primitives",
+      "name": "slate/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5804, 0.6392, 0.7216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.500",
+      "collection": "Primitives",
+      "name": "slate/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3922, 0.4549, 0.5451, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.600",
+      "collection": "Primitives",
+      "name": "slate/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2784, 0.3333, 0.4118, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.700",
+      "collection": "Primitives",
+      "name": "slate/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2, 0.2549, 0.3333, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.800",
+      "collection": "Primitives",
+      "name": "slate/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1176, 0.1608, 0.2314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.900",
+      "collection": "Primitives",
+      "name": "slate/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0588, 0.0902, 0.1647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.slate.950",
+      "collection": "Primitives",
+      "name": "slate/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0078, 0.0235, 0.0902, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.50",
+      "collection": "Primitives",
+      "name": "neutral/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9804, 0.9804, 0.9804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.100",
+      "collection": "Primitives",
+      "name": "neutral/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9608, 0.9608, 0.9608, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.200",
+      "collection": "Primitives",
+      "name": "neutral/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.898, 0.898, 0.898, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.300",
+      "collection": "Primitives",
+      "name": "neutral/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8314, 0.8314, 0.8314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.400",
+      "collection": "Primitives",
+      "name": "neutral/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6392, 0.6392, 0.6392, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.500",
+      "collection": "Primitives",
+      "name": "neutral/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.451, 0.451, 0.451, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.600",
+      "collection": "Primitives",
+      "name": "neutral/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3216, 0.3216, 0.3216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.700",
+      "collection": "Primitives",
+      "name": "neutral/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.251, 0.251, 0.251, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.800",
+      "collection": "Primitives",
+      "name": "neutral/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.149, 0.149, 0.149, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.900",
+      "collection": "Primitives",
+      "name": "neutral/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0902, 0.0902, 0.0902, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.neutral.950",
+      "collection": "Primitives",
+      "name": "neutral/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0392, 0.0392, 0.0392, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.50",
+      "collection": "Primitives",
+      "name": "red/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.949, 0.949, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.100",
+      "collection": "Primitives",
+      "name": "red/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.8863, 0.8863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.200",
+      "collection": "Primitives",
+      "name": "red/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.7922, 0.7922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.300",
+      "collection": "Primitives",
+      "name": "red/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9882, 0.6471, 0.6471, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.400",
+      "collection": "Primitives",
+      "name": "red/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9725, 0.4431, 0.4431, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.500",
+      "collection": "Primitives",
+      "name": "red/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9373, 0.2667, 0.2667, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.600",
+      "collection": "Primitives",
+      "name": "red/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8627, 0.149, 0.149, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.700",
+      "collection": "Primitives",
+      "name": "red/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7255, 0.1098, 0.1098, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.800",
+      "collection": "Primitives",
+      "name": "red/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6, 0.1059, 0.1059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.900",
+      "collection": "Primitives",
+      "name": "red/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.498, 0.1137, 0.1137, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.red.950",
+      "collection": "Primitives",
+      "name": "red/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2706, 0.0392, 0.0392, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.50",
+      "collection": "Primitives",
+      "name": "orange/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [1, 0.9686, 0.9294, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.100",
+      "collection": "Primitives",
+      "name": "orange/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [1, 0.9294, 0.8353, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.200",
+      "collection": "Primitives",
+      "name": "orange/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.8431, 0.6667, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.300",
+      "collection": "Primitives",
+      "name": "orange/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.7294, 0.4549, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.400",
+      "collection": "Primitives",
+      "name": "orange/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9843, 0.5725, 0.2353, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.500",
+      "collection": "Primitives",
+      "name": "orange/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9765, 0.451, 0.0863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.600",
+      "collection": "Primitives",
+      "name": "orange/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9176, 0.3451, 0.0471, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.700",
+      "collection": "Primitives",
+      "name": "orange/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7608, 0.2549, 0.0471, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.800",
+      "collection": "Primitives",
+      "name": "orange/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6039, 0.2039, 0.0706, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.900",
+      "collection": "Primitives",
+      "name": "orange/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4863, 0.1765, 0.0706, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.orange.950",
+      "collection": "Primitives",
+      "name": "orange/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2627, 0.0784, 0.0275, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.50",
+      "collection": "Primitives",
+      "name": "amber/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [1, 0.9843, 0.9216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.100",
+      "collection": "Primitives",
+      "name": "amber/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.9529, 0.7804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.200",
+      "collection": "Primitives",
+      "name": "amber/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.902, 0.5412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.300",
+      "collection": "Primitives",
+      "name": "amber/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9882, 0.8275, 0.302, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.400",
+      "collection": "Primitives",
+      "name": "amber/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9843, 0.749, 0.1412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.500",
+      "collection": "Primitives",
+      "name": "amber/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9608, 0.6196, 0.0431, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.600",
+      "collection": "Primitives",
+      "name": "amber/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.851, 0.4667, 0.0235, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.700",
+      "collection": "Primitives",
+      "name": "amber/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7059, 0.3255, 0.0353, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.800",
+      "collection": "Primitives",
+      "name": "amber/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5725, 0.251, 0.0549, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.900",
+      "collection": "Primitives",
+      "name": "amber/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4706, 0.2078, 0.0588, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.amber.950",
+      "collection": "Primitives",
+      "name": "amber/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2706, 0.102, 0.0118, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.50",
+      "collection": "Primitives",
+      "name": "yellow/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.9882, 0.9098, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.100",
+      "collection": "Primitives",
+      "name": "yellow/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.9765, 0.7647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.200",
+      "collection": "Primitives",
+      "name": "yellow/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.9412, 0.5412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.300",
+      "collection": "Primitives",
+      "name": "yellow/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.8784, 0.2784, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.400",
+      "collection": "Primitives",
+      "name": "yellow/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9804, 0.8, 0.0824, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.500",
+      "collection": "Primitives",
+      "name": "yellow/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9176, 0.702, 0.0314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.600",
+      "collection": "Primitives",
+      "name": "yellow/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7922, 0.5412, 0.0157, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.700",
+      "collection": "Primitives",
+      "name": "yellow/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6314, 0.3843, 0.0275, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.800",
+      "collection": "Primitives",
+      "name": "yellow/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5216, 0.302, 0.0549, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.900",
+      "collection": "Primitives",
+      "name": "yellow/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4431, 0.2471, 0.0706, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.yellow.950",
+      "collection": "Primitives",
+      "name": "yellow/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2588, 0.1255, 0.0235, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.50",
+      "collection": "Primitives",
+      "name": "lime/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9686, 0.9961, 0.9059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.100",
+      "collection": "Primitives",
+      "name": "lime/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9255, 0.9882, 0.7961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.200",
+      "collection": "Primitives",
+      "name": "lime/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.851, 0.9765, 0.6157, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.300",
+      "collection": "Primitives",
+      "name": "lime/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7451, 0.949, 0.3922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.400",
+      "collection": "Primitives",
+      "name": "lime/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6392, 0.902, 0.2078, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.500",
+      "collection": "Primitives",
+      "name": "lime/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5176, 0.8, 0.0863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.600",
+      "collection": "Primitives",
+      "name": "lime/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3961, 0.6392, 0.051, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.700",
+      "collection": "Primitives",
+      "name": "lime/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.302, 0.4863, 0.0588, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.800",
+      "collection": "Primitives",
+      "name": "lime/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2471, 0.3843, 0.0706, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.900",
+      "collection": "Primitives",
+      "name": "lime/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2118, 0.3255, 0.0784, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.lime.950",
+      "collection": "Primitives",
+      "name": "lime/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.102, 0.1804, 0.0196, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.50",
+      "collection": "Primitives",
+      "name": "green/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9412, 0.9922, 0.9569, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.100",
+      "collection": "Primitives",
+      "name": "green/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8627, 0.9882, 0.9059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.200",
+      "collection": "Primitives",
+      "name": "green/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7333, 0.9686, 0.8157, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.300",
+      "collection": "Primitives",
+      "name": "green/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5255, 0.9373, 0.6745, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.400",
+      "collection": "Primitives",
+      "name": "green/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2902, 0.8706, 0.502, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.500",
+      "collection": "Primitives",
+      "name": "green/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1333, 0.7725, 0.3686, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.600",
+      "collection": "Primitives",
+      "name": "green/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0863, 0.6392, 0.2902, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.700",
+      "collection": "Primitives",
+      "name": "green/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0824, 0.502, 0.2392, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.800",
+      "collection": "Primitives",
+      "name": "green/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0863, 0.3961, 0.2039, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.900",
+      "collection": "Primitives",
+      "name": "green/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0784, 0.3255, 0.1765, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.green.950",
+      "collection": "Primitives",
+      "name": "green/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0196, 0.1804, 0.0863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.50",
+      "collection": "Primitives",
+      "name": "emerald/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9255, 0.9922, 0.9608, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.100",
+      "collection": "Primitives",
+      "name": "emerald/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8196, 0.9804, 0.898, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.200",
+      "collection": "Primitives",
+      "name": "emerald/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6549, 0.9529, 0.8157, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.300",
+      "collection": "Primitives",
+      "name": "emerald/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4314, 0.9059, 0.7176, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.400",
+      "collection": "Primitives",
+      "name": "emerald/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2039, 0.8275, 0.6, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.500",
+      "collection": "Primitives",
+      "name": "emerald/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0627, 0.7255, 0.5059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.600",
+      "collection": "Primitives",
+      "name": "emerald/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0196, 0.5882, 0.4118, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.700",
+      "collection": "Primitives",
+      "name": "emerald/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0157, 0.4706, 0.3412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.800",
+      "collection": "Primitives",
+      "name": "emerald/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0235, 0.3725, 0.2745, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.900",
+      "collection": "Primitives",
+      "name": "emerald/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0235, 0.3059, 0.2314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.emerald.950",
+      "collection": "Primitives",
+      "name": "emerald/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0078, 0.1725, 0.1333, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.50",
+      "collection": "Primitives",
+      "name": "teal/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9412, 0.9922, 0.9804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.100",
+      "collection": "Primitives",
+      "name": "teal/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8, 0.9843, 0.9451, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.200",
+      "collection": "Primitives",
+      "name": "teal/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6, 0.9647, 0.8941, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.300",
+      "collection": "Primitives",
+      "name": "teal/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3686, 0.9176, 0.8314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.400",
+      "collection": "Primitives",
+      "name": "teal/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1765, 0.8314, 0.749, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.500",
+      "collection": "Primitives",
+      "name": "teal/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0784, 0.7216, 0.651, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.600",
+      "collection": "Primitives",
+      "name": "teal/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.051, 0.5804, 0.5333, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.700",
+      "collection": "Primitives",
+      "name": "teal/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0588, 0.4627, 0.4314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.800",
+      "collection": "Primitives",
+      "name": "teal/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0667, 0.3686, 0.349, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.900",
+      "collection": "Primitives",
+      "name": "teal/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0745, 0.3059, 0.2902, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.teal.950",
+      "collection": "Primitives",
+      "name": "teal/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0157, 0.1843, 0.1804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.50",
+      "collection": "Primitives",
+      "name": "cyan/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9255, 0.9961, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.100",
+      "collection": "Primitives",
+      "name": "cyan/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8118, 0.9804, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.200",
+      "collection": "Primitives",
+      "name": "cyan/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6471, 0.9529, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.300",
+      "collection": "Primitives",
+      "name": "cyan/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4039, 0.9098, 0.9765, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.400",
+      "collection": "Primitives",
+      "name": "cyan/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1333, 0.8275, 0.9333, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.500",
+      "collection": "Primitives",
+      "name": "cyan/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0235, 0.7137, 0.8314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.600",
+      "collection": "Primitives",
+      "name": "cyan/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0314, 0.5686, 0.698, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.700",
+      "collection": "Primitives",
+      "name": "cyan/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0549, 0.4549, 0.5647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.800",
+      "collection": "Primitives",
+      "name": "cyan/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0824, 0.3686, 0.4588, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.900",
+      "collection": "Primitives",
+      "name": "cyan/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0863, 0.3059, 0.3882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.cyan.950",
+      "collection": "Primitives",
+      "name": "cyan/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0314, 0.2, 0.2667, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.50",
+      "collection": "Primitives",
+      "name": "sky/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9412, 0.9765, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.100",
+      "collection": "Primitives",
+      "name": "sky/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8784, 0.949, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.200",
+      "collection": "Primitives",
+      "name": "sky/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7294, 0.902, 0.9922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.300",
+      "collection": "Primitives",
+      "name": "sky/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4902, 0.8275, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.400",
+      "collection": "Primitives",
+      "name": "sky/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2196, 0.7412, 0.9725, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.500",
+      "collection": "Primitives",
+      "name": "sky/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0549, 0.6471, 0.9137, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.600",
+      "collection": "Primitives",
+      "name": "sky/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0078, 0.5176, 0.7804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.700",
+      "collection": "Primitives",
+      "name": "sky/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0118, 0.4118, 0.6314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.800",
+      "collection": "Primitives",
+      "name": "sky/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0275, 0.349, 0.5216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.900",
+      "collection": "Primitives",
+      "name": "sky/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0471, 0.2902, 0.4314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.sky.950",
+      "collection": "Primitives",
+      "name": "sky/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0314, 0.1843, 0.2863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.50",
+      "collection": "Primitives",
+      "name": "blue/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9373, 0.9647, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.100",
+      "collection": "Primitives",
+      "name": "blue/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8588, 0.9176, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.200",
+      "collection": "Primitives",
+      "name": "blue/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.749, 0.8588, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.300",
+      "collection": "Primitives",
+      "name": "blue/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5765, 0.7725, 0.9922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.400",
+      "collection": "Primitives",
+      "name": "blue/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3765, 0.6471, 0.9804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.500",
+      "collection": "Primitives",
+      "name": "blue/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2314, 0.5098, 0.9647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.600",
+      "collection": "Primitives",
+      "name": "blue/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1451, 0.3882, 0.9216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.700",
+      "collection": "Primitives",
+      "name": "blue/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1137, 0.3059, 0.8471, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.800",
+      "collection": "Primitives",
+      "name": "blue/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1176, 0.251, 0.6863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.900",
+      "collection": "Primitives",
+      "name": "blue/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1176, 0.2275, 0.5412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.blue.950",
+      "collection": "Primitives",
+      "name": "blue/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.0902, 0.1451, 0.3294, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.50",
+      "collection": "Primitives",
+      "name": "indigo/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9333, 0.949, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.100",
+      "collection": "Primitives",
+      "name": "indigo/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8784, 0.9059, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.200",
+      "collection": "Primitives",
+      "name": "indigo/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7804, 0.8235, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.300",
+      "collection": "Primitives",
+      "name": "indigo/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6471, 0.7059, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.400",
+      "collection": "Primitives",
+      "name": "indigo/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5059, 0.549, 0.9725, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.500",
+      "collection": "Primitives",
+      "name": "indigo/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3882, 0.4, 0.9451, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.600",
+      "collection": "Primitives",
+      "name": "indigo/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3098, 0.2745, 0.898, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.700",
+      "collection": "Primitives",
+      "name": "indigo/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2627, 0.2196, 0.7922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.800",
+      "collection": "Primitives",
+      "name": "indigo/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2157, 0.1882, 0.6392, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.900",
+      "collection": "Primitives",
+      "name": "indigo/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1922, 0.1804, 0.5059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.indigo.950",
+      "collection": "Primitives",
+      "name": "indigo/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1176, 0.1059, 0.2941, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.50",
+      "collection": "Primitives",
+      "name": "violet/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9608, 0.9529, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.100",
+      "collection": "Primitives",
+      "name": "violet/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9294, 0.9137, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.200",
+      "collection": "Primitives",
+      "name": "violet/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8667, 0.8392, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.300",
+      "collection": "Primitives",
+      "name": "violet/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7686, 0.7098, 0.9922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.400",
+      "collection": "Primitives",
+      "name": "violet/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6549, 0.5451, 0.9804, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.500",
+      "collection": "Primitives",
+      "name": "violet/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5451, 0.3608, 0.9647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.600",
+      "collection": "Primitives",
+      "name": "violet/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4863, 0.2275, 0.9294, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.700",
+      "collection": "Primitives",
+      "name": "violet/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4275, 0.1569, 0.851, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.800",
+      "collection": "Primitives",
+      "name": "violet/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3569, 0.1294, 0.7137, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.900",
+      "collection": "Primitives",
+      "name": "violet/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.298, 0.1137, 0.5843, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.violet.950",
+      "collection": "Primitives",
+      "name": "violet/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.1804, 0.0627, 0.3961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.50",
+      "collection": "Primitives",
+      "name": "purple/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9804, 0.9608, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.100",
+      "collection": "Primitives",
+      "name": "purple/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9529, 0.9098, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.200",
+      "collection": "Primitives",
+      "name": "purple/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9137, 0.8353, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.300",
+      "collection": "Primitives",
+      "name": "purple/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8471, 0.7059, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.400",
+      "collection": "Primitives",
+      "name": "purple/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7529, 0.5176, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.500",
+      "collection": "Primitives",
+      "name": "purple/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6588, 0.3333, 0.9686, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.600",
+      "collection": "Primitives",
+      "name": "purple/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5765, 0.2, 0.9176, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.700",
+      "collection": "Primitives",
+      "name": "purple/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4941, 0.1333, 0.8078, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.800",
+      "collection": "Primitives",
+      "name": "purple/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4196, 0.1294, 0.6588, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.900",
+      "collection": "Primitives",
+      "name": "purple/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3451, 0.1098, 0.5294, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.purple.950",
+      "collection": "Primitives",
+      "name": "purple/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2314, 0.0275, 0.3922, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.50",
+      "collection": "Primitives",
+      "name": "fuchsia/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.9569, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.100",
+      "collection": "Primitives",
+      "name": "fuchsia/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9804, 0.9098, 1, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.200",
+      "collection": "Primitives",
+      "name": "fuchsia/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9608, 0.8157, 0.9961, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.300",
+      "collection": "Primitives",
+      "name": "fuchsia/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9412, 0.6706, 0.9882, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.400",
+      "collection": "Primitives",
+      "name": "fuchsia/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9098, 0.4745, 0.9765, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.500",
+      "collection": "Primitives",
+      "name": "fuchsia/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.851, 0.2745, 0.9373, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.600",
+      "collection": "Primitives",
+      "name": "fuchsia/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7529, 0.149, 0.8275, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.700",
+      "collection": "Primitives",
+      "name": "fuchsia/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6353, 0.1098, 0.6863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.800",
+      "collection": "Primitives",
+      "name": "fuchsia/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5255, 0.098, 0.5608, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.900",
+      "collection": "Primitives",
+      "name": "fuchsia/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.4392, 0.102, 0.4588, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.fuchsia.950",
+      "collection": "Primitives",
+      "name": "fuchsia/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.2902, 0.0157, 0.3059, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.50",
+      "collection": "Primitives",
+      "name": "pink/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.949, 0.9725, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.100",
+      "collection": "Primitives",
+      "name": "pink/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9882, 0.9059, 0.9529, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.200",
+      "collection": "Primitives",
+      "name": "pink/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9843, 0.8118, 0.9098, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.300",
+      "collection": "Primitives",
+      "name": "pink/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9765, 0.6588, 0.8314, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.400",
+      "collection": "Primitives",
+      "name": "pink/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9569, 0.4471, 0.7137, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.500",
+      "collection": "Primitives",
+      "name": "pink/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9255, 0.2824, 0.6, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.600",
+      "collection": "Primitives",
+      "name": "pink/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8588, 0.1529, 0.4667, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.700",
+      "collection": "Primitives",
+      "name": "pink/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7451, 0.0941, 0.3647, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.800",
+      "collection": "Primitives",
+      "name": "pink/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6157, 0.0902, 0.302, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.900",
+      "collection": "Primitives",
+      "name": "pink/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5137, 0.0941, 0.2627, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.pink.950",
+      "collection": "Primitives",
+      "name": "pink/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.3137, 0.0275, 0.1412, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.50",
+      "collection": "Primitives",
+      "name": "rose/50",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [1, 0.9451, 0.949, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.100",
+      "collection": "Primitives",
+      "name": "rose/100",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [1, 0.8941, 0.902, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.200",
+      "collection": "Primitives",
+      "name": "rose/200",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9961, 0.8039, 0.8275, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.300",
+      "collection": "Primitives",
+      "name": "rose/300",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9922, 0.6431, 0.6863, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.400",
+      "collection": "Primitives",
+      "name": "rose/400",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9843, 0.4431, 0.5216, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.500",
+      "collection": "Primitives",
+      "name": "rose/500",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.9569, 0.2471, 0.3686, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.600",
+      "collection": "Primitives",
+      "name": "rose/600",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.8824, 0.1137, 0.2824, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.700",
+      "collection": "Primitives",
+      "name": "rose/700",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.7451, 0.0706, 0.2353, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.800",
+      "collection": "Primitives",
+      "name": "rose/800",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.6235, 0.0706, 0.2235, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.900",
+      "collection": "Primitives",
+      "name": "rose/900",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.5333, 0.0745, 0.2157, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "palette.rose.950",
+      "collection": "Primitives",
+      "name": "rose/950",
+      "type": "COLOR",
+      "values": {
+        "Value": {
+          "color": [0.298, 0.0196, 0.098, 1]
+        }
+      },
+      "scopes": [],
+      "description": "Pentaho UI palette (@pentaho/uikit-styles theme.palette). Use the semantic Color variables, not these."
+    },
+    {
+      "path": "colors.primary",
+      "collection": "Color",
+      "name": "Primary/primary",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/600"
+        },
+        "Dark": {
+          "alias": "blue/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-primary)",
+      "description": "The action color: primary buttons, links, selection and focus of fields."
+    },
+    {
+      "path": "colors.primaryDeep",
+      "collection": "Color",
+      "name": "Primary/primaryDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/800"
+        },
+        "Dark": {
+          "alias": "blue/700"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-primaryDeep)",
+      "description": "Pressed fill of primary contained buttons."
+    },
+    {
+      "path": "colors.primaryStrong",
+      "collection": "Color",
+      "name": "Primary/primaryStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/700"
+        },
+        "Dark": {
+          "alias": "blue/600"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-primaryStrong)",
+      "description": "Hover fill of primary contained buttons; emphasized primary text."
+    },
+    {
+      "path": "colors.primarySubtle",
+      "collection": "Color",
+      "name": "Primary/primarySubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/200"
+        },
+        "Dark": {
+          "alias": "blue/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-primarySubtle)",
+      "description": "Pressed fill of ghost and subtle buttons; primary hover outline."
+    },
+    {
+      "path": "colors.primaryDimmed",
+      "collection": "Color",
+      "name": "Primary/primaryDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/100"
+        },
+        "Dark": {
+          "alias": "blue/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-primaryDimmed)",
+      "description": "Soft primary fill: ghost-button hover, selected subtle buttons, primary badges and avatars."
+    },
+    {
+      "path": "colors.positive",
+      "collection": "Color",
+      "name": "Positive/positive",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/600"
+        },
+        "Dark": {
+          "alias": "green/600"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-positive)",
+      "description": "Success state. Passed, completed or healthy."
+    },
+    {
+      "path": "colors.positiveDeep",
+      "collection": "Color",
+      "name": "Positive/positiveDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/800"
+        },
+        "Dark": {
+          "alias": "green/300"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-positiveDeep)",
+      "description": "Positive banner and snackbar titles; hover fill of positive contained buttons."
+    },
+    {
+      "path": "colors.positiveStrong",
+      "collection": "Color",
+      "name": "Positive/positiveStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/700"
+        },
+        "Dark": {
+          "alias": "green/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-positiveStrong)",
+      "description": "Positive tag text; pressed fill of positive contained buttons."
+    },
+    {
+      "path": "colors.positiveDimmed",
+      "collection": "Color",
+      "name": "Positive/positiveDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/50"
+        },
+        "Dark": {
+          "alias": "green/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-positiveDimmed)",
+      "description": "Soft positive fill behind positive text: tags, badges, status icons, subtle buttons."
+    },
+    {
+      "path": "colors.positiveSubtle",
+      "collection": "Color",
+      "name": "Positive/positiveSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/100"
+        },
+        "Dark": {
+          "alias": "green/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-positiveSubtle)",
+      "description": "Hover fill of clickable positive tags and positive subtle buttons; pressed fill of positive ghost buttons."
+    },
+    {
+      "path": "colors.positiveBorder",
+      "collection": "Color",
+      "name": "Positive/positiveBorder",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "emerald/200"
+        },
+        "Dark": {
+          "alias": "green/800"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-positiveBorder)",
+      "description": "Outline of positive tags, status icons and subtle buttons."
+    },
+    {
+      "path": "colors.warning",
+      "collection": "Color",
+      "name": "Warning/warning",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/500"
+        },
+        "Dark": {
+          "alias": "yellow/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-warning)",
+      "description": "Warning state. Needs attention, nothing has failed yet."
+    },
+    {
+      "path": "colors.warningDeep",
+      "collection": "Color",
+      "name": "Warning/warningDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/700"
+        },
+        "Dark": {
+          "alias": "yellow/300"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-warningDeep)",
+      "description": "Warning banner and snackbar titles; hover fill of warning contained buttons."
+    },
+    {
+      "path": "colors.warningStrong",
+      "collection": "Color",
+      "name": "Warning/warningStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/600"
+        },
+        "Dark": {
+          "alias": "yellow/400"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-warningStrong)",
+      "description": "Warning tag text; pressed fill of warning contained buttons."
+    },
+    {
+      "path": "colors.warningDimmed",
+      "collection": "Color",
+      "name": "Warning/warningDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/50"
+        },
+        "Dark": {
+          "alias": "yellow/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-warningDimmed)",
+      "description": "Soft warning fill behind warning text: tags, badges, status icons, subtle buttons."
+    },
+    {
+      "path": "colors.warningSubtle",
+      "collection": "Color",
+      "name": "Warning/warningSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/100"
+        },
+        "Dark": {
+          "alias": "yellow/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-warningSubtle)",
+      "description": "Hover fill of clickable warning tags and warning subtle buttons; pressed fill of warning ghost buttons."
+    },
+    {
+      "path": "colors.warningBorder",
+      "collection": "Color",
+      "name": "Warning/warningBorder",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "amber/200"
+        },
+        "Dark": {
+          "alias": "yellow/800"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-warningBorder)",
+      "description": "Outline of warning tags, status icons and subtle buttons."
+    },
+    {
+      "path": "colors.negative",
+      "collection": "Color",
+      "name": "Negative/negative",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/600"
+        },
+        "Dark": {
+          "alias": "red/600"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-negative)",
+      "description": "Error state. Failed, invalid or destructive."
+    },
+    {
+      "path": "colors.negativeDeep",
+      "collection": "Color",
+      "name": "Negative/negativeDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/800"
+        },
+        "Dark": {
+          "alias": "red/300"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-negativeDeep)",
+      "description": "Negative banner and snackbar titles; hover fill of negative contained buttons."
+    },
+    {
+      "path": "colors.negativeStrong",
+      "collection": "Color",
+      "name": "Negative/negativeStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/700"
+        },
+        "Dark": {
+          "alias": "red/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-negativeStrong)",
+      "description": "Negative tag text; pressed fill of negative contained buttons."
+    },
+    {
+      "path": "colors.negativeDimmed",
+      "collection": "Color",
+      "name": "Negative/negativeDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/50"
+        },
+        "Dark": {
+          "alias": "red/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-negativeDimmed)",
+      "description": "Soft negative fill behind negative text: tags, badges, status icons, subtle buttons."
+    },
+    {
+      "path": "colors.negativeSubtle",
+      "collection": "Color",
+      "name": "Negative/negativeSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/100"
+        },
+        "Dark": {
+          "alias": "red/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-negativeSubtle)",
+      "description": "Hover fill of clickable negative tags and negative subtle buttons; pressed fill of negative ghost buttons."
+    },
+    {
+      "path": "colors.negativeBorder",
+      "collection": "Color",
+      "name": "Negative/negativeBorder",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "red/200"
+        },
+        "Dark": {
+          "alias": "red/800"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-negativeBorder)",
+      "description": "Outline of negative tags, status icons and subtle buttons."
+    },
+    {
+      "path": "colors.info",
+      "collection": "Color",
+      "name": "Info/info",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/500"
+        },
+        "Dark": {
+          "alias": "cyan/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-info)",
+      "description": "Informational state. Neutral news, no action needed."
+    },
+    {
+      "path": "colors.infoDeep",
+      "collection": "Color",
+      "name": "Info/infoDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/700"
+        },
+        "Dark": {
+          "alias": "cyan/300"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-infoDeep)",
+      "description": "Info banner and snackbar titles."
+    },
+    {
+      "path": "colors.infoStrong",
+      "collection": "Color",
+      "name": "Info/infoStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/600"
+        },
+        "Dark": {
+          "alias": "cyan/400"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-infoStrong)",
+      "description": "Info tag text."
+    },
+    {
+      "path": "colors.infoDimmed",
+      "collection": "Color",
+      "name": "Info/infoDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/50"
+        },
+        "Dark": {
+          "alias": "cyan/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-infoDimmed)",
+      "description": "Soft info fill behind info text: tags, badges, status icons, subtle buttons."
+    },
+    {
+      "path": "colors.infoSubtle",
+      "collection": "Color",
+      "name": "Info/infoSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/100"
+        },
+        "Dark": {
+          "alias": "cyan/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-infoSubtle)",
+      "description": "Hover fill of clickable info tags."
+    },
+    {
+      "path": "colors.infoBorder",
+      "collection": "Color",
+      "name": "Info/infoBorder",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "sky/200"
+        },
+        "Dark": {
+          "alias": "cyan/800"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-infoBorder)",
+      "description": "Outline of info tags, status icons and subtle buttons."
+    },
+    {
+      "path": "colors.accent",
+      "collection": "Color",
+      "name": "Accent/accent",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/600"
+        },
+        "Dark": {
+          "alias": "indigo/500"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-accent)",
+      "description": "Accent for highlights that are neither action nor status."
+    },
+    {
+      "path": "colors.accentDeep",
+      "collection": "Color",
+      "name": "Accent/accentDeep",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/800"
+        },
+        "Dark": {
+          "alias": "indigo/700"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-accentDeep)",
+      "description": "Accent banner and snackbar titles."
+    },
+    {
+      "path": "colors.accentStrong",
+      "collection": "Color",
+      "name": "Accent/accentStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/700"
+        },
+        "Dark": {
+          "alias": "indigo/600"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-accentStrong)",
+      "description": "Stronger accent for hover and emphasized accent text; no Pentaho UI Kit component uses it yet."
+    },
+    {
+      "path": "colors.accentSubtle",
+      "collection": "Color",
+      "name": "Accent/accentSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/100"
+        },
+        "Dark": {
+          "alias": "indigo/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-accentSubtle)",
+      "description": "Soft accent fill one step above accentDimmed; no Pentaho UI Kit component uses it yet."
+    },
+    {
+      "path": "colors.accentDimmed",
+      "collection": "Color",
+      "name": "Accent/accentDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/50"
+        },
+        "Dark": {
+          "alias": "indigo/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-accentDimmed)",
+      "description": "Softest accent fill: accent banners (mixed half with dimmer) and accent status icons."
+    },
+    {
+      "path": "colors.accentBorder",
+      "collection": "Color",
+      "name": "Accent/accentBorder",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/200"
+        },
+        "Dark": {
+          "alias": "indigo/800"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-accentBorder)",
+      "description": "Outline of accent status icons and accent-tinted surfaces."
+    },
+    {
+      "path": "colors.text",
+      "collection": "Color",
+      "name": "Text/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/700"
+        },
+        "Dark": {
+          "alias": "slate/50"
+        }
+      },
+      "scopes": ["TEXT_FILL"],
+      "code": "var(--uikit-colors-text)",
+      "description": "Primary text: body copy, titles and values."
+    },
+    {
+      "path": "colors.textSubtle",
+      "collection": "Color",
+      "name": "Text/textSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/500"
+        },
+        "Dark": {
+          "alias": "slate/400"
+        }
+      },
+      "scopes": ["TEXT_FILL"],
+      "code": "var(--uikit-colors-textSubtle)",
+      "description": "Secondary text: help text, placeholders, metadata and subheaders."
+    },
+    {
+      "path": "colors.textDisabled",
+      "collection": "Color",
+      "name": "Text/textDisabled",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "neutral/400"
+        },
+        "Dark": {
+          "alias": "neutral/500"
+        }
+      },
+      "scopes": ["TEXT_FILL"],
+      "code": "var(--uikit-colors-textDisabled)",
+      "description": "Disabled text, icons and control outlines; intentionally low contrast."
+    },
+    {
+      "path": "colors.textDimmed",
+      "collection": "Color",
+      "name": "Text/textDimmed",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/400"
+        },
+        "Dark": {
+          "alias": "slate/600"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-textDimmed)",
+      "description": "A muted gray for control outlines rather than reading text."
+    },
+    {
+      "path": "colors.textLight",
+      "collection": "Color",
+      "name": "Text/textLight",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/50"
+        },
+        "Dark": {
+          "alias": "slate/50"
+        }
+      },
+      "scopes": ["TEXT_FILL"],
+      "code": "var(--uikit-colors-textLight)",
+      "description": "Light text in both modes, for saturated or dark fills."
+    },
+    {
+      "path": "colors.textDark",
+      "collection": "Color",
+      "name": "Text/textDark",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/700"
+        },
+        "Dark": {
+          "alias": "slate/700"
+        }
+      },
+      "scopes": ["TEXT_FILL"],
+      "code": "var(--uikit-colors-textDark)",
+      "description": "Dark text in both modes: on warning fills, and in light mode on the soft …Dimmed fills and the lighter categorical colors."
+    },
+    {
+      "path": "colors.border",
+      "collection": "Color",
+      "name": "Borders/border",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/300"
+        },
+        "Dark": {
+          "alias": "slate/700"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-border)",
+      "description": "Default border for outlined controls and containers."
+    },
+    {
+      "path": "colors.borderSubtle",
+      "collection": "Color",
+      "name": "Borders/borderSubtle",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/200"
+        },
+        "Dark": {
+          "alias": "slate/950"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-borderSubtle)",
+      "description": "Hairline dividers between surfaces and rows."
+    },
+    {
+      "path": "colors.borderStrong",
+      "collection": "Color",
+      "name": "Borders/borderStrong",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/500"
+        },
+        "Dark": {
+          "alias": "slate/400"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-borderStrong)",
+      "description": "Emphasized outline of small selection controls."
+    },
+    {
+      "path": "colors.borderDisabled",
+      "collection": "Color",
+      "name": "Borders/borderDisabled",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "neutral/400"
+        },
+        "Dark": {
+          "alias": "neutral/700"
+        }
+      },
+      "scopes": ["STROKE_COLOR"],
+      "code": "var(--uikit-colors-borderDisabled)",
+      "description": "Outline of disabled checkboxes and radios."
+    },
+    {
+      "path": "colors.bgPage",
+      "collection": "Color",
+      "name": "Surfaces/bgPage",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/100"
+        },
+        "Dark": {
+          "alias": "slate/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgPage)",
+      "description": "The page background, behind containers."
+    },
+    {
+      "path": "colors.bgContainer",
+      "collection": "Color",
+      "name": "Surfaces/bgContainer",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/50"
+        },
+        "Dark": {
+          "alias": "slate/800"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgContainer)",
+      "description": "Surface for containers: cards, panels, dialogs, drawers, tooltips and table rows."
+    },
+    {
+      "path": "colors.bgPageSecondary",
+      "collection": "Color",
+      "name": "Surfaces/bgPageSecondary",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/200"
+        },
+        "Dark": {
+          "alias": "slate/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgPageSecondary)",
+      "description": "A step darker than the page: selected and focused list items, tracks and placeholders."
+    },
+    {
+      "path": "colors.bgContainerSecondary",
+      "collection": "Color",
+      "name": "Surfaces/bgContainerSecondary",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/100"
+        },
+        "Dark": {
+          "alias": "slate/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgContainerSecondary)",
+      "description": "A secondary surface inside containers: nested regions and avatar fills."
+    },
+    {
+      "path": "colors.bgHover",
+      "collection": "Color",
+      "name": "Surfaces/bgHover",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "color": [0.1451, 0.3882, 0.9216, 0.078]
+        },
+        "Dark": {
+          "color": [0.1451, 0.3882, 0.9216, 0.078]
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgHover)",
+      "description": "Translucent primary tint for hover on rows, list items, tabs and ghost controls."
+    },
+    {
+      "path": "colors.bgDisabled",
+      "collection": "Color",
+      "name": "Surfaces/bgDisabled",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "neutral/200"
+        },
+        "Dark": {
+          "alias": "neutral/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgDisabled)",
+      "description": "Fill of disabled controls and disabled contained buttons."
+    },
+    {
+      "path": "colors.bgOverlay",
+      "collection": "Color",
+      "name": "Surfaces/bgOverlay",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "color": [0.0078, 0.0235, 0.0902, 0.6]
+        },
+        "Dark": {
+          "color": [0.0588, 0.0902, 0.1647, 0.4]
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "code": "var(--uikit-colors-bgOverlay)",
+      "description": "Translucent backdrop behind dialogs and drawers."
+    },
+    {
+      "path": "colors.dimmer",
+      "collection": "Color",
+      "name": "Surfaces/dimmer",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "color": [1, 1, 1, 1]
+        },
+        "Dark": {
+          "color": [0, 0, 0, 1]
+        }
+      },
+      "scopes": [],
+      "code": "var(--uikit-colors-dimmer)",
+      "description": "Mix target that softens colors (light in light mode, dark in dark mode)."
+    },
+    {
+      "path": "colors.shad1",
+      "collection": "Color",
+      "name": "Other/shad1",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "color": [0.0588, 0.0902, 0.1647, 0.078]
+        },
+        "Dark": {
+          "color": [0.0588, 0.0902, 0.1647, 0.078]
+        }
+      },
+      "scopes": [],
+      "code": "var(--uikit-colors-shad1)",
+      "description": "The translucent shadow color the elevation is built from; no component uses it directly."
+    },
+    {
+      "path": "colors.cat1",
+      "collection": "Color",
+      "name": "Data visualization/cat1",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "blue/300"
+        },
+        "Dark": {
+          "alias": "blue/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat1)",
+      "description": "Categorical data series 1 (blue); the same in both modes."
+    },
+    {
+      "path": "colors.cat2",
+      "collection": "Color",
+      "name": "Data visualization/cat2",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "orange/300"
+        },
+        "Dark": {
+          "alias": "orange/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat2)",
+      "description": "Categorical data series 2 (orange); the same in both modes."
+    },
+    {
+      "path": "colors.cat3",
+      "collection": "Color",
+      "name": "Data visualization/cat3",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "teal/400"
+        },
+        "Dark": {
+          "alias": "teal/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat3)",
+      "description": "Categorical data series 3 (teal); the same in both modes."
+    },
+    {
+      "path": "colors.cat4",
+      "collection": "Color",
+      "name": "Data visualization/cat4",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "violet/400"
+        },
+        "Dark": {
+          "alias": "violet/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat4)",
+      "description": "Categorical data series 4 (violet); the same in both modes."
+    },
+    {
+      "path": "colors.cat5",
+      "collection": "Color",
+      "name": "Data visualization/cat5",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "pink/400"
+        },
+        "Dark": {
+          "alias": "pink/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat5)",
+      "description": "Categorical data series 5 (pink); the same in both modes."
+    },
+    {
+      "path": "colors.cat6",
+      "collection": "Color",
+      "name": "Data visualization/cat6",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "yellow/400"
+        },
+        "Dark": {
+          "alias": "yellow/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat6)",
+      "description": "Categorical data series 6 (yellow); the same in both modes."
+    },
+    {
+      "path": "colors.cat7",
+      "collection": "Color",
+      "name": "Data visualization/cat7",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "fuchsia/300"
+        },
+        "Dark": {
+          "alias": "fuchsia/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat7)",
+      "description": "Categorical data series 7 (fuchsia); the same in both modes."
+    },
+    {
+      "path": "colors.cat8",
+      "collection": "Color",
+      "name": "Data visualization/cat8",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "cyan/400"
+        },
+        "Dark": {
+          "alias": "cyan/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat8)",
+      "description": "Categorical data series 8 (cyan); the same in both modes."
+    },
+    {
+      "path": "colors.cat9",
+      "collection": "Color",
+      "name": "Data visualization/cat9",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "lime/300"
+        },
+        "Dark": {
+          "alias": "lime/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat9)",
+      "description": "Categorical data series 9 (lime); the same in both modes."
+    },
+    {
+      "path": "colors.cat10",
+      "collection": "Color",
+      "name": "Data visualization/cat10",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "rose/400"
+        },
+        "Dark": {
+          "alias": "rose/400"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat10)",
+      "description": "Categorical data series 10 (rose); the same in both modes."
+    },
+    {
+      "path": "colors.cat11",
+      "collection": "Color",
+      "name": "Data visualization/cat11",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "green/600"
+        },
+        "Dark": {
+          "alias": "green/600"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat11)",
+      "description": "Categorical data series 11 (green); the same in both modes."
+    },
+    {
+      "path": "colors.cat12",
+      "collection": "Color",
+      "name": "Data visualization/cat12",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "indigo/500"
+        },
+        "Dark": {
+          "alias": "indigo/500"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+      "code": "var(--uikit-colors-cat12)",
+      "description": "Categorical data series 12 (indigo); the same in both modes."
+    },
+    {
+      "path": "components.bgInput",
+      "collection": "Color",
+      "name": "Surfaces/bgInput",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "color": [1, 1, 1, 1]
+        },
+        "Dark": {
+          "alias": "slate/950"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvBaseInput's field fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.blue.text",
+      "collection": "Color",
+      "name": "Avatar/blue/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "Primary/primaryStrong"
+        },
+        "Dark": {
+          "alias": "blue/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"blue\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.blue.bg",
+      "collection": "Color",
+      "name": "Avatar/blue/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "Primary/primaryDimmed"
+        },
+        "Dark": {
+          "alias": "blue/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"blue\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.orange.text",
+      "collection": "Color",
+      "name": "Avatar/orange/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "orange/700"
+        },
+        "Dark": {
+          "alias": "orange/200"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"orange\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.orange.bg",
+      "collection": "Color",
+      "name": "Avatar/orange/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "orange/200"
+        },
+        "Dark": {
+          "alias": "orange/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"orange\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.teal.text",
+      "collection": "Color",
+      "name": "Avatar/teal/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "teal/800"
+        },
+        "Dark": {
+          "alias": "teal/200"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"teal\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.teal.bg",
+      "collection": "Color",
+      "name": "Avatar/teal/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "teal/200"
+        },
+        "Dark": {
+          "alias": "teal/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"teal\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.violet.text",
+      "collection": "Color",
+      "name": "Avatar/violet/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "violet/800"
+        },
+        "Dark": {
+          "alias": "violet/200"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"violet\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.violet.bg",
+      "collection": "Color",
+      "name": "Avatar/violet/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "violet/200"
+        },
+        "Dark": {
+          "alias": "violet/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"violet\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.pink.text",
+      "collection": "Color",
+      "name": "Avatar/pink/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "pink/900"
+        },
+        "Dark": {
+          "alias": "pink/200"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"pink\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.pink.bg",
+      "collection": "Color",
+      "name": "Avatar/pink/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "pink/200"
+        },
+        "Dark": {
+          "alias": "pink/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"pink\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.yellow.text",
+      "collection": "Color",
+      "name": "Avatar/yellow/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "yellow/700"
+        },
+        "Dark": {
+          "alias": "yellow/100"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"yellow\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.yellow.bg",
+      "collection": "Color",
+      "name": "Avatar/yellow/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "yellow/200"
+        },
+        "Dark": {
+          "alias": "yellow/900"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"yellow\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.neutral.text",
+      "collection": "Color",
+      "name": "Avatar/neutral/text",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/400"
+        },
+        "Dark": {
+          "alias": "slate/300"
+        }
+      },
+      "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+      "description": "HvAvatar color=\"neutral\" text. A component color, not a theme token."
+    },
+    {
+      "path": "components.Avatar.neutral.bg",
+      "collection": "Color",
+      "name": "Avatar/neutral/bg",
+      "type": "COLOR",
+      "values": {
+        "Light": {
+          "alias": "slate/200"
+        },
+        "Dark": {
+          "alias": "slate/700"
+        }
+      },
+      "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+      "description": "HvAvatar color=\"neutral\" fill. A component color, not a theme token."
+    },
+    {
+      "path": "space.xxs",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/xxs",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 4
+        }
+      },
+      "code": "var(--uikit-space-xxs)",
+      "description": "Tightest gap: inside compact controls."
+    },
+    {
+      "path": "space.xs",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/xs",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 8
+        }
+      },
+      "code": "var(--uikit-space-xs)",
+      "description": "Gap between closely related items."
+    },
+    {
+      "path": "space.sm",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/sm",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 16
+        }
+      },
+      "code": "var(--uikit-space-sm)",
+      "description": "Default component padding and gap between fields."
+    },
+    {
+      "path": "space.md",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/md",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 24
+        }
+      },
+      "code": "var(--uikit-space-md)",
+      "description": "Gap between groups and sections; page padding."
+    },
+    {
+      "path": "space.lg",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/lg",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 48
+        }
+      },
+      "code": "var(--uikit-space-lg)",
+      "description": "Gap between page regions."
+    },
+    {
+      "path": "space.xl",
+      "collection": "Spacing",
+      "scopes": ["GAP"],
+      "name": "space/xl",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 80
+        }
+      },
+      "code": "var(--uikit-space-xl)",
+      "description": "Largest whitespace, for page-level breathing room; rare in dense product screens."
+    },
+    {
+      "path": "radii.none",
+      "collection": "Radius",
+      "scopes": ["CORNER_RADIUS"],
+      "name": "radii/none",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 0
+        }
+      },
+      "code": "var(--uikit-radii-none)",
+      "description": "Square corners."
+    },
+    {
+      "path": "radii.base",
+      "collection": "Radius",
+      "scopes": ["CORNER_RADIUS"],
+      "name": "radii/base",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 4
+        }
+      },
+      "code": "var(--uikit-radii-base)",
+      "description": "Small rounding for small controls."
+    },
+    {
+      "path": "radii.round",
+      "collection": "Radius",
+      "scopes": ["CORNER_RADIUS"],
+      "name": "radii/round",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 8
+        }
+      },
+      "code": "var(--uikit-radii-round)",
+      "description": "Default rounding for fields and messages."
+    },
+    {
+      "path": "radii.large",
+      "collection": "Radius",
+      "scopes": ["CORNER_RADIUS"],
+      "name": "radii/large",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 16
+        }
+      },
+      "code": "var(--uikit-radii-large)",
+      "description": "Large rounding for big surfaces."
+    },
+    {
+      "path": "radii.full",
+      "collection": "Radius",
+      "scopes": ["CORNER_RADIUS"],
+      "name": "radii/full",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 9999
+        }
+      },
+      "code": "var(--uikit-radii-full)",
+      "description": "Pill or circle."
+    },
+    {
+      "path": "fontSizes.xs",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/xs",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 10
+        }
+      },
+      "code": "var(--uikit-fontSizes-xs)",
+      "description": "Smallest size, the one caption2 uses."
+    },
+    {
+      "path": "fontSizes.sm",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/sm",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 12
+        }
+      },
+      "code": "var(--uikit-fontSizes-sm)",
+      "description": "Small size, the one caption1 and captionLabel uses."
+    },
+    {
+      "path": "fontSizes.base",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/base",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 14
+        }
+      },
+      "code": "var(--uikit-fontSizes-base)",
+      "description": "Base size, the one body and label uses."
+    },
+    {
+      "path": "fontSizes.lg",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/lg",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 16
+        }
+      },
+      "code": "var(--uikit-fontSizes-lg)",
+      "description": "Large size, the one title4 uses."
+    },
+    {
+      "path": "fontSizes.xl",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/xl",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 20
+        }
+      },
+      "code": "var(--uikit-fontSizes-xl)",
+      "description": "Title size, the one title3 uses."
+    },
+    {
+      "path": "fontSizes.xl2",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/xl2",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 24
+        }
+      },
+      "code": "var(--uikit-fontSizes-xl2)",
+      "description": "Page-heading size, the one title2 uses."
+    },
+    {
+      "path": "fontSizes.xl3",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/xl3",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 32
+        }
+      },
+      "code": "var(--uikit-fontSizes-xl3)",
+      "description": "Large title size, the one title1 uses."
+    },
+    {
+      "path": "fontSizes.xl4",
+      "collection": "Typography",
+      "scopes": ["FONT_SIZE"],
+      "name": "fontSizes/xl4",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 42
+        }
+      },
+      "code": "var(--uikit-fontSizes-xl4)",
+      "description": "Display size, the one display uses."
+    },
+    {
+      "path": "lineHeights.none",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/none",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 21
+        }
+      },
+      "code": "var(--uikit-lineHeights-none)",
+      "description": "Line height alias equal to the base line height; no variant uses it."
+    },
+    {
+      "path": "lineHeights.xs",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/xs",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 16
+        }
+      },
+      "code": "var(--uikit-lineHeights-xs)",
+      "description": "Line height paired with fontSizes.xs in caption2."
+    },
+    {
+      "path": "lineHeights.sm",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/sm",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 18
+        }
+      },
+      "code": "var(--uikit-lineHeights-sm)",
+      "description": "Line height paired with fontSizes.sm in caption1 and captionLabel."
+    },
+    {
+      "path": "lineHeights.base",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/base",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 21
+        }
+      },
+      "code": "var(--uikit-lineHeights-base)",
+      "description": "Line height paired with fontSizes.base in body and label."
+    },
+    {
+      "path": "lineHeights.lg",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/lg",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 24
+        }
+      },
+      "code": "var(--uikit-lineHeights-lg)",
+      "description": "Line height paired with fontSizes.lg in title4."
+    },
+    {
+      "path": "lineHeights.xl",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/xl",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 30
+        }
+      },
+      "code": "var(--uikit-lineHeights-xl)",
+      "description": "Line height paired with fontSizes.xl in title3."
+    },
+    {
+      "path": "lineHeights.xl2",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/xl2",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 36
+        }
+      },
+      "code": "var(--uikit-lineHeights-xl2)",
+      "description": "Line height paired with fontSizes.xl2 in title2."
+    },
+    {
+      "path": "lineHeights.xl3",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/xl3",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 48
+        }
+      },
+      "code": "var(--uikit-lineHeights-xl3)",
+      "description": "Line height paired with fontSizes.xl3 in title1."
+    },
+    {
+      "path": "lineHeights.xl4",
+      "collection": "Typography",
+      "scopes": ["LINE_HEIGHT"],
+      "name": "lineHeights/xl4",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 63
+        }
+      },
+      "code": "var(--uikit-lineHeights-xl4)",
+      "description": "Line height paired with fontSizes.xl4 in display."
+    },
+    {
+      "path": "fontWeights.hairline",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/hairline",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 100
+        }
+      },
+      "code": "var(--uikit-fontWeights-hairline)",
+      "description": "Hairline weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.thin",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/thin",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 200
+        }
+      },
+      "code": "var(--uikit-fontWeights-thin)",
+      "description": "Thin weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.light",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/light",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 300
+        }
+      },
+      "code": "var(--uikit-fontWeights-light)",
+      "description": "Light weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.normal",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/normal",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 400
+        }
+      },
+      "code": "var(--uikit-fontWeights-normal)",
+      "description": "Regular weight: body, caption1, caption2 and field labels."
+    },
+    {
+      "path": "fontWeights.medium",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/medium",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 500
+        }
+      },
+      "code": "var(--uikit-fontWeights-medium)",
+      "description": "Medium weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.semibold",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/semibold",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 600
+        }
+      },
+      "code": "var(--uikit-fontWeights-semibold)",
+      "description": "Emphasis weight: titles, label, captionLabel and table headers."
+    },
+    {
+      "path": "fontWeights.bold",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/bold",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 700
+        }
+      },
+      "code": "var(--uikit-fontWeights-bold)",
+      "description": "Bold weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.extrabold",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/extrabold",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 800
+        }
+      },
+      "code": "var(--uikit-fontWeights-extrabold)",
+      "description": "Extrabold weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontWeights.black",
+      "collection": "Typography",
+      "scopes": ["FONT_WEIGHT"],
+      "name": "fontWeights/black",
+      "type": "FLOAT",
+      "values": {
+        "Value": {
+          "value": 900
+        }
+      },
+      "code": "var(--uikit-fontWeights-black)",
+      "description": "Black weight. Unused by the pentaho type scale."
+    },
+    {
+      "path": "fontFamily.body",
+      "collection": "Typography",
+      "scopes": ["FONT_FAMILY"],
+      "name": "fontFamily/body",
+      "type": "STRING",
+      "values": {
+        "Value": {
+          "value": "Inter"
+        }
+      },
+      "code": "var(--uikit-fontFamily-body)",
+      "description": "The one typeface (Inter, served by the app) for all text."
+    }
+  ],
+  "textStyles": [
+    {
+      "name": "Typography/display",
+      "family": "Inter",
+      "weight": 600,
+      "size": 42,
+      "lineHeight": 63,
+      "letterSpacing": 0.505
+    },
+    {
+      "name": "Typography/title1",
+      "family": "Inter",
+      "weight": 600,
+      "size": 32,
+      "lineHeight": 48,
+      "letterSpacing": 0.384
+    },
+    {
+      "name": "Typography/title2",
+      "family": "Inter",
+      "weight": 600,
+      "size": 24,
+      "lineHeight": 36,
+      "letterSpacing": 0.288
+    },
+    {
+      "name": "Typography/title3",
+      "family": "Inter",
+      "weight": 600,
+      "size": 20,
+      "lineHeight": 30,
+      "letterSpacing": 0.24
+    },
+    {
+      "name": "Typography/title4",
+      "family": "Inter",
+      "weight": 600,
+      "size": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.194
+    },
+    {
+      "name": "Typography/label",
+      "family": "Inter",
+      "weight": 600,
+      "size": 14,
+      "lineHeight": 21,
+      "letterSpacing": 0.171
+    },
+    {
+      "name": "Typography/body",
+      "family": "Inter",
+      "weight": 400,
+      "size": 14,
+      "lineHeight": 21,
+      "letterSpacing": 0.171
+    },
+    {
+      "name": "Typography/captionLabel",
+      "family": "Inter",
+      "weight": 600,
+      "size": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Typography/caption1",
+      "family": "Inter",
+      "weight": 400,
+      "size": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0.142
+    },
+    {
+      "name": "Typography/caption2",
+      "family": "Inter",
+      "weight": 400,
+      "size": 10,
+      "lineHeight": 16,
+      "letterSpacing": 0.12
+    }
+  ]
+}

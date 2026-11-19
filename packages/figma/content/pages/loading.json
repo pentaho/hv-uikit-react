@@ -1,0 +1,115 @@
+{
+  "name": "Loading",
+  "category": "Feedback",
+  "description": "Three animated bars saying a process is running, with an optional label.",
+  "overview": "Regular with a label and small, in light and dark. The bars animate in code.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Regular · small",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 80],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Regular · small",
+          "sizing": ["HUG", "HUG"],
+          "size": [83, 18],
+          "type": "text",
+          "characters": "Regular · small",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Sizes",
+          "sizing": ["HUG", "HUG"],
+          "size": [220, 54],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 48,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Loading",
+              "sizing": ["HUG", "HUG"],
+              "size": [86, 54],
+              "type": "instance",
+              "component": "Loading",
+              "variant": {
+                "Size": "regular"
+              },
+              "properties": {
+                "Label#74:8": "Loading assets",
+                "Show label#74:11": true
+              }
+            },
+            {
+              "name": "Loading",
+              "sizing": ["HUG", "HUG"],
+              "size": [86, 38],
+              "type": "instance",
+              "component": "Loading",
+              "variant": {
+                "Size": "small"
+              },
+              "properties": {
+                "Label#74:8": "Loading assets",
+                "Show label#74:11": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Processes of unknown length: loading a panel, running a query.",
+    "Covering a region that is reloading (Loading container)."
+  ],
+  "dont": [
+    "Use it when the shape of the content is known: use Skeleton.",
+    "Use it for a known length: use Progress bar."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 859],
+    "size": [1280, 334],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [78, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Loading",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [134, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Size · Label, Show label",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Loading",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

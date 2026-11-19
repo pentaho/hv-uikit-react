@@ -1,0 +1,312 @@
+{
+  "name": "List",
+  "category": "Data display",
+  "description": "A simple vertical list of text or icon-and-text items. Its rows are the items of menus, Dropdown and Select.",
+  "overview": "Icon items with a separator and a disabled item, and checkbox items, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Icon items",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 163],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Icon items",
+          "sizing": ["HUG", "HUG"],
+          "size": [59, 18],
+          "type": "text",
+          "characters": "Icon items",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "List",
+          "sizing": ["FIXED", "HUG"],
+          "size": [240, 137],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Default",
+                "Start": "icon"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/PencilSimple"
+                },
+                "Label#59:0": "Edit"
+              }
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Hover",
+                "Start": "icon"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/Copy"
+                },
+                "Label#59:0": "Duplicate"
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "swap": {
+                    "component": "Icon/Copy"
+                  }
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Text/text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Default",
+                "Start": "icon"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/DownloadSimple"
+                },
+                "Label#59:0": "Download"
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "swap": {
+                    "component": "Icon/DownloadSimple"
+                  }
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Text/text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "List separator",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 9],
+              "type": "instance",
+              "component": "List separator"
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Disabled",
+                "Start": "icon"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/Trash"
+                },
+                "Label#59:0": "Delete"
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "swap": {
+                    "component": "Icon/Trash"
+                  }
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Text/textDisabled"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Checkbox items",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 154],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Checkbox items",
+          "sizing": ["HUG", "HUG"],
+          "size": [92, 18],
+          "type": "text",
+          "characters": "Checkbox items",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "List",
+          "sizing": ["FIXED", "HUG"],
+          "size": [240, 128],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "clips": true,
+          "children": [
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Selected",
+                "Start": "checkbox"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/PencilSimple"
+                },
+                "Label#59:0": "Published"
+              }
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Default",
+                "Start": "checkbox"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/PencilSimple"
+                },
+                "Label#59:0": "Draft"
+              }
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Selected",
+                "Start": "checkbox"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/PencilSimple"
+                },
+                "Label#59:0": "Failed"
+              }
+            },
+            {
+              "name": "List item",
+              "sizing": ["FILL", "FIXED"],
+              "size": [240, 32],
+              "type": "instance",
+              "component": "List item",
+              "variant": {
+                "State": "Disabled",
+                "Start": "checkbox"
+              },
+              "properties": {
+                "Icon#59:13": {
+                  "component": "Icon/PencilSimple"
+                },
+                "Label#59:0": "Archived"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Short lists of actions or values, alone or inside menus and selection panels."
+  ],
+  "dont": [
+    "Use it for records with several fields: use a Table.",
+    "Mix icon and plain items in the same list."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1112],
+    "size": [1280, 513],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [36, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "List",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [328, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "List item (State × Start · Label, Icon swap) · List separator",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "List item",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "List separator",
+        "at": [80, 424]
+      }
+    ]
+  }
+}

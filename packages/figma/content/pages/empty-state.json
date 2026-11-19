@@ -1,0 +1,221 @@
+{
+  "name": "Empty state",
+  "category": "Feedback",
+  "description": "Says why there is nothing here and what to do next.",
+  "overview": "No results after a search, nothing created yet, and the stacked layout for narrow spaces, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "No results",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 139],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "No results",
+          "sizing": ["HUG", "HUG"],
+          "size": [58, 18],
+          "type": "text",
+          "characters": "No results",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Empty state",
+          "sizing": ["HUG", "HUG"],
+          "size": [271, 113],
+          "type": "instance",
+          "component": "Empty state",
+          "variant": {
+            "Layout": "default"
+          },
+          "properties": {
+            "Icon#48:9": {
+              "component": "Icon/MagnifyingGlass"
+            },
+            "Message#48:3": "Try another name, or clear the filters.",
+            "Show action#48:6": true,
+            "Title#48:0": "No results for “sales”"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Nothing yet",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 139],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Nothing yet",
+          "sizing": ["HUG", "HUG"],
+          "size": [67, 18],
+          "type": "text",
+          "characters": "Nothing yet",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Empty state",
+          "sizing": ["HUG", "HUG"],
+          "size": [333, 113],
+          "type": "instance",
+          "component": "Empty state",
+          "variant": {
+            "Layout": "default"
+          },
+          "properties": {
+            "Icon#48:9": {
+              "component": "Icon/Plus"
+            },
+            "Message#48:3": "Connect a source to start building the catalog.",
+            "Show action#48:6": true,
+            "Title#48:0": "No assets yet"
+          },
+          "overrides": [
+            {
+              "path": [0, 0],
+              "swap": {
+                "component": "Icon/Plus"
+              }
+            },
+            {
+              "path": [0, 0, 0],
+              "fills": [
+                {
+                  "variable": "Text/text"
+                }
+              ]
+            },
+            {
+              "path": [1, 4],
+              "properties": {
+                "End icon instance#24:175": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:150": false,
+                "Label#7:0": "Add a source",
+                "Start icon instance#24:125": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:100": false,
+                "State": "Default",
+                "Variant": "secondarySubtle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stacked",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 115],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Stacked",
+          "sizing": ["HUG", "HUG"],
+          "size": [47, 18],
+          "type": "text",
+          "characters": "Stacked",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Empty state",
+          "sizing": ["HUG", "HUG"],
+          "size": [143, 89],
+          "type": "instance",
+          "component": "Empty state",
+          "variant": {
+            "Layout": "stacked"
+          },
+          "properties": {
+            "Icon#48:9": {
+              "component": "Icon/Bell"
+            },
+            "Message#48:3": "You are all caught up.",
+            "Show action#48:6": false,
+            "Title#48:0": "No notifications"
+          },
+          "overrides": [
+            {
+              "path": [0],
+              "swap": {
+                "component": "Icon/Bell"
+              }
+            },
+            {
+              "path": [0, 0],
+              "fills": [
+                {
+                  "variable": "Text/text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A list, table or panel with nothing to show: say why, and offer the next step.",
+    "Search or filters that match nothing: name the query and offer Clear filters."
+  ],
+  "dont": [
+    "Leave a blank area, or an empty table header with no rows.",
+    "Use it for errors: say what failed and offer Retry."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1220],
+    "size": [1280, 433],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [117, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Empty state",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [376, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Layout (default, stacked) · Icon swap, Title, Message, Show action",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Empty state",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

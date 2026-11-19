@@ -1,0 +1,297 @@
+{
+  "name": "Dialog",
+  "category": "Feedback",
+  "description": "A modal step that needs a decision or a short form before people go back to the page.",
+  "overview": "Each variant in light and dark. A variant adds a status bar and icon; use it only when the dialog states that outcome.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "default",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 183],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "default",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Dialog",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 157],
+          "type": "instance",
+          "component": "Dialog",
+          "variant": {
+            "Variant": "default"
+          },
+          "properties": {
+            "Body#35:5": "They'll be removed from every collection. You can't undo this.",
+            "Show close#35:10": true,
+            "Show secondary#35:15": true,
+            "Title#35:0": "Delete 3 assets?"
+          },
+          "overrides": [
+            {
+              "path": [2, 1],
+              "properties": {
+                "Color": "negative",
+                "End icon instance#24:457": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:438": false,
+                "Label#12:4": "Delete assets",
+                "Start icon instance#24:419": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:400": false,
+                "State": "Default",
+                "Style": "contained"
+              },
+              "swap": {
+                "component": "Button/Status",
+                "variant": {
+                  "Color": "negative",
+                  "Style": "contained",
+                  "State": "Default"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "success",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 187],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "success",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "success",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Dialog",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 161],
+          "type": "instance",
+          "component": "Dialog",
+          "variant": {
+            "Variant": "success"
+          },
+          "properties": {
+            "Body#35:5": "142 assets were added to the Sales catalog.",
+            "Show close#35:10": true,
+            "Show secondary#35:15": false,
+            "Title#35:0": "Import complete"
+          },
+          "overrides": [
+            {
+              "path": [3, 0],
+              "properties": {
+                "End icon instance#24:175": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:150": false,
+                "Label#7:0": "View assets",
+                "Start icon instance#24:125": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:100": false,
+                "State": "Default",
+                "Variant": "primary"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 187],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "warning",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "warning",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Dialog",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 161],
+          "type": "instance",
+          "component": "Dialog",
+          "variant": {
+            "Variant": "warning"
+          },
+          "properties": {
+            "Body#35:5": "Your edits to this pipeline will be lost.",
+            "Show close#35:10": true,
+            "Show secondary#35:15": true,
+            "Title#35:0": "Discard unsaved changes?"
+          },
+          "overrides": [
+            {
+              "path": [3, 1],
+              "properties": {
+                "Color": "negative",
+                "End icon instance#24:457": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:438": false,
+                "Label#12:4": "Discard",
+                "Start icon instance#24:419": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:400": false,
+                "State": "Default",
+                "Style": "contained"
+              },
+              "swap": {
+                "component": "Button/Status",
+                "variant": {
+                  "Color": "negative",
+                  "Style": "contained",
+                  "State": "Default"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "error",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 187],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "error",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "error",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Dialog",
+          "sizing": ["FILL", "HUG"],
+          "size": [516, 161],
+          "type": "instance",
+          "component": "Dialog",
+          "variant": {
+            "Variant": "error"
+          },
+          "properties": {
+            "Body#35:5": "The data source didn't respond. Try again in a few minutes.",
+            "Show close#35:10": true,
+            "Show secondary#35:15": true,
+            "Title#35:0": "Couldn't publish the report"
+          },
+          "overrides": [
+            {
+              "path": [3, 1],
+              "properties": {
+                "End icon instance#24:175": {
+                  "component": "Icon/CaretDown"
+                },
+                "End icon#24:150": false,
+                "Label#7:0": "Try again",
+                "Start icon instance#24:125": {
+                  "component": "Icon/Plus"
+                },
+                "Start icon#24:100": false,
+                "State": "Default",
+                "Variant": "primary"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Confirming a destructive or irreversible action.",
+    "A short form: up to about five fields.",
+    "Details people read while keeping the page in view: Drawer. A message with no decision: Banner or Snackbar."
+  ],
+  "dont": [
+    "Use more than three buttons, or two primary ones.",
+    "Put long forms or multi-step flows in it: use a page.",
+    "Write a title as plain text or buttons outside the actions row: the parts carry focus and naming."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1642],
+    "size": [1280, 681],
+    "items": [
+      {
+        "name": "Dialog",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [62, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Dialog",
+        "style": "Typography/title3",
+        "fill": {
+          "rgb": [0, 0, 0]
+        }
+      },
+      {
+        "name": "Variant · Title, Body, Show close, Show secondary · buttons are exposed instances",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [469, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant · Title, Body, Show close, Show secondary · buttons are exposed instances",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Dialog",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

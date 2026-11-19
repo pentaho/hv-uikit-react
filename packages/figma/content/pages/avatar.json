@@ -1,0 +1,2428 @@
+{
+  "name": "Avatar",
+  "category": "Data display",
+  "description": "A person's or item's picture, initials or a generic user icon, in a circle or square.",
+  "overview": "Images, letters in each colour, icons, sizes, status, badges and a group, in light and dark. The photos are AI-generated placeholders of fictional people: drop a real photo on the Avatar layer's fill.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Images",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Images",
+          "sizing": ["HUG", "HUG"],
+          "size": [42, 18],
+          "type": "text",
+          "characters": "Images",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [196, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "be95e40e07f3795bf4749f54b3f233083a879718",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "400d0d66bc1eb6df810ba0d8cbbe065f4a65aa9c",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "2c93554f0f89609f2d8dfa7053a7c22ad1378b61",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "13ecda380bb4d296b97b54a8edc2513807413a57",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+          "sizing": ["HUG", "HUG"],
+          "size": [302, 18],
+          "type": "text",
+          "characters": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [352, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "BM",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/bg",
+                      "rgb": [0.859, 0.918, 0.996]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/text",
+                      "rgb": [0.114, 0.306, 0.847]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "VL",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/orange/bg",
+                      "rgb": [0.996, 0.843, 0.667]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/orange/text",
+                      "rgb": [0.761, 0.255, 0.047]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/bg",
+                      "rgb": [0.6, 0.965, 0.894]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/text",
+                      "rgb": [0.067, 0.369, 0.349]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AR",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/bg",
+                      "rgb": [0.867, 0.839, 0.996]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/text",
+                      "rgb": [0.357, 0.129, 0.714]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "KD",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/pink/bg",
+                      "rgb": [0.984, 0.812, 0.91]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/pink/text",
+                      "rgb": [0.514, 0.094, 0.263]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "Y",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/yellow/bg",
+                      "rgb": [0.996, 0.941, 0.541]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/yellow/text",
+                      "rgb": [0.631, 0.384, 0.027]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "NA",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/bg",
+                      "rgb": [0.886, 0.91, 0.941]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/text",
+                      "rgb": [0.58, 0.639, 0.722]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Icons",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Icons",
+          "sizing": ["HUG", "HUG"],
+          "size": [31, 18],
+          "type": "text",
+          "characters": "Icons",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [196, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/Copy"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/bg",
+                      "rgb": [0.859, 0.918, 0.996]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/Copy"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/text",
+                      "rgb": [0.114, 0.306, 0.847]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/ArrowsClockwise"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/bg",
+                      "rgb": [0.6, 0.965, 0.894]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/ArrowsClockwise"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/text",
+                      "rgb": [0.067, 0.369, 0.349]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/MagnifyingGlass"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/bg",
+                      "rgb": [0.867, 0.839, 0.996]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/MagnifyingGlass"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/text",
+                      "rgb": [0.357, 0.129, 0.714]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/bg",
+                      "rgb": [0.886, 0.91, 0.941]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/text",
+                      "rgb": [0.58, 0.639, 0.722]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sizes and shapes: xs · sm · md · lg · xl · square",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 98],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Sizes and shapes: xs · sm · md · lg · xl · square",
+          "sizing": ["HUG", "HUG"],
+          "size": [262, 18],
+          "type": "text",
+          "characters": "Sizes and shapes: xs · sm · md · lg · xl · square",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [348, 72],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "xs",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "sm",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [72, 72],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "xl",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "image",
+                "Shape": "square"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "be95e40e07f3795bf4749f54b3f233083a879718",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Status ring: positive · negative · accent",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Status ring: positive · negative · accent",
+          "sizing": ["HUG", "HUG"],
+          "size": [221, 18],
+          "type": "text",
+          "characters": "Status ring: positive · negative · accent",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [152, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "sm",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Positive/positive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Accent/accent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Badge",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Badge",
+          "sizing": ["HUG", "HUG"],
+          "size": [37, 18],
+          "type": "text",
+          "characters": "Badge",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [160, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "BM",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "400d0d66bc1eb6df810ba0d8cbbe065f4a65aa9c",
+                      "scale": "FILL"
+                    }
+                  ]
+                },
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Positive/positive"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Group (Avatar group)",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Group (Avatar group)",
+          "sizing": ["HUG", "HUG"],
+          "size": [120, 18],
+          "type": "text",
+          "characters": "Group (Avatar group)",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Groups",
+          "sizing": ["HUG", "HUG"],
+          "size": [588, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 32],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "sm",
+                "Spacing": "compact"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [112, 40],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "md",
+                "Spacing": "compact"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [136, 40],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "md",
+                "Spacing": "loose"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [152, 56],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "lg",
+                "Spacing": "compact"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dark": [
+    {
+      "name": "Images",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Images",
+          "sizing": ["HUG", "HUG"],
+          "size": [42, 18],
+          "type": "text",
+          "characters": "Images",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [196, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "be95e40e07f3795bf4749f54b3f233083a879718",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "400d0d66bc1eb6df810ba0d8cbbe065f4a65aa9c",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "2c93554f0f89609f2d8dfa7053a7c22ad1378b61",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "13ecda380bb4d296b97b54a8edc2513807413a57",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+          "sizing": ["HUG", "HUG"],
+          "size": [302, 18],
+          "type": "text",
+          "characters": "Letters: blue, orange, teal, violet, pink, yellow, neutral",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [352, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "BM",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/bg",
+                      "rgb": [0.118, 0.227, 0.541]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/text",
+                      "rgb": [0.576, 0.773, 0.992]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "VL",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/orange/bg",
+                      "rgb": [0.486, 0.176, 0.071]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/orange/text",
+                      "rgb": [0.996, 0.843, 0.667]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/bg",
+                      "rgb": [0.075, 0.306, 0.29]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/text",
+                      "rgb": [0.6, 0.965, 0.894]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AR",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/bg",
+                      "rgb": [0.298, 0.114, 0.584]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/text",
+                      "rgb": [0.867, 0.839, 0.996]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "KD",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/pink/bg",
+                      "rgb": [0.514, 0.094, 0.263]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/pink/text",
+                      "rgb": [0.984, 0.812, 0.91]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "Y",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/yellow/bg",
+                      "rgb": [0.443, 0.247, 0.071]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/yellow/text",
+                      "rgb": [0.996, 0.976, 0.765]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "NA",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/bg",
+                      "rgb": [0.2, 0.255, 0.333]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/text",
+                      "rgb": [0.796, 0.835, 0.882]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Icons",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 66],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Icons",
+          "sizing": ["HUG", "HUG"],
+          "size": [31, 18],
+          "type": "text",
+          "characters": "Icons",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [196, 40],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/Copy"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/bg",
+                      "rgb": [0.118, 0.227, 0.541]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/Copy"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/blue/text",
+                      "rgb": [0.576, 0.773, 0.992]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/ArrowsClockwise"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/bg",
+                      "rgb": [0.075, 0.306, 0.29]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/ArrowsClockwise"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/teal/text",
+                      "rgb": [0.6, 0.965, 0.894]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/MagnifyingGlass"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/bg",
+                      "rgb": [0.298, 0.114, 0.584]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0],
+                  "swap": {
+                    "component": "Icon/MagnifyingGlass"
+                  }
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/violet/text",
+                      "rgb": [0.867, 0.839, 0.996]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/bg",
+                      "rgb": [0.2, 0.255, 0.333]
+                    }
+                  ]
+                },
+                {
+                  "path": [0, 0, 0],
+                  "fills": [
+                    {
+                      "variable": "Avatar/neutral/text",
+                      "rgb": [0.796, 0.835, 0.882]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sizes and shapes: xs · sm · md · lg · xl · square",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 98],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Sizes and shapes: xs · sm · md · lg · xl · square",
+          "sizing": ["HUG", "HUG"],
+          "size": [262, 18],
+          "type": "text",
+          "characters": "Sizes and shapes: xs · sm · md · lg · xl · square",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [348, 72],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "xs",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "sm",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [72, 72],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "xl",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              }
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "image",
+                "Shape": "square"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": false,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "be95e40e07f3795bf4749f54b3f233083a879718",
+                      "scale": "FILL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Status ring: positive · negative · accent",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Status ring: positive · negative · accent",
+          "sizing": ["HUG", "HUG"],
+          "size": [221, 18],
+          "type": "text",
+          "characters": "Status ring: positive · negative · accent",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [152, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [32, 32],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "sm",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Positive/positive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "AB",
+                "Show badge#83:62": false,
+                "Show status#83:31": true
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "strokes": [
+                    {
+                      "variable": "Accent/accent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Badge",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Badge",
+          "sizing": ["HUG", "HUG"],
+          "size": [37, 18],
+          "type": "text",
+          "characters": "Badge",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Strip",
+          "sizing": ["HUG", "HUG"],
+          "size": [160, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "icon",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [40, 40],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "md",
+                "Content": "initials",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "BM",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Negative/negative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Avatar",
+              "sizing": ["HUG", "HUG"],
+              "size": [56, 56],
+              "type": "instance",
+              "component": "Avatar",
+              "variant": {
+                "Size": "lg",
+                "Content": "image",
+                "Shape": "circular"
+              },
+              "properties": {
+                "Icon#83:93": {
+                  "component": "Icon/User"
+                },
+                "Initials#83:0": "JS",
+                "Show badge#83:62": true,
+                "Show status#83:31": false
+              },
+              "overrides": [
+                {
+                  "path": [0],
+                  "images": [
+                    {
+                      "image": "400d0d66bc1eb6df810ba0d8cbbe065f4a65aa9c",
+                      "scale": "FILL"
+                    }
+                  ]
+                },
+                {
+                  "path": [1],
+                  "fills": [
+                    {
+                      "variable": "Positive/positive"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Group (Avatar group)",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 82],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Group (Avatar group)",
+          "sizing": ["HUG", "HUG"],
+          "size": [120, 18],
+          "type": "text",
+          "characters": "Group (Avatar group)",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Groups",
+          "sizing": ["HUG", "HUG"],
+          "size": [588, 56],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [92, 32],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "sm",
+                "Spacing": "compact"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [112, 40],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "md",
+                "Spacing": "compact"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [136, 40],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "md",
+                "Spacing": "loose"
+              }
+            },
+            {
+              "name": "Avatar group",
+              "sizing": ["HUG", "HUG"],
+              "size": [152, 56],
+              "type": "instance",
+              "component": "Avatar group",
+              "variant": {
+                "Size": "lg",
+                "Spacing": "compact"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "People and owners in tables, cards and the header; square for items such as apps or sources.",
+    "A photo when there is one; initials, then the user icon, as fallbacks."
+  ],
+  "dont": [
+    "Leave it without alt (the person's name).",
+    "Use colour alone to mean something: colours tell people apart, they are not statuses."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1459],
+    "size": [1280, 936],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [64, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Avatar",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [654, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Size × Content × Shape · Initials, Icon swap, Show status, Show badge · colours: Avatar/<color>/bg + text variables",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Avatar",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Avatar group",
+        "at": [80, 576]
+      }
+    ]
+  }
+}

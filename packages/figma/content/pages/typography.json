@@ -1,0 +1,628 @@
+{
+  "name": "Typography",
+  "category": "Foundations",
+  "description": "Text in the theme's typography: ten variants, as links or disabled.",
+  "overview": "Every variant with its size, line height and weight, then link and disabled, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Variants",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 431],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Variants",
+          "sizing": ["HUG", "HUG"],
+          "size": [46, 18],
+          "type": "text",
+          "characters": "Variants",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Specimen",
+          "sizing": ["HUG", "HUG"],
+          "size": [437, 405],
+          "type": "frame",
+          "direction": "VERTICAL",
+          "gap": 12,
+          "clips": true,
+          "children": [
+            {
+              "name": "display",
+              "sizing": ["HUG", "HUG"],
+              "size": [437, 63],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "display",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [224, 63],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "display",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Pentaho UI"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [85, 16],
+                  "type": "text",
+                  "characters": "42/63 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "title1",
+              "sizing": ["HUG", "HUG"],
+              "size": [400, 48],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "title1",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [187, 48],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "title1",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [85, 16],
+                  "type": "text",
+                  "characters": "32/48 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "title2",
+              "sizing": ["HUG", "HUG"],
+              "size": [353, 36],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "title2",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [140, 36],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "title2",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [85, 16],
+                  "type": "text",
+                  "characters": "24/36 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "title3",
+              "sizing": ["HUG", "HUG"],
+              "size": [405, 30],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "title3",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [192, 30],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "title3",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [85, 16],
+                  "type": "text",
+                  "characters": "20/30 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "title4",
+              "sizing": ["HUG", "HUG"],
+              "size": [364, 24],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "title4",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [153, 24],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "title4",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [83, 16],
+                  "type": "text",
+                  "characters": "16/24 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "label",
+              "sizing": ["HUG", "HUG"],
+              "size": [344, 21],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "label",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [134, 21],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "label",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [82, 16],
+                  "type": "text",
+                  "characters": "14/21 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "body",
+              "sizing": ["HUG", "HUG"],
+              "size": [329, 21],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "body",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [131, 21],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "body",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [70, 16],
+                  "type": "text",
+                  "characters": "14/21 · Regular",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "captionLabel",
+              "sizing": ["HUG", "HUG"],
+              "size": [324, 18],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "captionLabel",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [115, 18],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "captionLabel",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [81, 16],
+                  "type": "text",
+                  "characters": "12/18 · Semi Bold",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "caption1",
+              "sizing": ["HUG", "HUG"],
+              "size": [310, 18],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "caption1",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [112, 18],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "caption1",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [70, 16],
+                  "type": "text",
+                  "characters": "12/18 · Regular",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "caption2",
+              "sizing": ["HUG", "HUG"],
+              "size": [291, 18],
+              "type": "frame",
+              "direction": "HORIZONTAL",
+              "gap": 16,
+              "cross": "BASELINE",
+              "clips": true,
+              "children": [
+                {
+                  "name": "Name",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [96, 18],
+                  "type": "text",
+                  "characters": "caption2",
+                  "style": "Typography/caption1",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                },
+                {
+                  "name": "Typography",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [93, 16],
+                  "type": "instance",
+                  "component": "Typography",
+                  "variant": {
+                    "Variant": "caption2",
+                    "Kind": "default"
+                  },
+                  "properties": {
+                    "Text#97:13": "Data quality checks"
+                  }
+                },
+                {
+                  "name": "Meta",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [70, 16],
+                  "type": "text",
+                  "characters": "10/16 · Regular",
+                  "style": "Typography/caption2",
+                  "fill": {
+                    "variable": "Text/textSubtle"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Link · disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 47],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Link · disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [82, 18],
+          "type": "text",
+          "characters": "Link · disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Kinds",
+          "sizing": ["HUG", "HUG"],
+          "size": [242, 21],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 24,
+          "cross": "CENTER",
+          "clips": true,
+          "children": [
+            {
+              "name": "Typography",
+              "sizing": ["HUG", "HUG"],
+              "size": [132, 21],
+              "type": "instance",
+              "component": "Typography",
+              "variant": {
+                "Variant": "body",
+                "Kind": "link"
+              },
+              "properties": {
+                "Text#97:13": "Open the run report"
+              }
+            },
+            {
+              "name": "Typography",
+              "sizing": ["HUG", "HUG"],
+              "size": [86, 21],
+              "type": "instance",
+              "component": "Typography",
+              "variant": {
+                "Variant": "body",
+                "Kind": "disabled"
+              },
+              "properties": {
+                "Text#97:13": "Not available"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Every piece of text, with the variant that matches its role: title3 for page sections, body for content, caption for metadata.",
+    "component=\"h1\"… to keep heading levels in order regardless of size."
+  ],
+  "dont": [
+    "Set font sizes or weights by hand: pick a variant.",
+    "Skip heading levels, or use display outside hero areas."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1294],
+    "size": [1568, 791],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [117, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Typography",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [335, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Variant × Kind · Text · bound to the Typography/ text styles",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Typography",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

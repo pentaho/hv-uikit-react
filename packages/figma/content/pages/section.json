@@ -1,0 +1,196 @@
+{
+  "name": "Section",
+  "category": "Layout",
+  "description": "A titled, bordered region that groups a page's content under one topic, optionally collapsible. Table section frames a table with its bulk actions and pagination.",
+  "overview": "Section plain and collapsible, then Table section, in light and dark. Swap the section's Content for any component.",
+  "modes": "VERTICAL",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Section",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 212],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Section",
+          "sizing": ["HUG", "HUG"],
+          "size": [43, 18],
+          "type": "text",
+          "characters": "Section",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Section",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 186],
+          "type": "instance",
+          "component": "Section",
+          "variant": {
+            "Expandable": "no"
+          },
+          "properties": {
+            "Content#55:8": {
+              "component": "Section/Slot"
+            },
+            "Show action#55:4": true,
+            "Title#55:0": "Usage"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Collapsible: open · closed",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 270],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Collapsible: open · closed",
+          "sizing": ["HUG", "HUG"],
+          "size": [146, 18],
+          "type": "text",
+          "characters": "Collapsible: open · closed",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Section",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 186],
+          "type": "instance",
+          "component": "Section",
+          "variant": {
+            "Expandable": "open"
+          },
+          "properties": {
+            "Content#55:8": {
+              "component": "Section/Slot"
+            },
+            "Show action#55:4": true,
+            "Title#55:0": "Usage"
+          }
+        },
+        {
+          "name": "Section",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 50],
+          "type": "instance",
+          "component": "Section",
+          "variant": {
+            "Expandable": "closed"
+          },
+          "properties": {
+            "Content#55:8": {
+              "component": "Section/Slot"
+            },
+            "Show action#55:4": true,
+            "Title#55:0": "Usage"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Table section",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 375],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Table section",
+          "sizing": ["HUG", "HUG"],
+          "size": [76, 18],
+          "type": "text",
+          "characters": "Table section",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Table section",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 349],
+          "type": "instance",
+          "component": "Table section",
+          "variant": {
+            "State": "default"
+          },
+          "properties": {
+            "Show bulk actions#55:16": true,
+            "Show pagination#55:20": true,
+            "Title#55:12": "Assets"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Grouping a page's content under topics, each with its own actions.",
+    "Table section around every table, with bulk actions and pagination; its loading and empty states replace the rows."
+  ],
+  "dont": [
+    "Nest sections inside sections.",
+    "Put page-level actions in a section header: they go beside the page title."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 2726],
+    "size": [3184, 1212],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [74, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Section",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [773, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Section (Expandable · Title, Show action, Content swap) · Table section (State · Title, Show bulk actions, Show pagination) · Section/Slot",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Section/Slot",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Section",
+        "at": [80, 304]
+      },
+      {
+        "type": "set",
+        "name": "Table section",
+        "at": [80, 602]
+      }
+    ]
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "name": "Time picker",
+  "category": "Inputs",
+  "description": "Picks a time of day with a stepper per unit.",
+  "overview": "Field states, then open in 12-hour and 24-hour format, in light and dark.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default · hover · invalid · disabled",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 105],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default · hover · invalid · disabled",
+          "sizing": ["HUG", "HUG"],
+          "size": [188, 18],
+          "type": "text",
+          "characters": "Default · hover · invalid · disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "States",
+          "sizing": ["HUG", "HUG"],
+          "size": [484, 79],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 12,
+          "clips": true,
+          "children": [
+            {
+              "name": "Time picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [112, 57],
+              "type": "instance",
+              "component": "Time picker",
+              "variant": {
+                "State": "Default"
+              },
+              "properties": {
+                "Label#93:0": "Run at",
+                "Value#93:6": "09:30 AM"
+              }
+            },
+            {
+              "name": "Time picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [112, 57],
+              "type": "instance",
+              "component": "Time picker",
+              "variant": {
+                "State": "Hover"
+              },
+              "properties": {
+                "Label#93:0": "Run at",
+                "Value#93:6": "09:30 AM"
+              }
+            },
+            {
+              "name": "Time picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [112, 79],
+              "type": "instance",
+              "component": "Time picker",
+              "variant": {
+                "State": "Invalid"
+              },
+              "properties": {
+                "Label#93:0": "Run at",
+                "Value#93:6": "09:30 AM"
+              }
+            },
+            {
+              "name": "Time picker",
+              "sizing": ["FIXED", "HUG"],
+              "size": [112, 57],
+              "type": "instance",
+              "component": "Time picker",
+              "variant": {
+                "State": "Disabled"
+              },
+              "properties": {
+                "Label#93:0": "Run at",
+                "Value#93:6": "09:30 AM"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open · 12-hour · 24-hour",
+      "sizing": ["FILL", "HUG"],
+      "size": [516, 181],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Open · 12-hour · 24-hour",
+          "sizing": ["HUG", "HUG"],
+          "size": [141, 18],
+          "type": "text",
+          "characters": "Open · 12-hour · 24-hour",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Open",
+          "sizing": ["HUG", "HUG"],
+          "size": [350, 155],
+          "type": "frame",
+          "direction": "HORIZONTAL",
+          "gap": 32,
+          "clips": true,
+          "children": [
+            {
+              "name": "Stack",
+              "sizing": ["HUG", "HUG"],
+              "size": [200, 155],
+              "type": "frame",
+              "direction": "VERTICAL",
+              "gap": 4,
+              "padding": [0, 0, 6, 0],
+              "clips": true,
+              "children": [
+                {
+                  "name": "Time picker",
+                  "sizing": ["FIXED", "HUG"],
+                  "size": [200, 57],
+                  "type": "instance",
+                  "component": "Time picker",
+                  "variant": {
+                    "State": "Open"
+                  },
+                  "properties": {
+                    "Label#93:0": "Run at",
+                    "Value#93:6": "09:30 AM"
+                  }
+                },
+                {
+                  "name": "Time picker panel",
+                  "sizing": ["HUG", "HUG"],
+                  "size": [181, 88],
+                  "type": "instance",
+                  "component": "Time picker panel",
+                  "variant": {
+                    "Format": "12"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Time picker panel",
+              "sizing": ["HUG", "HUG"],
+              "size": [118, 88],
+              "type": "instance",
+              "component": "Time picker panel",
+              "variant": {
+                "Format": "24"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "when": [
+    "A time of day: schedules, run times, cut-offs.",
+    "With Date picker when both are needed."
+  ],
+  "dont": [
+    "Use it for durations: use Input with units.",
+    "Hide the format: show AM/PM, or 24-hour time where that is the convention."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1081],
+    "size": [1352, 559],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [114, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Time picker",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [350, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Time picker (State · Label, Value) · Time picker panel (Format)",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Time picker",
+        "at": [80, 136]
+      },
+      {
+        "type": "set",
+        "name": "Time picker panel",
+        "at": [80, 327]
+      }
+    ]
+  }
+}

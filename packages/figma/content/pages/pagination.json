@@ -1,0 +1,165 @@
+{
+  "name": "Pagination",
+  "category": "Navigation",
+  "description": "Page controls under a table or list: page size, first / previous / next / last, and a page-number field.",
+  "overview": "First, middle and last page, in light and dark. The arrows at the ends disable.",
+  "modes": "VERTICAL",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "First page",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "First page",
+          "sizing": ["HUG", "HUG"],
+          "size": [57, 18],
+          "type": "text",
+          "characters": "First page",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pagination",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Pagination",
+          "variant": {
+            "Position": "first"
+          },
+          "properties": {
+            "Page#54:4": "1",
+            "Show page size#54:0": true,
+            "Total#54:8": "/ 12"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Middle",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Middle",
+          "sizing": ["HUG", "HUG"],
+          "size": [39, 18],
+          "type": "text",
+          "characters": "Middle",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pagination",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Pagination",
+          "variant": {
+            "Position": "middle"
+          },
+          "properties": {
+            "Page#54:4": "4",
+            "Show page size#54:0": true,
+            "Total#54:8": "/ 12"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Last page",
+      "sizing": ["FILL", "HUG"],
+      "size": [1104, 58],
+      "type": "frame",
+      "direction": "VERTICAL",
+      "gap": 8,
+      "clips": true,
+      "children": [
+        {
+          "name": "Last page",
+          "sizing": ["HUG", "HUG"],
+          "size": [57, 18],
+          "type": "text",
+          "characters": "Last page",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Pagination",
+          "sizing": ["FILL", "HUG"],
+          "size": [1104, 32],
+          "type": "instance",
+          "component": "Pagination",
+          "variant": {
+            "Position": "last"
+          },
+          "properties": {
+            "Page#54:4": "12",
+            "Show page size#54:0": true,
+            "Total#54:8": "/ 12"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Lists and tables with more rows than fit: always with a page size people can change.",
+    "Inside a Table section, under the table."
+  ],
+  "dont": [
+    "Render every row of a long list instead.",
+    "Remove the page size or the page field to save space; hide the size only for short fixed lists."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1318],
+    "size": [1280, 440],
+    "items": [
+      {
+        "name": "Heading",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [104, 30],
+        "at": [80, 72],
+        "type": "text",
+        "characters": "Pagination",
+        "style": "Typography/title3",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "Props",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [322, 18],
+        "at": [80, 104],
+        "type": "text",
+        "characters": "Position (first, middle, last) · Show page size, Page, Total",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Pagination",
+        "at": [80, 136]
+      }
+    ]
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "name": "Input",
+  "category": "Inputs",
+  "description": "A single-line text field with its label, helper text and error message.",
+  "overview": "Each state with a placeholder and with a value, in light and dark. Focus is the keyboard focus ring.",
+  "panelGap": 16,
+  "light": [
+    {
+      "name": "Default",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 79],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Default",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Default",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Default",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Default",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "customer_orders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hover",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 79],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Hover",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Hover",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Hover",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Hover",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "customer_orders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Focus",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 79],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Focus",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Focus",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Focus",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Focus",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "customer_orders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invalid",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 97],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Invalid",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Invalid",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 97],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Invalid",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Use letters, numbers and underscores",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 97],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Invalid",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Use letters, numbers and underscores",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "orders_2026#"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ReadOnly",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 79],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Read-only",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Read-only",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "ReadOnly",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "ReadOnly",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "customer_orders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disabled",
+      "sizing": ["HUG", "HUG"],
+      "size": [512, 79],
+      "type": "frame",
+      "direction": "HORIZONTAL",
+      "gap": 16,
+      "clips": true,
+      "children": [
+        {
+          "name": "Disabled",
+          "sizing": ["FIXED", "HUG"],
+          "size": [80, 18],
+          "type": "text",
+          "characters": "Disabled",
+          "style": "Typography/caption1",
+          "fill": {
+            "variable": "Text/textSubtle"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Disabled",
+            "Content": "Placeholder"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "Enter a name"
+          }
+        },
+        {
+          "name": "Input",
+          "sizing": ["FIXED", "HUG"],
+          "size": [200, 79],
+          "type": "instance",
+          "component": "Input",
+          "variant": {
+            "State": "Disabled",
+            "Content": "Value"
+          },
+          "properties": {
+            "Helper#29:39": "Shown in the catalog",
+            "Label#29:0": "Asset name",
+            "Show helper#29:52": true,
+            "Show label#29:13": true,
+            "Text#29:26": "customer_orders"
+          }
+        }
+      ]
+    }
+  ],
+  "when": [
+    "Short free text: names, values, identifiers.",
+    "A visible label above the field; helper text for format or purpose.",
+    "The error message under the field, saying how to fix it."
+  ],
+  "dont": [
+    "Put the instructions in the placeholder: it disappears as people type.",
+    "Leave a field without a label (aria-label when it must be hidden).",
+    "Use it for long text (Text Area) or search (Search Input)."
+  ],
+  "components": {
+    "name": "Components",
+    "at": [0, 1380],
+    "size": [1280, 880],
+    "items": [
+      {
+        "name": "Input",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [41, 24],
+        "at": [80, 80],
+        "type": "text",
+        "characters": "Input",
+        "style": "Typography/title4",
+        "fill": {
+          "variable": "Text/text"
+        }
+      },
+      {
+        "name": "State × Content · Label, Text, Helper",
+        "sizing": ["FIXED", "FIXED"],
+        "size": [208, 18],
+        "at": [80, 108],
+        "type": "text",
+        "characters": "State × Content · Label, Text, Helper",
+        "style": "Typography/caption1",
+        "fill": {
+          "variable": "Text/textSubtle"
+        }
+      },
+      {
+        "type": "set",
+        "name": "Input",
+        "at": [80, 136]
+      }
+    ]
+  }
+}
