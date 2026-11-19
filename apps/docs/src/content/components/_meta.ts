@@ -7,7 +7,6 @@ export default {
     type: "separator",
   },
   index: "Get started",
-  // eslint-disable-next-line sort-keys
   accordion: "Accordion",
   "action-bar": "Action Bar",
   "app-switcher": "App Switcher",
@@ -74,12 +73,10 @@ export default {
   typography: "Typography",
   "vertical-navigation": "Vertical Navigation",
 
-  // eslint-disable-next-line sort-keys
   "-- Pentaho Components": { title: "Pentaho Components", type: "separator" },
   pentaho: "Get started",
   canvas: { title: "Canvas" },
 
-  // eslint-disable-next-line sort-keys
   "-- Charts": { type: "separator", title: "Chart Components" },
   charts: "Get started",
   "base-chart": "Base Chart",

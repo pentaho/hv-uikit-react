@@ -1,4 +1,4 @@
-// eslint-disable no-restricted-imports,no-underscore-dangle
+// eslint-disable no-restricted-imports
 import React from "react";
 
 export default React;

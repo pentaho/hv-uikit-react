@@ -57,7 +57,8 @@ jobs:
         run: npm run test
 
   node:
-    # the packages that run on Node, on every supported LTS line (engines: >=22.12.0)
+    # the packages that run on Node, on the latest of each LTS line: uikit-tools needs 22.12+, uikit-cli 22.22+, 24.15+
+    # or 26+, and installing the repo 22.18+ (its icons scripts are .ts), so the floors themselves are not run here
     name: Node ${{ matrix.node }} (tools, CLI)
     runs-on: ubuntu-latest
     strategy:

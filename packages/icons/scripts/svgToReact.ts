@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import fs from "node:fs/promises";
 import { parse, resolve } from "node:path";
 import { transform } from "@svgr/core";

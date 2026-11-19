@@ -23,7 +23,6 @@ export type I18nInstance = i18n & { readonly [__brand]: true };
  * to `true`. The cast makes the coercion explicit.
  */
 export const isI18nInitialized = (instance: i18n): boolean =>
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   (instance.isInitialized as boolean | undefined) ?? false;
 
 /**

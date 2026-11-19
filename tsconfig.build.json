@@ -4,7 +4,6 @@
     /* Bundling options (vite monorepo) */
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "composite": true,
     "declaration": true,
     "declarationMap": true,
 

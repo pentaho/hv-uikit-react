@@ -44,6 +44,20 @@
       "rules": {
         "react-hooks/rules-of-hooks": "off"
       }
+    },
+    {
+      "files": ["packages/cli/**/*"],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["packages/core/src/TreeView/internals/**/*"],
+      "rules": {
+        "no-restricted-imports": "off",
+        "typescript/no-extraneous-class": "off",
+        "typescript/no-invalid-void-type": "off"
+      }
     }
   ],
   "ignorePatterns": ["packages/tools/test-fixtures"]

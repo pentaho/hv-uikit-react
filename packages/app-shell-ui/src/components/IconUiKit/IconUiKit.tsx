@@ -9,7 +9,6 @@ export interface IconUiKitProps extends Omit<
 }
 
 const IconUiKit = ({ name, ...others }: IconUiKitProps) => {
-  // eslint-disable-next-line import/namespace
   const Icon = icons[name as keyof typeof icons];
   if (!Icon) return null;
 

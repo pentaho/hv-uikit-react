@@ -5,10 +5,10 @@
   },
   "include": [
     ".config/*.ts",
+    ".config/*.tsx",
     "*.config.ts",
     ".storybook/**/*",
     "apps",
-    "docs",
     "packages",
     "templates"
   ],

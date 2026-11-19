@@ -30,7 +30,6 @@ const Notifications = () => {
             { label: "Action 2", id: "action2" },
           ],
           onAction: (evt, action) => {
-            // eslint-disable-next-line no-restricted-globals
             history.pushState(
               "",
               "",

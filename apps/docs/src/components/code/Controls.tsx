@@ -261,7 +261,6 @@ export const Controls = ({
   const ControlComponent = rendererMap[type];
 
   if (!ControlComponent) {
-    // eslint-disable-next-line no-console
     console.error(`Control for "${prop}" not supported: ${type}`);
     return null;
   }

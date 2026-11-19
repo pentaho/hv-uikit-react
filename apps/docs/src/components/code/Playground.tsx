@@ -1,4 +1,3 @@
-// oxlint-disable complexity
 "use client";
 
 import { Children, isValidElement, useCallback, useState } from "react";
@@ -152,7 +151,6 @@ const generateCode = (
     .join("");
   const componentPropsString = parsedPropsString && `\n${parsedPropsString}`;
 
-  // oxlint-disable-next-line react/no-react-children Handle children content
   const childrenString = Children.toArray(children)
     .map(parseChildren)
     .filter(Boolean)

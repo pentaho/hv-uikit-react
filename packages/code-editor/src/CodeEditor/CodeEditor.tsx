@@ -133,7 +133,6 @@ export const HvCodeEditor = ({
       const formattedCode = await formatter(content, editor, monaco);
       if (formattedCode) editorRef.current.setValue(formattedCode);
     } catch (error) {
-      // eslint-disable-next-line no-console
       if (import.meta.env.DEV) console.error(error);
     }
   };

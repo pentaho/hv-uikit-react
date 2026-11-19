@@ -16,7 +16,7 @@
 
   "overrides": [
     {
-      "files": ["*.hbs", "pnpm-lock.yaml", "yarn.lock"],
+      "files": ["pnpm-lock.yaml", "yarn.lock"],
       "options": { "rangeEnd": 0 }
     }
   ]

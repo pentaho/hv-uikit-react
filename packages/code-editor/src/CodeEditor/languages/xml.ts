@@ -75,7 +75,6 @@ const getXsdElementsAndAttributes = (value: string): Elements => {
         };
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
     if (import.meta.env.DEV) console.error(error);
   }
   return elements;
@@ -140,7 +139,6 @@ export const hvXmlCompletionProvider = (monaco: Monaco, schema?: string) => {
         {
           label: "Insert root element",
           kind: monaco.languages.CompletionItemKind.Snippet,
-          // eslint-disable-next-line no-template-curly-in-string
           insertText: `<${root}>\n\t${"${0:}"}\n</${root}>`, // ${0:} used to position the cursor
           insertTextRules:
             monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
@@ -225,7 +223,6 @@ export const hvXmlCompletionProvider = (monaco: Monaco, schema?: string) => {
           suggestions.push({
             label: attribute,
             kind: monaco.languages.CompletionItemKind.Field,
-            // eslint-disable-next-line no-template-curly-in-string
             insertText: `${attribute}="${"${0:}"}"`, // ${0:} used to position the cursor
             insertTextRules:
               monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,

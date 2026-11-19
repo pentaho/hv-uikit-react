@@ -15,7 +15,6 @@ export const extraDependencies: Record<string, string> = {
  */
 export const getExtraDependenciesString = (): string => {
   let extraDependenciesString = "";
-  // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (const key in extraDependencies) {
     extraDependenciesString += `\\"${key}\\": \\"${extraDependencies[key]}\\",`;
   }
