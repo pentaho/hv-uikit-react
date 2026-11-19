@@ -4,12 +4,11 @@
   "private": false,
   "type": "module",
   "author": "UI Kit Team",
-  "description": "The UI Kit CLI for generating new apps.",
+  "description": "The UI Kit CLI: create apps and Pentaho plugins, and package plugins for a Pentaho server.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "license": "Apache-2.0",
-  "main": "src/index.js",
   "bin": {
-    "uikit-cli": "src/index.js"
+    "uikit-cli": "./dist/index.js"
   },
   "keywords": [
     "uikit-cli",
@@ -24,32 +23,26 @@
     "url": "https://github.com/pentaho/hv-uikit-react/issues"
   },
   "scripts": {
-    "pretest": "node src/index.js create uikit-app",
-    "test": "cd uikit-app",
-    "posttest": "rimraf uikit-app"
+    "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/index.js', 0o755)\"",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:e2e": "node scripts/e2e-outside-repo.ts",
+    "clean": "rimraf dist templates",
+    "prepublishOnly": "npm run build",
+    "prepack": "node scripts/pack-templates.ts"
   },
   "dependencies": {
-    "chalk": "^5.6.2",
-    "commander": "^14.0.3",
-    "fs-extra": "^11.1.0",
-    "inquirer": "^9.1.4",
-    "node-plop": "^0.32.3"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.1",
-    "cpy-cli": "^5.0.0",
-    "i18next": "^24.2.2",
-    "i18next-browser-languagedetector": "^8.0.3",
-    "i18next-http-backend": "^4.0.4",
-    "react-i18next": "^15.7.1",
-    "react-router-dom": "^6.30.6",
-    "vite-tsconfig-paths": "^5.1.0"
+    "@inquirer/prompts": "^8.8.0",
+    "commander": "^15.1.0",
+    "fflate": "^0.8.3",
+    "zod": "^4.6.7"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "files": [
-    "src"
+    "dist",
+    "templates"
   ],
   "publishConfig": {
     "access": "public"

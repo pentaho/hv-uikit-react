@@ -1,0 +1,14 @@
+{
+  "extends": "@pentaho/uikit-config/tsconfig",
+  "compilerOptions": {
+    "module": "nodenext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "verbatimModuleSyntax": true,
+    "noEmit": false,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src"],
+  "exclude": ["src/tests"]
+}

@@ -45,7 +45,7 @@ const CLAUDE_ALLOW = [
   "mcp__hv-uikit",
 ];
 const CODEX_SERVER = `[mcp_servers.hv-uikit]\ncommand = "npx"\nargs = ["--no-install", "uikit-tools", "mcp"]\n`;
-/** The Agent Skills this package ships (`skills/<name>/SKILL.md`); Claude Code gets a copy in `.claude/skills`. */
+/** The Agent Skills this package ships (`skills/<name>/SKILL.md`); init copies them where the agents load skills. */
 const SKILLS_DIR = fileURLToPath(new URL("../../skills", import.meta.url));
 export const SKILLS = readdirSync(SKILLS_DIR).toSorted();
 
@@ -54,6 +54,7 @@ export function agentsBlock(rulesPath: string) {
   const toolsPath = rulesPath.replace(/\/templates\/rules$/, "");
   return [
     START,
+    "",
     "## HV UI Kit",
     "",
     "This app's UI is built with HV UI Kit. Before writing or changing UI, read the UI Kit design rules. They ship with the installed `@pentaho/uikit-tools`, so they are always the version this project uses:",
@@ -62,17 +63,18 @@ export function agentsBlock(rulesPath: string) {
     "",
     "- Look up a component before using it: `npx --no-install uikit-tools info <Component>`; a token by what it's for: `npx --no-install uikit-tools tokens <word>`.",
     "- For a component's exact types, open the declaration file `info` names (`node_modules/@pentaho/uikit-react-core/dist/<Component>/<Component>.d.ts`), not the package's `index.d.ts`.",
-    "- If your tool doesn't load the files above, list the rules with `npx --no-install uikit-tools rules` (MCP: `list_rules`) and read each with `rule <id>` (MCP: `get_rule`).",
+    `- If your tool doesn't load the files above, read them in one command: \`cat ${rulesPath}/*.md\` (MCP: \`list_rules\`, then \`get_rule\` for each file).`,
     "- The `hv-uikit` MCP server answers the same lookups: `list_components`, `get_component`, `list_rules`, `get_rule`, `find_tokens` and `lint`.",
-    "- Check what you changed with `npx --no-install uikit-tools lint <paths>` (MCP: `lint`) and fix every finding; `uikit-tools rule <id>` explains the rule a finding cites.",
+    "- Check what you changed with `npx --no-install uikit-tools lint <paths>` (MCP: `lint`) and fix every finding; `uikit-tools rule uikit/<name>` explains the lint rule a finding cites.",
     "",
-    "Skills, for work in Figma (Claude Code loads them from `.claude/skills`):",
+    "Skills, for Figma screens and Pentaho plugins (init copies them to `.claude/skills` or `.agents/skills`):",
     "",
     ...SKILLS.map(
       (name) => `- \`${name}\`: ${toolsPath}/skills/${name}/SKILL.md`,
     ),
     "",
     "This block is written by `uikit-tools init`. Re-run it instead of editing the block.",
+    "",
     END,
   ].join("\n");
 }
@@ -124,7 +126,19 @@ type Json = Record<string, any>;
 /** A file's new text from its current one ("" when missing). */
 type Edit = (old: string) => string;
 
-const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`;
+/** JSON as Prettier prints it: short arrays of strings or numbers on one line, so a formatted project stays formatted. */
+const json = (value: unknown) =>
+  `${JSON.stringify(value, null, 2).replaceAll(
+    /^( *)(.*)\[\n((?:\s*(?:"(?:[^"\\]|\\.)*"|-?\d[\d.e+-]*),?\n)+)\s*\]/gm,
+    (whole, indent: string, head: string, items: string) => {
+      const line = `${indent}${head}[${items
+        .split("\n")
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .join(" ")}]`;
+      return line.length <= 80 ? line : whole;
+    },
+  )}\n`;
 
 /**
  * JSON with comments and trailing commas, as VS Code's and Gemini's settings allow: both are dropped, since the file is
@@ -217,10 +231,6 @@ const AGENTS: Record<string, [file: string, edit: Edit][]> = {
       ".claude/settings.json",
       editJson(".claude/settings.json", claudeSettings),
     ],
-    ...SKILLS.map((name): [string, Edit] => [
-      `.claude/skills/${name}/SKILL.md`,
-      () => skillText(name),
-    ]),
   ],
   copilot: [
     [
@@ -256,6 +266,27 @@ const AGENTS: Record<string, [file: string, edit: Edit][]> = {
 };
 export const AGENT_NAMES = Object.keys(AGENTS);
 
+/**
+ * Where the agents load project skills: Claude Code `.claude/skills`; Codex and Gemini `.agents/skills`; Copilot and
+ * Cursor either, so `.agents/skills` only when Claude Code's copy isn't there.
+ */
+function skillFiles(agents: string[]): [string, Edit][] {
+  const claude = agents.includes("claude");
+  const dirs = [
+    ...(claude ? [".claude/skills"] : []),
+    ...(agents.some((a) => a === "codex" || a === "gemini") ||
+    (!claude && agents.length > 0)
+      ? [".agents/skills"]
+      : []),
+  ];
+  return dirs.flatMap((dir) =>
+    SKILLS.map((name): [string, Edit] => [
+      `${dir}/${name}/SKILL.md`,
+      () => skillText(name),
+    ]),
+  );
+}
+
 function agentsNamed(named = "claude,copilot") {
   if (named === "all") return AGENT_NAMES;
   const agents = named.split(",").map((a) => a.trim());
@@ -280,6 +311,7 @@ export function runInit(
   const edits: [string, Edit][] = [
     ["AGENTS.md", (old) => upsertBlock(old, agentsBlock(rulesPath))],
     ...agents.flatMap((a) => AGENTS[a]),
+    ...skillFiles(agents),
   ];
 
   // Work out every file before writing any, so a bad file can't leave a half-done setup.
@@ -303,7 +335,7 @@ export function init(targetDir: string | undefined, options: InitOptions) {
       [
         "✓ HV UI Kit agent setup",
         ...written.map((file) => `  wrote ${file}`),
-        `  rules: ${rulesPath} (from the installed uikit-tools; upgrades update them, no need to re-run init)`,
+        `  rules: ${rulesPath} (from the installed uikit-tools; upgrades update them; re-run init after one to refresh the copied skills)`,
         "",
       ].join("\n"),
     );

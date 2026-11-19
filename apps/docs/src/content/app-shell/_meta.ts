@@ -16,6 +16,7 @@ export default {
   routing: "Routing",
   navigation: "Navigation",
   "header-actions": "Header Actions",
+  "pentaho-plugins": "Pentaho plugins",
 
   "api-reference": "API Reference",
   guidelines: "Development Guidelines",

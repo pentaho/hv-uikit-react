@@ -224,7 +224,7 @@ It's worth revalidating any deep customization around `Select`, tabs/canvas pane
 
 ### 13) CLI templates removed
 
-Template scaffolding has been retired from `@pentaho/uikit-cli`. The `create` command now uses a single baseline and no longer takes `--templates`.
+The page templates (`--templates Form`, and so on) have been retired from `@pentaho/uikit-cli`. `create` now picks what to create with `-t` (`--template`): `app` (the default, an App Shell app), `vite` (a plain Vite app) or `plugin` (a [Pentaho plugin](/app-shell/pentaho-plugins)).
 
 ```diff
 -npx @pentaho/uikit-cli@latest create MyAppName --templates Form

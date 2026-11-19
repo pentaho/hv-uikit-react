@@ -1,0 +1,22 @@
+{
+  "title": "Welcome",
+  "description": "Your App Shell app is up and running.",
+  "steps": {
+    "edit": {
+      "title": "Edit this page",
+      "text": "npm run dev reloads it as you save.",
+      "code": "src/pages/Example/index.tsx"
+    },
+    "add": {
+      "title": "Add a page",
+      "text": "Each folder in src/pages is a view, with its own route.",
+      "code": "src/pages/<Name>/index.tsx"
+    },
+    "agent": {
+      "title": "Set up your coding agent",
+      "text": "Teach it the UI Kit's components and rules.",
+      "code": "npx --no-install uikit-tools init"
+    }
+  },
+  "docs": "Read the UI Kit docs"
+}

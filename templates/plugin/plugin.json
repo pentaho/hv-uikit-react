@@ -1,0 +1,16 @@
+{
+  "id": "my-plugin",
+  "title": "My plugin",
+  "description": "My plugin, a Pentaho plugin.",
+  "menu": {
+    "label": "My plugin",
+    "icon": "Folders"
+  },
+  "views": [
+    {
+      "id": "my-plugin",
+      "title": "My plugin",
+      "route": "/my-plugin"
+    }
+  ]
+}

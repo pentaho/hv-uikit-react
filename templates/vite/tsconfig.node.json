@@ -1,0 +1,8 @@
+{
+  "extends": "@pentaho/uikit-config/tsconfig",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowImportingTsExtensions": true
+  },
+  "include": ["vite.config.ts", "uno.config.ts"]
+}

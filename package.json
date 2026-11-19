@@ -127,6 +127,7 @@
   },
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "templates/*"
   ]
 }

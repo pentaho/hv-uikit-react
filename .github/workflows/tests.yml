@@ -75,13 +75,19 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build
-        run: npm run build -w packages/styles -w packages/utils -w packages/shared -w packages/core -w packages/tools
+        # every package: the CLI's tests build an app from each template against them
+        run: npm run build
 
       - name: Test uikit-tools
         run: npm run test -w packages/tools -- --run
 
       - name: Test uikit-tools outside the repo
         run: npm run test:e2e -w packages/tools
+
+      - name: Test uikit-cli
+        # its template checks build real apps, the same on every Node
+        if: matrix.node == '26.x'
+        run: npm run test -w packages/cli -- --run
 
       - name: Test the published types
         # a TypeScript check, the same on every Node

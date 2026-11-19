@@ -1,42 +1,43 @@
 # @pentaho/uikit-cli
 
-This CLI provides a way to automate tasks you regularly perform as part of your development workflow.
-
-Whether it is quickly starting a new application or scaffolding out components, it will help you standardize these tasks in a consistent and predictable manner.
-
-## Usage
-
-For usage documentation, run the CLI with the `--help` option for any `<command>`. Examples:
+Creates UI Kit apps and Pentaho plugins, and packages plugins for a Pentaho server.
 
 ```sh
 npx @pentaho/uikit-cli@latest --help
-npx @pentaho/uikit-cli@latest <command> --help
+npx @pentaho/uikit-cli@latest create --help
 ```
 
-## Creating an App
-
-You can create a new app using the provided baseline.
-
-To get started, use the following command:
+## Creating an app
 
 ```sh
-npx @pentaho/uikit-cli@latest create
+npx @pentaho/uikit-cli@latest create              # asks what to create, in an interactive terminal
+npx @pentaho/uikit-cli@latest create my-app       # an App Shell app; -t vite for a plain one
+npx @pentaho/uikit-cli@latest create my-app --features help-link --no-auto-routes
 ```
 
-It launches an interactive experience that guides you through setting up a new app.
+Given a name, `create` never prompts, so agents and CI can run it; without one, it asks only for what the flags didn't give. It won't write into a folder that has files unless you pass `--force`, which empties it first (keeping `.git`). `.` creates in the current folder. New apps lint with the UI Kit design rules (`@pentaho/uikit-tools`); run `npx --no-install uikit-tools init` in the app to set up coding agents.
 
-You can also directly specify the app name. For example:
+## Pentaho plugins
 
 ```sh
-npx @pentaho/uikit-cli@latest create MyAppName
+npx @pentaho/uikit-cli@latest create job-health -t plugin [--title "Job health"]
+cd job-health && npm install
+npm run dev       # the plugin in a local App Shell, on sample data (samples.json)
+npm run check     # format, types and lint, with the UI Kit design rules
+npm test          # unit tests
+npm run package   # uikit-cli package: build, check the bundles against plugin.json, and zip (--built: use dist)
 ```
+
+`package` writes `<id>.zip`, to unzip into a Pentaho server's `pentaho-solutions/system`. The server-side layout is not yet verified on a server. The [Pentaho plugins guide](https://pentaho.github.io/uikit-docs/master/app-shell/pentaho-plugins) covers the project, the zip, samples, coding agents and the known limits.
+
+The CLI needs Node 22.22, 24.15 or 26 and later.
+
+Exit codes: 0 done, 1 a check failed (`package`), 2 a usage or run error, 130 canceled.
 
 ## How to test
 
-You can run the project locally by executing the following command:
-
-```
-node <path-to-repo>/uikit-cli/src/index.js create
+```sh
+npm test -w packages/cli
 ```
 
 ## License

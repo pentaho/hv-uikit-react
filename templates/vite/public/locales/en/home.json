@@ -1,0 +1,22 @@
+{
+  "title": "Welcome",
+  "description": "Your UI Kit app is up and running.",
+  "steps": {
+    "edit": {
+      "title": "Edit this page",
+      "text": "npm run dev reloads it as you save.",
+      "code": "src/pages/Home/index.tsx"
+    },
+    "add": {
+      "title": "Add a page",
+      "text": "Add its route here, with its page in src/pages.",
+      "code": "src/routes.tsx"
+    },
+    "agent": {
+      "title": "Set up your coding agent",
+      "text": "Teach it the UI Kit's components and rules.",
+      "code": "npx --no-install uikit-tools init"
+    }
+  },
+  "docs": "Read the UI Kit docs"
+}

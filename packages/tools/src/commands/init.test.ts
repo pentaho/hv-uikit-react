@@ -79,6 +79,18 @@ describe("init", () => {
     app = makeApp();
   });
 
+  it("writes files that pass Prettier, so a formatted project stays formatted", async () => {
+    const prettier = await import("prettier");
+    const { written } = runInit(app, { agents: "all" });
+    const files = written.filter((f) => /\.(json|md)$/.test(f));
+    const formatted = await Promise.all(
+      files.map((file) => prettier.check(read(app, file), { filepath: file })),
+    );
+    expect(Object.fromEntries(files.map((f, i) => [f, formatted[i]]))).toEqual(
+      Object.fromEntries(files.map((f) => [f, true])),
+    );
+  });
+
   it("points to every installed rule file, not a copy", () => {
     runInit(app);
     const agents = read(app, "AGENTS.md");
@@ -145,7 +157,7 @@ describe("init", () => {
   it("tells the agent how to look things up", () => {
     const block = agentsBlock("r");
     expect(block).toContain("uikit-tools info");
-    expect(block).toContain("uikit-tools rules");
+    expect(block).toContain("`cat r/*.md`");
     expect(block).toContain("uikit-tools lint");
   });
 
@@ -172,7 +184,12 @@ describe("init", () => {
         ],
       },
     ]);
-    expect(SKILLS).toEqual(["pentaho-figma-review", "pentaho-figma-screens"]);
+    expect(SKILLS).toEqual([
+      "pentaho-figma-review",
+      "pentaho-figma-screens",
+      "pentaho-plugin",
+      "pentaho-plugin-package",
+    ]);
     for (const name of SKILLS) {
       expect(read(app, `.claude/skills/${name}/SKILL.md`)).toContain(
         `name: ${name}`,
@@ -216,7 +233,28 @@ describe("init", () => {
 
   it("can target one agent", () => {
     const { written } = runInit(app, { agents: "copilot" });
-    expect(written).toEqual(["AGENTS.md", ".vscode/mcp.json"]);
+    expect(written).toEqual([
+      "AGENTS.md",
+      ".vscode/mcp.json",
+      ...SKILLS.map((name) => `.agents/skills/${name}/SKILL.md`),
+    ]);
+  });
+
+  it("copies the skills once where each agent loads them", () => {
+    const skillDirs = (agents: string) =>
+      [
+        ...new Set(
+          runInit(makeApp(), { agents })
+            .written.filter((f) => f.includes("/skills/"))
+            .map((f) => f.split("/").slice(0, 2).join("/")),
+        ),
+      ].toSorted();
+    expect(skillDirs("claude,copilot")).toEqual([".claude/skills"]);
+    expect(skillDirs("cursor")).toEqual([".agents/skills"]);
+    expect(skillDirs("claude,codex")).toEqual([
+      ".agents/skills",
+      ".claude/skills",
+    ]);
   });
 
   it("fails clearly when the UI Kit has no component metadata", () => {

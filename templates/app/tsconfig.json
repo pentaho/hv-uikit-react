@@ -1,0 +1,5 @@
+{
+  "extends": "@pentaho/uikit-config/tsconfig",
+  "compilerOptions": {},
+  "include": ["src"]
+}

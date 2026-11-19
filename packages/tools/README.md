@@ -1,13 +1,8 @@
 # @pentaho/uikit-tools
 
-Tools for apps built with HV UI Kit and the coding agents that work on them:
+Tools for apps built with HV UI Kit and the coding agents that work on them: the UI Kit design rules ([templates/rules](templates/rules)), lookups of components, rules and theme tokens from the command line or over MCP (both return the same text), lint against the design rules, and `init`, which points the project's agents at all of it. The [Working with AI](https://pentaho.github.io/uikit-docs/master/docs/working-with-ai) guide walks through it for app developers.
 
-- **The UI Kit design rules**, in [templates/rules](templates/rules), which agents read before writing UI.
-- **Lookups** of components, design rules and theme tokens, from the command line or over MCP. Both return the same text.
-- **Lint** of code against the design rules, from the command line, over MCP, or after each edit in Claude Code.
-- **`init`**, which points the project's agents at the rules and the MCP server.
-
-Component props and guidance are read from the metadata shipped in the installed `@pentaho/uikit-react-core` (`dist/component-metadata.json`: the components' types and JSDoc, and the design note beside each component), and tokens from the installed `@pentaho/uikit-styles` (`dist/dtcg`), so they always match the UI Kit version the app uses.
+Component props and guidance are read from the installed `@pentaho/uikit-react-core` (`dist/component-metadata.json`: types, JSDoc and each component's design note), and tokens from the installed `@pentaho/uikit-styles` (`dist/dtcg`), so they always match the app's UI Kit version.
 
 ## Set up an app
 
@@ -18,18 +13,18 @@ npx --no-install uikit-tools init
 
 `init` writes:
 
-| File                    | Content                                                                                                                                                                                                  |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AGENTS.md`             | A marked block that imports each rule file from the installed tools (`@node_modules/@pentaho/uikit-tools/templates/rules/<file>.md`) and lists the commands. The rest of the file is kept.               |
-| `CLAUDE.md`             | `@AGENTS.md`, added if missing, so Claude Code loads the same block.                                                                                                                                     |
-| `.mcp.json`             | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                                                                                       |
-| `.claude/settings.json` | Claude Code: the `uikit-tools hook` after each edit, which sends the design-rule lint findings in the file back to the agent, and the read-only lookups allowed without asking. Other settings are kept. |
-| `.claude/skills/*`      | Claude Code: the Figma skills (`pentaho-figma-screens`, `pentaho-figma-review`), copied; re-run `init` after an upgrade to refresh them. Other agents read them from `node_modules` through `AGENTS.md`. |
-| `.vscode/mcp.json`      | The `hv-uikit` MCP server for Copilot. Other servers are kept.                                                                                                                                           |
+| File                    | Content                                                                                                                                                                                                                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENTS.md`             | A marked block that imports each rule file from the installed tools (`@node_modules/@pentaho/uikit-tools/templates/rules/<file>.md`) and lists the commands. The rest of the file is kept.                                                                                                                |
+| `CLAUDE.md`             | `@AGENTS.md`, added if missing, so Claude Code loads the same block.                                                                                                                                                                                                                                      |
+| `.mcp.json`             | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                                                                                                                                                                                        |
+| `.claude/settings.json` | Claude Code: the `uikit-tools hook` after each edit, which sends the design-rule lint findings in the file back to the agent, and the read-only lookups allowed without asking. Other settings are kept.                                                                                                  |
+| `.claude/skills/*`      | Copies of the skills for Figma screens (`pentaho-figma-screens`, `pentaho-figma-review`) and Pentaho plugins (`pentaho-plugin`, `pentaho-plugin-package`), where Claude Code, Copilot and Cursor load them. Codex and Gemini get them in `.agents/skills` (so do Copilot and Cursor without Claude Code). |
+| `.vscode/mcp.json`      | The `hv-uikit` MCP server for Copilot. Other servers are kept.                                                                                                                                                                                                                                            |
 
 With `--agents cursor,codex,gemini` (or `all`), also `.cursor/mcp.json`, `.codex/config.toml` and `GEMINI.md` with `.gemini/settings.json`. Codex reads `AGENTS.md` itself.
 
-Upgrading `@pentaho/uikit-tools` updates the rules and upgrading `@pentaho/uikit-react-core` updates the component guidance, without running `init` again. Use `--agents claude` or `--agents copilot` to set up one agent.
+The default is `--agents claude,copilot`; pass one to set up only that agent. Upgrading `@pentaho/uikit-tools` updates the rules and upgrading `@pentaho/uikit-react-core` the component guidance, without running `init` again; only the copied skills need `init` re-run to refresh.
 
 ## Commands
 
@@ -38,7 +33,7 @@ Upgrading `@pentaho/uikit-tools` updates the rules and upgrading `@pentaho/uikit
 | `uikit-tools info <Component>` | Import, props and design guidance (the designers' note, variants, states, accessibility, the lint rules that check it). `info dialog` and `info HvDialog` both work; close names are suggested.                            |
 | `uikit-tools components`       | Every component with a one-line description; `--limit` and `--offset` page through them.                                                                                                                                   |
 | `uikit-tools rules`            | Every design rule section by id (`<file>/<section>`).                                                                                                                                                                      |
-| `uikit-tools rule <id>`        | A rule section as written (`rule tokens/colors`), or a whole rule file (`rule tokens`).                                                                                                                                    |
+| `uikit-tools rule <id>`        | A rule section as written (`rule tokens/colors`), a whole rule file (`rule tokens`), or the lint rule a finding cites (`rule uikit/raw-elements`).                                                                         |
 | `uikit-tools tokens [words]`   | The theme tokens with their values (light and dark), what each is for, and where to use and avoid it; words filter them (`tokens border`).                                                                                 |
 | `uikit-tools lint [paths]`     | The design rules over files or folders (default: the current folder), with the oxlint this package ships, so it works in any project. Exit 1 on findings, 2 when it can't run.                                             |
 | `uikit-tools hook`             | Claude Code's `PostToolUse` hook (`init` adds it): runs `lint` on the file just written and returns the findings to the agent.                                                                                             |
@@ -46,7 +41,7 @@ Upgrading `@pentaho/uikit-tools` updates the rules and upgrading `@pentaho/uikit
 
 ## Lint
 
-`npx --no-install uikit-tools lint <paths>` checks code against the design rules in any project, with the oxlint this package ships; agents run it through the `lint` MCP tool, and Claude Code after every edit through the hook. To see the findings in your editor and CI as well, add the rules to your own lint setup. They ship as one plugin, `uikit/*`, run by oxlint and ESLint:
+To see the `lint` findings in your editor and CI as well, add the rules to your own lint setup. They ship as one plugin, `uikit/*`, run by oxlint and ESLint:
 
 | Export                             | For                                                                                              |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -57,7 +52,7 @@ The rules: `raw-elements`, `no-inline-style`, `no-raw-graphics`, `no-escape-hatc
 
 ## Running it with a real agent
 
-`test:e2e` covers setup, lookups and upgrades without an agent. To see an agent go through it, keep the app it builds and run Claude Code there (this uses API credits):
+`test:e2e` runs without an agent. To try a real one, keep the app it builds and run Claude Code there (this uses API credits):
 
 ```bash
 npm run test:e2e -w packages/tools -- --keep    # prints "Working in <dir>"; the app is <dir>/app
@@ -72,15 +67,12 @@ Expect the agent to call `get_component` and answer `primary`, one per form.
 ## Development
 
 ```bash
-npm run extract:contracts -w packages/core    # component metadata → packages/core/dist/component-metadata.json
+npm run build -w packages/styles -w packages/core   # also writes the tokens (styles/dist/dtcg) and the component metadata (core/dist/component-metadata.json)
 npm run build -w packages/tools
 npm test -w packages/tools
 
-# In an app outside the repo (needs full builds):
-npm run build -w packages/styles -w packages/core
+# In an app outside the repo (needs the builds above):
 npm run test:e2e -w packages/tools
 ```
 
-The end-to-end script packs styles, core and tools, installs them in a temporary app, and checks that the CLI and MCP return the same answers, that `lint` and the hook report a design problem, that the docs page names only commands and tools that exist, and that upgrades change the rules and component guidance without re-running `init`.
-
-Not done yet: publishing to npm, and adding the tools to `uikit-cli create`.
+The end-to-end script packs styles, core and tools into a temporary app and checks that the CLI and MCP agree, that `lint` and the hook report a design problem, that the docs page names only commands and MCP tools that exist, and that upgrades reach the agent without re-running `init`.
