@@ -1,0 +1,18 @@
+{
+  "id": "scheduled-jobs",
+  "shape": "list",
+  "request": "scheduled jobs: status, last run, duration, filter, search, why failed + run again, package it",
+  "expect": {
+    "views": 1,
+    "states": ["detail|why|failure", "error|unavailable", "390|mobile|narrow"],
+    "samples": ["error|unavailable"],
+    "components": ["HvTable", "HvDialog", "HvInput"]
+  },
+  "review": [
+    "Each job's status (in words), last run and duration",
+    "A status filter and a search, sized to their content in one toolbar row above the table",
+    "A failed job shows why it failed, in a dialog, with Run again",
+    "Run again is confirmed, and the page updates without reloading the list",
+    "The server being down is an error state, not an empty table"
+  ]
+}

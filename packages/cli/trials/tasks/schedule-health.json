@@ -1,0 +1,25 @@
+{
+  "id": "schedule-health",
+  "shape": "detail",
+  "request": "Build the Schedule health page in Pentaho from the designer's approved screens in design/ (design.md says what each is made of). Package it.",
+  "design": "schedule-health/design",
+  "expect": {
+    "views": 1,
+    "states": ["detail|drawer", "failed|24h", "390|mobile|narrow"],
+    "samples": [],
+    "components": [
+      "HvCard",
+      "HvDropdown|HvSelect",
+      "HvTable",
+      "HvTag",
+      "HvDrawer"
+    ]
+  },
+  "review": [
+    "Four summary cards with the frames' labels and status colours, their counts from the samples",
+    "A Show dropdown with all jobs and those that failed in the last 24 hours; it narrows the table",
+    "Columns Name, Owner, File, Last run, Next run, Status, in that order; the status a tag with the word in it",
+    "Clicking a job opens the right-hand drawer with the frame's fields, Close and Run now",
+    "At 1440 wide each screenshot matches its frame in layout and labels, apart from the sample values"
+  ]
+}

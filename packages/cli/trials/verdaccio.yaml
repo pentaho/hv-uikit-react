@@ -1,0 +1,20 @@
+# A local registry for trials of unreleased packages: `npx --yes verdaccio@6.11.3 --config packages/cli/trials/verdaccio.yaml`.
+# @pentaho/* come only from what is published here; everything else from npm. Wipe the storage to publish a version again.
+storage: /tmp/uikit-trials-registry
+auth:
+  htpasswd:
+    file: /tmp/uikit-trials-registry/htpasswd
+    max_users: -1
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+packages:
+  "@pentaho/*":
+    access: $all
+    publish: $anonymous
+    unpublish: $anonymous
+  "**":
+    access: $all
+    proxy: npmjs
+listen: localhost:4873
+log: { type: stdout, format: pretty, level: warn }

@@ -1,0 +1,23 @@
+{
+  "id": "connection-new",
+  "shape": "form",
+  "request": "Add a New connection page in Pentaho: an admin enters a database connection (name, database type, host, port, database, user, password), tests it, and saves it. Name, type, host, port and database are required. The test says whether it worked and, if not, why. Package it.",
+  "expect": {
+    "views": 1,
+    "states": [
+      "required|invalid|validation|errors",
+      "fail|error",
+      "saved|success",
+      "390|mobile|narrow"
+    ],
+    "samples": ["fail|error"],
+    "components": ["HvInput", "HvSelect|HvDropdown", "HvButton"]
+  },
+  "review": [
+    "Every field has a visible label; the type is a select and the password is masked",
+    "Saving with a required field empty shows an error under it, and nothing is saved",
+    "A port that isn't a whole number is refused under the port field",
+    "Test shows success on the samples, and the reason on the failing samples",
+    "A save is confirmed on the page"
+  ]
+}
