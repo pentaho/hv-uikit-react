@@ -38,8 +38,15 @@ export interface Component {
   displayName: string;
   purpose: string;
   note?: Note;
+  /** Its declaration file in the package: `dist/Button/Button.d.ts`. */
+  types?: string;
   props?: Prop[];
-  variantSemantics?: { name: string; description: string }[];
+  /** `semanticMeaning`: the variant's alias, `"secondary" (subtle)` in the JSDoc. */
+  variantSemantics?: {
+    name: string;
+    semanticMeaning?: string;
+    description: string;
+  }[];
   stateRules?: { name: string; description: string; rules?: string[] }[];
   a11y?: { role?: string; requirements: string[] };
 }

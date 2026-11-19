@@ -2,6 +2,7 @@
  * Lookups shared by the CLI and the MCP server. Each returns the exact text both print,
  * so an agent gets the same answer whichever way it asks.
  */
+import { RULES as LINT_RULES } from "../lint/plugin.js";
 import {
   CORE,
   loadMetadata,
@@ -143,6 +144,12 @@ function formatComponent(component: Component): string {
     "```",
     "",
   ];
+  if (component.types) {
+    out.push(
+      `Types: \`node_modules/${CORE}/${component.types}\` (every prop and the types they use).`,
+      "",
+    );
+  }
   if (component.purpose) out.push(component.purpose, "");
   if (component.note?.status && component.note.status !== "stable") {
     out.push(`Status: ${component.note.status}.`, "");
@@ -181,7 +188,10 @@ function formatComponent(component: Component): string {
   };
   section(
     "Variants",
-    component.variantSemantics?.map((v) => `- "${v.name}": ${v.description}`),
+    component.variantSemantics?.map(
+      (v) =>
+        `- "${v.name}"${v.semanticMeaning ? ` (${v.semanticMeaning})` : ""}: ${v.description}`,
+    ),
   );
   section(
     "States",
@@ -226,10 +236,32 @@ function formatRuleList(rules: RuleFile[]): string {
   return out.join("\n");
 }
 
+/** A lint rule a finding cites, as lint prints it (`uikit(raw-elements)`) or configs name it (`uikit/raw-elements`). */
+function formatLintRule(id: string): string | undefined {
+  const name = id.match(/^uikit[/(]([\w-]+)\)?$/)?.[1];
+  const rule = LINT_RULES.find((r) => r.name === name);
+  if (!rule) return undefined;
+  return [
+    `# uikit/${rule.name}`,
+    "",
+    "A lint rule of `uikit-tools lint`.",
+    "",
+    rule.say,
+    "",
+    "Flagged:",
+    "",
+    "```tsx",
+    rule.bad,
+    "```",
+  ].join("\n");
+}
+
 function formatRule(rules: RuleFile[], id: string): string {
   const wanted = id.trim().replace(/\.md$/, "").toLowerCase();
   const file = rules.find((f) => f.id === wanted);
   if (file) return file.text.trim();
+  const lintRule = formatLintRule(wanted);
+  if (lintRule) return lintRule;
 
   const section = rules
     .flatMap((f) => f.sections.map((s) => ({ file: f, section: s })))

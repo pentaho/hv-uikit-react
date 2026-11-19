@@ -13,6 +13,7 @@ const dialog: Component = {
   name: "HvDialog",
   displayName: "Dialog",
   purpose: "A Dialog prompts for a response.",
+  types: "dist/Dialog/Dialog.d.ts",
   props: [
     {
       name: "open",
@@ -23,6 +24,11 @@ const dialog: Component = {
   ],
   variantSemantics: [
     { name: "warning", description: "asks to review a risky step" },
+    {
+      name: "subtle",
+      semanticMeaning: "secondary",
+      description: "less weight",
+    },
   ],
 };
 /** Twelve more components, so the list has more than one page. */
@@ -72,8 +78,12 @@ describe("lookup", () => {
   it("describes a component with its guidance", () => {
     const text = lookup(metadata, { kind: "component", name: "dialog" });
     expect(text).toContain("# HvDialog");
+    expect(text).toContain(
+      "Types: `node_modules/@pentaho/uikit-react-core/dist/Dialog/Dialog.d.ts`",
+    );
     expect(text).toContain("- `open` (boolean): Current state.");
     expect(text).toContain('- "warning": asks to review a risky step');
+    expect(text).toContain('- "subtle" (secondary): less weight');
   });
 
   it("lists every component, or a page of them", () => {
@@ -130,6 +140,13 @@ describe("rule lookups read the UI Kit rule files as written", () => {
     expect(section).toContain("# Colors");
     expect(section).toContain("Never use raw hex, rgb, or named colors.");
     expect(answer({ kind: "rule", id: "tokens" })).toMatch(/^# Token Rules/);
+  });
+
+  it("explains the lint rule a finding cites", () => {
+    for (const id of ["uikit/raw-elements", "uikit(raw-elements)"])
+      expect(answer({ kind: "rule", id })).toMatch(
+        /^# uikit\/raw-elements\n[\s\S]*<button>/,
+      );
   });
 
   it("suggests ids for an unknown rule", () => {
@@ -261,6 +278,7 @@ describe("token lookups read the installed theme's DTCG files", () => {
 
   it("lists every token without words, and fails on no match", () => {
     expect(tokens()).toContain("- `theme.space.sm` (16px): Gap between");
+    expect(tokens("spacing")).toContain("theme.space.sm");
     expect(() => tokens("zzz")).toThrow(LookupError);
   });
 });

@@ -1,5 +1,5 @@
-// What the installed UI Kit marks @deprecated in its type declarations (dist/index.d.ts): components and props, each
-// with the UI Kit's own advice, so uikit/deprecated follows the installed version.
+// What the installed UI Kit marks @deprecated in its type declarations (every .d.ts in dist, one per module):
+// components and props, each with the UI Kit's own advice, so uikit/deprecated follows the installed version.
 import fs from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -8,11 +8,11 @@ import { CORE } from "../core/metadata.js";
 
 const PREFIX = "Hv";
 
-/** The installed UI Kit's folder, resolved from the project being linted; undefined when it isn't installed. */
-function coreDir(cwd = process.cwd()): string | undefined {
+/** The UI Kit installed for the code in `from` (a folder); undefined when it isn't installed there. */
+function coreDir(from: string): string | undefined {
   try {
     const pkg = createRequire(
-      path.join(path.resolve(cwd), "package.json"),
+      path.join(path.resolve(from), "index.js"),
     ).resolve(`${CORE}/package.json`);
     return path.dirname(pkg);
   } catch {
@@ -28,25 +28,48 @@ type Deprecations = {
 // what a component's name looks like in the declarations (the library's prefix)
 const NAME = `${PREFIX}\\w+`;
 
-/** The installed UI Kit's deprecations. Props belong to `<Name>Props`, which is the component `<Name>`. */
-export function readDeprecations(): Deprecations {
-  const components = new Map<string, string>();
-  const props = new Map<string, Map<string, string>>();
+/** The installed UI Kit's declaration files. */
+function declarationFiles(dir: string | undefined): string[] {
+  const dist = dir && path.join(dir, "dist");
+  if (!dist || !fs.existsSync(dist)) return [];
+  return fs
+    .readdirSync(dist, { recursive: true })
+    .filter((f): f is string => typeof f === "string" && f.endsWith(".d.ts"))
+    .map((f) => path.join(dist, f));
+}
 
-  const dir = coreDir();
-  const file = dir && path.join(dir, "dist/index.d.ts");
-  if (!file || !fs.existsSync(file)) return { components, props };
-  const text = fs.readFileSync(file, "utf8");
-  const owners = [
-    ...text.matchAll(
-      new RegExp(`export declare (?:interface|type) (${NAME})Props\\b`, "g"),
-    ),
-  ];
-  const declared = new RegExp(`^export declare const (${NAME})\\b`);
+/** Each installed UI Kit's deprecations, read once. */
+const cache = new Map<string | undefined, Deprecations>();
 
+/**
+ * The deprecations of the UI Kit installed for the code in `from` (a folder), so a monorepo or an editor linting from
+ * elsewhere still finds the right version. Props belong to `<Name>Props`, which is the component `<Name>`.
+ */
+export function readDeprecations(from: string): Deprecations {
+  const dir = coreDir(from);
+  let found = cache.get(dir);
+  if (!found) {
+    found = { components: new Map(), props: new Map() };
+    for (const file of declarationFiles(dir))
+      collect(fs.readFileSync(file, "utf8"), found);
+    cache.set(dir, found);
+  }
+  return found;
+}
+
+const OWNER = new RegExp(
+  `export (?:declare )?(?:interface|type) (${NAME})Props\\b`,
+  "g",
+);
+const DECLARED = new RegExp(`^export declare const (${NAME})\\b`);
+
+/** The deprecations in one declaration file. */
+function collect(text: string, { components, props }: Deprecations) {
+  if (!text.includes("@deprecated")) return;
+  const owners = [...text.matchAll(OWNER)];
   for (const m of text.matchAll(DEPRECATED_DOC)) {
     const advice = adviceOf(m[2]);
-    const component = m[3].match(declared)?.[1];
+    const component = m[3].match(DECLARED)?.[1];
     if (component) {
       components.set(component, advice);
       continue;
@@ -55,8 +78,6 @@ export function readDeprecations(): Deprecations {
     const owner = ownerBefore(owners, m.index);
     if (prop && owner) deprecatedProps(props, owner).set(prop, advice);
   }
-
-  return { components, props };
 }
 
 /** The component whose Props type a declaration at `index` is in: the last one declared before it. */

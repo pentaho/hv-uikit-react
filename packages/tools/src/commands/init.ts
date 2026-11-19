@@ -61,6 +61,7 @@ export function agentsBlock(rulesPath: string) {
     ...RULE_FILES.map((file) => `@${rulesPath}/${file}`),
     "",
     "- Look up a component before using it: `npx --no-install uikit-tools info <Component>`; a token by what it's for: `npx --no-install uikit-tools tokens <word>`.",
+    "- For a component's exact types, open the declaration file `info` names (`node_modules/@pentaho/uikit-react-core/dist/<Component>/<Component>.d.ts`), not the package's `index.d.ts`.",
     "- If your tool doesn't load the files above, list the rules with `npx --no-install uikit-tools rules` (MCP: `list_rules`) and read each with `rule <id>` (MCP: `get_rule`).",
     "- The `hv-uikit` MCP server answers the same lookups: `list_components`, `get_component`, `list_rules`, `get_rule`, `find_tokens` and `lint`.",
     "- Check what you changed with `npx --no-install uikit-tools lint <paths>` (MCP: `lint`) and fix every finding; `uikit-tools rule <id>` explains the rule a finding cites.",

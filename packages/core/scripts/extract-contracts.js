@@ -350,7 +350,23 @@ function attachProps(components, componentFiles, srcDir) {
     if (props.length > 0) {
       component.props = props;
     }
+    component.types = typesFile(file, srcDir);
   }
+}
+
+/**
+ * The component's declaration file in the package, `dist/Button/Button.d.ts`, so a reader opens its types
+ * directly. The build writes one beside each module; a missing one fails the extraction.
+ */
+function typesFile(file, srcDir) {
+  const types = path.join(
+    "dist",
+    path.relative(srcDir, file).replace(/\.tsx?$/, ".d.ts"),
+  );
+  if (!fs.existsSync(path.join(srcDir, "..", types))) {
+    throw new Error(`No declaration file ${types}: build the package first`);
+  }
+  return types.split(path.sep).join("/");
 }
 
 /** A note's `status`: in use, superseded by a related component, or used only inside the UI Kit. */

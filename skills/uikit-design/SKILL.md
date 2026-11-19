@@ -1,25 +1,15 @@
 ---
 name: uikit-design
-description: "Guidelines for building UI pages and components with the UI Kit React library. Use when creating pages, layouts, or components; choosing which UI Kit component to use; applying layout with UnoCSS utilities; or following design system conventions. Trigger phrases: ui kit, uikit, HvButton, HvTable, build a page, create a component."
+description: "Guidelines for building UI pages and components with the UI Kit React library. Use when creating pages, layouts, or components; choosing which UI Kit component to use; applying layout with UnoCSS utilities; or reviewing code for UI Kit conventions. Trigger phrases: ui kit, uikit, HvButton, HvTable, build a page, create a component."
 argument-hint: "Describe the page or paste an image or URL of the design"
 ---
 
 # UI Kit Design Guidelines
 
-## When to Use
-
-- Creating or editing React pages and components
-- Deciding which UI Kit component maps to a UI need
-- Laying out elements with the design system's spacing/grid
-- Reviewing code for UI Kit best practices
-
 ## Core Principles
 
-1. **Reach for UI Kit first.** Before writing custom UI, check the [component catalog](https://pentaho.github.io/uikit-docs/master/components). Every standard widget (button, table, dialogs) has an `Hv*` counterpart.
-2. **UnoCSS for layout.** Use utility classes (`flex`, `grid`, `gap-sm`, `p-md`, `w-full`, etc.) from UnoCSS for spacing, sizing, and layout. Avoid inline `style` props or custom CSS for layout concerns. Design tokens (e.g. `gap-sm`, `p-md`) map to the DS spacing scale.
-3. **Never recreate what exists.** If a pattern is in the docs, use it. Custom wrappers should only exist to encapsulate _application logic_, not styling.
-
-## Package Imports
+1. **Reach for UI Kit first.** Every standard widget (button, table, dialog) has an `Hv*` counterpart. Custom wrappers encapsulate _application logic_, never styling.
+2. **UnoCSS for layout.** Use utility classes (`flex`, `grid`, `gap-sm`, `p-md`, `w-full`) for spacing, sizing and layout, not inline `style` or custom CSS.
 
 ```tsx
 import { Plus } from "@phosphor-icons/react"; // icons come from Phosphor
@@ -30,16 +20,13 @@ import { HvButton, HvCard, HvContainer } from "@pentaho/uikit-react-core";
 
 ### 1. Identify required components
 
-Browse the following locations for the closest match:
+Look for the closest match in:
 
-- `npx --no-install uikit-tools components` and `npx --no-install uikit-tools info <Component>` (when the app has `@pentaho/uikit-tools`): when to use each component, and its props
+- `npx --no-install uikit-tools components` and `npx --no-install uikit-tools info <Component>` (when the app has `@pentaho/uikit-tools`): when to use each component, its props, and its declaration file, `node_modules/@pentaho/uikit-react-core/dist/<Component>/<Component>.d.ts`
 - type declarations in `node_modules`
-- [components page](https://pentaho.github.io/uikit-docs/master/components)
-- [examples page](https://pentaho.github.io/uikit-docs/master/examples)
+- the [component catalog](https://pentaho.github.io/uikit-docs/master/components) and [examples](https://pentaho.github.io/uikit-docs/master/examples)
 
 ### 2. Build layout with UnoCSS utilities
-
-Prefer these patterns:
 
 ```tsx
 // Vertical stack with spacing
@@ -48,31 +35,26 @@ Prefer these patterns:
 // Responsive grid
 <div className="grid grid-cols-1 md:grid-cols-3 gap-sm">...</div>
 
-// Page wrapper with max width
-<div className="max-w-lg mx-auto px-md py-lg">...</div>
+// Page content centered and capped at a breakpoint, with the built-in gutters
+<HvContainer maxWidth="lg">...</HvContainer>
 ```
 
-Design-system spacing tokens available as UnoCSS values: `xxs` `xs` `sm` `md` `lg` `xl`.
-Note that while spacing classes, such as `gap-*` or `p-*`, use the spacing units (8px-based), layout classes such as `max-w-*` use the page breakpoint values (eg. lg => 1270px).
+Spacing tokens: `xxs` `xs` `sm` `md` `lg` `xl` (4, 8, 16, 24, 48 and 80px). Spacing classes (`gap-*`, `p-*`) use them; width classes such as `max-w-*` use the page breakpoints (`lg` is 1270px). See the [UnoCSS preset docs](https://pentaho.github.io/uikit-docs/master/docs/guides/unocss).
 
 ### 3. Compose components
 
-Follow these rules:
+- `HvTypography` for all text, with the correct `variant`.
+- `HvButton` with the correct `variant` (`primary` once per view, `secondarySubtle`, `secondaryGhost`), `HvIconButton` with a `title` for icon-only actions.
+- [`HvTable`](https://pentaho.github.io/uikit-docs/master/components/table) for data display.
+- `HvSnackbar` / `HvBanner` for feedback, not custom toasts.
+- `HvDialog` for dialogs.
+- The [form components](https://pentaho.github.io/uikit-docs/master/components/form-element#related-components) for forms.
 
-- Use `HvTypography` for all text, with the correct `variant`.
-- Use `HvButton` with the correct `variant`, or `HvButtonBase` for unstyled buttons.
-- For data display, use the [`HvTable`](https://pentaho.github.io/uikit-docs/master/components/table) component.
-- For user feedback, use `HvSnackbar` / `HvBanner` (not custom toasts).
-- For dialogs, use `HvDialog`.
-- For forms, use the correct [form components](https://pentaho.github.io/uikit-docs/master/components/form-element#related-components).
+### 4. Theme tokens in rare custom styles
 
-### 4. Apply theme tokens in rare custom styles
-
-When UnoCSS utilities are insufficient, use `css()` with the `theme`. Inline `style` is only for values computed at run time:
+When utilities are insufficient, use `css()` with `theme` from `@pentaho/uikit-react-core`. Inline `style` is only for values computed at run time:
 
 ```tsx
-import { theme } from "@pentaho/uikit-react-core";
-
 style={{ color: theme.colors[dynamicThemeColor] }}
 ```
 
@@ -83,7 +65,9 @@ style={{ color: theme.colors[dynamicThemeColor] }}
 ```tsx
 <div className="flex flex-col gap-md p-md">
   <div className="flex items-center justify-between">
-    <HvTypography variant="title2">Page title</HvTypography>
+    <HvTypography variant="title2" component="h1">
+      Page title
+    </HvTypography>
     <HvButton startIcon={<Plus />}>Add item</HvButton>
   </div>
   {/* content */}
@@ -97,7 +81,9 @@ style={{ color: theme.colors[dynamicThemeColor] }}
   {items.map((item) => (
     <HvCard key={item.id} bgcolor="bgContainer">
       <HvCardHeader title={item.name} />
-      <HvCardContent>{item.description}</HvCardContent>
+      <HvCardContent>
+        <HvTypography>{item.description}</HvTypography>
+      </HvCardContent>
     </HvCard>
   ))}
 </div>
@@ -108,16 +94,10 @@ style={{ color: theme.colors[dynamicThemeColor] }}
 ```tsx
 <form className="flex flex-col gap-sm max-w-md">
   <HvInput name="name" label="Name" required />
-  <HvSelect name="status" label="Status" options={[]} />
-  <HvActionBar className="flex gap-xs justify-end">
+  <HvSelect name="status" label="Status" options={statusOptions} />
+  <div className="flex justify-end gap-xs">
     <HvButton variant="secondaryGhost">Cancel</HvButton>
     <HvButton type="submit">Save</HvButton>
-  </HvActionBar>
+  </div>
 </form>
 ```
-
-## Resources
-
-- [Component catalog](https://pentaho.github.io/uikit-docs/master/components)
-- [Design examples](https://pentaho.github.io/uikit-docs/master/examples)
-- [UnoCSS preset docs](https://pentaho.github.io/uikit-docs/master/docs/guides/unocss)

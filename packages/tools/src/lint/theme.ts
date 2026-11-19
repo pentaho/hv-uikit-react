@@ -1,5 +1,7 @@
 // The rules on values and the UI Kit's own components: colors and sizes from the theme, icon buttons and tags named
 // in words, and nothing the installed UI Kit marks deprecated (read from its type declarations).
+import path from "node:path";
+
 import { CORE } from "../core/metadata.js";
 import { readDeprecations } from "./deprecations.js";
 import {
@@ -163,8 +165,6 @@ const tagLabel: LintRule = {
   }),
 };
 
-let deprecated: ReturnType<typeof readDeprecations> | undefined;
-const deprecations = () => (deprecated ??= readDeprecations());
 const advised = (what: string, advice: string) =>
   `${what} is deprecated in the UI Kit${advice ? ` — ${advice}` : ""}`;
 
@@ -173,29 +173,35 @@ const noDeprecated: LintRule = {
   say: "Nothing the installed UI Kit marks deprecated (read from its types): use what its deprecation note names instead.",
   bad: `import { HvList } from "@pentaho/uikit-react-core";\nexport default () => <HvList values={[]} />;`,
   good: `import { HvListContainer, HvListItem } from "@pentaho/uikit-react-core";\nexport default () => <HvListContainer><HvListItem>One</HvListItem></HvListContainer>;`,
-  create: (context) => ({
-    ImportDeclaration(st: any) {
-      if (st.source.value !== CORE) return;
-      for (const s of st.specifiers) {
-        const name = importedName(s);
-        const advice = name && deprecations().components.get(name);
-        if (name && advice !== undefined)
-          context.report({ node: s, message: advised(name, advice) });
-      }
-    },
-    JSXOpeningElement(n: any) {
-      const props = deprecations().props.get(tagName(n.name));
-      for (const a of props ? n.attributes : []) {
-        const advice =
-          a.type === "JSXAttribute" ? props!.get(a.name.name) : undefined;
-        if (advice !== undefined)
-          context.report({
-            node: a,
-            message: advised(`${a.name.name} on ${tagName(n.name)}`, advice),
-          });
-      }
-    },
-  }),
+  create: (context) => {
+    const file: string | undefined = (context as { filename?: string })
+      .filename;
+    const deprecations = () =>
+      readDeprecations(file ? path.dirname(file) : process.cwd());
+    return {
+      ImportDeclaration(st: any) {
+        if (st.source.value !== CORE) return;
+        for (const s of st.specifiers) {
+          const name = importedName(s);
+          const advice = name && deprecations().components.get(name);
+          if (name && advice !== undefined)
+            context.report({ node: s, message: advised(name, advice) });
+        }
+      },
+      JSXOpeningElement(n: any) {
+        const props = deprecations().props.get(tagName(n.name));
+        for (const a of props ? n.attributes : []) {
+          const advice =
+            a.type === "JSXAttribute" ? props!.get(a.name.name) : undefined;
+          if (advice !== undefined)
+            context.report({
+              node: a,
+              message: advised(`${a.name.name} on ${tagName(n.name)}`, advice),
+            });
+        }
+      },
+    };
+  },
 };
 
 // A utility class with an arbitrary size or color (`p-[24px]`, `text-[#f00]`, `bg-[rgb(0,0,0)]`), or a color from the

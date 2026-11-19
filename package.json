@@ -21,6 +21,7 @@
     "build": "lerna run build",
     "build-storybook": "storybook build -o dist --quiet --test",
     "test": "lerna run test -- --run",
+    "test:types": "node .config/check-types.ts",
     "test:storybook": "vitest --project=storybook",
     "test:coverage": "lerna run test -- --run --coverage",
     "check": "npm run lint && npm run prettier && npm run typecheck",

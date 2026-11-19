@@ -5,6 +5,8 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
+import { dtsOptions } from "./dts";
+
 const require = createRequire(import.meta.url);
 
 // eslint-disable-next-line import/no-dynamic-require
@@ -21,10 +23,12 @@ export default defineConfig({
     conditions: ["@uikit/source"],
   },
   plugins: [
-    dts({
-      bundleTypes: true,
-      tsconfigPath: resolve(import.meta.dirname, "../tsconfig.build.json"),
-    }),
+    dts(
+      dtsOptions(
+        resolve("."),
+        resolve(import.meta.dirname, "../tsconfig.build.json"),
+      ),
+    ),
     react(),
   ],
   build: {
