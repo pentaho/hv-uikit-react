@@ -5,6 +5,10 @@ inputs:
     description: "Whether to npm install dependencies"
     required: false
     default: "true"
+  node-version:
+    description: "Node.js version; default: .nvmrc, the active LTS"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
@@ -12,7 +16,8 @@ runs:
     - name: Install Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: 24.14.x
+        node-version: ${{ inputs.node-version }}
+        node-version-file: ${{ inputs.node-version == '' && '.nvmrc' || '' }}
         cache: npm
 
     - name: Install dependencies

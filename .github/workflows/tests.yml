@@ -56,6 +56,38 @@ jobs:
       - name: Run Test
         run: npm run test
 
+  node:
+    # the packages that run on Node, on every supported LTS line (engines: >=22.12.0)
+    name: Node ${{ matrix.node }} (tools, CLI)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22.x, 24.x, 26.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Build
+        run: npm run build -w packages/styles -w packages/utils -w packages/shared -w packages/core -w packages/tools
+
+      - name: Test uikit-tools
+        run: npm run test -w packages/tools -- --run
+
+      - name: Test uikit-tools outside the repo
+        run: npm run test:e2e -w packages/tools
+
+      - name: Test the published types
+        # a TypeScript check, the same on every Node
+        if: matrix.node == '26.x'
+        run: npm run test:types
+
   storybook:
     # storybook runs a11y and component tests
     name: Storybook Tests

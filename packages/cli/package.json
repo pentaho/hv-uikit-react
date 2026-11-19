@@ -46,7 +46,7 @@
     "vite-tsconfig-paths": "^5.1.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
   },
   "files": [
     "src"
