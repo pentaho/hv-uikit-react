@@ -4,7 +4,7 @@ How coding agents and designers build Pentaho UI from the UI Kit itself: what ex
 parts compose from a plain request to a packaged Pentaho plugin.
 
 **Status.** Everything here works in this repository and is covered by tests, end-to-end checks and agent trials. None
-of it is in production: the packages aren't published yet, plugins run on sample data and haven't been installed on a
+of it is in production: `@pentaho/uikit-tools` and this version of `@pentaho/uikit-cli` aren't released yet, plugins run on sample data and haven't been installed on a
 Pentaho server, and the Figma sync was proven on a branch of the Pentaho UI library (its main file untouched).
 
 ## The principle
@@ -52,19 +52,19 @@ flowchart LR
 
 ## What exists
 
-| Path                                         | Package                     | Published      | What it is                                                                                    |
-| -------------------------------------------- | --------------------------- | -------------- | --------------------------------------------------------------------------------------------- |
-| `packages/core/src/**/<Component>.md`        | `@pentaho/uikit-react-core` | yes, with core | Design notes: when to use, what the consumer provides, spec, don'ts                           |
-| `packages/core/scripts/extract-contracts.js` | (build step)                | output ships   | Merges contract tags, notes and TS props into `dist/component-metadata.json`                  |
-| `packages/core/src/utils/componentColors.ts` | (internal)                  | no             | Component colors that aren't theme tokens (Avatar, input fill), read by styles and Figma sync |
-| `packages/styles` tokens                     | `@pentaho/uikit-styles`     | yes            | DTCG tokens (`tokens/*.tokens.json`) with notes on what each token is for                     |
-| `packages/tools`                             | `@pentaho/uikit-tools`      | ready, not yet | Lookups, MCP server, lint plugin, `init`, rules and agent skills                              |
-| `packages/cli`                               | `@pentaho/uikit-cli`        | ready, not yet | `create` (app, vite, plugin) and `package`                                                    |
-| `templates/{app,vite,plugin}`                | (copied by the CLI)         | inside the CLI | Project templates, each with `AGENTS.md`                                                      |
-| `packages/config`                            | `@pentaho/uikit-config`     | ready, not yet | Shared TypeScript and Prettier config the templates extend                                    |
-| `packages/figma`                             | `@pentaho/uikit-figma`      | private        | Figma sync, documentation pages, Code Connect, compare and capture                            |
-| `packages/cli/trials`                        | (repo only)                 | no             | Runs an agent headless on a task and checks what it built                                     |
-| `skills/uikit-design`                        | (repo skill)                | no             | Design guidance skill for agents working in this repo                                         |
+| Path                                         | Package                     | Published      | What it is                                                                                     |
+| -------------------------------------------- | --------------------------- | -------------- | ---------------------------------------------------------------------------------------------- |
+| `packages/core/src/**/<Component>.md`        | `@pentaho/uikit-react-core` | next release   | Design notes: when to use, what the consumer provides, spec, don'ts                            |
+| `packages/core/scripts/extract-contracts.js` | (build step)                | output ships   | Merges contract tags, notes and TS props into `dist/component-metadata.json`                   |
+| `packages/core/src/utils/componentColors.ts` | (internal)                  | no             | Component colors that aren't theme tokens (Avatar, input fill), read by styles and Figma sync  |
+| `packages/styles` tokens                     | `@pentaho/uikit-styles`     | next release   | DTCG tokens (`tokens/*.tokens.json`) with notes on what each token is for                      |
+| `packages/tools`                             | `@pentaho/uikit-tools`      | not yet        | Lookups, MCP server, lint plugin, `init`, rules and agent skills                               |
+| `packages/cli`                               | `@pentaho/uikit-cli`        | 7.0.x, older   | `create` (app, vite, plugin) and `package`; this TypeScript version isn't released yet         |
+| `templates/{app,vite,plugin}`                | (copied by the CLI)         | inside the CLI | Project templates, each with `AGENTS.md`                                                       |
+| `packages/config`                            | `@pentaho/uikit-config`     | yes            | Shared TypeScript and Prettier config the templates extend                                     |
+| `packages/figma`                             | `@pentaho/uikit-figma`      | private        | Figma sync, documentation pages, Code Connect, compare and capture                             |
+| `packages/cli/trials`                        | (repo only)                 | no             | Runs an agent headless on a task and checks what it built                                      |
+| `skills/uikit-design`                        | (repo skill)                | no             | Design guidance skill; no agent loads it yet (move it into packages/tools/skills or retire it) |
 
 ## How each capability works
 
@@ -127,7 +127,8 @@ sample data with states (`?samples=empty`, `{"$status": 503}`), `answerFromSampl
 ### 7. Figma from code (`packages/figma`)
 
 - `npm run generate` writes `figma-sync.json` (Primitives, Color in light and dark, Spacing, Radius, Typography, with
-  scopes, CSS code syntax and notes; and text styles) and one Code Connect template per library component, from the
+  scopes, CSS code syntax and notes; and text styles) and Code Connect templates for the library's components and icons
+  (107 templates: 60 components, some with several sets, and 38 icons), from the
   tokens, the component metadata and `code-connect/library.json` (component keys and nodes in the library). CI fails
   if they're stale (`--check`).
 - The team's Figma plugin applies the sync and draws each component's documentation page from `content/pages`. It
@@ -143,7 +144,8 @@ sample data with states (`?samples=empty`, `{"$status": 503}`), `answerFromSampl
 `run.ts <task>` makes an empty folder, installs the tools for the agent, runs Claude Code headless with the request
 verbatim and "no one will answer questions", then runs `check.ts`: nine checks (plugin, samples, UI Kit components,
 `npm run check`, tests, lint, build, zip, screenshots) plus metrics from the transcript, appended to `RESULTS.md`.
-Tasks: `connections-list`, `connection-new`, `schedule-health` (from an approved design), `scheduled-jobs`.
+Tasks: `report-subscriptions`, `content-usage`, `users-roles`, `connection-new`, `schedule-health` (from an approved
+design).
 
 ## How they compose
 
@@ -197,7 +199,7 @@ Package READMEs hold the details: `packages/tools/README.md`, `packages/cli/READ
 
 ## Not done yet
 
-- Publish `@pentaho/uikit-tools`, `@pentaho/uikit-cli` and `@pentaho/uikit-config`.
+- Release `@pentaho/uikit-tools` and the TypeScript `@pentaho/uikit-cli`.
 - Install a plugin on a Pentaho test server (it needs App Shell 3) and try one real request with a designer and a PM.
 - Apply the sync and publish Code Connect on the real library, with the design team's agreement.
 - Start a plugin directly from approved Figma frames.
