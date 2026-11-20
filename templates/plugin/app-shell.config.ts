@@ -14,6 +14,8 @@ import {
 export default (): HvAppShellConfig => ({
   name: "Pentaho User Console",
   logo: { name: "PENTAHO" },
+  // the platform's navigation: one menu down the left side
+  navigationMode: "ONLY_LEFT",
   apps: { $server: `${BASE}/` },
   menu: [
     {
