@@ -1,37 +1,28 @@
-# HV UI Kit Layout Rules
+# Layout Rules
 
-Rules for page and section layout, spacing, and loading states. Read these before building any page or section.
+## Introduction
+
+Page and section layout, and loading states.
 
 ## Grid
 
-- Build page and section layouts with `HvGrid`
-  - Do not use ad-hoc `display: flex`, `display: grid`, or absolute positioning for layout
-  - Control gaps with the `spacing`, `rowSpacing`, and `columnSpacing` props
+- Build columns that change with the screen with `HvGrid` (`container`, items with `size`); its gaps come from the `spacing`, `rowSpacing` and `columnSpacing` props.
+- Build a simple row or stack with flex or grid classes and token gaps (`flex flex-col gap-md`, `grid grid-cols-1 md:grid-cols-3 gap-sm`), or `css()` with `theme.space`.
+- Don't use absolute positioning or raw pixel gaps for layout (`tokens/spacing`).
 
 ## Container
 
-- Use `HvContainer` to center and bound the main content of a page or section
-  - Use one container per page or section region; do not wrap every component in one
-
-## Spacing
-
-- Use space tokens for all gaps, margins, and padding
-  - `xxs` (4px), `xs` (8px), `sm` (16px), `md` (24px), `lg` (48px), `xl` (80px)
-  - Never raw pixel values
-
-```diff
--<div style={{ padding: "24px", marginBottom: "16px" }}>{content}</div>
-+<div style={{ padding: theme.space.md, marginBottom: theme.space.sm }}>{content}</div>
-```
+- Use `HvContainer` to center and bound the main content of a page or section, never a hand-written `max-w-*` with side padding.
+- Use one container per page or section region; don't wrap every component in one.
 
 ## Consistency
 
-- Keep spacing and layout structure consistent across sibling sections of the same page
+- Keep spacing and layout structure consistent across sibling sections of the same page.
 
-## Loading States
+## Loading states
 
 Show loading feedback while data is being fetched or a process is running.
 
-- Use `HvSkeleton` for initial content loads, sized and shaped like the content that will replace it (`variant="text"` for lines, `variant="circle"` for avatars, `variant="square"` for images) so the layout does not shift
-- Use `HvLoading` for an in-progress process with no known final shape, such as submitting a form or running a query
-- Use `HvLoadingContainer` to overlay existing content while a process runs
+- Use `HvSkeleton` for initial content loads, sized and shaped like the content that will replace it (`variant="text"` for lines, `variant="circle"` for avatars, `variant="square"` for images) so the layout doesn't shift.
+- Use `HvLoading` for an in-progress process with no known final shape, such as submitting a form or running a query.
+- Use `HvLoadingContainer` to overlay content already on screen while it refreshes.

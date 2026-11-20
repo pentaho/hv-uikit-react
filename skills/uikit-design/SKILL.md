@@ -22,6 +22,7 @@ argument-hint: "Describe the page or paste an image or URL of the design"
 ## Package Imports
 
 ```tsx
+import { Plus } from "@phosphor-icons/react"; // icons come from Phosphor
 import { HvButton, HvCard, HvContainer } from "@pentaho/uikit-react-core";
 ```
 
@@ -31,6 +32,7 @@ import { HvButton, HvCard, HvContainer } from "@pentaho/uikit-react-core";
 
 Browse the following locations for the closest match:
 
+- `npx --no-install uikit-tools components` and `npx --no-install uikit-tools info <Component>` (when the app has `@pentaho/uikit-tools`): when to use each component, and its props
 - type declarations in `node_modules`
 - [components page](https://pentaho.github.io/uikit-docs/master/components)
 - [examples page](https://pentaho.github.io/uikit-docs/master/examples)
@@ -57,7 +59,7 @@ Note that while spacing classes, such as `gap-*` or `p-*`, use the spacing units
 
 Follow these rules:
 
-- Use `HvTypography` for all non default/`body` text, using the correct `variant`.
+- Use `HvTypography` for all text, with the correct `variant`.
 - Use `HvButton` with the correct `variant`, or `HvButtonBase` for unstyled buttons.
 - For data display, use the [`HvTable`](https://pentaho.github.io/uikit-docs/master/components/table) component.
 - For user feedback, use `HvSnackbar` / `HvBanner` (not custom toasts).
@@ -66,7 +68,7 @@ Follow these rules:
 
 ### 4. Apply theme tokens in rare custom styles
 
-When UnoCSS utilities are insufficient, inline `style` is fine, such as dynamic values:
+When UnoCSS utilities are insufficient, use `css()` with the `theme`. Inline `style` is only for values computed at run time:
 
 ```tsx
 import { theme } from "@pentaho/uikit-react-core";
@@ -81,8 +83,8 @@ style={{ color: theme.colors[dynamicThemeColor] }}
 ```tsx
 <div className="flex flex-col gap-md p-md">
   <div className="flex items-center justify-between">
-    <HvTypography variant="title2">Page Title</HvTypography>
-    <HvButton startIcon={<Add />}>Add Item</HvButton>
+    <HvTypography variant="title2">Page title</HvTypography>
+    <HvButton startIcon={<Plus />}>Add item</HvButton>
   </div>
   {/* content */}
 </div>

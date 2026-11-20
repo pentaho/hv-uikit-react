@@ -42,5 +42,7 @@ export default {
   layout: "Layout",
   forms: "Forms",
   accessibility: "Accessibility",
+  "working-with-ai": "AI",
+  "design-notes": "Design notes",
   migration: "Migration",
 } satisfies MetaRecord;

@@ -1,4 +1,4 @@
-# Component Rules
+# Anti-pattern Rules
 
 ## Introduction
 
@@ -6,7 +6,7 @@ Use UI Kit components consistently to preserve shared behavior, accessibility, a
 
 ## Prefer UI Kit components
 
-Prefer an existing UI Kit component over native controls, third-party widgets, or custom implementations of the same interaction. Consult the component inventory and contract first to preserve accessibility, behavior, and theme consistency.
+Prefer an existing UI Kit component over native controls, third-party widgets, or custom implementations of the same interaction (look it up first, `workflow/component-contracts`).
 
 Native semantic elements and layout wrappers are appropriate where they do not recreate a UI Kit widget. Application-logic wrappers may compose UI Kit components. If no component meets the requirement, document that gap rather than forcing an unsuitable replacement.
 

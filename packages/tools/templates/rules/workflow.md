@@ -6,30 +6,14 @@ Consult component contracts before implementation and validate usage afterward. 
 
 ## Component contracts
 
-Before implementing a component, retrieve its contract using the registered MCP tool `get_component_contract`. Use `list_components` to discover the inventory. Check supported props, required boolean flags, variants, state semantics, token constraints, accessibility requirements, and anti-patterns rather than guessing.
-
-Examples:
-
-```diff
-- // Invent a variant or assume every component supports the same props.
-- // Pass MCP tool calls as terminal arguments to uikit-tools mcp (a stdio server).
-+ // Call the agent's registered MCP tools before implementing a form:
-+ list_components({ limit: 10, offset: 0 })
-+ get_component_contract({ component: "HvInput" })
-+ // Consult component stories for usage examples.
-```
+Before using a component, look it up: `npx --no-install uikit-tools info <Component>` (MCP: `get_component`); `components` (MCP: `list_components`) lists them all. Check its props, variants, states, accessibility and don'ts rather than guessing; don't assume every component supports the same props. `uikit-tools mcp` is a stdio server: don't pass MCP tool calls to it as terminal arguments.
 
 ## Validation
 
-After implementation and before committing, run `npx uikit-tools validate 'src/**/*.tsx'`, resolve reported violations, and review the guidance manually against the actual product flow.
+After implementation and before committing, run `npx --no-install uikit-tools lint <paths>` (MCP: `lint`) and the project's checks (for example `npm run check`), fix what they report, and rerun them.
 
-The current CLI only checks a subset of `HvButton` and `HvAvatar` usage, including variants, some raw colors, selected/toggle semantics, image alternatives, and icon-only labels. It does not validate all spacing, date formatting, destructive control flow, or data states. A clean result is not proof of compliance with every rule.
+Type checks catch invalid props and variants. Lint flags hard-coded colors and sizes, native controls that have a UI Kit component, missing names and deprecated APIs, and each finding names its rule. Neither checks token roles, layout, component choice, date formatting, destructive-action flow, or data states: verify those yourself against the actual product flow. A clean result is not proof of compliance.
 
-Examples:
+## Dates
 
-```diff
-- // Treat "All validations passed" as proof that every rule or component was checked.
-- // Claim the CLI validates all spacing and accessibility requirements.
-+ // Query the relevant contract, correct reported violations, and rerun validation.
-+ // Separately verify destructive confirmation, date formatting, layout, tokens, and component choice.
-```
+Take "today" from the app's own notion of now, never a bare `new Date()`, and fix it in tests and demos so their results and screenshots don't change from day to day.

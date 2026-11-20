@@ -14,8 +14,8 @@ which allows for the use of various [styling strategies](#styling-strategies).
 
 ```tsx
 <HvButton
-  style={{ marginLeft: "auto", borderColor: "red" }}
-  className="ml-auto border-red"
+  style={{ borderColor: theme.colors[status] }}
+  className="ml-auto border-negative"
 />
 ```
 
@@ -28,8 +28,8 @@ The `classes.root` (along with `className` and `style`) is passed to the main el
 <HvButton
   classes={{
     root: "p-xs", // applied to the top-level element, same as `className`
-    disabled: "bg-black", // applied to the `root` element, WHEN the component is disabled
-    startIcon: "bg-red", // applied to the start/left icon element container
+    disabled: "bg-bgDisabled", // applied to the `root` element, WHEN the component is disabled
+    startIcon: "bg-negative", // applied to the start/left icon element container
   }}
 />
 ```
@@ -54,7 +54,7 @@ or [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color) (`blue`, 
 <div className="flex items-center gap-sm">
   <HvButton color="positive">Button</HvButton>
   <HvTag color="coral" label="Tag" />
-  <HvBadge color="#c73aa8" showCount label={8} icon={<Alert />} />
+  <HvBadge color="accent" showCount label={8} icon={<Alert />} />
   <HvCheckBox defaultChecked color="info" />
   <HvRadio defaultChecked color="salmon" />
   <HvSwitch defaultChecked color="warning" />
@@ -100,7 +100,7 @@ const classes = {
   }),
 };
 
-<button className={classes.button} />;
+<HvButton className={classes.button} />;
 ```
 
 #### Using the `styled` function

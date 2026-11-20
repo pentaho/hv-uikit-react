@@ -12,5 +12,10 @@
     "packages",
     "templates"
   ],
-  "exclude": ["node_modules", "**/dist", "packages/*/package"]
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "packages/*/package",
+    "packages/tools/test-fixtures"
+  ]
 }

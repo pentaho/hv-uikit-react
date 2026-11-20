@@ -1,17 +1,16 @@
-# UI Kit Action Rules
+# Action Rules
 
 ## Introduction
 
 Actions must communicate their consequences and protect users from accidental data loss.
 
-## Color Actions accordingly
+## Color actions accordingly
 
-Use the correct theme color to indicate the nature of the action, such as `primary` for main actions, `negative` or `warning` for destructive actions.
+Use `primary` for the main action and `negative` for destructive ones (`negativeSubtle` or `negativeGhost` in lists and rows). Not the `warning…` or `positive…` button variants: their text is below AA.
 
 ## Prevent accidental and destructive actions
 
-Prevent accidental and destructive actions by requiring explicit user intent before performing potentially destructive operations, or a way to recover from the change.
-This can include confirmation dialogs, undo options, or additional verification steps.
+Require explicit intent before a destructive operation (a confirmation dialog or an extra verification step), or offer a way to recover (undo).
 
 Examples:
 

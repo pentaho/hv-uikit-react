@@ -1,262 +1,158 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-  type Tool,
-} from "@modelcontextprotocol/sdk/types.js";
+import { z } from "zod";
 
-export interface ComponentContract {
+import { lint, lintText } from "../core/lint.js";
+import { answer, type LookupRequest } from "../core/lookup.js";
+import { CORE, loadMetadata, type LoadOptions } from "../core/metadata.js";
+
+type Args = Record<string, unknown>;
+
+interface McpTool {
   name: string;
-  displayName: string;
-  purpose: string;
-  variantSemantics?: Array<{
-    name: string;
-    semanticMeaning?: string;
-    description: string;
-  }>;
-  stateRules?: Array<{ name: string; description: string; rules?: unknown[] }>;
-  tokenConstraints?: Array<{
-    category: string;
-    notes: string;
-    allowedValues?: string[];
-  }>;
-  antiPatterns?: Array<{ description: string }>;
-  a11y?: Array<{ description: string }>;
-  validationRules?: Array<{ name: string; description: string }>;
-  tags?: Record<string, string>;
+  description: string;
+  inputSchema: z.ZodRawShape;
+  /** A lookup, answered as its CLI command prints it. */
+  request?(args: Args): LookupRequest;
+  /** A tool that isn't a lookup: its text. */
+  run?(args: Args, options: LoadOptions): string;
 }
 
-export interface ComponentMetadata {
-  version: string;
-  generatedAt: string;
-  components: ComponentContract[];
-}
+/** MCP tools; each returns exactly what its CLI command prints. */
+export const MCP_TOOLS: McpTool[] = [
+  {
+    name: "list_components",
+    description:
+      "List the UI Kit components with a one-line description; marks the ones with design guidance. Same output as `uikit-tools components`.",
+    inputSchema: {
+      limit: z
+        .number()
+        .int()
+        .min(0)
+        .optional()
+        .describe("Most components to return (default: all)"),
+      offset: z
+        .number()
+        .int()
+        .min(0)
+        .optional()
+        .describe("Components to skip (default 0)"),
+    },
+    request: (args: Args): LookupRequest => ({
+      kind: "components",
+      limit: args.limit as number | undefined,
+      offset: args.offset as number | undefined,
+    }),
+  },
+  {
+    name: "get_component",
+    description:
+      "A UI Kit component's import, props and design guidance: the designers' note (when to use, spec, don'ts), variants, states and accessibility. Same output as `uikit-tools info <component>`.",
+    inputSchema: {
+      name: z.string().describe("Component name, e.g. HvDialog"),
+    },
+    request: (args: Args): LookupRequest => ({
+      kind: "component",
+      name: String(args.name ?? ""),
+    }),
+  },
+  {
+    name: "list_rules",
+    description:
+      "List the UI Kit design rules by id. Same output as `uikit-tools rules`.",
+    inputSchema: {},
+    request: (): LookupRequest => ({ kind: "rules" }),
+  },
+  {
+    name: "get_rule",
+    description:
+      "A UI Kit design rule as written, by id (e.g. tokens/colors), a whole rule file (e.g. tokens), or the lint rule a finding cites (e.g. uikit/raw-elements). Same output as `uikit-tools rule <id>`.",
+    inputSchema: {
+      id: z
+        .string()
+        .describe("Rule id, e.g. tokens/colors, or a file, e.g. actions"),
+    },
+    request: (args: Args): LookupRequest => ({
+      kind: "rule",
+      id: String(args.id ?? ""),
+    }),
+  },
+  {
+    name: "find_tokens",
+    description:
+      "The UI Kit theme tokens with their values (light and dark) and what each is for, filtered by words such as border, hover or space; all of them without. Same output as `uikit-tools tokens [words]`.",
+    inputSchema: {
+      query: z
+        .string()
+        .optional()
+        .describe("Words to match, e.g. border or primary hover"),
+    },
+    request: (args: Args): LookupRequest => ({
+      kind: "tokens",
+      query: String(args.query ?? ""),
+    }),
+  },
+  {
+    name: "lint",
+    description:
+      "Check code files or folders against the UI Kit design rules (raw elements, inline styles, hardcoded values, labels, deprecated APIs). Same output as `uikit-tools lint <paths>`.",
+    inputSchema: {
+      paths: z
+        .array(z.string())
+        .min(1)
+        .describe("Files or folders, relative to the project, e.g. src"),
+    },
+    run: (args: Args, { cwd }: LoadOptions) =>
+      lintText(lint(args.paths as string[], cwd)),
+  },
+];
 
-let cachedMetadata: ComponentMetadata | null = null;
-
-export function loadMetadata(): ComponentMetadata {
-  if (cachedMetadata) {
-    return cachedMetadata;
+/** Answer one MCP tool call; exported so tests can compare it with the CLI. */
+export function callTool(
+  name: string,
+  args: Args = {},
+  options: LoadOptions = {},
+) {
+  const tool = MCP_TOOLS.find((t) => t.name === name);
+  try {
+    if (!tool) throw new Error(`Unknown tool: ${name}`);
+    const text = tool.run
+      ? tool.run(args, options)
+      : answer(tool.request!(args), options);
+    return { content: [{ type: "text" as const, text }] };
+  } catch (error) {
+    const text = error instanceof Error ? error.message : String(error);
+    return { content: [{ type: "text" as const, text }], isError: true };
   }
-
-  const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  const metadataPath = path.resolve(
-    __dirname,
-    "../../../core/dist/component-metadata.json",
-  );
-
-  const content = fs.readFileSync(metadataPath, "utf8");
-  cachedMetadata = JSON.parse(content);
-  return cachedMetadata!;
-}
-
-export function listComponents(
-  metadata: ComponentMetadata,
-  options: { limit?: number; offset?: number } = {},
-): {
-  components: Array<{ name: string; displayName: string; purpose: string }>;
-  total: number;
-  offset: number;
-  limit: number;
-} {
-  const limit = options.limit ?? 10;
-  const offset = options.offset ?? 0;
-
-  if (offset < 0 || limit < 0) {
-    throw new Error("limit and offset must be non-negative");
-  }
-
-  const components = metadata.components.slice(offset, offset + limit);
-  return {
-    components: components.map((c) => ({
-      name: c.name,
-      displayName: c.displayName,
-      purpose: c.purpose,
-    })),
-    total: metadata.components.length,
-    offset,
-    limit,
-  };
-}
-
-export function getComponentInfo(
-  metadata: ComponentMetadata,
-  componentName: string,
-): ComponentContract | null {
-  return (
-    metadata.components.find((c) => c.name === componentName) ||
-    metadata.components.find((c) => c.displayName === componentName) ||
-    null
-  );
 }
 
 /**
- * Start the MCP server on stdio.
- * Phase 5.1: Proper MCP Protocol Implementation
- *
- * The server exposes two tools:
- * - components: Paginated list of components
- * - info: Retrieve full component contract
- *
- * Clients connect via MCP protocol (stdio transport) and invoke tools.
+ * Start the stdio MCP server. Data is read per call from the project the agent runs in,
+ * so a missing UI Kit is reported to the agent as a tool error instead of a crash.
  */
-export async function mcp(): Promise<void> {
-  const metadata = await loadMetadata();
-
-  const server = new Server(
-    {
-      name: "hv-uikit-mcp",
-      version: metadata.version,
-    },
-    {
-      capabilities: {
-        tools: {},
+export async function mcp(version: string) {
+  const server = new McpServer({ name: "hv-uikit", version });
+  for (const tool of MCP_TOOLS) {
+    server.registerTool(
+      tool.name,
+      {
+        description: tool.description,
+        inputSchema: tool.inputSchema,
+        annotations: { readOnlyHint: true, openWorldHint: false },
       },
-    },
-  );
+      async (args: Args) => callTool(tool.name, args),
+    );
+  }
 
-  // Define canonical tools
-  const tools: Tool[] = [
-    {
-      name: "components",
-      description:
-        "Get a paginated list of all UI components in the design system",
-      inputSchema: {
-        type: "object" as const,
-        properties: {
-          limit: {
-            type: "number",
-            description: "Maximum number of components to return (default: 10)",
-            default: 10,
-          },
-          offset: {
-            type: "number",
-            description:
-              "Number of components to skip for pagination (default: 0)",
-            default: 0,
-          },
-        },
-      },
-    },
-    {
-      name: "info",
-      description:
-        "Get the full semantic contract of a specific component (variants, state rules, token constraints, antipatterns, a11y, validation rules)",
-      inputSchema: {
-        type: "object" as const,
-        properties: {
-          component: {
-            type: "string",
-            description:
-              "Name of the component (e.g., HvButton, HvAvatar, HvBadge)",
-          },
-        },
-        required: ["component"],
-      },
-    },
-  ];
-
-  // List tools handler
-  server.setRequestHandler(ListToolsRequestSchema, async () => {
-    return { tools };
-  });
-
-  // Call tool handler
-  server.setRequestHandler(CallToolRequestSchema, async (request: unknown) => {
-    const callRequest = request as {
-      params: { name: string; arguments?: Record<string, unknown> };
-    };
-    const { name, arguments: args } = callRequest.params;
-
-    if (name === "components") {
-      const limit = (args?.limit as number) || 10;
-      const offset = (args?.offset as number) || 0;
-
-      if (offset < 0 || limit < 0) {
-        return {
-          content: [
-            {
-              type: "text" as const,
-              text: "Error: limit and offset must be non-negative",
-            },
-          ],
-          isError: true,
-        };
-      }
-
-      const response = listComponents(metadata, { limit, offset });
-
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify(response, null, 2),
-          },
-        ],
-      };
-    }
-
-    if (name === "info") {
-      const componentName = args?.component as string;
-
-      if (!componentName) {
-        return {
-          content: [
-            {
-              type: "text" as const,
-              text: "Error: component is required",
-            },
-          ],
-          isError: true,
-        };
-      }
-
-      const contract = getComponentInfo(metadata, componentName);
-
-      if (!contract) {
-        return {
-          content: [
-            {
-              type: "text" as const,
-              text: `Error: Component "${componentName}" not found. Available components: ${metadata.components.map((c) => c.name).join(", ")}`,
-            },
-          ],
-          isError: true,
-        };
-      }
-
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify(contract, null, 2),
-          },
-        ],
-      };
-    }
-
-    return {
-      content: [
-        {
-          type: "text" as const,
-          text: `Unknown tool: ${name}`,
-        },
-      ],
-      isError: true,
-    };
-  });
-
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-
-  // eslint-disable-next-line no-console
-  console.error(`[hv-uikit-mcp] Server started (v${metadata.version})`);
-  // eslint-disable-next-line no-console
-  console.error(
-    `[hv-uikit-mcp] Loaded ${metadata.components.length} components`,
-  );
+  await server.connect(new StdioServerTransport());
+  try {
+    const { metadata } = loadMetadata();
+    process.stderr.write(
+      `hv-uikit MCP server: ${CORE}@${metadata.version}, ${metadata.components.length} components\n`,
+    );
+  } catch (error) {
+    process.stderr.write(
+      `hv-uikit MCP server: ${error instanceof Error ? error.message : String(error)}\n`,
+    );
+  }
 }

@@ -1,20 +1,15 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@pentaho/uikit-config/tsconfig",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "lib": ["ES2022"],
+    "module": "nodenext",
+    "lib": ["ES2023"],
     "types": ["node"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "target": "ES2022",
+    "verbatimModuleSyntax": true,
     "noEmit": false,
-    "emitDeclarationOnly": false,
-    "allowImportingTsExtensions": false
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
 }

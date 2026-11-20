@@ -1,48 +1,63 @@
 {
   "name": "@pentaho/uikit-tools",
   "version": "1.0.0",
-  "description": "CLI tools for HV UI Kit consumers: init (generate AGENTS.md), validate (check contracts), mcp (serve component metadata over MCP)",
-  "license": "Apache-2.0",
+  "private": false,
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./commands/*": {
-      "import": "./dist/commands/*.js",
-      "types": "./dist/commands/*.d.ts"
-    }
-  },
+  "author": "UI Kit Team",
+  "description": "HV UI Kit tools for apps and their coding agents: setup, component and design rule lookups (CLI and MCP), and the design rules for oxlint and ESLint",
+  "homepage": "https://github.com/pentaho/hv-uikit-react",
+  "license": "Apache-2.0",
   "bin": {
     "uikit-tools": "./dist/cli.js"
   },
+  "keywords": [
+    "uikit-tools",
+    "oxlint",
+    "mcp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pentaho/hv-uikit-react.git",
+    "directory": "packages/tools"
+  },
+  "bugs": {
+    "url": "https://github.com/pentaho/hv-uikit-react/issues"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/cli.js', 0o755)\"",
     "dev": "tsc --watch",
     "test": "vitest",
+    "test:e2e": "node scripts/e2e-outside-repo.ts",
     "clean": "rimraf dist",
-    "validate": "node dist/cli.js validate"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.7.0",
-    "@pentaho/uikit-react-core": "^7.0.0",
-    "commander": "^11.1.0",
-    "chalk": "^5.3.0",
-    "glob": "^10.3.0",
-    "ts-morph": "^20.0.0"
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "commander": "^15.1.0",
+    "oxlint": "~1.63.0",
+    "zod": "^3.25.76"
   },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.3.0",
-    "vitest": "^1.0.0",
-    "rimraf": "^5.0.0"
+  "peerDependencies": {
+    "@pentaho/uikit-react-core": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   },
   "files": [
     "dist",
-    "templates"
+    "templates",
+    "skills",
+    "oxlint.json"
   ],
-  "engines": {
-    "node": ">=18"
+  "exports": {
+    "./lint": {
+      "types": "./dist/lint/plugin.d.ts",
+      "default": "./dist/lint/plugin.js"
+    },
+    "./oxlint.json": "./oxlint.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

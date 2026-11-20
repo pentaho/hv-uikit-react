@@ -1,0 +1,72 @@
+# Design notes
+
+Each **UI Kit** component has a design note: a short Markdown file that says when to use it, how it should look and what to avoid. Coding agents read it whenever they look a component up (`uikit-tools info`, or the `get_component` MCP tool), so a note is how design guidance reaches every app built with **UI Kit**.
+
+Designers write the notes; developers write the code beside them. Props and their types live in the code, guidance in the note.
+
+## Where notes live
+
+A note sits next to its component, with the same name: `packages/core/src/Button/Button.md` beside `Button.tsx`. A subcomponent can have its own note beside its file, such as `Card/Header/Header.md`.
+
+What each design token is for lives in one file, `packages/styles/src/tokens/tokens.notes.json`.
+
+## What a note looks like
+
+```md
+---
+component: HvTag
+status: stable
+related: [HvBadge, HvStatusIcon]
+rules: [uikit/tag-label]
+---
+
+# HvTag
+
+A short label that describes an item: a category, a state or a filter people applied.
+
+## When to use
+
+- Categories and states on rows and cards. A count on an icon: HvBadge.
+
+## Spec
+
+- One or two words, in sentence case.
+
+## Don't
+
+- Don't use a tag as an action button: use HvButton.
+```
+
+- **The header (front matter)**:
+  - `component`: the component's name, exactly as it is exported.
+  - `status`: one of these:
+    - `stable`: the component is in use;
+    - `prefer-alternative`: a related component replaces it;
+    - `internal`: only **UI Kit**'s own components use it.
+  - `related`: components to consider instead or alongside.
+  - `rules`: the lint rules that check this guidance in code (`uikit-tools lint`).
+- **The purpose**: the paragraph under the title: one or two sentences on what the component is for, in plain words.
+- **Sections**: _When to use_, _What the consumer provides_ (props to set, wiring, accessibility the app must add), _Spec_ (how it looks and behaves, including roles and keyboard) and _Don't_, in that order; leave out any that has nothing to say. Write for someone building a screen: concrete, short, with the alternative when something isn't the right choice.
+- **Citations**: refer to a design rule by its id in backticks (`` `tokens/colors` ``, from `uikit-tools rules`) and to a lint rule by its name (`` `uikit/raw-elements` ``).
+
+## What the build checks
+
+The **UI Kit** build stops with a message naming the note and the problem if:
+
+- the note names a component its `.tsx` file doesn't export, or a second note exists for the same component;
+- `status` isn't one of the three values, the purpose is missing, or a section is unknown or out of order;
+- a `related` component doesn't exist;
+- a cited design rule or lint rule doesn't exist (checked by the tests).
+
+The token notes are checked the same way: every token has a note, and every note is for a token the theme has.
+
+## See it as an agent does
+
+After building the core package and the tools, look the component up:
+
+```sh
+npm run build -w packages/core -w packages/tools
+npx --no-install uikit-tools info HvTag
+```
+
+The output is what agents read: your note, then the props.

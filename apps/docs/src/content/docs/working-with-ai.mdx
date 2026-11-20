@@ -1,0 +1,142 @@
+import { Tabs } from "nextra/components";
+
+# Working with AI
+
+**UI Kit** gives your AI coding agent what it needs to build with UI Kit correctly: the right components and rules, always matched to the version your app uses. One command sets it up.
+
+> [!NOTE]
+>
+> AI support is in preview. We're expanding it with each release, and your feedback shapes what comes next.
+
+## How it works
+
+Once your project is set up, your agent has access to:
+
+- **Design rules**: what applies to every screen, such as using design tokens, labelling form controls and protecting users from destructive actions.
+- **Component guidance**: for each component, its props, what each variant is for, how its states behave and what it needs to be accessible. Your agent looks a component up before using it.
+- **Theme tokens**: each token's value in light and dark mode, and what it is for, so your agent picks a token by its meaning.
+- **Lint**: a check of the code your agent writes against the design rules, which it runs and fixes as it goes.
+
+All of it comes from the **UI Kit** packages installed in your app. Your project only keeps a pointer and a little configuration, so when you upgrade, your agent follows the new version with no extra work.
+
+If your agent reads documentation sites, it can also use this site's [llms.txt](/llms.txt).
+
+## Set up
+
+The quickest way is to let your agent do it. Paste this into your agent:
+
+```text
+Set up HV UI Kit for AI agents in this project:
+1. Install the tools: npm install --save-dev @pentaho/uikit-tools
+2. Run: npx --no-install uikit-tools init
+3. Read the HV UI Kit design rules that AGENTS.md now points to and summarise them.
+```
+
+To do it yourself, install the tools and run `init`:
+
+```sh npm2yarn
+npm i -D @pentaho/uikit-tools
+```
+
+```sh
+npx --no-install uikit-tools init
+```
+
+`init` sets up your project for Claude Code and GitHub Copilot by default:
+
+| File               | What `init` adds                                                                                                                  |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENTS.md`        | A short UI Kit block that points your agent to the design rules in your installed UI Kit tools. The rest of the file stays yours. |
+| `CLAUDE.md`        | An import of `AGENTS.md`, so Claude Code reads the same instructions.                                                             |
+| `.vscode/mcp.json` | The `hv-uikit` MCP server for GitHub Copilot. Other servers are kept.                                                             |
+| `.mcp.json`        | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                |
+| `.claude/`         | For Claude Code: a hook that lints each file it edits, the read-only lookups allowed without asking, and the Figma skills.        |
+
+Choose the agents with `--agents`: `claude`, `copilot`, `cursor`, `codex`, `gemini`, or `all`. Commit these files so your whole team shares the same setup, then start a new agent session. Running `init` again is safe: it only rewrites its own block and entries, and refreshes the Figma skills it copies for Claude Code.
+
+Then, depending on your agent:
+
+<Tabs items={["GitHub Copilot", "Claude Code", "Other agents"]}>
+  <Tabs.Tab>
+
+    Copilot reads `AGENTS.md`. Start the `hv-uikit` server from `.vscode/mcp.json` or from the MCP servers list in VS Code.
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    Claude Code reads `CLAUDE.md`, which imports `AGENTS.md`. Approve the `hv-uikit` server when Claude Code asks, and run `/mcp` to check it's connected.
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    Cursor, Codex and Gemini: run `init --agents cursor,codex,gemini` to add the MCP server to their configuration (and, for Gemini, a `GEMINI.md` that imports `AGENTS.md`). Other agents read `AGENTS.md`; if they support MCP, add a server that runs `npx --no-install uikit-tools mcp` from your project folder, and if not, they can run the same lookups from the [command line](#command-line-and-mcp).
+
+  </Tabs.Tab>
+</Tabs>
+
+## Check your setup
+
+Ask your agent:
+
+```text
+Answer from the HV UI Kit design rules and uikit-tools lookups, not from memory:
+1. Which HvButton variant should a form's main action use?
+2. How do you show a number in an HvBadge?
+3. How should an HvDialog show its title?
+```
+
+A working setup answers: `primary`, one per form; set `showCount`; with `HvDialogTitle`, not plain text. If your agent answers from memory or invents props, check the setup and restart the session.
+
+## Command line and MCP
+
+The `uikit-tools` command line is the core. The `hv-uikit` MCP server is a thin layer over it: the same lookups, returning the same answers.
+
+- **Your agent** calls the MCP tools on its own once it is connected. You don't run them.
+- **You, your scripts and CI**, and agents without MCP, use the command line. Run it with `npx --no-install`, which uses the version installed in your project and never downloads another one.
+
+| Task                                     | Command line                   | MCP tool          |
+| ---------------------------------------- | ------------------------------ | ----------------- |
+| Set up your project                      | `uikit-tools init [folder]`    | —                 |
+| List the components                      | `uikit-tools components`       | `list_components` |
+| Look up a component's guidance and props | `uikit-tools info <component>` | `get_component`   |
+| List the design rules                    | `uikit-tools rules`            | `list_rules`      |
+| Read a design rule                       | `uikit-tools rule <id>`        | `get_rule`        |
+| Find a token by what it's for            | `uikit-tools tokens <word>`    | `find_tokens`     |
+| Check code against the design rules      | `uikit-tools lint <paths>`     | `lint`            |
+| Start the MCP server                     | `uikit-tools mcp`              | —                 |
+
+Your agent starts the MCP server from the configuration `init` adds. It runs locally, only reads UI Kit's data and makes no network calls. Run `npx --no-install uikit-tools --help` to see every option.
+
+### Look things up
+
+```sh
+npx --no-install uikit-tools info HvDialog
+npx --no-install uikit-tools rule tokens/colors
+```
+
+These print the same text your agent gets from `get_component` and `get_rule`, so you can see exactly what it sees.
+
+### Lint your code
+
+`npx --no-install uikit-tools lint src` checks your code against the design rules in any project, with no setup; your agent runs it too (the `lint` MCP tool), and Claude Code runs it after every edit through the hook `init` adds.
+
+To see the findings in your editor and CI as well: if your app uses oxlint (apps created with `uikit-cli create` do), add the UI Kit rules preset after your other presets. It ships with `@pentaho/uikit-tools` and needs oxlint 1.63 or later:
+
+```json
+{
+  "extends": [
+    "./node_modules/@pentaho/uikit-config/oxlint/strict.json",
+    "./node_modules/@pentaho/uikit-tools/oxlint.json"
+  ]
+}
+```
+
+It reports native elements that have a **UI Kit** component (`<button>` instead of `HvButton`), hard-coded colors and sizes instead of theme tokens (also in utility classes, such as `p-[24px]` or `text-red-500`), fixed values in inline styles, icon buttons and tags without a name, deprecated components and props, and accessibility problems. Each finding names its rule (`uikit/raw-elements`), and the design notes and rules cite the same ids, so you or your agent can look them up. With ESLint, add the same rules from `@pentaho/uikit-tools/lint`. Not every rule can be checked automatically: review the others against the real screen.
+
+## Keep it current
+
+Upgrade the UI Kit packages as usual. The design rules and component guidance come with the new versions, and your project's pointer still leads to them, so there is no need to run `init` again (except to refresh the skills `init` copies for Claude Code). Restart your agent's MCP server to pick up the change; the command line reads it right away.
+
+## Help shape it
+
+Agent support evolves with your feedback. Tell us about a wrong answer, a component your agent struggles with, or a rule you'd like checked in [GitHub issues](https://github.com/pentaho/hv-uikit-react/issues).
