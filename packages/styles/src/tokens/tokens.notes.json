@@ -1,0 +1,1304 @@
+{
+  "$description": "What each UI Kit token is for, keyed by its theme path (theme.<path>): DTCG $description and, under $extensions, where to use and avoid it. Never values: they come from the theme. The build checks it and writes it into dist/dtcg.",
+  "colors": {
+    "primary": {
+      "$description": "The action color: primary buttons, links, selection and focus of fields.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "contained primary button fill",
+            "ghost and subtle button text",
+            "links (HvTypography link)",
+            "field border on hover and focus",
+            "selected card outline and floating-tab border"
+          ],
+          "avoid": [
+            "small link text on bgContainer in dark mode: use it for fills or large text there",
+            "status meaning: use positive, warning, negative or info"
+          ]
+        }
+      }
+    },
+    "primaryDeep": {
+      "$description": "Pressed fill of primary contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["primary button pressed"]
+        }
+      }
+    },
+    "primaryStrong": {
+      "$description": "Hover fill of primary contained buttons; emphasized primary text.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "primary button hover",
+            "avatar text on primaryDimmed",
+            "sorted table header text"
+          ]
+        }
+      }
+    },
+    "primarySubtle": {
+      "$description": "Pressed fill of ghost and subtle buttons; primary hover outline.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "ghost and subtle button pressed fill",
+            "selected subtle button border",
+            "selectable card hover outline"
+          ]
+        }
+      }
+    },
+    "primaryDimmed": {
+      "$description": "Soft primary fill: ghost-button hover, selected subtle buttons, primary badges and avatars.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "ghost and subtle button hover",
+            "selected subtle and multi-button fill",
+            "primary badge and avatar fill",
+            "slider and filter selection tint"
+          ]
+        }
+      }
+    },
+    "positive": {
+      "$description": "Success state. Passed, completed or healthy.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "switch on-track",
+            "success icon in banners, snackbars and status icons",
+            "positive badge and ghost-button text",
+            "progress bar when complete"
+          ],
+          "avoid": [
+            "positive buttons (variant positive, positiveSubtle, positiveGhost): Pentaho UI Kit writes white or positive text on them, below AA in light mode, so use a neutral variant (primary for the main action)",
+            "color alone: pair it with a label or icon"
+          ]
+        }
+      }
+    },
+    "positiveDeep": {
+      "$description": "Positive banner and snackbar titles; hover fill of positive contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "callout titles on the soft fill",
+            "positive contained button hover (status buttons darken to …Deep on hover, unlike primary)"
+          ]
+        }
+      }
+    },
+    "positiveStrong": {
+      "$description": "Positive tag text; pressed fill of positive contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "positive tag text on positiveDimmed",
+            "positive contained button pressed"
+          ]
+        }
+      }
+    },
+    "positiveDimmed": {
+      "$description": "Soft positive fill behind positive text: tags, badges, status icons, subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "positive tag, badge and status-icon fill",
+            "positive subtle-button fill and ghost-button hover",
+            "banner and snackbar fill (mixed half with dimmer)"
+          ]
+        }
+      }
+    },
+    "positiveSubtle": {
+      "$description": "Hover fill of clickable positive tags and positive subtle buttons; pressed fill of positive ghost buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "clickable tag hover",
+            "subtle button hover",
+            "ghost button pressed"
+          ]
+        }
+      }
+    },
+    "positiveBorder": {
+      "$description": "Outline of positive tags, status icons and subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "tag and status-icon outline",
+            "positive subtle button border and pressed fill"
+          ]
+        }
+      }
+    },
+    "warning": {
+      "$description": "Warning state. Needs attention, nothing has failed yet.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "warning icon in banners, snackbars and status icons",
+            "warning badge and ghost-button text"
+          ],
+          "avoid": [
+            "warning buttons (variant warning, warningSubtle, warningGhost): Pentaho UI Kit writes white or warning text on them, below AA in light mode, so use a neutral variant and say the warning beside it",
+            "white text (textLight) on your own warning fills: put textDark on them",
+            "color alone: pair it with a label or icon"
+          ]
+        }
+      }
+    },
+    "warningDeep": {
+      "$description": "Warning banner and snackbar titles; hover fill of warning contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "callout titles on the soft fill",
+            "warning contained button hover (status buttons darken to …Deep on hover, unlike primary)"
+          ]
+        }
+      }
+    },
+    "warningStrong": {
+      "$description": "Warning tag text; pressed fill of warning contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "warning tag text on warningDimmed",
+            "warning contained button pressed"
+          ],
+          "avoid": [
+            "small text on warningDimmed: below AA in Pentaho UI Kit 7.0 (a known issue of HvTag)"
+          ]
+        }
+      }
+    },
+    "warningDimmed": {
+      "$description": "Soft warning fill behind warning text: tags, badges, status icons, subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "warning tag, badge and status-icon fill",
+            "warning subtle-button fill and ghost-button hover",
+            "banner and snackbar fill (mixed half with dimmer)"
+          ]
+        }
+      }
+    },
+    "warningSubtle": {
+      "$description": "Hover fill of clickable warning tags and warning subtle buttons; pressed fill of warning ghost buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "clickable tag hover",
+            "subtle button hover",
+            "ghost button pressed"
+          ]
+        }
+      }
+    },
+    "warningBorder": {
+      "$description": "Outline of warning tags, status icons and subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "tag and status-icon outline",
+            "warning subtle button border and pressed fill"
+          ]
+        }
+      }
+    },
+    "negative": {
+      "$description": "Error state. Failed, invalid or destructive.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "contained negative (destructive) button fill",
+            "form error text and invalid field border",
+            "error icon in banners, snackbars and status icons",
+            "negative badge and ghost-button text"
+          ],
+          "avoid": [
+            "small error text on bgContainer in dark mode without an icon beside it",
+            "color alone: pair it with a label or icon"
+          ]
+        }
+      }
+    },
+    "negativeDeep": {
+      "$description": "Negative banner and snackbar titles; hover fill of negative contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "callout titles on the soft fill",
+            "negative contained button hover (status buttons darken to …Deep on hover, unlike primary)"
+          ]
+        }
+      }
+    },
+    "negativeStrong": {
+      "$description": "Negative tag text; pressed fill of negative contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "negative tag text on negativeDimmed",
+            "negative contained button pressed"
+          ]
+        }
+      }
+    },
+    "negativeDimmed": {
+      "$description": "Soft negative fill behind negative text: tags, badges, status icons, subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "negative tag, badge and status-icon fill",
+            "negative subtle-button fill and ghost-button hover",
+            "banner and snackbar fill (mixed half with dimmer)"
+          ]
+        }
+      }
+    },
+    "negativeSubtle": {
+      "$description": "Hover fill of clickable negative tags and negative subtle buttons; pressed fill of negative ghost buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "clickable tag hover",
+            "subtle button hover",
+            "ghost button pressed"
+          ]
+        }
+      }
+    },
+    "negativeBorder": {
+      "$description": "Outline of negative tags, status icons and subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "tag and status-icon outline",
+            "negative subtle button border and pressed fill"
+          ]
+        }
+      }
+    },
+    "info": {
+      "$description": "Informational state. Neutral news, no action needed.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["info and default banner icons", "info status icons"],
+          "avoid": [
+            "text on light surfaces: it is an icon and fill color, so write the words in text or infoDeep",
+            "color alone: pair it with a label or icon"
+          ]
+        }
+      }
+    },
+    "infoDeep": {
+      "$description": "Info banner and snackbar titles.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["callout titles on the info fill"]
+        }
+      }
+    },
+    "infoStrong": {
+      "$description": "Info tag text.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["info tag text on infoDimmed"]
+        }
+      }
+    },
+    "infoDimmed": {
+      "$description": "Soft info fill behind info text: tags, badges, status icons, subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "info tag, badge and status-icon fill",
+            "banner and snackbar fill (mixed half with dimmer)"
+          ]
+        }
+      }
+    },
+    "infoSubtle": {
+      "$description": "Hover fill of clickable info tags.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["clickable info tag hover"]
+        }
+      }
+    },
+    "infoBorder": {
+      "$description": "Outline of info tags, status icons and subtle buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["tag and status-icon outline"]
+        }
+      }
+    },
+    "accent": {
+      "$description": "Accent for highlights that are neither action nor status.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "accent banner and status-icon icon",
+            "a highlight that must not read as the primary action"
+          ],
+          "avoid": ["primary actions: those are primary", "status meaning"]
+        }
+      }
+    },
+    "accentDeep": {
+      "$description": "Accent banner and snackbar titles.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["callout titles on the accent fill"]
+        }
+      }
+    },
+    "accentStrong": {
+      "$description": "Stronger accent for hover and emphasized accent text; no Pentaho UI Kit component uses it yet.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["custom accent text or hover in hand-built parts"]
+        }
+      }
+    },
+    "accentSubtle": {
+      "$description": "Soft accent fill one step above accentDimmed; no Pentaho UI Kit component uses it yet.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["hover of a custom accent-tinted item"]
+        }
+      }
+    },
+    "accentDimmed": {
+      "$description": "Softest accent fill: accent banners (mixed half with dimmer) and accent status icons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["accent status-icon fill", "accent banner fill"]
+        }
+      }
+    },
+    "accentBorder": {
+      "$description": "Outline of accent status icons and accent-tinted surfaces.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["accent status-icon outline"]
+        }
+      }
+    },
+    "text": {
+      "$description": "Primary text: body copy, titles and values.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "every HvTypography variant by default",
+            "table cells",
+            "icons beside text"
+          ]
+        }
+      }
+    },
+    "textSubtle": {
+      "$description": "Secondary text: help text, placeholders, metadata and subheaders.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "field help text and placeholders",
+            "card subheaders",
+            "pagination labels",
+            "default badge fill"
+          ],
+          "avoid": [
+            "small text on bgPage in light mode: put it on bgContainer",
+            "the main value or label of a row: use text"
+          ]
+        }
+      }
+    },
+    "textDisabled": {
+      "$description": "Disabled text, icons and control outlines; intentionally low contrast.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "disabled labels and buttons",
+            "read-only field border",
+            "disabled checkbox and radio outline"
+          ],
+          "avoid": [
+            "anything a person must read: disabled text is exempt from contrast, help text is not"
+          ]
+        }
+      }
+    },
+    "textDimmed": {
+      "$description": "A muted gray for control outlines rather than reading text.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "default border of inputs, selects, dropdowns and tags inputs",
+            "switch off-track",
+            "slider rail"
+          ],
+          "avoid": ["body or help text: use textSubtle"]
+        }
+      }
+    },
+    "textLight": {
+      "$description": "Light text in both modes, for saturated or dark fills.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "text and icons on primary, positive and negative fills",
+            "the dark vertical navigation"
+          ],
+          "avoid": [
+            "warning fills: use textDark",
+            "soft …Dimmed fills: use the family's …Strong text; message text on them: textDark"
+          ]
+        }
+      }
+    },
+    "textDark": {
+      "$description": "Dark text in both modes: on warning fills, and in light mode on the soft …Dimmed fills and the lighter categorical colors.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "banner and snackbar messages",
+            "text on warning fills",
+            "categorical tags on the lighter cat colors (cat1–cat3, cat6–cat9)",
+            "semantic buttons inside banners"
+          ],
+          "avoid": [
+            "…Dimmed fills in dark mode: they turn dark and the pair measures below AA",
+            "small text on cat4, cat5, cat10, cat11 or cat12: below AA in both modes"
+          ]
+        }
+      }
+    },
+    "border": {
+      "$description": "Default border for outlined controls and containers.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "tab underline",
+            "neutral tag and subtle button outline",
+            "panel, section, footer and card outlines",
+            "progress bar track"
+          ],
+          "avoid": ["dividers between rows: use borderSubtle"]
+        }
+      }
+    },
+    "borderSubtle": {
+      "$description": "Hairline dividers between surfaces and rows.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "table cell and header dividers",
+            "header and action-bar dividers",
+            "dropdown and select panel outline",
+            "dialog section dividers"
+          ]
+        }
+      }
+    },
+    "borderStrong": {
+      "$description": "Emphasized outline of small selection controls.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["checkbox, radio and switch outlines"],
+          "avoid": ["container borders: use border"]
+        }
+      }
+    },
+    "borderDisabled": {
+      "$description": "Outline of disabled checkboxes and radios.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["disabled checkbox and radio outline"]
+        }
+      }
+    },
+    "bgPage": {
+      "$description": "The page background, behind containers.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "the page",
+            "table header row",
+            "read-only field fill",
+            "neutral subtle-button fill"
+          ],
+          "avoid": ["a card or panel surface: use bgContainer"]
+        }
+      }
+    },
+    "bgContainer": {
+      "$description": "Surface for containers: cards, panels, dialogs, drawers, tooltips and table rows.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "HvCard (bgcolor), HvPanel, HvSection",
+            "dialogs, drawers and dropdown panels",
+            "table rows and cells",
+            "tooltips",
+            "header and footer"
+          ],
+          "avoid": ["the page itself: use bgPage"]
+        }
+      }
+    },
+    "bgPageSecondary": {
+      "$description": "A step darker than the page: selected and focused list items, tracks and placeholders.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "selected tree and navigation item",
+            "focused list item, checkbox and radio",
+            "floating-tabs track",
+            "skeleton placeholder",
+            "neutral (textSubtle) badge fill"
+          ]
+        }
+      }
+    },
+    "bgContainerSecondary": {
+      "$description": "A secondary surface inside containers: nested regions and avatar fills.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["nested regions inside a card or panel", "avatar fill"],
+          "avoid": ["a second page background: use bgPage"]
+        }
+      }
+    },
+    "bgHover": {
+      "$description": "Translucent primary tint for hover on rows, list items, tabs and ghost controls.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "table row and list item hover",
+            "tab, tree item and menu item hover",
+            "ghost and icon button hover",
+            "checkbox, radio and switch hover halo"
+          ],
+          "avoid": [
+            "a selected state: selection uses bgPageSecondary or primaryDimmed"
+          ]
+        }
+      }
+    },
+    "bgDisabled": {
+      "$description": "Fill of disabled controls and disabled contained buttons.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["disabled buttons, inputs, tags and list items"]
+        }
+      }
+    },
+    "bgOverlay": {
+      "$description": "Translucent backdrop behind dialogs and drawers.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["HvDialog and HvDrawer backdrop"],
+          "avoid": ["a surface for content"]
+        }
+      }
+    },
+    "dimmer": {
+      "$description": "Mix target that softens colors (light in light mode, dark in dark mode).",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "mixed with …Dimmed for banner fills",
+            "selected calendar day text"
+          ],
+          "avoid": ["a fill of its own"]
+        }
+      }
+    },
+    "shad1": {
+      "$description": "The translucent shadow color the elevation is built from; no component uses it directly.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["a fill or border"]
+        }
+      }
+    },
+    "shadow": {
+      "$description": "Default elevation for raised surfaces; the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "dropdown, select and menu panels",
+            "drawers and snackbars",
+            "hovered or raised cards",
+            "app switcher"
+          ],
+          "avoid": ["flat page regions: use a border instead"]
+        }
+      }
+    },
+    "cat1": {
+      "$description": "Categorical data series 1 (blue); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat2": {
+      "$description": "Categorical data series 2 (orange); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat3": {
+      "$description": "Categorical data series 3 (teal); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat4": {
+      "$description": "Categorical data series 4 (violet); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["chart series in order (a chart takes them in this order)"],
+          "avoid": [
+            "status or brand meaning",
+            "categorical tags with small text: textDark on it measures below AA, so keep it for chart series"
+          ]
+        }
+      }
+    },
+    "cat5": {
+      "$description": "Categorical data series 5 (pink); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["chart series in order (a chart takes them in this order)"],
+          "avoid": [
+            "status or brand meaning",
+            "categorical tags with small text: textDark on it measures below AA, so keep it for chart series"
+          ]
+        }
+      }
+    },
+    "cat6": {
+      "$description": "Categorical data series 6 (yellow); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat7": {
+      "$description": "Categorical data series 7 (fuchsia); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat8": {
+      "$description": "Categorical data series 8 (cyan); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat9": {
+      "$description": "Categorical data series 9 (lime); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "chart series in order (a chart takes them in this order)",
+            "categorical tags (HvTag color)"
+          ],
+          "avoid": [
+            "status or brand meaning",
+            "text on the page: as a fill it carries textDark"
+          ]
+        }
+      }
+    },
+    "cat10": {
+      "$description": "Categorical data series 10 (rose); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["chart series in order (a chart takes them in this order)"],
+          "avoid": [
+            "status or brand meaning",
+            "categorical tags with small text: textDark on it measures below AA, so keep it for chart series"
+          ]
+        }
+      }
+    },
+    "cat11": {
+      "$description": "Categorical data series 11 (green); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["chart series in order (a chart takes them in this order)"],
+          "avoid": [
+            "status or brand meaning",
+            "categorical tags with small text: textDark on it measures below AA, so keep it for chart series"
+          ]
+        }
+      }
+    },
+    "cat12": {
+      "$description": "Categorical data series 12 (indigo); the same in both modes.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["chart series in order (a chart takes them in this order)"],
+          "avoid": [
+            "status or brand meaning",
+            "categorical tags with small text: textDark on it measures below AA, so keep it for chart series"
+          ]
+        }
+      }
+    }
+  },
+  "space": {
+    "xxs": {
+      "$description": "Tightest gap: inside compact controls.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "icon to text inside small controls",
+            "label to field gap",
+            "status icon and switch padding"
+          ]
+        }
+      }
+    },
+    "xs": {
+      "$description": "Gap between closely related items.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "field inner padding",
+            "banner and card-header padding",
+            "gaps in toolbars and button groups",
+            "tag side padding"
+          ]
+        }
+      }
+    },
+    "sm": {
+      "$description": "Default component padding and gap between fields.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "button, tab and table-cell side padding",
+            "card, panel and dialog padding",
+            "gaps between form fields and cards"
+          ]
+        }
+      }
+    },
+    "md": {
+      "$description": "Gap between groups and sections; page padding.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "gaps between page sections",
+            "page padding",
+            "large button side padding"
+          ]
+        }
+      }
+    },
+    "lg": {
+      "$description": "Gap between page regions.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["separating major regions of a page"],
+          "avoid": ["inside components"]
+        }
+      }
+    },
+    "xl": {
+      "$description": "Largest whitespace, for page-level breathing room; rare in dense product screens.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["an empty-state or landing block's outer margin"],
+          "avoid": ["inside components or between fields"]
+        }
+      }
+    }
+  },
+  "radii": {
+    "none": {
+      "$description": "Square corners.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["tables and full-bleed bars", "number-input step buttons"]
+        }
+      }
+    },
+    "base": {
+      "$description": "Small rounding for small controls.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "checkboxes",
+            "small tags (xs, sm)",
+            "tab tops",
+            "skeleton blocks and small status icons"
+          ]
+        }
+      }
+    },
+    "round": {
+      "$description": "Default rounding for fields and messages.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "text fields, selects and tags inputs",
+            "medium tags",
+            "tooltips",
+            "banners and sections",
+            "listrow table rows"
+          ]
+        }
+      }
+    },
+    "large": {
+      "$description": "Large rounding for big surfaces.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["cards", "dialogs", "dropdown and select panels"]
+        }
+      }
+    },
+    "full": {
+      "$description": "Pill or circle.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "buttons (default)",
+            "badges, avatars and radios",
+            "switches and slider knobs",
+            "search input",
+            "floating tabs"
+          ]
+        }
+      }
+    }
+  },
+  "fontSizes": {
+    "xs": {
+      "$description": "Smallest size, the one caption2 uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the caption2 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "sm": {
+      "$description": "Small size, the one caption1 and captionLabel uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "through the caption1 and captionLabel variant",
+            "small (sm) button text"
+          ],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "base": {
+      "$description": "Base size, the one body and label uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the body and label variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "lg": {
+      "$description": "Large size, the one title4 uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title4 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl": {
+      "$description": "Title size, the one title3 uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title3 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl2": {
+      "$description": "Page-heading size, the one title2 uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title2 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl3": {
+      "$description": "Large title size, the one title1 uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title1 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl4": {
+      "$description": "Display size, the one display uses.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the display variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    }
+  },
+  "lineHeights": {
+    "none": {
+      "$description": "Line height alias equal to the base line height; no variant uses it.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xs": {
+      "$description": "Line height paired with fontSizes.xs in caption2.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the caption2 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "sm": {
+      "$description": "Line height paired with fontSizes.sm in caption1 and captionLabel.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the caption1 and captionLabel variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "base": {
+      "$description": "Line height paired with fontSizes.base in body and label.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the body and label variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "lg": {
+      "$description": "Line height paired with fontSizes.lg in title4.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title4 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl": {
+      "$description": "Line height paired with fontSizes.xl in title3.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title3 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl2": {
+      "$description": "Line height paired with fontSizes.xl2 in title2.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title2 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl3": {
+      "$description": "Line height paired with fontSizes.xl3 in title1.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the title1 variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "xl4": {
+      "$description": "Line height paired with fontSizes.xl4 in display.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["through the display variant"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    }
+  },
+  "fontWeights": {
+    "hairline": {
+      "$description": "Hairline weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "thin": {
+      "$description": "Thin weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "light": {
+      "$description": "Light weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "normal": {
+      "$description": "Regular weight: body, caption1, caption2 and field labels.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["body and caption text", "HvLabel field labels"],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "medium": {
+      "$description": "Medium weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "semibold": {
+      "$description": "Emphasis weight: titles, label, captionLabel and table headers.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "titles and display",
+            "button text and selected tabs",
+            "table header cells"
+          ],
+          "avoid": ["setting text size by hand: use an HvTypography variant"]
+        }
+      }
+    },
+    "bold": {
+      "$description": "Bold weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "extrabold": {
+      "$description": "Extrabold weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    },
+    "black": {
+      "$description": "Black weight. Unused by the pentaho type scale.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "avoid": ["product UI: the scale uses normal and semibold only"]
+        }
+      }
+    }
+  },
+  "fontFamily": {
+    "body": {
+      "$description": "The one typeface (Inter, served by the app) for all text.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["every HvTypography variant and component"],
+          "avoid": ["another font family"]
+        }
+      }
+    }
+  },
+  "typography": {
+    "display": {
+      "$description": "Hero numbers and display text; at most one per view.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["a single headline KPI value"],
+          "avoid": ["page titles: use title2"]
+        }
+      }
+    },
+    "title1": {
+      "$description": "Largest title; rare in product screens.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["a standalone landing or empty page heading"],
+          "avoid": ["the usual page heading: title2"]
+        }
+      }
+    },
+    "title2": {
+      "$description": "The page heading in product screens.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["the page heading (component h1)", "major page sections"]
+        }
+      }
+    },
+    "title3": {
+      "$description": "Section title inside a page.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "section and region headings",
+            "dashboard panel titles",
+            "HvGlobalActions page title"
+          ]
+        }
+      }
+    },
+    "title4": {
+      "$description": "Sub-section, group, dialog and empty-state titles.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "HvDialogTitle and HvEmptyState titles",
+            "group and form-section headings",
+            "KPI values in compact cards"
+          ]
+        }
+      }
+    },
+    "label": {
+      "$description": "Semibold body size for labels and short emphasis.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "button text and selected tabs",
+            "card header titles",
+            "table header cells",
+            "values that need emphasis in a row"
+          ],
+          "avoid": ["paragraphs"]
+        }
+      }
+    },
+    "body": {
+      "$description": "Default text for everything else.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "paragraphs and descriptions",
+            "table cells and list items",
+            "tab labels",
+            "tooltips"
+          ]
+        }
+      }
+    },
+    "captionLabel": {
+      "$description": "Small semibold label.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["compact legends and KPI captions", "calendar weekday names"],
+          "avoid": ["body copy"]
+        }
+      }
+    },
+    "caption1": {
+      "$description": "Small text for help, metadata and dense controls.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "field help and warning text",
+            "card subheaders",
+            "small tags",
+            "pagination and loading labels"
+          ]
+        }
+      }
+    },
+    "caption2": {
+      "$description": "Smallest text, for counters and fine print.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["badges", "dense footnotes"],
+          "avoid": ["anything people must read to act"]
+        }
+      }
+    }
+  }
+}
