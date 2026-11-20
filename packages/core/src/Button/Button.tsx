@@ -110,43 +110,33 @@ function parseVariant(variant: HvButtonVariant): [HvColorAny, Variant] {
  * Button component is used to trigger an action or event.
  *
  * @variantSemantics
- * - "primary": default variant, for the main action of a view, form, or dialog; use only one per context
- * - "secondary" (subtle): secondary emphasis, deprecated, use secondarySubtle or secondaryGhost
- * - "ghost": tertiary emphasis, lowest visual weight
- * - "{color}Subtle": secondary emphasis for semantic colors
- * - "{color}Ghost": tertiary for semantic colors
- * - "semantic": inherits color from context via CSS variable, use only for custom color contexts
+ * - "primary": the default; filled, for the main action of a view, form or dialog; one per context
+ * - "secondarySubtle": outlined, for secondary actions outside forms and dialogs
+ * - "secondaryGhost": no fill, for Cancel and minor actions in toolbars, cards and rows; the default when icon is set
+ * - "negative": filled, for the destructive action in a confirming dialog
+ * - "negativeSubtle": soft fill with an outline, for destructive actions in lists and rows
+ * - "negativeGhost": unfilled destructive action, in lists and rows
+ * - "primarySubtle": soft primary fill with an outline, a lower-emphasis primary action
+ * - "primaryGhost": unfilled, primary-colored, the lowest-emphasis primary action ("ghost" is the same)
+ * - "positive…": positive, positiveSubtle and positiveGhost: avoid them, the text is below AA contrast; use primary or secondarySubtle and say the outcome in words
+ * - "warning…": warning, warningSubtle and warningGhost: avoid them, for the same contrast reason
+ * - "secondary": deprecated, logs a warning; use secondarySubtle
+ * - "subtle": the old outlined style on a bgPage fill; use secondarySubtle
+ * - "contained": filled in the color prop's color (text by default); prefer the named variants
+ * - "semantic": inherits its color from the context, only for custom colored surfaces
  *
  * @stateRules
- * - "disabled": when true, click handlers do not fire, aria-disabled=true, button is not focusable unless focusableWhenDisabled=true
- * - "selected": implies aria-pressed=true, should only be used for true toggle actions (not momentary/transient actions)
- * - "focusableWhenDisabled": when true, disabled button remains in tab order and can be focused (improves a11y for screen readers)
- *
- * @tokenConstraints
- * - color: use semantic tokens only (primary, secondary, positive, negative, warning, or inherit for semantic)
- * - size: use size tokens (xs, sm, md, lg, xl), never raw px values
- * - radius: use radius tokens (none, sm, md, lg), never raw px values
- *
- * @antiPatterns
- * - Do not invent custom variant names; only use defined variants — Use one of: primary, subtle, ghost, {color}Subtle, {color}Ghost, semantic
- * - Do not use subtle or ghost variants for the main action; they lower its emphasis — Use variant="primary" (the default) for the main action
- * - Do not use "selected" for momentary/transient button states; it implies aria-pressed toggle semantics — Use selected only for true toggle buttons (e.g., view mode toggles)
- * - Do not use raw color hex/rgb values; use color tokens instead — Replace #FF0000 with variant="negative" or color token
- * - Do not apply custom CSS directly; use the classes prop and theme tokens — Use className or classes prop with design tokens
- * - Do not mix semantic color variants with explicit color prop; choose one approach — Choose either variant="negative" OR color="..." but not both
+ * - "disabled": click and mouse-down handlers do not fire and aria-disabled is true; the button leaves the tab order unless focusableWhenDisabled is set
+ * - "focusableWhenDisabled": keeps a disabled button focusable, so keyboard and screen-reader users still find it
+ * - "selected": sets aria-pressed to its value whenever it is defined; only for real toggles, not momentary actions
+ * - "icon": a square icon-only button that defaults to secondaryGhost; it needs an aria-label (prefer HvIconButton, which takes a title)
  *
  * @a11y
- * - role: button (or implicit if component="button")
- * - name: must have accessible name via children or aria-label
- * - disabled state: uses aria-disabled=true; when disabled without focusableWhenDisabled, not in tab order
- * - selected state: uses aria-pressed when selected prop is set, for toggle buttons
- * - required: focusableWhenDisabled should be true when a disabled button needs to be discoverable by assistive tech
- *
- * @validationRules
- * - variant: must be one of the defined HvButtonVariant values only (error)
- * - color: must not be a raw hex/rgb value, use tokens instead (error)
- * - selected: should only be used with toggle-like interactions (warn)
- * - disabled + focusableWhenDisabled: warn if both true for extended periods in UI (info)
+ * role: button (a native button with type="button"; another element through component)
+ * - name: from children, or aria-label for an icon-only button
+ * - disabled state: aria-disabled=true; without focusableWhenDisabled the button is also natively disabled and out of the tab order
+ * - selected state: aria-pressed reflects selected, for toggle buttons
+ * - discoverable: set focusableWhenDisabled when a disabled button must stay discoverable by assistive technology
  */
 export const HvButton = fixedForwardRef(function HvButton<
   C extends React.ElementType = "button",

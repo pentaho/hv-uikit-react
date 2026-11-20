@@ -70,37 +70,20 @@ export interface HvTagProps extends Omit<
  * Use tags to indicate status, aid recognition, and support navigation—leveraging color to convey consistent meaning across products.
  *
  * @variantSemantics
- * - "semantic": default type; the tag color comes from the color prop
- * - "categorical": uses the color at 20% alpha as the tag color; defaults to cat1
+ * - "semantic": the default type; the color prop sets the tag: status colors give their Strong text on the Dimmed fill; no color is a neutral tag
+ * - "categorical": type="categorical"; the color (cat1 to cat12, default cat1) at 20% alpha as the fill, with text in the text color
  *
  * @stateRules
- * - "selectable": when true, a click toggles the selected state and onClick receives the next selected value
+ * - "selectable": a click toggles the selected state and onClick receives the next selected value
  * - "selected": when defined, the tag is controlled; otherwise defaultSelected sets the initial state
  * - "disabled": click handlers do not run and the delete icon is hidden
- * - "onDelete": when provided, a delete icon is shown, and the keyboard delete key on the focused tag calls onDelete
- *
- * @tokenConstraints
- * - size: use xs, sm, or md; the size prop accepts no other values
- * - color: use a palette or categorical color name; never raw hex or rgb values
- *
- * @antiPatterns
- * - Do not use a span or div styled as a tag; it has no tag behavior or styling — Use HvTag with type and color
- * - Do not use an emoji as the tag icon; the design system does not style emoji — Pass an HvIcon element to the icon prop
- * - Do not use the deprecated variant prop; it exists only for backwards compatibility — Use type and color instead
- * - Do not use a tag as an action button; tags describe an asset — Use HvButton for actions
+ * - "onDelete": shows a delete icon; Delete or Backspace on the focused tag calls onDelete
  *
  * @a11y
- * role: button when clickable (onClick, onDelete, or selectable is set); otherwise no role
+ * role: button when clickable (onClick, onDelete, or selectable is set); otherwise a plain div that is not focusable
  * - name: the label is the accessible name; a clickable tag must have a label
- * - selected: when selectable, the button sets aria-pressed to the selected state
- * - delete: when focused, the tag handles the keyboard delete key
- *
- * @validationRules
- * - type: type must be semantic or categorical (error)
- * - size: size must be xs, sm, or md (error)
- * - label: label must be provided (error)
- * - variant: the variant prop is deprecated; use type instead (warn)
- * - icon: icon must be an HvIcon element, not emoji or text (warn)
+ * - selected: a selectable tag sets aria-pressed="true" only while selected; unselected it has no aria-pressed
+ * - delete: the delete icon is not focusable on its own; keyboard users delete with Delete or Backspace on the tag
  */
 export const HvTag = forwardRef<
   // no-indent
