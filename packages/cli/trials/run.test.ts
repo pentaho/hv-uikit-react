@@ -6,13 +6,13 @@ import { parseRunArgs, planOf, promptOf, shell, stamp } from "./run.ts";
 describe("the trial runner", () => {
   it("parses its arguments", () => {
     expect(parseRunArgs(["--help"])).toEqual({ help: true });
-    expect(() => parseRunArgs(["connections-list"])).toThrow("--model");
+    expect(() => parseRunArgs(["report-subscriptions"])).toThrow("--model");
     expect(() => parseRunArgs(["nope", "--model", "m"])).toThrow(
       "no task nope",
     );
     expect(() =>
       parseRunArgs([
-        "connections-list",
+        "report-subscriptions",
         "--model",
         "m",
         "--registry",
@@ -20,7 +20,7 @@ describe("the trial runner", () => {
       ]),
     ).toThrow("a URL");
     expect(() =>
-      parseRunArgs(["connections-list", "--model", "m", "--nope"]),
+      parseRunArgs(["report-subscriptions", "--model", "m", "--nope"]),
     ).toThrow();
     const options = parseRunArgs([
       "schedule-health",
@@ -75,7 +75,7 @@ describe("the trial runner", () => {
   });
 
   it("gives the agent the request verbatim, then the unattended line and the screenshot helper", () => {
-    const options = parseRunArgs(["connections-list", "--model", "m"]);
+    const options = parseRunArgs(["report-subscriptions", "--model", "m"]);
     if ("help" in options) throw new Error("options expected");
     const prompt = promptOf(options.task);
     expect(

@@ -1,0 +1,30 @@
+{
+  "id": "content-usage",
+  "shape": "detail",
+  "request": "Build a Content Usage page for Pentaho, read from the Pentaho Operations Mart. Title \"Content Usage\", with the line \"Which reports, analyses and dashboards people open, how often, and what nobody uses anymore.\" underneath, and an Export button at the top right. A period selector: Last 7 days, Last 30 days, Last 90 days. Four summary cards: Views, Active users, Most opened (the content name) and Unused for 90 days (a count). Then tabs All, Reports, Analyses and Dashboards, each with its count, a search by name, and a filter: All content, In use, Unused. The table: Name (with its repository path underneath and an icon for its kind: Interactive Report, Analyzer, Dashboard), Owner, Views, Users, Average run time, Last Opened (date with the time underneath), and an Open action and a menu per row. Opening a row shows its details in a dialog: views per week, its top users and its slowest runs. Rows per page and pagination at the bottom. Sample data: about twenty items from /public/Steel Wheels and /public/pentaho-operations-mart (Sales by territory, Top 10 customers, Product line analysis, Inventory dashboard, Content usage dashboard…), most in use, a few unused for months. When nothing matches, say so. Package it.",
+  "expect": {
+    "views": 1,
+    "states": [
+      "details|dialog",
+      "unused",
+      "no-match|none",
+      "390|mobile|narrow"
+    ],
+    "samples": [],
+    "components": [
+      "HvCard",
+      "HvTabs",
+      "HvTable",
+      "HvSelect|HvDropdown",
+      "HvDialog",
+      "HvPagination"
+    ]
+  },
+  "review": [
+    "The title, the line underneath and Export at the top right; the period selector with the three periods, and changing it changes the numbers",
+    "Four summary cards: Views, Active users, Most opened (a content name) and Unused for 90 days (a count), from the samples",
+    "Tabs All, Reports, Analyses and Dashboards with their counts, a search by name and the All content / In use / Unused filter, each narrowing the table",
+    "Columns Name (kind icon, path underneath), Owner, Views, Users, Average run time, Last opened (time underneath), with Open and a menu per row",
+    "Opening a row shows a dialog with views per week, top users and slowest runs; no match says so, not an empty table"
+  ]
+}

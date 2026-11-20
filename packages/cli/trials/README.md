@@ -9,12 +9,16 @@ a request become a running, packaged plugin, in how long and at what cost. Repo-
 - `run.ts`: runs one trial unattended. `check.ts`: the checker. `screenshot.ts`: the screenshot helper the agent is
   told about. `RESULTS.md`: one row per run.
 
-| Task               | Shape  | Design |
-| ------------------ | ------ | ------ |
-| `connections-list` | list   | no     |
-| `scheduled-jobs`   | list   | no     |
-| `connection-new`   | form   | no     |
-| `schedule-health`  | detail | yes    |
+One per kind of page. The screenshots are the agents' own, from the runs in `RESULTS.md`; earlier runs, of tasks
+since dropped, are in git history.
+
+| Task                   | Shape  | Design | Screenshots                                                                                                                                                                |
+| ---------------------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `report-subscriptions` | list   | no     | [list](screenshots/report-subscriptions/01-list.png), [form dialog](screenshots/report-subscriptions/03-new.png), [delete](screenshots/report-subscriptions/04-delete.png) |
+| `content-usage`        | detail | no     | [summary and list](screenshots/content-usage/01-list.png), [details dialog](screenshots/content-usage/05-details.png)                                                      |
+| `users-roles`          | list   | no     | [users](screenshots/users-roles/01-users.png), [role dialog](screenshots/users-roles/04-role.png)                                                                          |
+| `connection-new`       | form   | no     | [required](screenshots/connection-new/02-required.png), [test failed](screenshots/connection-new/05-fail.png)                                                              |
+| `schedule-health`      | detail | yes    | [jobs](screenshots/schedule-health/01-jobs.png), [details](screenshots/schedule-health/02-details.png)                                                                     |
 
 ## Run a trial
 
