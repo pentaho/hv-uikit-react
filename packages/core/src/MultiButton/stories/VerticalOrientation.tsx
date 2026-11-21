@@ -3,12 +3,12 @@ import { HvButton, HvMultiButton } from "@pentaho/uikit-react-core";
 import { LocationPin, Map } from "@pentaho/uikit-react-icons";
 
 const buttons = [
-  { name: "Map", icon: <Map /> },
-  { name: "Location", icon: <LocationPin /> },
-  { name: "Map", icon: <Map /> },
-  { name: "Location", icon: <LocationPin /> },
-  { name: "Map", icon: <Map /> },
-  { name: "Location", icon: <LocationPin /> },
+  { id: 1, name: "Map", icon: <Map /> },
+  { id: 2, name: "Location", icon: <LocationPin /> },
+  { id: 3, name: "Map", icon: <Map /> },
+  { id: 4, name: "Location", icon: <LocationPin /> },
+  { id: 5, name: "Map", icon: <Map /> },
+  { id: 6, name: "Location", icon: <LocationPin /> },
 ];
 
 export const VerticalOrientation = () => {
@@ -24,9 +24,9 @@ export const VerticalOrientation = () => {
   return (
     <div style={{ display: "flex" }}>
       <HvMultiButton vertical style={{ width: "32px" }}>
-        {buttons.map(({ name, icon }, i) => (
+        {buttons.map(({ id, name, icon }, i) => (
           <HvButton
-            key={`${name}-${i}`}
+            key={id}
             aria-label={name}
             selected={selection.includes(i)}
             onClick={() => handleChange(i)}
@@ -36,9 +36,9 @@ export const VerticalOrientation = () => {
         ))}
       </HvMultiButton>
       <HvMultiButton vertical style={{ marginLeft: "20px", width: "120px" }}>
-        {buttons.map(({ name, icon }, i) => (
+        {buttons.map(({ id, name, icon }, i) => (
           <HvButton
-            key={`${name}-${i}`}
+            key={id}
             aria-label={name}
             startIcon={icon}
             selected={selection.includes(i)}

@@ -98,19 +98,19 @@ export default function processConfiguration(
      * Rollup hook with the info for bundle generation
      * It will be used to create a new configuration with:
      *  - bundles replace with the final location (e.g. -> "bundle": "src/pages/Main" transformed to "bundle": "pages/Main.js",
-     * @param options build options
+     * @param outputOptions build options
      */
-    async generateBundle(options) {
+    async generateBundle(outputOptions) {
       if (generateEmptyShell) {
         return;
       }
 
       // obtain the directory (dist) where the new config file will be placed
       let targetDir: string | undefined;
-      if (options.dir) {
-        targetDir = options.dir;
-      } else if (options.file) {
-        targetDir = path.dirname(options.file);
+      if (outputOptions.dir) {
+        targetDir = outputOptions.dir;
+      } else if (outputOptions.file) {
+        targetDir = path.dirname(outputOptions.file);
       }
 
       if (!targetDir) {

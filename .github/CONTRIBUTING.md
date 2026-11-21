@@ -14,6 +14,18 @@ npm i
 npm run doc
 ```
 
+The repository is developed and run in CI on the Node version in [`.nvmrc`](/.nvmrc) (`nvm use`); installing it needs Node 22.18 or later.
+
+Each package is an npm workspace, so its scripts run from the root with `-w`:
+
+```sh
+npm run build -w packages/core
+npm run test -w packages/core -- --run
+npm run test:types # the published types, from the built packages
+```
+
+The agent tooling (`packages/tools`, `packages/cli`, `packages/figma` and `templates`) is described in [docs/agent-tooling.md](/docs/agent-tooling.md).
+
 ## Submitting an Issue
 
 Use our [GitHub issue templates](https://github.com/pentaho/hv-uikit-react/issues/new/choose) when filing issues.

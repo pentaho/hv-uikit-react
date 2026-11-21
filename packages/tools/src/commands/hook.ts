@@ -1,10 +1,4 @@
-import {
-  appendFileSync,
-  existsSync,
-  globSync,
-  readFileSync,
-  realpathSync,
-} from "node:fs";
+import { existsSync, globSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
 
 import { lint } from "../core/lint.js";
@@ -41,29 +35,22 @@ export function hookProblems(
 /**
  * `uikit-tools hook`: Claude Code's `Stop` hook, which `init` adds. When the agent is about to finish with code that
  * breaks a design rule, whichever way it wrote the files, the problems go back to it (exit 2) to fix first. When the
- * linter can't run, the agent isn't held up (exit 1: Claude Code shows the error to the person, not the agent). With
- * `UIKIT_TOOLS_HOOK_LOG` set (an eval harness can), each stop appends its outcome: clean, findings, skipped or error.
+ * linter can't run, the agent isn't held up (exit 1: Claude Code shows the error to the person, not the agent).
  */
 export function hook() {
   const project = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
-  let outcome = "clean";
   try {
     const problems = hookProblems(readFileSync(0, "utf8"), project);
-    if (problems === undefined) outcome = "skipped";
-    else if (problems) {
-      outcome = "findings";
+    if (problems) {
       process.stderr.write(
         `${problems}\nFix these UI Kit design problems before finishing; \`npx --no-install uikit-tools rule uikit/<name>\` explains a finding's rule, \`uikit-tools info <Component>\` a component.\n`,
       );
       process.exitCode = 2;
     }
   } catch (error) {
-    outcome = "error";
     process.stderr.write(
       `The UI Kit design rules weren't checked: ${(error as Error).message}\n`,
     );
     process.exitCode = 1;
   }
-  if (process.env.UIKIT_TOOLS_HOOK_LOG)
-    appendFileSync(process.env.UIKIT_TOOLS_HOOK_LOG, `${outcome}\n`);
 }

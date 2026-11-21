@@ -89,16 +89,16 @@ A working setup answers: `primary`, one per form; set `showCount`; with `HvDialo
 
 The `hv-uikit` MCP server gives your agent the same lookups as the `uikit-tools` command line, with the same answers. Your agent calls the MCP tools on its own; you, your scripts, CI and agents without MCP use the command line, through `npx --no-install` so it runs the version installed in your project and never downloads another.
 
-| Task                                     | Command line                   | MCP tool          |
-| ---------------------------------------- | ------------------------------ | ----------------- |
-| Set up your project                      | `uikit-tools init [folder]`    | —                 |
-| List the components                      | `uikit-tools components`       | `list_components` |
-| Look up a component's guidance and props | `uikit-tools info <component>` | `get_component`   |
-| List the design rules                    | `uikit-tools rules`            | `list_rules`      |
-| Read a design rule                       | `uikit-tools rule <id>`        | `get_rule`        |
-| Find a token by what it's for            | `uikit-tools tokens <word>`    | `find_tokens`     |
-| Check code against the design rules      | `uikit-tools lint <paths>`     | `lint`            |
-| Start the MCP server                     | `uikit-tools mcp`              | —                 |
+| Task                                     | Command line                       | MCP tool          |
+| ---------------------------------------- | ---------------------------------- | ----------------- |
+| Set up your project                      | `uikit-tools init [folder]`        | —                 |
+| List the components                      | `uikit-tools components`           | `list_components` |
+| Look up a component's guidance and props | `uikit-tools info <components...>` | `get_component`   |
+| List the design rules                    | `uikit-tools rules`                | `list_rules`      |
+| Read a design rule                       | `uikit-tools rule <id>`            | `get_rule`        |
+| Find a token by what it's for            | `uikit-tools tokens <word>`        | `find_tokens`     |
+| Check code against the design rules      | `uikit-tools lint [paths]`         | `lint`            |
+| Start the MCP server                     | `uikit-tools mcp`                  | —                 |
 
 The MCP server runs locally, only reads UI Kit's data and makes no network calls. Run `npx --no-install uikit-tools --help` for every option.
 
