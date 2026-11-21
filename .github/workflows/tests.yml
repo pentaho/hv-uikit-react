@@ -82,15 +82,21 @@ jobs:
         run: npm run build
 
       - name: Test uikit-tools
+        # unit and integration tests, the same on every Node: the e2e below is what varies
+        if: matrix.node == '26.x'
         run: npm run test -w packages/tools -- --run
 
       - name: Test uikit-tools outside the repo
         run: npm run test:e2e -w packages/tools
 
       - name: Test uikit-cli
-        # its template checks build real apps, the same on every Node
         if: matrix.node == '26.x'
         run: npm run test -w packages/cli -- --run
+
+      - name: Test the templates' apps
+        # a full build and check of each template's app, the same on every Node
+        if: matrix.node == '26.x'
+        run: npm run test:apps -w packages/cli
 
       - name: Test the published types
         # a TypeScript check, the same on every Node

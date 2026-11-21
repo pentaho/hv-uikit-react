@@ -49,5 +49,5 @@ coverage
 # examples
 examples/*/package-lock.json
 
-# agent trials run in containers (packages/cli/trials)
-.trials/
+# agent evals run in containers (packages/cli/evals)
+.evals/

@@ -522,6 +522,7 @@ export const HvTagsInput = forwardRef<HTMLElement, HvTagsInputProps>(
               typeof t === "string" ? { label: t, type: "semantic" } : t;
             return (
               <HvTag
+                // oxlint-disable-next-line react/no-array-index-key -- tags can repeat; position is the identity
                 key={`${label}-${i}`}
                 disabled={disabled}
                 tabIndex={-1}
