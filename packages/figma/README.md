@@ -24,9 +24,9 @@ Build `@pentaho/uikit-styles` and `@pentaho/uikit-react-core` first (their `dist
 
 CI (`.github/workflows/tests.yml`, job "Figma Library Sync") fails when the generated files aren't current
 (`generate --check`), and parses the templates. With a `FIGMA_TOKEN` secret (`file_content:read`,
-`file_variables:read`, and `file_code_connect:write` to publish) it also, read-only, compares the variables (each
-mismatch a warning) and re-captures the properties (failing when they drifted), and on `master` publishes the templates
-(`figma connect publish`). Only those steps see the token.
+`file_variables:read`) it also, read-only, compares the variables (each mismatch a warning) and re-captures the
+properties (failing when they drifted). Only those steps see the token. CI never writes to the library: publishing the
+templates (`npx figma connect publish`, with `file_code_connect:write`) is a manual step, agreed with the design team.
 
 ## The sync
 

@@ -61,6 +61,8 @@ jobs:
     # or 26+, and installing the repo 22.18+ (its icons scripts are .ts), so the floors themselves are not run here
     name: Node ${{ matrix.node }} (tools, CLI)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -125,10 +127,12 @@ jobs:
 
   figma:
     # the Figma library from code (packages/figma): the sync file and the Code Connect templates stay current; with a
-    # FIGMA_TOKEN secret (callers that pass secrets), the library is compared read-only, component properties are
-    # checked for drift, and on master the templates are published. Only those steps see the token.
+    # FIGMA_TOKEN secret (callers that pass secrets), the library is compared read-only and component properties are
+    # checked for drift. Only those steps see the token. CI never publishes Code Connect (see packages/figma/README.md).
     name: Figma Library Sync
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       HAS_FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN != '' }}
 
@@ -165,13 +169,6 @@ jobs:
           npm run compare
           npm run capture
           git diff --exit-code code-connect/properties.json
-
-      - name: Publish the Code Connect templates
-        if: env.HAS_FIGMA_TOKEN == 'true' && github.ref == 'refs/heads/master'
-        working-directory: packages/figma
-        env:
-          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-        run: npx --no-install figma connect publish
 
   build:
     name: Build
