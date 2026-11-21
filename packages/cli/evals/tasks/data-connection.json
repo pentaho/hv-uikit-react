@@ -1,0 +1,96 @@
+{
+  "id": "data-connection",
+  "request": "Reports and jobs read their data through data connections, and a wrong setting breaks them without anyone noticing. I want a page to edit the SampleData connection's settings: its name, type, host, port, database name and the login. I want to test the connection before saving, see why a test failed in words I understand, and know what's wrong with a field before I save. Use sample data only: nothing should reach a real database. Package it.",
+  "review": [
+    "The settings are grouped (connection, server, login) with required fields marked and a hint where a value isn't obvious",
+    "Saving with a required field empty or a wrong value marks each one with how to fix it, and nothing is saved",
+    "Testing the connection says whether it worked, and when it didn't, why in plain words, with the server's own message only behind details",
+    "Saving says it was saved; leaving with unsaved changes isn't silent",
+    "The password is hidden, and can be left unchanged"
+  ],
+  "shots": [
+    {
+      "name": "settings",
+      "url": "{route}"
+    },
+    {
+      "name": "invalid",
+      "url": "{route}",
+      "steps": [
+        {
+          "fill": ["Host", ""]
+        },
+        {
+          "fill": ["Port", "abc"]
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Save"
+          }
+        },
+        {
+          "wait": 500
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Test"
+          }
+        },
+        {
+          "wait": 2000
+        }
+      ]
+    },
+    {
+      "name": "test-failed",
+      "url": "{route}?samples=test",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Test"
+          }
+        },
+        {
+          "wait": 2000
+        }
+      ]
+    },
+    {
+      "name": "saved",
+      "url": "{route}",
+      "steps": [
+        {
+          "fill": ["Port", "9002"]
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Save"
+          }
+        },
+        {
+          "wait": 1000
+        }
+      ]
+    },
+    {
+      "name": "narrow",
+      "url": "{route}",
+      "width": 390
+    },
+    {
+      "name": "dark",
+      "url": "{route}",
+      "dark": true
+    }
+  ]
+}

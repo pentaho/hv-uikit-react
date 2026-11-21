@@ -25,7 +25,7 @@
   "scripts": {
     "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/index.js', 0o755)\"",
     "dev": "tsc --watch",
-    "pretest": "tsc",
+    "pretest": "tsc && tsc -p evals",
     "test": "vitest --project cli",
     "test:apps": "tsc && vitest run --project apps",
     "test:e2e": "node scripts/e2e-outside-repo.ts",

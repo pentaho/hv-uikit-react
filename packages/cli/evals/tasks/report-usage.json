@@ -1,0 +1,46 @@
+{
+  "id": "report-usage",
+  "request": "I want to see how our reports are being used: how many views this month compared to last month, which reports are opened most, how views went day by day over the last 30 days, and which reports nobody has opened in 90 days, so we can archive them. Let me narrow it to a folder. Use sample reports from the Steel Wheels folders. Package it.",
+  "review": [
+    "Headline figures for this month against last month, each with its period and the change in words",
+    "Views per day over the last 30 days can be read at a glance, with what stands out said in words",
+    "The most opened reports are compared, their names readable",
+    "The reports nobody opened in 90 days are listed with their owner and when they were last opened",
+    "Narrowing to a folder updates the figures, the charts and the list together",
+    "No usage yet says so plainly, not zero figures or empty charts"
+  ],
+  "shots": [
+    {
+      "name": "overview",
+      "url": "{route}"
+    },
+    {
+      "name": "folder",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "text": "Steel Wheels"
+          }
+        },
+        {
+          "wait": 800
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "url": "{route}?samples=empty"
+    },
+    {
+      "name": "narrow",
+      "url": "{route}",
+      "width": 390
+    },
+    {
+      "name": "dark",
+      "url": "{route}",
+      "dark": true
+    }
+  ]
+}

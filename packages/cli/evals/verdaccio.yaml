@@ -1,9 +1,9 @@
-# A local registry for trials of unreleased packages: `npx --yes verdaccio@6.11.3 --config packages/cli/trials/verdaccio.yaml`.
+# A local registry for evals of unreleased packages: `npx --yes verdaccio@6.11.3 --config packages/cli/evals/verdaccio.yaml`.
 # @pentaho/* come only from what is published here; everything else from npm. Wipe the storage to publish a version again.
-storage: /tmp/uikit-trials-registry
+storage: /tmp/uikit-evals-registry
 auth:
   htpasswd:
-    file: /tmp/uikit-trials-registry/htpasswd
+    file: /tmp/uikit-evals-registry/htpasswd
     max_users: -1
 uplinks:
   npmjs:
