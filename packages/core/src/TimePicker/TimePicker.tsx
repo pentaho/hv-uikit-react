@@ -81,7 +81,7 @@ export interface HvTimePickerProps extends Omit<
   secondsPlaceholder?: string;
   /**
    * Whether the time picker should show the AM/PM 12-hour clock or the 24-hour one.
-   * If undefined, the component will use a format according to the passed locale.
+   * If undefined, the 24-hour one, whatever the locale.
    */
   timeFormat?: TimeFormat;
   /** Whether to visually show the seconds control */

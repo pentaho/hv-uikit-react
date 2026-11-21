@@ -13,13 +13,17 @@ import { loadMetadata } from "../core/metadata.js";
 export interface InitOptions {
   /** Comma-separated agent names, or `all`; default claude and copilot. */
   agents?: string;
+  /** Also the `hv-uikit` MCP server (the same lookups as the CLI), for agents that prefer tools to commands. */
+  mcp?: boolean;
+  /** Also the skills for Figma screens and design reviews. */
+  figma?: boolean;
 }
 
 const TOOLS = "@pentaho/uikit-tools";
-/** The UI Kit rule files in `templates/rules`, in reading order. */
+/** The UI Kit rule files in `templates/rules`, in reading order; `setup.md` only by pointer, since a project from
+ * the UI Kit's templates is already set up. */
 export const RULE_FILES = [
   "principles.md",
-  "setup.md",
   "tokens.md",
   "content.md",
   "accessibility.md",
@@ -44,16 +48,30 @@ const CLAUDE_ALLOW = [
   "Bash(npx --no-install uikit-tools lint *)",
   "Bash(npm run shots *)",
   "Bash(npx --no-install uikit-cli shots *)",
-  "mcp__hv-uikit",
 ];
 const CODEX_SERVER = `[mcp_servers.hv-uikit]\ncommand = "npx"\nargs = ["--no-install", "uikit-tools", "mcp"]\n`;
-/** The Agent Skills this package ships (`skills/<name>/SKILL.md`); init copies them where the agents load skills. */
+/** The Agent Skills this package ships (`skills/<name>/`); init copies them where the agents load skills. */
 const SKILLS_DIR = fileURLToPath(new URL("../../skills", import.meta.url));
 export const SKILLS = readdirSync(SKILLS_DIR).toSorted();
+/** The skills a project gets: the plugin ones only in a Pentaho plugin (it has a plugin.json), the Figma ones only with `--figma`. */
+const skillsFor = (figma = false, plugin = false) =>
+  SKILLS.filter(
+    (name) =>
+      (figma || !name.startsWith("pentaho-figma")) &&
+      (plugin || !name.startsWith("pentaho-plugin")),
+  );
 
 /** The AGENTS.md block: pointers to the rules shipped in the installed uikit-tools, never a copy. */
-export function agentsBlock(rulesPath: string) {
+export function agentsBlock(
+  rulesPath: string,
+  {
+    mcp = false,
+    figma = false,
+    plugin = false,
+  }: Pick<InitOptions, "mcp" | "figma"> & { plugin?: boolean } = {},
+) {
   const toolsPath = rulesPath.replace(/\/templates\/rules$/, "");
+  const skills = skillsFor(figma, plugin);
   return [
     START,
     "",
@@ -63,18 +81,27 @@ export function agentsBlock(rulesPath: string) {
     "",
     ...RULE_FILES.map((file) => `@${rulesPath}/${file}`),
     "",
-    "- Look up a component before using it: `npx --no-install uikit-tools info <Component>`; a token by what it's for: `npx --no-install uikit-tools tokens <word>`.",
+    "- Look up a component before using it: `npx --no-install uikit-tools info <Component>`, or several at once (`info HvTable HvPagination`); a token by what it's for: `npx --no-install uikit-tools tokens <word>`.",
     "- For a component's exact types, open the declaration file `info` names (`node_modules/@pentaho/uikit-react-core/dist/<Component>/<Component>.d.ts`), not the package's `index.d.ts`.",
-    `- If your tool doesn't load the files above, read them in one command: \`cat ${rulesPath}/*.md\` (MCP: \`list_rules\`, then \`get_rule\` for each file).`,
-    "- The `hv-uikit` MCP server answers the same lookups: `list_components`, `get_component`, `list_rules`, `get_rule`, `find_tokens` and `lint`.",
-    "- Check what you changed with `npx --no-install uikit-tools lint <paths>` (MCP: `lint`) and fix every finding; `uikit-tools rule uikit/<name>` explains the lint rule a finding cites.",
+    `- If your tool doesn't load the files above, read them in one command: \`cat ${rulesPath}/*.md\`.`,
+    `- A project without HV UI Kit set up yet (provider, fonts, styles): \`${rulesPath}/setup.md\`.`,
+    ...(mcp
+      ? [
+          "- The `hv-uikit` MCP server answers the same lookups: `list_components`, `get_component`, `list_rules`, `get_rule`, `find_tokens` and `lint`.",
+        ]
+      : []),
+    "- Check what you changed with `npx --no-install uikit-tools lint <paths>` and fix every finding; `uikit-tools rule uikit/<name>` explains the lint rule a finding cites.",
     "",
-    "Skills, for Figma screens and Pentaho plugins (init copies them to `.claude/skills` or `.agents/skills`):",
-    "",
-    ...SKILLS.map(
-      (name) => `- \`${name}\`: ${toolsPath}/skills/${name}/SKILL.md`,
-    ),
-    "",
+    ...(skills.length
+      ? [
+          "Skills (init copies them to `.claude/skills` or `.agents/skills`):",
+          "",
+          ...skills.map(
+            (name) => `- \`${name}\`: ${toolsPath}/skills/${name}/SKILL.md`,
+          ),
+          "",
+        ]
+      : []),
     "This block is written by `uikit-tools init`. Re-run it instead of editing the block.",
     "",
     END,
@@ -192,46 +219,68 @@ const union = (list: string[] | undefined, more: string[]) => [
   ...new Set([...(list ?? []), ...more]),
 ];
 
-/** Claude Code's settings: the lint hook after each edit, and the read-only lookups pre-approved. */
-function claudeSettings(settings: Json): Json {
-  const post: Json[] = settings.hooks?.PostToolUse ?? [];
-  const hasHook = post.some((h) =>
-    h.hooks?.some((x: Json) => x.command === HOOK),
-  );
-  const hook = {
-    matcher: "Write|Edit|MultiEdit",
-    hooks: [{ type: "command", command: HOOK, timeout: 30 }],
-  };
-  return {
-    ...settings,
-    permissions: {
-      ...settings.permissions,
-      allow: union(settings.permissions?.allow, CLAUDE_ALLOW),
-    },
-    hooks: {
-      ...settings.hooks,
-      PostToolUse: hasHook ? post : [...post, hook],
-    },
-  };
-}
+const hasOurHook = (entries: Json[] | undefined) =>
+  (entries ?? []).some((h) => h.hooks?.some((x: Json) => x.command === HOOK));
 
-const skillText = (name: string) =>
-  readFileSync(path.join(SKILLS_DIR, name, "SKILL.md"), "utf8");
+/**
+ * Claude Code's settings: the design-rule lint when the agent finishes (a `Stop` hook: it sees every file however it
+ * was written, which an after-edit hook doesn't), the read-only lookups pre-approved, and the MCP tools with `--mcp`.
+ * An after-edit hook from an earlier init is replaced.
+ */
+const claudeSettings =
+  (mcp: boolean) =>
+  (settings: Json): Json => {
+    const { PostToolUse, Stop, ...otherHooks } = settings.hooks ?? {};
+    const post = (PostToolUse as Json[] | undefined)?.filter(
+      (h) => !hasOurHook([h]),
+    );
+    const stop: Json[] = Stop ?? [];
+    return {
+      ...settings,
+      permissions: {
+        ...settings.permissions,
+        allow: union(settings.permissions?.allow, [
+          ...CLAUDE_ALLOW,
+          ...(mcp ? ["mcp__hv-uikit"] : []),
+        ]),
+      },
+      hooks: {
+        ...otherHooks,
+        ...(post?.length ? { PostToolUse: post } : {}),
+        Stop: hasOurHook(stop)
+          ? stop
+          : [
+              ...stop,
+              { hooks: [{ type: "command", command: HOOK, timeout: 60 }] },
+            ],
+      },
+    };
+  };
 
-/** Each agent's own files. Every agent reads AGENTS.md; these add the MCP server and what the agent loads itself. */
-const AGENTS: Record<string, [file: string, edit: Edit][]> = {
-  claude: [
+/** Each agent's own files beyond AGENTS.md, which every agent reads. */
+const AGENTS: Record<string, (mcp: boolean) => [file: string, edit: Edit][]> = {
+  claude: (mcp) => [
     ["CLAUDE.md", withLine("@AGENTS.md")],
+    [
+      ".claude/settings.json",
+      editJson(".claude/settings.json", claudeSettings(mcp)),
+    ],
+  ],
+  copilot: () => [],
+  cursor: () => [],
+  codex: () => [],
+  gemini: () => [["GEMINI.md", withLine("@./AGENTS.md")]],
+};
+
+/** Each agent's MCP config, with `--mcp`. */
+const MCP: Record<string, [file: string, edit: Edit][]> = {
+  claude: [
     [
       ".mcp.json",
       editJson(
         ".mcp.json",
         withServer("mcpServers", { type: "stdio", ...SERVER }),
       ),
-    ],
-    [
-      ".claude/settings.json",
-      editJson(".claude/settings.json", claudeSettings),
     ],
   ],
   copilot: [
@@ -259,7 +308,6 @@ const AGENTS: Record<string, [file: string, edit: Edit][]> = {
     ],
   ],
   gemini: [
-    ["GEMINI.md", withLine("@./AGENTS.md")],
     [
       ".gemini/settings.json",
       editJson(".gemini/settings.json", withServer("mcpServers", SERVER)),
@@ -272,7 +320,11 @@ export const AGENT_NAMES = Object.keys(AGENTS);
  * Where the agents load project skills: Claude Code `.claude/skills`; Codex and Gemini `.agents/skills`; Copilot and
  * Cursor either, so `.agents/skills` only when Claude Code's copy isn't there.
  */
-function skillFiles(agents: string[]): [string, Edit][] {
+function skillFiles(
+  agents: string[],
+  figma = false,
+  plugin = false,
+): [string, Edit][] {
   const claude = agents.includes("claude");
   const dirs = [
     ...(claude ? [".claude/skills"] : []),
@@ -281,10 +333,19 @@ function skillFiles(agents: string[]): [string, Edit][] {
       ? [".agents/skills"]
       : []),
   ];
+  // every file of a skill: SKILL.md and the references it points to
+  const files = skillsFor(figma, plugin).flatMap((name) =>
+    readdirSync(path.join(SKILLS_DIR, name), {
+      recursive: true,
+      encoding: "utf8",
+    })
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => `${name}/${file.split(path.sep).join("/")}`),
+  );
   return dirs.flatMap((dir) =>
-    SKILLS.map((name): [string, Edit] => [
-      `${dir}/${name}/SKILL.md`,
-      () => skillText(name),
+    files.map((file): [string, Edit] => [
+      `${dir}/${file}`,
+      () => readFileSync(path.join(SKILLS_DIR, ...file.split("/")), "utf8"),
     ]),
   );
 }
@@ -310,10 +371,17 @@ export function runInit(
   // The lookups read the installed UI Kit; fail now rather than on the agent's first lookup.
   loadMetadata({ cwd: dir });
   const rulesPath = rulesPointer(dir);
+  const plugin = existsSync(path.join(dir, "plugin.json"));
   const edits: [string, Edit][] = [
-    ["AGENTS.md", (old) => upsertBlock(old, agentsBlock(rulesPath))],
-    ...agents.flatMap((a) => AGENTS[a]),
-    ...skillFiles(agents),
+    [
+      "AGENTS.md",
+      (old) => upsertBlock(old, agentsBlock(rulesPath, { ...options, plugin })),
+    ],
+    ...agents.flatMap((a) => [
+      ...AGENTS[a](Boolean(options.mcp)),
+      ...(options.mcp ? MCP[a] : []),
+    ]),
+    ...skillFiles(agents, options.figma, plugin),
   ];
 
   // Work out every file before writing any, so a bad file can't leave a half-done setup.

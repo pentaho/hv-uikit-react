@@ -11,7 +11,7 @@ Says why there is nothing here and what to do next.
 ## When to use
 
 - No records yet, no search or filter results, or nothing selected.
-- While data loads: HvSkeleton or HvLoading. A failed request: a message in `role="alert"` with Retry (HvBanner for the whole page).
+- While data loads: HvSkeleton or HvLoading. A failed request: a message in `role="alert"` with Retry (for the whole view, HvBannerContent inline above the content, not a floating HvBanner).
 
 ## What the consumer provides
 
@@ -21,7 +21,7 @@ Says why there is nothing here and what to do next.
 
 ## Spec
 
-- Centered in its container; icon beside the text (stacked and centered on the smallest screens), `space.xs` apart.
+- Centered across its container, not down it: to sit in the middle of the area it replaces, give it that height and `items-center` (`className="min-h-80 items-center"`, or `h-full items-center` in a panel), or it sits at the top; icon beside the text (stacked and centered on the smallest screens), `space.xs` apart.
 - Title in `title4` with `space.xxs` above and `space.sm` below; message in `body` (`text`); action `space.sm` below the message.
 - With only a `message` (no `title`, no `action`) the icon and message sit on one row, vertically centered, at every size.
 

@@ -12,7 +12,7 @@ or code. When someone is there, confirm what you'll design in plain words first.
 the request says and list your assumptions in the hand-off.
 
 **Tools.** Figma's MCP server to search the design system, import and compose; the UI Kit tools (or the `hv-uikit`
-MCP server) for the component each need maps to in code: `npx --no-install uikit-tools info <Component>`,
+MCP server) for the component each need maps to in code: `npx --no-install uikit-tools info <Component> --spec`,
 `components`, `tokens <word>`.
 
 ## 1. What to design
@@ -33,13 +33,14 @@ confirm delete. Titles in sentence case (rule `content`).
   feature's labels) on top, then the view padded `space.md`, its parts `space.md` apart, opening with its title
   (`title2`) and a description in `text` `space.sm` below (`textSubtle` is for containers); filters and the page's
   actions in one toolbar row above what they act on. A dialog sits over its screen, dimmed with `bgOverlay`.
-- **Mapped to code:** for each need, use the component the UI Kit names (`info <Component>`), so every frame can be
+- **Mapped to code:** for each need, use the component the UI Kit names (`info <Component> --spec`), so every frame can be
   built as it is. A need the library doesn't cover, or a composite that doesn't fit (a table's columns, a dialog's
-  content), is a design-system gap: compose a frame from its parts with the same bindings, not a new component, and
-  say so.
+  content), is a design-system gap: compose a frame from its parts with the same bindings, not a new component, named
+  `GAP: <what>` (`GAP: usage bars`), and say so.
 
 ## 3. Hand-off
 
-The file's link and the frames it holds; what's still open; any design-system gaps. Changes the designer asks for are
-made in Figma. `pentaho-figma-review` checks them; once they're approved, they're built with the UI Kit components
-each frame names.
+The file's link and the frames it holds, what's still open, then a note under four short headings: **Library
+components used**, **Built by hand** (the `GAP:` layers), **Differs from code**, **Worth adding to the UI** (a line or
+two each; "none" when empty). Changes the designer asks for are made in Figma. `pentaho-figma-review` checks them;
+once they're approved, they're built with the UI Kit components each frame names.

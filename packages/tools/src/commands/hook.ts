@@ -1,40 +1,69 @@
-import { existsSync, readFileSync, realpathSync } from "node:fs";
+import {
+  appendFileSync,
+  existsSync,
+  globSync,
+  readFileSync,
+  realpathSync,
+} from "node:fs";
 import path from "node:path";
 
 import { lint } from "../core/lint.js";
 
-const CODE = /\.(tsx?|jsx?|mjs|cjs)$/;
+/** Whether `dir` holds code oxlint would read (none yet in a new project's empty `src`). */
+const hasCode = (dir: string) =>
+  globSync("**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}", {
+    cwd: dir,
+    exclude: (name) => path.basename(name) === "node_modules",
+  }).length > 0;
 
 /**
- * The design problems in the file a Claude Code `PostToolUse` input names, as `uikit-tools lint` reports them;
- * none when the file isn't code in the project.
+ * The design problems in the project's code (its `src`, else the whole project) as `uikit-tools lint` reports them,
+ * when a Claude Code `Stop` input arrives ("" when clean); undefined when nothing was linted: this stop already follows
+ * the hook's own report (so the agent is never held in a loop), or there's no code yet. Throws when the linter fails.
  */
-export function hookProblems(input: string, project: string): string {
-  let file: string | undefined;
+export function hookProblems(
+  input: string,
+  project: string,
+): string | undefined {
   try {
-    file = (JSON.parse(input) as { tool_input?: { file_path?: string } })
-      .tool_input?.file_path;
+    if ((JSON.parse(input) as { stop_hook_active?: boolean }).stop_hook_active)
+      return undefined;
   } catch {
-    return "";
+    return undefined;
   }
-  if (!file || !CODE.test(file) || !existsSync(file)) return "";
   const root = realpathSync(project);
-  const relative = path.relative(root, realpathSync(file));
-  if (relative.startsWith("..") || path.isAbsolute(relative)) return "";
-  const { report, ok } = lint([relative], root);
+  const target = existsSync(path.join(root, "src")) ? "src" : ".";
+  if (!hasCode(path.join(root, target))) return undefined;
+  const { report, ok } = lint([target], root);
   return ok ? "" : report;
 }
 
 /**
- * `uikit-tools hook`: Claude Code's `PostToolUse` hook, which `init` adds. When the agent writes code that breaks
- * a design rule, the problems go back to it (exit 2) so it fixes them before going on.
+ * `uikit-tools hook`: Claude Code's `Stop` hook, which `init` adds. When the agent is about to finish with code that
+ * breaks a design rule, whichever way it wrote the files, the problems go back to it (exit 2) to fix first. When the
+ * linter can't run, the agent isn't held up (exit 1: Claude Code shows the error to the person, not the agent). With
+ * `UIKIT_TOOLS_HOOK_LOG` set (the evals set it), each stop appends its outcome: clean, findings, skipped or error.
  */
 export function hook() {
   const project = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
-  const problems = hookProblems(readFileSync(0, "utf8"), project);
-  if (!problems) return;
-  process.stderr.write(
-    `${problems}\nFix these UI Kit design problems; \`npx --no-install uikit-tools rule uikit/<name>\` explains a finding's rule, \`uikit-tools info <Component>\` a component.\n`,
-  );
-  process.exitCode = 2;
+  let outcome = "clean";
+  try {
+    const problems = hookProblems(readFileSync(0, "utf8"), project);
+    if (problems === undefined) outcome = "skipped";
+    else if (problems) {
+      outcome = "findings";
+      process.stderr.write(
+        `${problems}\nFix these UI Kit design problems before finishing; \`npx --no-install uikit-tools rule uikit/<name>\` explains a finding's rule, \`uikit-tools info <Component>\` a component.\n`,
+      );
+      process.exitCode = 2;
+    }
+  } catch (error) {
+    outcome = "error";
+    process.stderr.write(
+      `The UI Kit design rules weren't checked: ${(error as Error).message}\n`,
+    );
+    process.exitCode = 1;
+  }
+  if (process.env.UIKIT_TOOLS_HOOK_LOG)
+    appendFileSync(process.env.UIKIT_TOOLS_HOOK_LOG, `${outcome}\n`);
 }

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/tags/oxlint_v1.63.0/npm/oxlint/configuration_schema.json",
+  // What `uikit-tools lint` and its hook run: the preset's rules and nothing of oxlint's own. Categories off here, not
+  // in the preset, which projects extend; a -A flag would also switch off the preset's jsx-a11y rules.
+  "extends": ["./oxlint.json"],
+  "categories": {
+    "correctness": "off",
+    "suspicious": "off",
+    "pedantic": "off",
+    "perf": "off",
+    "style": "off",
+    "restriction": "off",
+    "nursery": "off"
+  }
+}

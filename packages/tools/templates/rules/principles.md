@@ -4,13 +4,9 @@
 
 Pentaho UI Kit is a calm, data-dense system for enterprise products: slate neutrals, one blue for action, a strict set of status colors. It is for product screens, dashboards and forms, not marketing pages.
 
-## Reach for a component first
-
-Every standard control has an `Hv*` component (HvButton, HvTable, HvDialog, HvBanner). Custom parts hold product logic, never their own look. See `anti-patterns/prefer-ui-kit-components`.
-
 ## Neutral first, color means something
 
-Surfaces are neutral; `primary` marks the action; `positive`, `warning`, `negative` and `info` mark state, always with a label or icon, never color alone.
+Surfaces are neutral; `primary` marks the action; `positive`, `warning`, `negative` and `info` mark state (`components/status`).
 
 ## Dense but legible
 
@@ -18,4 +14,4 @@ Default control size (the component's `size` prop to change it), body text for e
 
 ## Tokens, never values
 
-Colors, spacing, corners and type come from the theme by name, so theme changes reach every screen. See the `tokens` rules.
+Colors, spacing, corners and type come from the theme by name, so theme changes reach every screen (`tokens`).

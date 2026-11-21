@@ -19,6 +19,7 @@ A brief message about something that just happened, which hides itself after a f
 
 - `open` + `onClose(event, reason)`: you own the state. `onClose` runs on timeout, click-away and the close button (reason `"timeout"` or `"clickaway"`), and you set `open` to false; ignoring `clickaway` would break the close button.
 - One message: render it next to the action that triggers it and keep `open` in state; no provider needed.
+- Several, from anywhere: `useHvSnackbar().enqueueSnackbar(message, { variant })` under an HvSnackbarProvider (an App Shell app has one).
 - `label`: the message in one sentence. `action`: one HvButton, or `{ id, label }` with `onAction(event, action)`; keep an Undo reachable for the whole time it is shown.
 - `transitionDirection` to match `anchorOrigin`: `up` for bottom, `down` for top (it slides in from the left by default).
 

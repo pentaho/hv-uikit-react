@@ -1,7 +1,7 @@
 {
   "name": "@pentaho/uikit-tools",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "type": "module",
   "author": "UI Kit Team",
   "description": "HV UI Kit tools for apps and their coding agents: setup, component and design rule lookups (CLI and MCP), and the design rules for oxlint and ESLint",
@@ -26,6 +26,7 @@
   "scripts": {
     "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/cli.js', 0o755)\"",
     "dev": "tsc --watch",
+    "pretest": "tsc",
     "test": "vitest",
     "test:e2e": "node scripts/e2e-outside-repo.ts",
     "clean": "rimraf dist",
@@ -47,7 +48,8 @@
     "dist",
     "templates",
     "skills",
-    "oxlint.json"
+    "oxlint.json",
+    "oxlint.cli.json"
   ],
   "exports": {
     "./lint": {

@@ -22,7 +22,7 @@ Three animated bars saying a process is running, with an optional label.
 
 ## Spec
 
-- Three bars in `primary` (`text` when `small`), label in `caption1` `space.xs` below; centered in its box.
+- Three bars in `primary` (`text` when `small`), label in `caption1` `space.xs` below; centered in its box, vertically too when the box has a height: give it the height of the content it stands in for.
 
 ## Don't
 

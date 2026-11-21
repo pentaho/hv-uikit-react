@@ -11,8 +11,8 @@ Centers page content horizontally and caps its width at a breakpoint, with respo
 
 ## When to use
 
-- The outer wrapper of a page or a form that should not stretch across wide screens (`maxWidth="md"` or `"lg"` for forms and reading pages).
-- Columns inside it: HvGrid, or grid classes with token gaps (`grid md:grid-cols-2 gap-md`).
+- The outer wrapper of a page or a form that should not stretch across wide screens (`maxWidth="md"` or `"lg"` for forms and reading pages). In a Pentaho plugin the App Shell already wraps each view in one: don't add another.
+- Columns inside it: grid classes with token gaps (`grid md:grid-cols-2 gap-md`).
 
 ## What the consumer provides
 

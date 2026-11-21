@@ -47,13 +47,20 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "get_component",
     description:
-      "A UI Kit component's import, props and design guidance: the designers' note (when to use, spec, don'ts), variants, states and accessibility. Same output as `uikit-tools info <component>`.",
+      "A UI Kit component's import, props and design guidance: the designers' note (when to use, don'ts), variants, states and accessibility; with spec, the sizes and tokens too. Same output as `uikit-tools info <component> [--spec]`.",
     inputSchema: {
       name: z.string().describe("Component name, e.g. HvDialog"),
+      spec: z
+        .boolean()
+        .optional()
+        .describe(
+          "Include the designers' spec (sizes and tokens), for design reviews",
+        ),
     },
     request: (args: Args): LookupRequest => ({
       kind: "component",
       name: String(args.name ?? ""),
+      spec: args.spec === true,
     }),
   },
   {

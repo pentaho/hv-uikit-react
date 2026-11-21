@@ -1,9 +1,5 @@
 # Action Rules
 
-## Introduction
-
-Actions must communicate their consequences and protect users from accidental data loss.
-
 ## Color actions accordingly
 
 Use `primary` for the main action and `negative` for destructive ones (`negativeSubtle` or `negativeGhost` in lists and rows). Not the `warning…` or `positive…` button variants: their text is below AA.
@@ -12,9 +8,8 @@ Use `primary` for the main action and `negative` for destructive ones (`negative
 
 Require explicit intent before a destructive operation (a confirmation dialog or an extra verification step), or offer a way to recover (undo).
 
-Examples:
+The confirmation names the item it acts on ("Delete "Sales by territory"?").
 
-```diff
-- <HvButton variant="negative" onClick={deleteAsset}>Delete asset</HvButton>
-+ <HvButton variant="negative" onClick={() => setConfirmOpen(true)}>Delete asset</HvButton>
-```
+## Confirm actions on several items
+
+Before an action on several selected items runs, an `HvDialog` says how many and names every one, never only a count or the first few; after it, say how each went.

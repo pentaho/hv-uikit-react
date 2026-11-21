@@ -5,7 +5,6 @@ import { Command, CommanderError, InvalidArgumentError } from "commander";
 import { hook } from "./commands/hook.js";
 import { AGENT_NAMES, init } from "./commands/init.js";
 import { printLookup } from "./commands/lookup.js";
-import { mcp } from "./commands/mcp.js";
 import { lint, lintText } from "./core/lint.js";
 
 const { version } = JSON.parse(
@@ -30,15 +29,23 @@ const program = new Command("uikit-tools")
 program
   .command("init [folder]")
   .description(
-    "Point the project's agents at the installed UI Kit rules: AGENTS.md, each agent's MCP config, and for Claude Code the lint hook and the skills",
+    "Point the project's agents at the installed UI Kit rules: AGENTS.md, the skills, and for Claude Code the lint hook when it finishes",
   )
   .option(
     "--agents <list>",
     `comma-separated: ${AGENT_NAMES.join(", ")}, or all`,
     "claude,copilot",
   )
-  .action((folder: string | undefined, options: { agents: string }) =>
-    init(folder, options),
+  .option(
+    "--mcp",
+    "also each agent's config for the hv-uikit MCP server (the same lookups as this CLI)",
+  )
+  .option("--figma", "also the skills for Figma screens and design reviews")
+  .action(
+    (
+      folder: string | undefined,
+      options: { agents: string; mcp?: boolean; figma?: boolean },
+    ) => init(folder, options),
   );
 
 program
@@ -51,9 +58,24 @@ program
   );
 
 program
-  .command("info <component>")
+  .command("info <components...>")
   .description("A component's import, props and design guidance")
-  .action((name: string) => printLookup({ kind: "component", name }));
+  .option(
+    "--spec",
+    "with the designers' spec (sizes and tokens), for design reviews",
+  )
+  // several at once: each one's guidance with its props by name, so a page's set fits in one answer
+  .action((names: string[], options: { spec?: boolean }) => {
+    names.forEach((name, index) => {
+      if (index) process.stdout.write("\n---\n\n");
+      printLookup({
+        kind: "component",
+        name,
+        spec: options.spec,
+        brief: names.length > 1,
+      });
+    });
+  });
 
 program
   .command("rules")
@@ -95,14 +117,15 @@ program
 program
   .command("hook")
   .description(
-    "Claude Code PostToolUse hook: lint the file just written with the UI Kit design rules (init adds it)",
+    "Claude Code Stop hook: before the agent finishes, lint the project with the UI Kit design rules (init adds it)",
   )
   .action(hook);
 
 program
   .command("mcp")
   .description("Start the hv-uikit MCP server on stdio")
-  .action(() => mcp(version));
+  // loaded only here: the MCP SDK is most of the CLI's start-up, which every hook and lookup would pay
+  .action(async () => (await import("./commands/mcp.js")).mcp(version));
 
 // Exit codes: 0 done, 1 a finding or no match, 2 a usage or run error.
 for (const command of program.commands) command.exitOverride();

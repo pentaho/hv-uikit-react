@@ -11,9 +11,9 @@ An important message at the top of the page that stays until people dismiss it, 
 
 ## When to use
 
-- A state of the whole page or app that people must notice: a failed load, an expiring license, read-only mode.
+- A state of the whole app that people must notice: an expiring license, read-only mode. It floats over the page (fixed, `offset` from the top), covering what's there.
 - Brief confirmation of something that just happened: HvSnackbar. A decision before continuing: HvDialog.
-- The same message inline inside a page region (not floating): HvBannerContent.
+- A failed load or an error in one view (an App Shell page): HvBannerContent, inline above the content, so it doesn't cover the title.
 
 ## What the consumer provides
 

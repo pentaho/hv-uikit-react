@@ -224,17 +224,15 @@ try {
     `the docs page lists the MCP tools: ${[...tools].join(", ")}`,
   );
 
-  // Claude Code's hook: the findings in the file just written go back to the agent (exit 2)
+  // Claude Code's hook: before the agent finishes, the project's findings go back to it (exit 2)
   const hooked = tool(["hook"], {
-    input: JSON.stringify({
-      tool_input: { file_path: path.join(app, "src/pages/Assets/Assets.tsx") },
-    }),
+    input: JSON.stringify({ hook_event_name: "Stop", stop_hook_active: false }),
     env: { ...process.env, CLAUDE_PROJECT_DIR: app },
     stdio: ["pipe", "pipe", "pipe"],
   });
   assert(
     hooked.code === 2 && Boolean(hooked.err?.includes("uikit(raw-elements)")),
-    "uikit-tools hook returns the design problems in a file the agent wrote",
+    "uikit-tools hook returns the project's design problems before the agent finishes",
   );
 
   // 2. init points at the installed rules; upgrades reach agents with no re-init
@@ -244,9 +242,10 @@ try {
   const ruleRefs = [...agentsMd.matchAll(/^@(.+\.md)$/gm)].map((m) => m[1]);
   const rulesDir = "node_modules/@pentaho/uikit-tools/templates/rules";
   assert(
+    // every rule file but setup.md, which AGENTS.md points to instead
     ruleRefs.length ===
-      readdirSync(path.join(repo, "packages/tools/templates/rules")).length &&
-      ruleRefs.every((ref) => ref.startsWith(`${rulesDir}/`)),
+      readdirSync(path.join(repo, "packages/tools/templates/rules")).length -
+        1 && ruleRefs.every((ref) => ref.startsWith(`${rulesDir}/`)),
     `AGENTS.md points at the ${ruleRefs.length} rule files in ${rulesDir}`,
   );
   assert(

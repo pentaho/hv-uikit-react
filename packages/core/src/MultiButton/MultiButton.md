@@ -19,6 +19,7 @@ A connected group of buttons: a segmented choice of views, or a split button wit
 - HvButton children, each with `onClick` and `selected`; the app keeps the selection in state (the group doesn't).
 - `aria-label` on the group when its purpose isn't obvious from nearby text.
 - `variant`, `size` and `disabled` apply to every child; `vertical` is ignored with `split`.
+- A width for text segments: they have no padding of their own and share the group's width equally (up to 200px each), so without one, text touches the outline (`className={css({ width: "15rem" })}` for two or three short labels; never `style`, `uikit/no-inline-style`).
 
 ## Spec
 

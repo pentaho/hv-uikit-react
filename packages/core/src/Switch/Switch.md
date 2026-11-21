@@ -17,6 +17,7 @@ An on/off control for a setting that takes effect immediately.
 ## What the consumer provides
 
 - `checked` + `onChange(event, checked, value)`, or `defaultChecked`.
+- `labelPosition`: `top` (the default), or `left` / `right` of the control.
 - `color` replaces the track color in both states: use it only for meaning (`warning`, `negative`).
 - `status="invalid"` with `statusMessage`; `aria-errormessage` can point to an external error element.
 

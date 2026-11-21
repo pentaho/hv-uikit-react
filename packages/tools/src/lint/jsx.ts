@@ -117,3 +117,13 @@ export const importedName = (s: any): string | undefined =>
   s.type === "ImportSpecifier"
     ? (s.imported.name ?? s.imported.value)
     : undefined;
+
+/** `{...getRootProps()}`, `{...table.getTableProps?.()}`: a library's prop getter, which has to be spread. */
+export const isPropGetter = (a: any): boolean => {
+  const call =
+    a.argument?.type === "ChainExpression" ? a.argument.expression : a.argument;
+  return (
+    call?.type === "CallExpression" &&
+    /(^|\.)get\w*Props$/.test(calleeName(call.callee))
+  );
+};

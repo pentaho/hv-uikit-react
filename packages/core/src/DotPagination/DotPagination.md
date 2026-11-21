@@ -11,7 +11,7 @@ A row of dots for moving between a few slides or steps, one radio button per pag
 ## When to use
 
 - A carousel, an image gallery or a short onboarding sequence with a handful of pages.
-- Records in pages (tables, lists): HvPagination. Steps that must be done in order: a wizard.
+- Records in pages (tables, lists): HvPagination. Steps that must be done in order: one page with an HvSection per step and Back / Next.
 
 ## What the consumer provides
 
