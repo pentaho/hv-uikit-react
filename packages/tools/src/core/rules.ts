@@ -1,14 +1,12 @@
 /**
- * The UI Kit rules: the Markdown files in this package's `templates/rules`, read as written.
+ * The UI Kit rules: the Markdown files in this package's `rules`, read as written.
  * Each `## ` section of a file is a rule with the id `<file>/<section>`, e.g. `tokens/colors`.
  */
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const rulesDir = fileURLToPath(
-  new URL("../../templates/rules/", import.meta.url),
-);
+export const rulesDir = fileURLToPath(new URL("../../rules/", import.meta.url));
 
 export interface RuleSection {
   /** `<file>/<section>`, e.g. "tokens/colors". */

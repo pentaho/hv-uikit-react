@@ -1,28 +1,24 @@
 # Layout Rules
 
-## Introduction
-
-Page and section layout, and loading states.
-
 ## Grid
 
-- Build columns that change with the screen with `HvGrid` (`container`, items with `size`); its gaps come from the `spacing`, `rowSpacing` and `columnSpacing` props.
-- Build a simple row or stack with flex or grid classes and token gaps (`flex flex-col gap-md`, `grid grid-cols-1 md:grid-cols-3 gap-sm`), or `css()` with `theme.space`.
+- Lay out rows, stacks and columns with flex or grid utility classes, token gaps and breakpoint prefixes (`flex flex-col gap-md`, `grid grid-cols-1 md:grid-cols-3 gap-sm`, `md:col-span-2`), or `css()` with `theme.space`.
+- `HvGrid` only when the layout must follow the design system's column grid (`columns="auto"`: 4, 8 or 12 columns by breakpoint) or the approved design sets column spans.
 - Don't use absolute positioning or raw pixel gaps for layout (`tokens/spacing`).
 
 ## Container
 
-- Use `HvContainer` to center and bound the main content of a page or section, never a hand-written `max-w-*` with side padding.
-- Use one container per page or section region; don't wrap every component in one.
+- `HvContainer` centers and caps a page's width. In a Pentaho plugin the App Shell already wraps every view in one: don't add another.
+- To keep a form or a reading column narrow, a breakpoint width class (`max-w-sm`), never an arbitrary `max-w-[…]` with side padding.
 
-## Consistency
+## Page header
 
-- Keep spacing and layout structure consistent across sibling sections of the same page.
+The page's title, with its page-wide action at the right: the main thing to do there ("New subscription"), or on a list with nothing to create, the action on the whole list ("Refresh"). A form's Save stays at the form's end (`forms/fields-and-actions`).
+
+## Narrow screens
+
+Every page holds up at 390 px wide with no sideways scroll. Toolbar controls go full width (`w-full sm:w-auto`); a fixed width (`w-80`, `min-w-64`) takes a breakpoint (`md:w-80`); columns stack below `md`.
 
 ## Loading states
 
-Show loading feedback while data is being fetched or a process is running.
-
-- Use `HvSkeleton` for initial content loads, sized and shaped like the content that will replace it (`variant="text"` for lines, `variant="circle"` for avatars, `variant="square"` for images) so the layout doesn't shift.
-- Use `HvLoading` for an in-progress process with no known final shape, such as submitting a form or running a query.
-- Use `HvLoadingContainer` to overlay content already on screen while it refreshes.
+`HvSkeleton` shaped like the content for a first load, `HvLoading` for a process (a submit, a query), `HvLoadingContainer` over content that refreshes. `HvLoading` and `HvEmptyState` sit in the middle of the area they stand in for, never at its top: give them its height (`min-h-80` on a page, `h-full` in a panel); `HvLoading` then centers itself, `HvEmptyState` also needs `items-center` (it centers only across).

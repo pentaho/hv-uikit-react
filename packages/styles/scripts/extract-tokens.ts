@@ -109,6 +109,19 @@ const typography = (): Token[] =>
     };
   });
 
+/** The screen widths the class prefixes (`md:`) and `theme.breakpoints` start at; `xs` is every width. */
+const breakpoints = (): Token[] =>
+  Object.entries(
+    (theme.breakpoints as { values: Record<string, number> }).values,
+  )
+    .filter(([key]) => key !== "xs")
+    .map(([key, value]) => ({
+      path: `breakpoints.${key}`,
+      code: `${key}:`,
+      type: "dimension",
+      value: `${value}px`,
+    }));
+
 const tokens = [
   ...colors(),
   ...scale("space", "dimension", ["base"]),
@@ -118,6 +131,7 @@ const tokens = [
   ...scale("fontWeights", "fontWeight"),
   ...scale("fontFamily", "fontFamily"),
   ...typography(),
+  ...breakpoints(),
 ];
 
 // ---- the notes, by path

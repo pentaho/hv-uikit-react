@@ -1,6 +1,6 @@
 // The rules on markup: no raw HTML where the UI Kit has a component, no inline styles, no hand-drawn graphics, no
 // click handlers keyboards can't reach, and no escape hatches past those rules.
-import { attr, attrNames, calleeName, tagName } from "./jsx.js";
+import { attr, attrNames, calleeName, isPropGetter, tagName } from "./jsx.js";
 import type { LintRule } from "./rule.js";
 
 const STYLE_HINT =
@@ -11,7 +11,7 @@ const RAW: [tags: string[], use: string][] = [
   [["select"], "HvDropdown or HvSelect"],
   [["textarea"], "HvTextArea"],
   [["table"], "HvTable"],
-  [["dialog"], "HvDialog or HvDrawer"],
+  [["dialog"], "HvDialog"],
   [
     ["h1", "h2", "h3", "h4", "h5", "h6"],
     'HvTypography with a title variant and the heading as component ("h1")',
@@ -77,7 +77,7 @@ const noInlineStyle: LintRule = {
       if (fixed.length > 0)
         context.report({
           node: n,
-          message: `fixed style ${fixed.join(", ")} on <${tagName(n.name)}> — ${STYLE_HINT}`,
+          message: `fixed style ${fixed.join(", ")} on <${tagName(n.name)}> — ${fixed.includes("minWidth") ? "min-w-0 for minWidth; " : ""}${STYLE_HINT}`,
         });
     },
   }),
@@ -85,7 +85,7 @@ const noInlineStyle: LintRule = {
 
 const noRawGraphics: LintRule = {
   name: "no-raw-graphics",
-  say: "No hand-drawn `<svg>` or `<canvas>`: icons come from @phosphor-icons/react.",
+  say: "No hand-drawn `<svg>` or `<canvas>`: icons come from @phosphor-icons/react (a custom one through its `IconBase`), charts from @pentaho/uikit-react-viz.",
   bad: `export default () => <svg />;`,
   create: (context) => ({
     JSXOpeningElement(n: any) {
@@ -93,7 +93,7 @@ const noRawGraphics: LintRule = {
       if (t === "svg" || t === "canvas")
         context.report({
           node: n,
-          message: `raw <${t}> — icons come from @phosphor-icons/react`,
+          message: `raw <${t}> — icons come from @phosphor-icons/react (a custom one through its IconBase), charts from @pentaho/uikit-react-viz`,
         });
     },
   }),
@@ -126,23 +126,32 @@ function onlyStops(a: any): boolean {
     /\.(stopPropagation|preventDefault)$/.test(calleeName(s.expression.callee));
   return body.length > 0 && body.every(stops);
 }
-const hasKeyboard = (names: string[]) =>
-  names.includes("role") &&
-  names.includes("tabIndex") &&
-  names.some((a) => /^onKey(Down|Up)$/.test(a));
+// roles the UI Kit has a component for: a raw element in one of them is that component rebuilt
+const KIT_ROLES = new Set(["button", "link", "checkbox", "switch", "tab"]);
+/** A composite widget's part (`role="option"`) made reachable by hand: role, tabIndex and a key handler. */
+const hasKeyboard = (n: any) => {
+  const role = attr(n, "role")?.value?.value;
+  const names = attrNames(n);
+  return (
+    !!role &&
+    !KIT_ROLES.has(role) &&
+    names.includes("tabIndex") &&
+    names.some((a) => /^onKey(Down|Up)$/.test(a))
+  );
+};
 
 const clickableElements: LintRule = {
   name: "clickable-elements",
   say: "No click handlers on raw `<div>`, `<span>`, `<li>` and other non-interactive elements: use HvButton or a component's own `onClick`, so keyboards and screen readers reach it.",
   bad: `export default () => <div onClick={() => alert("x")}>Open</div>;`,
-  good: `export default () => <div onClick={(e) => e.stopPropagation()}><div role="button" tabIndex={0} onClick={() => {}} onKeyDown={() => {}}>x</div></div>;`,
+  good: `export default () => <div onClick={(e) => e.stopPropagation()}>x</div>;`,
   create: (context) => ({
     JSXOpeningElement(n: any) {
       const t = tagName(n.name);
       if (!isRawTag(t) || INTERACTIVE.has(t)) return;
 
       const click = CLICK.map((c) => attr(n, c)).find(Boolean);
-      if (!click || onlyStops(click) || hasKeyboard(attrNames(n))) return;
+      if (!click || onlyStops(click) || hasKeyboard(n)) return;
       context.report({
         node: n,
         message: `${click.name.name} on raw <${t}> — keyboards can't reach it; use HvButton`,
@@ -166,7 +175,7 @@ const DOM = `render with UI Kit components; ${STYLE_HINT}`;
 
 const noEscapeHatches: LintRule = {
   name: "no-escape-hatches",
-  say: "No props spread onto raw elements, `createElement` with a tag name, `dangerouslySetInnerHTML`, or writing the DOM's `style` / `innerHTML` from code: they bypass the rules above.",
+  say: "No props spread onto raw elements (a library's `get…Props()` aside), `createElement` with a tag name, `dangerouslySetInnerHTML`, or writing the DOM's `style` / `innerHTML` from code: they bypass the rules above.",
   bad: `import { createElement } from "react";\nexport default () => createElement("button");`,
   good: `import { useRef } from "react";\nexport default function P() {\n  const r = useRef<HTMLDivElement>(null);\n  r.current?.scrollIntoView();\n  return <div ref={r} />;\n}`,
   create: (context) => ({
@@ -174,7 +183,9 @@ const noEscapeHatches: LintRule = {
       const t = tagName(n.name);
       if (
         isRawTag(t) &&
-        n.attributes.some((a: any) => a.type === "JSXSpreadAttribute")
+        n.attributes.some(
+          (a: any) => a.type === "JSXSpreadAttribute" && !isPropGetter(a),
+        )
       )
         context.report({
           node: n,
@@ -191,7 +202,9 @@ const noEscapeHatches: LintRule = {
         context.report({
           node: n,
           message:
-            "createElement with a raw tag — use JSX with UI Kit components",
+            n.arguments[0]?.value === "a"
+              ? 'createElement("a") — for a download, <HvButton component="a" href={url} download="name.csv">'
+              : "createElement with a raw tag — use JSX with UI Kit components",
         });
       const call = calleeName(n.callee);
       if (writesDom(n, call))
@@ -211,7 +224,43 @@ const noEscapeHatches: LintRule = {
   }),
 };
 
+// the UI Kit's internals: what it's built on, and its own icons (a private package)
+const INTERNAL = /^(@mui\/|@base-ui\/|@pentaho\/uikit-react-icons(\/|$))/;
+const INTERNAL_HINT =
+  "use the Hv* components from @pentaho/uikit-react-core, icons from @phosphor-icons/react, and for screen sizes useWidth or the md: classes";
+/** Does the statement bring in values, not only types (`import type`, `import { type X }`)? */
+const importsValues = (st: any) =>
+  st.importKind !== "type" &&
+  st.exportKind !== "type" &&
+  (!st.specifiers?.length ||
+    st.specifiers.some(
+      (s: any) => s.importKind !== "type" && s.exportKind !== "type",
+    ));
+
+const internalImports: LintRule = {
+  name: "internal-imports",
+  say: `No imports from the UI Kit's internals (\`@mui/*\`, \`@base-ui/*\`, \`@pentaho/uikit-react-icons\`): ${INTERNAL_HINT}. Types are fine.`,
+  bad: `import { Box } from "@mui/material";\nexport default () => <Box />;`,
+  good: `import type { InputBaseComponentProps } from "@mui/material/InputBase";\nimport { Check } from "@phosphor-icons/react";\nexport type P = InputBaseComponentProps;\nexport default () => <Check />;`,
+  create: (context) => {
+    const check = (st: any) => {
+      const from = st.source?.value;
+      if (typeof from === "string" && INTERNAL.test(from) && importsValues(st))
+        context.report({
+          node: st,
+          message: `${from} is the UI Kit's internals — ${INTERNAL_HINT}`,
+        });
+    };
+    return {
+      ImportDeclaration: check,
+      ExportNamedDeclaration: check,
+      ExportAllDeclaration: check,
+    };
+  },
+};
+
 export const markupRules = [
+  internalImports,
   rawElements,
   noInlineStyle,
   noRawGraphics,

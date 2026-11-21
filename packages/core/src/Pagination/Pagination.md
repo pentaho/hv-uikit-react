@@ -18,7 +18,7 @@ Page controls under a table or list: page size, first / previous / next / last, 
 - `page` (zero-based) + `onPageChange(page)`, with `pages`; or spread `getHvPaginationProps()` from the table instance (needs the `useHvPagination` plugin).
 - `pageSize` + `onPageSizeChange`.
 - `canPrevious` (`page > 0`) and `canNext` (`page < pages - 1`): required in practice, because the arrows stay disabled unless they are true.
-- Sentence-case `labels`: they name the icon buttons and the fields for screen readers.
+- Sentence-case `labels` (the defaults are Title Case): `{ firstPage: "First page", previousPage: "Previous page", nextPage: "Next page", lastPage: "Last page" }`; they name the icon buttons for screen readers.
 
 ## Spec
 

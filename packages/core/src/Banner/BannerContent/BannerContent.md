@@ -11,6 +11,7 @@ Part of HvBanner: the callout itself, also usable inline as a static message ins
 ## When to use
 
 - A persistent inline notice in a form, card or section ("This dataset is read-only").
+- A view's load error, above its content with a Retry action (`variant="error"`, `showIcon`).
 - A floating page-level message: HvBanner, which positions and animates this content.
 
 ## What the consumer provides

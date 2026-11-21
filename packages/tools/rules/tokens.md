@@ -1,19 +1,8 @@
 # Token Rules
 
-## Introduction
-
-Use design tokens for every color, spacing value, and text style. `npx --no-install uikit-tools tokens <word>` lists them with their values and what each is for (for example `npx --no-install uikit-tools tokens border`).
-
 ## Colors
 
-Use theme color tokens by name: `primary` for action, `accent` for a highlight that is neither action nor status, `positive`, `warning`, `negative`, and `info` for state, and the surface and text tokens in `tokens/surfaces-and-text`. As classes (`text-negative`, `bg-bgContainer`) or, in `css()`, `theme.colors.negative`. Never use raw hex, rgb, or named colors.
-
-Examples:
-
-```diff
-- <div style={{ color: "#FF0000" }}>{content}</div>
-+ <div className="text-negative">{content}</div>
-```
+Use theme color tokens by name: `primary` for action, `accent` for a highlight that is neither action nor status, `positive`, `warning`, `negative`, and `info` for state, and the surface and text tokens in `tokens/surfaces-and-text`. Never raw hex, rgb, or named colors: the API accepts `color="coral"`, but it ignores the theme and dark mode. `npx --no-install uikit-tools tokens <word>` lists them with their values and what each is for.
 
 ## Surfaces and text
 
@@ -24,22 +13,11 @@ Examples:
 
 ## Spacing
 
-Use token values: `xxs`, `xs`, `sm`, `md`, `lg`, and `xl`. As classes (`p-md`, `gap-sm`) or, in `css()`, `theme.space.md`. Never use raw pixel values.
+Use token values: `xxs`, `xs`, `sm`, `md`, `lg`, and `xl`. Never raw pixel values.
 
-Examples:
+## Classes and css()
 
-```diff
-- <div style={{ padding: "24px", marginBottom: "16px" }}>{content}</div>
-+ <div className="p-md mb-sm">{content}</div>
-```
-
-## Typography
-
-Use `HvTypography` with semantic variants for display, headings, body, caption, and label text. Never use inline font-size or font-weight.
-
-Examples:
-
-```diff
-- <div style={{ fontSize: 24, fontWeight: 600 }}>Assets</div>
-+ <HvTypography variant="title2">Assets</HvTypography>
-```
+- Style with the UnoCSS preset's utility classes, where the tokens are classes: spacing `p-md`, `gap-sm`; colors `text-textSubtle`, `bg-bgContainer`, `border-border`; radii `rounded-round`; breakpoints as prefixes, `md:grid-cols-2`. A component's `classes` takes classes per part (`classes={{ content: "h-full" }}`).
+- Never pixel or arbitrary values in classes (`p-4px`, `p-[24px]`, `text-[#f00]`): they skip the theme.
+- For styles too complex for classes: `css()` from `@emotion/css` with `theme` from `@pentaho/uikit-react-core` (`theme.colors.text`, `theme.space.md`, `theme.spacing("xs", "sm")`, `theme.radii.round`).
+- `style` only for values computed at run time, from the theme or state (`style={{ color: theme.colors[status] }}`), never fixed values.

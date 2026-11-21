@@ -24,12 +24,13 @@ Rows of records people scan, sort, select and act on.
 
 ## When to use
 
-- Records with comparable fields (assets, terms, runs); `listrow` when each row reads as one entry. A few text-heavy items: HvCard in an HvGrid. A hierarchy: HvTreeView.
+- Records with comparable fields (assets, terms, runs); `listrow` when each row reads as one entry. A few text-heavy items: HvCard items in a grid (`grid md:grid-cols-3 gap-sm`). A hierarchy: HvTreeView.
 
 ## What the consumer provides
 
 - Composition: HvTableSection (or an HvCard) around HvBulkActions, HvTableContainer > HvTable > HvTableHead / HvTableBody, and HvPagination last.
 - State through `useHvTable` plus plugin hooks (`useHvSortBy`, `useHvPagination`, `useHvRowSelection`, `useHvBulkActions`); spread their `get…Props()` on the parts. Server-side data: `manualPagination`, `manualSortBy` and `pageCount`.
+- Columns from the helpers: `hvTextColumn` (truncates, full text on hover), `hvNumberColumn` (right-aligned), `hvDateColumn`, `hvTagColumn`. Sorting: `useHvSortBy` and each header's `getHeaderProps()`; `disableSortBy: true` on a column that doesn't sort.
 - Sticky columns with the hooks: `useHvTableSticky` and columns with `sticky: "left" | "right"` (widths become fixed). `stickyHeader` needs a height-bounded HvTableContainer.
 - An accessible name: `aria-label` or a `<caption>`. Status cells in words (HvTag, or HvStatusIcon beside text).
 - Loading: HvSkeleton rows or HvLoadingContainer; failure: a `role="alert"` message with a Retry HvButton; empty: HvEmptyState, not headers only.

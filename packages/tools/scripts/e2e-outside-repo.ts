@@ -224,17 +224,15 @@ try {
     `the docs page lists the MCP tools: ${[...tools].join(", ")}`,
   );
 
-  // Claude Code's hook: the findings in the file just written go back to the agent (exit 2)
+  // Claude Code's hook: before the agent finishes, the project's findings go back to it (exit 2)
   const hooked = tool(["hook"], {
-    input: JSON.stringify({
-      tool_input: { file_path: path.join(app, "src/pages/Assets/Assets.tsx") },
-    }),
+    input: JSON.stringify({ hook_event_name: "Stop", stop_hook_active: false }),
     env: { ...process.env, CLAUDE_PROJECT_DIR: app },
     stdio: ["pipe", "pipe", "pipe"],
   });
   assert(
     hooked.code === 2 && Boolean(hooked.err?.includes("uikit(raw-elements)")),
-    "uikit-tools hook returns the design problems in a file the agent wrote",
+    "uikit-tools hook returns the project's design problems before the agent finishes",
   );
 
   // 2. init points at the installed rules; upgrades reach agents with no re-init
@@ -242,10 +240,11 @@ try {
   assert(init.code === 0, "init succeeds outside the repo");
   const agentsMd = readFileSync(path.join(app, "AGENTS.md"), "utf8");
   const ruleRefs = [...agentsMd.matchAll(/^@(.+\.md)$/gm)].map((m) => m[1]);
-  const rulesDir = "node_modules/@pentaho/uikit-tools/templates/rules";
+  const rulesDir = "node_modules/@pentaho/uikit-tools/rules";
   assert(
+    // every rule file but setup.md, which AGENTS.md points to instead
     ruleRefs.length ===
-      readdirSync(path.join(repo, "packages/tools/templates/rules")).length &&
+      readdirSync(path.join(repo, "packages/tools/rules")).length - 1 &&
       ruleRefs.every((ref) => ref.startsWith(`${rulesDir}/`)),
     `AGENTS.md points at the ${ruleRefs.length} rule files in ${rulesDir}`,
   );
@@ -254,7 +253,7 @@ try {
       (ref) =>
         readFileSync(path.join(app, ref), "utf8") ===
         readFileSync(
-          path.join(repo, "packages/tools/templates/rules", path.basename(ref)),
+          path.join(repo, "packages/tools/rules", path.basename(ref)),
           "utf8",
         ),
     ),
@@ -266,7 +265,7 @@ try {
   );
 
   const nextTools = upgraded(toolsTgz, "tools", (dir) => {
-    const tokens = path.join(dir, "templates/rules/tokens.md");
+    const tokens = path.join(dir, "rules/tokens.md");
     writeFileSync(
       tokens,
       `${readFileSync(tokens, "utf8")}\n<!-- e2e: upgraded rules -->\n`,
