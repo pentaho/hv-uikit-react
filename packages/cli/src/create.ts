@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { checkbox, confirm, input, select } from "@inquirer/prompts";
@@ -28,6 +29,34 @@ interface Answers {
   title?: string;
   features?: AppShellFeature[];
   autoRoutes: boolean;
+}
+
+/** The coding agents `uikit-tools init --agents` knows; keep in sync with its AGENT_NAMES. */
+const AGENTS: string[] = ["claude", "copilot", "cursor", "codex", "gemini"];
+const DEFAULT_AGENTS = ["claude", "copilot"];
+
+/** After creating: install the dependencies, then set up these coding agents with `uikit-tools init` (none: only install). */
+interface Setup {
+  agents: string[];
+}
+
+/** `--agents claude,cursor`, or `all` */
+function parseAgents(list: string): string[] {
+  const names = list
+    .split(",")
+    .map((name) => name.trim())
+    .filter(Boolean);
+  if (names.length === 0)
+    throw new InvalidArgumentError(
+      `give an agent: ${AGENTS.join(", ")}, or all`,
+    );
+  if (names.includes("all")) return AGENTS;
+  const unknown = names.filter((name) => !AGENTS.includes(name));
+  if (unknown.length > 0)
+    throw new InvalidArgumentError(
+      `unknown agent ${unknown.join(", ")}; use ${AGENTS.join(", ")}, or all`,
+    );
+  return [...new Set(names)];
 }
 
 /** Prompts only where someone can answer them: an interactive terminal, outside CI. */
@@ -103,6 +132,37 @@ async function ask(given: Partial<Answers>): Promise<Answers> {
   };
 }
 
+/** Whether to install and set up coding agents, asked in an interactive terminal. */
+async function askSetup(): Promise<Setup | undefined> {
+  const install = await confirm({
+    message:
+      "Install dependencies and set up coding agents (AGENTS.md, MCP servers)?",
+    default: true,
+  });
+  if (!install) return undefined;
+  const agents = await checkbox<string>({
+    message: "Coding agents (space to select; none to only install)",
+    choices: AGENTS.map((value) => ({
+      value,
+      checked: DEFAULT_AGENTS.includes(value),
+    })),
+  });
+  return { agents };
+}
+
+/** Runs `command` in `cwd` with its output shown; whether it succeeded. */
+function run(command: string[], cwd: string) {
+  const [bin, ...args] = command;
+  return (
+    spawnSync(bin, args, {
+      cwd,
+      stdio: "inherit",
+      // npm, pnpm and yarn are .cmd files on Windows; the arguments are fixed or checked names
+      shell: process.platform === "win32",
+    }).status === 0
+  );
+}
+
 /** Refuses flags the template doesn't take, whether it was given or chosen in a prompt. */
 function checkFlags(
   template: Template,
@@ -121,8 +181,8 @@ const empty = (dir: string) => {
       fs.rmSync(path.join(dir, entry), { recursive: true, force: true });
 };
 
-/** Writes the app or plugin into ./<name> (or the current folder for "."), then prints the next steps. */
-function create(answers: Answers, force = false) {
+/** Writes the app or plugin into ./<name> (or the current folder for "."), sets it up when asked, then prints the next steps. */
+function create(answers: Answers, force = false, setup?: Setup) {
   const here = answers.name === ".";
   const target = here
     ? process.cwd()
@@ -158,15 +218,41 @@ function create(answers: Answers, force = false) {
   }
 
   const pm = packageManager();
+  const folder = path.relative(process.cwd(), target) || ".";
+  console.log(
+    `${styled("green", "✔")} Created ${TEMPLATES[answers.template]} in ${styled("bold", folder)}`,
+  );
+
+  // The project stays when this fails: only the steps left are printed to do by hand.
+  let installed = false;
+  let initialized = false;
+  if (setup) {
+    const installer = ["npm", "pnpm", "yarn", "bun"].includes(pm) ? pm : "npm";
+    installed = run([installer, "install"], target);
+    if (!installed)
+      throw new Error(
+        `${installer} install failed in ${folder}: fix it and run it again, then ${runBin(pm, "uikit-tools init")}`,
+      );
+    if (setup.agents.length > 0) {
+      const init = runBin(
+        pm,
+        `uikit-tools init --agents ${setup.agents.join(",")}`,
+      );
+      initialized = run(init.split(" "), target);
+      if (!initialized)
+        throw new Error(`uikit-tools init failed in ${folder}: run ${init}`);
+    }
+  }
+
   const steps = [
-    ...(here ? [] : [`cd ${path.relative(process.cwd(), target)}`]),
-    `${pm} install`,
-    `${runBin(pm, "uikit-tools init")}   # set up coding agents`,
+    ...(here ? [] : [`cd ${folder}`]),
+    ...(installed ? [] : [`${pm} install`]),
+    ...(initialized
+      ? []
+      : [`${runBin(pm, "uikit-tools init")}   # set up coding agents`]),
     `${pm} run dev`,
   ];
-  console.log(
-    `${styled("green", "✔")} Created ${TEMPLATES[answers.template]} in ${styled("bold", path.relative(process.cwd(), target) || ".")}\n\nNext:\n${steps.map((step) => `  ${step}`).join("\n")}`,
-  );
+  console.log(`\nNext:\n${steps.map((step) => `  ${step}`).join("\n")}`);
 }
 
 export const createCommand = new Command("create")
@@ -189,6 +275,16 @@ export const createCommand = new Command("create")
   )
   .option("--title <title>", "plugin title (default: from its name)")
   .option("-f, --force", "empty a folder that has files first (keeps .git)")
+  .addOption(
+    new Option(
+      "--agents <list>",
+      `install the dependencies and set up these coding agents with uikit-tools init, comma-separated: ${AGENTS.join(", ")}, or all`,
+    ).argParser(parseAgents),
+  )
+  .option(
+    "--no-install",
+    "don't install the dependencies or set up coding agents, and don't ask",
+  )
   // earlier names, still accepted
   .addOption(new Option("-w, --without-app-shell").hideHelp())
   .addOption(
@@ -214,6 +310,14 @@ export const createCommand = new Command("create")
         ? options.autoRoutes
         : undefined;
 
+    const agents: string[] | undefined = options.agents;
+    const noInstall = fromCli("install") && options.install === false;
+    if (agents && noInstall)
+      throw new Error("--agents needs the install: drop --no-install");
+    /** What to do after creating: from --agents, or asked, unless --no-install or nobody can answer. */
+    const setupFor = async () =>
+      agents ? { agents } : noInstall || !canPrompt() ? undefined : askSetup();
+
     const resolved = template ?? (name ? "app" : undefined);
     if (resolved)
       checkFlags(resolved, { title: options.title, features, autoRoutes });
@@ -234,6 +338,7 @@ export const createCommand = new Command("create")
           autoRoutes: autoRoutes ?? true,
         },
         options.force,
+        await setupFor(),
       );
       return;
     }
@@ -243,5 +348,5 @@ export const createCommand = new Command("create")
       );
     const answers = await ask(given);
     checkFlags(answers.template, given);
-    create(answers, options.force);
+    create(answers, options.force, await setupFor());
   });

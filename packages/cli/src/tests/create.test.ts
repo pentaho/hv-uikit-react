@@ -32,13 +32,39 @@ const tempDir = () => {
 };
 
 /** uikit-cli in `cwd`, as CI runs it: no terminal to prompt in. */
-function run(args: string[], cwd = tempDir()) {
+function run(
+  args: string[],
+  cwd = tempDir(),
+  env: Record<string, string> = {},
+) {
   const result = spawnSync(process.execPath, [cli, ...args], {
     cwd,
     encoding: "utf8",
-    env: { ...process.env, CI: "1", npm_config_user_agent: "" },
+    env: { ...process.env, CI: "1", npm_config_user_agent: "", ...env },
   });
   return { ...result, dir: cwd };
+}
+
+/**
+ * Stand-ins for npm and npx that only log their arguments (and their folder), so `create`'s install and init steps run
+ * without a network. `fail` names the one that exits 1.
+ */
+function fakeTools(fail?: string) {
+  const bin = tempDir();
+  const log = path.join(bin, "calls.log");
+  for (const name of ["npm", "npx"]) {
+    const file = path.join(bin, name);
+    fs.writeFileSync(
+      file,
+      `#!/bin/sh\necho "${name} $* @ $(basename "$PWD")" >> "${log}"\n${fail === name ? "exit 1\n" : ""}`,
+    );
+    fs.chmodSync(file, 0o755);
+  }
+  return {
+    env: { PATH: `${bin}${path.delimiter}${process.env.PATH}` },
+    calls: () =>
+      fs.existsSync(log) ? read(log).trim().split("\n") : ([] as string[]),
+  };
 }
 
 const read = (...parts: string[]) =>
@@ -186,6 +212,11 @@ describe("create", () => {
   it.each([
     [["create"], "missing name"],
     [["create", "!!!"], "has no letters or digits"],
+    [["create", "x", "--agents", "nope"], "unknown agent nope"],
+    [
+      ["create", "x", "--agents", "claude", "--no-install"],
+      "--agents needs the install",
+    ],
     [["create", "x", "-t", "nope"], "Allowed choices are app, vite, plugin"],
     [["create", "x", "--title", "T"], "--title is for -t plugin"],
     [
@@ -199,6 +230,85 @@ describe("create", () => {
     const { status, stderr } = run(args);
     expect(status).toBe(2);
     expect(stderr).toContain(message);
+  });
+});
+
+describe("create: install and coding agents", () => {
+  it("installs, then sets up the agents named by --agents", () => {
+    const tools = fakeTools();
+    const { status, stdout, dir } = run(
+      ["create", "my-app", "--agents", "claude,cursor"],
+      undefined,
+      tools.env,
+    );
+    expect(status).toBe(0);
+    expect(tools.calls()).toEqual([
+      "npm install @ my-app",
+      "npx --no-install uikit-tools init --agents claude,cursor @ my-app",
+    ]);
+    expect(fs.existsSync(path.join(dir, "my-app/package.json"))).toBe(true);
+    expect(stdout).toContain("cd my-app");
+    expect(stdout).toContain("npm run dev");
+    // both ran: nothing left to do by hand
+    expect(stdout).not.toContain("npm install");
+    expect(stdout).not.toContain("uikit-tools init");
+  });
+
+  it("takes all, and runs in the current folder for .", () => {
+    const tools = fakeTools();
+    const here = path.join(tempDir(), "status-board");
+    fs.mkdirSync(here);
+    const { status } = run(
+      ["create", ".", "-t", "plugin", "--agents", "all"],
+      here,
+      tools.env,
+    );
+    expect(status).toBe(0);
+    expect(tools.calls()).toEqual([
+      "npm install @ status-board",
+      "npx --no-install uikit-tools init --agents claude,copilot,cursor,codex,gemini @ status-board",
+    ]);
+  });
+
+  it.each([[[]], [["--no-install"]]])(
+    "does neither without --agents, and prints the steps to do by hand (%j)",
+    (args) => {
+      const tools = fakeTools();
+      const { status, stdout } = run(
+        ["create", "my-app", ...args],
+        undefined,
+        tools.env,
+      );
+      expect(status).toBe(0);
+      expect(tools.calls()).toEqual([]);
+      expect(stdout).toContain("npm install");
+      expect(stdout).toContain("npx --no-install uikit-tools init");
+    },
+  );
+
+  it("keeps the project and says what is left when the install fails", () => {
+    const tools = fakeTools("npm");
+    const { status, stderr, dir } = run(
+      ["create", "my-app", "--agents", "claude"],
+      undefined,
+      tools.env,
+    );
+    expect(status).toBe(2);
+    expect(stderr).toContain("npm install failed in my-app");
+    expect(tools.calls()).toEqual(["npm install @ my-app"]);
+    expect(fs.existsSync(path.join(dir, "my-app/package.json"))).toBe(true);
+  });
+
+  it("keeps the project when init fails", () => {
+    const tools = fakeTools("npx");
+    const { status, stderr, dir } = run(
+      ["create", "my-app", "--agents", "claude"],
+      undefined,
+      tools.env,
+    );
+    expect(status).toBe(2);
+    expect(stderr).toContain("uikit-tools init failed in my-app");
+    expect(fs.existsSync(path.join(dir, "my-app/package.json"))).toBe(true);
   });
 });
 
