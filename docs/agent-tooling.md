@@ -64,7 +64,7 @@ flowchart LR
 | `templates/{app,vite,plugin}`                | (copied by the CLI)         | inside the CLI | Project templates, each with `AGENTS.md`                                                       |
 | `packages/config`                            | `@pentaho/uikit-config`     | yes            | Shared TypeScript and Prettier config the templates extend                                     |
 | `packages/figma`                             | `@pentaho/uikit-figma`      | private        | Figma sync, documentation pages, Code Connect, compare and capture                             |
-| `packages/cli/evals`                         | (repo only)                 | no             | Runs an agent headless on a task and checks what it built                                      |
+| `packages/cli/evals`                         | (repo only)                 | no             | A/B evals: an agent on a task with and without the tooling                                     |
 | `skills/uikit-design`                        | (repo skill)                | no             | Design guidance skill; no agent loads it yet (move it into packages/tools/skills or retire it) |
 
 ## How each capability works
@@ -81,20 +81,19 @@ exist.
 
 ### 2. Lookups and the MCP server (`@pentaho/uikit-tools`)
 
-`uikit-tools components | info <Component> | tokens [words] | rules | rule <id>` read the installed core's metadata and
-the installed styles' tokens, so answers match the UI Kit version in `node_modules`. `info` accepts `dialog` or
-`HvDialog`, suggests close names, spells out a named type's values (`HvSize`: "xs" … "xl"), and resolves hooks
-(`info useHvSnackbar`) to their declaration and the component that owns them; `--spec` adds the designers' spec.
+`uikit-tools components | info <Component>… | tokens [words] | rules | rule <id>` read the installed core's metadata and
+the installed styles' tokens, so answers match the UI Kit version in `node_modules`. `info` takes several components at
+once (`dialog` or `HvDialog`), suggests close names, spells out a named type's values and resolves hooks to their
+declaration; `--spec` adds the designers' spec.
 `uikit-tools mcp` serves the same text as MCP tools: `list_components`, `get_component`, `list_rules`, `get_rule`,
 `find_tokens` and `lint`, for agents that prefer tools to commands (`init --mcp`).
 
 ### 3. Design rules as lint
 
 The `uikit/*` plugin runs under oxlint (`@pentaho/uikit-tools/oxlint.json`) and ESLint (`@pentaho/uikit-tools/lint`).
-Its rules include `raw-elements`, `no-inline-style`, `no-raw-graphics`, `no-escape-hatches`, `no-hardcoded-values`,
-`theme-sizes`, `no-arbitrary-utilities`, `deprecated` (read per file from the installed core's types),
-`clickable-elements`, `icon-button-label` and `tag-label`. `uikit-tools lint` runs them with the oxlint the package
-ships, so it works in any project.
+Its rules (`uikit-tools rules`) catch raw elements where a component exists, inline styles, hardcoded values, sizes
+off the theme, deprecated props (read per file from the installed core's types), controls without accessible names
+and internal imports. `uikit-tools lint` runs them with the oxlint the package ships, so it works in any project.
 
 ### 4. Agent setup (`uikit-tools init`)
 
@@ -122,20 +121,19 @@ row above what it acts on, `HvDialog` (not a drawer) for a row's details and edi
 
 ### 6. Scaffolding and packaging (`@pentaho/uikit-cli`)
 
-`uikit-cli create <name> -t app|vite|plugin` copies a template, stamps the released versions and the title, and never
-prompts when given a name (so agents and CI can run it). The plugin template has the App Shell frame, `ViewLayout`,
-sample data with states (`?samples=empty`, `{"$status": 503}`), `answerFromSamples()` for tests, and `npm run check`
-(format, lint, types). `ViewLayout` takes the view's primary action beside the title (`actions`). `uikit-cli shots`
-(`npm run shots`) screenshots the running views listed in `review/shots.json`, in one browser session, at full height,
-light or dark. `uikit-cli package` builds, checks and zips a plugin for a server's plugin folder.
+`uikit-cli create <name> -t app|vite|plugin` copies a template, stamps the released versions and the name, and never
+prompts when given a name (so agents and CI can run it). Every template starts on one minimal page to replace. The
+plugin template has the App Shell frame, `ViewLayout` (with a slot for the view's primary action), sample data with
+states (`?samples=empty`, `{"$status": 503}`), `answerFromSamples()` for tests, and `npm run check` (format, lint,
+types). `uikit-cli shots` (`npm run shots`) screenshots the running views listed in `review/shots.json`;
+`uikit-cli package` builds, checks and zips a plugin for a server's plugin folder.
 
 ### 7. Figma from code (`packages/figma`)
 
 - `npm run generate` writes `figma-sync.json` (Primitives, Color in light and dark, Spacing, Radius, Typography, with
-  scopes, CSS code syntax and notes; and text styles) and Code Connect templates for the library's components and icons
-  (107 templates: 60 components, some with several sets, and 38 icons), from the
-  tokens, the component metadata and `code-connect/library.json` (component keys and nodes in the library). CI fails
-  if they're stale (`--check`).
+  scopes, CSS code syntax and notes; and text styles) and Code Connect templates for the library's components and
+  icons, from the tokens, the component metadata and `code-connect/library.json`. CI fails if they're stale
+  (`--check`).
 - The team's Figma plugin applies the sync and draws each component's documentation page from `content/pages`. It
   marks what it makes and changes only that. Each variable keeps a baseline of what the last sync wrote, so a
   difference is classified: code moved (updated), a designer changed it (kept, reported), or both (conflict, nothing
@@ -164,27 +162,8 @@ The capabilities are independent and share one source, so any entry point leads 
 | A request, design first | `pentaho-figma-screens` → `pentaho-figma-review` → designer approves → as above       |
 | A UI Kit change         | `generate` → the Figma sync and pages → designers start from what can be built        |
 
-```mermaid
-sequenceDiagram
-  participant PM as Request
-  participant A as Agent
-  participant T as uikit-tools
-  participant C as uikit-cli
-  participant P as Plugin project
-  PM->>A: "A Data connections page…" (no one answers questions)
-  A->>T: info HvTable, tokens space, rule components/data-states
-  A->>C: create connections -t plugin
-  C->>P: template: App Shell frame, ViewLayout, samples, tests
-  A->>P: views, sample data, a test per view
-  P->>T: lint hook before the agent finishes (uikit/* rules)
-  A->>P: npm run check, tests, screenshots of every state
-  A->>C: package → zip
-  A->>PM: note: what was built, what it assumed, what's open
-```
-
-Measured on the latest runs (`full`, Sonnet): 8 to 18 minutes and about $1 per run, every outcome check passing.
-What review still catches is what no check sees: an empty state at the top of an empty page, axis labels running
-together on a narrow chart. The verdict stays a person's.
+Whatever the entry point, a person reviews the screenshots of every state and the agent's note of what it assumed:
+review still catches what no check sees, such as an empty state at the top of an empty page.
 
 ## Working on it
 
