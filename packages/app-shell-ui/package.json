@@ -34,7 +34,7 @@
     "@pentaho/uikit-react-core": "^7.0.1",
     "@pentaho/uikit-react-utils": "^7.0.1",
     "@pentaho/uikit-styles": "^7.0.0",
-    "i18next": "^24.2.2",
+    "i18next": "^27.2.7",
     "i18next-browser-languagedetector": "^8.0.3",
     "react-error-boundary": "^6.0.0",
     "react-helmet-async": "^2.0.1",
