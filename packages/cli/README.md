@@ -15,7 +15,18 @@ npx @pentaho/uikit-cli@latest create my-app       # an App Shell app; -t vite fo
 npx @pentaho/uikit-cli@latest create my-app --features help-link --no-auto-routes
 ```
 
-Given a name, `create` never prompts, so agents and CI can run it; without one, it asks only for what the flags didn't give. It won't write into a folder that has files unless you pass `--force`, which empties it first (keeping `.git`). `.` creates in the current folder. New apps lint with the UI Kit design rules (`@pentaho/uikit-tools`); run `npx --no-install uikit-tools init` in the app to set up coding agents.
+Without a name, `create` asks only for what the flags didn't give. It won't write into a folder that has files unless you pass `--force`, which empties it first (keeping `.git`). `.` creates in the current folder. New apps lint with the UI Kit design rules (`@pentaho/uikit-tools`).
+
+### Coding agents
+
+`create` can install the dependencies and set up coding agents (`AGENTS.md`, MCP servers, skills: what `uikit-tools init` writes):
+
+```sh
+npx @pentaho/uikit-cli@latest create my-app --agents claude,cursor   # claude, copilot, cursor, codex, gemini, or all
+npx @pentaho/uikit-cli@latest create my-app --no-install             # neither, and no question
+```
+
+In an interactive terminal (outside CI) without either flag, it asks whether to do it and for which agents. Anywhere else (CI, a pipe) it does neither, so scripts and agents can run it unattended; run `npm install` and `npx --no-install uikit-tools init` yourself then. If the install or `init` fails, the project stays and the error says what is left to run.
 
 ## Pentaho plugins
 
