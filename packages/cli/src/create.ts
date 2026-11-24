@@ -136,7 +136,7 @@ async function ask(given: Partial<Answers>): Promise<Answers> {
 async function askSetup(): Promise<Setup | undefined> {
   const install = await confirm({
     message:
-      "Install dependencies and set up coding agents (AGENTS.md, MCP servers)?",
+      "Install dependencies and set up coding agents (AGENTS.md, the design rules, the lint hook)?",
     default: true,
   });
   if (!install) return undefined;

@@ -44,13 +44,13 @@ npx --no-install uikit-tools init
 
 `init` sets up your project for Claude Code and GitHub Copilot by default:
 
-| File               | What `init` adds                                                                                                                                      |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AGENTS.md`        | A short UI Kit block that points your agent to the design rules in your installed UI Kit tools. The rest of the file stays yours.                     |
-| `CLAUDE.md`        | An import of `AGENTS.md`, so Claude Code reads the same instructions.                                                                                 |
-| `.vscode/mcp.json` | The `hv-uikit` MCP server for GitHub Copilot. Other servers are kept.                                                                                 |
-| `.mcp.json`        | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                                    |
-| `.claude/`         | For Claude Code: a hook that lints each file it edits, the read-only lookups allowed without asking, and the skills (Figma screens, Pentaho plugins). |
+| File               | What `init` adds                                                                                                                                                      |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENTS.md`        | A short UI Kit block that points your agent to the design rules in your installed UI Kit tools. The rest of the file stays yours.                                     |
+| `CLAUDE.md`        | An import of `AGENTS.md`, so Claude Code reads the same instructions.                                                                                                 |
+| `.vscode/mcp.json` | The `hv-uikit` MCP server for GitHub Copilot. Other servers are kept.                                                                                                 |
+| `.mcp.json`        | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                                                    |
+| `.claude/`         | For Claude Code: a hook that lints each file it edits, the read-only lookups and screenshots allowed without asking, and the skills (Figma screens, Pentaho plugins). |
 
 Choose the agents with `--agents`: `claude`, `copilot`, `cursor`, `codex`, `gemini`, or `all`. Commit these files so your team shares the setup, then start a new agent session. Running `init` again is safe: it only rewrites its own block and entries. For the Pentaho plugin skills, see [Pentaho plugins](/app-shell/pentaho-plugins#with-a-coding-agent).
 

@@ -37,11 +37,13 @@ const HOOK = "npx --no-install uikit-tools hook";
 /** What Claude Code may run without asking: the read-only lookups and MCP tools. */
 const CLAUDE_ALLOW = [
   "Bash(npx --no-install uikit-tools info *)",
-  "Bash(npx --no-install uikit-tools components*)",
+  "Bash(npx --no-install uikit-tools components *)",
   "Bash(npx --no-install uikit-tools rule *)",
   "Bash(npx --no-install uikit-tools rules)",
-  "Bash(npx --no-install uikit-tools tokens*)",
-  "Bash(npx --no-install uikit-tools lint*)",
+  "Bash(npx --no-install uikit-tools tokens *)",
+  "Bash(npx --no-install uikit-tools lint *)",
+  "Bash(npm run shots *)",
+  "Bash(npx --no-install uikit-cli shots *)",
   "mcp__hv-uikit",
 ];
 const CODEX_SERVER = `[mcp_servers.hv-uikit]\ncommand = "npx"\nargs = ["--no-install", "uikit-tools", "mcp"]\n`;

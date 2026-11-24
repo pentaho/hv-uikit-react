@@ -30,6 +30,9 @@ export interface PackageResult {
 /** The local App Shell's config the build writes: the server's comes from plugin.json instead. */
 const LOCAL_CONFIG = "app-shell.config.json";
 
+/** The SBOM's copy for a site's root: under webclient/ it's never at one, and sbom/bom.json is the same file. */
+const WELL_KNOWN = ".well-known";
+
 /** Every file the build made, as paths relative to it, in a stable order. */
 const builtFiles = (buildDir: string) =>
   fs
@@ -37,7 +40,9 @@ const builtFiles = (buildDir: string) =>
     .filter(
       (file) =>
         file !== LOCAL_CONFIG &&
-        fs.statSync(path.join(buildDir, file)).isFile(),
+        !file.startsWith(WELL_KNOWN) &&
+        // lstat: a link is never followed out of the build into the zip
+        fs.lstatSync(path.join(buildDir, file)).isFile(),
     )
     .map((file) => file.split(path.sep).join("/"))
     .toSorted();

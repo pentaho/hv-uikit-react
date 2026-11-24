@@ -1,49 +1,12 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import ts from "typescript";
-import { afterEach, beforeAll, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
-const packageDir = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "../..",
-);
-const repo = path.resolve(packageDir, "../..");
-/** The built CLI, as users run it. */
-const cli = path.join(packageDir, "dist/index.js");
-const dirs: string[] = [];
+import { cleanup, packageDir, run, tempDir } from "./cli.ts";
 
-beforeAll(() => {
-  spawnSync(path.join(repo, "node_modules/.bin/tsc"), ["-p", packageDir], {
-    stdio: "inherit",
-  });
-}, 60_000);
-afterEach(() => {
-  for (const dir of dirs.splice(0))
-    fs.rmSync(dir, { recursive: true, force: true });
-});
-
-const tempDir = () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "uikit-cli-"));
-  dirs.push(dir);
-  return dir;
-};
-
-/** uikit-cli in `cwd`, as CI runs it: no terminal to prompt in. */
-function run(
-  args: string[],
-  cwd = tempDir(),
-  env: Record<string, string> = {},
-) {
-  const result = spawnSync(process.execPath, [cli, ...args], {
-    cwd,
-    encoding: "utf8",
-    env: { ...process.env, CI: "1", npm_config_user_agent: "", ...env },
-  });
-  return { ...result, dir: cwd };
-}
+afterEach(cleanup);
 
 /**
  * Stand-ins for npm and npx that only log their arguments (and their folder), so `create`'s install and init steps run
@@ -145,8 +108,9 @@ describe("create", () => {
     expect(status).toBe(0);
     const plugin = JSON.parse(read(dir, "job-health/plugin.json"));
     expect(plugin).toMatchObject({ id: "job-health", title: "Job Health" });
+    // the starter page points at its own file
     expect(read(dir, "job-health/src/pages/job-health.tsx")).toContain(
-      'title: "Job Health"',
+      "src/pages/job-health.tsx",
     );
     expect(JSON.parse(read(dir, "job-health/package.json")).name).toBe(
       "job-health",
@@ -156,6 +120,20 @@ describe("create", () => {
     expect(
       fs.existsSync(path.join(dir, "job-health/src/pages/my-plugin.tsx")),
     ).toBe(false);
+    // the files create renames stay formatted whatever the id's length, or the plugin fails its own check
+    const long = run(["create", "Data connection settings", "-t", "plugin"]);
+    const created = path.join(long.dir, "data-connection-settings");
+    // its Prettier config is a package: the repo's, linked as the apps test does
+    fs.symlinkSync(
+      path.join(packageDir, "../../node_modules"),
+      path.join(created, "node_modules"),
+    );
+    const formatted = spawnSync(
+      path.join(packageDir, "../../node_modules/.bin/prettier"),
+      ["--check", "review/shots.json", "plugin.json", "package.json"],
+      { cwd: created, encoding: "utf8" },
+    );
+    expect(formatted.status, formatted.stdout + formatted.stderr).toBe(0);
   });
 
   it("keeps a plugin title with quotes valid code", () => {
@@ -168,9 +146,11 @@ describe("create", () => {
       'Say "hi"',
     ]);
     expect(status).toBe(0);
+    expect(JSON.parse(read(dir, "say-hi/plugin.json"))).toMatchObject({
+      title: 'Say "hi"',
+      description: 'Say "hi", a Pentaho plugin.',
+    });
     const page = read(dir, "say-hi/src/pages/say-hi.tsx");
-    expect(page).toContain(`title: 'Say "hi"'`);
-    expect(page).toContain(`description: 'Say "hi", a Pentaho plugin.'`);
     const { diagnostics } = ts.transpileModule(page, {
       fileName: "say-hi.tsx",
       reportDiagnostics: true,
@@ -189,9 +169,9 @@ describe("create", () => {
       "My plugin manager",
     ]);
     expect(status).toBe(0);
-    const page = read(dir, "manager/src/pages/manager.tsx");
-    expect(page).toContain('"My plugin manager"');
-    expect(page).not.toContain("My plugin manager manager");
+    const readme = read(dir, "manager/README.md");
+    expect(readme).toContain("My plugin manager");
+    expect(readme).not.toContain("My plugin manager manager");
   });
 
   it("refuses a folder with files, and with --force empties it first but its .git", () => {
@@ -312,9 +292,6 @@ describe("create: install and coding agents", () => {
   });
 });
 
-// A created app type-checks and builds against the built UI Kit packages: CI's Node job builds them first.
-const built = fs.existsSync(path.join(repo, "packages/core/dist/index.d.ts"));
-
 describe("help and version", () => {
   it.each([
     ["--help"],
@@ -326,52 +303,6 @@ describe("help and version", () => {
     expect(status).toBe(0);
     expect(stdout.trim()).not.toBe("");
   });
-});
-
-describe.skipIf(!built)("each template's app passes its own checks", () => {
-  it.each([
-    ["my-app", []],
-    ["listed", ["--no-auto-routes", "--features", "help-link"]],
-    ["plain", ["-t", "vite"]],
-    ["job-health", ["-t", "plugin"]],
-  ])(
-    "%s: format, types, lint, build and tests",
-    (name, args) => {
-      const { dir } = run(["create", name, ...args]);
-      const app = path.join(dir, name);
-      fs.symlinkSync(
-        path.join(repo, "node_modules"),
-        path.join(app, "node_modules"),
-      );
-      for (const [bin, ...binArgs] of [
-        ["prettier", "--check", "."],
-        ["tsc", "--noEmit"],
-        ["tsc", "-p", "tsconfig.node.json"],
-        ["oxlint"],
-        ["vite", "build"],
-        ["vitest", "run"],
-      ]) {
-        const check = spawnSync(
-          path.join(repo, "node_modules/.bin", bin),
-          binArgs,
-          {
-            cwd: app,
-            encoding: "utf8",
-            // CI builds an App Shell app as its bundles only: the stricter build
-            env: { ...process.env, CI: "1" },
-          },
-        );
-        expect(check.status, `${bin}: ${check.stdout}${check.stderr}`).toBe(0);
-      }
-      if (args.includes("plugin")) {
-        // the real build holds every bundle plugin.json names
-        const packaged = run(["package", "--built"], app);
-        expect(packaged.status, packaged.stderr).toBe(0);
-        expect(fs.existsSync(path.join(app, `${name}.zip`))).toBe(true);
-      }
-    },
-    300_000,
-  );
 });
 
 describe("prepack", () => {

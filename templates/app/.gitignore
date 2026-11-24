@@ -28,3 +28,6 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# screenshots from reviewing the pages
+review/*.png

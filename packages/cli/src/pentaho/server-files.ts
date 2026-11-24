@@ -54,6 +54,7 @@ export function appShellConfig(plugin: Plugin) {
     baseDir: WEBCLIENT_DIR,
     menu: [
       {
+        ...(menu.parent === undefined ? {} : { parentId: menu.parent }),
         ...(menu.ordinal === undefined ? {} : { ordinal: menu.ordinal }),
         label: menuLabelKey(plugin),
         target: views[0].route,

@@ -1,7 +1,7 @@
 {
   "name": "@pentaho/uikit-cli",
   "version": "7.0.2",
-  "private": false,
+  "private": true,
   "type": "module",
   "author": "UI Kit Team",
   "description": "The UI Kit CLI: create apps and Pentaho plugins, and package plugins for a Pentaho server.",
@@ -25,7 +25,9 @@
   "scripts": {
     "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/index.js', 0o755)\"",
     "dev": "tsc --watch",
-    "test": "vitest",
+    "pretest": "tsc",
+    "test": "vitest --project cli",
+    "test:apps": "tsc && vitest run --project apps",
     "test:e2e": "node scripts/e2e-outside-repo.ts",
     "clean": "rimraf dist templates",
     "prepublishOnly": "npm run build",
@@ -46,5 +48,13 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "playwright": ">=1.50.0"
+  },
+  "peerDependenciesMeta": {
+    "playwright": {
+      "optional": true
+    }
   }
 }

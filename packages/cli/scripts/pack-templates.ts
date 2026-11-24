@@ -4,6 +4,7 @@
  * in place of the templates' `*` (workspace) ranges. Each template's `.gitignore` is kept as `_gitignore`: npm
  * drops `.gitignore` files from packages.
  */
+import { execFileSync } from "node:child_process";
 import {
   cpSync,
   existsSync,
@@ -11,6 +12,7 @@ import {
   readFileSync,
   renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import path from "node:path";
@@ -21,6 +23,16 @@ const repo = path.resolve(cli, "../..");
 const out = path.join(cli, "templates");
 
 rmSync(out, { recursive: true, force: true });
+// only what git tracks: never a maintainer's local files (screenshots in review/, an .env) in every new app
+const tracked = new Set(
+  execFileSync("git", ["ls-files", "-z", "templates"], {
+    cwd: repo,
+    encoding: "utf8",
+  })
+    .split("\0")
+    .filter(Boolean)
+    .map((file) => path.join(repo, file)),
+);
 const templates = readdirSync(path.join(repo, "templates"), {
   withFileTypes: true,
 })
@@ -32,7 +44,9 @@ for (const template of templates) {
     recursive: true,
     filter: (source) =>
       !["node_modules", "dist"].includes(path.basename(source)) &&
-      !/\.(tsbuildinfo|zip)$/.test(source),
+      (tracked.has(source) ||
+        (statSync(source).isDirectory() &&
+          [...tracked].some((file) => file.startsWith(source + path.sep)))),
   });
   renameSync(path.join(target, ".gitignore"), path.join(target, "_gitignore"));
 }

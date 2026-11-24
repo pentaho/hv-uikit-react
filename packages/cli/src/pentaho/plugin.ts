@@ -31,6 +31,11 @@ const pluginSchema = z
     menu: z.strictObject({
       label: text,
       icon: text.describe("an icon of the App Shell's set, e.g. Calendar"),
+      parent: text
+        .optional()
+        .describe(
+          "the server menu entry's id it sits under, e.g. settings for an admin page",
+        ),
       ordinal: z
         .number()
         .int()

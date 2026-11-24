@@ -172,6 +172,10 @@ describe("init", () => {
     const settings = JSON.parse(read(app, ".claude/settings.json"));
     expect(settings.permissions.allow).toContain("Bash(ls)");
     expect(settings.permissions.allow).toContain("mcp__hv-uikit");
+    expect(settings.permissions.allow).toContain("Bash(npm run shots *)");
+    expect(settings.permissions.allow).toContain(
+      "Bash(npx --no-install uikit-cli shots *)",
+    );
     expect(settings.hooks.PostToolUse).toEqual([
       {
         matcher: "Write|Edit|MultiEdit",
