@@ -23,44 +23,25 @@ The guides were tuned against these three: a claim that the tooling helps on new
 
 ## Run
 
-1. A local registry with this branch's packages (a version publishes once: wipe the storage each time):
+Needs Node, npm and Docker (Docker Desktop, Colima or Linux). The agent runs with `bypassPermissions`, so only ever in
+the trial container.
 
-   ```sh
-   npm run build
-   rm -rf /tmp/uikit-evals-registry /tmp/uikit-evals-packs
-   npx --yes verdaccio@6.11.3 --config packages/cli/evals/verdaccio.yaml   # its own terminal: localhost:4873
-   for p in styles utils shared core viz widgets uno-preset config tools cli app-shell-services app-shell-shared \
-     app-shell-events app-shell-i18next app-shell-navigation app-shell-ui app-shell-vite-plugin; do
-     npm pack -w packages/$p --pack-destination /tmp/uikit-evals-packs
-   done
-   for t in /tmp/uikit-evals-packs/*.tgz; do
-     npm publish "$t" --registry http://localhost:4873 --//localhost:4873/:_authToken=evals
-   done
-   ```
+```sh
+packages/cli/evals/setup.sh                       # build, pack this branch's packages, build the image
+export CLAUDE_CODE_OAUTH_TOKEN=…                  # a token made for the evals: claude setup-token
+packages/cli/evals/batch.sh users                 # a smoke test: one task, one run per arm (~15 min, $2–4 on Sonnet)
+RUNS=3 packages/cli/evals/batch.sh                # a claim: all three tasks, 3 to 5 runs per arm
+```
 
-   `@pentaho/uikit-tools` and `@pentaho/uikit-cli` are `private`: publish a copy of each tarball without the flag.
+Until the packages are released, `setup.sh` packs them into `packs/` (git-ignored), which ships in the image: each
+trial creates the plugin with the packed CLI and installs every `@pentaho/*` from its tarball (`file:` plus
+`overrides`). Nothing listens on the host. Once they're released, `setup.sh --published` builds the image without
+packs, and the trials install from npm like any user.
 
-2. The image. The agent runs with `bypassPermissions`, so only ever in the container. Under Colima, oxlint needs
-   `colima ssh -- sudo sysctl -w vm.overcommit_memory=1` (it resets when Colima restarts).
-
-   ```sh
-   docker build -f packages/cli/evals/Dockerfile -t uikit-evals packages/cli
-   ```
-
-3. Three runs per task and arm (about 10 minutes and $1–2 each on Sonnet; two at a time at most), then grade and
-   report. Use a token made for the evals (`claude setup-token`); it's masked in the transcript.
-
-   ```sh
-   for n in 1 2 3; do for task in users data-connection report-usage; do for condition in full bare; do
-     mkdir -p ".evals/$task-$condition-$n"
-     docker run --rm --cpus 2 --memory 2800m -e CLAUDE_CODE_OAUTH_TOKEN \
-       -v "$PWD/.evals/$task-$condition-$n":/trial -v uikit-evals-npm:/tmp/npm-cache uikit-evals \
-       "$task" --model claude-sonnet-5-5 --condition "$condition" --dir /trial \
-       --registry http://host.docker.internal:4873 --budget 10
-   done; done; done
-   node packages/cli/evals/grade.ts .evals/*/
-   node packages/cli/evals/report.ts .evals
-   ```
+`batch.sh` puts each trial in `.evals/<task>-<arm>-<n>` (the plugin, `transcript.jsonl`, `result.json`, `review/`),
+grades them with `claude` in a fresh HOME, and prints the report: counts per arm, since a few runs are noisy. Under
+Colima, oxlint needs `colima ssh -- sudo sysctl -w vm.overcommit_memory=1` (it resets when Colima restarts); `setup.sh`
+warns without it.
 
 ## Tests
 

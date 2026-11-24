@@ -23,8 +23,11 @@ const mean = (values: number[]) =>
   values.length
     ? values.reduce((sum, each) => sum + each, 0) / values.length
     : undefined;
-const pct = (value?: number) =>
-  value === undefined ? "–" : `${Math.round(value * 100)}%`;
+/** `2/3 (67%)`: with a few runs, the count says more than the share. */
+const share = (values: number[]) =>
+  values.length
+    ? `${values.filter(Boolean).length}/${values.length} (${Math.round((mean(values) ?? 0) * 100)}%)`
+    : "–";
 
 export function report(results: Result[]): string {
   const kept = results.filter((result) => !result.infra);
@@ -37,14 +40,15 @@ export function report(results: Result[]): string {
         `${result.task} (${result.model})` === group &&
         result.condition === condition,
     );
-  const acceptable = (runs: Result[]) =>
-    mean(runs.filter((run) => run.grade).map((run) => run.grade!.acceptable));
+  const verdicts = (runs: Result[]): number[] =>
+    runs.filter((run) => run.grade).map((run) => run.grade!.acceptable);
+  const acceptable = (runs: Result[]) => mean(verdicts(runs));
   const rows = groups.flatMap((group) =>
     ["full", "bare"].map((condition) => {
       const runs = arm(group, condition);
       const graded = runs.filter((run) => run.grade);
       const cost = mean(runs.flatMap((run) => run.metrics?.costUsd ?? []));
-      return `| ${group} | ${condition} | ${runs.length} | ${pct(mean(runs.map((run) => Number(run.passed))))} | ${pct(acceptable(runs))} | ${graded.length ? (graded.every((run) => run.grade!.acceptable) ? "yes" : "no") : "–"} | ${cost === undefined ? "–" : `$${cost.toFixed(2)}`} |`;
+      return `| ${group} | ${condition} | ${runs.length} | ${share(runs.map((run) => Number(run.passed)))} | ${share(verdicts(runs))} | ${graded.length ? (graded.every((run) => run.grade!.acceptable) ? "yes" : "no") : "–"} | ${cost === undefined ? "–" : `$${cost.toFixed(2)}`} |`;
     }),
   );
   const diffs = groups.flatMap((group) => {

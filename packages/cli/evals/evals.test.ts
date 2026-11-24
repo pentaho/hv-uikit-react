@@ -7,7 +7,9 @@ import { gradeOf, promptOf } from "./grade.ts";
 import { report, type Result } from "./report.ts";
 import {
   infraFailure,
+  installFromPacks,
   metricsOf,
+  packsIn,
   readTask,
   shotsFor,
   stripTooling,
@@ -60,12 +62,44 @@ describe("bare", () => {
       scripts: { check: "oxlint" },
       devDependencies: { oxlint: "*" },
     });
-    expect(
-      JSON.parse(fs.readFileSync(path.join(dir, ".oxlintrc.json"), "utf8"))
-        .extends,
-    ).toEqual(["strict.json"]);
+    // as Prettier writes it, so the plugin still passes its own check
+    expect(fs.readFileSync(path.join(dir, ".oxlintrc.json"), "utf8")).toBe(
+      '{\n  "extends": ["strict.json"]\n}\n',
+    );
     expect(toolingLeft(dir)).toEqual(["src/page.tsx"]);
     fs.rmSync(dir, { recursive: true });
+  });
+});
+
+describe("this branch's packages", () => {
+  it("are installed from their tarballs, direct and transitive", () => {
+    const dir = tmp();
+    write(dir, "packs/pentaho-uikit-react-core-7.0.1.tgz", "");
+    write(dir, "packs/pentaho-app-shell-ui-3.0.0.tgz", "");
+    write(dir, "packs/notes.txt", "");
+    const packs = packsIn(path.join(dir, "packs"));
+    expect(Object.keys(packs).toSorted()).toEqual([
+      "@pentaho/app-shell-ui",
+      "@pentaho/uikit-react-core",
+    ]);
+    write(
+      dir,
+      "plugin/package.json",
+      JSON.stringify({
+        dependencies: { "@pentaho/uikit-react-core": "^7.0.1", react: "^18" },
+      }),
+    );
+    installFromPacks(path.join(dir, "plugin"), packs);
+    const pkg = JSON.parse(
+      fs.readFileSync(path.join(dir, "plugin/package.json"), "utf8"),
+    );
+    expect(pkg.dependencies).toEqual({
+      "@pentaho/uikit-react-core": `file:${packs["@pentaho/uikit-react-core"]}`,
+      react: "^18",
+    });
+    expect(Object.keys(pkg.overrides)).toEqual(Object.keys(packs));
+    // none packed: the released packages, from npm
+    expect(packsIn(path.join(dir, "none"))).toEqual({});
   });
 });
 
@@ -192,10 +226,10 @@ describe("the report", () => {
       { task: "users", condition: "bare", model: "m", infra: "API Error" },
     ]);
     expect(text).toContain(
-      "| users (m) | full | 2 | 100% | 100% | yes | $3.00 |",
+      "| users (m) | full | 2 | 2/2 (100%) | 2/2 (100%) | yes | $3.00 |",
     );
     expect(text).toContain(
-      "| users (m) | bare | 2 | 100% | 50% | no | $1.00 |",
+      "| users (m) | bare | 2 | 2/2 (100%) | 1/2 (50%) | no | $1.00 |",
     );
     expect(text).toContain("mean over 1 task(s): **+50 pts**");
     expect(text).toContain("- users (bare): API Error");

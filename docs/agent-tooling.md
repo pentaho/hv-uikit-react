@@ -177,7 +177,7 @@ npm run generate -w packages/figma -- --check # generated Figma files are curren
 node packages/tools/scripts/e2e-outside-repo.ts  # packed tools in a fresh project
 node packages/cli/scripts/e2e-outside-repo.ts    # packed CLI: every template, dev, package
 FIGMA_TOKEN=… npm run compare -w packages/figma  # read-only: a Figma file against the code
-docker run … uikit-evals users --model claude-sonnet-5-5 --condition full --dir /trial   # packages/cli/evals/README.md
+packages/cli/evals/setup.sh && packages/cli/evals/batch.sh users  # agent evals: packages/cli/evals/README.md
 ```
 
 Package READMEs hold the details: `packages/tools/README.md`, `packages/cli/README.md`, `packages/figma/README.md`,

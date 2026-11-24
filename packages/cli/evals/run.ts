@@ -17,7 +17,7 @@ import { parseArgs } from "node:util";
 import { takeShots, type Shot } from "../src/shots.ts";
 
 const USAGE = `Usage: node packages/cli/evals/run.ts <task> --model <id> --condition full|bare --dir <dir>
-  [--registry <url>] [--budget <usd>] [--timeout <min>]`;
+  [--budget <usd>] [--timeout <min>]`;
 
 export interface Task {
   id: string;
@@ -41,6 +41,36 @@ export const readTask = (id: string): Task =>
 export const promptOf = (task: Task) =>
   `${task.request}\n\nNo one will answer questions: decide, and list what you assumed.`;
 
+/**
+ * This branch's packages, packed by setup.sh into `packs/` until they're released: `@pentaho/<name>` → its tarball.
+ * Without `packs/`, the trials install the released packages from npm.
+ */
+export function packsIn(dir: string): Record<string, string> {
+  if (!fs.existsSync(dir)) return {};
+  return Object.fromEntries(
+    fs.readdirSync(dir).flatMap((file) => {
+      const name = file.match(/^pentaho-(.+)-\d+\.\d+\.\d+.*\.tgz$/)?.[1];
+      return name ? [[`@pentaho/${name}`, path.join(dir, file)]] : [];
+    }),
+  );
+}
+
+/** The plugin's `@pentaho/*` dependencies, direct and transitive, from the tarballs. */
+export function installFromPacks(
+  plugin: string,
+  packs: Record<string, string>,
+) {
+  const file = path.join(plugin, "package.json");
+  const pkg = JSON.parse(fs.readFileSync(file, "utf8"));
+  for (const deps of [pkg.dependencies, pkg.devDependencies])
+    for (const dep of Object.keys(deps ?? {}))
+      if (packs[dep]) deps[dep] = `file:${packs[dep]}`;
+  pkg.overrides = Object.fromEntries(
+    Object.entries(packs).map(([name, tgz]) => [name, `file:${tgz}`]),
+  );
+  fs.writeFileSync(file, `${JSON.stringify(pkg, null, 2)}\n`);
+}
+
 /** The variables the agent and the project's scripts get from the harness's environment; nothing else leaks in. */
 const ALLOWED = ["PATH", "LANG", "TERM", "PLAYWRIGHT_BROWSERS_PATH"];
 const AUTH = ["CLAUDE_CODE_OAUTH_TOKEN", "ANTHROPIC_API_KEY"];
@@ -62,9 +92,25 @@ export function stripTooling(plugin: string) {
   config.extends = config.extends.filter(
     (each: string) => !each.includes("uikit-tools"),
   );
-  fs.writeFileSync(lint, `${JSON.stringify(config, null, 2)}\n`);
+  // a short array on one line, as Prettier writes it, so the plugin still passes its own check
+  fs.writeFileSync(
+    lint,
+    `${JSON.stringify(config, null, 2).replace(/\[\s+("[^"]*")\s+\]/g, "[$1]")}\n`,
+  );
   for (const name of ["AGENTS.md", "CLAUDE.md"])
     fs.rmSync(path.join(plugin, name), { force: true });
+}
+
+/** `bare`, once installed: the installed uikit-cli carries its templates' AGENTS.md, out of the agent's reach. */
+function stripInstalledGuides(plugin: string) {
+  const templates = path.join(
+    plugin,
+    "node_modules/@pentaho/uikit-cli/templates",
+  );
+  if (!fs.existsSync(templates)) return;
+  for (const entry of fs.readdirSync(templates, { withFileTypes: true }))
+    if (entry.isDirectory())
+      fs.rmSync(path.join(templates, entry.name, "AGENTS.md"), { force: true });
 }
 
 /** The plugin's own files that mention the tooling (none may, in `bare`, before the agent starts). */
@@ -261,7 +307,6 @@ async function main(): Promise<number> {
       model: { type: "string" },
       condition: { type: "string" },
       dir: { type: "string" },
-      registry: { type: "string" },
       budget: { type: "string" },
       timeout: { type: "string", default: "60" },
     },
@@ -295,7 +340,6 @@ async function main(): Promise<number> {
     npm_config_cache: container
       ? "/tmp/npm-cache"
       : path.join(dir, ".npm-cache"),
-    ...(values.registry && { npm_config_registry: values.registry }),
   };
   const result: Record<string, unknown> = { task: task.id, condition, model };
   const save = () =>
@@ -310,7 +354,8 @@ async function main(): Promise<number> {
   };
 
   try {
-    // npx keeps a CLI by its version: a republished local registry would hand out the old one
+    const packs = packsIn(path.join(import.meta.dirname, "packs"));
+    // npx keeps a CLI by its spec: a repacked tarball at the same path would be the old one
     fs.rmSync(path.join(env.npm_config_cache!, "_npx"), {
       recursive: true,
       force: true,
@@ -320,7 +365,9 @@ async function main(): Promise<number> {
         "npx",
         [
           "--yes",
-          "@pentaho/uikit-cli",
+          ...(packs["@pentaho/uikit-cli"]
+            ? [`--package=${packs["@pentaho/uikit-cli"]}`, "uikit-cli"]
+            : ["@pentaho/uikit-cli"]),
           "create",
           task.id,
           "-t",
@@ -339,7 +386,11 @@ async function main(): Promise<number> {
         .readFileSync(readme, "utf8")
         .replace(/\n+For coding agents:[^\n]*\n/, "\n"),
     );
-    if (condition === "bare") stripTooling(plugin);
+    if (condition === "bare") {
+      stripTooling(plugin);
+      delete packs["@pentaho/uikit-tools"];
+    }
+    if (Object.keys(packs).length) installFromPacks(plugin, packs);
     step(run("npm", ["install"]), "npm install failed");
     if (condition === "full")
       step(
@@ -353,14 +404,7 @@ async function main(): Promise<number> {
         "uikit-tools init failed",
       );
     else {
-      // the installed uikit-cli carries its templates' AGENTS.md: out of reach of `bare`
-      const templates = path.join(
-        plugin,
-        "node_modules/@pentaho/uikit-cli/templates",
-      );
-      if (fs.existsSync(templates))
-        for (const name of fs.readdirSync(templates))
-          fs.rmSync(path.join(templates, name, "AGENTS.md"), { force: true });
+      stripInstalledGuides(plugin);
       const left = toolingLeft(plugin);
       step(!left.length, `bare still has the tooling: ${left.join(", ")}`);
     }

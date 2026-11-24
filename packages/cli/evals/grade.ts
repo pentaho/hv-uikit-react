@@ -2,8 +2,10 @@
 /**
  * The blind grader: for each trial, Claude reads its review screenshots, copied to a folder whose name says nothing of
  * the condition, against the task's request and review items, and judges whether it's an acceptable answer to the
- * request, with at most minor fixes. The verdict goes in the trial's result.json as `grade`. Check it against a
- * person on a few trials (the screenshots are in each trial's review/) before trusting it.
+ * request, with at most minor fixes. Like the agent, it gets none of this machine's Claude settings, memory or
+ * plugins: a fresh HOME when CLAUDE_CODE_OAUTH_TOKEN is set, and only the (empty) project's settings. The verdict goes
+ * in the trial's result.json as `grade`. Check it against a person on a few trials (the screenshots are in each
+ * trial's review/) before trusting it.
  *
  * Usage: node packages/cli/evals/grade.ts <trial dir>… [--model claude-sonnet-5-5]
  */
@@ -74,8 +76,17 @@ function main(): number {
         values.model,
         "--allowedTools",
         "Read",
+        "--setting-sources",
+        "project",
       ],
-      { cwd: blind, encoding: "utf8", timeout: 10 * 60_000 },
+      {
+        cwd: blind,
+        encoding: "utf8",
+        timeout: 10 * 60_000,
+        env: process.env.CLAUDE_CODE_OAUTH_TOKEN
+          ? { ...process.env, HOME: path.join(blind, ".home") }
+          : process.env,
+      },
     );
     fs.rmSync(blind, { recursive: true, force: true });
     try {
