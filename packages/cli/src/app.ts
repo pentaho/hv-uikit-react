@@ -6,7 +6,6 @@ import {
   copyTemplate,
   editFile,
   htmlText,
-  jsString,
   packageManager,
   toKebabCase,
   toPackageName,
@@ -60,19 +59,18 @@ const pagesOf = (appPath: string) =>
     .readdirSync(path.join(appPath, "src/pages"))
     .filter((page) => page !== "NotFound" && page !== "layout");
 
-/** The templates' own title, which a new app's replaces. */
+/** The templates' own titles, which a new app's replaces: the browser tab and README's, and the start page's. */
 const TEMPLATE_TITLE = "UI Kit App";
+const PAGE_TITLE = "My app";
 
 /** app-shell.config.ts: the header features and, without the automatic menu, each page's view and menu entry. */
 function appShellConfig(
-  name: string,
   pages: string[],
   features: AppShellFeature[],
   autoRoutes: boolean,
 ) {
   const route = (page: string) => `/${toKebabCase(page)}`;
   const config = {
-    name,
     logo: { name: "PENTAHO" },
     ...(features.length > 0 && {
       header: { actions: features.map((f) => APP_SHELL_FEATURES[f]) },
@@ -124,14 +122,11 @@ export function createApp(appPath: string, options: AppOptions) {
   editFile(appPath, "index.html", (text) =>
     text.replaceAll(TEMPLATE_TITLE, htmlText(title)),
   );
-  // in code and JSON the title is a string literal: replaced quoted, so quotes in it stay valid
-  const quoted = JSON.stringify(TEMPLATE_TITLE);
-  if (!appShell) {
-    editFile(appPath, "public/locales/en/common.json", (text) =>
-      text.replaceAll(quoted, JSON.stringify(title)),
-    );
-    return;
-  }
+  // in JSON the title is a string literal: replaced quoted, so quotes in it stay valid
+  editFile(appPath, "public/locales/en/home.json", (text) =>
+    text.replace(JSON.stringify(PAGE_TITLE), JSON.stringify(title)),
+  );
+  if (!appShell) return;
 
   editFile(appPath, "src/lib/i18n.ts", (text) =>
     text.replace("@hv-apps/uikit-app", pkgName),
@@ -139,11 +134,7 @@ export function createApp(appPath: string, options: AppOptions) {
   if (features.length > 0 || !autoRoutes)
     fs.writeFileSync(
       path.join(appPath, "app-shell.config.ts"),
-      appShellConfig(title, pagesOf(appPath), features, autoRoutes),
-    );
-  else
-    editFile(appPath, "app-shell.config.ts", (text) =>
-      text.replaceAll(quoted, jsString(title)),
+      appShellConfig(pagesOf(appPath), features, autoRoutes),
     );
   // without automatic routes, the plugin builds only the modules listed: each page's view
   if (!autoRoutes)
