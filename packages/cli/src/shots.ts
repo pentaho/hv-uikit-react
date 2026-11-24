@@ -16,7 +16,15 @@ interface Step {
   /** `in: "dialog"`: only inside an open dialog, and skipped when none is open (a confirmation some pages ask) */
   click?:
     | string
-    | { role: string; name: string; in?: "dialog" }
+    /** `nth`: which of the matches, from 0 (-1 the last); a name may be left out when the page's own data names them */
+    /** `optional`: skipped when the control is missing or disabled (a form that disables Save while a field is invalid) */
+    | {
+        role: string;
+        name?: string;
+        nth?: number;
+        in?: "dialog";
+        optional?: true;
+      }
     /** visible text that contains this, the first match: a name the page made up around a known word */
     | { text: string };
   fill?: [string, string];
@@ -84,20 +92,27 @@ async function run(page: Page, step: Step) {
     await page.getByText(step.click.text).first().click();
   else if (step.click) {
     // the exact name first ("Select" isn't "Select all"); a name that only contains it when none matches exactly
-    const { role, name } = step.click;
+    const { role, name, nth = 0 } = step.click;
     const scope =
       step.click.in === "dialog"
         ? page.locator('[role="dialog"], [role="alertdialog"]')
         : page;
     const byRole = (exact: boolean) =>
-      scope.getByRole(role as Parameters<Page["getByRole"]>[0], {
-        name,
-        exact,
-      });
+      scope.getByRole(
+        role as Parameters<Page["getByRole"]>[0],
+        name === undefined ? {} : { name, exact },
+      );
     const exact = byRole(true);
-    const target = (await exact.count()) ? exact : byRole(false);
-    if (step.click.in !== "dialog" || (await target.count()))
-      await target.first().click();
+    const target =
+      name === undefined || (await exact.count()) ? exact : byRole(false);
+    const count = await target.count();
+    const exists = nth >= 0 ? count > nth : count >= -nth;
+    if (step.click.optional) {
+      // skipped when the control isn't there, or is there but disabled (a Save a form disables while invalid)
+      if (exists && (await target.nth(nth).isEnabled()))
+        await target.nth(nth).click();
+    } else if (step.click.in !== "dialog" || exists)
+      await target.nth(nth).click();
   }
   if (step.fill) {
     // the exact label first; one that contains it when none matches ("Port" in a required field's "Port *")
@@ -229,7 +244,10 @@ A click by text matches exactly; a fill by label too, else the first label that 
 A click by role matches the exact accessible name, else the first name that contains it (so "Select" picks "Select",
 not "Select all", when both exist). With "in": "dialog" it looks only in an open dialog and is skipped when none is
 open: { "click": { "role": "button", "name": "Retry", "in": "dialog" } } confirms a page's confirmation, if it asks
-one. { "click": { "text": "customers" } } clicks the first visible text that contains it.`,
+one. "nth" picks one of the matches, from 0, and -1 the last; with no "name", of every element with that role:
+{ "click": { "role": "option", "nth": -1 } } picks an open list's last option, whatever the data names it.
+"optional": true skips a click whose control is missing or disabled, as a Save a form disables while a field is invalid.
+{ "click": { "text": "customers" } } clicks the first visible text that contains it.`,
   )
   .action(async (file: string, options: { out: string }) => {
     const shots = JSON.parse(fs.readFileSync(path.resolve(file), "utf8"));

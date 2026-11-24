@@ -11,7 +11,7 @@ export default defineConfig({
         extends: true,
         test: {
           name: "cli",
-          include: ["src/**/*.test.ts"],
+          include: ["src/**/*.test.ts", "evals/**/*.test.ts"],
           exclude: ["src/apps.test.ts"],
         },
       },

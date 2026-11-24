@@ -1,0 +1,8 @@
+# The build context is packages/cli: only the harness goes in
+*
+!package.json
+!src
+!evals
+**/*.test.ts
+**/node_modules
+evals/Dockerfile*

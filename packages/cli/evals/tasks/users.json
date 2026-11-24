@@ -1,0 +1,156 @@
+{
+  "id": "users",
+  "request": "Admins need to manage who can use our analytics server. I want a page listing the users with their role and whether they're active, where I can search them, filter by role, edit or deactivate one user, and deactivate several at once. Ask before deactivating anyone, and tell me how it went. Use sample users with roles like Administrator, Report Author and Business Analyst. Package it.",
+  "review": [
+    "Each user shows their name, email, role and whether they're active, the inactive ones told apart at a glance",
+    "Search and the role filter narrow the list, and it says when nothing matches",
+    "One user can be edited from their row, in a dialog with their details ready to change",
+    "One user, or several at once, can be deactivated after a confirmation that names who",
+    "After deactivating, the list shows the change and the page says how it went",
+    "No users says so plainly, not an empty table"
+  ],
+  "shots": [
+    {
+      "name": "list",
+      "url": "{route}"
+    },
+    {
+      "name": "filtered",
+      "url": "{route}",
+      "steps": [
+        {
+          "fill": ["Search", "zzz"]
+        },
+        {
+          "wait": 500
+        }
+      ]
+    },
+    {
+      "name": "edit",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Actions"
+          }
+        },
+        {
+          "wait": 300
+        },
+        {
+          "click": {
+            "text": "Edit"
+          }
+        },
+        {
+          "wait": 800
+        }
+      ]
+    },
+    {
+      "name": "edit-invalid",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Actions"
+          }
+        },
+        {
+          "wait": 300
+        },
+        {
+          "click": {
+            "text": "Edit"
+          }
+        },
+        {
+          "wait": 800
+        },
+        {
+          "fill": ["Email", "not-an-email"]
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Save",
+            "in": "dialog",
+            "optional": true
+          }
+        },
+        {
+          "wait": 600
+        }
+      ]
+    },
+    {
+      "name": "deactivate-several",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "role": "checkbox",
+            "name": "Select"
+          }
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Deactivate"
+          }
+        },
+        {
+          "wait": 800
+        }
+      ]
+    },
+    {
+      "name": "deactivated",
+      "url": "{route}",
+      "steps": [
+        {
+          "click": {
+            "role": "checkbox",
+            "name": "Select"
+          }
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Deactivate"
+          }
+        },
+        {
+          "wait": 800
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Deactivate",
+            "in": "dialog"
+          }
+        },
+        {
+          "wait": 1500
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "url": "{route}?samples=empty"
+    },
+    {
+      "name": "narrow",
+      "url": "{route}",
+      "width": 390
+    },
+    {
+      "name": "dark",
+      "url": "{route}",
+      "dark": true
+    }
+  ]
+}
