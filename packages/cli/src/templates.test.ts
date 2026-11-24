@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 const templates = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../../../templates",
+  "../../../templates",
 );
 
 /** A bare import's package: `@scope/name` or `name`, without the subpath. */
@@ -50,7 +50,7 @@ describe.each(["app", "vite", "plugin"])("templates/%s", (template) => {
     expect(importsOf(dir).filter((name) => !(name in declared))).toEqual([]);
   });
 
-  it("takes the UI Kit packages at the released versions", () => {
+  it("leaves the UI Kit packages' versions to create (`*`)", () => {
     const pentaho = Object.entries(declared).filter(([name]) =>
       name.startsWith("@pentaho/"),
     );

@@ -31,7 +31,10 @@ export const toKebabCase = (text: string) =>
 
 /** `My App` or `myApp` → `my-app`: an app's folder and package name. */
 export const toPackageName = (name: string) =>
-  toKebabCase(name).replace(/[^a-z0-9-]/g, "");
+  toKebabCase(name)
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 
 /** `AssetInventory` → `Asset Inventory` */
 export const toWords = (text: string) =>

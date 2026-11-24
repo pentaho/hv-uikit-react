@@ -19,7 +19,7 @@ const TEMPLATE = {
   description: "My plugin, a Pentaho plugin.",
 };
 /** The template files that name it. */
-const NAMED = ["README.md", "index.html"];
+const NAMED = ["README.md", "index.html", "review/shots.json"];
 
 /** A plugin's default title: `Job Health` as typed, `job-health` → `Job health`. */
 export const titleFrom = (name: string) =>

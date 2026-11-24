@@ -1,28 +1,15 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 
-import { newPlugin } from "../pentaho/create.js";
-import { packagePlugin } from "../pentaho/package.js";
-import { parsePlugin, PLUGIN_FILE } from "../pentaho/plugin.js";
-import {
-  appShellConfig,
-  bundlesOf,
-  pluginXml,
-} from "../pentaho/server-files.js";
+import { cleanup, tempDir } from "../testing.js";
+import { newPlugin } from "./create.js";
+import { packagePlugin } from "./package.js";
+import { parsePlugin, PLUGIN_FILE } from "./plugin.js";
+import { appShellConfig, bundlesOf, pluginXml } from "./server-files.js";
 
-const dirs: string[] = [];
-const tempDir = () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "uikit-cli-"));
-  dirs.push(dir);
-  return dir;
-};
-afterEach(() => {
-  for (const dir of dirs.splice(0))
-    fs.rmSync(dir, { recursive: true, force: true });
-});
+afterEach(cleanup);
 
 describe("plugin.json", () => {
   it("a new plugin has one view, opened by its menu entry", () => {
@@ -75,6 +62,22 @@ describe("the server's files", () => {
       "pages/jobs.js",
       "providers/Provider.js",
     ]);
+    expect(config.menu[0]).not.toHaveProperty("parentId");
+  });
+
+  it("nest the menu entry under its parent, as the platform's own plugins do", () => {
+    const nested = parsePlugin({
+      ...plugin,
+      menu: { ...plugin.menu, parent: "settings", ordinal: 30 },
+    });
+    if (!nested.ok) throw new Error(nested.problems.join("\n"));
+    expect(JSON.parse(appShellConfig(nested.plugin)).menu[0]).toMatchObject({
+      parentId: "settings",
+      ordinal: 30,
+    });
+    expect(
+      parsePlugin({ ...plugin, menu: { ...plugin.menu, parent: " " } }).ok,
+    ).toBe(false);
   });
 });
 
@@ -97,11 +100,13 @@ describe("package", () => {
   }
 
   it("zips one <id>/ folder: the server's files and the build as webclient", () => {
-    // the build also writes the local App Shell's config, which stays out of the zip
+    // the build also writes the local App Shell's config and the SBOM's site-root copy, which stay out of the zip
     const dir = project([
       "pages/jobs.js",
       "providers/Provider.js",
       "app-shell.config.json",
+      ".well-known/sbom",
+      "sbom/bom.json",
     ]);
     const result = packagePlugin(dir, { built: true });
     expect(result.code).toBe(0);
@@ -109,11 +114,13 @@ describe("package", () => {
       encoding: "utf8",
     });
     expect(listing).not.toContain("jobs/webclient/app-shell.config.json");
+    expect(listing).not.toContain(".well-known");
     for (const file of [
       "jobs/plugin.xml",
       "jobs/pentaho-app-shell.config.json",
       "jobs/webclient/pages/jobs.js",
       "jobs/webclient/providers/Provider.js",
+      "jobs/webclient/sbom/bom.json",
     ])
       expect(listing).toContain(file);
   });

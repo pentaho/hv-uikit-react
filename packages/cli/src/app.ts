@@ -56,9 +56,7 @@ export interface AppOptions {
 
 /** The page folders under src/pages, routes and menu entries aside. */
 const pagesOf = (appPath: string) =>
-  fs
-    .readdirSync(path.join(appPath, "src/pages"))
-    .filter((page) => page !== "NotFound" && page !== "layout");
+  fs.readdirSync(path.join(appPath, "src/pages"));
 
 /** The templates' own title, which a new app's replaces. */
 const TEMPLATE_TITLE = "UI Kit App";

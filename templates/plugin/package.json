@@ -13,7 +13,8 @@
     "check:format": "prettier --check .",
     "lint": "oxlint --fix",
     "format": "prettier --write .",
-    "package": "uikit-cli package"
+    "package": "uikit-cli package",
+    "shots": "uikit-cli shots"
   },
   "prettier": "@pentaho/uikit-config/prettier",
   "dependencies": {
@@ -22,7 +23,11 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.7",
     "@pentaho/uikit-react-core": "*",
+    "@pentaho/uikit-react-viz": "*",
     "@phosphor-icons/react": "^2.1.10",
+    "arquero": "^5.4.1",
+    "echarts": "^5.6.0",
+    "echarts-for-react": "^3.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -41,8 +46,9 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.9",
-    "happy-dom": "^20.0.0",
+    "happy-dom": "^21.0.4",
     "oxlint": "~1.63.0",
+    "playwright": "1.61.0",
     "prettier": "^3.8.3",
     "typescript": "^5.8.2",
     "unocss": "^66.4.2",

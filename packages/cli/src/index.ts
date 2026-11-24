@@ -5,6 +5,7 @@ import { Command, CommanderError } from "commander";
 
 import { createCommand } from "./create.js";
 import { packageCommand } from "./package-command.js";
+import { shotsCommand } from "./shots.js";
 import { PACKAGE_DIR } from "./utils.js";
 
 const { version, description } = JSON.parse(
@@ -16,9 +17,10 @@ const program = new Command("uikit-cli")
   .version(version)
   .addCommand(createCommand.exitOverride())
   .addCommand(packageCommand.exitOverride())
+  .addCommand(shotsCommand.exitOverride())
   .exitOverride();
 
-// Exit codes: 0 done, 1 a check failed, 2 a usage or run error, 130 canceled (Ctrl-C).
+// Exit codes: 0 done, 1 a check or a shot failed, 2 a usage or run error, 130 canceled (Ctrl-C).
 try {
   await program.parseAsync();
 } catch (error) {
