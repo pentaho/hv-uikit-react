@@ -1,6 +1,4 @@
 {
-  "title": "UI Kit App",
-
   "loading": {
     "label": "Loading Page",
     "errorTitle": "Unable to load page",

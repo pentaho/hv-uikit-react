@@ -1,0 +1,6 @@
+{
+  "title": "My app",
+  "start": "Build this page in",
+  "file": "src/pages/Home/index.tsx",
+  "docs": "UI Kit docs"
+}

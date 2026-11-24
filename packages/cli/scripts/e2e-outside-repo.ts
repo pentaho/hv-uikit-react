@@ -326,7 +326,7 @@ try {
       );
       assert(
         [
-          "$app/pages/Example.js",
+          "$app/pages/Home.js",
           "help-client",
           "theming-client",
           "app-switcher-client",

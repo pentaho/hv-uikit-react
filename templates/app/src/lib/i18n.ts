@@ -15,7 +15,7 @@ const initAppI18n = (baseUrl: string): i18n => {
     .use(initReactI18next)
     .init<HttpBackendOptions>({
       fallbackLng: "en",
-      // each page loads its own namespace (useTranslation("example")): none up front
+      // each page loads its own namespace (useTranslation("home")): none up front
       ns: [],
       // enable explicit declaration to avoid fetching non-existing `lng`s
       // supportedLngs: ["en"],

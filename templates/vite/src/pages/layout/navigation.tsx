@@ -1,8 +1,5 @@
 import { Suspense } from "react";
-import { useTranslation } from "react-i18next";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { List } from "@phosphor-icons/react";
 import {
   HvButton,
@@ -11,6 +8,7 @@ import {
   HvHeaderBrand,
   HvHeaderNavigation,
   theme,
+  useWidth,
   type HvContainerProps,
 } from "@pentaho/uikit-react-core";
 
@@ -34,13 +32,11 @@ export function Component() {
 }
 
 function Header() {
-  const { t } = useTranslation("common");
   const navigate = useNavigate();
-  const { breakpoints } = useTheme();
   const { activePath, navigation } = useNavigationContext();
 
-  const isMdUp = useMediaQuery(breakpoints.up("md"));
-  const isXs = useMediaQuery(breakpoints.only("xs"));
+  const width = useWidth();
+  const isMdUp = ["md", "lg", "xl"].includes(width);
 
   return (
     <HvHeader>
@@ -52,10 +48,7 @@ function Header() {
         </div>
       )}
 
-      <HvHeaderBrand
-        logo={<logos.Pentaho />}
-        name={!isXs ? t("title") : undefined}
-      />
+      <HvHeaderBrand logo={<logos.Pentaho />} />
 
       {isMdUp && (
         <HvHeaderNavigation

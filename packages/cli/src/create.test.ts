@@ -46,6 +46,11 @@ describe("create", () => {
     // the App Shell finds the app's translations by its package name
     expect(read(dir, "my-app/src/lib/i18n.ts")).toContain("@hv-apps/my-app");
     expect(read(dir, "my-app/.gitignore")).toContain("node_modules");
+    // the start page carries the app's name; the header, only the Pentaho logo
+    expect(read(dir, "my-app/public/locales/en/home.json")).toContain(
+      '"title": "my-app"',
+    );
+    expect(read(dir, "my-app/app-shell.config.ts")).not.toContain("my-app");
   });
 
   it('creates into the current folder with ".", named after it', () => {
@@ -88,12 +93,12 @@ describe("create", () => {
     ]);
     expect(status).toBe(0);
     const config = read(dir, "my-app/app-shell.config.ts");
-    expect(config).toContain('bundle: "$app/pages/Example.js"');
+    expect(config).toContain('bundle: "$app/pages/Home.js"');
     expect(config).toContain("@hv/help-client/button.js");
     const viteConfig = read(dir, "my-app/vite.config.ts");
     expect(viteConfig).toContain("autoViewsAndRoutes: false");
     // the views the config lists are the modules the build writes
-    expect(viteConfig).toContain('"src/pages/Example"');
+    expect(viteConfig).toContain('"src/pages/Home"');
   });
 
   it("creates a plain Vite app with its routes", () => {
@@ -101,6 +106,9 @@ describe("create", () => {
     expect(status).toBe(0);
     expect(read(dir, "plain/README.md")).toContain("# plain");
     expect(read(dir, "plain/index.html")).toContain("<title>plain</title>");
+    expect(read(dir, "plain/public/locales/en/home.json")).toContain(
+      '"title": "plain"',
+    );
   });
 
   it("creates a Pentaho plugin, keeping a typed title", () => {
