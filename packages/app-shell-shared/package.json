@@ -25,7 +25,7 @@
     "@pentaho/app-shell-services": "^3.0.0"
   },
   "devDependencies": {
-    "i18next": "^24.2.2"
+    "i18next": "^27.2.7"
   },
   "peerDependencies": {
     "@pentaho/uikit-react-core": "^7.0.0",
