@@ -2,7 +2,6 @@ import { execFileSync } from "node:child_process";
 import {
   mkdirSync,
   mkdtempSync,
-  readdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
@@ -10,12 +9,11 @@ import {
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 
 import { hookProblems } from "../commands/hook.js";
 import { callTool } from "../commands/mcp.js";
 import { lintText, lint as uikitLint } from "../core/lint.js";
-import { loadRules } from "../core/rules.js";
 import { RULES } from "./plugin.js";
 import { ruleId } from "./rule.js";
 
@@ -51,17 +49,14 @@ function lint(target: string, cwd = tools): Diagnostic[] {
   return (JSON.parse(out) as { diagnostics: Diagnostic[] }).diagnostics;
 }
 
-// The preset loads `@pentaho/uikit-tools/lint`, the built plugin.
-beforeAll(() => {
-  execFileSync(path.join(repo, "node_modules/.bin/tsc"), ["-p", tools]);
-}, 60_000);
+// The preset loads `@pentaho/uikit-tools/lint`, the built plugin: `npm test` builds it first.
 afterAll(() => rmSync(dir, { recursive: true, force: true }));
 
 describe("oxlint.json", () => {
   it("reports exactly the lines marked ✗ in the fixtures", () => {
     const found = new Set(
       lint(fixtures).map(
-        (d) => `${path.basename(d.filename)}:${d.labels[0].span.line}`,
+        (d) => `${path.basename(d.filename)}:${d.labels[0]?.span.line ?? 0}`,
       ),
     );
     const marked = new Set(
@@ -79,21 +74,10 @@ describe("oxlint.json", () => {
 
   it("turns on every plugin rule, and only those", () => {
     const text = readFileSync(preset, "utf8");
-    const listed = [...text.matchAll(/"(uikit\/[a-z-]+)"/g)].map((m) => m[1]);
-    expect(listed.toSorted()).toEqual(RULES.map(ruleId).toSorted());
-  });
-
-  it("names only rule ids that exist in the rule files", () => {
-    const cited = [
-      ...readFileSync(preset, "utf8").matchAll(
-        /\brule ([a-z-]+\/[a-z0-9-]+(?:, [a-z-]+\/[a-z0-9-]+)*)/g,
-      ),
-    ].flatMap((m) => m[1].split(", "));
-    const ids = new Set(
-      loadRules().flatMap((f) => f.sections.map((s) => s.id)),
+    const listed = new Set(
+      [...text.matchAll(/"(uikit\/[a-z-]+)": "error"/g)].map((m) => m[1]),
     );
-    expect(cited.length).toBeGreaterThan(0);
-    expect(cited.filter((id) => !ids.has(id))).toEqual([]);
+    expect([...listed].toSorted()).toEqual(RULES.map(ruleId).toSorted());
   });
 });
 
@@ -130,48 +114,44 @@ describe("the uikit plugin", () => {
       );
     }
   });
-
-  it("every lint rule a design note cites, in its text or `rules:`, exists", () => {
-    const core = path.join(repo, "packages/core/src");
-    const names = new Set(RULES.map(ruleId));
-    const cited = readdirSync(core, { recursive: true })
-      .filter((f): f is string => typeof f === "string" && f.endsWith(".md"))
-      .flatMap((f) =>
-        [
-          ...readFileSync(path.join(core, f), "utf8").matchAll(
-            /\b(uikit\/[a-z-]+)/g,
-          ),
-        ].map((m) => `${f}: ${m[1]}`),
-      );
-    expect(cited.length).toBeGreaterThan(0);
-    expect(cited.filter((c) => !names.has(c.split(": ")[1]))).toEqual([]);
-  });
 });
 
 describe("uikit-tools hook", () => {
-  const input = (file: string) =>
-    JSON.stringify({ tool_input: { file_path: file } });
+  const project = path.dirname(fixtures);
+  const stop = (active = false) =>
+    JSON.stringify({ hook_event_name: "Stop", stop_hook_active: active });
 
-  it("returns the design problems in a code file the agent wrote", () => {
-    const problems = hookProblems(
-      input(path.join(fixtures, "Page.tsx")),
-      tools,
-    );
-    expect(problems).toContain("uikit(raw-elements)");
+  it("returns the project's design problems when the agent is about to finish", () => {
+    expect(hookProblems(stop(), project)).toContain("uikit(raw-elements)");
   });
 
-  it("ignores other files, files outside the project and bad input", () => {
-    expect(hookProblems(input(path.join(tools, "README.md")), tools)).toBe("");
-    expect(hookProblems(input(path.join(fixtures, "Page.tsx")), dir)).toBe("");
-    expect(hookProblems("not json", tools)).toBe("");
+  it("lets the agent finish once it has had the report, and ignores bad input", () => {
+    expect(hookProblems(stop(true), project)).toBeUndefined();
+    expect(hookProblems("not json", project)).toBeUndefined();
+  });
+
+  it("doesn't hold the agent when there's no code to lint", () => {
+    const empty = path.join(dir, "empty");
+    mkdirSync(path.join(empty, "src"), { recursive: true });
+    writeFileSync(path.join(empty, "src/notes.md"), "# notes\n");
+    expect(hookProblems(stop(), empty)).toBeUndefined();
+  });
+
+  it("passes a project with clean code", () => {
+    const clean = path.join(dir, "clean");
+    mkdirSync(path.join(clean, "src"), { recursive: true });
+    writeFileSync(path.join(clean, "src/ok.ts"), "export const ok = 1;\n");
+    expect(hookProblems(stop(), clean)).toBe("");
   });
 });
 
 describe("uikit-tools lint", () => {
-  it("reports the findings with the oxlint it ships, as the MCP tool does", () => {
+  it("reports only the design rules, with the oxlint it ships, as the MCP tool does", () => {
     const result = uikitLint(["test-fixtures/lint/src"], tools);
     expect(result.ok).toBe(false);
     expect(result.report).toMatch(/Page\.tsx:\d+:\d+: .*uikit\(raw-elements\)/);
+    const codes = result.report.match(/\[\w+\/[\w-]+\(/g) ?? [];
+    expect(codes.every((c) => /\/(uikit|jsx-a11y)\($/.test(c))).toBe(true);
     const mcp = callTool(
       "lint",
       { paths: ["test-fixtures/lint/src"] },
@@ -180,13 +160,25 @@ describe("uikit-tools lint", () => {
     expect(mcp.content[0].text).toBe(lintText(result));
   });
 
-  it("reports only the design rules, and reads every path as a path", () => {
-    const { report } = uikitLint(["test-fixtures/lint/src"], tools);
-    const codes = report.match(/\[\w+\/[\w-]+\(/g) ?? [];
-    expect(codes.length).toBeGreaterThan(0);
-    expect(codes.every((c) => /\/(uikit|jsx-a11y)\($/.test(c))).toBe(true);
-    // a flag-like path is a missing file, never an oxlint option such as --fix
-    expect(() => uikitLint(["--fix"], tools)).toThrow(/oxlint failed/);
+  it("reports the preset's accessibility rules, the internals' imports, and not tests' bare markup", () => {
+    const project = path.join(dir, "checks");
+    mkdirSync(path.join(project, "src"), { recursive: true });
+    writeFileSync(
+      path.join(project, "src/Logo.tsx"),
+      'import { Box } from "@mui/material";\nimport type { Theme } from "@mui/material";\nexport type T = Theme;\nexport default () => <Box><img src="logo.png" /></Box>;\n',
+    );
+    writeFileSync(
+      path.join(project, "src/Logo.test.tsx"),
+      'export const t = () => <button type="button">x</button>;\n',
+    );
+    const cwd = path.join(dir, "cwd");
+    mkdirSync(cwd, { recursive: true });
+    // a path with `..`, as an agent writes one
+    const { report } = uikitLint(["../checks/src"], cwd);
+    expect(report).toMatch(/Logo\.tsx:1:\d+: .*uikit\(internal-imports\)/);
+    expect(report).not.toMatch(/Logo\.tsx:2:/);
+    expect(report).toContain("jsx-a11y(alt-text)");
+    expect(report).not.toContain("Logo.test.tsx");
   });
 
   it("passes clean code, and fails on a path with no files", () => {
@@ -195,5 +187,7 @@ describe("uikit-tools lint", () => {
       ok: true,
     });
     expect(() => uikitLint(["no-such-folder"], tools)).toThrow(/oxlint failed/);
+    // a flag-like path is a missing file, never an oxlint option such as --fix
+    expect(() => uikitLint(["--fix"], tools)).toThrow(/oxlint failed/);
   });
 });

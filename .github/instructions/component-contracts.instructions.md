@@ -8,7 +8,7 @@ description: Guide for writing the JSDoc tags that, with the design notes, power
 
 Contract tags record what the code guarantees: what each variant means, how states behave, and the accessibility wiring. Developers write them on the component.
 
-Design guidance (when to use, spec, don'ts, wording, related components) is the designers' note beside the component, `<File>.md` next to `<File>.tsx`. Don't repeat it in tags. Token and layout rules live in `packages/tools/templates/rules`, and what lint can check lives in the lint rules.
+Design guidance (when to use, spec, don'ts, wording, related components) is the designers' note beside the component, `<File>.md` next to `<File>.tsx`. Don't repeat it in tags. Token and layout rules live in `packages/tools/rules`, and what lint can check lives in the lint rules.
 
 The core build (`npm run build -w packages/core`, which runs `scripts/extract-contracts.js`) merges tags, notes and the TypeScript props into `dist/component-metadata.json`, which `uikit-tools info` and the MCP `get_component` read.
 

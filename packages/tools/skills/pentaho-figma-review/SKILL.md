@@ -12,7 +12,7 @@ or code. Review only; change the file only when they ask, and then only what the
 
 **Tools.** Figma's MCP server to read the frames: their layers, the components they're instances of, the variables
 and text styles bound to them, a screenshot of each. The UI Kit tools for the system (or the `hv-uikit` MCP server):
-`npx --no-install uikit-tools rules` and `rule <id>`, `info <Component>`, `tokens <word>`.
+`npx --no-install uikit-tools rules` and `rule <id>`, `info <Component> --spec`, `tokens <word>`.
 
 ## 1. What to review
 
@@ -29,7 +29,7 @@ can't run (an agent), count the fills, strokes, spacings and radii not bound to 
 
 - **Components:** every control is an instance from the Pentaho UI library: not detached, not drawn by hand, not
   from another library, and not one the UI Kit marks deprecated. Each part maps to a UI Kit component
-  (`info`); a part none covers is a design-system gap, not an error.
+  (`info`); a part none covers is a design-system gap, not an error: count the `GAP: …` layers and name each.
 - **Tokens for what they mean:** rule `tokens/surfaces-and-text`, and each token's uses (`tokens <word>`). The page on `bgPage`, cards and panels on `bgContainer`; `primary` for the action only; status colors always
   with a label or icon; secondary text `textSubtle` on containers, `text` on the page. A token bound to the wrong role is a finding even when the
   color looks right.

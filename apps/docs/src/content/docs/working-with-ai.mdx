@@ -44,32 +44,30 @@ npx --no-install uikit-tools init
 
 `init` sets up your project for Claude Code and GitHub Copilot by default:
 
-| File               | What `init` adds                                                                                                                                      |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AGENTS.md`        | A short UI Kit block that points your agent to the design rules in your installed UI Kit tools. The rest of the file stays yours.                     |
-| `CLAUDE.md`        | An import of `AGENTS.md`, so Claude Code reads the same instructions.                                                                                 |
-| `.vscode/mcp.json` | The `hv-uikit` MCP server for GitHub Copilot. Other servers are kept.                                                                                 |
-| `.mcp.json`        | The `hv-uikit` MCP server for Claude Code. Other servers are kept.                                                                                    |
-| `.claude/`         | For Claude Code: a hook that lints each file it edits, the read-only lookups allowed without asking, and the skills (Figma screens, Pentaho plugins). |
+| File        | What `init` adds                                                                                                                                                |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENTS.md` | A short UI Kit block that points your agent to the design rules in your installed UI Kit tools. The rest of the file stays yours.                               |
+| `CLAUDE.md` | An import of `AGENTS.md`, so Claude Code reads the same instructions.                                                                                           |
+| `.claude/`  | For Claude Code: a hook that lints the project before it finishes, the read-only lookups and screenshots allowed without asking, and the Pentaho plugin skills. |
 
-Choose the agents with `--agents`: `claude`, `copilot`, `cursor`, `codex`, `gemini`, or `all`. Commit these files so your team shares the setup, then start a new agent session. Running `init` again is safe: it only rewrites its own block and entries. For the Pentaho plugin skills, see [Pentaho plugins](/app-shell/pentaho-plugins#with-a-coding-agent).
+Choose the agents with `--agents`: `claude`, `copilot`, `cursor`, `codex`, `gemini`, or `all`. Add `--mcp` for the `hv-uikit` MCP server in each agent's configuration (`.mcp.json`, `.vscode/mcp.json`…), and `--figma` for the skills for Figma screens and design reviews. Commit these files so your team shares the setup, then start a new agent session. Running `init` again is safe: it only rewrites its own block and entries. For the Pentaho plugin skills, see [Pentaho plugins](/app-shell/pentaho-plugins#with-a-coding-agent).
 
 Then, depending on your agent:
 
 <Tabs items={["GitHub Copilot", "Claude Code", "Other agents"]}>
   <Tabs.Tab>
 
-    Copilot reads `AGENTS.md`. Start the `hv-uikit` server from `.vscode/mcp.json` or from the MCP servers list in VS Code.
+    Copilot reads `AGENTS.md` and the skills in `.claude/skills`. With `--mcp`, start the `hv-uikit` server from `.vscode/mcp.json` or from the MCP servers list in VS Code.
 
   </Tabs.Tab>
   <Tabs.Tab>
 
-    Claude Code reads `CLAUDE.md`, which imports `AGENTS.md`. Approve the `hv-uikit` server when Claude Code asks, and run `/mcp` to check it's connected.
+    Claude Code reads `CLAUDE.md`, which imports `AGENTS.md`. Accept the trust prompt the first time, so it applies the project's settings and hook. With `--mcp`, approve the `hv-uikit` server when Claude Code asks, and run `/mcp` to check it's connected.
 
   </Tabs.Tab>
   <Tabs.Tab>
 
-    Cursor, Codex and Gemini: run `init --agents cursor,codex,gemini` to add the MCP server to their configuration (and, for Gemini, a `GEMINI.md` that imports `AGENTS.md`). Other agents read `AGENTS.md`; with MCP, add a server that runs `npx --no-install uikit-tools mcp` from your project folder, and without it they use the [command line](#command-line-and-mcp).
+    Cursor, Codex and Gemini: run `init --agents cursor,codex,gemini` (with `--mcp` for the MCP server in their configuration; for Gemini, a `GEMINI.md` that imports `AGENTS.md`). Other agents read `AGENTS.md`; with MCP, add a server that runs `npx --no-install uikit-tools mcp` from your project folder, and without it they use the [command line](#command-line-and-mcp).
 
   </Tabs.Tab>
 </Tabs>
@@ -91,16 +89,16 @@ A working setup answers: `primary`, one per form; set `showCount`; with `HvDialo
 
 The `hv-uikit` MCP server gives your agent the same lookups as the `uikit-tools` command line, with the same answers. Your agent calls the MCP tools on its own; you, your scripts, CI and agents without MCP use the command line, through `npx --no-install` so it runs the version installed in your project and never downloads another.
 
-| Task                                     | Command line                   | MCP tool          |
-| ---------------------------------------- | ------------------------------ | ----------------- |
-| Set up your project                      | `uikit-tools init [folder]`    | —                 |
-| List the components                      | `uikit-tools components`       | `list_components` |
-| Look up a component's guidance and props | `uikit-tools info <component>` | `get_component`   |
-| List the design rules                    | `uikit-tools rules`            | `list_rules`      |
-| Read a design rule                       | `uikit-tools rule <id>`        | `get_rule`        |
-| Find a token by what it's for            | `uikit-tools tokens <word>`    | `find_tokens`     |
-| Check code against the design rules      | `uikit-tools lint <paths>`     | `lint`            |
-| Start the MCP server                     | `uikit-tools mcp`              | —                 |
+| Task                                     | Command line                       | MCP tool          |
+| ---------------------------------------- | ---------------------------------- | ----------------- |
+| Set up your project                      | `uikit-tools init [folder]`        | —                 |
+| List the components                      | `uikit-tools components`           | `list_components` |
+| Look up a component's guidance and props | `uikit-tools info <components...>` | `get_component`   |
+| List the design rules                    | `uikit-tools rules`                | `list_rules`      |
+| Read a design rule                       | `uikit-tools rule <id>`            | `get_rule`        |
+| Find a token by what it's for            | `uikit-tools tokens <word>`        | `find_tokens`     |
+| Check code against the design rules      | `uikit-tools lint [paths]`         | `lint`            |
+| Start the MCP server                     | `uikit-tools mcp`                  | —                 |
 
 The MCP server runs locally, only reads UI Kit's data and makes no network calls. Run `npx --no-install uikit-tools --help` for every option.
 
@@ -115,7 +113,7 @@ These print exactly what your agent gets from `get_component` and `get_rule`.
 
 ### Lint your code
 
-`npx --no-install uikit-tools lint src` checks your code against the design rules in any project, with no setup. Your agent runs it through the `lint` MCP tool, and Claude Code after every edit through the hook `init` adds.
+`npx --no-install uikit-tools lint src` checks your code against the design rules in any project, with no setup. Your agent runs it through the `lint` MCP tool, and Claude Code before it finishes, through the hook `init` adds.
 
 To see the findings in your editor and CI too, add the UI Kit preset after your other oxlint presets (apps created with `uikit-cli create` use oxlint). It needs oxlint 1.63 or later:
 

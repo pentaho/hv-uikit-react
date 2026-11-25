@@ -12,6 +12,7 @@ A titled, bordered region that groups a page's content under one topic, optional
 ## When to use
 
 - The regions of a detail or settings page ("Ownership", "Schema", "Activity"), each with its own actions.
+- A dashboard panel (a chart, a table) with its title and actions, in a grid or an HvDashboard.
 - `expandable` when people often hide a region; several stacked show-and-hide items with less chrome: HvAccordion.
 - One item or summary in a grid: HvCard.
 

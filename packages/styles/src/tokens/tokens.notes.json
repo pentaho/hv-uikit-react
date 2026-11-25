@@ -1300,5 +1300,45 @@
         }
       }
     }
+  },
+  "breakpoints": {
+    "sm": {
+      "$description": "Small screens and up: a screen width of 600px or more.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "`sm:` classes: a toolbar control back to its own width (`w-full sm:w-auto`)"
+          ]
+        }
+      }
+    },
+    "md": {
+      "$description": "Medium screens and up: a screen width of 960px or more, where a page has room for its full layout.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": [
+            "`md:` classes: a table's secondary columns (`hidden md:table-cell`)",
+            "a fixed width only from here (`md:w-80`)",
+            "side-by-side columns (`grid-cols-1 md:grid-cols-3`)"
+          ]
+        }
+      }
+    },
+    "lg": {
+      "$description": "Large screens and up: a screen width of 1270px or more.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["`lg:` classes: more columns in a grid of cards"]
+        }
+      }
+    },
+    "xl": {
+      "$description": "Extra-large screens: a screen width of 1920px or more.",
+      "$extensions": {
+        "pentaho.uikit": {
+          "use": ["`xl:` classes, rarely: content stays bounded by HvContainer"]
+        }
+      }
+    }
   }
 }

@@ -19,7 +19,7 @@ Picks one or several values from a list, with optional search, select-all and Ap
 ## What the consumer provides
 
 - `label` or `aria-label`.
-- `values`: selection lives in `selected` on each item; `separator` draws a group divider.
+- `values`: `HvListValue[]`, each `{ id, label, selected?, disabled? }`; selection lives in `selected` on each item; `separator` draws a group divider.
 - `onChange(selected)`: the item on click, or the items with `multiSelect` on Apply (Apply stays disabled until the selection changes).
 - `singleSelectionToggle` is on by default: clicking the selected item clears it.
 - With `multiSelect` the field shows "selected / total", never `placeholder`; for your own text pass `labels.select`.

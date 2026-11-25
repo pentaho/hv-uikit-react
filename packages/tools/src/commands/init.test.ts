@@ -13,7 +13,6 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  AGENT_NAMES,
   agentsBlock,
   RULE_FILES,
   runInit,
@@ -42,6 +41,8 @@ function makeApp() {
     path.join(dir, "package.json"),
     JSON.stringify({ name: "app", private: true }),
   );
+  // a Pentaho plugin, which gets the plugin skills
+  writeFileSync(path.join(dir, "plugin.json"), "{}");
   writeFileSync(
     path.join(core, "package.json"),
     JSON.stringify({
@@ -60,10 +61,7 @@ function makeApp() {
       components: [],
     }),
   );
-  const rules = path.join(
-    dir,
-    "node_modules/@pentaho/uikit-tools/templates/rules",
-  );
+  const rules = path.join(dir, "node_modules/@pentaho/uikit-tools/rules");
   mkdirSync(rules, { recursive: true });
   for (const file of RULE_FILES)
     writeFileSync(path.join(rules, file), "# rules\n");
@@ -96,20 +94,24 @@ describe("init", () => {
     const agents = read(app, "AGENTS.md");
     for (const file of RULE_FILES) {
       expect(agents).toContain(
-        `@node_modules/@pentaho/uikit-tools/templates/rules/${file}`,
+        `@node_modules/@pentaho/uikit-tools/rules/${file}`,
       );
     }
     expect(agents).not.toContain("# rules");
     expect(read(app, "CLAUDE.md")).toBe("@AGENTS.md\n");
   });
 
-  it("registers the MCP server for Claude Code and Copilot", () => {
+  it("registers the MCP server for Claude Code and Copilot only with --mcp", () => {
+    runInit(app);
+    expect(existsSync(path.join(app, ".mcp.json"))).toBe(false);
+    expect(read(app, "AGENTS.md")).not.toContain("MCP");
     mkdirSync(path.join(app, ".vscode"));
     writeFileSync(
       path.join(app, ".vscode/mcp.json"),
       JSON.stringify({ servers: { other: { command: "x" } } }),
     );
-    runInit(app);
+    runInit(app, { mcp: true });
+    expect(read(app, "AGENTS.md")).toContain("`hv-uikit` MCP server");
     const server = {
       type: "stdio",
       command: "npx",
@@ -129,7 +131,7 @@ describe("init", () => {
       path.join(app, ".vscode/mcp.json"),
       '{\n  // mine\n  "servers": { "other": { "command": "x // not a comment" }, },\n}\n',
     );
-    runInit(app);
+    runInit(app, { mcp: true });
     expect(JSON.parse(read(app, ".vscode/mcp.json")).servers.other).toEqual({
       command: "x // not a comment",
     });
@@ -161,36 +163,52 @@ describe("init", () => {
     expect(block).toContain("uikit-tools lint");
   });
 
-  it("gives Claude Code the lint hook, read-only lookups and the skills", () => {
+  it("gives Claude Code the lint hook when it finishes, read-only lookups and the plugin skills", () => {
     mkdirSync(path.join(app, ".claude"));
+    const earlier = {
+      matcher: "Write|Edit|MultiEdit",
+      hooks: [
+        {
+          type: "command",
+          command: "npx --no-install uikit-tools hook",
+          timeout: 30,
+        },
+      ],
+    };
+    const theirs = {
+      matcher: "Bash",
+      hooks: [{ type: "command", command: "x" }],
+    };
     writeFileSync(
       path.join(app, ".claude/settings.json"),
-      JSON.stringify({ permissions: { allow: ["Bash(ls)"] } }),
+      JSON.stringify({
+        permissions: { allow: ["Bash(ls)"] },
+        hooks: { PostToolUse: [earlier, theirs] },
+      }),
     );
     runInit(app);
     runInit(app);
     const settings = JSON.parse(read(app, ".claude/settings.json"));
     expect(settings.permissions.allow).toContain("Bash(ls)");
-    expect(settings.permissions.allow).toContain("mcp__hv-uikit");
-    expect(settings.hooks.PostToolUse).toEqual([
+    expect(settings.permissions.allow).not.toContain("mcp__hv-uikit");
+    expect(settings.permissions.allow).toContain("Bash(npm run shots *)");
+    expect(settings.permissions.allow).toContain(
+      "Bash(npx --no-install uikit-cli shots *)",
+    );
+    // the earlier after-edit hook is replaced by one when the agent finishes; others' hooks stay
+    expect(settings.hooks.PostToolUse).toEqual([theirs]);
+    expect(settings.hooks.Stop).toEqual([
       {
-        matcher: "Write|Edit|MultiEdit",
         hooks: [
           {
             type: "command",
             command: "npx --no-install uikit-tools hook",
-            timeout: 30,
+            timeout: 60,
           },
         ],
       },
     ]);
-    expect(SKILLS).toEqual([
-      "pentaho-figma-review",
-      "pentaho-figma-screens",
-      "pentaho-plugin",
-      "pentaho-plugin-package",
-    ]);
-    for (const name of SKILLS) {
+    for (const name of ["pentaho-plugin", "pentaho-plugin-package"]) {
       expect(read(app, `.claude/skills/${name}/SKILL.md`)).toContain(
         `name: ${name}`,
       );
@@ -198,17 +216,31 @@ describe("init", () => {
         `node_modules/@pentaho/uikit-tools/skills/${name}/SKILL.md`,
       );
     }
+    expect(
+      existsSync(path.join(app, ".claude/skills/pentaho-figma-review")),
+    ).toBe(false);
+  });
+
+  it("adds the Figma skills and the MCP tools when asked", () => {
+    runInit(app, { figma: true, mcp: true });
+    for (const name of SKILLS)
+      expect(read(app, `.claude/skills/${name}/SKILL.md`)).toContain(
+        `name: ${name}`,
+      );
+    expect(
+      JSON.parse(read(app, ".claude/settings.json")).permissions.allow,
+    ).toContain("mcp__hv-uikit");
+  });
+
+  it("keeps --mcp and --figma when re-run without them, as after an upgrade", () => {
+    runInit(app, { figma: true, mcp: true });
+    const block = read(app, "AGENTS.md");
+    expect(runInit(app).written).toEqual([]);
+    expect(read(app, "AGENTS.md")).toBe(block);
   });
 
   it("sets up every agent with all, and writes nothing new the second time", () => {
-    const { written } = runInit(app, { agents: "all" });
-    expect(AGENT_NAMES).toEqual([
-      "claude",
-      "copilot",
-      "cursor",
-      "codex",
-      "gemini",
-    ]);
+    const { written } = runInit(app, { agents: "all", mcp: true });
     expect(written).toEqual(
       expect.arrayContaining([
         ".cursor/mcp.json",
@@ -222,7 +254,7 @@ describe("init", () => {
     expect(
       JSON.parse(read(app, ".cursor/mcp.json")).mcpServers["hv-uikit"].command,
     ).toBe("npx");
-    expect(runInit(app, { agents: "all" }).written).toEqual([]);
+    expect(runInit(app, { agents: "all", mcp: true }).written).toEqual([]);
   });
 
   it("rejects an unknown agent", () => {
@@ -233,11 +265,16 @@ describe("init", () => {
 
   it("can target one agent", () => {
     const { written } = runInit(app, { agents: "copilot" });
-    expect(written).toEqual([
-      "AGENTS.md",
-      ".vscode/mcp.json",
-      ...SKILLS.map((name) => `.agents/skills/${name}/SKILL.md`),
-    ]);
+    expect(written).toContain("AGENTS.md");
+    expect(written).toContain(".agents/skills/pentaho-plugin/SKILL.md");
+    expect(written.some((file) => file.startsWith(".claude/"))).toBe(false);
+  });
+
+  it("gives the plugin skills only to a Pentaho plugin", () => {
+    rmSync(path.join(app, "plugin.json"));
+    const { written } = runInit(app, { agents: "claude" });
+    expect(written.some((file) => file.includes("pentaho-plugin"))).toBe(false);
+    expect(read(app, "AGENTS.md")).not.toContain("Skills (init copies");
   });
 
   it("copies the skills once where each agent loads them", () => {
@@ -286,7 +323,7 @@ describe("init", () => {
     renameSync(linked, real);
     symlinkSync(real, linked);
     const { rulesPath } = runInit(app);
-    expect(rulesPath).toBe("node_modules/@pentaho/uikit-tools/templates/rules");
+    expect(rulesPath).toBe("node_modules/@pentaho/uikit-tools/rules");
   });
 
   it("fails clearly when uikit-tools isn't installed in the project", () => {
@@ -306,7 +343,7 @@ describe("init", () => {
 
   it("writes nothing when an MCP config is not valid JSON", () => {
     writeFileSync(path.join(app, ".mcp.json"), "{ not json");
-    expect(() => runInit(app)).toThrow(/not valid JSON/);
+    expect(() => runInit(app, { mcp: true })).toThrow(/not valid JSON/);
     expect(existsSync(path.join(app, "AGENTS.md"))).toBe(false);
     expect(existsSync(path.join(app, "CLAUDE.md"))).toBe(false);
   });

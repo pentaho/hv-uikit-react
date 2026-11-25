@@ -1,17 +1,16 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterAll, describe, expect, it, vi } from "vitest";
 
 import { printLookup } from "../commands/lookup.js";
 import { callTool, MCP_TOOLS } from "../commands/mcp.js";
-import { answer, lookup, LookupError } from "./lookup.js";
+import { answer, hookDeclaration, lookup, LookupError } from "./lookup.js";
 import { checkSchema, MetadataError } from "./metadata.js";
 import type { Component, Metadata } from "./metadata.js";
 
 const dialog: Component = {
   name: "HvDialog",
-  displayName: "Dialog",
   purpose: "A Dialog prompts for a response.",
   types: "dist/Dialog/Dialog.d.ts",
   props: [
@@ -34,7 +33,6 @@ const dialog: Component = {
 /** Twelve more components, so the list has more than one page. */
 const others: Component[] = Array.from({ length: 12 }, (_, i) => ({
   name: `HvThing${String(i).padStart(2, "0")}`,
-  displayName: `Thing${i}`,
   purpose: `Thing ${i}.`,
 }));
 const metadata: Metadata = {
@@ -48,13 +46,11 @@ describe("lookup", () => {
   it("shows the designers' note, status and related components", () => {
     const tag: Component = {
       name: "HvTag",
-      displayName: "Tag",
       purpose: "A short label for a status or category.",
       note: {
         status: "beta",
         related: ["HvBadge"],
         rules: ["uikit/tag-label"],
-        purpose: "A short label for a status or category.",
         sections: [
           { title: "When to use", body: "- Categories people filter by." },
           { title: "Empty", body: "" },
@@ -72,7 +68,7 @@ describe("lookup", () => {
     expect(text).toContain("Checked by lint: uikit/tag-label.");
     expect(
       lookup({ ...metadata, components: [tag] }, { kind: "components" }),
-    ).toContain("- HvTag (guidance): A short label");
+    ).toContain("- HvTag: A short label");
   });
 
   it("describes a component with its guidance", () => {
@@ -89,7 +85,7 @@ describe("lookup", () => {
   it("lists every component, or a page of them", () => {
     const all = lookup(metadata, { kind: "components" });
     expect(all).toContain("(@pentaho/uikit-react-core@7.0.0): 13");
-    expect(all).toContain("- HvDialog (guidance): A Dialog prompts");
+    expect(all).toContain("- HvDialog: A Dialog prompts");
     expect(all).not.toContain("More:");
     const first = lookup(metadata, { kind: "components", limit: 10 });
     expect(first).toContain(": 1-10 of 13");
@@ -109,14 +105,15 @@ describe("lookup", () => {
         ...metadata.components,
         {
           name: "HvSnackbarProvider",
-          displayName: "SnackbarProvider",
           purpose: "Call useHvSnackbar().",
         },
       ],
     };
     expect(
       lookup(withHook, { kind: "component", name: "useHvSnackbar" }),
-    ).toContain("HvSnackbarProvider");
+    ).toMatch(
+      /^> `useHvSnackbar` is a hook, not a component: its guidance is HvSnackbarProvider's/,
+    );
   });
 
   it("suggests close names", () => {
@@ -130,7 +127,7 @@ describe("rule lookups read the UI Kit rule files as written", () => {
   it("lists every rule section", () => {
     const text = answer({ kind: "rules" });
     expect(text).toContain("- tokens/colors: Colors.");
-    expect(text).toContain("- tokens/typography: Typography.");
+    expect(text).toContain("- tokens/classes-and-css: Classes and css().");
     expect(text).toContain("- forms/fields-and-actions: Fields and actions.");
     expect(text).not.toContain("/introduction");
   });
@@ -138,7 +135,7 @@ describe("rule lookups read the UI Kit rule files as written", () => {
   it("prints a section or a whole file as written", () => {
     const section = answer({ kind: "rule", id: "tokens/colors" });
     expect(section).toContain("# Colors");
-    expect(section).toContain("Never use raw hex, rgb, or named colors.");
+    expect(section).toContain("Never raw hex, rgb, or named colors");
     expect(answer({ kind: "rule", id: "tokens" })).toMatch(/^# Token Rules/);
   });
 
@@ -213,6 +210,19 @@ describe("MCP", () => {
       expect(result.content[0].text).toBe(cli(request));
     },
   );
+
+  it("get_component takes several names, as `info` does", () => {
+    const result = callTool(
+      "get_component",
+      { name: ["HvDialog", "HvThing00"] },
+      { metadataPath },
+    );
+    expect(result.content[0].text).toBe(
+      ["HvDialog", "HvThing00"]
+        .map((name) => cli({ kind: "component", name, brief: true }))
+        .join("\n\n---\n\n"),
+    );
+  });
 
   it("returns errors as tool results instead of throwing", () => {
     expect(
@@ -294,5 +304,68 @@ describe("metadata format", () => {
     expect(() =>
       checkSchema({ ...metadata, schemaVersion: 2 }, "m.json"),
     ).toThrow(/Upgrade @pentaho\/uikit-tools/);
+  });
+});
+
+describe("hookDeclaration", () => {
+  it("returns a hook's whole declaration from the declaration files under a folder", () => {
+    const dir = mkdtempSync(path.join(tmpdir(), "hooks-"));
+    mkdirSync(path.join(dir, "hooks"));
+    writeFileSync(
+      path.join(dir, "hooks/useThing.d.ts"),
+      "import x from 'y';\nexport declare const useThing: () => {\n    run: (a?: Map<string, number>) => void;\n};\nexport declare const other: 1;\n",
+    );
+    expect(hookDeclaration(dir, "useThing")).toEqual({
+      text: "export declare const useThing: () => {\n    run: (a?: Map<string, number>) => void;\n};",
+      file: "hooks/useThing.d.ts",
+    });
+    expect(hookDeclaration(dir, "useNone")).toBeUndefined();
+    expect(
+      hookDeclaration(path.join(dir, "missing"), "useThing"),
+    ).toBeUndefined();
+  });
+});
+
+describe("info on several components", () => {
+  it("lists each one's props by name, pointing at the full lookup for their types", () => {
+    const text = lookup(metadata, {
+      kind: "component",
+      name: "HvDialog",
+      brief: true,
+    });
+    expect(text).toContain(
+      "Props: `open` (types: `uikit-tools info HvDialog`).",
+    );
+    expect(text).not.toContain("## Props");
+    expect(text).toContain("asks to review a risky step");
+  });
+});
+
+describe("info leaves out what's said elsewhere, and points the way for names that aren't components", () => {
+  it("says what to use for a name agents reach for that isn't a component", () => {
+    expect(() =>
+      lookup(metadata, { kind: "component", name: "HvKpi" }),
+    ).toThrow("A KPI is a card, not a component");
+    expect(() =>
+      lookup(metadata, { kind: "component", name: "useHvData" }),
+    ).toThrow("`useHvData` is `useHvTable`'s old name");
+  });
+
+  it("skips a state or variant the designers' note already names", () => {
+    const noted: Component = {
+      ...dialog,
+      note: {
+        related: [],
+        sections: [
+          { title: "Don't", body: "- Don't use `warning` for a routine step." },
+        ],
+      },
+    };
+    const text = lookup(
+      { ...metadata, components: [noted] },
+      { kind: "component", name: "HvDialog" },
+    );
+    expect(text).not.toContain('- "warning"');
+    expect(text).toContain('- "subtle"');
   });
 });

@@ -19,7 +19,7 @@ const TEMPLATE = {
   description: "My plugin, a Pentaho plugin.",
 };
 /** The template files that name it. */
-const NAMED = ["README.md", "index.html"];
+const NAMED = ["README.md", "index.html", "review/shots.json"];
 
 /** A plugin's default title: `Job Health` as typed, `job-health` → `Job health`. */
 export const titleFrom = (name: string) =>
@@ -79,13 +79,12 @@ export function createPlugin(
     path.join(dir, PLUGIN_FILE),
     `${JSON.stringify(plugin, null, 2)}\n`,
   );
-  // the template's page becomes the view's: its quoted title and description as JS strings, the rest as text
+  // the template's page becomes the view's: its quoted title as a JS string, the rest as text
   const page = path.join(dir, `src/pages/${view.id}.tsx`);
   fs.renameSync(path.join(dir, `src/pages/${TEMPLATE.id}.tsx`), page);
   editFile(path.dirname(page), path.basename(page), (text) =>
     replaceEach(text, {
       [JSON.stringify(TEMPLATE.title)]: jsString(view.title),
-      [JSON.stringify(TEMPLATE.description)]: jsString(plugin.description),
       [TEMPLATE.id]: view.id,
       [TEMPLATE.title]: view.title,
     }),

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "01-home",
+    "url": "http://localhost:5173/home"
+  },
+  {
+    "name": "02-home-narrow",
+    "url": "http://localhost:5173/home",
+    "width": 390
+  },
+  {
+    "name": "03-home-dark",
+    "url": "http://localhost:5173/home",
+    "dark": true
+  }
+]

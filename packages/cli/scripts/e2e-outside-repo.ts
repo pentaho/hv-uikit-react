@@ -82,22 +82,12 @@ const TEMPLATES = [
   },
 ];
 
-/** The installed CLI's commands and exit codes, outside any app: [args, expected exit code, expected output]. */
+/** The installed CLI starts and answers, outside any app (its usage errors are create.test's): [args, exit code, output]. */
 const COMMANDS: [string[], number, string][] = [
   [["--version"], 0, ""],
   [["--help"], 0, "create"],
   [["create", "--help"], 0, "--template"],
   [["package", "--help"], 0, "--built"],
-  [["create"], 2, "missing name"],
-  [["create", "x", "-t", "nope"], 2, "Allowed choices"],
-  [
-    ["create", "x", "-t", "vite", "--features", "help-link"],
-    2,
-    "are for -t app",
-  ],
-  [["create", "x", "--title", "T"], 2, "--title is for -t plugin"],
-  [["package"], 2, "has no plugin.json"],
-  [["nope"], 2, "unknown command"],
 ];
 
 const run = (
@@ -336,7 +326,7 @@ try {
       );
       assert(
         [
-          "$app/pages/Example.js",
+          "$app/pages/Home.js",
           "help-client",
           "theming-client",
           "app-switcher-client",

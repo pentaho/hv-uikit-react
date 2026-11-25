@@ -1,0 +1,16 @@
+[
+  {
+    "name": "01-my-plugin",
+    "url": "http://localhost:5173/my-plugin"
+  },
+  {
+    "name": "02-my-plugin-narrow",
+    "url": "http://localhost:5173/my-plugin",
+    "width": 390
+  },
+  {
+    "name": "03-my-plugin-dark",
+    "url": "http://localhost:5173/my-plugin",
+    "dark": true
+  }
+]

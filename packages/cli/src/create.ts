@@ -78,6 +78,8 @@ function parseFeatures(list: string): AppShellFeature[] {
 /** Why a name can't be used, or nothing when it can. */
 function nameProblem(name: string, template: Template) {
   if (name === ".") return undefined;
+  if (/[\\/]/.test(name))
+    return `"${name}" is a path: give a name, and run create in the folder it goes in`;
   const id = toPackageName(name);
   if (!id) return `"${name}" has no letters or digits to name a folder with`;
   if (template === "plugin" && !PLUGIN_ID.test(id))
@@ -136,7 +138,7 @@ async function ask(given: Partial<Answers>): Promise<Answers> {
 async function askSetup(): Promise<Setup | undefined> {
   const install = await confirm({
     message:
-      "Install dependencies and set up coding agents (AGENTS.md, MCP servers)?",
+      "Install dependencies and set up coding agents (AGENTS.md, the design rules, the lint hook)?",
     default: true,
   });
   if (!install) return undefined;
@@ -282,8 +284,12 @@ export const createCommand = new Command("create")
     ).argParser(parseAgents),
   )
   .option(
+    "--no-agents",
+    "install the dependencies without setting up coding agents, and don't ask",
+  )
+  .option(
     "--no-install",
-    "don't install the dependencies or set up coding agents, and don't ask",
+    "don't install the dependencies, and don't ask (nor set up coding agents: uikit-tools init needs them installed)",
   )
   // earlier names, still accepted
   .addOption(new Option("-w, --without-app-shell").hideHelp())
@@ -310,13 +316,20 @@ export const createCommand = new Command("create")
         ? options.autoRoutes
         : undefined;
 
-    const agents: string[] | undefined = options.agents;
+    // --agents <list>, --no-agents (false: install only), or neither
+    const agents: string[] | false | undefined = options.agents;
     const noInstall = fromCli("install") && options.install === false;
     if (agents && noInstall)
       throw new Error("--agents needs the install: drop --no-install");
-    /** What to do after creating: from --agents, or asked, unless --no-install or nobody can answer. */
+    /** What to do after creating: from --agents or --no-agents, or asked, unless --no-install or nobody can answer. */
     const setupFor = async () =>
-      agents ? { agents } : noInstall || !canPrompt() ? undefined : askSetup();
+      noInstall
+        ? undefined
+        : agents !== undefined
+          ? { agents: agents || [] }
+          : canPrompt()
+            ? askSetup()
+            : undefined;
 
     const resolved = template ?? (name ? "app" : undefined);
     if (resolved)

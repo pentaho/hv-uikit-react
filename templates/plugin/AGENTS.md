@@ -9,6 +9,7 @@ This is a Pentaho plugin's UI, built with React, Vite and HV UI Kit in the App S
 - `npm test -- --run`: unit tests (Vitest), once.
 - `npm run check`: format, types and lint, with the UI Kit design rules. Run it before you finish and fix what it reports.
 - `npm run package`: build, check and zip the plugin for a Pentaho server.
+- `npm run shots`: with `npm run dev` running, screenshot the views listed in `review/shots.json` into `review/` (`npx --no-install uikit-cli shots --help`).
 
 ## Structure
 

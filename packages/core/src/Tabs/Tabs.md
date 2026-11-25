@@ -13,7 +13,7 @@ Switches between peer views of the same thing without leaving the page.
 
 - Two to seven peer views of one object (Overview, Details, History).
 - `floating` as a compact pill switch for a view setting such as Day / Week / Month.
-- Steps in a sequence: a wizard instead. Choosing a value in a form: HvRadioGroup or HvMultiButton.
+- Steps in a sequence: one page with an HvSection per step and Back / Next (the UI Kit has no wizard). Choosing a value in a form: HvRadioGroup or HvMultiButton.
 
 ## What the consumer provides
 

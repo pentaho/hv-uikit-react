@@ -18,7 +18,7 @@ A form control for choosing one option (or several with `multiple`) from a list,
 ## What the consumer provides
 
 - `label` (or `aria-label` when the context names it).
-- Options: HvOption children (grouped with HvOptionGroup), or the `options` prop; build them from the records the app fetched.
+- Options: HvOption children (grouped with HvOptionGroup), or the `options` prop (`{ value, label, disabled? }[]`); build them from the records the app fetched.
 - `value` + `onChange(event, value)` (`null` when cleared, an array with `multiple`), or `defaultValue`; `open` + `onOpenChange` to control the list.
 - `enablePortal` when the select sits in a clipped container.
 - `name` to submit with a form; `getSerializedValue(option)` shapes the submitted string and `renderValue(option)` the closed display.

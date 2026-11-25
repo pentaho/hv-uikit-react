@@ -10,7 +10,7 @@ Part of HvCard: the padded body under the header.
 
 ## When to use
 
-- Every card body: text, a KPI value with its HvTag, a chart from the app's charting library.
+- Every card body: text, a KPI value with its HvTag, a chart from `@pentaho/uikit-react-viz` (HvBarChart, HvLineChart, HvDonutChart).
 
 ## What the consumer provides
 

@@ -33,6 +33,7 @@ The plugin opens in a local App Shell, with its menu entry and views, and its se
 ```sh
 npm run check   # format, types and lint, with the UI Kit design rules
 npm test        # unit tests
+npm run shots   # with npm run dev running: screenshots of the views listed in review/shots.json, for review
 ```
 
 ### Package it
@@ -57,13 +58,13 @@ Unzip `job-health.zip` into the server's `pentaho-solutions/system` folder and r
 
 ## The project
 
-| File                         | What it holds                                                                                                                                                                       |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `plugin.json`                | The plugin's id, title, description, menu entry (`label`, `icon`, optional `ordinal`) and views (`id`, `title`, `route`). The local App Shell, the build and `package` all read it. |
-| `src/pages/<view id>.tsx`    | One page per view, inside the shared `src/components/ViewLayout.tsx`.                                                                                                               |
-| `src/providers/Provider.tsx` | Wraps every view; add shared context here.                                                                                                                                          |
-| `src/lib/api.ts`             | The server's APIs, through `serverUrl("api/...")`, so no view hard-codes the server's path.                                                                                         |
-| `samples.json`               | A response for each server call, used by `npm run dev`.                                                                                                                             |
+| File                         | What it holds                                                                                                                                                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `plugin.json`                | The plugin's id, title, description, menu entry (`label`, `icon`, optional `ordinal` and `parent`, e.g. `settings`) and views (`id`, `title`, `route`). The local App Shell, the build and `package` all read it. |
+| `src/pages/<view id>.tsx`    | One page per view, inside the shared `src/components/ViewLayout.tsx`.                                                                                                                                             |
+| `src/providers/Provider.tsx` | Wraps every view; add shared context here.                                                                                                                                                                        |
+| `src/lib/api.ts`             | The server's APIs, through `serverUrl("api/...")`, so no view hard-codes the server's path.                                                                                                                       |
+| `samples.json`               | A response for each server call, used by `npm run dev`.                                                                                                                                                           |
 
 To add a view, add it to `plugin.json` and add its page.
 

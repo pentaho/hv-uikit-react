@@ -4,6 +4,6 @@ export default defineConfig({
   test: {
     name: "figma",
     environment: "node",
-    include: ["tests/**/*.test.ts"],
+    include: ["src/**/*.test.ts"],
   },
 });

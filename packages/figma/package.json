@@ -4,13 +4,11 @@
   "private": true,
   "type": "module",
   "author": "UI Kit Team",
-  "description": "The Pentaho UI Figma library from code: the sync file (variables, text styles), the team's Figma plugin that applies it and draws the documentation pages, and the Code Connect templates.",
+  "description": "UI Kit Figma library from code: the variables, text styles and documentation pages an agent writes through Figma's MCP, and the Code Connect templates.",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/agent.ts",
     "generate": "node scripts/generate.ts",
-    "capture": "node scripts/capture.ts",
-    "compare": "node scripts/compare.ts",
     "test": "vitest"
   },
   "devDependencies": {

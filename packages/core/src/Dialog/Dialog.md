@@ -19,8 +19,8 @@ A modal step that needs a decision or a short form before people go back to the 
 
 ## When to use
 
-- Confirming a destructive or irreversible action; a short form (up to about five fields); in a Pentaho plugin, a row's details and edits.
-- Details people read while keeping the page in view: HvDrawer. A message that needs no decision: HvBanner or HvSnackbar.
+- Confirming a destructive or irreversible action; a short form (up to about five fields); in a Pentaho plugin, a row's details and short edits (a long form takes the list's place in the view).
+- Details people read while keeping the list in view: beside it, in grid classes; HvDrawer only when the approved design shows one. A message that needs no decision: HvBanner or HvSnackbar.
 
 ## What the consumer provides
 

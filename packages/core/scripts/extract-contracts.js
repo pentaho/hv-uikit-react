@@ -286,6 +286,22 @@ function findPropsParameter(node) {
   return found;
 }
 
+const REACT_NODE =
+  /string \| number \| boolean \| ReactElement<any, string \| JSXElementConstructor<any>> \| Iterable<ReactNode> \| ReactPortal/g;
+
+/**
+ * The string or number literals a prop's union allows (`HvSize`: "xs" … "xl"), so a reader needn't open the type;
+ * undefined when the type isn't such a union. Unions mixing literals with `string` (open colour names) keep the
+ * literals, the usual values.
+ */
+function literalsOf(type) {
+  if (!type.isUnion()) return undefined;
+  const values = type.types
+    .filter((each) => each.isStringLiteral() || each.isNumberLiteral())
+    .map((each) => String(each.value));
+  return values.length > 1 && values.length <= 40 ? values : undefined;
+}
+
 /**
  * Read the props of an exported component from its TypeScript types.
  * Only props declared inside the package's src folder are kept, so React's
@@ -319,11 +335,15 @@ function extractProps(program, componentFile, componentName, srcDir) {
         decl.getSourceFile().fileName.startsWith(srcPrefix),
       ),
     )
-    .map((symbol) => ({
+    .map((symbol) => {
+      const type = checker.getNonNullableType(checker.getTypeOfSymbol(symbol));
+      return { symbol, type, allowedValues: literalsOf(type) };
+    })
+    .map(({ symbol, type, allowedValues }) => ({
       name: symbol.name,
-      type: checker.typeToString(
-        checker.getNonNullableType(checker.getTypeOfSymbol(symbol)),
-      ),
+      // React's ReactNode, which the checker spells out in full
+      type: checker.typeToString(type).replace(REACT_NODE, "ReactNode"),
+      ...(allowedValues && { allowedValues }),
       // Symbol flags are a bit mask; the flag check also covers optional
       // props produced by mapped types such as Partial<T>.
       // eslint-disable-next-line no-bitwise
@@ -521,8 +541,15 @@ async function extractMetadata() {
     schemaVersion: 1,
     version: process.env.npm_package_version || "7.0.0",
     generatedAt: new Date().toISOString(),
-    components: components,
-    missingPurpose: missingPurpose,
+    // what readers use: the JSDoc tags, the display name and the note's own copy of the purpose stay here
+    components: components.map(
+      ({ tags: _tags, displayName: _displayName, ...component }) =>
+        component.note
+          ? (({ purpose: _purpose, ...note }) => ({ ...component, note }))(
+              component.note,
+            )
+          : component,
+    ),
   };
 
   const outputDir = path.join(projectRoot, "dist");
@@ -533,7 +560,8 @@ async function extractMetadata() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  fs.writeFileSync(outputPath, JSON.stringify(metadata, null, 2));
+  // read by tools, not people: no indentation
+  fs.writeFileSync(outputPath, JSON.stringify(metadata));
 
   // Full: purpose plus at least one contract tag.
   const contractTags = ["variantSemantics", "stateRules", "a11y"];

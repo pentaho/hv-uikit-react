@@ -18,7 +18,7 @@ A time field (hours, minutes, optional seconds) with a dropdown of steppers, in 
 ## What the consumer provides
 
 - `value` + `onChange({ hours, minutes, seconds })` (always 24-hour, fires only for complete times; `null` is empty), or `defaultValue`.
-- `timeFormat={12}` for AM/PM: `locale` sets segment order and labels only, not the format.
+- `timeFormat="12"` for AM/PM (a string, `"12"` or `"24"`); without it, 24-hour whatever the `locale`, which sets segment order and labels only. Seconds show unless `showSeconds={false}`.
 - `placeholder` shows only while there is no value; the segments show their own placeholders otherwise.
 - The error shows with `required`, or when both `status` and `statusMessage` are set.
 

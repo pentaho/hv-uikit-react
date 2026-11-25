@@ -1,6 +1,6 @@
-// What the plugin applies: the sync file (figma-sync.json: the library's variables and text styles, from the tokens)
-// and the documentation pages it carries (content/: frames, text and instances of the library's components by name,
-// colored by token name).
+// What the agent writes: the sync file (figma-sync.json: the library's variables and text styles, from the tokens) and
+// the documentation pages (content/: frames, text and instances of the library's components by name, colored by token
+// name).
 type Sizing = "FIXED" | "HUG" | "FILL";
 /** A color: a token by name; `rgb` only for one the code has no token for. */
 export type Paint = {
@@ -15,18 +15,11 @@ export type ComponentRef = {
 };
 export type ImageFill = { image: string; scale: string }; // an image already in the file, by its hash
 export type PropertyValue = string | boolean | ComponentRef;
-/** The designers' page template (content/page-template.json): page layers whose values may be `{{placeholders}}`,
- * with `slot`, `if` and `each` marking where and whether a page's content goes. */
-export type TemplateNode = Record<string, unknown> & {
-  name?: string;
-  children?: TemplateNode[];
-};
 type Base = {
   name: string;
   sizing: [Sizing, Sizing];
   size: [number, number];
   at?: [number, number];
-  absolute?: true;
 };
 /** Properties Figma names the same in its file and its Plugin API, set as they are. */
 type Settings = Record<string, string | number>;
@@ -45,7 +38,6 @@ export type TextLayer = Base & {
   characters: string;
   style?: string;
   fill?: Paint;
-  align?: string;
   truncate?: true;
 };
 export type InstanceLayer = Base &

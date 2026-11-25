@@ -136,16 +136,21 @@ const ALIASES: Record<string, string[]> = {
   background: ["bg"],
 };
 
-/** The tokens whose path, description or uses mention every word of `query`; all of them without one. */
+/** The tokens whose path, description or uses mention every word of `query`, those named for it first; all of them without one. */
 export function formatTokens(tokens: Token[], query = ""): string {
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const text = (t: Token) =>
     `${t.path} ${t.description ?? ""} ${(t.use ?? []).join(" ")}`.toLowerCase();
-  const hits = tokens.filter((t) =>
+  const matches = (t: Token, of: (t: Token) => string) =>
     words.every((w) =>
-      [w, ...(ALIASES[w] ?? [])].some((form) => text(t).includes(form)),
-    ),
-  );
+      [w, ...(ALIASES[w] ?? [])].some((form) => of(t).includes(form)),
+    );
+  // named for it first (`text` → the text colors), then mentioning it in a note
+  const named = (t: Token) =>
+    Number(matches(t, (each) => each.path.toLowerCase()));
+  const hits = tokens
+    .filter((t) => matches(t, text))
+    .toSorted((a, b) => named(b) - named(a));
   if (hits.length === 0) {
     throw new LookupError(
       `No token matches "${query}". Try one word, such as a group (colors, space, radii, typography) or a use (border, hover).`,

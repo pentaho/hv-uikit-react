@@ -29,13 +29,11 @@ export interface Note {
   related: string[];
   /** The lint rules that check it: `uikit/<name>`. */
   rules?: string[];
-  purpose: string;
   sections: { title: string; body: string }[];
 }
 
 export interface Component {
   name: string;
-  displayName: string;
   purpose: string;
   note?: Note;
   /** Its declaration file in the package: `dist/Button/Button.d.ts`. */
@@ -116,8 +114,10 @@ export function checkSchema(metadata: Metadata, file: string): Metadata {
 
 export function loadMetadata(options: LoadOptions = {}): {
   metadata: Metadata;
+  /** The metadata file, in the installed package's `dist`. */
+  file: string;
 } {
   const file = resolveMetadataPath(options);
   const metadata = JSON.parse(readFileSync(file, "utf8")) as Metadata;
-  return { metadata: checkSchema(metadata, file) };
+  return { metadata: checkSchema(metadata, file), file };
 }

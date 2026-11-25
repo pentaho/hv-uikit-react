@@ -1,4 +1,5 @@
 // Lines marked ✗ must be reported by the oxlint.json preset; every other line must not.
+import { css } from "@emotion/css";
 import { HvButton, HvInput, theme } from "@pentaho/uikit-react-core";
 
 declare function save(): void;
@@ -21,6 +22,7 @@ export function Page({ status }: { status: "positive" | "negative" }) {
       <div className="p-[24px]" /> {/* ✗ */}
       <div style={{ color: theme.colors[status] }} />
       <div style={{ padding: "24px" }} /> {/* ✗ */}
+      <div className={css({ color: "#00ff00" })} /> {/* ✗ */}
     </section>
   );
 }

@@ -5,7 +5,7 @@
   "plugins": ["jsx-a11y"],
   "jsPlugins": ["@pentaho/uikit-tools/lint"],
   "rules": {
-    // rule anti-patterns/prefer-ui-kit-components, tokens/colors, tokens/spacing, setup/styling
+    // rule anti-patterns/prefer-ui-kit-components, tokens/colors, tokens/spacing, tokens/classes-and-css
     "uikit/raw-elements": "error",
     "uikit/no-inline-style": "error",
     "uikit/no-raw-graphics": "error",
@@ -15,10 +15,14 @@
     "uikit/no-arbitrary-utilities": "error",
     "uikit/deprecated": "error",
 
+    // rule components/imports
+    "uikit/internal-imports": "error",
+
     // rule accessibility/rules-of-aria
     "uikit/clickable-elements": "error",
     "uikit/icon-button-label": "error",
     "uikit/tag-label": "error",
+    "uikit/control-names": "error",
     "jsx-a11y/aria-props": "error",
     "jsx-a11y/aria-proptypes": "error",
     "jsx-a11y/aria-role": "error",
@@ -30,5 +34,31 @@
     "jsx-a11y/anchor-has-content": "error",
     "jsx-a11y/heading-has-content": "error",
     "jsx-a11y/iframe-has-title": "error"
-  }
+  },
+  // as the UI Kit's own config reads its components: `component="a"` makes the element an `a`
+  "settings": {
+    "jsx-a11y": {
+      "polymorphicPropName": "component",
+      "components": { "HvButton": "button", "HvButtonBase": "button" }
+    }
+  },
+  // tests and stories render bare markup and fixed values on purpose; what they import still counts
+  "overrides": [
+    {
+      "files": ["**/*.{test,spec,stories}.{ts,tsx}", "**/tests/**"],
+      "rules": {
+        "uikit/raw-elements": "off",
+        "uikit/no-inline-style": "off",
+        "uikit/no-raw-graphics": "off",
+        "uikit/no-escape-hatches": "off",
+        "uikit/no-hardcoded-values": "off",
+        "uikit/theme-sizes": "off",
+        "uikit/no-arbitrary-utilities": "off",
+        "uikit/clickable-elements": "off",
+        "uikit/icon-button-label": "off",
+        "uikit/tag-label": "off",
+        "uikit/control-names": "off"
+      }
+    }
+  ]
 }

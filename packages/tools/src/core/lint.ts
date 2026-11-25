@@ -3,8 +3,8 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-/** The design rules' preset, shipped beside `dist`. */
-const PRESET = fileURLToPath(new URL("../../oxlint.json", import.meta.url));
+/** The design rules' preset as the CLI runs it (oxlint.cli.json: oxlint.json alone), shipped beside `dist`. */
+const PRESET = fileURLToPath(new URL("../../oxlint.cli.json", import.meta.url));
 /** The oxlint this package depends on, so linting works in any project, set up for it or not. */
 const OXLINT = path.join(
   path.dirname(createRequire(import.meta.url).resolve("oxlint/package.json")),
@@ -26,16 +26,16 @@ export interface LintResult {
  * project's own lint config is its business. Throws when oxlint itself fails (a bad path, a crash).
  */
 export function lint(paths: string[], cwd = process.cwd()): LintResult {
-  // -A all: only the preset's rules, not oxlint's defaults; `--`: a path is never read as a flag (`--fix`, `-c`)
+  // `--`: a path is never read as a flag (`--fix`, `-c`); oxlint refuses `..` in a path, so those go absolute
   const args = [
-    "-A",
-    "all",
     "-c",
     PRESET,
     "--format",
     "unix",
     "--",
-    ...(paths.length ? paths : ["."]),
+    ...(paths.length ? paths : ["."]).map((p) =>
+      p.split(/[\\/]/).includes("..") ? path.resolve(cwd, p) : p,
+    ),
   ];
   try {
     // through Node: oxlint's launcher is a script, which Windows can't execute directly

@@ -11,8 +11,8 @@ A responsive column grid (12 columns, or the design system's 4 / 8 / 12 with `co
 
 ## When to use
 
-- Dashboards and card grids whose columns change with the screen: KPI rows, chart panels.
-- A simple row or stack of a few items: flex or grid classes with token gaps (`flex gap-sm`) are lighter.
+- A layout that must follow the design system's column grid (`columns="auto"`: 4, 8 or 12 columns by breakpoint), or whose column spans the approved design sets.
+- Most layouts, card grids and KPI rows included: flex or grid utility classes with token gaps and breakpoint prefixes (`grid grid-cols-2 md:grid-cols-4 gap-sm`) are lighter.
 
 ## What the consumer provides
 

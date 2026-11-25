@@ -3,4 +3,4 @@ dist/
 *.zip
 
 # screenshots from reviewing the views
-review/
+review/*.png

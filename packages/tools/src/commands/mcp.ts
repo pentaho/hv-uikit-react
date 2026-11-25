@@ -23,7 +23,7 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "list_components",
     description:
-      "List the UI Kit components with a one-line description; marks the ones with design guidance. Same output as `uikit-tools components`.",
+      "List the UI Kit components with a one-line description; marks the ones without design guidance. Same output as `uikit-tools components`.",
     inputSchema: {
       limit: z
         .number()
@@ -47,14 +47,35 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "get_component",
     description:
-      "A UI Kit component's import, props and design guidance: the designers' note (when to use, spec, don'ts), variants, states and accessibility. Same output as `uikit-tools info <component>`.",
+      "A UI Kit component's import, props and design guidance: the designers' note (when to use, don'ts), variants, states and accessibility; with spec, the sizes and tokens too. Several at once give each one's props by name. Same output as `uikit-tools info <components...> [--spec]`.",
     inputSchema: {
-      name: z.string().describe("Component name, e.g. HvDialog"),
+      name: z
+        .union([z.string(), z.array(z.string()).min(1)])
+        .describe("A component name, e.g. HvDialog, or several"),
+      spec: z
+        .boolean()
+        .optional()
+        .describe(
+          "Include the designers' spec (sizes and tokens), for design reviews",
+        ),
     },
-    request: (args: Args): LookupRequest => ({
-      kind: "component",
-      name: String(args.name ?? ""),
-    }),
+    // as the CLI prints several: each answer, a rule between them
+    run: (args: Args, options: LoadOptions) => {
+      const names = [args.name ?? ""].flat().map(String);
+      return names
+        .map((name) =>
+          answer(
+            {
+              kind: "component",
+              name,
+              spec: args.spec === true,
+              brief: names.length > 1,
+            },
+            options,
+          ),
+        )
+        .join("\n\n---\n\n");
+    },
   },
   {
     name: "list_rules",
@@ -95,15 +116,17 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "lint",
     description:
-      "Check code files or folders against the UI Kit design rules (raw elements, inline styles, hardcoded values, labels, deprecated APIs). Same output as `uikit-tools lint <paths>`.",
+      "Check code files or folders against the UI Kit design rules (raw elements, inline styles, hardcoded values, labels, deprecated APIs). Same output as `uikit-tools lint [paths]`.",
     inputSchema: {
       paths: z
         .array(z.string())
-        .min(1)
-        .describe("Files or folders, relative to the project, e.g. src"),
+        .optional()
+        .describe(
+          "Files or folders, relative to the project, e.g. src; the whole project by default",
+        ),
     },
     run: (args: Args, { cwd }: LoadOptions) =>
-      lintText(lint(args.paths as string[], cwd)),
+      lintText(lint((args.paths as string[] | undefined) ?? ["."], cwd)),
   },
 ];
 

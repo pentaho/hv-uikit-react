@@ -1,10 +1,10 @@
 {
   "name": "@pentaho/uikit-tools",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "type": "module",
   "author": "UI Kit Team",
-  "description": "HV UI Kit tools for apps and their coding agents: setup, component and design rule lookups (CLI and MCP), and the design rules for oxlint and ESLint",
+  "description": "UI Kit tools for coding agents: component, token and design rule lookups (CLI and MCP), the design rules as lint, and agent setup.",
   "homepage": "https://github.com/pentaho/hv-uikit-react",
   "license": "Apache-2.0",
   "bin": {
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc && node -e \"fs.chmodSync('dist/cli.js', 0o755)\"",
-    "dev": "tsc --watch",
+    "pretest": "tsc",
     "test": "vitest",
     "test:e2e": "node scripts/e2e-outside-repo.ts",
     "clean": "rimraf dist",
@@ -41,13 +41,14 @@
     "@pentaho/uikit-react-core": "^7.0.0"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "files": [
     "dist",
-    "templates",
+    "rules",
     "skills",
-    "oxlint.json"
+    "oxlint.json",
+    "oxlint.cli.json"
   ],
   "exports": {
     "./lint": {

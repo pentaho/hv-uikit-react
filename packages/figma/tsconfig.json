@@ -1,6 +1,6 @@
 {
   // The repository's root tsconfig checks this package; this one is for editors.
   "extends": "../../tsconfig.json",
-  "include": ["src", "scripts", "tests", "*.config.ts"],
+  "include": ["src", "scripts", "*.config.ts"],
   "exclude": ["code-connect/generated"]
 }
