@@ -11,6 +11,8 @@ describe("uikit-cli shots", () => {
           url: "http://localhost:5173/jobs",
           steps: [
             { click: { role: "button", name: "Retry", in: "dialog" } },
+            { click: { role: "option", nth: -1 } },
+            { click: { role: "button", name: "Save", optional: true } },
             { wait: 500 },
           ],
         },

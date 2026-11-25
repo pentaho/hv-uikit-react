@@ -64,6 +64,7 @@ flowchart LR
 | `templates/{app,vite,plugin}`                | (copied by the CLI)         | inside the CLI | Project templates, each with `AGENTS.md`                                                      |
 | `packages/config`                            | `@pentaho/uikit-config`     | yes            | Shared TypeScript and Prettier config the templates extend                                    |
 | `packages/figma`                             | `@pentaho/uikit-figma`      | private        | Figma sync file, Code Connect, agent scripts for variables, text styles and pages             |
+| `packages/cli/evals`                         | (repo only)                 | no             | A/B evals: an agent on a task with and without the tooling                                    |
 
 ## How each capability works
 
@@ -139,6 +140,15 @@ types). `uikit-cli shots` (`npm run shots`) screenshots the running views listed
   (a designer's edits kept, `compare`, `capture`) comes later. CI never publishes Code Connect: publishing writes to
   the library, so it is a manual step, agreed with the design team.
 
+### 8. Evals (`packages/cli/evals`)
+
+`run.ts <task>` creates the plugin, sets up a condition (`full`: `uikit-tools init`; `bare`: the same template with the
+tooling taken out, checked gone), runs Claude Code headless on the request in a container, then the gate (the plugin's
+own `check`, `build` and `package`, and its page coming up) and the review screenshots. `grade.ts` has a model judge
+the screenshots blind to the condition; `report.ts` compares the arms on acceptable (as counts) and effort (tokens by
+kind, turns, minutes), and states a difference only by fixed rules. Tasks, on demo data: `users` (a list with actions),
+`data-connection` (a settings form) and `report-usage` (a dashboard).
+
 ## How they compose
 
 The capabilities are independent and share one source, so any entry point leads to the same outputs.
@@ -158,24 +168,26 @@ review still catches what no check sees, such as an empty state at the top of an
 ```sh
 npm run build -w packages/styles -w packages/utils -w packages/shared -w packages/core -w packages/tools -w packages/cli
 npm test -w packages/tools -- --run           # tools: lookups, lint, init
-npm test -w packages/cli -- --run             # cli: create, package, shots
+npm test -w packages/cli -- --run             # cli: create, package, shots, evals
 npm run test:apps -w packages/cli             # each template's app: format, types, lint, build, tests
 npm test -w packages/figma -- --run           # figma: sync, pages, agent data, Code Connect
 npm run generate -w packages/figma -- --check # generated Figma files are current
 npm run test:e2e -w packages/tools            # packed tools in a fresh project
 npm run test:e2e -w packages/cli              # packed CLI: every template, dev, package
 npm run build -w packages/figma               # the agent scripts (packages/figma/README.md)
+packages/cli/evals/setup.sh && packages/cli/evals/batch.sh users  # agent evals: packages/cli/evals/README.md
 ```
 
-Package READMEs hold the details: `packages/tools/README.md`, `packages/cli/README.md`, `packages/figma/README.md`.
-The user-facing guides are in `apps/docs` (Working with AI, Pentaho plugins).
+Package READMEs hold the details: `packages/tools/README.md`, `packages/cli/README.md`, `packages/figma/README.md`,
+`packages/cli/evals/README.md`. The user-facing guides are in `apps/docs` (Working with AI, Pentaho plugins).
 
 ## Not done yet
 
 - Release `@pentaho/uikit-tools` and the TypeScript `@pentaho/uikit-cli` together, on purpose: both are `private` so
   the scheduled release skips them (the CLI's templates depend on uikit-tools); unmark both, and release the CLI as a
   major (its Node range narrowed).
-- Measure whether the tooling helps: agent evals with and without it (a follow-up pull request).
+- Run the evals with `RUNS=5` on all three tasks before releasing the tooling (8 if acceptable decides it), check the
+  grader against a person on a few trials, then add held-out tasks written by others.
 - Install a plugin on a Pentaho test server (it needs App Shell 3) and try one real request with a designer and a PM.
 - Apply the sync and publish Code Connect on the real library, with the design team's agreement.
 - Start a plugin directly from approved Figma frames: map each instance to its UI Kit component and props, through
