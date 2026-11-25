@@ -60,5 +60,6 @@
       }
     }
   ],
-  "ignorePatterns": ["packages/tools/test-fixtures"]
+  // the templates lint with their own config (with uikit-tools' built plugin) in `npm run test:apps -w packages/cli`
+  "ignorePatterns": ["packages/tools/test-fixtures", "templates"]
 }

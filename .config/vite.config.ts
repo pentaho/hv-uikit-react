@@ -69,6 +69,8 @@ export default defineConfig({
         test: {
           name: { label: "dom", color: "yellow" },
           environment: "happy-dom",
+          // Node 25+ has its own localStorage, empty without --localstorage-file, which hides happy-dom's
+          execArgv: ["--no-experimental-webstorage"],
           setupFiles: resolve(import.meta.dirname, "test.setup.tsx"),
           include: ["**/*.test.tsx"],
         },

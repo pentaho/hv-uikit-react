@@ -78,8 +78,11 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build
-        # every package: the CLI's tests build an app from each template against them
-        run: npm run build
+        # every package: the CLI's tests build an app from each template against them. uikit-tools and
+        # uikit-cli are private until released, and lerna builds only public packages, so they're built here
+        run: |
+          npm run build
+          npm run build -w packages/tools -w packages/cli
 
       - name: Test uikit-tools
         # unit and integration tests, the same on every Node: the e2e below is what varies
