@@ -1,5 +1,3 @@
-// @ts-expect-error no types
-import mock from "mock-fs";
 import { expect } from "vitest";
 import type { HvAppShellConfig } from "@pentaho/app-shell-shared";
 
@@ -10,6 +8,13 @@ import {
 } from "../automatic-utils";
 
 describe.skip("test automatic utils", () => {
+  // loaded only when the suite runs: mock-fs patches Node's fs internals as it loads, which throws on Node 25+
+  let mock: ((content: object) => void) & { restore: () => void };
+  beforeAll(async () => {
+    // @ts-expect-error no types
+    mock = (await import("mock-fs")).default;
+  });
+
   const pagesFolderContent = {
     "/dummy/path/app/src/pages": {},
     "/dummy/path/app/src/pages/Page1": {

@@ -60,6 +60,7 @@
       }
     }
   ],
-  // the templates lint with their own config (with uikit-tools' built plugin) in `npm run test:apps -w packages/cli`
+  // the templates lint with their own config, which needs uikit-tools built, in `npm run test:apps -w packages/cli`;
+  // `npm run lint` doesn't load their configs (--disable-nested-config)
   "ignorePatterns": ["packages/tools/test-fixtures", "templates"]
 }
