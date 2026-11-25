@@ -1,66 +1,22 @@
-// The Code Connect generator: the capture of Figma's properties, the rules, and what it refuses.
+// The Code Connect generator: the library it reads, the rules, and what it refuses.
 import { expect, test } from "vitest";
 
-import {
-  codeConnectFiles,
-  Overrides,
-  type UiKit,
-} from "../src/code-connect/generator.ts";
+import { codeConnectFiles, Overrides, type UiKit } from "./generator.ts";
 import {
   libraryOf,
-  propertiesOf,
-  type FigmaFile,
   type Library,
   type LibraryJson,
-} from "../src/code-connect/library.ts";
-import { figmaProps } from "../src/code-connect/map.ts";
-import { ruled } from "../src/code-connect/rules.ts";
+  type Properties,
+} from "./library.ts";
+import { figmaProps } from "./map.ts";
+import { ruled } from "./rules.ts";
 
-const FILE: FigmaFile = {
-  document: {
-    id: "0:0",
-    name: "Document",
-    type: "DOCUMENT",
-    children: [
-      {
-        id: "1:1",
-        name: "Tag",
-        type: "CANVAS",
-        children: [
-          {
-            id: "2:1",
-            name: "Tag",
-            type: "COMPONENT_SET",
-            componentPropertyDefinitions: {
-              "Label#3:0": { type: "TEXT" },
-              Color: {
-                type: "VARIANT",
-                variantOptions: ["default", "positive"],
-              },
-              State: {
-                type: "VARIANT",
-                variantOptions: ["Default", "Hover", "Disabled"],
-              },
-              "Icon#3:1": { type: "INSTANCE_SWAP" },
-            },
-            children: [
-              {
-                id: "2:2",
-                name: "Color=default, State=Default",
-                type: "COMPONENT",
-              },
-            ],
-          },
-          { id: "4:1", name: "Icon/Plus", type: "COMPONENT" },
-          {
-            id: "5:1",
-            name: "Section",
-            type: "SECTION",
-            children: [{ id: "5:2", name: "Badge", type: "COMPONENT" }],
-          },
-        ],
-      },
-    ],
+const PROPERTIES: Properties = {
+  Tag: {
+    Label: { type: "TEXT" },
+    Color: { type: "VARIANT", values: ["default", "positive"] },
+    State: { type: "VARIANT", values: ["Default", "Hover", "Disabled"] },
+    Icon: { type: "INSTANCE_SWAP" },
   },
 };
 
@@ -72,22 +28,15 @@ const LIBRARY: LibraryJson = {
   },
   icons: { Plus: { key: "k3", node: "4:1" } },
 };
-const library: Library = libraryOf(LIBRARY, propertiesOf(FILE));
+const library: Library = libraryOf(LIBRARY, PROPERTIES);
 
-test("the capture: the properties of sets and standalone components (in sections too), without Figma's ids", () => {
-  expect(propertiesOf(FILE)).toEqual({
-    Tag: {
-      Label: { type: "TEXT" },
-      Color: { type: "VARIANT", values: ["default", "positive"] },
-      State: { type: "VARIANT", values: ["Default", "Hover", "Disabled"] },
-      Icon: { type: "INSTANCE_SWAP" },
-    },
-  });
+test("the library: every component library.json lists, with its UI Kit component, sorted by name", () => {
   expect(library.components.map((c) => [c.name, c.element])).toEqual([
     ["Badge", "HvBadge"],
     ["Icon/Plus", "Plus"],
     ["Tag", "HvTag"],
   ]);
+  expect(library.components[2].properties).toBe(PROPERTIES.Tag);
 });
 
 const CODE = new Map([

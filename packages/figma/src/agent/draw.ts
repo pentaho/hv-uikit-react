@@ -43,7 +43,7 @@ export async function kitOf(parts: Map<string, Part>): Promise<Kit> {
   );
   if (!color || !styles.has(FALLBACK_STYLE))
     throw new Error(
-      "Apply the sync first: the file has no Color or text styles.",
+      "Run the library's scripts first (dist/agent/library/): the file has no Color or text styles.",
     );
 
   return {
@@ -174,7 +174,6 @@ async function textOf(k: Kit, l: TextLayer) {
   node.characters = l.characters;
   node.name = l.name;
   node.fills = l.fill ? [painted(k, l.fill)] : [];
-  if (l.align) node.textAlignHorizontal = l.align as "CENTER";
   if (l.sizing[0] !== "HUG")
     node.textAutoResize = l.truncate ? "NONE" : "HEIGHT";
   if (l.truncate) node.textTruncation = "ENDING";
@@ -249,9 +248,8 @@ function fit(
   if (l.sizing.includes("FIXED") || !auto)
     node.resize(Math.max(l.size[0], 0.01), Math.max(l.size[1], 0.01));
 
-  if (l.absolute) node.layoutPositioning = "ABSOLUTE";
   if (l.at) Object.assign(node, { x: l.at[0], y: l.at[1] });
-  if (!auto || l.absolute) return;
+  if (!auto) return;
   node.layoutSizingHorizontal = l.sizing[0];
   node.layoutSizingVertical = l.sizing[1];
 }

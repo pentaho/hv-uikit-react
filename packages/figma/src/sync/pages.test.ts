@@ -4,19 +4,19 @@ import fs from "node:fs";
 import path from "node:path";
 import { expect, test } from "vitest";
 
-import library from "../code-connect/library.json";
-import properties from "../code-connect/properties.json";
-import template from "../content/page-template.json";
-import sync from "../figma-sync.json";
+import library from "../../code-connect/library.json";
+import properties from "../../code-connect/properties.json";
+import template from "../../content/page-template.json";
+import sync from "../../figma-sync.json";
 import {
   libraryOf,
   type LibraryJson,
   type Properties,
-} from "../src/code-connect/library.ts";
-import { expand, type Values } from "../src/sync/pages.ts";
-import type { Bundle } from "../src/sync/types.ts";
+} from "../code-connect/library.ts";
+import { expand, type Values } from "./pages.ts";
+import type { Bundle } from "./types.ts";
 
-const dir = path.join(import.meta.dirname, "../content/pages");
+const dir = path.join(import.meta.dirname, "../../content/pages");
 const pages = fs
   .readdirSync(dir)
   .toSorted()

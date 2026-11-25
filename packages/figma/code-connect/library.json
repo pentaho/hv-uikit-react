@@ -1,5 +1,5 @@
 {
-  "description": "The Pentaho UI Figma library's components and icons, by key and node: which UI Kit component each Figma component set (or component) is drawn for, `part` marking a Figma piece with no component of its own in code; icons by their @phosphor-icons/react name. The Code Connect templates and the sync file's component keys are generated from it. Read from the library, never written to it.",
+  "description": "The Pentaho UI Figma library's components and icons, by key and node: which UI Kit component each Figma component set (or component) is drawn for, `part` marking a Figma piece with no component of its own in code; icons by their @phosphor-icons/react name. The Code Connect templates are generated from it; capture and compare read it. Read from the library, never written to it.",
   "file": {
     "key": "2VFXBat8b1Qj7upl6oHKqZ",
     "name": "Pentaho UI"

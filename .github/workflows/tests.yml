@@ -126,16 +126,13 @@ jobs:
         run: npm run test:storybook -- --no-file-parallelism ${{ github.head_ref && '--changed=origin/master' || '' }} --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   figma:
-    # the Figma library from code (packages/figma): the sync file and the Code Connect templates stay current; with a
-    # FIGMA_TOKEN secret (callers that pass secrets), the library is compared read-only and component properties are
-    # checked for drift. Only those steps see the token. CI never publishes Code Connect (see packages/figma/README.md).
+    # the Figma library from code (packages/figma): the sync file and the Code Connect templates stay current, and the
+    # agent scripts build. CI never writes to Figma: it has no token, and publishing Code Connect is a
+    # manual step (see packages/figma/README.md).
     name: Figma Library Sync
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    env:
-      HAS_FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN != '' }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -144,8 +141,8 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Build
-        # the theme's tokens and the components' metadata it reads, then the plugin (a private package, which lerna
-        # leaves out)
+        # the theme's tokens and the components' metadata it reads, then the agent scripts (a private
+        # package, which lerna leaves out)
         run: |
           npx lerna run build --scope @pentaho/uikit-styles --scope @pentaho/uikit-react-core --include-dependencies
           npm run build -w packages/figma
@@ -159,16 +156,6 @@ jobs:
       - name: Parse the Code Connect templates
         working-directory: packages/figma
         run: npx --no-install figma connect parse > /dev/null
-
-      - name: Compare the library with the code (read-only)
-        if: env.HAS_FIGMA_TOKEN == 'true'
-        working-directory: packages/figma
-        env:
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-        run: |
-          npm run compare
-          npm run capture
-          git diff --exit-code code-connect/properties.json
 
   build:
     name: Build

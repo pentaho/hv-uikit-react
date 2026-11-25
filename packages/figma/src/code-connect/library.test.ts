@@ -2,9 +2,9 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-import library from "../code-connect/library.json";
+import library from "../../code-connect/library.json";
 
-const src = path.resolve(import.meta.dirname, "../../core/src");
+const src = path.resolve(import.meta.dirname, "../../../core/src");
 
 /** The `Hv*` components @pentaho/uikit-react-core's sources export. */
 const exported = new Set(

@@ -1,10 +1,10 @@
-// The plugin redraws only what it made: a designer's same-named frame, and their sections, are left as they are.
+// A page redraws only what the template made: a designer's same-named frame, and their sections, are left as they are.
 import { expect, test } from "vitest";
 
-import { NS } from "../src/plugin/apply.ts";
-import { framesNamed, merge } from "../src/plugin/page.ts";
+import { NS } from "./apply.ts";
+import { framesNamed, merge } from "./page.ts";
 
-/** A node as far as the page code reads it: a name, a type, children, and the plugin's mark. */
+/** A node as far as the page code reads it: a name, a type, children, and the template's mark. */
 class Fake {
   children: Fake[] = [];
   parent?: Fake;
@@ -37,7 +37,7 @@ class Fake {
 }
 const NAME = "Button — documentation";
 
-test("a same-named frame the plugin didn't make is never the one it updates", () => {
+test("a same-named frame the template didn't make is never the one it updates", () => {
   const theirs = new Fake(NAME);
   const page = new Fake("Button", "PAGE").with(theirs);
   expect(framesNamed(page as never, NAME)).toEqual({

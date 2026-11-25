@@ -1,11 +1,9 @@
-// The sync file (figma-sync.json, which CI keeps current): the library's variables in its structure, and what the
-// plugin plans from it.
+// The sync file (figma-sync.json, which CI keeps current): the library's variables and text styles in their structure.
 import { expect, test } from "vitest";
 
-import sync from "../figma-sync.json";
-import { planSync } from "../src/plugin/diff.ts";
-import { rgba, variables, type Tokens } from "../src/sync/bundle.ts";
-import type { Bundle } from "../src/sync/types.ts";
+import sync from "../../figma-sync.json";
+import { rgba, variables, type Tokens } from "./bundle.ts";
+import type { Bundle } from "./types.ts";
 
 const bundle = sync as unknown as Bundle;
 const find = (path: string) => bundle.variables.find((v) => v.path === path)!;
@@ -78,12 +76,6 @@ test("the text styles: px line heights, letter spacing as a percentage of the si
       letterSpacing: 0.194,
     },
   );
-});
-
-test("an empty file: the plugin plans every variable as a create", () => {
-  const plan = planSync(bundle, []);
-  expect(plan.changes.length).toBe(bundle.variables.length);
-  expect(plan.changes.every((c) => c.action === "create")).toBe(true);
 });
 
 test("a color with alpha, or one no single primitive has, is written as its value", () => {

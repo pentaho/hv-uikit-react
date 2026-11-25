@@ -1,4 +1,4 @@
-// Writes figma-sync.json (the variables and text styles the plugin applies) and code-connect/generated/ (the Code
+// Writes figma-sync.json (the variables and text styles the agent writes) and code-connect/generated/ (the Code
 // Connect templates) from the repository's own data: the theme's DTCG tokens and palette (@pentaho/uikit-styles,
 // built), the components' props (@pentaho/uikit-react-core's dist/component-metadata.json, built) and this package's
 // code-connect/ (library.json, properties.json, overrides.json). `--check` writes nothing and exits 1 when a committed
